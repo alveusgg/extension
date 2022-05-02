@@ -1,4 +1,6 @@
+//Global styles
+@import 'variables.scss';
+
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: $secondary-color;
 }

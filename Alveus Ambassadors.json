@@ -3,7 +3,30 @@
   "backendCommand": "",
   "backendFolderName": "",
   "certificateExceptions": [],
-  "extensionViews": [],
+  "extensionViews": [
+    {
+      "channelId": "117413622",
+      "configurationAnchor": "panel",
+      "displayChannelName": "abdullahmorrison",
+      "features": {
+        "isBitsEnabled": false,
+        "isChatEnabled": true,
+        "isSubscriptionStatusAvailable": false
+      },
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "id": "1",
+      "isPopout": false,
+      "label": "Panel",
+      "linked": false,
+      "linkedUserId": "",
+      "orientation": "Portrait",
+      "type": "panel",
+      "viewerType": "Broadcaster"
+    }
+  ],
   "manifest": {
     "anchor": "panel",
     "assetUrls": [],
@@ -12,7 +35,7 @@
     "canInstall": true,
     "configUrl": "https://localhost:8080/config.html",
     "configurationLocation": "none",
-    "description": "",
+    "description": "A list of the ambassadors at Alveus so that viewers can know more about them.",
     "eulaTosUrl": "",
     "hasChatSupport": false,
     "iconUrl": "",
@@ -20,7 +43,7 @@
     "id": "m4ekmqj4n0nw5huja87u2zhhd5xvc4",
     "installationCount": -42,
     "liveConfigUrl": "",
-    "name": "Alveus Animals",
+    "name": "Alveus Ambassadors",
     "panelHeight": 300,
     "privacyPolicyUrl": "",
     "requestIdentityLink": false,
@@ -29,7 +52,7 @@
     "sku": "",
     "state": "Testing",
     "subscriptionsSupportLevel": "none",
-    "summary": "Information about the animals that live at Alveus.",
+    "summary": "Information about the ambassadors at Alveus.",
     "supportEmail": "abdullahmorrison@gmail.com",
     "vendorCode": "",
     "version": "0.0.1",

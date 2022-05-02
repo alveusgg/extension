@@ -1,0 +1,26 @@
+@import '../../variables.scss';
+
+.animal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 125px;
+    height: 125px;
+
+    background-color: $primary-color;
+    border-radius: 10px;
+    box-shadow: 0 3px 4px #3e3e3e;
+
+    img{
+        max-width: 100px;
+    }
+    h2{
+        font-size: 0.9rem;
+    }
+    h3{
+        font-size: 0.7rem;
+        color: $secondary-text;
+    }
+}

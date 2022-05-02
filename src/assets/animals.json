@@ -4,5 +4,125 @@
         "animalType": "African Bullfrog",
         "imgSrc": "animal-images/georgie.png",
         "imgAltText": "African Bullfrog"
+    },
+    {
+        "name": "Stompy",
+        "animalType": "Emu",
+        "imgSrc": "animal-images/stompy.png",
+        "imgAltText": "Stompy"
+    },
+    {
+        "name": "Tico",
+        "animalType": "Blue and Gold Macaw",
+        "imgSrc": "animal-images/tico.jpeg",
+        "imgAltText": "Tico"
+    },
+    {
+        "name": "Miley",
+        "animalType": "Catalina Macaw",
+        "imgSrc": "animal-images/miley.jpeg",
+        "imgAltText": "Miley"
+    },
+    {
+        "name": "Oliver",
+        "animalType": "Olive Egger Chicken",
+        "imgSrc": "animal-images/oliver.jpeg",
+        "imgAltText": "Oliver"
+    },
+    {
+        "name": "Nugget",
+        "animalType": "Ameraucana Chicken",
+        "imgSrc": "animal-images/nugget.jpeg",
+        "imgAltText": "Nugget"
+    },
+    {
+        "name": "Mia",
+        "animalType": "African Grey",
+        "imgSrc": "animal-images/mia.jpeg",
+        "imgAltText": "Mia"
+    },
+    {
+        "name": "Siren",
+        "animalType": "Blue-frontend Amazon",
+        "imgSrc": "animal-images/siren.jpeg",
+        "imgAltText": "Siren"
+    },
+    {
+        "name": "Noodle",
+        "animalType": "Carpet Python",
+        "imgSrc": "animal-images/noodle.jpeg",
+        "imgAltText": "Noodle"
+    },
+    {
+        "name": "Patchy",
+        "animalType": "Ball Python",
+        "imgSrc": "animal-images/patchy.png",
+        "imgAltText": "Patchy"
+    },
+    {
+        "name": "Abbott",
+        "animalType": "American Crow",
+        "imgSrc": "animal-images/abbott.png",
+        "imgAltText": "Abbott"
+    },
+    {
+        "name": "Coconut",
+        "animalType": "American Crow",
+        "imgSrc": "animal-images/coconut.png",
+        "imgAltText": "Cooconut"
+    },
+    {
+        "name": "Serrano",
+        "animalType": "Domestic Donkey",
+        "imgSrc": "animal-images/serrano.png",
+        "imgAltText": "Serrano"
+    },
+    {
+        "name": "Jalapeño",
+        "animalType": "Domestic Donkey",
+        "imgSrc": "animal-images/jalapeno.jpeg",
+        "imgAltText": "Jalapeño"
+    },
+    {
+        "name": "Snork",
+        "animalType": "Chinchilla",
+        "imgSrc": "animal-images/snork.jpeg",
+        "imgAltText": "Snork"
+    },
+    {
+        "name": "Moomin",
+        "animalType": "Chinchilla",
+        "imgSrc": "animal-images/moomin.jpeg",
+        "imgAltText": "Moomin"
+    },
+    {
+        "name": "Orion",
+        "animalType": "Prairie/Peregrine Falcon",
+        "imgSrc": "animal-images/orion.jpeg",
+        "imgAltText": "Orion"
+    },
+    {
+        "name": "Rubber Ducky Isopods",
+        "animalType": "Isopods",
+        "imgSrc": "animal-images/rubber-ducky-isopods.jpeg",
+        "imgAltText": "Rubber Ducky Isopods"
+    },
+    {
+        "name": "Zebra Isopods",
+        "animalType": "Isopods",
+        "imgSrc": "animal-images/zebra-isopods.jpeg",
+        "imgAltText": "Zebra Isopods"
+    },
+    {
+        "name": "Pickles",
+        "animalType": "Vinegaroon",
+        "imgSrc": "animal-images/pickles.jpeg",
+        "imgAltText": "Pickles"
+    },
+    {
+        "name": "Winnie (the Moo)",
+        "animalType": "Red Anguus Cow",
+        "imgSrc": "animal-images/winnie.jpeg",
+        "imgAltText": "Winnie (the Moo)"
     }
 ]

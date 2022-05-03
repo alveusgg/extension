@@ -3,9 +3,19 @@
 .App{
   background-color: $secondary-color;
 
-  width: 303px;
+  width: 313px;
   min-height: 500px;
 
   outline: 1px solid black;
+}
 
+//Scroll Bar
+::-webkit-scrollbar { 
+  width: 7px;
+}
+::-webkit-scrollbar-track { //track
+  background: white;
+}
+::-webkit-scrollbar-thumb { //handle
+  background: $primary-color;
 }

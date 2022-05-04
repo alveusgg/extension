@@ -10,11 +10,12 @@ export default function Animals() {
     <div className={styles.animals}>
       {AnimalsData && AnimalsData.map(animal => (
           <Animal 
-            key={animal.name}
+            key={animal.name} // every animal will have a unique name
             name={animal.name}
             animalType={animal.animalType}
             imgSrc={animal.imgSrc}  
             imgAltText={animal.imgAltText} 
+            expandedInfo={animal.expandedInfo}
           />
       ))}
     </div>

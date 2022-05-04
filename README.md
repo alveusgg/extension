@@ -6,3 +6,7 @@ A Twitch extension that helps viewers that watch [Maya Higa](https://www.twitch.
 
     npm install
     npm start
+
+## Note
+
+CSS files are hidden through the settings.json file in .vscode

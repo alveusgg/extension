@@ -4,11 +4,20 @@ import Animal from "../animal/Animal"
 import styles from './animals.module.css'
 //data
 import AnimalsData from "../../assets/animals.json"
+import { useState } from "react";
 
 export default function Animals() {
+  const [animals, setAnimals] = useState(AnimalsData)
+
+  function handleClose(){
+    setAnimals(AnimalsData)
+  }
+  function handleExpand(name: string): void {
+    // setAnimals(animals.filter(animal => animal.name === name))
+  }
   return (
-    <div className={styles.animals}>
-      {AnimalsData && AnimalsData.map(animal => (
+    <main className={styles.animals}>
+      {animals && animals.map(animal => (
           <Animal 
             key={animal.name} // every animal will have a unique name
             name={animal.name}
@@ -16,8 +25,11 @@ export default function Animals() {
             imgSrc={animal.imgSrc}  
             imgAltText={animal.imgAltText} 
             expandedInfo={animal.expandedInfo}
+
+            expand = {() => handleExpand(animal.name)}
+            close = {handleClose}
           />
       ))}
-    </div>
+    </main>
   )
 }

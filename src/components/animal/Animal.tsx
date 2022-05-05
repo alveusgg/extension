@@ -12,17 +12,25 @@ interface AnimalProps{
       sex: string | "unknown"
       age: string | "unknown"
       description?: string
-    } 
+    },
+
+    expand: (id: string) => void
+    close: () => void
 }
 export default function Animal(props: AnimalProps) {
   const [clicked, setClicked] = useState(false);
 
-  function handleClick(): void{
-    setClicked(!clicked);
+  function close(): void{
+    setClicked(false)
+    props.close()
+  }
+  function expand(): void{
+    setClicked(true)
+    props.expand(props.name)
   }
   return (
-    <div className={!clicked ? styles.animal : `${styles.animal} ${styles.animalExpanded}`} onClick={handleClick}>
-        <div style={!clicked ? {display:"none"} : {}} className={styles.close}>&times;</div>
+    <div className={!clicked ? styles.animal : `${styles.animal} ${styles.animalExpanded}`} onClick={!clicked ? expand : ()=>{return}}> 
+        <div style={!clicked ? {display:"none"} : {}} className={styles.close} onClick={close}>&times;</div>
 
         <img src={props.imgSrc} alt={props.imgAltText} />
         <h2>{props.name}</h2>

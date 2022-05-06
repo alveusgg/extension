@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+img{
+    border-radius: 5px;
+    max-width: 100px;
+    max-height: 70px;
+    margin-bottom: 5px;
+}
+.name{
+    font-size: 0.8rem;
+}
+.animalType{
+    font-size: 0.7rem;
+    color: $secondary-text;
+}
+
+// .animal:hover{
+//     cursor: pointer;
+//     filter: brightness(0.9);
+// }

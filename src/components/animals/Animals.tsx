@@ -1,5 +1,5 @@
 //components
-import Animal from "../animal/Animal"
+import AnimalPreview from "../animalPreview/AnimalPreview";
 //css
 import styles from './animals.module.css'
 //data
@@ -13,21 +13,19 @@ export default function Animals() {
     setAnimals(AnimalsData)
   }
   function handleExpand(name: string): void {
-    // setAnimals(animals.filter(animal => animal.name === name))
   }
   return (
     <main className={styles.animals}>
+
       {animals && animals.map(animal => (
-          <Animal 
+          <AnimalPreview 
             key={animal.name} // every animal will have a unique name
             name={animal.name}
             animalType={animal.animalType}
             imgSrc={animal.imgSrc}  
             imgAltText={animal.imgAltText} 
-            expandedInfo={animal.expandedInfo}
 
-            expand = {() => handleExpand(animal.name)}
-            close = {handleClose}
+            expand={()=> handleExpand(animal.name)}
           />
       ))}
     </main>

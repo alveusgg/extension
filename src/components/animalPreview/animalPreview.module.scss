@@ -1,5 +1,14 @@
 @import '../../variables.scss';
-img{
+.animal{
+    width: 100px;
+    height: 100px;
+
+    &:hover{
+        cursor: pointer;
+        filter: brightness(0.9);
+    }
+}
+.img{
     border-radius: 5px;
     max-width: 100px;
     max-height: 70px;
@@ -12,8 +21,3 @@ img{
     font-size: 0.7rem;
     color: $secondary-text;
 }
-
-// .animal:hover{
-//     cursor: pointer;
-//     filter: brightness(0.9);
-// }

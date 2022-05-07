@@ -1,9 +1,12 @@
-
 .animalExpanded{
     width: 250px;
     height: 375px;
     padding: 20px;
     justify-content: start;
+
+    text-align: left;
+    font-size: 0.8rem;
+    margin-top: 10px;
 
     position: relative;
     .close{
@@ -18,30 +21,25 @@
             filter: brightness(0.7);
         }
     }
-    img{
+    .img{
         max-width: 200px;
         max-height: 150px;
     }
-    h2{
+    .name{
         font-size: 1.3rem;
-    }
-    .animalType{
-        display: none;
-    }
-    .section{ //one column
         margin-bottom: 10px;
     }
-    .horizontalSection{ //section with multiple columns
-        display: flex;
-        &>*{
-            margin-right: 10px;
+    .moreInfo{
+        align-self: baseline;
+
+        .section{ //one column
+            margin-bottom: 10px;
+        }
+        .horizontalSection{ //section with multiple columns
+            display: flex;
+            &>*{
+                margin-right: 10px;
+            }
         }
     }
-}
-
-.moreInfo{ //the expanded animal info
-    text-align: left;
-    align-self: baseline;
-    font-size: 0.8rem;
-    margin-top: 10px;
 }

@@ -3,126 +3,270 @@
         "name": "Georgie",
         "animalType": "African Bullfrog",
         "imgSrc": "animal-images/georgie.png",
-        "imgAltText": "African Bullfrog"
+        "imgAltText": "African Bullfrog",
+        "expandedInfo": {
+            "scientificName": "Pyxicephalus adspersus",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "He is here to teach all about threats to his species and to amphibians worldwide."
+        }
     },
     {
         "name": "Stompy",
         "animalType": "Emu",
         "imgSrc": "animal-images/stompy.png",
-        "imgAltText": "Stompy"
+        "imgAltText": "Stompy",
+        "expandedInfo": {
+            "scientificName": "Dromaius novaehollandiae",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "He is an ambassador for how the exotic meat trade & use of animal products in cosmetics has affected her species and many others."
+        }
     },
     {
         "name": "Tico",
         "animalType": "Blue and Gold Macaw",
         "imgSrc": "animal-images/tico.jpeg",
-        "imgAltText": "Tico"
+        "imgAltText": "Tico",
+        "expandedInfo": {
+            "scientificName": "Ara ararauna",
+            "sex": "Female",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for how the pet trade has affected the parrot species and many others around the world!​"
+        }
     },
     {
         "name": "Miley",
         "animalType": "Catalina Macaw",
         "imgSrc": "animal-images/miley.jpeg",
-        "imgAltText": "Miley"
+        "imgAltText": "Miley",
+        "expandedInfo": {
+            "scientificName": "Ara ararauna × Ara macao",
+            "sex": "Female",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for how the pet trade has affected the parrot species and many others around the world!​"
+        }
     },
     {
         "name": "Oliver",
         "animalType": "Olive Egger Chicken",
         "imgSrc": "animal-images/oliver.jpeg",
-        "imgAltText": "Oliver"
+        "imgAltText": "Oliver",
+        "expandedInfo": {
+            "scientificName": "Gallus gallus domesticus",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-06",
+            "description": "He is an ambassador for the agricultural industry and how consumer choices can affect our planet."
+        }
     },
     {
         "name": "Nugget",
         "animalType": "Ameraucana Chicken",
         "imgSrc": "animal-images/nugget.jpeg",
-        "imgAltText": "Nugget"
+        "imgAltText": "Nugget",
+        "expandedInfo": {
+            "scientificName": "Gallus gallus domesticus",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for the agricultural industry and how consumer choices can affect our planet."
+        }
     },
     {
         "name": "Mia",
         "animalType": "African Grey",
         "imgSrc": "animal-images/mia.jpeg",
-        "imgAltText": "Mia"
+        "imgAltText": "Mia",
+        "expandedInfo": {
+            "scientificName": "Psittacus erithacus",
+            "sex": "Female",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world!​"
+        }
     },
     {
         "name": "Siren",
         "animalType": "Blue-frontend Amazon",
         "imgSrc": "animal-images/siren.jpeg",
-        "imgAltText": "Siren"
+        "imgAltText": "Siren",
+        "expandedInfo": {
+            "scientificName": "Amazona aestiva",
+            "sex": "Female",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world!​"
+        }
     },
     {
         "name": "Noodle",
         "animalType": "Carpet Python",
         "imgSrc": "animal-images/noodle.jpeg",
-        "imgAltText": "Noodle"
+        "imgAltText": "Noodle",
+        "expandedInfo": {
+            "scientificName": "M. spilota mcdowelli",
+            "sex": "Female",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for how the pet trade has affected hers and many other reptile species worldwide!"
+        }
     },
     {
         "name": "Patchy",
         "animalType": "Ball Python",
         "imgSrc": "animal-images/patchy.png",
-        "imgAltText": "Patchy"
+        "imgAltText": "Patchy",
+        "expandedInfo": {
+            "scientificName": "Python Regius",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-10",
+            "description": "He is an ambassador for how the pet trade has affected his and many other reptile species worldwide!"
+        }
     },
     {
         "name": "Abbott",
         "animalType": "American Crow",
         "imgSrc": "animal-images/abbott.png",
-        "imgAltText": "Abbott"
+        "imgAltText": "Abbott",
+        "expandedInfo": {
+            "scientificName": "Corvus Brachyrhynchos",
+            "sex": "Unknown",
+            "age": "Unknown",
+            "arrived": "2021-08",
+            "description": "Abbott was a wild bird deemed non-releasable due to imprinting and injuries."
+        }
     },
     {
         "name": "Coconut",
         "animalType": "American Crow",
         "imgSrc": "animal-images/coconut.png",
-        "imgAltText": "Cooconut"
+        "imgAltText": "Coconut",
+        "expandedInfo": {
+            "scientificName": "Corvus Brachyrhynchos",
+            "sex": "Unknown",
+            "age": "Unknown",
+            "arrived": "2021-08",
+            "description": "Coconut was a wild bird deemed non-releasable due to imprinting and injuries."
+        }
     },
     {
         "name": "Serrano",
         "animalType": "Domestic Donkey",
         "imgSrc": "animal-images/serrano.png",
-        "imgAltText": "Serrano"
+        "imgAltText": "Serrano",
+        "expandedInfo": {
+            "scientificName": "Equus Africanus Asinus",
+            "sex": "Unknown",
+            "age": "Unknown",
+            "arrived": "2021-05",
+            "description": "While also keeping Alveus safe from critters, Serrano is one of our ambassadors for the wildlife trade in traditional medicine."
+        }
     },
     {
         "name": "Jalapeño",
         "animalType": "Domestic Donkey",
         "imgSrc": "animal-images/jalapeno.jpeg",
-        "imgAltText": "Jalapeño"
+        "imgAltText": "Jalapeño",
+        "expandedInfo": {
+            "scientificName": "Equus Africanus Asinus",
+            "sex": "Unknown",
+            "age": "Unknown",
+            "arrived": "2021-05",
+            "description": "While also keeping Alveus safe from critters, Jalapeño is one of our ambassadors for the wildlife trade in traditional medicine."
+        }
     },
     {
         "name": "Snork",
         "animalType": "Chinchilla",
         "imgSrc": "animal-images/snork.jpeg",
-        "imgAltText": "Snork"
+        "imgAltText": "Snork",
+        "expandedInfo": {
+            "scientificName": "Chinchilla lanigera",
+            "sex": "Female",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "She is an ambassador for how the fur trade has affected her species and many others."
+        }
     },
     {
         "name": "Moomin",
         "animalType": "Chinchilla",
         "imgSrc": "animal-images/moomin.jpeg",
-        "imgAltText": "Moomin"
+        "imgAltText": "Moomin",
+        "expandedInfo": {
+            "scientificName": "Chinchilla lanigera",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-04",
+            "description": "He is an ambassador for how the fur trade has affected her species and many others."
+        }
     },
     {
         "name": "Orion",
         "animalType": "Prairie/Peregrine Falcon",
         "imgSrc": "animal-images/orion.jpeg",
-        "imgAltText": "Orion"
+        "imgAltText": "Orion",
+        "expandedInfo": {
+            "scientificName": "Falco [mexicanus x peregrinus]",
+            "sex": "Male",
+            "age": "Unknown",
+            "arrived": "2021-12",
+            "description": "He will be an educational ambassador for teaching people about the history of DDT & how pest control affects wildlife globally."
+        }
     },
     {
         "name": "Rubber Ducky Isopods",
         "animalType": "Isopods",
         "imgSrc": "animal-images/rubber-ducky-isopods.jpeg",
-        "imgAltText": "Rubber Ducky Isopods"
+        "imgAltText": "Rubber Ducky Isopods",
+        "expandedInfo": {
+            "scientificName": "Cubaris sp.",
+            "arrived": "2022-01",
+            "description": "These will have the amazing task of helping to teach people about the importance of invertebrates and the misconceptions they face."
+        }
     },
     {
         "name": "Zebra Isopods",
         "animalType": "Isopods",
         "imgSrc": "animal-images/zebra-isopods.jpeg",
-        "imgAltText": "Zebra Isopods"
+        "imgAltText": "Zebra Isopods",
+        "expandedInfo": {
+            "scientificName": "Armadillidium Maculatum",
+            "arrived": "2022-01",
+            "description": "These will have the amazing task of helping to teach people about the importance of invertebrates and the misconceptions they face."
+        }
     },
     {
         "name": "Pickles",
         "animalType": "Vinegaroon",
         "imgSrc": "animal-images/pickles.jpeg",
-        "imgAltText": "Pickles"
+        "imgAltText": "Pickles",
+        "expandedInfo": {
+            "scientificName": "Mastigoproctus tohono",
+            "sex": "Unknown",
+            "age": "Unknown",
+            "arrived": "2022-01",
+            "description": "Pickles will have the amazing task of helping to teach people about the importance of invertebrates and the misconceptions they face."
+        }
+
     },
     {
         "name": "Winnie (the Moo)",
-        "animalType": "Red Anguus Cow",
+        "animalType": "Red Angus Beef Cow",
         "imgSrc": "animal-images/winnie.jpeg",
-        "imgAltText": "Winnie (the Moo)"
+        "imgAltText": "Winnie (the Moo)",
+        "expandedInfo": {
+            "scientificName": "Bos (primigenius) taurus",
+            "sex": "Unknown",
+            "age": "Unknown",
+            "arrived": "2022-04-16",
+            "description": ""
+        }
     }
 ]

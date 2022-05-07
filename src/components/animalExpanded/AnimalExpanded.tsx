@@ -10,8 +10,9 @@ interface AnimalExpandedProps{
 
   expandedInfo?: { // extra info displayed when animal is clicked
     scientificName?: string
-    sex: string | "unknown"
-    age: string | "unknown"
+    sex?: string | "Unknown"
+    age?: string | "Unknown"
+    arrived?: string | "Unknown"
     description?: string
   },
   close: () => void
@@ -31,23 +32,42 @@ export default function AnimalExpanded(props: AnimalExpandedProps) {
             <p>{props.animalType}</p>
             <p>{props.expandedInfo ? props.expandedInfo.scientificName : ""}</p>
           </div>
-
-          <div className={`${styles.section} ${styles.horizontalSection}`}>
-            <div>
-              <h3>Sex</h3>
-              <p>{props.expandedInfo ? props.expandedInfo.sex : "unknown"}</p>
+          {props.expandedInfo ?
+            <>
+            <div className={`${styles.section} ${styles.horizontalSection}`}>
+              {props.expandedInfo.sex ?
+                <div>
+                  <h3>Sex</h3>
+                  <p>{props.expandedInfo.sex}</p>
+                </div> 
+              : null} 
+              {props.expandedInfo.age?
+                <div>
+                  <h3>Age</h3>
+                  <p>{props.expandedInfo.age}</p>
+                </div> 
+              : null} 
+              {props.expandedInfo.arrived ?
+                <div>
+                  <h3>Arrived</h3>
+                  <p>{
+                    //getting month and year from arrived date
+                    [
+                      new Date(props.expandedInfo.arrived).toLocaleDateString('default', { month: 'long', timeZone: 'UTC' }),
+                      new Date(props.expandedInfo.arrived).getFullYear()
+                    ].join(" ")
+                  }</p>
+                </div> 
+              : null} 
             </div>
-            <div>
-              <h3>Age</h3>
-              <p>{props.expandedInfo ? props.expandedInfo.age : "unknown"}</p>
-            </div>
+              {props.expandedInfo.description ?
+                <div>
+                  <h3>Description</h3>
+                  <p>{props.expandedInfo.description}</p>
+                </div> 
+              : null} 
+            </> : null} 
           </div>
-
-          <div className={styles.section}>
-            <h3>Description</h3>
-            <p>{props.expandedInfo ? props.expandedInfo.description : ""}</p>
-          </div>
-        </div>
       </Animal>
     </div>
   )

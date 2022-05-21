@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "npm-run-all --parallel watch serve",
-    "serve": "HTTPS=true PORT=8080 react-scripts start",
+    "serve": "SET HTTPS=true && SET PORT=8080 && react-scripts start",
     "watch": "sass  --no-source-map --watch src:src",
     "build": "react-scripts build",
     "test": "react-scripts test",

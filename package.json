@@ -16,6 +16,7 @@
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "autoprefixer": "^10.4.6",
+    "env-cmd": "^10.1.0",
     "npm-run-all": "^4.1.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -26,7 +27,7 @@
   },
   "scripts": {
     "start": "npm-run-all --parallel watch serve",
-    "serve": "SET HTTPS=true && SET PORT=8080 && react-scripts start",
+    "serve": "env-cmd -f .env react-scripts start",
     "watch": "sass  --no-source-map --watch src:src",
     "build": "react-scripts build",
     "test": "react-scripts test",

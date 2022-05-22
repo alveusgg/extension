@@ -4,81 +4,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
-    width: 125px;
-    height: 125px;
-    padding: 20px 5px 0;
+    padding: 20px 15px;
 
     background-color: $primary-color;
     border-radius: 10px;
     box-shadow: 0 3px 4px #3e3e3e;
     text-align: center;
 
-    &, &>*{
-        transition: 0.3s ease-in-out;
-    }
     img{
-        border-radius: 5px;
-        max-width: 100px;
-        max-height: 70px;
-        margin-bottom: 5px;
+        border-radius: 10px;
     }
-    h2{
-        font-size: 0.8rem;
-    }
-    .animalType{
-        font-size: 0.7rem;
-        color: $secondary-text;
-    }
-
-    &:hover{
-        cursor: pointer;
-        filter: brightness(0.9);
-    }
-}
-.animalExpanded{
-    width: 250px;
-    height: 375px;
-    padding: 20px;
-    justify-content: start;
-
-    position: relative;
-    .close{
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        padding: 5px;
-        font-size: x-large;
-        cursor: pointer;
-
-        &:hover{
-            filter: brightness(0.7);
-        }
-    }
-    img{
-        max-width: 200px;
-        max-height: 150px;
-    }
-    h2{
-        font-size: 1.3rem;
-    }
-    .animalType{
-        display: none;
-    }
-    .section{ //one column
-        margin-bottom: 10px;
-    }
-    .horizontalSection{ //section with multiple columns
-        display: flex;
-        &>*{
-            margin-right: 10px;
-        }
-    }
-}
-
-.moreInfo{ //the expanded animal info
-    text-align: left;
-    align-self: baseline;
-    font-size: 0.8rem;
-    margin-top: 10px;
 }

@@ -1,5 +1,7 @@
 //components
-import Animal from "../animal/Animal"
+import AnimalPreview from "../animalPreview/AnimalPreview";
+import AnimalExpanded from "../animalExpanded/AnimalExpanded";
+
 //css
 import styles from './animals.module.css'
 //data
@@ -7,28 +9,42 @@ import AnimalsData from "../../assets/animals.json"
 import { useState } from "react";
 
 export default function Animals() {
-  const [animals, setAnimals] = useState(AnimalsData)
+  const [animals] = useState(AnimalsData)
+  const [expandedAnimal, setExpandedAnimal] = useState("") //name of animal that will show up as a modal
 
-  function handleClose(){
-    setAnimals(AnimalsData)
+  function handleClose(): void{
+    setExpandedAnimal("")
   }
   function handleExpand(name: string): void {
-    // setAnimals(animals.filter(animal => animal.name === name))
+    setExpandedAnimal(name)
   }
+
   return (
     <main className={styles.animals}>
       {animals && animals.map(animal => (
-          <Animal 
+        <>
+          {expandedAnimal === animal.name ? 
+            <AnimalExpanded
+              name={animal.name}
+              animalType={animal.animalType}
+              imgSrc={animal.imgSrc}
+              imgAltText={animal.imgAltText}
+              expandedInfo={animal.expandedInfo}
+
+              close={handleClose}
+            />
+            : null
+          }
+          <AnimalPreview 
             key={animal.name} // every animal will have a unique name
             name={animal.name}
             animalType={animal.animalType}
             imgSrc={animal.imgSrc}  
             imgAltText={animal.imgAltText} 
-            expandedInfo={animal.expandedInfo}
 
-            expand = {() => handleExpand(animal.name)}
-            close = {handleClose}
+            expand={()=>handleExpand(animal.name)}
           />
+        </>
       ))}
     </main>
   )

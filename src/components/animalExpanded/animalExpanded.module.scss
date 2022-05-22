@@ -1,0 +1,95 @@
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.animalExpanded{
+    //slide in from the top
+    animation: slideIn 0.5s ease-in-out;
+    -webkit-animation: slideIn 0.5s ease-in-out;
+
+    width: 250px;
+    height: 375px;
+    justify-content: start;
+
+    text-align: left;
+    font-size: 0.8rem;
+    margin-top: 10px;
+
+    position: relative;
+    .close{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        padding: 5px;
+        font-size: x-large;
+        cursor: pointer;
+
+        &:hover{
+            filter: brightness(0.7);
+        }
+    }
+    .img{
+        max-width: 200px;
+        max-height: 150px;
+    }
+    .name{
+        font-size: 1.3rem;
+        margin: 10px 0;
+    }
+    .moreInfo{
+        align-self: baseline;
+
+        .section{ //one column
+            margin-bottom: 10px;
+        }
+        .horizontalSection{ //section with multiple columns
+            display: flex;
+            &>*{
+                margin-right: 10px;
+            }
+        }
+    }
+}
+@keyframes slideIn {
+    0% {
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+    }
+}
+
+// accessibility for vestibular motion disorders
+@keyframes dissolveIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    } 
+}
+@media (prefers-reduced-motion) {
+    .animalExpanded {
+        animation: dissolveIn 0.5s ease-in-out;
+        -webkit-animation: dissolveIn 0.5s ease-in-out;
+    }
+}

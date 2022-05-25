@@ -4,9 +4,25 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+let root: ReactDOM.Root
+
+// load component based on current view (viewer/config etc.)
+const rootPanel = document.getElementById("root-panel") as HTMLElement
+const rootConfig = document.getElementById("root-config") as HTMLElement
+
+if(rootPanel) {
+  root = ReactDOM.createRoot(
+    rootPanel
+  )
+}else if(rootConfig) {
+  root = ReactDOM.createRoot(
+    rootConfig
+  )
+}else{
+  root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+  console.error("No root element found")
+}
+
 root.render(
   <React.StrictMode>
     <App />

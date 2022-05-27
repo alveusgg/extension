@@ -27,10 +27,10 @@
   },
   "scripts": {
     "start": "npm-run-all --parallel watch serve",
-    "serve": "env-cmd -f .env react-scripts start",
+    "serve": "env-cmd -f .env react-app-rewired start",
     "watch": "sass  --no-source-map --watch src:src",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,5 +50,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewire-multiple-entry": "^2.2.2",
+    "react-app-rewired": "^2.2.1"
   }
 }

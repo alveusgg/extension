@@ -1,0 +1,8 @@
+@import '../../variables.scss';
+
+body{
+    width: calc(100% - 10px);
+    height: 100%;
+
+    background-color: $secondary-color;
+}

@@ -1,4 +1,4 @@
-import Animal from "../animal/Animal";
+import Animal from "../../../../utils/animal/Animal";
 
 import styles from './animalExpanded.module.css';
 

@@ -5,7 +5,7 @@ import AnimalExpanded from "../animalExpanded/AnimalExpanded";
 //css
 import styles from './animals.module.css'
 //data
-import AnimalsData from "../../assets/animals.json"
+import AnimalsData from "../../../../assets/animals.json"
 import { useState } from "react";
 
 export default function Animals() {

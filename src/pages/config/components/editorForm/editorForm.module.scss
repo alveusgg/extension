@@ -1,0 +1,43 @@
+@import '../../../../variables.scss';
+
+.editForm{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    color: $primary-text;
+    background-color: $primary-color;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+
+    input, textarea, select {
+        padding: 5px;
+        font-family: "Futura Md BT", sans-serif;
+
+        margin-bottom: 10px;
+    }
+    .horizontalInput{
+        display: flex;
+        flex-wrap: wrap;
+
+        &>*{
+            margin-right: 10px;
+        }
+
+        .smallInput{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .imgEdit {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+}

@@ -1,0 +1,49 @@
+.animalEditor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px;
+
+    .editor{
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+
+            button{
+                all: unset;
+                border: 1px solid black;
+                border-radius: 5px;
+                box-shadow: 0 3px 3px #00000075;
+                text-align: center;
+
+                height: 40px;
+                width: 120px;
+
+            }
+            button:hover{
+                cursor: pointer;
+            }
+            button:active{
+                box-shadow: 0 1px 3px #00000075;
+            }
+            .delete{
+                background-color: #ff4747;
+            }
+            .save{
+                background-color: #58ff55;
+            }
+            .cancel{
+                margin-left: 10px;
+                background-color: white;
+            }
+        }
+    }
+    .preview{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+}

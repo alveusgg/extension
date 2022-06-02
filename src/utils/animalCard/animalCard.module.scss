@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.animalCard{
+    width: 250px;
+    height: 375px;
+    justify-content: start;
+
+    color: $primary-text;
+    text-align: left;
+    font-size: 0.8rem;
+    margin: 20px;
+
+    position: relative;
+    .close{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        padding: 5px;
+        font-size: x-large;
+        cursor: pointer;
+
+        &:hover{
+            filter: brightness(0.7);
+        }
+    }
+    .img{
+        max-width: 200px;
+        max-height: 150px;
+    }
+    .name{
+        font-size: 1.3rem;
+        margin: 10px 0;
+    }
+    .moreInfo{
+        align-self: baseline;
+
+        .section{ //one column
+            margin-bottom: 10px;
+        }
+        .horizontalSection{ //section with multiple columns
+            display: flex;
+            &>*{
+                margin-right: 10px;
+            }
+        }
+    }
+}

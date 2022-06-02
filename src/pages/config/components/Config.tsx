@@ -1,7 +1,7 @@
 import styles from './config.module.css'
 
 import AnimalData from '../../../assets/animals.json'
-import AnimalPreview from '../../panel/components/animalPreview/AnimalPreview'
+import AnimalButton from '../../panel/components/animalButton/AnimalButton'
 
 export default function Config() {
   return (
@@ -12,7 +12,7 @@ export default function Config() {
       <div className={styles.animalList}>
         {
           AnimalData.map(animal => (
-            <AnimalPreview 
+            <AnimalButton
               key={animal.name}
               name={animal.name}
               animalType={animal.animalType}

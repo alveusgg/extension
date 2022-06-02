@@ -1,17 +1,19 @@
 import Animal from "../../../../utils/animal/Animal";
-import styles from './animalPreview.module.css'
+import styles from './animalButton.module.css'
 
-interface AnimalPreviewProps{
+interface AnimalButtonProps{
   name: string
   animalType: string
   imgSrc: string
   imgAltText: string
 
-  expand: (name: string) => void
+  expand?: (name: string) => void
 }
-export default function AnimalPreview(props: AnimalPreviewProps) {
+export default function AnimalPreview(props: AnimalButtonProps) {
   function expand(): void {
-    props.expand(props.name)
+    if(props.expand){
+      props.expand(props.name)
+    }
   }
   return (
     <Animal containerClassName={styles.animal} onClick={expand}>

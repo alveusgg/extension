@@ -1,5 +1,5 @@
 //components
-import AnimalPreview from "../animalPreview/AnimalPreview";
+import AnimalButton from "../animalButton/AnimalButton";
 import AnimalExpanded from "../animalExpanded/AnimalExpanded";
 
 //css
@@ -35,7 +35,7 @@ export default function Animals() {
             />
             : null
           }
-          <AnimalPreview 
+          <AnimalButton
             key={animal.name} // every animal will have a unique name
             name={animal.name}
             animalType={animal.animalType}

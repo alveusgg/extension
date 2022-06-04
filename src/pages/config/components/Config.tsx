@@ -16,8 +16,10 @@ export default function Config() {
               key={animal.name}
               name={animal.name}
               animalType={animal.animalType}
-              imgSrc={animal.imgSrc}
-              imgAltText={animal.imgAltText}
+              img={{
+                src: animal.imgSrc,
+                altText: animal.imgAltText
+              }}
             />
           ))
         }

@@ -1,6 +1,6 @@
 //components
 import AnimalButton from "../animalButton/AnimalButton";
-import AnimalExpanded from "../animalExpanded/AnimalExpanded";
+import AnimalCardOverlay from "../animalCardOverlay/AnimalCardOverlay";
 
 //css
 import styles from './animals.module.css'
@@ -24,12 +24,20 @@ export default function Animals() {
       {animals && animals.map(animal => (
         <>
           {expandedAnimal === animal.name ? 
-            <AnimalExpanded
+            <AnimalCardOverlay
               name={animal.name}
-              animalType={animal.animalType}
-              imgSrc={animal.imgSrc}
-              imgAltText={animal.imgAltText}
-              expandedInfo={animal.expandedInfo}
+              species={animal.animalType}
+              img={{
+                src: animal.imgSrc,
+                altText: animal.imgAltText
+              }}
+              scientificName={animal.expandedInfo.scientificName}              
+              sex={animal.expandedInfo.sex? animal.expandedInfo.sex : "Unknown"}
+              age={animal.expandedInfo.age? animal.expandedInfo.age : "Unknown"}
+              birthday={new Date(animal.expandedInfo.arrived)}
+              iucnStatus="Least Concern with Decreasing Population Trend"
+              story={animal.expandedInfo.description}
+              conservationMission={animal.expandedInfo.description}
 
               close={handleClose}
             />
@@ -39,8 +47,10 @@ export default function Animals() {
             key={animal.name} // every animal will have a unique name
             name={animal.name}
             animalType={animal.animalType}
-            imgSrc={animal.imgSrc}  
-            imgAltText={animal.imgAltText} 
+            img={{
+              src: animal.imgSrc,
+              altText: animal.imgAltText
+            }}
 
             expand={()=>handleExpand(animal.name)}
           />

@@ -3,69 +3,74 @@ import Animal from "../animal/Animal"
 import styles from './animalCard.module.css'
 
 interface AnimalCardProps {
-    name: string
-    animalType: string
-    imgSrc: string
-    imgAltText: string
-    expandedInfo?: { // extra info displayed when animal is clicked
-        scientificName?: string
-        sex?: string
-        age?: string
-        arrived?: string
-        description?: string
+    img: {
+        src: string
+        altText: string
     }
+    name: string
+    species: string
+    scientificName: string
+    sex?: string
+    age?: string
+    arrived: string
+    iucnStatus: string
+    story: string
+    conservationMission: string
+
     close?: ()=>void
 }
 export default function AnimalCard(props: AnimalCardProps) {
   return (
       <Animal containerClassName={styles.animalCard} >
-        <div className={styles.close} onClick={props.close}>&times;</div>
+        {
+            props.close ? <div className={styles.close} onClick={props.close}>&times;</div>
+            : null
+        }
 
-        <img className={styles.img} src={props.imgSrc} alt={props.imgAltText} />
+        <img className={styles.img} src={props.img.src} alt={props.img.altText} />
         <h2 className={styles.name}>{props.name}</h2>
 
-        <div className={styles.moreInfo}>
-          <div className={styles.section}>
-            <h3>Species</h3>
-            <p>{props.animalType}</p>
-            <p>{props.expandedInfo ? props.expandedInfo.scientificName : ""}</p>
-          </div>
-          {props.expandedInfo ?
-            <>
-            <div className={`${styles.section} ${styles.horizontalSection}`}>
-              {props.expandedInfo.sex ?
-                <div>
-                  <h3>Sex</h3>
-                  <p>{props.expandedInfo.sex}</p>
-                </div> 
-              : null} 
-              {props.expandedInfo.age?
-                <div>
-                  <h3>Age</h3>
-                  <p>{props.expandedInfo.age}</p>
-                </div> 
-              : null} 
-              {props.expandedInfo.arrived ?
-                <div>
-                  <h3>Arrived</h3>
-                  <p>{
-                    //getting month and year from arrived date
-                    [
-                      new Date(props.expandedInfo.arrived).toLocaleDateString('default', { month: 'long', timeZone: 'UTC' }),
-                      new Date(props.expandedInfo.arrived).getFullYear()
-                    ].join(" ")
-                  }</p>
-                </div> 
-              : null} 
-            </div>
-              {props.expandedInfo.description ?
-                <div>
-                  <h3>Description</h3>
-                  <p>{props.expandedInfo.description}</p>
-                </div> 
-              : null} 
-            </> : null} 
-          </div>
+        <div>
+          <h3>Species</h3>
+          <p>{props.species}</p>
+          <p><i>{props.scientificName}</i></p>
+        </div>
+
+        <div className={styles.compact}>
+          <div>
+            <h3>Sex</h3>
+            <p>{props.sex}</p>
+          </div> 
+          <div>
+            <h3>Age</h3>
+            <p>{props.age}</p>
+          </div> 
+          <div>
+            <h3>Arrived</h3>
+            <p>{
+              //getting month and year from arrived date
+              [
+                new Date(props.arrived).toLocaleDateString('default', { month: 'long', timeZone: 'UTC' }),
+                new Date(props.arrived).getFullYear()
+              ].join(" ")
+            }</p>
+          </div> 
+        </div>
+
+        <div>
+          <h3>IUCN Status</h3>
+          <p>{props.iucnStatus}</p>
+        </div>
+
+        <div>
+          <h3>Story</h3>
+          <p>{props.story}</p>
+        </div> 
+
+        <div>
+          <h3>Conservation Mission</h3>
+          <p>{props.conservationMission}</p>
+        </div>
       </Animal>
   )
 }

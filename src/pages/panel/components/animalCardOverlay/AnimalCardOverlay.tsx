@@ -12,7 +12,7 @@ interface AnimalCardOverlayProps{
   species: string
   sex: string | "Unknown"
   age: string | "Unknown"
-  birthday: string | "Unknown"
+  birthday: Date 
   iucnStatus: string
   story: string
   conservationMission: string

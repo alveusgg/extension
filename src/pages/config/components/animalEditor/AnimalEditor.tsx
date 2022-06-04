@@ -22,7 +22,7 @@ export default function AnimalEditor() {
     scientificName: 'Pyxicephalus adspersus',
     sex: 'Male',
     age: "1",
-    arrived: "2020",
+    birthday: "2020",
     iucnStatus: 'Least Concern with Decreasing Population Trend',
     story: 'Abbott was brought into a rehab center when he was very young. Sadly he became imprinted during the rehab process. He has since been rehomed to Alveus sanctuary.',
     conservationMission: 'Educate about the intelligence of birds and proper rehabilitation of wildlife.'
@@ -74,7 +74,7 @@ export default function AnimalEditor() {
           scientificName={animal.scientificName}
           sex={animal.sex}
           age={animal.age}
-          arrived={animal.arrived}
+          birthday={new Date(animal.birthday)}
           iucnStatus={animal.iucnStatus}
           story={animal.story}
           conservationMission={animal.conservationMission}

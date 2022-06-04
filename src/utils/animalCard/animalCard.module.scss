@@ -2,15 +2,19 @@
 
 .animalCard{
     width: 250px;
-    height: 375px;
-    justify-content: start;
+    height: 400px;
+    justify-content: space-between;
+    align-items: baseline;
 
     color: $primary-text;
     text-align: left;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin: 20px;
 
     position: relative;
+    h3{
+        font-size: 0.9rem;
+    }
     .close{
         position: absolute;
         top: 5px;
@@ -23,25 +27,20 @@
             filter: brightness(0.7);
         }
     }
+
     .img{
-        max-width: 200px;
-        max-height: 150px;
+        max-height: 130px;
+        align-self: center;
     }
     .name{
         font-size: 1.3rem;
-        margin: 10px 0;
+        align-self: center;
     }
-    .moreInfo{
-        align-self: baseline;
 
-        .section{ //one column
-            margin-bottom: 10px;
-        }
-        .horizontalSection{ //section with multiple columns
-            display: flex;
-            &>*{
-                margin-right: 10px;
-            }
+    .compact{ //multiple data put in one row
+        display: flex;
+        &>div{
+            margin-right: 20px;
         }
     }
 }

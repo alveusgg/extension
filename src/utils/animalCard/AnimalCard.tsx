@@ -12,7 +12,7 @@ interface AnimalCardProps {
     scientificName: string
     sex?: string
     age?: string
-    arrived: string
+    birthday: string
     iucnStatus: string
     story: string
     conservationMission: string
@@ -46,12 +46,12 @@ export default function AnimalCard(props: AnimalCardProps) {
             <p>{props.age}</p>
           </div> 
           <div>
-            <h3>Arrived</h3>
+            <h3>Birthday</h3>
             <p>{
               //getting month and year from arrived date
               [
-                new Date(props.arrived).toLocaleDateString('default', { month: 'long', timeZone: 'UTC' }),
-                new Date(props.arrived).getFullYear()
+                new Date(props.birthday).toLocaleDateString('default', { month: 'long', timeZone: 'UTC' }),
+                new Date(props.birthday).getFullYear()
               ].join(" ")
             }</p>
           </div> 

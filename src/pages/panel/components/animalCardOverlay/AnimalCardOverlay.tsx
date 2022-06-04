@@ -12,7 +12,8 @@ interface AnimalCardOverlayProps{
   species: string
   sex: string | "Unknown"
   age: string | "Unknown"
-  arrived: string | "Unknown"
+  birthday: string | "Unknown"
+  iucnStatus: string
   story: string
   conservationMission: string
 
@@ -28,7 +29,8 @@ export default function AnimalCardOverlay(props: AnimalCardOverlayProps) {
         scientificName={props.scientificName}
         sex={props.sex}
         age={props.age}
-        arrived={props.arrived}
+        birthday={props.birthday}
+        iucnStatus={props.iucnStatus}
         story={props.story}
         conservationMission={props.conservationMission}
 

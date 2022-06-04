@@ -9,11 +9,46 @@ import deleteIcon from '../../../../assets/buttonIcons/delete.svg';
 import saveIcon from '../../../../assets/buttonIcons/save.svg';
 import cancelIcon from '../../../../assets/buttonIcons/cancel.svg';
 
+import { useState } from 'react';
+
 export default function AnimalEditor() {
+  const [animal, setAnimal] = useState({
+    name: 'Georgie',
+    species: 'African Bullfrog',
+    img:{
+      src: '/animal-images/georgie.png',
+      altText: 'Img',
+    },
+    scientificName: 'Pyxicephalus adspersus',
+    sex: 'Male',
+    age: "1",
+    arrived: "2020",
+    iucnStatus: 'Least Concern with Decreasing Population Trend',
+    story: 'Abbott was brought into a rehab center when he was very young. Sadly he became imprinted during the rehab process. He has since been rehomed to Alveus sanctuary.',
+    conservationMission: 'Educate about the intelligence of birds and proper rehabilitation of wildlife.'
+  })
+
+  function editAnimal(inputProperty: string, inputValue: string): void{
+    setAnimal({
+      ...animal,
+      [inputProperty]: inputValue
+    })
+  }
+
   return (
     <div className={styles.animalEditor}>
       <div className={styles.editor}>
-        <EditorForm/>
+        <EditorForm
+          name={animal.name}
+          animalType={animal.species}
+          scientificName={animal.scientificName}
+          sex={animal.sex}
+          dateOfBirth={animal.age}
+          story={animal.story}
+          conservationMission={animal.conservationMission}
+
+          editForm={(property: string, value: string)=>editAnimal(property, value)}
+        />
         <div className={styles.buttons}>
           <button className={styles.delete}>
             <img src={deleteIcon} alt="Delete Icon"/> 
@@ -33,17 +68,21 @@ export default function AnimalEditor() {
       </div>
       <div className={styles.preview}>
         <AnimalCard
-          name="Georgie" 
-          animalType='African Bullfrog'
-          imgSrc=''
-          imgAltText=''
-          close={() => {}}
+          img={animal.img}
+          name={animal.name}
+          species={animal.species}
+          scientificName={animal.scientificName}
+          sex={animal.sex}
+          age={animal.age}
+          arrived={animal.arrived}
+          iucnStatus={animal.iucnStatus}
+          story={animal.story}
+          conservationMission={animal.conservationMission}
         /> 
         <AnimalButton
-          name="Georgie"
-          animalType='African Bullfrog'
-          imgSrc=''
-          imgAltText=''
+          name={animal.name}
+          animalType={animal.species}
+          img={animal.img}
           expand={() => {}}
         />
       </div>

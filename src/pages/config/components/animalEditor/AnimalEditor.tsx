@@ -11,6 +11,8 @@ import cancelIcon from '../../../../assets/buttonIcons/cancel.svg';
 
 import { useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 export default function AnimalEditor() {
   const [animal, setAnimal] = useState({
     name: 'Georgie',
@@ -36,6 +38,10 @@ export default function AnimalEditor() {
   }
 
   return (
+    <>
+    <Link to={"/"}>
+    <button>Back</button>
+    </Link>
     <div className={styles.animalEditor}>
       <div className={styles.editor}>
         <EditorForm
@@ -87,5 +93,6 @@ export default function AnimalEditor() {
         />
       </div>
     </div>
+    </>
   )
 }

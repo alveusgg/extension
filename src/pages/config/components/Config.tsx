@@ -3,6 +3,8 @@ import styles from './config.module.css'
 import AnimalData from '../../../assets/animals.json'
 import AnimalButton from '../../panel/components/animalButton/AnimalButton'
 
+import { Link } from 'react-router-dom'
+
 export default function Config() {
   return (
     <div className={styles.config}>
@@ -12,15 +14,17 @@ export default function Config() {
       <div className={styles.animalList}>
         {
           AnimalData.map(animal => (
-            <AnimalButton
-              key={animal.name}
-              name={animal.name}
-              animalType={animal.animalType}
-              img={{
-                src: animal.imgSrc,
-                altText: animal.imgAltText
-              }}
-            />
+            <Link to={`/animalEditor`}>
+              <AnimalButton
+                key={animal.name}
+                name={animal.name}
+                animalType={animal.animalType}
+                img={{
+                  src: animal.imgSrc,
+                  altText: animal.imgAltText
+                }}
+              />
+            </Link>
           ))
         }
 

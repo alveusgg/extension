@@ -8,9 +8,9 @@
         },
         "scientificName": "Pyxicephalus adspersus",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Georgie was rehomed from a zoo.",
-        "conservationmission": "Stopping animal over exploitation of animals in industry and chytrid fungus desimation of amphibians."
+        "conservationMission": "Stopping animal over exploitation of animals in industry and chytrid fungus desimation of amphibians."
     },
     {
         "name": "Stompy",
@@ -21,9 +21,9 @@
         },
         "scientificName": "Dromaius novaehollandiae",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Stompy was hatched in captivity and Maya hand was raised to be the first Alveus ambassador.",
-        "conservationmission": "Stopping exotic meat trade, traditional medicine, and over exploitation of animal products in cosmetics."
+        "conservationMission": "Stopping exotic meat trade, traditional medicine, and over exploitation of animal products in cosmetics."
     },
     {
         "name": "Tico",
@@ -34,9 +34,9 @@
         },
         "scientificName": "Ara ararauna",
         "sex": "Female",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Tico was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationmission": "Stopping the illegal pet trade."
+        "conservationMission": "Stopping the illegal pet trade."
     },
     {
         "name": "Miley",
@@ -47,9 +47,9 @@
         },
         "scientificName": "Ara ararauna × Ara macao",
         "sex": "Female",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": " Miley was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationmission": "Stopping the illegal pet trade"
+        "conservationMission": "Stopping the illegal pet trade"
     },
     {
         "name": "Oliver",
@@ -60,9 +60,9 @@
         },
         "scientificName": "Gallus gallus domesticus",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Oliver was put in the reject/return cage at a local feed store.",
-        "conservationmission": "Educating about environmental & ethical consumer choose"
+        "conservationMission": "Educating about environmental & ethical consumer choose"
     },
     {
         "name": "Nugget",
@@ -73,9 +73,9 @@
         },
         "scientificName": "Gallus gallus domesticus",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Nugget was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationmission": "Educating about environmental & ethical consumer choose."
+        "conservationMission": "Educating about environmental & ethical consumer choose."
     },
     {
         "name": "Mia",
@@ -86,9 +86,9 @@
         },
         "scientificName": "Psittacus erithacus",
         "sex": "Female",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Mia was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationmission": "Stopping the illegal pet trade."
+        "conservationMission": "Stopping the illegal pet trade."
     },
     {
         "name": "Siren",
@@ -99,9 +99,9 @@
         },
         "scientificName": "Amazona aestiva",
         "sex": "Female",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Siren was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationmission": "Stopping the illegal pet trade."
+        "conservationMission": "Stopping the illegal pet trade."
     },
     {
         "name": "Noodle",
@@ -112,9 +112,9 @@
         },
         "scientificName": "M. spilota mcdowelli",
         "sex": "Female",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Noodle was rehomed to Alveus from a zoo.",
-        "conservationmission": "Stopping the illegal pet trade."
+        "conservationMission": "Stopping the illegal pet trade."
     },
     {
         "name": "Patchy",
@@ -125,9 +125,9 @@
         },
         "scientificName": "Python Regius",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Patchy was rehomed to Alveus from a local breeder after it was discovered that he had a genetic defect and was missing an eye.",
-        "conservationmission": "Stopping the illegal pet trade."
+        "conservationMission": "Stopping the illegal pet trade."
     },
     {
         "name": "Abbott",
@@ -138,9 +138,9 @@
         },
         "scientificName": "Corvus Brachyrhynchos",
         "sex": "Unknown",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Abbott was brought into a rehab center when he was very young. Sadly he became imprinted during the rehab process. He has since been rehomed to Alveus sanctuary.",
-        "conservationmission": "Educate about the intelligence of birds and proper rehabilitation of wildlife."
+        "conservationMission": "Educate about the intelligence of birds and proper rehabilitation of wildlife."
     },
     {
         "name": "Coconut",
@@ -151,9 +151,9 @@
         },
         "scientificName": "Corvus Brachyrhynchos",
         "sex": "Unknown",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Coconut was permanently injured and brought to a rehabilitator and was sadly imprinted during the rehab process. He was rehomed to Alveus once he was deemed non-releasable.",
-        "conservationmission": "Educate about the intelligence of birds and proper rehabilitation of wildlife."
+        "conservationMission": "Educate about the intelligence of birds and proper rehabilitation of wildlife."
     },
     {
         "name": "Serrano",
@@ -164,9 +164,9 @@
         },
         "scientificName": "Equus Africanus Asinus",
         "sex": "Unknown",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Rehomed to Alveus from a local equine rescue.",
-        "conservationmission": "Stopping the use of wildlife in traditional medicine and guarding Alveus from predators."
+        "conservationMission": "Stopping the use of wildlife in traditional medicine and guarding Alveus from predators."
     },
     {
         "name": "Jalapeño",
@@ -177,9 +177,9 @@
         },
         "scientificName": "Equus Africanus Asinus",
         "sex": "Unknown",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Rehomed to Alveus from a local equine rescue.",
-        "conservationmission": "Stopping the use of wildlife in traditional medicine and guarding Alveus from predators."
+        "conservationMission": "Stopping the use of wildlife in traditional medicine and guarding Alveus from predators."
     },
     {
         "name": "Snork",
@@ -190,9 +190,9 @@
         },
         "scientificName": "Chinchilla lanigera",
         "sex": "Female",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Snork was rehomed to Alveus from a zoo.",
-        "conservationmission": "Stopping the exploitation of wildlife in the fur trade."
+        "conservationMission": "Stopping the exploitation of wildlife in the fur trade."
     },
     {
         "name": "Moomin",
@@ -203,9 +203,9 @@
         },
         "scientificName": "Chinchilla lanigera",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "Rehomed from a local pet owner.",
-        "conservationmission": "Stopping the exploitation of wildlife in the fur trade."
+        "conservationMission": "Stopping the exploitation of wildlife in the fur trade."
     },
     {
         "name": "Orion",
@@ -216,9 +216,9 @@
         },
         "scientificName": "Falco [mexicanus x peregrinus]",
         "sex": "Male",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "",
-        "conservationmission": "Showing the effects humans have on the environment and how to conserve major keystone species."
+        "conservationMission": "Showing the effects humans have on the environment and how to conserve major keystone species."
     },
     {
         "name": "Rubber Ducky Isopods",
@@ -228,9 +228,9 @@
             "altText": "Rubber Ducky Isopods"
         },
         "scientificName": "Cubaris sp.",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "",
-        "conservationmission": ""
+        "conservationMission": ""
     },
     {
         "name": "Zebra Isopods",
@@ -240,9 +240,9 @@
             "altText": "Zebra Isopods"
         },
         "scientificName": "Armadillidium Maculatum",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "",
-        "conservationmission": ""
+        "conservationMission": ""
     },
     {
         "name": "Pickles",
@@ -253,9 +253,9 @@
         },
         "scientificName": "Mastigoproctus tohono",
         "sex": "Unknown",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "",
-        "conservationmission": ""
+        "conservationMission": ""
 
     },
     {
@@ -267,8 +267,8 @@
         },
         "scientificName": "Bos (primigenius) taurus",
         "sex": "Unknown",
-        "dateofbirth": "2021-05-13",
+        "dateOfBirth": "2021-05-13",
         "story": "",
-        "conservationmission": ""
+        "conservationMission": ""
     }
 ]

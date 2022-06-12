@@ -12,7 +12,7 @@ export interface AnimalCardProps {
     species: string
     scientificName: string
     sex?: string
-    dateofbirth: Date
+    dateOfBirth: Date
     story: string
     conservationMission: string
   }
@@ -42,11 +42,11 @@ export default function AnimalCard(props: AnimalCardProps) {
           </div> 
           <div>
             <h3>Age</h3>
-            <p>{props.cardData.dateofbirth.toUTCString()}</p>
+            <p>{props.cardData.dateOfBirth.toUTCString()}</p>
           </div> 
           <div>
             <h3>Birthday</h3>
-            <p>{ props.cardData.dateofbirth.toUTCString() }</p>
+            <p>{ props.cardData.dateOfBirth.toUTCString() }</p>
           </div> 
         </div>
 

@@ -80,7 +80,7 @@ export default function AnimalEditor() {
             species:animal.species,
             scientificName:animal.scientificName,
             sex:animal.sex,
-            dateofbirth:new Date(animal.age),
+            dateOfBirth:new Date(animal.age),
             story:animal.story,
             conservationMission:animal.conservationMission
           }}

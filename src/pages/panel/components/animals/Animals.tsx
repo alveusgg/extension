@@ -35,9 +35,9 @@ export default function Animals() {
                   },
                   scientificName:animal.scientificName,
                   sex:animal.sex? animal.sex : "Unknown",
-                  dateofbirth: new Date(animal.dateofbirth),
+                  dateOfBirth: new Date(animal.dateOfBirth),
                   story: animal.story,
-                  conservationMission: animal.conservationmission
+                  conservationMission: animal.conservationMission
                 }
               }}
 

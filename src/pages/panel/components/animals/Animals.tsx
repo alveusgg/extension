@@ -10,20 +10,20 @@ import { useState } from "react";
 
 export default function Animals() {
   const [animals] = useState(AnimalsData)
-  const [expandedAnimal, setExpandedAnimal] = useState("") //name of animal that will show up as a modal
+  const [animalCard, setAnimalCard] = useState("") //name of animal that will show up as a modal
 
   function handleClose(): void{
-    setExpandedAnimal("")
+    setAnimalCard("")
   }
-  function handleExpand(name: string): void {
-    setExpandedAnimal(name)
+  function handleGetCard(name: string): void {
+    setAnimalCard(name)
   }
 
   return (
     <main className={styles.animals}>
       {animals && animals.map(animal => (
         <>
-          {expandedAnimal === animal.name ? 
+          {animalCard === animal.name ? 
             <AnimalCardOverlay
               animalCard={{ 
                 cardData:{
@@ -54,7 +54,7 @@ export default function Animals() {
               altText: animal.img.altText
             }}
 
-            expand={()=>handleExpand(animal.name)}
+            getCard={()=>handleGetCard(animal.name)}
           />
         </>
       ))}

@@ -89,7 +89,6 @@ export default function AnimalEditor() {
           name={animal.name}
           species={animal.species}
           img={animal.img}
-          expand={() => {}}
         />
       </div>
     </div>

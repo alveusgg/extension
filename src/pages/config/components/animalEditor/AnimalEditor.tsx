@@ -2,7 +2,7 @@ import styles from './animalEditor.module.css';
 
 import EditorForm from '../editorForm/EditorForm';
 import AnimalCard from '../../../../utils/animalCard/AnimalCard';
-import AnimalButton from '../../../panel/components/animalButton/AnimalButton';
+import AnimalButton from '../../../../utils/animalButton/AnimalButton';
 
 //icons
 import deleteIcon from '../../../../assets/buttonIcons/delete.svg';

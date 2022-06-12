@@ -1,7 +1,7 @@
 import styles from './config.module.css'
 
 import AnimalData from '../../../assets/animals.json'
-import AnimalButton from '../../panel/components/animalButton/AnimalButton'
+import AnimalButton from '../../../utils/animalButton/AnimalButton'
 
 import { Link } from 'react-router-dom'
 
@@ -18,11 +18,12 @@ export default function Config() {
               <AnimalButton
                 key={animal.name}
                 name={animal.name}
-                animalType={animal.animalType}
+                species={animal.species}
                 img={{
-                  src: animal.imgSrc,
-                  altText: animal.imgAltText
+                  src: animal.img.src,
+                  altText: animal.img.altText
                 }}
+                
               />
             </Link>
           ))

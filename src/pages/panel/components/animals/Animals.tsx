@@ -1,5 +1,5 @@
 //components
-import AnimalButton from "../animalButton/AnimalButton";
+import AnimalButton from "../../../../utils/animalButton/AnimalButton";
 import AnimalCardOverlay from "../animalCardOverlay/AnimalCardOverlay";
 
 //css

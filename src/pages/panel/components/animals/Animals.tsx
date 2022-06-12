@@ -25,19 +25,21 @@ export default function Animals() {
         <>
           {expandedAnimal === animal.name ? 
             <AnimalCardOverlay
-              name={animal.name}
-              species={animal.animalType}
-              img={{
-                src: animal.imgSrc,
-                altText: animal.imgAltText
+              animalCard={{ 
+                cardData:{
+                  name: animal.name,
+                  species:animal.species,
+                  img:{
+                    src: animal.img.src,
+                    altText: animal.img.altText
+                  },
+                  scientificName:animal.scientificName,
+                  sex:animal.sex? animal.sex : "Unknown",
+                  dateofbirth: new Date(animal.dateofbirth),
+                  story: animal.story,
+                  conservationMission: animal.conservationmission
+                }
               }}
-              scientificName={animal.expandedInfo.scientificName}              
-              sex={animal.expandedInfo.sex? animal.expandedInfo.sex : "Unknown"}
-              age={animal.expandedInfo.age? animal.expandedInfo.age : "Unknown"}
-              birthday={new Date(animal.expandedInfo.arrived)}
-              iucnStatus="Least Concern with Decreasing Population Trend"
-              story={animal.expandedInfo.description}
-              conservationMission={animal.expandedInfo.description}
 
               close={handleClose}
             />
@@ -46,10 +48,10 @@ export default function Animals() {
           <AnimalButton
             key={animal.name} // every animal will have a unique name
             name={animal.name}
-            animalType={animal.animalType}
+            species={animal.species}
             img={{
-              src: animal.imgSrc,
-              altText: animal.imgAltText
+              src: animal.img.src,
+              altText: animal.img.altText
             }}
 
             expand={()=>handleExpand(animal.name)}

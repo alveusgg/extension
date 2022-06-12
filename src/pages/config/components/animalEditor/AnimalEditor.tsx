@@ -57,16 +57,16 @@ export default function AnimalEditor() {
         />
         <div className={styles.buttons}>
           <button className={styles.delete}>
-            <img src={deleteIcon} alt="Delete Icon"/> 
+            <img src={deleteIcon} alt="Trash Can Icon"/> 
             Delete
           </button>
           <div className={styles.mainButtons}>
             <button className={styles.save}>
-              <img src={saveIcon} alt="Save Icon"/> 
+              <img src={saveIcon} alt="Floppy Disc Icon"/> 
               Save
             </button>
             <button className={styles.cancel}>
-              <img src={cancelIcon} alt="Cancel Icon"/> 
+              <img src={cancelIcon} alt="Undo Icon"/> 
               Cancel
             </button>
           </div>
@@ -74,20 +74,20 @@ export default function AnimalEditor() {
       </div>
       <div className={styles.preview}>
         <AnimalCard
-          img={animal.img}
-          name={animal.name}
-          species={animal.species}
-          scientificName={animal.scientificName}
-          sex={animal.sex}
-          age={animal.age}
-          birthday={new Date(animal.birthday)}
-          iucnStatus={animal.iucnStatus}
-          story={animal.story}
-          conservationMission={animal.conservationMission}
+          cardData={{
+            img:animal.img,
+            name:animal.name,
+            species:animal.species,
+            scientificName:animal.scientificName,
+            sex:animal.sex,
+            dateofbirth:new Date(animal.age),
+            story:animal.story,
+            conservationMission:animal.conservationMission
+          }}
         /> 
         <AnimalButton
           name={animal.name}
-          animalType={animal.species}
+          species={animal.species}
           img={animal.img}
           expand={() => {}}
         />

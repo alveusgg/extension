@@ -1,272 +1,274 @@
 [
     {
         "name": "Georgie",
-        "animalType": "African Bullfrog",
-        "imgSrc": "animal-images/georgie.png",
-        "imgAltText": "African Bullfrog",
-        "expandedInfo": {
-            "scientificName": "Pyxicephalus adspersus",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "He is here to teach all about threats to his species and to amphibians worldwide."
-        }
+        "species": "African Bullfrog",
+        "img": {
+            "src": "animal-images/georgie.png",
+            "altText": "Georgie"
+        },
+        "scientificName": "Pyxicephalus adspersus",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "Georgie was rehomed from a zoo.",
+        "conservationmission": "Stopping animal over exploitation of animals in industry and chytrid fungus desimation of amphibians."
     },
     {
         "name": "Stompy",
-        "animalType": "Emu",
-        "imgSrc": "animal-images/stompy.png",
-        "imgAltText": "Stompy",
-        "expandedInfo": {
-            "scientificName": "Dromaius novaehollandiae",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "He is an ambassador for how the exotic meat trade & use of animal products in cosmetics has affected her species and many others."
-        }
+        "species": "Emu",
+        "img": {
+            "src": "animal-images/stompy.png",
+            "altText": "Stompy"
+        },
+        "scientificName": "Dromaius novaehollandiae",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "Stompy was hatched in captivity and Maya hand was raised to be the first Alveus ambassador.",
+        "conservationmission": "Stopping exotic meat trade, traditional medicine, and over exploitation of animal products in cosmetics."
     },
     {
         "name": "Tico",
-        "animalType": "Blue and Gold Macaw",
-        "imgSrc": "animal-images/tico.jpeg",
-        "imgAltText": "Tico",
-        "expandedInfo": {
-            "scientificName": "Ara ararauna",
-            "sex": "Female",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for how the pet trade has affected the parrot species and many others around the world!​"
-        }
+        "species": "Blue and Gold Macaw",
+        "img": {
+            "src": "animal-images/tico.jpeg",
+            "altText": "Tico"
+        },
+        "scientificName": "Ara ararauna",
+        "sex": "Female",
+        "dateofbirth": "2021-05-13",
+        "story": "Tico was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+        "conservationmission": "Stopping the illegal pet trade."
     },
     {
         "name": "Miley",
-        "animalType": "Catalina Macaw",
-        "imgSrc": "animal-images/miley.jpeg",
-        "imgAltText": "Miley",
-        "expandedInfo": {
-            "scientificName": "Ara ararauna × Ara macao",
-            "sex": "Female",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for how the pet trade has affected the parrot species and many others around the world!​"
-        }
+        "species": "Catalina Macaw",
+        "img": {
+            "src": "animal-images/miley.jpeg",
+            "altText": "Miley"
+        },
+        "scientificName": "Ara ararauna × Ara macao",
+        "sex": "Female",
+        "dateofbirth": "2021-05-13",
+        "story": " Miley was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+        "conservationmission": "Stopping the illegal pet trade"
     },
     {
         "name": "Oliver",
-        "animalType": "Olive Egger Chicken",
-        "imgSrc": "animal-images/oliver.jpeg",
-        "imgAltText": "Oliver",
-        "expandedInfo": {
-            "scientificName": "Gallus gallus domesticus",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-06",
-            "description": "He is an ambassador for the agricultural industry and how consumer choices can affect our planet."
-        }
+        "species": "Olive Egger Chicken",
+        "img": {
+            "src": "animal-images/oliver.jpeg",
+            "altText": "Oliver"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "Oliver was put in the reject/return cage at a local feed store.",
+        "conservationmission": "Educating about environmental & ethical consumer choose"
     },
     {
         "name": "Nugget",
-        "animalType": "Ameraucana Chicken",
-        "imgSrc": "animal-images/nugget.jpeg",
-        "imgAltText": "Nugget",
-        "expandedInfo": {
-            "scientificName": "Gallus gallus domesticus",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for the agricultural industry and how consumer choices can affect our planet."
-        }
+        "species": "Ameraucana Chicken",
+        "img": {
+            "src": "animal-images/nugget.jpeg",
+            "altText": "Nugget"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "Nugget was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+        "conservationmission": "Educating about environmental & ethical consumer choose."
     },
     {
         "name": "Mia",
-        "animalType": "African Grey",
-        "imgSrc": "animal-images/mia.jpeg",
-        "imgAltText": "Mia",
-        "expandedInfo": {
-            "scientificName": "Psittacus erithacus",
-            "sex": "Female",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world!​"
-        }
+        "species": "African Grey",
+        "img": {
+            "src": "animal-images/mia.jpeg",
+            "altText": "Mia"
+        },
+        "scientificName": "Psittacus erithacus",
+        "sex": "Female",
+        "dateofbirth": "2021-05-13",
+        "story": "Mia was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+        "conservationmission": "Stopping the illegal pet trade."
     },
     {
         "name": "Siren",
-        "animalType": "Blue-frontend Amazon",
-        "imgSrc": "animal-images/siren.jpeg",
-        "imgAltText": "Siren",
-        "expandedInfo": {
-            "scientificName": "Amazona aestiva",
-            "sex": "Female",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world!​"
-        }
+        "species": "Blue-frontend Amazon",
+        "img": {
+            "src": "animal-images/siren.jpeg",
+            "altText": "Siren"
+        },
+        "scientificName": "Amazona aestiva",
+        "sex": "Female",
+        "dateofbirth": "2021-05-13",
+        "story": "Siren was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+        "conservationmission": "Stopping the illegal pet trade."
     },
     {
         "name": "Noodle",
-        "animalType": "Carpet Python",
-        "imgSrc": "animal-images/noodle.jpeg",
-        "imgAltText": "Noodle",
-        "expandedInfo": {
-            "scientificName": "M. spilota mcdowelli",
-            "sex": "Female",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for how the pet trade has affected hers and many other reptile species worldwide!"
-        }
+        "species": "Carpet Python",
+        "img": {
+            "src": "animal-images/noodle.jpeg",
+            "altText": "Noodle"
+        },
+        "scientificName": "M. spilota mcdowelli",
+        "sex": "Female",
+        "dateofbirth": "2021-05-13",
+        "story": "Noodle was rehomed to Alveus from a zoo.",
+        "conservationmission": "Stopping the illegal pet trade."
     },
     {
         "name": "Patchy",
-        "animalType": "Ball Python",
-        "imgSrc": "animal-images/patchy.png",
-        "imgAltText": "Patchy",
-        "expandedInfo": {
-            "scientificName": "Python Regius",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-10",
-            "description": "He is an ambassador for how the pet trade has affected his and many other reptile species worldwide!"
-        }
+        "species": "Ball Python",
+        "img": {
+            "src": "animal-images/patchy.png",
+            "altText": "Patchy"
+        },
+        "scientificName": "Python Regius",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "Patchy was rehomed to Alveus from a local breeder after it was discovered that he had a genetic defect and was missing an eye.",
+        "conservationmission": "Stopping the illegal pet trade."
     },
     {
         "name": "Abbott",
-        "animalType": "American Crow",
-        "imgSrc": "animal-images/abbott.png",
-        "imgAltText": "Abbott",
-        "expandedInfo": {
-            "scientificName": "Corvus Brachyrhynchos",
-            "sex": "Unknown",
-            "age": "Unknown",
-            "arrived": "2021-08",
-            "description": "Abbott was a wild bird deemed non-releasable due to imprinting and injuries."
-        }
+        "species": "American Crow",
+        "img": {
+            "src": "animal-images/abbott.png",
+            "altText": "Abbott"
+        },
+        "scientificName": "Corvus Brachyrhynchos",
+        "sex": "Unknown",
+        "dateofbirth": "2021-05-13",
+        "story": "Abbott was brought into a rehab center when he was very young. Sadly he became imprinted during the rehab process. He has since been rehomed to Alveus sanctuary.",
+        "conservationmission": "Educate about the intelligence of birds and proper rehabilitation of wildlife."
     },
     {
         "name": "Coconut",
-        "animalType": "American Crow",
-        "imgSrc": "animal-images/coconut.png",
-        "imgAltText": "Coconut",
-        "expandedInfo": {
-            "scientificName": "Corvus Brachyrhynchos",
-            "sex": "Unknown",
-            "age": "Unknown",
-            "arrived": "2021-08",
-            "description": "Coconut was a wild bird deemed non-releasable due to imprinting and injuries."
-        }
+        "species": "American Crow",
+        "img": {
+            "src": "animal-images/coconut.png",
+            "altText": "Coconut"
+        },
+        "scientificName": "Corvus Brachyrhynchos",
+        "sex": "Unknown",
+        "dateofbirth": "2021-05-13",
+        "story": "Coconut was permanently injured and brought to a rehabilitator and was sadly imprinted during the rehab process. He was rehomed to Alveus once he was deemed non-releasable.",
+        "conservationmission": "Educate about the intelligence of birds and proper rehabilitation of wildlife."
     },
     {
         "name": "Serrano",
-        "animalType": "Domestic Donkey",
-        "imgSrc": "animal-images/serrano.png",
-        "imgAltText": "Serrano",
-        "expandedInfo": {
-            "scientificName": "Equus Africanus Asinus",
-            "sex": "Unknown",
-            "age": "Unknown",
-            "arrived": "2021-05",
-            "description": "While also keeping Alveus safe from critters, Serrano is one of our ambassadors for the wildlife trade in traditional medicine."
-        }
+        "species": "Domestic Donkey",
+        "img": {
+            "src": "animal-images/serrano.png",
+            "altText": "Serrano"
+        },
+        "scientificName": "Equus Africanus Asinus",
+        "sex": "Unknown",
+        "dateofbirth": "2021-05-13",
+        "story": "Rehomed to Alveus from a local equine rescue.",
+        "conservationmission": "Stopping the use of wildlife in traditional medicine and guarding Alveus from predators."
     },
     {
         "name": "Jalapeño",
-        "animalType": "Domestic Donkey",
-        "imgSrc": "animal-images/jalapeno.jpeg",
-        "imgAltText": "Jalapeño",
-        "expandedInfo": {
-            "scientificName": "Equus Africanus Asinus",
-            "sex": "Unknown",
-            "age": "Unknown",
-            "arrived": "2021-05",
-            "description": "While also keeping Alveus safe from critters, Jalapeño is one of our ambassadors for the wildlife trade in traditional medicine."
-        }
+        "species": "Domestic Donkey",
+        "img": {
+            "src": "animal-images/jalapeno.jpeg",
+            "altText": "Jalapeño"
+        },
+        "scientificName": "Equus Africanus Asinus",
+        "sex": "Unknown",
+        "dateofbirth": "2021-05-13",
+        "story": "Rehomed to Alveus from a local equine rescue.",
+        "conservationmission": "Stopping the use of wildlife in traditional medicine and guarding Alveus from predators."
     },
     {
         "name": "Snork",
-        "animalType": "Chinchilla",
-        "imgSrc": "animal-images/snork.jpeg",
-        "imgAltText": "Snork",
-        "expandedInfo": {
-            "scientificName": "Chinchilla lanigera",
-            "sex": "Female",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "She is an ambassador for how the fur trade has affected her species and many others."
-        }
+        "species": "Chinchilla",
+        "img": {
+            "src": "animal-images/snork.jpeg",
+            "altText": "Snork"
+        },
+        "scientificName": "Chinchilla lanigera",
+        "sex": "Female",
+        "dateofbirth": "2021-05-13",
+        "story": "Snork was rehomed to Alveus from a zoo.",
+        "conservationmission": "Stopping the exploitation of wildlife in the fur trade."
     },
     {
         "name": "Moomin",
-        "animalType": "Chinchilla",
-        "imgSrc": "animal-images/moomin.jpeg",
-        "imgAltText": "Moomin",
-        "expandedInfo": {
-            "scientificName": "Chinchilla lanigera",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-04",
-            "description": "He is an ambassador for how the fur trade has affected her species and many others."
-        }
+        "species": "Chinchilla",
+        "img": {
+            "src": "animal-images/moomin.jpeg",
+            "altText": "Moomin"
+        },
+        "scientificName": "Chinchilla lanigera",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "Rehomed from a local pet owner.",
+        "conservationmission": "Stopping the exploitation of wildlife in the fur trade."
     },
     {
         "name": "Orion",
-        "animalType": "Prairie/Peregrine Falcon",
-        "imgSrc": "animal-images/orion.jpeg",
-        "imgAltText": "Orion",
-        "expandedInfo": {
-            "scientificName": "Falco [mexicanus x peregrinus]",
-            "sex": "Male",
-            "age": "Unknown",
-            "arrived": "2021-12",
-            "description": "He will be an educational ambassador for teaching people about the history of DDT & how pest control affects wildlife globally."
-        }
+        "species": "Prairie/Peregrine Falcon",
+        "img": {
+            "src": "animal-images/orion.jpeg",
+            "altText": "Orion"
+        },
+        "scientificName": "Falco [mexicanus x peregrinus]",
+        "sex": "Male",
+        "dateofbirth": "2021-05-13",
+        "story": "",
+        "conservationmission": "Showing the effects humans have on the environment and how to conserve major keystone species."
     },
     {
         "name": "Rubber Ducky Isopods",
-        "animalType": "Isopods",
-        "imgSrc": "animal-images/rubber-ducky-isopods.jpeg",
-        "imgAltText": "Rubber Ducky Isopods",
-        "expandedInfo": {
-            "scientificName": "Cubaris sp.",
-            "arrived": "2022-01",
-            "description": "These will have the amazing task of helping to teach people about the importance of invertebrates and the misconceptions they face."
-        }
+        "species": "Isopods",
+        "img": {
+            "src": "animal-images/rubber-ducky-isopods.jpeg",
+            "altText": "Rubber Ducky Isopods"
+        },
+        "scientificName": "Cubaris sp.",
+        "dateofbirth": "2021-05-13",
+        "story": "",
+        "conservationmission": ""
     },
     {
         "name": "Zebra Isopods",
-        "animalType": "Isopods",
-        "imgSrc": "animal-images/zebra-isopods.jpeg",
-        "imgAltText": "Zebra Isopods",
-        "expandedInfo": {
-            "scientificName": "Armadillidium Maculatum",
-            "arrived": "2022-01",
-            "description": "These will have the amazing task of helping to teach people about the importance of invertebrates and the misconceptions they face."
-        }
+        "species": "Isopods",
+        "img": {
+            "src": "animal-images/zebra-isopods.jpeg",
+            "altText": "Zebra Isopods"
+        },
+        "scientificName": "Armadillidium Maculatum",
+        "dateofbirth": "2021-05-13",
+        "story": "",
+        "conservationmission": ""
     },
     {
         "name": "Pickles",
-        "animalType": "Vinegaroon",
-        "imgSrc": "animal-images/pickles.jpeg",
-        "imgAltText": "Pickles",
-        "expandedInfo": {
-            "scientificName": "Mastigoproctus tohono",
-            "sex": "Unknown",
-            "age": "Unknown",
-            "arrived": "2022-01",
-            "description": "Pickles will have the amazing task of helping to teach people about the importance of invertebrates and the misconceptions they face."
-        }
+        "species": "Vinegaroon",
+        "img": {
+            "src": "animal-images/pickles.jpeg",
+            "altText": "Pickles"
+        },
+        "scientificName": "Mastigoproctus tohono",
+        "sex": "Unknown",
+        "dateofbirth": "2021-05-13",
+        "story": "",
+        "conservationmission": ""
 
     },
     {
         "name": "Winnie (the Moo)",
-        "animalType": "Red Angus Beef Cow",
-        "imgSrc": "animal-images/winnie.jpeg",
-        "imgAltText": "Winnie (the Moo)",
-        "expandedInfo": {
-            "scientificName": "Bos (primigenius) taurus",
-            "sex": "Unknown",
-            "age": "Unknown",
-            "arrived": "2022-04-16",
-            "description": ""
-        }
+        "species": "Red Angus Beef Cow",
+        "img": {
+            "src": "animal-images/winnie.jpeg",
+            "altText": "Winnie (the Moo)"
+        },
+        "scientificName": "Bos (primigenius) taurus",
+        "sex": "Unknown",
+        "dateofbirth": "2021-05-13",
+        "story": "",
+        "conservationmission": ""
     }
 ]

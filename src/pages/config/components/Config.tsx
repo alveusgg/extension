@@ -4,8 +4,12 @@ import AnimalData from '../../../assets/animals.json'
 import AnimalButton from '../../../utils/animalButton/AnimalButton'
 
 import { Link } from 'react-router-dom'
+import { AnimalCardProps } from '../../../utils/animalCard/AnimalCard'
 
-export default function Config() {
+interface  ConfigProps {
+  handleEditCard: (animal: AnimalCardProps["cardData"]) => void
+}
+export default function Config(props: ConfigProps) {
   return (
     <div className={styles.config}>
       <h1>Manage Your Ambassadors</h1>
@@ -24,6 +28,12 @@ export default function Config() {
                   altText: animal.img.altText
                 }}
                 
+                getCard={() => {props.handleEditCard(
+                  {
+                    ...animal,
+                    dateOfBirth: new Date(animal.dateOfBirth)
+                  }
+                )}}
               />
             </Link>
           ))

@@ -1,7 +1,7 @@
 import styles from './animalEditor.module.css';
 
 import EditorForm from '../editorForm/EditorForm';
-import AnimalCard from '../../../../utils/animalCard/AnimalCard';
+import AnimalCard, { AnimalCardProps } from '../../../../utils/animalCard/AnimalCard';
 import AnimalButton from '../../../../utils/animalButton/AnimalButton';
 
 //icons
@@ -9,34 +9,13 @@ import deleteIcon from '../../../../assets/buttonIcons/delete.svg';
 import saveIcon from '../../../../assets/buttonIcons/save.svg';
 import cancelIcon from '../../../../assets/buttonIcons/cancel.svg';
 
-import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 
-export default function AnimalEditor() {
-  const [animal, setAnimal] = useState({
-    name: 'Georgie',
-    species: 'African Bullfrog',
-    img:{
-      src: '/animal-images/georgie.png',
-      altText: 'Img',
-    },
-    scientificName: 'Pyxicephalus adspersus',
-    sex: 'Male',
-    age: "1",
-    birthday: "2020",
-    iucnStatus: 'Least Concern with Decreasing Population Trend',
-    story: 'Abbott was brought into a rehab center when he was very young. Sadly he became imprinted during the rehab process. He has since been rehomed to Alveus sanctuary.',
-    conservationMission: 'Educate about the intelligence of birds and proper rehabilitation of wildlife.'
-  })
-
-  function editAnimal(inputProperty: string, inputValue: string): void{
-    setAnimal({
-      ...animal,
-      [inputProperty]: inputValue
-    })
-  }
-
+interface AnimalEditorProps {
+  cardData: AnimalCardProps["cardData"]
+  onEditForm: (inputProperty: string, inputValue: string) => void
+}
+export default function AnimalEditor(props: AnimalEditorProps) {
   return (
     <>
     <Link to={"/"}>
@@ -45,15 +24,11 @@ export default function AnimalEditor() {
     <div className={styles.animalEditor}>
       <div className={styles.editor}>
         <EditorForm
-          name={animal.name}
-          animalType={animal.species}
-          scientificName={animal.scientificName}
-          sex={animal.sex}
-          dateOfBirth={animal.age}
-          story={animal.story}
-          conservationMission={animal.conservationMission}
-
-          editForm={(property: string, value: string)=>editAnimal(property, value)}
+          cardData={{
+            ...props.cardData,
+            dateOfBirth: new Date(props.cardData.dateOfBirth)
+          }}
+          editForm={(property: string, value: string)=>props.onEditForm(property, value)}
         />
         <div className={styles.buttons}>
           <button className={styles.delete}>
@@ -75,20 +50,14 @@ export default function AnimalEditor() {
       <div className={styles.preview}>
         <AnimalCard
           cardData={{
-            img:animal.img,
-            name:animal.name,
-            species:animal.species,
-            scientificName:animal.scientificName,
-            sex:animal.sex,
-            dateOfBirth:new Date(animal.age),
-            story:animal.story,
-            conservationMission:animal.conservationMission
+            ...props.cardData,
+            dateOfBirth: new Date(props.cardData.dateOfBirth)
           }}
         /> 
         <AnimalButton
-          name={animal.name}
-          species={animal.species}
-          img={animal.img}
+          name={props.cardData.name}
+          species={props.cardData.species}
+          img={props.cardData.img}
         />
       </div>
     </div>

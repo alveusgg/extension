@@ -45,5 +45,10 @@
                 flex-direction: column;
             }
         }
+        .characterLimit{
+            font-size: 0.7rem;
+            color: $secondary-text;
+            align-self: flex-end;
+        }
     }
 }

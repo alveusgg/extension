@@ -6,7 +6,13 @@ interface EditorProps{
     editForm: (property: string, value: string)=>void
 }
 export default function EditorForm(props: EditorProps) {
-  return (
+    function formatDate(date: Date): string {
+        return date.getFullYear() + '-' + 
+            (date.getUTCMonth()+1<10 ? '0'+(date.getUTCMonth()+1):(date.getUTCMonth()+1)) + '-' + 
+            (date.getUTCDate()<10 ? '0'+(date.getUTCDate()):(date.getUTCDate()))
+    }
+
+    return (
       <div className={styles.editForm}>
         <div className={styles.imgEdit}>
             <img src={props.cardData.img.src} alt={props.cardData.img.altText} />
@@ -32,8 +38,8 @@ export default function EditorForm(props: EditorProps) {
                     </select>
                 </div>
                 <div className={styles.smallInput}>
-                    <label htmlFor="dateofbirth">Date of Birth</label>
-                    <input type="date" name="dateofbirth" id="dateofbirth" />
+                    <label htmlFor="dateOfBirth">Date of Birth</label>
+                    <input type="date" name="dateOfBirth" id="dateOfBirth" value={formatDate(props.cardData.dateOfBirth)} onChange={(e)=>props.editForm(e.target.name, e.target.value)}/>
                 </div>
             </div>
 
@@ -44,5 +50,5 @@ export default function EditorForm(props: EditorProps) {
             <textarea name="conservationMission" id="conservationMission" cols={30} rows={5} value={props.cardData.conservationMission} onChange={(e)=>props.editForm(e.target.name, e.target.value)}/>
         </form>
       </div>
-  )
+    )
 }

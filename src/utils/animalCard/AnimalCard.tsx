@@ -19,6 +19,12 @@ export interface AnimalCardProps {
   close?: ()=>void
 }
 export default function AnimalCard(props: AnimalCardProps) {
+
+  function calculateAge(birthday: Date) { // birthday is a date
+      let ageDifMs = Date.now() - birthday.getTime();
+      let ageDate = new Date(ageDifMs); // miliseconds from epoch
+      return ageDate.getUTCFullYear() - 1970
+  }
   return (
       <Animal containerClassName={styles.animalCard} >
         {
@@ -42,11 +48,21 @@ export default function AnimalCard(props: AnimalCardProps) {
           </div> 
           <div>
             <h3>Age</h3>
-            <p>{props.cardData.dateOfBirth.toUTCString()}</p>
+            <p>{calculateAge( new Date(
+              props.cardData.dateOfBirth.getFullYear(), 
+              props.cardData.dateOfBirth.getUTCMonth(), 
+              props.cardData.dateOfBirth.getUTCDate()
+              ))}</p>
           </div> 
           <div>
             <h3>Birthday</h3>
-            <p>{ props.cardData.dateOfBirth.toUTCString() }</p>
+            <p>{
+                new Date(
+                  props.cardData.dateOfBirth.getFullYear(), 
+                  props.cardData.dateOfBirth.getUTCMonth(), 
+                  props.cardData.dateOfBirth.getUTCDate()
+                ).toDateString()
+            }</p>
           </div> 
         </div>
 

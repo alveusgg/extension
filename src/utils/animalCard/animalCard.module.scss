@@ -3,7 +3,7 @@
 .animalCard{
     width: 250px;
     height: 400px;
-    justify-content: space-between;
+    justify-content: start;
     align-items: baseline;
 
     color: $primary-text;
@@ -37,6 +37,12 @@
         align-self: center;
     }
 
+    .row{
+        margin-bottom: 5px;
+    }
+    .story, .conservationmission{
+        height: 60px;
+    }
     .compact{ //multiple data put in one row
         display: flex;
         &>div{

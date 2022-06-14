@@ -35,13 +35,13 @@ export default function AnimalCard(props: AnimalCardProps) {
         <img className={styles.img} src={props.cardData.img.src} alt={props.cardData.img.altText} />
         <h2 className={styles.name}>{props.cardData.name}</h2>
 
-        <div>
+        <div className={styles.row}>
           <h3>Species</h3>
           <p>{props.cardData.species}</p>
           <p><i>{props.cardData.scientificName}</i></p>
         </div>
 
-        <div className={styles.compact}>
+        <div className={`${styles.row} ${styles.compact}`}>
           <div>
             <h3>Sex</h3>
             <p>{props.cardData.sex}</p>
@@ -66,17 +66,17 @@ export default function AnimalCard(props: AnimalCardProps) {
           </div> 
         </div>
 
-        <div>
+        <div className={styles.row}>
           <h3>IUCN Status</h3>
           <p>Least Concern</p>
         </div>
 
-        <div>
+        <div className={`${styles.row} ${styles.story}`}>
           <h3>Story</h3>
           <p>{props.cardData.story}</p>
         </div> 
 
-        <div>
+        <div className={`${styles.row} ${styles.conservationMission}`}>
           <h3>Conservation Mission</h3>
           <p>{props.cardData.conservationMission}</p>
         </div>

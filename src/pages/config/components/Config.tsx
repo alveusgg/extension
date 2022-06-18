@@ -12,9 +12,27 @@ interface  ConfigProps {
 export default function Config(props: ConfigProps) {
   return (
     <div className={styles.config}>
+
       <h1>Manage Your Ambassadors</h1>
       <p>Click an ambassador to edit or delete it.</p>
-      <button className={styles.newAmbassadorButton}>+ New Ambassador</button>
+      <Link to={`/animalEditor`}>
+        <button className={styles.newAmbassadorButton} onClick={()=>props.handleEditCard(
+          {
+            img: {
+              src: "unknownAnimalProfilePic.jpg",
+              altText: "Unknown Animal"
+            },
+            name: "Name",
+            species: "",
+            scientificName: "",
+            sex: "Unknown",
+            dateOfBirth: new Date(),
+            story: "",
+            conservationMission: ""
+          }
+        )} >+ New Ambassador</button>
+      </Link>
+
       <div className={styles.animalList}>
         {
           AnimalData.map(animal => (

@@ -1,10 +1,7 @@
 import mongoose from "mongoose";
 
 const animalSchema = new mongoose.Schema({
-    img: {
-        data: Buffer,
-        contentType: String
-    },
+    img: String,
     name: String,
     species: String,
     scientificName: String,

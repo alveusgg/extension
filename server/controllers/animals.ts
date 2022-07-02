@@ -22,7 +22,10 @@ exports.getAnimalByName = async (req: express.Request, res: express.Response) =>
 
 exports.createAnimal = async (req: express.Request, res: express.Response) => {
     try {
-        const animal = new Animal(req.body);
+        const animal = new Animal({
+            ...req.body,
+            img: req.file? req.file.filename: null
+        });
         await animal.save();
         res.status(201).json(animal);
     }catch(err){

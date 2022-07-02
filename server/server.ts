@@ -11,14 +11,21 @@ const app: Application = express()
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
-const allowedOrigins = ['http://localhost:3000']
+const whitelist = ['*']
 
-const options: cors.CorsOptions = {
-  origin: allowedOrigins
-}
-app.use(cors(options))
+app.use(cors({
+    // origin: function(origin, callback){
+    //     if(whitelist.indexOf(origin as string) !== -1){
+    //         callback(null, true)
+    //     }
+    //     else{
+    //         callback(new Error('Not allowed by CORS'))
+    //     }
+    // }
+}))
 
-app.use('animals', router)
+app.use('/api/animals', router)
+app.use('/images', express.static('uploads'))//make images publicly available to the frontend
 
 const port = process.env.PORT || 3000
 mongoose.connect(process.env.DB_CONNECTION as string, {useNewUrlParser: true, useUnifiedTopology: true})

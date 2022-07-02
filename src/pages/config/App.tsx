@@ -37,7 +37,13 @@ export default function App() {
           <Route path="/" element={<Config handleEditCard={(animal)=>{setAnimalCard(animal)}}/>} />
           <Route path="/animalEditor" element={
             <AnimalEditor 
-              cardData={animalCard} 
+              cardData={{
+                ...animalCard,
+                img: {
+                  src: "http://localhost:3000/images/"+animalCard.img.src,
+                  altText: animalCard.img.altText,
+                }
+              }}
               onEditForm={(inputProperty: string, inputValue: string)=>handleEditForm(inputProperty, inputValue)}/>} 
           />
       </Routes>

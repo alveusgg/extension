@@ -61,17 +61,11 @@ export default function EditorForm(props: EditorProps) {
 
             <label htmlFor="story">Story</label>
             <textarea name="story" id="story" cols={30} rows={5} maxLength={maxTextAreaLength} value={props.cardData.story} onChange={(e)=>{props.editForm(e.target.name, e.target.value); setStoryLength(e.target.textLength)}}/>
-            <div className={styles.characterLimit}>
-                <span>{storyLength}</span>
-                <span>/{maxTextAreaLength}</span>
-            </div>
+            <span className={styles.characterLimit}>{storyLength}/{maxTextAreaLength}</span>
 
             <label htmlFor="conservationMission">Conservation Mission</label>
             <textarea name="conservationMission" id="conservationMission" maxLength={maxTextAreaLength} cols={30} rows={5} value={props.cardData.conservationMission} onChange={(e)=>{props.editForm(e.target.name, e.target.value); setConservationMissionLength(e.target.textLength)}}/>
-            <div className={styles.characterLimit}>
-                <span>{conservationMissionLength}</span>
-                <span>/{maxTextAreaLength}</span>
-            </div>
+            <span className={styles.characterLimit}>{conservationMissionLength}/{maxTextAreaLength}</span>
         </form>
       </div>
     )

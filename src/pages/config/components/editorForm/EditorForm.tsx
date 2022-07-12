@@ -1,14 +1,16 @@
 import styles from './editorForm.module.css';
 import {AnimalCardProps} from '../../../../utils/animalCard/AnimalCard';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 interface EditorProps{
     cardData: AnimalCardProps["cardData"]
+    changeImg: (event: ChangeEvent<HTMLInputElement>) => void
     editForm: (property: string, value: string)=>void
 }
 export default function EditorForm(props: EditorProps) {
+
     //counting the length of the textareas
-    const [maxTextAreaLength, _] = useState(135);
+    const [maxTextAreaLength] = useState(135);
     const [storyLength, setStoryLength] = useState<number>(props.cardData.story.length)
     const [conservationMissionLength, setConservationMissionLength] = useState<number>(props.cardData.conservationMission.length)
 
@@ -17,22 +19,12 @@ export default function EditorForm(props: EditorProps) {
             (date.getUTCMonth()+1<10 ? '0'+(date.getUTCMonth()+1):(date.getUTCMonth()+1)) + '-' + 
             (date.getUTCDate()<10 ? '0'+(date.getUTCDate()):(date.getUTCDate()))
     }
-    function changeImg(file: File): void {
-        if(file.type && !file.type.includes('image')) {
-            alert('Please select an image file')
-            return
-        }
-
-        const reader = new FileReader();
-
-        reader.readAsDataURL(file)
-    }
 
     return (
       <div className={styles.editForm}>
         <div className={styles.imgEdit}>
-            <img src={props.cardData.img.src} alt={props.cardData.img.altText} />
-            <input type="file" name="img" id="img" onChange={()=>{}}/>
+            <img src={props.cardData.img.src}  alt={props.cardData.img.altText} />
+            <input type="file" name="img" id="img" accept="image/*" onChange={(e)=>{props.changeImg(e)}}/>
         </div>
         <form className={styles.form}>
             <label htmlFor="name">Name</label>

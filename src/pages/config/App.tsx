@@ -7,7 +7,7 @@ import { AnimalCardProps } from '../../utils/animalCard/AnimalCard';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
 //lifecycle hooks 
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function App() {
   const [animalCard, setAnimalCard] = useState<AnimalCardProps["cardData"]>({
@@ -30,7 +30,21 @@ export default function App() {
       [inputProperty]: inputValue
     })
   }
-
+  function handleEditImg(event: ChangeEvent<HTMLInputElement>): void{
+    const target = event.target as HTMLInputElement;
+    if(target.files && target.files.length > 0) {
+        const file = target.files[0]
+        setAnimalCard({
+          ...animalCard,
+          img: {
+            src: URL.createObjectURL(file),
+            altText: "" //! add alt text
+          }
+        })
+    }else{
+        new Error("Error: no file selected")
+    }
+  }
   return (
     <HashRouter>
       <Routes>
@@ -40,10 +54,12 @@ export default function App() {
               cardData={{
                 ...animalCard,
                 img: {
-                  src: "http://localhost:3000/images/"+animalCard.img.src,
+                  //! MESSY
+                  src: animalCard.img.src.includes("http")? animalCard.img.src : "http://localhost:3000/images/"+animalCard.img.src, 
                   altText: animalCard.img.altText,
                 }
               }}
+              onChangeImg={(inputValue)=>handleEditImg(inputValue)}
               onEditForm={(inputProperty: string, inputValue: string)=>handleEditForm(inputProperty, inputValue)}/>} 
           />
       </Routes>

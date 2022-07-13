@@ -11,10 +11,7 @@ import { ChangeEvent, useState } from 'react';
 
 export default function App() {
   const [animalCard, setAnimalCard] = useState<AnimalCardProps["cardData"]>({
-    img: {
-      src: '',
-      altText: '' 
-    }, 
+    img: new File([], "unknownAnimalProfilePic.jpg"),
     name: '', 
     scientificName:'', 
     species: '', 
@@ -36,10 +33,7 @@ export default function App() {
         const file = target.files[0]
         setAnimalCard({
           ...animalCard,
-          img: {
-            src: URL.createObjectURL(file),
-            altText: "" //! add alt text
-          }
+          img: file
         })
     }else{
         new Error("Error: no file selected")
@@ -51,14 +45,7 @@ export default function App() {
           <Route path="/" element={<Config handleEditCard={(animal)=>{setAnimalCard(animal)}}/>} />
           <Route path="/animalEditor" element={
             <AnimalEditor 
-              cardData={{
-                ...animalCard,
-                img: {
-                  //! MESSY
-                  src: animalCard.img.src.includes("http")? animalCard.img.src : "http://localhost:3000/images/"+animalCard.img.src, 
-                  altText: animalCard.img.altText,
-                }
-              }}
+              cardData={animalCard}
               onChangeImg={(inputValue)=>handleEditImg(inputValue)}
               onEditForm={(inputProperty: string, inputValue: string)=>handleEditForm(inputProperty, inputValue)}/>} 
           />

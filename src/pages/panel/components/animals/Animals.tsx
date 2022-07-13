@@ -29,10 +29,7 @@ export default function Animals() {
                 cardData:{
                   name: animal.name,
                   species:animal.species,
-                  img:{
-                    src: animal.img.src,
-                    altText: animal.img.altText
-                  },
+                  img: new File([], animal.img.src),
                   scientificName:animal.scientificName,
                   sex:animal.sex? animal.sex : "Unknown",
                   dateOfBirth: new Date(animal.dateOfBirth),
@@ -49,10 +46,7 @@ export default function Animals() {
             key={animal.name} // every animal will have a unique name
             name={animal.name}
             species={animal.species}
-            img={{
-              src: animal.img.src,
-              altText: animal.img.altText
-            }}
+            img={new File([], animal.img.src)}
 
             getCard={()=>handleGetCard(animal.name)}
           />

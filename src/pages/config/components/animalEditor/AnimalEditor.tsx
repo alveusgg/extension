@@ -19,12 +19,16 @@ interface AnimalEditorProps {
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
   const save = async () =>{
+    const formData = new FormData()
+    formData.append('img',  props.cardData.img)
+    formData.append('name', props.cardData.name)
+    formData.append('species', props.cardData.species)
+    formData.append('scientificName', props.cardData.scientificName)
+
+
     const response = await fetch('http://localhost:3000/api/animals', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(props.cardData)
+      body: formData
     })
     const data = await response.json()
     console.log(data)

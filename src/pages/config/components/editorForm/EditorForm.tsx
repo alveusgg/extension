@@ -23,7 +23,7 @@ export default function EditorForm(props: EditorProps) {
     return (
       <div className={styles.editForm}>
         <div className={styles.imgEdit}>
-            <img src={props.cardData.img.src}  alt={props.cardData.img.altText} />
+            <img src={URL.createObjectURL(props.cardData.img)}  alt={props.cardData.img.name} />
             <input type="file" name="img" id="img" accept="image/*" onChange={(e)=>{props.changeImg(e)}}/>
         </div>
         <form className={styles.form}>

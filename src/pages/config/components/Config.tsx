@@ -18,10 +18,7 @@ export default function Config(props: ConfigProps) {
       const response = await fetch('http://localhost:3000/api/animals')
       const data = await response.json()
       for(let i = 0; i < data.length; i++){
-        data[i].img = {
-          src: data[i].img,
-          altText: data[i].img 
-        }
+        data[i].img = new File([], data[i].img)
       }
       setAnimals(data)
     }
@@ -37,10 +34,7 @@ export default function Config(props: ConfigProps) {
         <button className={styles.newAmbassadorButton} 
           onClick={()=>props.handleEditCard(
             {
-              img: {
-                src: "unknownAnimalProfilePic.jpg",
-                altText: "Unknown Animal"
-              },
+              img: new File([], "unknownAnimalProfilePic.jpg"),
               name: "Name",
               species: "",
               scientificName: "",
@@ -60,10 +54,7 @@ export default function Config(props: ConfigProps) {
                 key={animal.name}
                 name={animal.name}
                 species={animal.species}
-                img={{
-                  src: "http://localhost:3000/images/"+animal.img.src,
-                  altText: animal.img.altText
-                }}
+                img={animal.img}
                 
                 getCard={() => {props.handleEditCard(
                   {

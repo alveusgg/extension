@@ -4,10 +4,7 @@ import styles from './animalCard.module.css'
 
 export interface AnimalCardProps {
   cardData: {
-    img: {
-        src: string
-        altText: string
-    }
+    img: File
     name: string
     species: string
     scientificName: string
@@ -32,7 +29,7 @@ export default function AnimalCard(props: AnimalCardProps) {
             : null
         }
 
-        <img className={styles.img} src={props.cardData.img.src} alt={props.cardData.img.altText} />
+        <img className={styles.img} src={URL.createObjectURL(props.cardData.img)} alt={props.cardData.img.name} />
         <h2 className={styles.name}>{props.cardData.name}</h2>
 
         <div className={styles.row}>

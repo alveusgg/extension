@@ -19,15 +19,38 @@ interface AnimalEditorProps {
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
   const save = async () =>{
-    const response = await fetch('http://localhost:3000/api/animals', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(props.cardData)
-    })
-    const data = await response.json()
-    console.log(data)
+    const formData = new FormData()
+
+    //create image from url
+    const URL = props.cardData.img.src    
+    var request = new XMLHttpRequest();
+    request.responseType = "blob";
+    request.open("GET", URL);
+    request.send();
+
+    request.onload = async function() {
+      const filename = props.cardData.name+"."+request.response.type.replace("image/", "")
+      const blob = new Blob([request.response], {type: request.response.type})
+      const image = new File([blob], filename, {type: request.response.type})
+
+      // set up data to send
+      formData.append('img', image)
+      formData.append('name', props.cardData.name)
+      formData.append('species', props.cardData.species)
+      formData.append('scientificName', props.cardData.scientificName)
+      formData.append('sex', props.cardData.sex ? props.cardData.sex : "Unknown")
+      formData.append('dateOfBirth', new Date(props.cardData.dateOfBirth).toUTCString())
+      formData.append('story', props.cardData.story)
+      formData.append('conservationMission', props.cardData.conservationMission)
+
+      //post request
+      const response = await fetch('http://localhost:3000/api/animals', {
+        method: 'POST',
+        body: formData
+      })
+      const data = await response.json()
+      console.log(data)
+    }
   }
   const deleteAnimal = async () =>{
     const response = await fetch('http://localhost:3000/api/animals/' + props.cardData.name, {
@@ -35,7 +58,6 @@ export default function AnimalEditor(props: AnimalEditorProps) {
     })
     const data = await response.json()
     console.log(data)
-
   }
   const cancel = async () =>{
     const response = await fetch('http://localhost:3000/api/animals/' + props.cardData.name, {

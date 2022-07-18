@@ -47,7 +47,7 @@ export default function EditorForm(props: EditorProps) {
                 </div>
                 <div className={styles.smallInput}>
                     <label htmlFor="dateOfBirth">Date of Birth</label>
-                    <input type="date" name="dateOfBirth" id="dateOfBirth" value={formatDate(props.cardData.dateOfBirth)} onChange={(e)=>props.editForm(e.target.name, e.target.value)}/>
+                    <input type="date" name="dateOfBirth" id="dateOfBirth" value={formatDate(props.cardData.dateOfBirth)} onChange={(e)=>props.editForm(e.target.name, e.target.value)} max={formatDate(new Date())}/>
                 </div>
             </div>
 

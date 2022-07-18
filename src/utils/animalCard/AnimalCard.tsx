@@ -48,20 +48,26 @@ export default function AnimalCard(props: AnimalCardProps) {
           </div> 
           <div>
             <h3>Age</h3>
-            <p>{calculateAge( new Date(
-              props.cardData.dateOfBirth.getFullYear(), 
-              props.cardData.dateOfBirth.getUTCMonth(), 
-              props.cardData.dateOfBirth.getUTCDate()
-              ))}</p>
+            <p>{
+              props.cardData.dateOfBirth instanceof Date && !isNaN(Number(props.cardData.dateOfBirth)) ? //checking if dateOfBirth is set
+                calculateAge( new Date(
+                  props.cardData.dateOfBirth.getFullYear(), 
+                  props.cardData.dateOfBirth.getUTCMonth(), 
+                  props.cardData.dateOfBirth.getUTCDate()
+                ))
+                : "Unknown"
+            }</p>
           </div> 
           <div>
             <h3>Birthday</h3>
             <p>{
+              props.cardData.dateOfBirth instanceof Date && !isNaN(Number(props.cardData.dateOfBirth)) ? //checking if dateOfBirth is set
                 new Date(
                   props.cardData.dateOfBirth.getFullYear(), 
                   props.cardData.dateOfBirth.getUTCMonth(), 
                   props.cardData.dateOfBirth.getUTCDate()
                 ).toDateString()
+              : "Unknown"
             }</p>
           </div> 
         </div>

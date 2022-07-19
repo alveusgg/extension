@@ -1,7 +1,14 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 .animalEditor{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
 
     padding: 50px 20px;
 
@@ -44,6 +51,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        gap: 20px;
     }
 }

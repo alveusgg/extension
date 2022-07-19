@@ -20,10 +20,25 @@ export interface AnimalCardProps {
 }
 export default function AnimalCard(props: AnimalCardProps) {
 
-  function calculateAge(birthday: Date) { // birthday is a date
-      let ageDifMs = Date.now() - birthday.getTime();
-      let ageDate = new Date(ageDifMs); // miliseconds from epoch
-      return ageDate.getUTCFullYear() - 1970
+  function calculateAge(birthday: Date): string { // birthday is a date
+      let  measurement = 'yr'
+      let ageDifMs = Date.now() - birthday.getTime()
+      let ageDate = new Date(ageDifMs) // miliseconds from epoch
+      
+      let age = ageDate.getUTCFullYear() - 1970
+      if(age < 1){
+        age = ageDate.getUTCMonth()
+        measurement = 'mon'
+      }
+      if(age < 1){
+        age = ageDate.getUTCDate()
+        measurement = 'day'
+      }
+
+      if(age > 1)
+        measurement += 's'
+
+      return age.toString() + ' ' + measurement;
   }
   return (
       <Animal containerClassName={styles.animalCard} >

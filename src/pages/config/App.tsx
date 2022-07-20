@@ -38,7 +38,7 @@ export default function App() {
           ...animalCard,
           img: {
             src: URL.createObjectURL(file),
-            altText: "" //! add alt text
+            altText: file.name
           }
         })
     }else{
@@ -55,7 +55,9 @@ export default function App() {
                 ...animalCard,
                 img: {
                   //! MESSY
-                  src: animalCard.img.src.includes("http")? animalCard.img.src : "http://localhost:3000/images/"+animalCard.img.src, 
+                  src: animalCard.img.src.includes("http") // if it's a url, don't change it
+                    || animalCard.img.src.includes("unknown")?  // if it's a default image, don't change it
+                    animalCard.img.src : "http://localhost:3000/images/"+animalCard.img.src, 
                   altText: animalCard.img.altText,
                 }
               }}

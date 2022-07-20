@@ -27,7 +27,7 @@ router.get('/:name', getAnimalByName)
 router.post('/', upload.single('img'), createAnimal)
 
 //edit
-router.patch('/:name', updateAnimalByName)
+router.patch('/:name', upload.single('img'), updateAnimalByName)
 
 //delete
 router.delete('/:name', deleteAnimalByName)

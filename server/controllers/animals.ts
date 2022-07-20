@@ -35,7 +35,10 @@ exports.createAnimal = async (req: express.Request, res: express.Response) => {
 
 exports.updateAnimalByName = async (req: express.Request, res: express.Response) => {
     try {
-        const animal = await Animal.findOneAndUpdate({name: req.params.name}, req.body, {new: true});
+        const animal = await Animal.findOneAndUpdate({name: req.params.name}, {
+            ...req.body,
+            img: req.file? req.file.filename: null
+        }, {new: true});
         res.status(200).json(animal);
     }catch(err){
         res.status(500).json({message: err});

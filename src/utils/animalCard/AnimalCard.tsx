@@ -20,11 +20,27 @@ export interface AnimalCardProps {
 }
 export default function AnimalCard(props: AnimalCardProps) {
 
-  function calculateAge(birthday: Date) { // birthday is a date
-      let ageDifMs = Date.now() - birthday.getTime();
-      let ageDate = new Date(ageDifMs); // miliseconds from epoch
-      return ageDate.getUTCFullYear() - 1970
+  function calculateAge(birthday: Date): string { // birthday is a date
+      let  measurement = 'year'
+      let ageDifMs = Date.now() - birthday.getTime()
+      let ageDate = new Date(ageDifMs) // miliseconds from epoch
+      
+      let age = ageDate.getUTCFullYear() - 1970
+      if(age < 1){
+        age = ageDate.getUTCMonth()
+        measurement = 'month'
+      }
+      if(age < 1){
+        age = ageDate.getUTCDate()
+        measurement = 'day'
+      }
+
+      if(age > 1)
+        measurement += 's'
+
+      return age.toString() + ' ' + measurement;
   }
+
   return (
       <Animal containerClassName={styles.animalCard} >
         {
@@ -48,20 +64,26 @@ export default function AnimalCard(props: AnimalCardProps) {
           </div> 
           <div>
             <h3>Age</h3>
-            <p>{calculateAge( new Date(
-              props.cardData.dateOfBirth.getFullYear(), 
-              props.cardData.dateOfBirth.getUTCMonth(), 
-              props.cardData.dateOfBirth.getUTCDate()
-              ))}</p>
+            <p>{
+              props.cardData.dateOfBirth instanceof Date && !isNaN(Number(props.cardData.dateOfBirth)) ? //checking if dateOfBirth is set
+                calculateAge( new Date(
+                  props.cardData.dateOfBirth.getFullYear(), 
+                  props.cardData.dateOfBirth.getUTCMonth(), 
+                  props.cardData.dateOfBirth.getUTCDate()
+                ))
+                : "Unknown"
+            }</p>
           </div> 
           <div>
             <h3>Birthday</h3>
             <p>{
+              props.cardData.dateOfBirth instanceof Date && !isNaN(Number(props.cardData.dateOfBirth)) ? //checking if dateOfBirth is set
                 new Date(
                   props.cardData.dateOfBirth.getFullYear(), 
                   props.cardData.dateOfBirth.getUTCMonth(), 
                   props.cardData.dateOfBirth.getUTCDate()
                 ).toDateString()
+              : "Unknown"
             }</p>
           </div> 
         </div>

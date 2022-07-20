@@ -2,6 +2,7 @@ import styles from './config.module.css'
 
 import AnimalData from '../../../assets/animals.json'
 import AnimalButton from '../../../utils/animalButton/AnimalButton'
+import LoadingSpinner from '../../../utils/loadingSpinner/LoadingSpinner'
 
 import { Link } from 'react-router-dom'
 import { AnimalCardProps } from '../../../utils/animalCard/AnimalCard'
@@ -12,6 +13,7 @@ interface  ConfigProps {
 }
 export default function Config(props: ConfigProps) {
   const [animals, setAnimals] = useState<AnimalCardProps['cardData'][]>([])
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(()=>{
     const getAnimals = async () => {
@@ -25,7 +27,9 @@ export default function Config(props: ConfigProps) {
       }
       setAnimals(data)
     }
-    getAnimals()
+    getAnimals().then(()=>{
+      setIsLoaded(true)
+    })
   }, [])
 
   return (
@@ -52,31 +56,31 @@ export default function Config(props: ConfigProps) {
         )} >+ New Ambassador</button>
       </Link>
 
-      <div className={styles.animalList}>
-        {
-          animals.map(animal => (
-            <Link to={`/animalEditor`}>
-              <AnimalButton
-                key={animal.name}
-                name={animal.name}
-                species={animal.species}
-                img={{
-                  src: "http://localhost:3000/images/"+animal.img.src,
-                  altText: animal.img.altText
-                }}
-                
-                getCard={() => {props.handleEditCard(
-                  {
-                    ...animal,
-                    dateOfBirth: new Date(animal.dateOfBirth)
-                  }
-                )}}
-              />
-            </Link>
-          ))
-        }
+      { !isLoaded ?  <LoadingSpinner/> :
 
-      </div>
+        <div className={styles.animalList}>
+          { animals.map(animal => (
+              <Link to={`/animalEditor`}>
+                <AnimalButton
+                  key={animal.name}
+                  name={animal.name}
+                  species={animal.species}
+                  img={{
+                    src: "http://localhost:3000/images/"+animal.img.src,
+                    altText: animal.img.altText
+                  }}
+                  
+                  getCard={() => {props.handleEditCard(
+                    {
+                      ...animal,
+                      dateOfBirth: new Date(animal.dateOfBirth)
+                    }
+                  )}}
+                />
+              </Link>
+            ))}
+        </div>
+      }
     </div>
   )
 }

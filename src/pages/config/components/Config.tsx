@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 
 interface  ConfigProps {
   handleEditCard: (animal: AnimalCardProps["cardData"]) => void
+  changeEditMode: (editMode: "create" | "update") => void
 }
 export default function Config(props: ConfigProps) {
   const [animals, setAnimals] = useState<AnimalCardProps['cardData'][]>([])
@@ -39,21 +40,24 @@ export default function Config(props: ConfigProps) {
       <p>Click an ambassador to edit or delete it.</p>
       <Link to={`/animalEditor`}>
         <button className={styles.newAmbassadorButton} 
-          onClick={()=>props.handleEditCard(
-            {
-              img: {
-                src: "unknownAnimalProfilePic.jpg",
-                altText: "Unknown Animal"
-              },
-              name: "Name",
-              species: "",
-              scientificName: "",
-              sex: "Unknown",
-              dateOfBirth: new Date(),
-              story: "",
-              conservationMission: ""
-            }
-        )} >+ New Ambassador</button>
+          onClick={()=>{
+            props.handleEditCard(
+              {
+                img: {
+                  src: "unknownAnimalProfilePic.jpg",
+                  altText: "Unknown Animal"
+                },
+                name: "Name",
+                species: "",
+                scientificName: "",
+                sex: "Unknown",
+                dateOfBirth: new Date(),
+                story: "",
+                conservationMission: ""
+              }
+          );
+          props.changeEditMode("create")
+        }} >+ New Ambassador</button>
       </Link>
 
       { !isLoaded ?  <LoadingSpinner/> :
@@ -76,6 +80,7 @@ export default function Config(props: ConfigProps) {
                       dateOfBirth: new Date(animal.dateOfBirth)
                     }
                   )}}
+                  changeEditMode={() => {props.changeEditMode("update")}}
                 />
               </Link>
             ))}

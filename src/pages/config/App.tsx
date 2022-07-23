@@ -10,6 +10,8 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ChangeEvent, useState } from 'react';
 
 export default function App() {
+  const [editMode, setEditMode] = useState<'create' | 'update'>('create')
+
   const [animalCard, setAnimalCard] = useState<AnimalCardProps["cardData"]>({
     img: {
       src: '',
@@ -29,6 +31,7 @@ export default function App() {
       ...animalCard,
       [inputProperty]: inputValue
     })
+    setEditMode('update')
   }
   function handleEditImg(event: ChangeEvent<HTMLInputElement>): void{
     const target = event.target as HTMLInputElement;
@@ -48,7 +51,12 @@ export default function App() {
   return (
     <HashRouter>
       <Routes>
-          <Route path="/" element={<Config handleEditCard={(animal)=>{setAnimalCard(animal)}}/>} />
+          <Route path="/" element={
+            <Config 
+              handleEditCard={(animal)=>{setAnimalCard(animal)}}
+              changeEditMode={(editMode)=>{setEditMode(editMode)}}
+            />} 
+          />
           <Route path="/animalEditor" element={
             <AnimalEditor 
               cardData={{
@@ -62,7 +70,9 @@ export default function App() {
                 }
               }}
               onChangeImg={(inputValue)=>handleEditImg(inputValue)}
-              onEditForm={(inputProperty: string, inputValue: string)=>handleEditForm(inputProperty, inputValue)}/>} 
+              onEditForm={(inputProperty: string, inputValue: string)=>handleEditForm(inputProperty, inputValue)}
+              editCard={editMode}
+              />} 
           />
       </Routes>
     </HashRouter>

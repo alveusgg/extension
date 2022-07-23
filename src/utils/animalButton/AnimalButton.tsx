@@ -10,15 +10,18 @@ interface AnimalButtonProps{
   species: string
 
   getCard?: (name: string) => void
+  changeEditMode?: () => void
 }
 export default function AnimalPreview(props: AnimalButtonProps) {
-  function getCard(): void {
-    if(props.getCard){
+  function handleClick(): void {
+    if(props.getCard)
       props.getCard(props.name)
-    }
+
+    if(props.changeEditMode)
+      props.changeEditMode()
   }
   return (
-    <Animal containerClassName={styles.animal} onClick={getCard}>
+    <Animal containerClassName={styles.animal} onClick={handleClick}>
        <img className={styles.img} src={props.img.src} alt={props.img.altText} />
         <h2 className={styles.name}>{props.name}</h2>
         <h3 className={styles.animalType}>{props.species}</h3>

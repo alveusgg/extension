@@ -16,6 +16,7 @@ interface AnimalEditorProps {
   cardData: AnimalCardProps["cardData"]
   onChangeImg: (event: ChangeEvent<HTMLInputElement>) => void
   onEditForm: (inputProperty: string, inputValue: string) => void
+  editCard: "create" | "update"
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
   const save = async () =>{
@@ -44,9 +45,14 @@ export default function AnimalEditor(props: AnimalEditorProps) {
       formData.append('story', props.cardData.story)
       formData.append('conservationMission', props.cardData.conservationMission)
 
+      let url = 'http://localhost:3000/api/animals/' ;
       //post request
-      const response = await fetch('http://localhost:3000/api/animals', {
-        method: 'POST',
+      if(props.editCard === "update"){
+        url += props.cardData.name
+      }
+
+      const response = await fetch(url , {
+        method: props.editCard == 'update' ? 'PATCH' :'POST',
         body: formData
       })
       const data = await response.json()

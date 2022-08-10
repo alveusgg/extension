@@ -77,7 +77,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
   return (
     <div className={styles.page}>
     <Link to={"/"}>
-      <button>Back</button>
+      <button className={styles.backButton}>&#11164;</button>
     </Link>
     <div className={styles.animalEditor}>
       <div className={styles.editor}>

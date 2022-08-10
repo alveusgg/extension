@@ -1,56 +1,75 @@
+@import '../../../../variables.scss';
 .page{
     display: flex;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
-}
-.animalEditor{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
 
-    padding: 50px 20px;
+    .backButton{
+        position: absolute;
+        top: 20px;
+        left: 20px;
 
-    .editor{
-        .buttons{
-            display: flex;
-            justify-content: space-between;
+        border: none;
+        background-color: #ff00;
 
-            button{
-                all: unset;
-                border: 1px solid black;
-                border-radius: 5px;
-                box-shadow: 0 3px 3px #00000075;
-                text-align: center;
+        padding: 10px 15px;
+        font-size: xx-large;
+    }
+    .backButton:hover{
+        cursor: pointer;
+        color: #595959;
+    }
 
-                height: 40px;
-                width: 120px;
+    .animalEditor{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
 
-            }
-            button:hover{
-                cursor: pointer;
-            }
-            button:active{
-                box-shadow: 0 1px 3px #00000075;
-            }
-            .delete{
-                background-color: #ff4747;
-            }
-            .save{
-                background-color: #58ff55;
-            }
-            .cancel{
-                margin-left: 10px;
-                background-color: white;
+        padding: 50px 20px;
+
+        .editor{
+            .buttons{
+                display: flex;
+                justify-content: space-between;
+
+                button{
+                    all: unset;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    box-shadow: 0 3px 3px #00000075;
+                    text-align: center;
+
+                    height: 40px;
+                    width: 120px;
+
+                }
+                button:hover{
+                    cursor: pointer;
+                }
+                button:active{
+                    box-shadow: 0 1px 3px #00000075;
+                }
+                .delete{
+                    background-color: #ff4747;
+                }
+                .save{
+                    background-color: #58ff55;
+                }
+                .cancel{
+                    margin-left: 10px;
+                    background-color: white;
+                }
             }
         }
-    }
-    .preview{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+        .preview{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
     }
 }

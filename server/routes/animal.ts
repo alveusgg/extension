@@ -21,13 +21,13 @@ const {
 
 //get
 router.get('/', getAllAnimals)
-router.get('/:name', getAnimalByName)
+router.get('/:id', getAnimalByName)
 
 //add
 router.post('/', upload.single('img'), createAnimal)
 
 //edit
-router.patch('/:name', upload.single('img'), updateAnimalByName)
+router.patch('/:id', upload.single('img'), updateAnimalByName)
 
 //delete
-router.delete('/:name', deleteAnimalByName)
+router.delete('/:id', upload.single('img'), deleteAnimalByName)

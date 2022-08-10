@@ -13,7 +13,7 @@ exports.getAllAnimals = async (req: express.Request, res: express.Response) => {
 
 exports.getAnimalByName = async (req: express.Request, res: express.Response) => {
     try {
-        const animal = await Animal.findOne({name: req.params.name});
+        const animal = await Animal.findOne({_id: req.params.id});
         res.status(200).json(animal);
     }catch(err){
         res.status(500).json({message: err});
@@ -35,7 +35,7 @@ exports.createAnimal = async (req: express.Request, res: express.Response) => {
 
 exports.updateAnimalByName = async (req: express.Request, res: express.Response) => {
     try {
-        const animal = await Animal.findOneAndUpdate({name: req.params.name}, {
+        const animal = await Animal.findOneAndUpdate({_id: req.params.id}, {
             ...req.body,
             img: req.file? req.file.filename: null
         }, {new: true});
@@ -47,7 +47,7 @@ exports.updateAnimalByName = async (req: express.Request, res: express.Response)
 
 exports.deleteAnimalByName = async (req: express.Request, res: express.Response) => {
     try {
-        await Animal.findOneAndDelete({name: req.params.name});
+        await Animal.findOneAndDelete({_id: req.params.id});
         res.status(200).json({message: "Animal deleted"});
     }catch(err){
         res.status(500).json({message: err});

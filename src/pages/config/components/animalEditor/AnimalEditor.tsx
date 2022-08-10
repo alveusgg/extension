@@ -16,7 +16,7 @@ interface AnimalEditorProps {
   cardData: AnimalCardProps["cardData"]
   onChangeImg: (event: ChangeEvent<HTMLInputElement>) => void
   onEditForm: (inputProperty: string, inputValue: string) => void
-  editCard: "create" | "update"
+  editMode: "create" | "update"
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
   const save = async () =>{
@@ -47,12 +47,12 @@ export default function AnimalEditor(props: AnimalEditorProps) {
 
       let url = 'http://localhost:3000/api/animals/' ;
       //post request
-      if(props.editCard === "update"){
-        url += props.cardData.name
+      if(props.editMode === "update"){
+        url += props.cardData._id
       }
 
       const response = await fetch(url , {
-        method: props.editCard == 'update' ? 'PATCH' :'POST',
+        method: props.editMode == 'update' ? 'PATCH' :'POST',
         body: formData
       })
       const data = await response.json()
@@ -60,14 +60,14 @@ export default function AnimalEditor(props: AnimalEditorProps) {
     }
   }
   const deleteAnimal = async () =>{
-    const response = await fetch('http://localhost:3000/api/animals/' + props.cardData.name, {
+    const response = await fetch('http://localhost:3000/api/animals/' + props.cardData._id, {
       method: 'DELETE'
     })
     const data = await response.json()
     console.log(data)
   }
   const cancel = async () =>{
-    const response = await fetch('http://localhost:3000/api/animals/' + props.cardData.name, {
+    const response = await fetch('http://localhost:3000/api/animals/' + props.cardData._id, {
       method: 'GET'
     })
     const data = await response.json()
@@ -91,7 +91,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
         />
         <div className={styles.buttons}>
           <Link to={"/"}>
-            <button className={styles.delete} onClick={()=>deleteAnimal()}>
+            <button className={styles.delete} onClick={()=>deleteAnimal()} disabled={props.editMode == 'create'}>
               <img src={deleteIcon} alt="Trash Can Icon"/> 
               Delete
             </button>

@@ -13,6 +13,7 @@ export default function App() {
   const [editMode, setEditMode] = useState<'create' | 'update'>('create')
 
   const [animalCard, setAnimalCard] = useState<AnimalCardProps["cardData"]>({
+    _id: '',
     img: {
       src: '',
       altText: '' 
@@ -71,7 +72,7 @@ export default function App() {
               }}
               onChangeImg={(inputValue)=>handleEditImg(inputValue)}
               onEditForm={(inputProperty: string, inputValue: string)=>handleEditForm(inputProperty, inputValue)}
-              editCard={editMode}
+              editMode={editMode}
               />} 
           />
       </Routes>

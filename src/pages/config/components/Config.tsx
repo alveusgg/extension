@@ -43,6 +43,7 @@ export default function Config(props: ConfigProps) {
           onClick={()=>{
             props.handleEditCard(
               {
+                _id: '',
                 img: {
                   src: "unknownAnimalProfilePic.jpg",
                   altText: "Unknown Animal"

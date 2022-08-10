@@ -4,6 +4,7 @@ import styles from './animalCard.module.css'
 
 export interface AnimalCardProps {
   cardData: {
+    _id: string
     img: {
         src: string
         altText: string

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AnimalCardProps } from '../../../utils/animalCard/AnimalCard'
+import AnimalCard, { AnimalCardProps } from '../../../utils/animalCard/AnimalCard'
 
 import ActivationButtons from './ActivationButtons'
 import AnimalButton from '../../../utils/animalButton/AnimalButton'
@@ -8,6 +8,7 @@ import styles from './overlay.module.css'
 
 export default function Overlay() {
     const [animals, setAnimals] = useState<AnimalCardProps["cardData"][]>()
+    const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"]>()
 
     useEffect(() => {
         const getAnimals = async () => {
@@ -24,6 +25,12 @@ export default function Overlay() {
         getAnimals()
     }, [])
 
+    const handleClick = (animal: AnimalCardProps["cardData"]) => {
+        if(activeAnimal?._id === animal._id) 
+            setActiveAnimal(undefined)
+        else
+            setActiveAnimal(animal)
+    }
 
     return (
     <div className={styles.overlay}>
@@ -32,7 +39,7 @@ export default function Overlay() {
         <div className={styles.animalList}>
             {animals && animals.map(animal => (
                 <AnimalButton
-                    key={animal.name}
+                    key={animal._id}
                     name={animal.name}
                     species={animal.species}
                     img={{
@@ -40,10 +47,24 @@ export default function Overlay() {
                         altText: animal.img.altText
                     }}
 
-                    getCard={() => {}}
+                    getCard={() => {handleClick(animal)}}
                 />
             ))}
         </div>
+
+        { activeAnimal ? 
+            <AnimalCard
+                key={activeAnimal._id}
+                cardData={{
+                    ...activeAnimal,
+                    img:{
+                        src: "http://localhost:3000/images/"+activeAnimal.img.src,
+                        altText: activeAnimal.img.altText
+                    },
+                    dateOfBirth: new Date(activeAnimal.dateOfBirth)
+                }}
+            />: null
+        }
     </div>
     )
 }

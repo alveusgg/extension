@@ -1,0 +1,12 @@
+.overlay{
+    display: flex;
+    padding: 50px 20px;
+
+    gap: 20px;
+
+    .animalList{
+        & > *{
+            margin-bottom: 20px;
+        }
+    }
+}

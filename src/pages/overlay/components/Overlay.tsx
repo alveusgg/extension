@@ -9,6 +9,7 @@ import styles from './overlay.module.css'
 export default function Overlay() {
     const [animals, setAnimals] = useState<AnimalCardProps["cardData"][]>()
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"]>()
+    const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
         const getAnimals = async () => {
@@ -23,18 +24,21 @@ export default function Overlay() {
             setAnimals(data)
         }
         getAnimals()
+
+        //check if mouse is in the viewport
+        document.addEventListener('mouseleave', () => {
+            if(isVisible)
+                setIsVisible(false)
+        })
+        document.addEventListener('mouseenter', () => {
+            if(!isVisible)
+                setIsVisible(true)
+        })
     }, [])
 
-    const handleClick = (animal: AnimalCardProps["cardData"]) => {
-        if(activeAnimal?._id === animal._id) 
-            setActiveAnimal(undefined)
-        else
-            setActiveAnimal(animal)
-    }
-
     return (
-    <div className={styles.overlay}>
-        <ActivationButtons/>
+    <div className={`${styles.overlay} ${isVisible? styles.visible : styles.hidden}`} >
+        <ActivationButtons />
 
         <div className={styles.animalList}>
             {animals && animals.map(animal => (
@@ -47,7 +51,7 @@ export default function Overlay() {
                         altText: animal.img.altText
                     }}
 
-                    getCard={() => {handleClick(animal)}}
+                    getCard={() => {setActiveAnimal(activeAnimal?._id === animal._id ? undefined : animal)}}
                 />
             ))}
         </div>
@@ -63,6 +67,7 @@ export default function Overlay() {
                     },
                     dateOfBirth: new Date(activeAnimal.dateOfBirth)
                 }}
+                close={() => {setActiveAnimal(undefined)}}
             />: null
         }
     </div>

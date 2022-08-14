@@ -1,9 +1,11 @@
 .overlay{
     display: flex;
-    padding: 100px 20px;
+    padding: 100px 0;
 
     gap: 20px;
     height: calc(100vh - 150px);
+
+    transition: 0.3s;
 
     .animalList{
         overflow: scroll;
@@ -15,4 +17,14 @@
             display: none;
         }
     }
+}
+.visible{
+    visibility: visible;
+    opacity: 1;
+    translate: 20px;
+}
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+    translate: -20px;
 }

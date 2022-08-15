@@ -1,6 +1,6 @@
 .overlay{
     display: flex;
-    padding: 100px 0;
+    padding: 100px 20px;
 
     gap: 20px;
     height: calc(100vh - 150px);
@@ -21,10 +21,9 @@
 .visible{
     visibility: visible;
     opacity: 1;
-    translate: 20px;
 }
 .hidden{
     visibility: hidden;
     opacity: 0;
-    translate: -20px;
+    translate: -40px;
 }

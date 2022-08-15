@@ -8,6 +8,7 @@ import styles from './overlay.module.css'
 
 export default function Overlay() {
     const [animals, setAnimals] = useState<AnimalCardProps["cardData"][]>()
+    const [showAnimalList, setShowAnimalList] = useState(false)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"]>()
     const [isVisible, setIsVisible] = useState(false)
 
@@ -38,9 +39,11 @@ export default function Overlay() {
 
     return (
     <div className={`${styles.overlay} ${isVisible? styles.visible : styles.hidden}`} >
-        <ActivationButtons />
+        <ActivationButtons 
+            toggleShowAnimalList={() => setShowAnimalList(!showAnimalList)}
+        />
 
-        <div className={styles.animalList}>
+        <div className={`${styles.animalList} ${showAnimalList? styles.visible : styles.hidden}`}>
             {animals && animals.map(animal => (
                 <AnimalButton
                     key={animal._id}
@@ -56,7 +59,7 @@ export default function Overlay() {
             ))}
         </div>
 
-        { activeAnimal ? 
+        { activeAnimal && showAnimalList ? 
             <AnimalCard
                 key={activeAnimal._id}
                 cardData={{

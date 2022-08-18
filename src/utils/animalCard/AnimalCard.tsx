@@ -18,6 +18,7 @@ export interface AnimalCardProps {
     conservationMission: string
   }
   close?: ()=>void
+  containerClassName?: string
 }
 export default function AnimalCard(props: AnimalCardProps) {
 
@@ -43,7 +44,7 @@ export default function AnimalCard(props: AnimalCardProps) {
   }
 
   return (
-      <Animal containerClassName={styles.animalCard} >
+      <Animal containerClassName={`${styles.animalCard} ${props.containerClassName}`} >
         {
             props.close ? <div className={styles.close} onClick={props.close}>&times;</div>
             : null

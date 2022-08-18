@@ -52,7 +52,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
       }
 
       const response = await fetch(url , {
-        method: props.editMode == 'update' ? 'PATCH' :'POST',
+        method: props.editMode === 'update' ? 'PATCH' :'POST',
         body: formData
       })
       const data = await response.json()
@@ -91,19 +91,19 @@ export default function AnimalEditor(props: AnimalEditorProps) {
         />
         <div className={styles.buttons}>
           <Link to={"/"}>
-            <button className={styles.delete} onClick={()=>deleteAnimal()} disabled={props.editMode == 'create'}>
+            <button className={styles.delete} onClick={()=>deleteAnimal()} disabled={props.editMode === 'create'}>
               <img src={deleteIcon} alt="Trash Can Icon"/> 
-              Delete
+              <span>Delete</span>
             </button>
           </Link>
           <div className={styles.mainButtons}>
             <button className={styles.save} onClick={()=>save()}>
               <img src={saveIcon} alt="Floppy Disc Icon"/> 
-              Save
+              <span>Save</span>
             </button>
             <button className={styles.cancel} onClick={()=>cancel()}>
               <img src={cancelIcon} alt="Undo Icon"/> 
-              Cancel
+              <span>Cancel</span>
             </button>
           </div>
         </div>

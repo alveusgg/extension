@@ -1,4 +1,5 @@
 @import '../../../../variables.scss';
+
 .page{
     display: flex;
     justify-content: center;
@@ -45,12 +46,21 @@
                     height: 40px;
                     width: 120px;
 
+                    &:hover{
+                        cursor: pointer;
+                    }
+                    &:active{
+                        box-shadow: 0 1px 3px #00000075;
+                    }
                 }
-                button:hover{
-                    cursor: pointer;
+                .mainButtons{
+                    display: flex;
                 }
-                button:active{
-                    box-shadow: 0 1px 3px #00000075;
+                .delete, .save, .cancel{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 3px;
                 }
                 .delete{
                     background-color: #ff4747;

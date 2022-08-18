@@ -5,6 +5,8 @@ import ActivationButtons from './ActivationButtons'
 import AnimalButton from '../../../utils/animalButton/AnimalButton'
 
 import styles from './overlay.module.css'
+//images
+import DownArrow from '../../../assets/downarrow.svg'
 
 export default function Overlay() {
     const [animals, setAnimals] = useState<AnimalCardProps["cardData"][]>()
@@ -43,20 +45,25 @@ export default function Overlay() {
             toggleShowAnimalList={() => setShowAnimalList(!showAnimalList)}
         />
 
-        <div className={`${styles.animalList} ${showAnimalList? styles.visible : styles.hidden}`}>
-            {animals && animals.map(animal => (
-                <AnimalButton
-                    key={animal._id}
-                    name={animal.name}
-                    species={animal.species}
-                    img={{
-                        src: "http://localhost:3000/images/"+animal.img.src,
-                        altText: animal.img.altText
-                    }}
+        <div className={`${styles.scrollAnimals} ${showAnimalList? styles.visible : styles.hidden}`}>
+            <img className={`${styles.arrow} ${styles.up}`} src={DownArrow} alt="Arrow" />
+            <div className={styles.animalList}>
+                {animals && animals.map(animal => (
+                    <AnimalButton
+                        key={animal._id}
+                        name={animal.name}
+                        species={animal.species}
+                        img={{
+                            src: "http://localhost:3000/images/"+animal.img.src,
+                            altText: animal.img.altText
+                        }}
 
-                    getCard={() => {setActiveAnimal(activeAnimal?._id === animal._id ? undefined : animal)}}
-                />
-            ))}
+                        getCard={() => {setActiveAnimal(activeAnimal?._id === animal._id ? undefined : animal)}}
+                        containerClassName={`${styles.animalButton} ${activeAnimal?._id === animal._id ? styles.animalButtonClicked : undefined}`}
+                    />
+                ))}
+            </div>
+            <img className={styles.arrow} src={DownArrow} alt="Arrow" />
         </div>
 
         { activeAnimal && showAnimalList ? 
@@ -71,6 +78,7 @@ export default function Overlay() {
                     dateOfBirth: new Date(activeAnimal.dateOfBirth)
                 }}
                 close={() => {setActiveAnimal(undefined)}}
+                containerClassName={styles.animalCard}
             />: null
         }
     </div>

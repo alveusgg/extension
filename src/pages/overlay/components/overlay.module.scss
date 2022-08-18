@@ -2,22 +2,63 @@
     display: flex;
     padding: 100px 20px;
 
-    gap: 20px;
+    gap: 10px;
     height: calc(100vh - 150px);
 
     transition: 0.3s;
 
-    .animalList{
-        overflow: scroll;
-        
-        & > *{
-            margin-bottom: 20px;
+    .scrollAnimals{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+
+        .animalList{
+            overflow: scroll;
+            height: 80vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+
+            & > *{
+                margin-bottom: 20px;
+
+                // @for $i from 2 through  {
+                //     &:nth-child(#{$i}) {
+                //         transition-delay: 100ms * ($i - 1);
+                //     }
+                // }
+            }
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
-        &::-webkit-scrollbar {
-            display: none;
+        .arrow{
+            width: 50px;
+        }
+        .up{
+            transform: rotate(180deg);
         }
     }
+    .animalButton{
+        transition: 0.3s;
+       &:hover{
+            transform: scale(1.1);
+       } 
+    }
+    .animalButtonClicked{
+        transform: scale(1.1);
+        outline: 3px solid orange;
+    }
+    .animalCard{
+        transition: 0.3s;
+        align-self: center;
+    }
 }
+
 .visible{
     visibility: visible;
     opacity: 1;

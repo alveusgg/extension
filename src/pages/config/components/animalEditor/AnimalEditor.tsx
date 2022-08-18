@@ -97,10 +97,12 @@ export default function AnimalEditor(props: AnimalEditorProps) {
             </button>
           </Link>
           <div className={styles.mainButtons}>
-            <button className={styles.save} onClick={()=>save()}>
-              <img src={saveIcon} alt="Floppy Disc Icon"/> 
-              <span>Save</span>
-            </button>
+            <Link to={"/"}>
+              <button className={styles.save} onClick={()=>save()}>
+                <img src={saveIcon} alt="Floppy Disc Icon"/> 
+                <span>Save</span>
+              </button>
+            </Link>
             <button className={styles.cancel} onClick={()=>cancel()}>
               <img src={cancelIcon} alt="Undo Icon"/> 
               <span>Cancel</span>

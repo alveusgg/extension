@@ -3,6 +3,7 @@ import styles from './animalEditor.module.css';
 import EditorForm from '../editorForm/EditorForm';
 import AnimalCard, { AnimalCardProps } from '../../../../utils/animalCard/AnimalCard';
 import AnimalButton from '../../../../utils/animalButton/AnimalButton';
+import ConfirmModal from '../confirmModal/ConfirmModal';
 
 //icons
 import deleteIcon from '../../../../assets/buttonIcons/delete.svg';
@@ -10,7 +11,7 @@ import saveIcon from '../../../../assets/buttonIcons/save.svg';
 import cancelIcon from '../../../../assets/buttonIcons/cancel.svg';
 
 import { Link } from 'react-router-dom';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 interface AnimalEditorProps {
   cardData: AnimalCardProps["cardData"]
@@ -19,6 +20,8 @@ interface AnimalEditorProps {
   editMode: "create" | "update"
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
+  const [openConfirmModal, setOpenConfirmModal] = useState(false)
+
   const save = async () =>{
     const formData = new FormData()
 
@@ -59,13 +62,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
       console.log(data)
     }
   }
-  const deleteAnimal = async () =>{
-    const response = await fetch('http://localhost:3000/api/animals/' + props.cardData._id, {
-      method: 'DELETE'
-    })
-    const data = await response.json()
-    console.log(data)
-  }
+  
   const cancel = async () =>{
     const response = await fetch('http://localhost:3000/api/animals/' + props.cardData._id, {
       method: 'GET'
@@ -76,6 +73,12 @@ export default function AnimalEditor(props: AnimalEditorProps) {
 
   return (
     <div className={styles.page}>
+      {openConfirmModal ?
+        <ConfirmModal 
+          changeOpenConfirmModal={(openModal)=>setOpenConfirmModal(openModal)}
+          deleteId = {props.cardData._id}
+        />: null
+      }
     <Link to={"/"}>
       <button className={styles.backButton}>&#11164;</button>
     </Link>
@@ -90,12 +93,12 @@ export default function AnimalEditor(props: AnimalEditorProps) {
           editForm={(property: string, value: string)=>props.onEditForm(property, value)}
         />
         <div className={styles.buttons}>
-          <Link to={"/"}>
-            <button className={styles.delete} onClick={()=>deleteAnimal()} disabled={props.editMode === 'create'}>
-              <img src={deleteIcon} alt="Trash Can Icon"/> 
-              <span>Delete</span>
-            </button>
-          </Link>
+          {props.editMode === "update" ?
+          <button className={styles.delete} onClick={()=>setOpenConfirmModal(true)}>
+            <img src={deleteIcon} alt="Trash Can Icon"/> 
+            <span>Delete</span>
+          </button>
+          : null}
           <div className={styles.mainButtons}>
             <Link to={"/"}>
               <button className={styles.save} onClick={()=>save()}>

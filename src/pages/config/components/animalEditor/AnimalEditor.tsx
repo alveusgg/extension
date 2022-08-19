@@ -79,54 +79,54 @@ export default function AnimalEditor(props: AnimalEditorProps) {
           deleteId = {props.cardData._id}
         />: null
       }
-    <Link to={"/"}>
-      <button className={styles.backButton}>&#11164;</button>
-    </Link>
-    <div className={styles.animalEditor}>
-      <div className={styles.editor}>
-        <EditorForm
-          cardData={{
-            ...props.cardData,
-            dateOfBirth: new Date(props.cardData.dateOfBirth)
-          }}
-          changeImg={(e: ChangeEvent<HTMLInputElement>)=>props.onChangeImg(e)}
-          editForm={(property: string, value: string)=>props.onEditForm(property, value)}
-        />
-        <div className={styles.buttons}>
-          {props.editMode === "update" ?
-          <button className={styles.delete} onClick={()=>setOpenConfirmModal(true)}>
-            <img src={deleteIcon} alt="Trash Can Icon"/> 
-            <span>Delete</span>
-          </button>
-          : null}
-          <div className={styles.mainButtons}>
-            <Link to={"/"}>
-              <button className={styles.save} onClick={()=>save()}>
-                <img src={saveIcon} alt="Floppy Disc Icon"/> 
-                <span>Save</span>
-              </button>
-            </Link>
-            <button className={styles.cancel} onClick={()=>cancel()}>
-              <img src={cancelIcon} alt="Undo Icon"/> 
-              <span>Cancel</span>
+      <Link to={"/"}>
+        <button className={styles.backButton}>&#11164;</button>
+      </Link>
+      <div className={styles.animalEditor}>
+        <div className={styles.editor}>
+          <EditorForm
+            cardData={{
+              ...props.cardData,
+              dateOfBirth: new Date(props.cardData.dateOfBirth)
+            }}
+            changeImg={(e: ChangeEvent<HTMLInputElement>)=>props.onChangeImg(e)}
+            editForm={(property: string, value: string)=>props.onEditForm(property, value)}
+          />
+          <div className={styles.buttons}>
+            {props.editMode === "update" ?
+            <button className={styles.delete} onClick={()=>setOpenConfirmModal(true)}>
+              <img src={deleteIcon} alt="Trash Can Icon"/> 
+              <span>Delete</span>
             </button>
+            : null}
+            <div className={styles.mainButtons}>
+              <Link to={"/"}>
+                <button className={styles.save} onClick={()=>save()}>
+                  <img src={saveIcon} alt="Floppy Disc Icon"/> 
+                  <span>Save</span>
+                </button>
+              </Link>
+              <button className={styles.cancel} onClick={()=>cancel()}>
+                <img src={cancelIcon} alt="Undo Icon"/> 
+                <span>Cancel</span>
+              </button>
+            </div>
           </div>
         </div>
+        <div className={styles.preview}>
+          <AnimalCard
+            cardData={{
+              ...props.cardData,
+              dateOfBirth: new Date(props.cardData.dateOfBirth)
+            }}
+          /> 
+          <AnimalButton
+            name={props.cardData.name}
+            species={props.cardData.species}
+            img={props.cardData.img}
+          />
+        </div>
       </div>
-      <div className={styles.preview}>
-        <AnimalCard
-          cardData={{
-            ...props.cardData,
-            dateOfBirth: new Date(props.cardData.dateOfBirth)
-          }}
-        /> 
-        <AnimalButton
-          name={props.cardData.name}
-          species={props.cardData.species}
-          img={props.cardData.img}
-        />
-      </div>
-    </div>
     </div>
   )
 }

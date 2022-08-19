@@ -8,10 +8,10 @@ import ConfirmModal from '../confirmModal/ConfirmModal';
 //icons
 import deleteIcon from '../../../../assets/buttonIcons/delete.svg';
 import saveIcon from '../../../../assets/buttonIcons/save.svg';
-import cancelIcon from '../../../../assets/buttonIcons/cancel.svg';
+import ResetIcon from '../../../../assets/buttonIcons/cancel.svg';
 
 import { Link } from 'react-router-dom';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 interface AnimalEditorProps {
   cardData: AnimalCardProps["cardData"]
@@ -62,14 +62,6 @@ export default function AnimalEditor(props: AnimalEditorProps) {
       console.log(data)
     }
   }
-  
-  const cancel = async () =>{
-    const response = await fetch('http://localhost:3000/api/animals/' + props.cardData._id, {
-      method: 'GET'
-    })
-    const data = await response.json()
-    console.log(data)
-  }
 
   return (
     <div className={styles.page}>
@@ -93,24 +85,16 @@ export default function AnimalEditor(props: AnimalEditorProps) {
             editForm={(property: string, value: string)=>props.onEditForm(property, value)}
           />
           <div className={styles.buttons}>
-            {props.editMode === "update" ?
-            <button className={styles.delete} onClick={()=>setOpenConfirmModal(true)}>
+            <button onClick={()=>setOpenConfirmModal(true)} className={styles.delete} style={props.editMode === "create" ? {visibility: "hidden"} :  {}}>
               <img src={deleteIcon} alt="Trash Can Icon"/> 
               <span>Delete</span>
             </button>
-            : null}
-            <div className={styles.mainButtons}>
-              <Link to={"/"}>
-                <button className={styles.save} onClick={()=>save()}>
-                  <img src={saveIcon} alt="Floppy Disc Icon"/> 
-                  <span>Save</span>
-                </button>
-              </Link>
-              <button className={styles.cancel} onClick={()=>cancel()}>
-                <img src={cancelIcon} alt="Undo Icon"/> 
-                <span>Cancel</span>
+            <Link to={"/"}>
+              <button className={styles.save} onClick={()=>save()}>
+                <img src={saveIcon} alt="Floppy Disc Icon"/> 
+                <span>Save</span>
               </button>
-            </div>
+            </Link>
           </div>
         </div>
         <div className={styles.preview}>

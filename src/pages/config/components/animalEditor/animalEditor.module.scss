@@ -53,10 +53,7 @@
                         box-shadow: 0 1px 3px #00000075;
                     }
                 }
-                .mainButtons{
-                    display: flex;
-                }
-                .delete, .save, .cancel{
+                .delete, .save{
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -67,10 +64,6 @@
                 }
                 .save{
                     background-color: #58ff55;
-                }
-                .cancel{
-                    margin-left: 10px;
-                    background-color: white;
                 }
             }
         }

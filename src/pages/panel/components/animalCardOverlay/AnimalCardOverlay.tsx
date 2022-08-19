@@ -13,6 +13,7 @@ export default function AnimalCardOverlay(props: AnimalCardOverlayProps) {
       <AnimalCard
         cardData={ props.animalCard.cardData }
         close={props.close} 
+        containerClassName={styles.animalCard}
       />
     </div>
   )

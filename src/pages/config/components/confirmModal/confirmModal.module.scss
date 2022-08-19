@@ -1,0 +1,112 @@
+@import '../../../../variables.scss';
+
+/* The Modal (background) */
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    color: white;
+
+    /* Modal Content/Box */
+    &Content {
+        background-color: $primary-color;
+
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+
+        border: 1px solid black;
+        margin: 15% auto; /*15 from the top and centered*/
+        padding: 10px 20px;
+        width: 450px;
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            /* The Close Button */
+            .close {
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .title{
+                font-size: 2.5rem;
+            }
+
+            .body{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 20px 0;
+            }
+
+            .buttons{
+                display: flex;
+                padding: 20px;
+                
+                button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 3px;
+
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+                    border: none;
+                    border-radius: 5px;
+                    color: black;
+
+                    font-size: 1rem;
+                    font-weight: bold;
+
+                    padding: 10px 15px;
+                    margin: 0 10px;
+                }
+                button:hover{
+                    cursor: pointer;
+                }
+                .delete{
+                    background-color: #ff4747;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .modal-content {
+        width: 80vw;
+    }
+}
+@media screen and (max-width: 450px) {
+    .modal-content .main .buttons{
+        padding: 20px 0;
+        button{
+            font-size: small;
+        }
+    }
+}
+@media screen and (max-width: 350px) {
+    .modal-content .main .buttons button{
+        font-size: x-small;
+    }
+}

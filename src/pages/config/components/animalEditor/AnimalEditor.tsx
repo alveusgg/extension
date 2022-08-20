@@ -43,7 +43,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
       formData.append('species', props.cardData.species)
       formData.append('scientificName', props.cardData.scientificName)
       formData.append('sex', props.cardData.sex ? props.cardData.sex : "Unknown")
-      if(props.cardData.dateOfBirth)
+      if(!isNaN(Number(props.cardData.dateOfBirth)))//check if date exists (is valid)
         formData.append('dateOfBirth', new Date(props.cardData.dateOfBirth).toUTCString())
       formData.append('story', props.cardData.story)
       formData.append('conservationMission', props.cardData.conservationMission)

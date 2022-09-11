@@ -33,7 +33,6 @@ export default function App() {
       ...animalCard,
       [inputProperty]: inputValue
     })
-    setEditMode('update')
   }
   function handleEditImg(event: ChangeEvent<HTMLInputElement>): void{
     const target = event.target as HTMLInputElement;

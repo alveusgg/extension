@@ -11,6 +11,8 @@ export default function EditorForm(props: EditorProps) {
 
     //counting the length of the textareas
     const [maxTextAreaLength] = useState(135);
+    const [maxTextInputLength] = useState(46);
+    const [iucnStatusTextLength, setIucnStatusTextLength] = useState<number>(props.cardData.iucnStatus.length)
     const [storyLength, setStoryLength] = useState<number>(props.cardData.story.length)
     const [conservationMissionLength, setConservationMissionLength] = useState<number>(props.cardData.conservationMission.length)
 
@@ -52,7 +54,8 @@ export default function EditorForm(props: EditorProps) {
             </div>
 
             <label htmlFor="iucnStatus">IUCN Status</label>
-            <input type="text" name="iucnStatus" id="iucnStatus" value={props.cardData.iucnStatus} onChange={(e)=>{props.editForm(e.target.name, e.target.value)}}/>
+            <input type="text" name="iucnStatus" id="iucnStatus" maxLength={maxTextInputLength} value={props.cardData.iucnStatus} onChange={(e)=>{props.editForm(e.target.name, e.target.value); setIucnStatusTextLength(e.target.value.length)}}/>
+            <span className={styles.characterLimit}>{iucnStatusTextLength}/{maxTextInputLength}</span>
 
             <label htmlFor="story">Story</label>
             <textarea name="story" id="story" cols={30} rows={5} maxLength={maxTextAreaLength} value={props.cardData.story} onChange={(e)=>{props.editForm(e.target.name, e.target.value); setStoryLength(e.target.textLength)}}/>

@@ -53,6 +53,7 @@ export default function Config(props: ConfigProps) {
                 scientificName: "",
                 sex: "Unknown",
                 dateOfBirth: new Date(),
+                iucnStatus: "",
                 story: "",
                 conservationMission: ""
               }

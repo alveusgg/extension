@@ -23,6 +23,7 @@ export default function App() {
     species: '', 
     sex: '', 
     dateOfBirth: new Date(), 
+    iucnStatus: '',
     story: '', 
     conservationMission: ''
   })

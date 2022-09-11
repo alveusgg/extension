@@ -47,6 +47,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
         formData.append('dateOfBirth', new Date(props.cardData.dateOfBirth).toUTCString())
       else
         formData.append('dateOfBirth', "unknown")
+      formData.append('iucnStatus', props.cardData.iucnStatus)
       formData.append('story', props.cardData.story)
       formData.append('conservationMission', props.cardData.conservationMission)
 

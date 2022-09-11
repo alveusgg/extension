@@ -51,6 +51,9 @@ export default function EditorForm(props: EditorProps) {
                 </div>
             </div>
 
+            <label htmlFor="iucnStatus">IUCN Status</label>
+            <input type="text" name="iucnStatus" id="iucnStatus" value={props.cardData.iucnStatus} onChange={(e)=>{props.editForm(e.target.name, e.target.value)}}/>
+
             <label htmlFor="story">Story</label>
             <textarea name="story" id="story" cols={30} rows={5} maxLength={maxTextAreaLength} value={props.cardData.story} onChange={(e)=>{props.editForm(e.target.name, e.target.value); setStoryLength(e.target.textLength)}}/>
             <span className={styles.characterLimit}>{storyLength}/{maxTextAreaLength}</span>

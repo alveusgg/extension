@@ -14,6 +14,7 @@ export interface AnimalCardProps {
     scientificName: string
     sex?: string
     dateOfBirth: Date
+    iucnStatus: string
     story: string
     conservationMission: string
   }
@@ -92,7 +93,7 @@ export default function AnimalCard(props: AnimalCardProps) {
 
         <div className={styles.row}>
           <h3>IUCN Status</h3>
-          <p>Least Concern</p>
+          <p>{props.cardData.iucnStatus}</p>
         </div>
 
         <div className={`${styles.row} ${styles.story}`}>

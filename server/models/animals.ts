@@ -7,6 +7,7 @@ const animalSchema = new mongoose.Schema({
     scientificName: String,
     sex: String,
     dateOfBirth: mongoose.Schema.Types.Mixed,
+    iucnStatus: String,
     story: String,
     conservationMission: String
 },{

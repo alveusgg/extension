@@ -66,9 +66,8 @@ export default function Config(props: ConfigProps) {
 
         <div className={styles.animalList}>
           { animals.map(animal => (
-              <Link to={`/animalEditor`}>
+              <Link to={`/animalEditor`} key={animal.name}>
                 <AnimalButton
-                  key={animal.name}
                   name={animal.name}
                   species={animal.species}
                   img={{

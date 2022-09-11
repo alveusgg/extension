@@ -16,18 +16,18 @@ const upload = multer({ storage: storage })
 export const router: express.Router = express.Router()
 
 const {
-    getAllAnimals, getAnimalByName, createAnimal, updateAnimalByName, deleteAnimalByName
+    getAllAnimals, getAnimalById, createAnimal, updateAnimalById,  deleteAnimalById
 } = require('../controllers/animals')
 
 //get
 router.get('/', getAllAnimals)
-router.get('/:id', getAnimalByName)
+router.get('/:id', getAnimalById)
 
 //add
 router.post('/', upload.single('img'), createAnimal)
 
 //edit
-router.patch('/:id', upload.single('img'), updateAnimalByName)
+router.patch('/:id', upload.single('img'), updateAnimalById)
 
 //delete
-router.delete('/:id', upload.single('img'), deleteAnimalByName)
+router.delete('/:id', upload.single('img'), deleteAnimalById)

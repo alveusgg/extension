@@ -41,10 +41,10 @@ export default function EditorForm(props: EditorProps) {
             <div className={styles.horizontalInput}>
                 <div className={styles.smallInput}>
                     <label htmlFor="sex">Sex</label>
-                    <select name="sex" id="sex" onChange={(e)=>props.editForm(e.target.name, e.target.value)}>
-                        <option value="Unknown" selected={props.cardData.sex !== "Male" && props.cardData.sex !== "Female"}>Unknown</option>
-                        <option value="Male" selected={props.cardData.sex === "Male"}>Male</option>
-                        <option value="Female" selected={props.cardData.sex === "Female"}>Female</option>
+                    <select name="sex" id="sex" defaultValue={props.cardData.sex} onChange={(e)=>props.editForm(e.target.name, e.target.value)}>
+                        <option value="Unknown">Unknown</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
                 <div className={styles.smallInput}>

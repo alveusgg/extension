@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 
     .backButton{
         position: absolute;

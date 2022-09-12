@@ -10,7 +10,7 @@ const multipleEntry = require('react-app-rewire-multiple-entry')([
     outPath: '/config.html',
   },
   {
-    entry: 'src/index.tsx',
+    entry: 'src/pages/overlay/index.tsx',
     template: 'public/index.html',
     outPath: '/video_overlay.html',
   }

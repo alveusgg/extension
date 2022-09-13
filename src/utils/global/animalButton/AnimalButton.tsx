@@ -1,4 +1,4 @@
-import Animal from "../animal/Animal";
+import Animal from "../../compositions/animal/Animal";
 import styles from './animalButton.module.css'
 
 interface AnimalButtonProps{

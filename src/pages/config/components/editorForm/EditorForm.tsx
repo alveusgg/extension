@@ -1,5 +1,5 @@
 import styles from './editorForm.module.css';
-import {AnimalCardProps} from '../../../../utils/animalCard/AnimalCard';
+import {AnimalCardProps} from '../../../../utils/global/animalCard/AnimalCard';
 import { ChangeEvent, useState } from 'react';
 
 interface EditorProps{

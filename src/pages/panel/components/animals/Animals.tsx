@@ -1,13 +1,13 @@
 //components
-import AnimalButton from "../../../../utils/animalButton/AnimalButton";
+import AnimalButton from "../../../../utils/global/animalButton/AnimalButton";
 import AnimalCardOverlay from "../animalCardOverlay/AnimalCardOverlay";
-import LoadingSpinner from "../../../../utils/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../../../utils/global/loadingSpinner/LoadingSpinner";
 
 //css
 import styles from './animals.module.css'
 //data
 import { useEffect, useState } from "react";
-import { AnimalCardProps } from "../../../../utils/animalCard/AnimalCard";
+import { AnimalCardProps } from "../../../../utils/global/animalCard/AnimalCard";
 
 export default function Animals() {
   const [animals, setAnimals] = useState<AnimalCardProps['cardData'][]>([])

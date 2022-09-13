@@ -1,8 +1,8 @@
-import AnimalCard from "../../../../utils/animalCard/AnimalCard";
+import AnimalCard from "../../../../utils/global/animalCard/AnimalCard";
 
 import styles from './animalCardOverlay.module.css';
 
-import { AnimalCardProps } from "../../../../utils/animalCard/AnimalCard";
+import { AnimalCardProps } from "../../../../utils/global/animalCard/AnimalCard";
 interface AnimalCardOverlayProps{
   animalCard: AnimalCardProps
   close: () => void

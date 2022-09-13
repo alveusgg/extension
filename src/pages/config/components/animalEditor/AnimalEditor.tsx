@@ -1,8 +1,8 @@
 import styles from './animalEditor.module.css';
 
 import EditorForm from '../editorForm/EditorForm';
-import AnimalCard, { AnimalCardProps } from '../../../../utils/animalCard/AnimalCard';
-import AnimalButton from '../../../../utils/animalButton/AnimalButton';
+import AnimalCard, { AnimalCardProps } from '../../../../utils/global/animalCard/AnimalCard';
+import AnimalButton from '../../../../utils/global/animalButton/AnimalButton';
 import ConfirmModal from '../confirmModal/ConfirmModal';
 
 //icons

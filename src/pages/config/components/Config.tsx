@@ -1,11 +1,11 @@
 import styles from './config.module.css'
 
 import AnimalData from '../../../assets/animals.json'
-import AnimalButton from '../../../utils/animalButton/AnimalButton'
-import LoadingSpinner from '../../../utils/loadingSpinner/LoadingSpinner'
+import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
+import LoadingSpinner from '../../../utils/global/loadingSpinner/LoadingSpinner'
 
 import { Link } from 'react-router-dom'
-import { AnimalCardProps } from '../../../utils/animalCard/AnimalCard'
+import { AnimalCardProps } from '../../../utils/global/animalCard/AnimalCard'
 import { useEffect, useState } from 'react'
 
 interface  ConfigProps {

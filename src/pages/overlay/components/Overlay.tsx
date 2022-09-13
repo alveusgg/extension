@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import AnimalCard, { AnimalCardProps } from '../../../utils/animalCard/AnimalCard'
+import AnimalCard, { AnimalCardProps } from '../../../utils/global/animalCard/AnimalCard'
 
 import ActivationButtons from './ActivationButtons'
-import AnimalButton from '../../../utils/animalButton/AnimalButton'
+import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
 
 import styles from './overlay.module.css'
 //images

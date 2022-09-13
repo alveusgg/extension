@@ -1,4 +1,4 @@
-import Animal from "../animal/Animal"
+import Animal from "../../compositions/animal/Animal"
 
 import styles from './animalCard.module.css'
 

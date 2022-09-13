@@ -1,7 +1,7 @@
 //components
 import Config from './components/Config';
 import AnimalEditor from './components/animalEditor/AnimalEditor';
-import { AnimalCardProps } from '../../utils/animalCard/AnimalCard';
+import { AnimalCardProps } from '../../utils/global/animalCard/AnimalCard';
 
 //routing
 import { HashRouter, Routes, Route } from 'react-router-dom';

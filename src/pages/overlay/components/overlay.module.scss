@@ -38,6 +38,9 @@
         }
         .arrow{
             width: 50px;
+            &:hover{
+                cursor: pointer;
+            }
         }
         .up{
             transform: rotate(180deg);

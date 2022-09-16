@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import AnimalCard, { AnimalCardProps } from '../../../utils/global/animalCard/AnimalCard'
 
 import ActivationButtons from './ActivationButtons'
@@ -13,6 +13,8 @@ export default function Overlay() {
     const [showAnimalList, setShowAnimalList] = useState(false)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"]>()
     const [isVisible, setIsVisible] = useState(false)
+
+    const animalList = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const getAnimals = async () => {
@@ -37,15 +39,10 @@ export default function Overlay() {
         })
     }, [])
 
-    const scrollDown = (el: HTMLElement | null) => {
-        if(el)
-            el.scroll({top: el.scrollTop + 250, left: 0, behavior: 'smooth'})
+    const animalListScroll = (direction: number) => {
+        if(animalList.current)
+            animalList.current.scroll({top: animalList.current.scrollTop - direction, left: 0, behavior: 'smooth'})
     }
-    const scrollUp = (el: HTMLElement | null) => {
-        if(el)
-            el.scroll({top: el.scrollTop - 250, left: 0, behavior: 'smooth'})
-    }
-
 
     return (
     <div className={`${styles.overlay} ${isVisible? styles.visible : styles.hidden}`} >
@@ -54,8 +51,8 @@ export default function Overlay() {
         />
 
         <div className={`${styles.scrollAnimals} ${showAnimalList? styles.visible : styles.hidden}`}>
-            <img className={`${styles.arrow} ${styles.up}`} src={DownArrow} alt="Arrow" onClick={()=>scrollUp(document.getElementById("animalList"))} />
-            <div id='animalList' className={styles.animalList}>
+            <img className={`${styles.arrow} ${styles.up}`} src={DownArrow} alt="Arrow" onClick={()=>animalListScroll(250)} />
+            <div ref={animalList} className={styles.animalList}>
                 {animals && animals.map(animal => (
                     <AnimalButton
                         key={animal._id}
@@ -71,7 +68,7 @@ export default function Overlay() {
                     />
                 ))}
             </div>
-            <img className={styles.arrow} src={DownArrow} alt="Arrow" onClick={()=>scrollDown(document.getElementById("animalList"))} />
+            <img className={styles.arrow} src={DownArrow} alt="Arrow" onClick={()=>animalListScroll(-250)} />
         </div>
 
         { activeAnimal && showAnimalList ? 

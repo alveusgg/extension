@@ -30,12 +30,10 @@ export default function Overlay() {
 
         //check if mouse is in the viewport
         document.addEventListener('mouseleave', () => {
-            if(isVisible)
-                setIsVisible(false)
+            setIsVisible(false)
         })
         document.addEventListener('mouseenter', () => {
-            if(!isVisible)
-                setIsVisible(true)
+            setIsVisible(true)
         })
     }, [])
 

@@ -13,6 +13,7 @@
         align-items: center;
         gap: 10px;
         transition: 0.3s;
+        z-index: 1;
 
         .animalList{
             overflow: scroll;
@@ -57,8 +58,19 @@
         outline: 3px solid orange;
     }
     .animalCard{
-        transition: 0.3s;
         align-self: center;
+        animation: slideIn 0.5s ease-in-out;
+        z-index: 0;
+    }
+}
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 

@@ -48,12 +48,12 @@ export default function Overlay() {
     const handleArrowVisibility = () => {
         if(animalList.current){
             if(animalList.current.scrollTop === 0)
-                upArrowRef.current?.classList.add(styles.hidden)
+                upArrowRef.current?.classList.add(styles.hideArrow)
             else if(animalList.current.scrollTop + animalList.current.clientHeight === animalList.current.scrollHeight)
-                downArrowRef.current?.classList.add(styles.hidden)
+                downArrowRef.current?.classList.add(styles.hideArrow)
             else{
-                upArrowRef.current?.classList.remove(styles.hidden)
-                downArrowRef.current?.classList.remove(styles.hidden)
+                upArrowRef.current?.classList.remove(styles.hideArrow)
+                downArrowRef.current?.classList.remove(styles.hideArrow)
             }
         }
     }
@@ -65,7 +65,7 @@ export default function Overlay() {
         />
 
         <div className={`${styles.scrollAnimals} ${showAnimalList? styles.visible : styles.hidden}`}>
-            <img ref={upArrowRef} className={`${styles.arrow} ${styles.up} ${styles.hidden}`} src={DownArrow} alt="Arrow" onClick={()=>animalListScroll(250)} />
+            <img ref={upArrowRef} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} src={DownArrow} alt="Arrow" onClick={()=>animalListScroll(250)} />
             <div ref={animalList} className={styles.animalList} onScroll={()=>handleArrowVisibility()}>
                 {animals && animals.map(animal => (
                     <AnimalButton

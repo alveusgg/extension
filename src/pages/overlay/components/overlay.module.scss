@@ -38,6 +38,7 @@
             }
         }
         .arrow{
+            transition: 0.5s;
             width: 50px;
             &:hover{
                 cursor: pointer;
@@ -82,4 +83,8 @@
     visibility: hidden;
     opacity: 0;
     translate: -40px;
+}
+.hideArrow{
+    visibility: hidden;
+    opacity: 0;
 }

@@ -1,10 +1,8 @@
 .overlay{
     display: flex;
-    padding: 100px 20px;
-
+    padding: 20px;
+    padding-top: 40px;
     gap: 10px;
-    height: calc(100vh - 150px);
-
     transition: 0.3s;
 
     .scrollAnimals{
@@ -17,7 +15,7 @@
 
         .animalList{
             overflow: scroll;
-            height: 80vh;
+            height: 75vh;
 
             display: flex;
             flex-direction: column;

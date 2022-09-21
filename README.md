@@ -7,15 +7,15 @@ A Twitch extension that helps viewers that watch [Maya Higa](https://www.twitch.
 https://user-images.githubusercontent.com/49528805/167273992-0cbe7329-9665-4d67-a38c-5e47e9353a18.mov
 
 # Local Set Up
-
-    npm install
-    npm start
+1. Enable Allow invalid certificates for resources loaded from localhost in Chrome: chrome://flags/#allow-insecure-localhost
+2. Get the mongoDB URI from the Alveus Ambassadors team and add it to a .env file in the server folder 
+3. Run the following in the server and root folder: `npm install` and `npm start`
 
 ## Note
 
 CSS files are hidden through the settings.json file in .vscode
 
-# Packages used
+# Converting Single-Page App to Multi-Page App
 
 react-app-rewired-multiple-entry is used to add multiple entry points to the app. it uses the config-overrides.js file to add the entry points.
 

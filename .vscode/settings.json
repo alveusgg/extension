@@ -12,5 +12,10 @@
 		"**/.factorypath": true,
 		"**/*.css": true
 	},
-	"hide-files.files": []
+	"hide-files.files": [],
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#3A254A",
+		"titleBar.activeBackground": "#513368",
+		"titleBar.activeForeground": "#FCFBFD"
+	}
 }

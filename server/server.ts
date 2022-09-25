@@ -28,7 +28,7 @@ app.use('/api/animals', router)
 app.use('/images', express.static('uploads'))//make images publicly available to the frontend
 
 const port = process.env.PORT || 3000
-mongoose.connect(process.env.DB_CONNECTION as string)
+mongoose.connect(process.env.DB_CONNECTION as string, {dbName: 'Alveus'})
     .then(() => {
         app.listen(port, () => {
             console.log(`Server is running on port ${port}`)

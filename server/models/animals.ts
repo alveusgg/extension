@@ -14,4 +14,4 @@ const animalSchema = new mongoose.Schema({
     timestamps: true
 })
 
-export const Animal = mongoose.model('animal', animalSchema)
+export const Animal = mongoose.model('ambassadors', animalSchema)

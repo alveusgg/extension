@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 
+//styles
 import styles from './confirmModal.module.css'
 
+//icons
 import deleteIcon from '../../../../assets/buttonIcons/delete.svg'
 import cancelIcon from '../../../../assets/buttonIcons/cancel.svg'
+
+//utils
+import { server } from '../../../../utils/constants'
 
 interface ConfirmModalProps {
     deleteId: string
@@ -11,7 +16,7 @@ interface ConfirmModalProps {
 }
 export default function confirmModal(props: ConfirmModalProps) {
     const deleteAnimal = async () =>{
-        const response = await fetch('http://localhost:3000/api/animals/' + props.deleteId, {
+        const response = await fetch(server.url+'/api/animals/' + props.deleteId, {
         method: 'DELETE'
         })
         const data = await response.json()

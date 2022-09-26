@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 import { AnimalCardProps } from '../../../utils/global/animalCard/AnimalCard'
 import { useEffect, useState } from 'react'
 
+import { server } from '../../../utils/constants'
+
 interface  ConfigProps {
   handleEditCard: (animal: AnimalCardProps["cardData"]) => void
   changeEditMode: (editMode: "create" | "update") => void
@@ -18,7 +20,7 @@ export default function Config(props: ConfigProps) {
 
   useEffect(()=>{
     const getAnimals = async () => {
-      const response = await fetch('http://localhost:3000/api/animals')
+      const response = await fetch(server.url+'/api/animals')
       const data = await response.json()
       for(let i = 0; i < data.length; i++){
         data[i].img = {
@@ -71,7 +73,7 @@ export default function Config(props: ConfigProps) {
                   name={animal.name}
                   species={animal.species}
                   img={{
-                    src: "http://localhost:3000/images/"+animal.img.src,
+                    src: server.url+"/images/"+animal.img.src,
                     altText: animal.img.altText
                   }}
                   

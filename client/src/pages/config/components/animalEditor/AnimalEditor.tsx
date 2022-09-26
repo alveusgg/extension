@@ -13,6 +13,9 @@ import ResetIcon from '../../../../assets/buttonIcons/cancel.svg';
 import { Link } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 
+//utils
+import { server } from '../../../../utils/constants';
+
 interface AnimalEditorProps {
   cardData: AnimalCardProps["cardData"]
   onChangeImg: (event: ChangeEvent<HTMLInputElement>) => void
@@ -51,7 +54,7 @@ export default function AnimalEditor(props: AnimalEditorProps) {
       formData.append('story', props.cardData.story)
       formData.append('conservationMission', props.cardData.conservationMission)
 
-      let url = 'http://localhost:3000/api/animals/' ;
+      let url = server.url+'/api/animals/' ;
       //post request
       if(props.editMode === "update"){
         url += props.cardData._id

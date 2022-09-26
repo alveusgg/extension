@@ -9,6 +9,9 @@ import styles from './animals.module.css'
 import { useEffect, useState } from "react";
 import { AnimalCardProps } from "../../../../utils/global/animalCard/AnimalCard";
 
+//utils
+import { server } from "../../../../utils/constants";
+
 export default function Animals() {
   const [animals, setAnimals] = useState<AnimalCardProps['cardData'][]>([])
   const [isLoaded, setIsLoaded] = useState(false)
@@ -16,7 +19,7 @@ export default function Animals() {
 
   useEffect(()=>{
     const getAnimals = async () => {
-      const response = await fetch('http://localhost:3000/api/animals')
+      const response = await fetch(server.url+'/api/animals')
       const data = await response.json()
       for(let i = 0; i < data.length; i++){
         data[i].img = {
@@ -51,7 +54,7 @@ export default function Animals() {
                   cardData:{
                     ...animal,
                     img:{
-                      src: "http://localhost:3000/images/"+animal.img.src,
+                      src: server.url+"/images/"+animal.img.src,
                       altText: animal.img.altText
                     },
                     sex: animal.sex? animal.sex : "Unknown",
@@ -68,7 +71,7 @@ export default function Animals() {
               name={animal.name}
               species={animal.species}
               img={{
-                src: "http://localhost:3000/images/"+animal.img.src,
+                src: server.url+"/images/"+animal.img.src,
                 altText: animal.img.altText
               }}
 

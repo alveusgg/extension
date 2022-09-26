@@ -9,6 +9,9 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 //lifecycle hooks 
 import { ChangeEvent, useState } from 'react';
 
+//utils
+import { server } from '../../utils/constants'
+
 export default function App() {
   const [editMode, setEditMode] = useState<'create' | 'update'>('create')
 
@@ -66,7 +69,7 @@ export default function App() {
                   //! MESSY
                   src: animalCard.img.src.includes("http") // if it's a url, don't change it
                     || animalCard.img.src.includes("unknown")?  // if it's a default image, don't change it
-                    animalCard.img.src : "http://localhost:3000/images/"+animalCard.img.src, 
+                    animalCard.img.src : server.url+"/images/"+animalCard.img.src, 
                   altText: animalCard.img.altText,
                 }
               }}

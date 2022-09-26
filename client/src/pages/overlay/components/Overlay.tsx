@@ -8,6 +8,9 @@ import styles from './overlay.module.css'
 //images
 import DownArrow from '../../../assets/downarrow.svg'
 
+//utils
+import { server } from '../../../utils/constants'
+
 export default function Overlay() {
     const [animals, setAnimals] = useState<AnimalCardProps["cardData"][]>()
     const [showAnimalList, setShowAnimalList] = useState(false)
@@ -20,7 +23,7 @@ export default function Overlay() {
 
     useEffect(() => {
         const getAnimals = async () => {
-            const response = await fetch('http://localhost:3000/api/animals')
+            const response = await fetch(server.url+'/api/animals')
             const data = await response.json()
             for(let i = 0; i < data.length; i++){
                 data[i].img = {
@@ -73,7 +76,7 @@ export default function Overlay() {
                         name={animal.name}
                         species={animal.species}
                         img={{
-                            src: "http://localhost:3000/images/"+animal.img.src,
+                            src: server.url+"/images/"+animal.img.src,
                             altText: animal.img.altText
                         }}
 
@@ -91,7 +94,7 @@ export default function Overlay() {
                 cardData={{
                     ...activeAnimal,
                     img:{
-                        src: "http://localhost:3000/images/"+activeAnimal.img.src,
+                        src: server.url+"/images/"+activeAnimal.img.src,
                         altText: activeAnimal.img.altText
                     },
                     dateOfBirth: new Date(activeAnimal.dateOfBirth)

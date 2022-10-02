@@ -73,7 +73,7 @@ export default function Config(props: ConfigProps) {
                   name={animal.name}
                   species={animal.species}
                   img={{
-                    src: server.url+"/images/"+animal.img.src,
+                    src: animal.img.src,
                     altText: animal.img.altText
                   }}
                   

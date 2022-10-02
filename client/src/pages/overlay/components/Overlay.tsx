@@ -76,7 +76,7 @@ export default function Overlay() {
                         name={animal.name}
                         species={animal.species}
                         img={{
-                            src: server.url+"/images/"+animal.img.src,
+                            src: animal.img.src,
                             altText: animal.img.altText
                         }}
 
@@ -94,7 +94,7 @@ export default function Overlay() {
                 cardData={{
                     ...activeAnimal,
                     img:{
-                        src: server.url+"/images/"+activeAnimal.img.src,
+                        src: activeAnimal.img.src,
                         altText: activeAnimal.img.altText
                     },
                     dateOfBirth: new Date(activeAnimal.dateOfBirth)

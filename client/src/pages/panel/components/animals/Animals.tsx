@@ -54,7 +54,7 @@ export default function Animals() {
                   cardData:{
                     ...animal,
                     img:{
-                      src: server.url+"/images/"+animal.img.src,
+                      src: animal.img.src,
                       altText: animal.img.altText
                     },
                     sex: animal.sex? animal.sex : "Unknown",
@@ -71,7 +71,7 @@ export default function Animals() {
               name={animal.name}
               species={animal.species}
               img={{
-                src: server.url+"/images/"+animal.img.src,
+                src: animal.img.src,
                 altText: animal.img.altText
               }}
 

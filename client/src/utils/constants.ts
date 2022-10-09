@@ -1,5 +1,5 @@
 const production = {
-    url: 'https://https://alveusambassadors.up.railway.app/'
+    url: 'https://alveusambassadors.up.railway.app'
 }
 const development = {
     url: 'http://localhost:3000'

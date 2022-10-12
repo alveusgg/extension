@@ -1,13 +1,12 @@
 //Global styles
 @import './variables.scss';
-@import "https://fonts.cdnfonts.com/css/futura-md-bt";
 
 *{
     margin: 0;
     padding: 0;
 }
 body {
-  font-family: "Futura Md BT", sans-serif;
+  font-family: $font-family;
   color: $primary-text;
 
   display: flex;

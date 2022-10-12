@@ -1,5 +1,4 @@
 @import '../../variables.scss';
-@import "https://fonts.cdnfonts.com/css/futura-md-bt";
 
 *{
     margin: 0;
@@ -7,6 +6,5 @@
 }
 
 body{
-    font-family: "Futura Md BT", sans-serif;
-    // background-color: #555555;
+    font-family: $font-family;
 }

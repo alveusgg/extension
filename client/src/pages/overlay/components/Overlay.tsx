@@ -5,8 +5,6 @@ import ActivationButtons from './ActivationButtons'
 import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
 
 import styles from './overlay.module.css'
-//images
-import DownArrow from '../../../assets/downarrow.svg'
 
 //utils
 import { server } from '../../../utils/constants'
@@ -68,7 +66,7 @@ export default function Overlay() {
         />
 
         <div className={`${styles.scrollAnimals} ${showAnimalList? styles.visible : styles.hidden}`}>
-            <img ref={upArrowRef} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} src={DownArrow} alt="Arrow" onClick={()=>animalListScroll(250)} />
+            <div ref={upArrowRef} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>animalListScroll(250)} />
             <div ref={animalList} className={styles.animalList} onScroll={()=>handleArrowVisibility()}>
                 {animals && animals.map(animal => (
                     <AnimalButton
@@ -85,7 +83,7 @@ export default function Overlay() {
                     />
                 ))}
             </div>
-            <img ref={downArrowRef} className={styles.arrow} src={DownArrow} alt="Arrow" onClick={()=>animalListScroll(-250)} />
+            <div ref={downArrowRef} className={`${styles.arrow} ${styles.down}`} onClick={()=>animalListScroll(-250)} />
         </div>
 
         { activeAnimal && showAnimalList ? 

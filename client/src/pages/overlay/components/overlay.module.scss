@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .overlay{
     display: flex;
     padding: 20px;
@@ -24,25 +26,28 @@
 
             & > *{
                 margin-bottom: 20px;
-
-                // @for $i from 2 through  {
-                //     &:nth-child(#{$i}) {
-                //         transition-delay: 100ms * ($i - 1);
-                //     }
-                // }
             }
             &::-webkit-scrollbar {
                 display: none;
             }
         }
         .arrow{
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid $secondary-color;
+            margin: 5px;
+
             transition: 0.5s;
-            width: 50px;
             &:hover{
                 cursor: pointer;
             }
         }
-        .up{
+        .down{
             transform: rotate(180deg);
         }
     }

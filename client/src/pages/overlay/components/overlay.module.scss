@@ -91,3 +91,20 @@
     visibility: hidden;
     opacity: 0;
 }
+
+//media query min height 545px
+@media screen and (max-height: 545px) {
+    .overlay>.scrollAnimals, .overlay>.animalCard{
+        display: none;
+    }
+    .overlay::after{
+        content: "Display too small, please increase your screen size.";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $secondary-color;
+    }
+}

@@ -98,13 +98,14 @@
         display: none;
     }
     .overlay::after{
-        content: "Display too small, please increase your screen size.";
+        content: "Display too small, please increase your screen size";
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: $secondary-color;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
     }
 }

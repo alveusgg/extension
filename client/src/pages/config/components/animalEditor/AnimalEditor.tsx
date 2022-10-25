@@ -4,6 +4,7 @@ import EditorForm from '../editorForm/EditorForm';
 import AnimalCard, { AnimalCardProps } from '../../../../utils/global/animalCard/AnimalCard';
 import AnimalButton from '../../../../utils/global/animalButton/AnimalButton';
 import ConfirmModal from '../confirmModal/ConfirmModal';
+import LoadingOverlay from '../loadingOverlay/LoadingOverlay';
 
 //icons
 import deleteIcon from '../../../../assets/buttonIcons/delete.svg';
@@ -23,10 +24,13 @@ interface AnimalEditorProps {
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
   const [openConfirmModal, setOpenConfirmModal] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   let navigate = useNavigate()
 
   const save = async () =>{
+    setLoading(true)
+
     const formData = new FormData()
 
     //create image from url
@@ -74,10 +78,12 @@ export default function AnimalEditor(props: AnimalEditorProps) {
 
   return (
     <div className={styles.page}>
+      {loading ? <LoadingOverlay/> : null}
       {openConfirmModal ?
         <ConfirmModal 
           changeOpenConfirmModal={(openModal)=>setOpenConfirmModal(openModal)}
           deleteId = {props.cardData._id}
+          setLoading = {()=>setLoading(true)}
         />: null
       }
       <Link to={"/"}>

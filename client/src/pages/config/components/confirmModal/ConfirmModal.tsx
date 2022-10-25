@@ -13,11 +13,13 @@ import { server } from '../../../../utils/constants'
 interface ConfirmModalProps {
     deleteId: string
     changeOpenConfirmModal: (openConfirmModal: boolean) => void
+    setLoading: () => void
 }
 export default function ConfirmModal(props: ConfirmModalProps) {
     let navigate = useNavigate()
 
     const deleteAnimal = async () =>{
+        props.setLoading()
         const response = await fetch(server.url+'/api/animals/' + props.deleteId, {
             method: 'DELETE'
         })

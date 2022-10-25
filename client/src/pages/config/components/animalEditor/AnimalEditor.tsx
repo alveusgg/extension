@@ -8,10 +8,9 @@ import ConfirmModal from '../confirmModal/ConfirmModal';
 //icons
 import deleteIcon from '../../../../assets/buttonIcons/delete.svg';
 import saveIcon from '../../../../assets/buttonIcons/save.svg';
-import ResetIcon from '../../../../assets/buttonIcons/cancel.svg';
 
-import { Link } from 'react-router-dom';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ChangeEvent, useState } from 'react';
 
 //utils
 import { server } from '../../../../utils/constants';
@@ -24,6 +23,8 @@ interface AnimalEditorProps {
 }
 export default function AnimalEditor(props: AnimalEditorProps) {
   const [openConfirmModal, setOpenConfirmModal] = useState(false)
+
+  let navigate = useNavigate()
 
   const save = async () =>{
     const formData = new FormData()
@@ -64,9 +65,11 @@ export default function AnimalEditor(props: AnimalEditorProps) {
         method: props.editMode === 'update' ? 'PATCH' :'POST',
         body: formData
       })
-      const data = await response.json()
-      console.log(data)
+      await response.json().then(() => {
+        navigate('/')
+      })
     }
+
   }
 
   return (
@@ -95,12 +98,10 @@ export default function AnimalEditor(props: AnimalEditorProps) {
               <img src={deleteIcon} alt="Trash Can Icon"/> 
               <span>Delete</span>
             </button>
-            <Link to={"/"}>
-              <button className={styles.save} onClick={()=>save()}>
-                <img src={saveIcon} alt="Floppy Disc Icon"/> 
-                <span>Save</span>
-              </button>
-            </Link>
+            <button className={styles.save} onClick={()=>save()}>
+              <img src={saveIcon} alt="Floppy Disc Icon"/> 
+              <span>Save</span>
+            </button>
           </div>
         </div>
         <div className={styles.preview}>

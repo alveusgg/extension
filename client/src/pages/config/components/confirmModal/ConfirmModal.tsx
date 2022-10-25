@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 //styles
 import styles from './confirmModal.module.css'
@@ -14,13 +14,16 @@ interface ConfirmModalProps {
     deleteId: string
     changeOpenConfirmModal: (openConfirmModal: boolean) => void
 }
-export default function confirmModal(props: ConfirmModalProps) {
+export default function ConfirmModal(props: ConfirmModalProps) {
+    let navigate = useNavigate()
+
     const deleteAnimal = async () =>{
         const response = await fetch(server.url+'/api/animals/' + props.deleteId, {
-        method: 'DELETE'
+            method: 'DELETE'
         })
-        const data = await response.json()
-        console.log(data)
+        await response.json().then(() => {
+            navigate('/')
+        })
     }
     return (
         <div className={styles.modal}>
@@ -31,12 +34,10 @@ export default function confirmModal(props: ConfirmModalProps) {
                 <div className={styles.main}>
                     <h2 className={styles.title}>Confirm Delete</h2>
                     <div className={styles.buttons}>
-                        <Link to={"/"}>
-                            <button className={styles.delete} onClick={()=>{deleteAnimal()}}>
-                                <img src={deleteIcon} alt="Trash Can Icon"/> 
-                                Delete
-                            </button>
-                        </Link>
+                        <button className={styles.delete} onClick={()=>{deleteAnimal()}}>
+                            <img src={deleteIcon} alt="Trash Can Icon"/> 
+                            Delete
+                        </button>
                         <button className={styles.cancel} onClick={()=>{props.changeOpenConfirmModal(false)}}>
                             <img src={cancelIcon} alt="Undo Icon"/> 
                             Cancel

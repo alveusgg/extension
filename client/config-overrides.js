@@ -5,11 +5,6 @@ const multipleEntry = require('react-app-rewire-multiple-entry')([
     outPath: 'panel.html',
   },
   {
-    entry: 'src/pages/config/index.tsx',
-    template: 'public/index.html',
-    outPath: 'config.html',
-  },
-  {
     entry: 'src/pages/overlay/index.tsx',
     template: 'public/index.html',
     outPath: 'video_overlay.html',

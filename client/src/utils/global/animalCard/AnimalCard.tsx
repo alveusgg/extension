@@ -4,15 +4,14 @@ import styles from './animalCard.module.css'
 
 export interface AnimalCardProps {
   cardData: {
-    _id: string
+    name: string
+    species: string
     img: {
         src: string
         altText: string
     }
-    name: string
-    species: string
     scientificName: string
-    sex?: string
+    sex: string
     dateOfBirth: Date
     iucnStatus: string
     story: string

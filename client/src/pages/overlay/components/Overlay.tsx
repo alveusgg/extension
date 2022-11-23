@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import AnimalCard, { AnimalCardProps } from '../../../utils/global/animalCard/AnimalCard'
+import AnimalData from '../../../assets/animals.json'
 
 import ActivationButtons from './ActivationButtons'
 import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
 
 import styles from './overlay.module.css'
 
-//utils
-import { server } from '../../../utils/constants'
-
 export default function Overlay() {
-    const [animals, setAnimals] = useState<AnimalCardProps["cardData"][]>()
+    const [animals, setAnimals] = useState(AnimalData)
     const [showAnimalList, setShowAnimalList] = useState(false)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"]>()
     const [isVisible, setIsVisible] = useState(false)
@@ -20,19 +18,6 @@ export default function Overlay() {
     const downArrowRef = useRef<HTMLImageElement>(null)
 
     useEffect(() => {
-        const getAnimals = async () => {
-            const response = await fetch(server.url+'/api/animals')
-            const data = await response.json()
-            for(let i = 0; i < data.length; i++){
-                data[i].img = {
-                src: data[i].img,
-                altText: data[i].img 
-                }
-            }
-            setAnimals(data)
-        }
-        getAnimals()
-
         //check if mouse is in the viewport
         document.addEventListener('mouseleave', () => {
             setIsVisible(false)
@@ -70,7 +55,7 @@ export default function Overlay() {
             <div ref={animalList} className={styles.animalList} onScroll={()=>handleArrowVisibility()}>
                 {animals && animals.map(animal => (
                     <AnimalButton
-                        key={animal._id}
+                        key={animal.name}
                         name={animal.name}
                         species={animal.species}
                         img={{
@@ -78,8 +63,8 @@ export default function Overlay() {
                             altText: animal.img.altText
                         }}
 
-                        getCard={() => {setActiveAnimal(activeAnimal?._id === animal._id ? undefined : animal)}}
-                        containerClassName={`${styles.animalButton} ${activeAnimal?._id === animal._id ? styles.animalButtonClicked : undefined}`}
+                        getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : animal)}}
+                        containerClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
                     />
                 ))}
             </div>
@@ -88,7 +73,7 @@ export default function Overlay() {
 
         { activeAnimal && showAnimalList ? 
             <AnimalCard
-                key={activeAnimal._id}
+                key={activeAnimal.name}
                 cardData={{
                     ...activeAnimal,
                     img:{

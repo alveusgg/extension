@@ -10,7 +10,7 @@ import styles from './overlay.module.css'
 export default function Overlay() {
     const [animals, setAnimals] = useState(AnimalData)
     const [showAnimalList, setShowAnimalList] = useState(false)
-    const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"]>()
+    const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"] | null>()
     const [isVisible, setIsVisible] = useState(false)
 
     const upArrowRef = useRef<HTMLImageElement>(null)
@@ -63,7 +63,7 @@ export default function Overlay() {
                             altText: animal.img.altText
                         }}
 
-                        getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : animal)}}
+                        getCard={(name) => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : {...animal, dateOfBirth: new Date(animal.dateOfBirth) })}}
                         containerClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
                     />
                 ))}

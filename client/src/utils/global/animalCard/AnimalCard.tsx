@@ -11,7 +11,7 @@ export interface AnimalCardProps {
         altText: string
     }
     scientificName: string
-    sex: string
+    sex?: string
     dateOfBirth: Date
     iucnStatus: string
     story: string

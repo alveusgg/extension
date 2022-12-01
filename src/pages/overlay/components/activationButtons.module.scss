@@ -1,0 +1,23 @@
+@import '../../../variables.scss';
+
+.activationButtons{
+    margin-top: 40px;
+    button{
+        all: unset;
+        border-radius: 5px;
+        background-color: $primary-color;
+        padding: 5px;
+
+        img{
+            width: 55px;
+            height: 55px;
+        }
+
+        &:hover{
+            outline: 1px solid white;
+            cursor: pointer;
+            filter: brightness(1.2);
+            transition: 0.3s;
+        }
+    }
+}

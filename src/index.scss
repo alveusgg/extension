@@ -1,0 +1,15 @@
+//Global styles
+@import './variables.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+  font-family: $font-family;
+  color: $primary-text;
+
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden; // no horizontal scrollbar
+}

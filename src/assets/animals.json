@@ -143,7 +143,7 @@
         "name": "Georgie",
         "species": "African Bullfrog",
         "img": {
-            "src": "animal-images/georgie.png",
+            "src": "animal-images/georgie.jpg",
             "altText": "Georgie"
         },
         "scientificName": "Pyxicephalus adspersus",
@@ -381,7 +381,7 @@
         "name": "Puppy",
         "species": "Emperor Scorpion",
         "img": {
-            "src": "animal-images/puppy.png",
+            "src": "animal-images/puppy.jpg",
             "altText": "Puppy"
         },
         "scientificName": "Pandinus imperator",

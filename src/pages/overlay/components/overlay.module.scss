@@ -32,20 +32,12 @@
             }
         }
         .arrow{
-            content: "";
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 15px solid $secondary-color;
-            margin: 5px;
-
-            transition: 0.5s;
+            width: 30px;
             &:hover{
+                scale: 1.4;
                 cursor: pointer;
             }
+            transition: 0.3s;
         }
         .down{
             transform: rotate(180deg);

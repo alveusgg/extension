@@ -1,5 +1,173 @@
 [
     {
+        "name": "Chips Ahoy",
+        "species": "Domestic Rat",
+        "img": {
+            "src": "animal-images/chipsahoy.jpg",
+            "altText": "Chips Ahoy"
+        },
+        "scientificName": "Rattus norvegicus f. domestica",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Chips Ahoy was bred as a feeder rat for snakes, but they will now live out their full lives at Alveus.",
+        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+    },
+    {
+        "name": "Nilla Wafer",
+        "species": "Domestic Rat",
+        "img": {
+            "src": "animal-images/nillawafer.jpg",
+            "altText": "Nilla Wafer"
+        },
+        "scientificName": "Rattus norvegicus f. domestica",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Nilla Wafer was bred as a feeder rat for snakes, but they will now live out their full lives at Alveus.",
+        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+    },
+    {
+        "name": "Henrietta",
+        "species": "Jersey Giant",
+        "img": {
+            "src": "animal-images/henrietta.jpg",
+            "altText": "Henrietta"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Henrietta was rehomed from a local farm.",
+        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+    },
+    {
+        "name": "Henrique",
+        "species": "Half Dark Brahma, Half Saipan",
+        "img": {
+            "src": "animal-images/henrique.jpg",
+            "altText": "Henrique"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Henrique was rehomed from a local farm.",
+        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+    },
+    {
+        "name": "Nugget",
+        "species": "Ameraucana Chicken",
+        "img": {
+            "src": "animal-images/nugget.jpg",
+            "altText": "Nugget"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Nugget was rehomed to Alveus because she was bullied by hens in her previous flock.",
+        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+    },
+    {
+        "name": "Oliver",
+        "species": "Olive Egger Chicken",
+        "img": {
+            "src": "animal-images/oliver.jpg",
+            "altText": "Oliver"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Male",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Oliver was put in the reject/return cage at a local feed store.",
+        "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+    },
+    {
+        "name": "Toaster Strudel",
+        "species": "Blue-tongued Skink",
+        "img": {
+            "src": "animal-images/toasterstrudel.jpg",
+            "altText": "Toaster Strudel"
+        },
+        "scientificName": "Tiliqua scincoides intermedia",
+        "sex": "Male",
+        "dateOfBirth": "2022-04-07",
+        "iucnStatus": "Least Concern",
+        "story": "Toaster Strudel was part of an educational program at a zoo and was rehomed to Alveus.",
+        "conservationMission": "He is an ambassador for how human development and invasive species can affect natural habitats and native species. "
+    },
+    {
+        "name": "Puppy",
+        "species": "Emperor Scorpion",
+        "img": {
+            "src": "animal-images/puppy.jpg",
+            "altText": "Puppy"
+        },
+        "scientificName": "Pandinus imperator",
+        "sex": "Male",
+        "dateOfBirth": "2022-01-10",
+        "iucnStatus": "Not evaluated",
+        "story": "Our emperor scorpions were born in captivity and ethically sourced.",
+        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+    },
+    {
+        "name": "Tortellini",
+        "species": "Emperor Scorpion",
+        "img": {
+            "src": "animal-images/tortellini.jpg",
+            "altText": "Tortellini"
+        },
+        "scientificName": "Pandinus imperator",
+        "sex": "Male",
+        "dateOfBirth": "2022-01-10",
+        "iucnStatus": "Not evaluated",
+        "story": "Our emperor scorpions were born in captivity and ethically sourced. ",
+        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+    },
+    {
+        "name": "Fenn",
+        "species": "European Red Fox",
+        "img": {
+            "src": "animal-images/fenn.jpg",
+            "altText": "Fenn"
+        },
+        "scientificName": "Vulpes vulpes",
+        "sex": "Male",
+        "dateOfBirth": "",
+        "iucnStatus": "Least Concern",
+        "story": "Fenn was confiscated from the illegal pet trade by California Department of Fish and Wildlife. He was then rehomed to Alveus.",
+        "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+    },
+    {
+        "name": "Reed",
+        "species": "European Red Fox",
+        "img": {
+            "src": "animal-images/reed.jpg",
+            "altText": "Reed"
+        },
+        "scientificName": "Vulpes vulpes",
+        "sex": "Male",
+        "dateOfBirth": "",
+        "iucnStatus": "Least Concern",
+        "story": "Reed was orphaned as a wild kit and was rescued to be raised at a zoo to be an educational ambassador. He was then rehomed to Alveus.",
+        "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+    },
+    {
+        "name": "Winnie (The Moo)",
+        "species": "Red Angus Beef Cow",
+        "img": {
+            "src": "animal-images/winnie.jpg",
+            "altText": "Winnie (the Moo)"
+        },
+        "scientificName": "Bos (primigenius) taurus",
+        "sex": "Female",
+        "dateOfBirth": "2022-03-22",
+        "iucnStatus": "Not evaluated",
+        "story": "Winnie came from a cattle operation in Oklahoma. ",
+        "conservationMission": "She is an ambassador for the beef industry and how people can use their consumer choice to impact the environment in a positive way."
+    },
+    {
         "name": "Mia",
         "species": "African Grey",
         "img": {
@@ -124,20 +292,6 @@
         "iucnStatus": "Least Concern",
         "story": "Stompy was hatched in captivity at a zoo and was hand-raised to be the first Alveus ambassador.",
         "conservationMission": "He is an ambassador for how the exotic meat trade and the use of animal products in cosmetics has affected her species and others."
-    },
-    {
-        "name": "Winnie (The Moo)",
-        "species": "Red Angus Beef Cow",
-        "img": {
-            "src": "animal-images/winnie.jpg",
-            "altText": "Winnie (the Moo)"
-        },
-        "scientificName": "Bos (primigenius) taurus",
-        "sex": "Female",
-        "dateOfBirth": "2022-03-22",
-        "iucnStatus": "Not evaluated",
-        "story": "Winnie came from a cattle operation in Oklahoma. ",
-        "conservationMission": "She is an ambassador for the beef industry and how people can use their consumer choice to impact the environment in a positive way."
     },
     {
         "name": "Georgie",
@@ -306,159 +460,5 @@
         "iucnStatus": "Not evaluated",
         "story": "Our vinegaroon was born in captivity and ethically sourced.",
         "conservationMission": "She is an ambassador for the importance of invertebrates and the misconceptions they face."
-    },
-    {
-        "name": "Nugget",
-        "species": "Ameraucana Chicken",
-        "img": {
-            "src": "animal-images/nugget.jpg",
-            "altText": "Nugget"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Nugget was rehomed to Alveus because she was bullied by hens in her previous flock.",
-        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
-    },
-    {
-        "name": "Oliver",
-        "species": "Olive Egger Chicken",
-        "img": {
-            "src": "animal-images/oliver.jpg",
-            "altText": "Oliver"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Male",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Oliver was put in the reject/return cage at a local feed store.",
-        "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
-    },
-    {
-        "name": "Henrietta",
-        "species": "Jersey Giant",
-        "img": {
-            "src": "animal-images/henrietta.jpg",
-            "altText": "Henrietta"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Henrietta was rehomed from a local farm.",
-        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
-    },
-    {
-        "name": "Henrique",
-        "species": "Half Dark Brahma, Half Saipan",
-        "img": {
-            "src": "animal-images/henrique.jpg",
-            "altText": "Henrique"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Henrique was rehomed from a local farm.",
-        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
-    },
-    {
-        "name": "Toaster Strudel",
-        "species": "Blue-tongued Skink",
-        "img": {
-            "src": "animal-images/toasterstrudel.jpg",
-            "altText": "Toaster Strudel"
-        },
-        "scientificName": "Tiliqua scincoides intermedia",
-        "sex": "Male",
-        "dateOfBirth": "2022-04-07",
-        "iucnStatus": "Least Concern",
-        "story": "Toaster Strudel was part of an educational program at a zoo and was rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for how human development and invasive species can affect natural habitats and native species. "
-    },
-    {
-        "name": "Puppy",
-        "species": "Emperor Scorpion",
-        "img": {
-            "src": "animal-images/puppy.jpg",
-            "altText": "Puppy"
-        },
-        "scientificName": "Pandinus imperator",
-        "sex": "Male",
-        "dateOfBirth": "2022-01-10",
-        "iucnStatus": "Not evaluated",
-        "story": "Our emperor scorpions were born in captivity and ethically sourced.",
-        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
-    },
-    {
-        "name": "Tortellini",
-        "species": "Emperor Scorpion",
-        "img": {
-            "src": "animal-images/tortellini.jpg",
-            "altText": "Tortellini"
-        },
-        "scientificName": "Pandinus imperator",
-        "sex": "Male",
-        "dateOfBirth": "2022-01-10",
-        "iucnStatus": "Not evaluated",
-        "story": "Our emperor scorpions were born in captivity and ethically sourced. ",
-        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
-    },
-    {
-        "name": "Fenn",
-        "species": "European Red Fox",
-        "img": {
-            "src": "animal-images/fenn.jpg",
-            "altText": "Fenn"
-        },
-        "scientificName": "Vulpes vulpes",
-        "sex": "Male",
-        "dateOfBirth": "",
-        "iucnStatus": "Least Concern",
-        "story": "Fenn was confiscated from the illegal pet trade by California Department of Fish and Wildlife. He was then rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
-    },
-    {
-        "name": "Reed",
-        "species": "European Red Fox",
-        "img": {
-            "src": "animal-images/reed.jpg",
-            "altText": "Reed"
-        },
-        "scientificName": "Vulpes vulpes",
-        "sex": "Male",
-        "dateOfBirth": "",
-        "iucnStatus": "Least Concern",
-        "story": "Reed was orphaned as a wild kit and was rescued to be raised at a zoo to be an educational ambassador. He was then rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
-    },
-    {
-        "name": "Chips Ahoy",
-        "species": "Domestic Rat",
-        "img": {
-            "src": "animal-images/chipsahoy.jpg",
-            "altText": "Chips Ahoy"
-        },
-        "scientificName": "Rattus norvegicus f. domestica",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Chips Ahoy was bred as a feeder rat for snakes, but they will now live out their full lives at Alveus.",
-        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
-    },
-    {
-        "name": "Nilla Wafer",
-        "species": "Domestic Rat",
-        "img": {
-            "src": "animal-images/nillawafer.jpg",
-            "altText": "Nilla Wafer"
-        },
-        "scientificName": "Rattus norvegicus f. domestica",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Nilla Wafer was bred as a feeder rat for snakes, but they will now live out their full lives at Alveus.",
-        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     }
 ]

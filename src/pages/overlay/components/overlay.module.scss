@@ -17,7 +17,7 @@
 
         .animalList{
             overflow: scroll;
-            height: 65vh;
+            height: 70vh;
 
             display: flex;
             flex-direction: column;
@@ -93,19 +93,27 @@
 }
 
 //media query min height 545px
-@media screen and (max-height: 545px) {
-    .overlay>.scrollAnimals, .overlay>.animalCard{
-        display: none;
+@media screen and (max-height: 555px) {
+    .overlay{
+        //scale down the overlay
+        scale: 0.8 ;
+        //move the overlay up
+        transform: translateX(-12%);
+        padding-top: 40px;
+        .scrollAnimals .animalList{
+            height: 80vh;
+        }
     }
-    .overlay::after{
-        content: "Display too small, please increase your screen size";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: black;
-        color: white;
-        padding: 10px;
-        border-radius: 10px;
+}
+@media screen and (max-height: 440px) {
+    .overlay{
+        //scale down the overlay
+        scale: 0.6 ;
+        //move the overlay up
+        transform: translateX(-32%);
+        padding-top: 20px;
+        .scrollAnimals .animalList{
+            height: 90vh;
+        }
     }
 }

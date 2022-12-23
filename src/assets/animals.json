@@ -1,5 +1,5 @@
 [
-        {
+    {
         "name": "Mia",
         "species": "African Grey",
         "img": {
@@ -64,9 +64,9 @@
         },
         "scientificName": "Chinchilla lanigera",
         "sex": "Male",
-        "dateOfBirth": "2021-05-13",
+        "dateOfBirth": "",
         "iucnStatus": "Endangered with decreasing population trend",
-        "story": "Rehomed from a local pet owner.",
+        "story": "Moomin was rehomed from a local pet owner.",
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the fur trade."
     },
     {
@@ -95,7 +95,7 @@
         "dateOfBirth": "",
         "iucnStatus": "Not evaluated",
         "story": "Rehomed to Alveus from a local equine rescue.",
-        "conservationMission": "Jalapeño is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
+        "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
     },
     {
         "name": "Serrano",
@@ -109,7 +109,7 @@
         "dateOfBirth": "",
         "iucnStatus": "Not evaluated",
         "story": "Rehomed to Alveus from a local equine rescue.",
-        "conservationMission": "Serrano is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
+        "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
     },
     {
         "name": "Stompy",
@@ -122,8 +122,8 @@
         "sex": "Male",
         "dateOfBirth": "2021-02-14",
         "iucnStatus": "Least Concern",
-        "story": "Stompy was hatched in captivity and Maya hand was raised to be the first Alveus ambassador.",
-        "conservationMission": "Stopping exotic meat trade, traditional medicine, and over exploitation of animal products in cosmetics."
+        "story": "Stompy was hatched in captivity at a zoo and was hand-raised to be the first Alveus ambassador.",
+        "conservationMission": "He is an ambassador for how the exotic meat trade and the use of animal products in cosmetics has affected her species and others."
     },
     {
         "name": "Winnie (The Moo)",
@@ -337,7 +337,7 @@
     },
     {
         "name": "Henrietta",
-        "species": "Jersey Giant Chicken",
+        "species": "Jersey Giant",
         "img": {
             "src": "animal-images/henrietta.jpg",
             "altText": "Henrietta"
@@ -351,7 +351,7 @@
     },
     {
         "name": "Henrique",
-        "species": "Half Dark Brahma, Half Saipan Chicken",
+        "species": "Half Dark Brahma, Half Saipan",
         "img": {
             "src": "animal-images/henrique.jpg",
             "altText": "Henrique"
@@ -365,7 +365,7 @@
     },
     {
         "name": "Toaster Strudel",
-        "species": "Blue tongued Skink",
+        "species": "Blue-tongued Skink",
         "img": {
             "src": "animal-images/toasterstrudel.jpg",
             "altText": "Toaster Strudel"

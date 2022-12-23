@@ -432,5 +432,33 @@
         "iucnStatus": "Least Concern",
         "story": "Reed was orphaned as a wild kit and was rescued to be raised at a zoo to be an educational ambassador. He was then rehomed to Alveus.",
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+    },
+    {
+        "name": "Chips Ahoy",
+        "species": "Domestic Rat",
+        "img": {
+            "src": "animal-images/chipsahoy.jpg",
+            "altText": "Chips Ahoy"
+        },
+        "scientificName": "Rattus norvegicus f. domestica",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Chips Ahoy was bred as a feeder rat for snakes, but they will now live out their full lives at Alveus.",
+        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+    },
+    {
+        "name": "Nilla Wafer",
+        "species": "Domestic Rat",
+        "img": {
+            "src": "animal-images/nillawafer.jpg",
+            "altText": "Nilla Wafer"
+        },
+        "scientificName": "Rattus norvegicus f. domestica",
+        "sex": "Female",
+        "dateOfBirth": "",
+        "iucnStatus": "Not evaluated",
+        "story": "Nilla Wafer was bred as a feeder rat for snakes, but they will now live out their full lives at Alveus.",
+        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     }
 ]

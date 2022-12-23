@@ -11,8 +11,9 @@
 }
 .img{
     border-radius: 5px;
+    height: 70px;
     max-width: 100px;
-    max-height: 70px;
+    object-fit: cover;
     margin-bottom: 5px;
 }
 .name{

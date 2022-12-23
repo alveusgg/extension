@@ -1,10 +1,15 @@
 @import '../../../variables.scss';
 
 .animalCard{
-    width: 250px;
-    height: 400px;
+    width: 275px;
+    height: 415px;
     justify-content: start;
     align-items: baseline;
+    background-color: $accent-color;
+    border: 10px solid $primary-color;
+    border-radius: 20px;
+    padding: 5px 0;
+    padding-bottom: 10px;
 
     color: $primary-text;
     text-align: left;
@@ -16,7 +21,7 @@
     }
     .close{
         position: absolute;
-        top: 5px;
+        top: -5px;
         right: 10px;
         padding: 5px;
         font-size: x-large;
@@ -28,12 +33,19 @@
     }
 
     .img{
-        max-height: 130px;
+        //crop image with a ratio of 2.2:1
+        width: 100%;
+        height: 125px;
+
         align-self: center;
+        border-radius: 0;
+        margin-bottom: 5px;
+    }
+    .name, .row, .story, .conservationmission{
+        margin-left: 5px;
     }
     .name{
         font-size: 1.3rem;
-        align-self: center;
     }
 
     .row{
@@ -41,6 +53,7 @@
     }
     .story, .conservationmission{
         height: 60px;
+        padding-bottom: 5px;
     }
     .compact{ //multiple data put in one row
         display: flex;

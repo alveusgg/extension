@@ -50,8 +50,8 @@ export default function AnimalCard(props: AnimalCardProps) {
             : null
         }
 
-        <img className={styles.img} src={props.cardData.img.src} alt={props.cardData.img.altText} />
         <h2 className={styles.name}>{props.cardData.name}</h2>
+        <img className={styles.img} src={props.cardData.img.src} alt={props.cardData.img.altText} />
 
         <div className={styles.row}>
           <h3>Species</h3>

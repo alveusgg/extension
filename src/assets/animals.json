@@ -101,7 +101,7 @@
         "name": "Serrano",
         "species": "Domestic Donkey",
         "img": {
-            "src": "animal-images/serrano.png",
+            "src": "animal-images/serrano.jpg",
             "altText": "Serrano"
         },
         "scientificName": "Equus Africanus Asinus",
@@ -171,7 +171,7 @@
         "name": "Patchy",
         "species": "Ball Python",
         "img": {
-            "src": "animal-images/patchy.png",
+            "src": "animal-images/patchy.jpg",
             "altText": "Patchy"
         },
         "scientificName": "Python Regius",
@@ -185,7 +185,7 @@
         "name": "Abbott",
         "species": "American Crow",
         "img": {
-            "src": "animal-images/abbott.png",
+            "src": "animal-images/abbott.jpg",
             "altText": "Abbott"
         },
         "scientificName": "Corvus Brachyrhynchos",
@@ -199,7 +199,7 @@
         "name": "Coconut",
         "species": "American Crow",
         "img": {
-            "src": "animal-images/coconut.png",
+            "src": "animal-images/coconut.jpg",
             "altText": "Coconut"
         },
         "scientificName": "Corvus Brachyrhynchos",
@@ -239,7 +239,7 @@
     },
     {
         "name": "BB",
-        "species": "Powder Orange Isopods",
+        "species": "Spanish Orange Isopods",
         "img":{
             "src": "animal-images/bb.jpg",
             "altText": "BB"
@@ -248,7 +248,7 @@
         "sex": "Unknown",
         "dateOfBirth": "",
         "iucnStatus": "Not evaluated",
-        "story": "Our powder orange isopods were born in captivity and ethically sourced. ",
+        "story": "Our Spanish orange isopods were born in captivity and ethically sourced. ",
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
@@ -280,11 +280,11 @@
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-        "name": "Mr. McTrain",
+        "name": "Hank (The Tank)",
         "species": "Smokey Ghost Millipede",
         "img": {
-            "src": "animal-images/mrmctrain.jpg",
-            "altText": "Mr. McTrain"
+            "src": "animal-images/hank.jpg",
+            "altText": "Hank (The Tank)"
         },
         "scientificName": "Narceus gordanus",
         "sex": "Male",
@@ -365,7 +365,7 @@
     },
     {
         "name": "Toaster Strudel",
-        "species": "Blue tongued Skink Lizard",
+        "species": "Blue tongued Skink",
         "img": {
             "src": "animal-images/toasterstrudel.jpg",
             "altText": "Toaster Strudel"

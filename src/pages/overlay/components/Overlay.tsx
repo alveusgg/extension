@@ -9,7 +9,7 @@ import styles from './overlay.module.css'
 import arrow from '../../../assets/arrow.jpg'
 
 export default function Overlay() {
-    const [animals, setAnimals] = useState(AnimalData)
+    const [animals] = useState(AnimalData)
     const [showAnimalList, setShowAnimalList] = useState(false)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"] | null>()
     const [isVisible, setIsVisible] = useState(false)
@@ -52,7 +52,7 @@ export default function Overlay() {
         />
 
         <div className={`${styles.scrollAnimals} ${showAnimalList? styles.visible : styles.hidden}`}>
-            <img ref={upArrowRef} src={arrow} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>animalListScroll(250)} />
+            <img ref={upArrowRef} src={arrow} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>animalListScroll(250)} alt="Up Arrow"/>
             <div ref={animalList} className={styles.animalList} onScroll={()=>handleArrowVisibility()}>
                 {animals && animals.map(animal => (
                     <AnimalButton
@@ -69,7 +69,7 @@ export default function Overlay() {
                     />
                 ))}
             </div>
-            <img ref={downArrowRef} src={arrow} className={`${styles.arrow} ${styles.down}`} onClick={()=>animalListScroll(-250)} />
+            <img ref={downArrowRef} src={arrow} className={`${styles.arrow} ${styles.down}`} onClick={()=>animalListScroll(-250)} alt="Down Arrow"/>
         </div>
 
         { activeAnimal && showAnimalList ? 

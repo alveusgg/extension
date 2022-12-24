@@ -19,13 +19,18 @@ export default function Overlay() {
     const downArrowRef = useRef<HTMLImageElement>(null)
 
     useEffect(() => {
+        let body = document.querySelector("body")
         //check if mouse is in the viewport
-        document.addEventListener('mouseleave', () => {
-            setIsVisible(false)
-        })
-        document.addEventListener('mouseenter', () => {
-            setIsVisible(true)
-        })
+        if(body !== null){
+            body.addEventListener('mouseleave', () => {
+                setIsVisible(false)
+            })
+        }
+        if(body !== null){
+            body.addEventListener('mouseenter', () => {
+                setIsVisible(true)
+            })
+        }
     }, [])
 
     const animalListScroll = (direction: number) => {

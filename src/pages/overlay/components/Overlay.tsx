@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import AnimalCard, { AnimalCardProps } from '../../../utils/global/animalCard/AnimalCard'
 import AnimalData from '../../../assets/animals.json'
+import tmi from 'tmi.js'
 
 import ActivationButtons from './ActivationButtons'
 import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
@@ -9,29 +10,90 @@ import styles from './overlay.module.css'
 import arrow from '../../../assets/arrow.jpg'
 
 export default function Overlay() {
-    const [animals] = useState(AnimalData)
+    //TODO: clean up. Custom hooks? There are a lot of functions that are used for one thing.
+    const [animals] = useState<AnimalCardProps["cardData"][]>(
+        AnimalData.map((animal) => {
+            return {
+                ...animal,
+                dateOfBirth: new Date(animal.dateOfBirth)
+            }
+        })
+    )
+    const [client] = useState<tmi.Client>(new tmi.Client({
+            identity: {
+                username: 'abdullahmorrison',
+                password: 'oauth:' + process.env.REACT_APP_USER_ACCESS_TOKEN
+            },
+            channels: [
+                // 'maya',
+                // 'alveussanctuary',
+                'abdullahmorrison'
+            ]
+        }))
+    const [showOverlay, setShowOverlay] = useState(false)
     const [showAnimalList, setShowAnimalList] = useState(false)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"] | null>()
-    const [isVisible, setIsVisible] = useState(false)
 
     const upArrowRef = useRef<HTMLImageElement>(null)
     const animalList = useRef<HTMLDivElement>(null)
     const downArrowRef = useRef<HTMLImageElement>(null)
 
     useEffect(() => {
+        connectToTwitch()
+        showOverlayOnMouseHover()
+
+        return () => {
+            disconnectFromTwitch()
+        }
+    }, [])
+
+    const connectToTwitch = () => {
+        client.on('message', onMessageHandler)
+        client.on('connected', onConnectedHandler)
+
+        client.connect();
+    }
+    const disconnectFromTwitch = () => {
+        client.disconnect()
+        console.log("Disconnected from Twitch")
+    }
+    const showOverlayOnMouseHover = () => {
         let body = document.querySelector("body")
         //check if mouse is in the viewport
         if(body !== null){
             body.addEventListener('mouseleave', () => {
-                setIsVisible(false)
+                setShowOverlay(false)
             })
         }
         if(body !== null){
             body.addEventListener('mouseenter', () => {
-                setIsVisible(true)
+                setShowOverlay(true)
             })
         }
-    }, [])
+    }
+
+    const onMessageHandler = (target: string, context: tmi.ChatUserstate, msg: string, self: boolean) => {
+        if (self) { return; } // Ignore messages from the bot
+        let ambassadorNames =  animals.map((animal)=> animal.name.toLowerCase().split(" ")[0])
+
+        const commandName = msg.trim().toLowerCase();
+
+        //does the message contain a "!" followed by any of the ambassador names
+        if (ambassadorNames.find((name: String)=> commandName.includes(`!${name}`))){
+            console.log(`Executing command ${commandName}`)
+            let animal = animals.find((animal)=> animal.name.toLowerCase().split(" ")[0] === commandName.split("!")[1])
+            setShowOverlay(true)
+            setShowAnimalList(true)
+            setActiveAnimal(animal)
+        }else{
+            console.log("Command Not Found")
+        }
+
+    }
+    const onConnectedHandler = (addr: string, port: number) => {
+        console.log(`Connected to ${addr}:${port}`);
+    }
+
 
     const animalListScroll = (direction: number) => {
         if(animalList.current)
@@ -51,7 +113,7 @@ export default function Overlay() {
     }
 
     return (
-    <div className={`${styles.overlay} ${isVisible? styles.visible : styles.hidden}`} >
+    <div className={`${styles.overlay} ${showOverlay? styles.visible : styles.hidden}`} >
         <ActivationButtons 
             toggleShowAnimalList={() => setShowAnimalList(!showAnimalList)}
         />
@@ -68,7 +130,6 @@ export default function Overlay() {
                             src: animal.img.src,
                             altText: animal.img.altText
                         }}
-
                         getCard={(name) => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : {...animal, dateOfBirth: new Date(animal.dateOfBirth) })}}
                         containerClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
                     />

@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
+    "@types/tmi.js": "^1.8.2",
     "react-app-rewire-multiple-entry": "^2.2.2",
     "react-app-rewired": "^2.2.1"
   }

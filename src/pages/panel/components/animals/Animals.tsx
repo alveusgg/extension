@@ -6,12 +6,10 @@ import AnimalCardOverlay from "../animalCardOverlay/AnimalCardOverlay";
 import styles from './animals.module.css'
 //data
 import { useState } from "react";
-import { AnimalCardProps } from "../../../../utils/global/animalCard/AnimalCard";
 import AnimalData from "../../../../assets/animals.json";
 
 export default function Animals() {
-  const [animals, setAnimals] = useState(AnimalData)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [animals] = useState(AnimalData)
   const [animalCard, setAnimalCard] = useState("") //name of animal that will show up as a modal
 
   function handleClose(): void{

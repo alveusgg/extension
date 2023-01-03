@@ -1,11 +1,5 @@
-@import '../../../variables.scss';
-
-.overlay{
+.ambassadorList{
     display: flex;
-    padding: 20px;
-    padding-top: 90px;
-    gap: 10px;
-    transition: 0.3s;
 
     .scrollAnimals{
         display: flex;
@@ -43,11 +37,20 @@
             transform: rotate(180deg);
         }
     }
+    .visible{
+        visibility: visible;
+        opacity: 1;
+    }
+    .hidden{
+        visibility: hidden;
+        opacity: 0;
+        translate: -40px;
+    }
     .animalButton{
         transition: 0.3s;
-       &:hover{
+        &:hover{
             transform: scale(1.1);
-       } 
+        } 
     }
     .animalButtonClicked{
         transform: scale(1.1);
@@ -58,7 +61,12 @@
         animation: slideIn 0.5s ease-in-out;
         z-index: 0;
     }
+    .hideArrow{
+        visibility: hidden;
+        opacity: 0;
+    }
 }
+
 @keyframes slideIn {
     0% {
         opacity: 0;
@@ -67,45 +75,5 @@
     100% {
         opacity: 1;
         transform: translateX(0);
-    }
-}
-
-.visible{
-    visibility: visible;
-    opacity: 1;
-}
-.hidden{
-    visibility: hidden;
-    opacity: 0;
-    translate: -40px;
-}
-.hideArrow{
-    visibility: hidden;
-    opacity: 0;
-}
-
-//media query min height 545px
-@media screen and (max-height: 555px) {
-    .overlay{
-        //scale down the overlay
-        scale: 0.8 ;
-        //move the overlay up
-        transform: translateX(-12%);
-        padding-top: 40px;
-        .scrollAnimals .animalList{
-            height: 80vh;
-        }
-    }
-}
-@media screen and (max-height: 440px) {
-    .overlay{
-        //scale down the overlay
-        scale: 0.6 ;
-        //move the overlay up
-        transform: translateX(-32%);
-        padding-top: 20px;
-        .scrollAnimals .animalList{
-            height: 90vh;
-        }
     }
 }

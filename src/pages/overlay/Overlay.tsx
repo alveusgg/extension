@@ -13,6 +13,11 @@ export default function Overlay() {
     const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
+        initMouseEventListener()
+    }, [])
+
+    // create mouse event listener to show/hide overlay if mouse is in the viewport
+    const initMouseEventListener = () => {
         let body = document.querySelector("body")
         //check if mouse is in the viewport
         if(body !== null){
@@ -25,7 +30,7 @@ export default function Overlay() {
                 setIsVisible(true)
             })
         }
-    }, [])
+    }
 
     return (
     <div className={`${styles.overlay} ${isVisible? styles.visible : styles.hidden}`} >

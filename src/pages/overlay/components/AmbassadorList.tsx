@@ -25,7 +25,7 @@ export default function AmbassadorList(props: AmbassadorListProps){
 
     useEffect(() =>{ // show the card of the animal that Twitch chat
         if(props.chatChosenAmbassador !== undefined){
-            const animal = animals.find(animal => animal.name === props.chatChosenAmbassador)
+            const animal = animals.find(animal => animal.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
             if(animal)
                 setActiveAnimal({...animal, dateOfBirth: new Date(animal.dateOfBirth)})
         }

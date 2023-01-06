@@ -48,7 +48,7 @@ export default function Overlay() {
         />
         <AmbassadorList
             showAnimalList={showAnimalList}
-            chatChosenAmbassador={chosenAmbassador}
+            chatChosenAmbassador={chosenAmbassador?.slice(1)}
         />
     </div>
     )

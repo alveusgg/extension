@@ -17,11 +17,10 @@ export default function Animals() {
   const chosenAmbassador = useChatCommand()?.slice(1)
 
   useEffect(() => {
-    console.log(chosenAmbassador)
     if(chosenAmbassador !== undefined){
       setAnimalCard(animals.find(animal => animal.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.name || "")
     }
-  }, [chosenAmbassador])
+  }, [chosenAmbassador, animals])
 
   function handleClose(): void{
     setAnimalCard("")

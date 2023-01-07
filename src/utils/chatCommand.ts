@@ -36,11 +36,17 @@ export default function useChatCommand() {
 
     const diacriticsMap: Map<string, string> = getMapOfAmbassadorWithDiacritics()
 
-    const client = new tmi.Client({channels: [
-        'AbdullahMorrison',
-        'Maya',
-        'AlveusSanctuary'
-    ]})
+    const client = new tmi.Client({
+        connection: {
+            secure: true,
+            reconnect: true
+        },
+        channels: [
+            'AbdullahMorrison',
+            'Maya',
+            'AlveusSanctuary'
+        ]
+    })
 
     useEffect(() => {
         client.on('message', messageHandler)
@@ -53,12 +59,11 @@ export default function useChatCommand() {
         if (self || !msg.trim().startsWith('!')) return
 
         const commandName = msg.trim().toLowerCase() 
-        if(ambassadorNames.find((name) => name === commandName)) {
+        if(ambassadorNames.find((name) => name === commandName.slice(1))) {
             setCommand(commandName)
-        }else if(diacriticsMap.has(commandName)) { // Check if a user typed a name without diacritics (Ex: !jalapeno should be !Jalapeño)
-            setCommand(diacriticsMap.get(commandName)!)
+        }else if(diacriticsMap.get(commandName.slice(1))) { // Check if a user typed a name without diacritics (Ex: !jalapeno should be !Jalapeño)
+            setCommand("!"+diacriticsMap.get(commandName.slice(1)))
         }
-
     }
     const connectedHandler = () => {
         console.log('*Twitch extension is connected to chat*')

@@ -1,5 +1,5 @@
 //utils
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import {AnimalCardProps} from '../../../utils/global/animalCard/AnimalCard'
 import AnimalData from '../../../assets/animals.json'
 
@@ -13,6 +13,7 @@ import arrow from '../../../assets/arrow.jpg'
 
 export interface AmbassadorListProps{
     showAnimalList: boolean
+    chatChosenAmbassador?: string
 }
 export default function AmbassadorList(props: AmbassadorListProps){
     const [animals] = useState(AnimalData)
@@ -21,6 +22,14 @@ export default function AmbassadorList(props: AmbassadorListProps){
     const upArrowRef = useRef<HTMLImageElement>(null)
     const animalList = useRef<HTMLDivElement>(null)
     const downArrowRef = useRef<HTMLImageElement>(null)
+
+    useEffect(() =>{ // show the card of the animal that Twitch chat
+        if(props.chatChosenAmbassador !== undefined){
+            const animal = animals.find(animal => animal.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
+            if(animal)
+                setActiveAnimal({...animal, dateOfBirth: new Date(animal.dateOfBirth)})
+        }
+    }, [props.chatChosenAmbassador])
 
     const animalListScroll = (direction: number) => {
         if(animalList.current)

@@ -1,5 +1,33 @@
 [
     {
+        "name": "Appa",
+        "species": "Common Marmoset",
+        "img": {
+            "src": "animal-images/appa.jpg",
+            "altText": "Appa"
+        },
+        "scientificName": "Callithrix jacchus",
+        "sex": "Male",
+        "dateOfBirth": "",
+        "iucnStatus": "Least concern with decreasing population trend",
+        "story": "Appa was rescued by Alveus after being surrendered to a veterinarian due to neglect",
+        "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
+    },
+    {
+        "name": "Momo",
+        "species": "Black Tuffed Marmoset",
+        "img": {
+            "src": "animal-images/momo.jpg",
+            "altText": "Momo"
+        },
+        "scientificName": "Callithrix penicillata",
+        "sex": "Male",
+        "dateOfBirth": "",
+        "iucnStatus": "Vulnerable with decreasing population trend",
+        "story": "Momo was rescued by Alveus after being surrendered to a veterinarian due to neglect",
+        "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
+    },
+    {
         "name": "Chips Ahoy",
         "species": "Domestic Rat",
         "img": {

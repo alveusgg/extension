@@ -9,14 +9,8 @@ https://user-images.githubusercontent.com/49528805/167273992-0cbe7329-9665-4d67-
 # Local Set Up
 
 1. Enable `allow invalid certificates for resources loaded from localhost` in Chrome: [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost)
-2. To run the server, get the following keys from the Alveus Ambassadors team and add it to a .env file in the server folder
-     - DB_CONNECTION
-     - CLOUDINARY_CLOUD_NAME
-     - CLOUDINARY_API_KEY
-     - CLOUDINARY_API_SECRET
-     - CLOUDINARY_URL
+2. Create an .env file and add the following to it: `HTTPS=true`, `HOST=localhost`, `PORT=8080`
 3. Run the following in the client folder: `npm install` and `npm start`
-4. Run the following in the server folder: `npm install` and `npm run dev`
 
 ## Note
 

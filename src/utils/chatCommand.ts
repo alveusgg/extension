@@ -55,6 +55,8 @@ export default function useChatCommand() {
     }, [])
 
     const messageHandler = (channel: string, tags: ChatUserstate, msg: string, self: boolean) => {
+        //ignore if user is not a moderator or broadcaster or if the user is not AbdullahMorrison
+        if(!tags.mod && !tags.badges?.broadcaster && tags.username !== 'abdullahmorrison') return
         // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
         if (self || !msg.trim().startsWith('!')) return
 

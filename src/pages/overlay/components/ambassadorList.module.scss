@@ -12,6 +12,7 @@
         .animalList{
             overflow: scroll;
             height: 70vh;
+            scrollbar-width: none;//remove scrollbar
 
             display: flex;
             flex-direction: column;

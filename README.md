@@ -25,3 +25,9 @@ found out about it through this web link: https://gitgud.io/-/snippets/376
 package link: https://www.npmjs.com/package/react-app-rewire-multiple-entry
 
 env-cmd: used to add environment variables to the start script in package.json
+
+# Chatbot Commands
+
+!\[ambassador]: displays the card of the corresponding ambassador
+
+-    Note: \[ambassador] is the first name of any ambassador (Ex: !nilla = Nilla Wafer, !snork = snork)

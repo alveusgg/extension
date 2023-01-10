@@ -43,7 +43,6 @@ export default function Animals() {
                     altText: animal.img.altText
                   },
                   sex: animal.sex? animal.sex : "Unknown",
-                  dateOfBirth: new Date(animal.dateOfBirth),
                 }
               }}
 

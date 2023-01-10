@@ -27,7 +27,7 @@ export default function AmbassadorList(props: AmbassadorListProps){
         if(props.chatChosenAmbassador !== undefined){
             const animal = animals.find(animal => animal.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
             if(animal)
-                setActiveAnimal({...animal, dateOfBirth: new Date(animal.dateOfBirth)})
+                setActiveAnimal(animal)
         }
     }, [props.chatChosenAmbassador])
 
@@ -63,7 +63,7 @@ export default function AmbassadorList(props: AmbassadorListProps){
                                 altText: animal.img.altText
                             }}
 
-                            getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : {...animal, dateOfBirth: new Date(animal.dateOfBirth) })}}
+                            getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : animal)}}
                             containerClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
                         />
                     ))}
@@ -74,14 +74,7 @@ export default function AmbassadorList(props: AmbassadorListProps){
             { activeAnimal && props.showAnimalList ? 
                 <AnimalCard
                     key={activeAnimal.name}
-                    cardData={{
-                        ...activeAnimal,
-                        img:{
-                            src: activeAnimal.img.src,
-                            altText: activeAnimal.img.altText
-                        },
-                        dateOfBirth: new Date(activeAnimal.dateOfBirth)
-                    }}
+                    cardData={activeAnimal}
                     close={() => {setActiveAnimal(undefined)}}
                     containerClassName={styles.animalCard}
                 />: null

@@ -1,4 +1,5 @@
 import Animal from "../../compositions/animal/Animal"
+import {calculateAge, formatDate} from "../../dateManager"
 
 import styles from './animalCard.module.css'
 
@@ -12,7 +13,7 @@ export interface AnimalCardProps {
     }
     scientificName: string
     sex?: string
-    dateOfBirth: Date
+    dateOfBirth: string 
     iucnStatus: string
     story: string
     conservationMission: string
@@ -21,28 +22,6 @@ export interface AnimalCardProps {
   containerClassName?: string
 }
 export default function AnimalCard(props: AnimalCardProps) {
-
-  function calculateAge(birthday: Date): string { // birthday is a date
-      let  measurement = 'year'
-      let ageDifMs = Date.now() - birthday.getTime()
-      let ageDate = new Date(ageDifMs) // miliseconds from epoch
-      
-      let age = ageDate.getUTCFullYear() - 1970
-      if(age < 1){
-        age = ageDate.getUTCMonth()
-        measurement = 'month'
-      }
-      if(age < 1){
-        age = ageDate.getUTCDate()
-        measurement = 'day'
-      }
-
-      if(age > 1)
-        measurement += 's'
-
-      return age.toString() + ' ' + measurement;
-  }
-
   return (
       <Animal containerClassName={`${styles.animalCard} ${props.containerClassName}`} >
         {
@@ -67,25 +46,13 @@ export default function AnimalCard(props: AnimalCardProps) {
           <div>
             <h3>Age</h3>
             <p>{
-              props.cardData.dateOfBirth instanceof Date && !isNaN(Number(props.cardData.dateOfBirth)) ? //checking if dateOfBirth is set
-                calculateAge( new Date(
-                  props.cardData.dateOfBirth.getFullYear(), 
-                  props.cardData.dateOfBirth.getUTCMonth(), 
-                  props.cardData.dateOfBirth.getUTCDate()
-                ))
-                : "Unknown"
+                props.cardData.dateOfBirth !== "" ? calculateAge(props.cardData.dateOfBirth) : "Unknown"
             }</p>
           </div> 
           <div>
             <h3>Birthday</h3>
             <p>{
-              props.cardData.dateOfBirth instanceof Date && !isNaN(Number(props.cardData.dateOfBirth)) ? //checking if dateOfBirth is set
-                new Date(
-                  props.cardData.dateOfBirth.getFullYear(), 
-                  props.cardData.dateOfBirth.getUTCMonth(), 
-                  props.cardData.dateOfBirth.getUTCDate()
-                ).toDateString()
-              : "Unknown"
+                props.cardData.dateOfBirth !== "" ? formatDate(props.cardData.dateOfBirth) : "Unknown"
             }</p>
           </div> 
         </div>

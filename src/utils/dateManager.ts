@@ -4,6 +4,7 @@
    * @param dateOfBirth date of birth in the format YYYY-MM-DD or YYYY-MM or YYYY
    */
   export function calculateAge(dateOfBirth: string): string {
+    const accurateDOB = dateOfBirth.split('-').length === 3
     
     const today = new Date();
     const dob = new Date(dateOfBirth);
@@ -18,13 +19,13 @@
           let ageInDays = Math.floor(ageInMilliseconds / 8.64e+7);  // 8.64e+7 is the number of milliseconds in a day
           return `${ageInDays} day`+ (ageInDays > 1 ? "s" : "")
         } else {
-          return `${Math.floor(ageInWeeks)} wk`+ (Math.floor(ageInWeeks) > 1 ? "s" : "")
+          return (!accurateDOB ? "~" : "")+`${Math.floor(ageInWeeks)} wk`+ (Math.floor(ageInWeeks) > 1 ? "s" : "")
         }
       } else {
-        return `${Math.floor(ageInMonths)} mth`+ (Math.floor(ageInMonths) > 1 ? "s" : "")
+        return (!accurateDOB ? "~" : "")+`${Math.floor(ageInMonths)} mth`+ (Math.floor(ageInMonths) > 1 ? "s" : "")
       }
     } else {
-      return `${Math.floor(ageInYears)} yr`+ (Math.floor(ageInYears) > 1 ? "s" : "")
+      return (!accurateDOB ? "~" : "")+`${Math.floor(ageInYears)} yr`+ (Math.floor(ageInYears) > 1 ? "s" : "")
     }
   }
   /**
@@ -49,9 +50,9 @@
     if(day && month && year)
       return `${month} ${day}, ${year}`
     else if(month && year)
-      return `${month} ${year}`
+      return `~ ${month}, ${year}`
     
-    return year
+    return `~ ${year}`
   }
 
   /**

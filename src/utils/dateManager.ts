@@ -86,3 +86,13 @@
     else
       return "th"
   }
+
+  export function isBirthday(dateOfBirth: string): boolean{
+    if(dateOfBirth.split('-').length !== 3)
+      return false
+
+    const today = new Date();
+    const dob = new Date(dateOfBirth);
+
+    return today.getUTCMonth() === dob.getUTCMonth() && today.getUTCDate() === dob.getUTCDate()
+  }

@@ -1,5 +1,5 @@
 import Animal from "../../compositions/animal/Animal"
-import {calculateAge, formatDate} from "../../dateManager"
+import {calculateAge, formatDate, isBirthday} from "../../dateManager"
 
 import styles from './animalCard.module.css'
 
@@ -23,7 +23,7 @@ export interface AnimalCardProps {
 }
 export default function AnimalCard(props: AnimalCardProps) {
   return (
-      <Animal containerClassName={`${styles.animalCard} ${props.containerClassName}`} >
+      <Animal containerClassName={`${styles.animalCard} ${props.containerClassName} ${isBirthday(props.cardData.dateOfBirth) === true ? styles.birthday : ""}`} >
         {
             props.close ? <div className={styles.close} onClick={props.close}>&times;</div>
             : null

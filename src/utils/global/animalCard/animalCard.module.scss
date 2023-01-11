@@ -62,3 +62,10 @@
         }
     }
 }
+
+.birthday::after{
+    content: url('../../../assets/partyHat.jpg');
+    position: absolute;
+    top: -70px;
+    left: 100px;
+}

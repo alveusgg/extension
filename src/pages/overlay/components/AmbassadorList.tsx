@@ -11,10 +11,29 @@ import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
 import styles from './ambassadorList.module.css'
 import arrow from '../../../assets/arrow.jpg'
 
+const SCROLL_OFFSET = 200;
+
 export interface AmbassadorListProps{
     showAnimalList: boolean
     chatChosenAmbassador?: string
 }
+
+function scrollListToAnimal(listElement: HTMLDivElement | null, name: string) {
+    if (!listElement) {
+        return;
+    }
+
+    const anchorElement = listElement.querySelector(
+        `[data-animal-name="${name}"]`
+    );
+    if (anchorElement instanceof HTMLDivElement) {
+        listElement.scrollTo({
+            top: Math.max(0, anchorElement.offsetTop - SCROLL_OFFSET),
+            behavior: "smooth",
+        });
+    }
+}
+
 export default function AmbassadorList(props: AmbassadorListProps){
     const [animals] = useState(AnimalData)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"] | null>()
@@ -26,8 +45,10 @@ export default function AmbassadorList(props: AmbassadorListProps){
     useEffect(() =>{ // show the card of the animal that Twitch chat
         if(props.chatChosenAmbassador !== undefined){
             const animal = animals.find(animal => animal.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
-            if(animal)
-                setActiveAnimal(animal)
+            if (animal) {
+                setActiveAnimal(animal);
+                scrollListToAnimal(animalList.current, animal.name);
+            }
         }
     }, [props.chatChosenAmbassador])
 
@@ -54,18 +75,20 @@ export default function AmbassadorList(props: AmbassadorListProps){
                 <img ref={upArrowRef} src={arrow} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>animalListScroll(250)} alt="Up Arrow"/>
                 <div ref={animalList} className={styles.animalList} onScroll={()=>handleArrowVisibility()}>
                     {animals && animals.map(animal => (
-                        <AnimalButton
-                            key={animal.name}
-                            name={animal.name}
-                            species={animal.species}
-                            img={{
-                                src: animal.img.src,
-                                altText: animal.img.altText
-                            }}
+                        <div data-animal-name={animal.name}>
+                            <AnimalButton
+                                key={animal.name}
+                                name={animal.name}
+                                species={animal.species}
+                                img={{
+                                    src: animal.img.src,
+                                    altText: animal.img.altText
+                                }}
 
-                            getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : animal)}}
-                            containerClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
-                        />
+                                getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : animal)}}
+                                containerClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
+                            />
+                        </div>
                     ))}
                 </div>
                 <img ref={downArrowRef} src={arrow} className={`${styles.arrow} ${styles.down}`} onClick={()=>animalListScroll(-250)} alt="Down Arrow"/>

@@ -13,11 +13,6 @@ import arrow from '../../../assets/arrow.jpg'
 
 const SCROLL_OFFSET = 200;
 
-export interface AmbassadorListProps{
-    showAnimalList: boolean
-    chatChosenAmbassador?: string
-}
-
 function scrollListToAnimal(listElement: HTMLDivElement | null, name: string) {
     if (!listElement) {
         return;
@@ -32,6 +27,11 @@ function scrollListToAnimal(listElement: HTMLDivElement | null, name: string) {
             behavior: "smooth",
         });
     }
+}
+
+export interface AmbassadorListProps{
+    showAnimalList: boolean
+    chatChosenAmbassador?: string
 }
 
 export default function AmbassadorList(props: AmbassadorListProps){

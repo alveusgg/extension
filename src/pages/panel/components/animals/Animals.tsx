@@ -35,16 +35,7 @@ export default function Animals() {
         <>
           {animalCard === animal.name ? 
             <AnimalCardOverlay
-              animalCard={{ 
-                cardData:{
-                  ...animal,
-                  img:{
-                    src: animal.img.src,
-                    altText: animal.img.altText
-                  },
-                  sex: animal.sex? animal.sex : "Unknown",
-                }
-              }}
+              animalCard={{cardData: animal}}
 
               close={handleClose}
             />

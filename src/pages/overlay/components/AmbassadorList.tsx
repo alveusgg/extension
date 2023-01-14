@@ -11,29 +11,10 @@ import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
 import styles from './ambassadorList.module.css'
 import arrow from '../../../assets/arrow.jpg'
 
-const SCROLL_OFFSET = 200;
-
-function scrollListToAnimal(listElement: HTMLDivElement | null, name: string) {
-    if (!listElement) {
-        return;
-    }
-
-    const anchorElement = listElement.querySelector(
-        `[data-animal-name="${name}"]`
-    );
-    if (anchorElement instanceof HTMLDivElement) {
-        listElement.scrollTo({
-            top: Math.max(0, anchorElement.offsetTop - SCROLL_OFFSET),
-            behavior: "smooth",
-        });
-    }
-}
-
 export interface AmbassadorListProps{
     showAnimalList: boolean
     chatChosenAmbassador?: string
 }
-
 export default function AmbassadorList(props: AmbassadorListProps){
     const [animals] = useState(AnimalData)
     const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"] | null>()
@@ -45,13 +26,22 @@ export default function AmbassadorList(props: AmbassadorListProps){
     useEffect(() =>{ // show the card of the animal that Twitch chat
         if(props.chatChosenAmbassador !== undefined){
             const animal = animals.find(animal => animal.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
-            if (animal) {
-                setActiveAnimal(animal);
-                scrollListToAnimal(animalList.current, animal.name);
+            if(animal){
+                setActiveAnimal(animal)
+                scrollListToAnimal(animal.name)
             }
         }
     }, [props.chatChosenAmbassador])
 
+    const scrollListToAnimal = (name: string) => {
+        if(!animalList.current)
+            return
+
+        const offset = 200
+        const anchorElement = animalList.current.querySelector(`[data-animal-name="${name}"]`)
+        if(anchorElement instanceof HTMLDivElement)
+            animalList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
+    }
     const animalListScroll = (direction: number) => {
         if(animalList.current)
             animalList.current.scroll({top: animalList.current.scrollTop - direction, left: 0, behavior: 'smooth'})

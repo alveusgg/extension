@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
-import AmbassadorData from '../assets/animals.json'
+import AmbassadorData from '../assets/ambassadors.json'
 
 /**
  * @description Some ambassadors have names with diacritics in them (Ex: Jalapeño). 
@@ -58,7 +58,7 @@ export default function useChatCommand() {
         //ignore if user is not a moderator or broadcaster or if the user is not AbdullahMorrison
         if(!tags.mod && !tags.badges?.broadcaster && tags.username !== 'abdullahmorrison') return
         // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
-        if (self || !msg.trim().startsWith('!')) return
+        if (self || !msg.trim().startsWith('#')) return
 
         const commandName = msg.trim().toLowerCase() 
         if(ambassadorNames.find((name) => name === commandName.slice(1))) {

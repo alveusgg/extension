@@ -6,13 +6,13 @@ import styles from './activationButtons.module.css'
  * @Description Activation buttons are buttons that are used to activate parts of the overlay.
  */  
 interface ActivationButtonProps {
-  toggleShowAnimalList: () => void;
+  toggleShowAmbassadorList: () => void;
 }
 export default function ActivationButtons(props: ActivationButtonProps) {
 
   return (
     <div className={styles.activationButtons}>
-        <button onClick={props.toggleShowAnimalList}>
+        <button onClick={props.toggleShowAmbassadorList}>
             <img src={AlveusLogo} alt="Alveus Logo" />
         </button>
 

@@ -1,5 +1,5 @@
 /**
-   * calculates the age of the animal based on the date of birth
+   * calculates the age of the ambassador based on the date of birth
    * in weeks, months, or years
    * @param dateOfBirth date of birth in the format YYYY-MM-DD or YYYY-MM or YYYY
    */

@@ -10,15 +10,20 @@ import useChatCommand from '../../utils/chatCommand'
 import styles from './overlay.module.css'
 
 export default function Overlay() {
-    const [showAnimalList, setShowAnimalList] = useState(false)
+    const [showAmbassadorList, setShowAmbassadorList] = useState(false)
     const [isOverlayVisible, setIsOverlayVisible] = useState(false)
     const chosenAmbassador = useChatCommand()
 
     useEffect(() => {
         if(chosenAmbassador !== undefined){
             setIsOverlayVisible(true)
-            setShowAnimalList(true)
+            setShowAmbassadorList(true)
         }
+        //after 5 seconds, hide the overlay
+        // setTimeout(() => {
+        //     setIsOverlayVisible(false)
+        //     setShowAmbassadorList(false)
+        // }, 5000)
     }, [chosenAmbassador])
 
     useEffect(() => {
@@ -44,10 +49,10 @@ export default function Overlay() {
     return (
     <div className={`${styles.overlay} ${isOverlayVisible? styles.visible : styles.hidden}`} >
         <ActivationButtons 
-            toggleShowAnimalList={() => setShowAnimalList(!showAnimalList)}
+            toggleShowAmbassadorList={() => setShowAmbassadorList(!showAmbassadorList)}
         />
         <AmbassadorList
-            showAnimalList={showAnimalList}
+            showAmbassadorList={showAmbassadorList}
             chatChosenAmbassador={chosenAmbassador?.slice(1)}
         />
     </div>

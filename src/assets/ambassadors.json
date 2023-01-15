@@ -3,7 +3,7 @@
         "name": "Appa",
         "species": "Common Marmoset",
         "img": {
-            "src": "animal-images/appa.jpg",
+            "src": "ambassador-images/appa.jpg",
             "altText": "Appa"
         },
         "scientificName": "Callithrix jacchus",
@@ -17,7 +17,7 @@
         "name": "Momo",
         "species": "Black-tufted Marmoset",
         "img": {
-            "src": "animal-images/momo.jpg",
+            "src": "ambassador-images/momo.jpg",
             "altText": "Momo"
         },
         "scientificName": "Callithrix penicillata",
@@ -31,7 +31,7 @@
         "name": "Chips Ahoy",
         "species": "Domestic Rat",
         "img": {
-            "src": "animal-images/chipsahoy.jpg",
+            "src": "ambassador-images/chipsahoy.jpg",
             "altText": "Chips Ahoy"
         },
         "scientificName": "Rattus norvegicus f. domestica",
@@ -45,7 +45,7 @@
         "name": "Nilla Wafer",
         "species": "Domestic Rat",
         "img": {
-            "src": "animal-images/nillawafer.jpg",
+            "src": "ambassador-images/nillawafer.jpg",
             "altText": "Nilla Wafer"
         },
         "scientificName": "Rattus norvegicus f. domestica",
@@ -59,7 +59,7 @@
         "name": "Henrietta",
         "species": "Jersey Giant",
         "img": {
-            "src": "animal-images/henrietta.jpg",
+            "src": "ambassador-images/henrietta.jpg",
             "altText": "Henrietta"
         },
         "scientificName": "Gallus gallus domesticus",
@@ -73,7 +73,7 @@
         "name": "Henrique",
         "species": "Half Dark Brahma, Half Saipan",
         "img": {
-            "src": "animal-images/henrique.jpg",
+            "src": "ambassador-images/henrique.jpg",
             "altText": "Henrique"
         },
         "scientificName": "Gallus gallus domesticus",
@@ -87,7 +87,7 @@
         "name": "Nugget",
         "species": "Ameraucana Chicken",
         "img": {
-            "src": "animal-images/nugget.jpg",
+            "src": "ambassador-images/nugget.jpg",
             "altText": "Nugget"
         },
         "scientificName": "Gallus gallus domesticus",
@@ -101,7 +101,7 @@
         "name": "Oliver",
         "species": "Olive Egger Chicken",
         "img": {
-            "src": "animal-images/oliver.jpg",
+            "src": "ambassador-images/oliver.jpg",
             "altText": "Oliver"
         },
         "scientificName": "Gallus gallus domesticus",
@@ -115,7 +115,7 @@
         "name": "Toaster Strudel",
         "species": "Blue-tongued Skink",
         "img": {
-            "src": "animal-images/toasterstrudel.jpg",
+            "src": "ambassador-images/toasterstrudel.jpg",
             "altText": "Toaster Strudel"
         },
         "scientificName": "Tiliqua scincoides intermedia",
@@ -129,7 +129,7 @@
         "name": "Puppy",
         "species": "Emperor Scorpion",
         "img": {
-            "src": "animal-images/puppy.jpg",
+            "src": "ambassador-images/puppy.jpg",
             "altText": "Puppy"
         },
         "scientificName": "Pandinus imperator",
@@ -143,7 +143,7 @@
         "name": "Tortellini",
         "species": "Emperor Scorpion",
         "img": {
-            "src": "animal-images/tortellini.jpg",
+            "src": "ambassador-images/tortellini.jpg",
             "altText": "Tortellini"
         },
         "scientificName": "Pandinus imperator",
@@ -157,7 +157,7 @@
         "name": "Fenn",
         "species": "European Red Fox",
         "img": {
-            "src": "animal-images/fenn.jpg",
+            "src": "ambassador-images/fenn.jpg",
             "altText": "Fenn"
         },
         "scientificName": "Vulpes vulpes",
@@ -171,7 +171,7 @@
         "name": "Reed",
         "species": "European Red Fox",
         "img": {
-            "src": "animal-images/reed.jpg",
+            "src": "ambassador-images/reed.jpg",
             "altText": "Reed"
         },
         "scientificName": "Vulpes vulpes",
@@ -185,7 +185,7 @@
         "name": "Winnie (The Moo)",
         "species": "Red Angus Beef Cow",
         "img": {
-            "src": "animal-images/winnie.jpg",
+            "src": "ambassador-images/winnie.jpg",
             "altText": "Winnie (the Moo)"
         },
         "scientificName": "Bos (primigenius) taurus",
@@ -199,7 +199,7 @@
         "name": "Mia",
         "species": "African Grey",
         "img": {
-            "src": "animal-images/mia.jpg",
+            "src": "ambassador-images/mia.jpg",
             "altText": "Mia"
         },
         "scientificName": "Psittacus erithacus",
@@ -213,7 +213,7 @@
         "name": "Siren",
         "species": "Blue-frontend Amazon",
         "img": {
-            "src": "animal-images/siren.jpg",
+            "src": "ambassador-images/siren.jpg",
             "altText": "Siren"
         },
         "scientificName": "Amazona aestiva",
@@ -227,7 +227,7 @@
         "name": "Miley",
         "species": "Catalina Macaw",
         "img": {
-            "src": "animal-images/miley.jpg",
+            "src": "ambassador-images/miley.jpg",
             "altText": "Miley"
         },
         "scientificName": "Ara ararauna × Ara macao",
@@ -241,7 +241,7 @@
         "name": "Tico",
         "species": "Blue and Gold Macaw",
         "img": {
-            "src": "animal-images/tico.jpg",
+            "src": "ambassador-images/tico.jpg",
             "altText": "Tico"
         },
         "scientificName": "Ara ararauna",
@@ -255,7 +255,7 @@
         "name": "Moomin",
         "species": "Chinchilla",
         "img": {
-            "src": "animal-images/moomin.jpg",
+            "src": "ambassador-images/moomin.jpg",
             "altText": "Moomin"
         },
         "scientificName": "Chinchilla lanigera",
@@ -269,7 +269,7 @@
         "name": "Snork",
         "species": "Chinchilla",
         "img": {
-            "src": "animal-images/snork.jpg",
+            "src": "ambassador-images/snork.jpg",
             "altText": "Snork"
         },
         "scientificName": "Chinchilla lanigera",
@@ -283,7 +283,7 @@
         "name": "Jalapeño",
         "species": "Domestic Donkey",
         "img": {
-            "src": "animal-images/jalapeno.jpg",
+            "src": "ambassador-images/jalapeno.jpg",
             "altText": "Jalapeño"
         },
         "scientificName": "Equus Africanus Asinus",
@@ -297,7 +297,7 @@
         "name": "Serrano",
         "species": "Domestic Donkey",
         "img": {
-            "src": "animal-images/serrano.jpg",
+            "src": "ambassador-images/serrano.jpg",
             "altText": "Serrano"
         },
         "scientificName": "Equus Africanus Asinus",
@@ -311,7 +311,7 @@
         "name": "Stompy",
         "species": "Emu",
         "img": {
-            "src": "animal-images/stompy.jpg",
+            "src": "ambassador-images/stompy.jpg",
             "altText": "Stompy"
         },
         "scientificName": "Dromaius novaehollandiae",
@@ -325,7 +325,7 @@
         "name": "Georgie",
         "species": "African Bullfrog",
         "img": {
-            "src": "animal-images/georgie.jpg",
+            "src": "ambassador-images/georgie.jpg",
             "altText": "Georgie"
         },
         "scientificName": "Pyxicephalus adspersus",
@@ -339,7 +339,7 @@
         "name": "Noodle",
         "species": "Carpet Python",
         "img": {
-            "src": "animal-images/noodle.jpg",
+            "src": "ambassador-images/noodle.jpg",
             "altText": "Noodle"
         },
         "scientificName": "M. spilota mcdowelli",
@@ -353,7 +353,7 @@
         "name": "Patchy",
         "species": "Ball Python",
         "img": {
-            "src": "animal-images/patchy.jpg",
+            "src": "ambassador-images/patchy.jpg",
             "altText": "Patchy"
         },
         "scientificName": "Python Regius",
@@ -367,7 +367,7 @@
         "name": "Abbott",
         "species": "American Crow",
         "img": {
-            "src": "animal-images/abbott.jpg",
+            "src": "ambassador-images/abbott.jpg",
             "altText": "Abbott"
         },
         "scientificName": "Corvus Brachyrhynchos",
@@ -381,7 +381,7 @@
         "name": "Coconut",
         "species": "American Crow",
         "img": {
-            "src": "animal-images/coconut.jpg",
+            "src": "ambassador-images/coconut.jpg",
             "altText": "Coconut"
         },
         "scientificName": "Corvus Brachyrhynchos",
@@ -395,7 +395,7 @@
         "name": "Baked Bean",
         "species": "Madagascar Hissing Cockroach",
         "img":{
-            "src": "animal-images/bakedbean.jpg",
+            "src": "ambassador-images/bakedbean.jpg",
             "altText": "Baked Bean"
         },
         "scientificName": "Gromphadorhina portentosa",
@@ -409,7 +409,7 @@
         "name": "Barbara",
         "species": "Madagascar Hissing Cockroach",
         "img":{
-            "src": "animal-images/bakedbean.jpg",
+            "src": "ambassador-images/bakedbean.jpg",
             "altText": "Baked Bean"
         },
         "scientificName": "Gromphadorhina portentosa",
@@ -423,7 +423,7 @@
         "name": "BB",
         "species": "Spanish Orange Isopods",
         "img":{
-            "src": "animal-images/bb.jpg",
+            "src": "ambassador-images/bb.jpg",
             "altText": "BB"
         },
         "scientificName": "Porcellionides pruinosus",
@@ -437,7 +437,7 @@
         "name": "Ducky",
         "species": "Rubber Ducky Isopods",
         "img": {
-            "src": "animal-images/ducky.jpg",
+            "src": "ambassador-images/ducky.jpg",
             "altText": "Rubber Ducky Isopods"
         },
         "scientificName": "Cubaris sp.",
@@ -451,7 +451,7 @@
         "name": "Marty",
         "species": "Zebra Isopods",
         "img": {
-            "src": "animal-images/marty.jpg",
+            "src": "ambassador-images/marty.jpg",
             "altText": "Zebra Isopods"
         },
         "scientificName": "Armadillidium Maculatum",
@@ -465,7 +465,7 @@
         "name": "Hank (The Tank)",
         "species": "Smokey Ghost Millipede",
         "img": {
-            "src": "animal-images/hank.jpg",
+            "src": "ambassador-images/hank.jpg",
             "altText": "Hank (The Tank)"
         },
         "scientificName": "Narceus gordanus",
@@ -479,7 +479,7 @@
         "name": "Pickles",
         "species": "Vinegaroon",
         "img": {
-            "src": "animal-images/pickles.jpg",
+            "src": "ambassador-images/pickles.jpg",
             "altText": "Pickles"
         },
         "scientificName": "Mastigoproctus tohono",

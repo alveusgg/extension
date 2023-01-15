@@ -1,7 +1,7 @@
-import Animal from "../../compositions/animal/Animal";
-import styles from './animalButton.module.css'
+import Ambassador from "../../compositions/ambassador/Ambassador";
+import styles from './ambassadorButton.module.css'
 
-interface AnimalButtonProps{
+interface AmbassadorButtonProps{
   img: {
     src: string
     altText: string
@@ -15,7 +15,7 @@ interface AnimalButtonProps{
   ClassName?: string
   Id?: string
 }
-export default function AnimalPreview(props: AnimalButtonProps) {
+export default function AmbassadorButton(props: AmbassadorButtonProps) {
   function handleClick(): void {
     if(props.getCard)
       props.getCard(props.name)
@@ -24,10 +24,10 @@ export default function AnimalPreview(props: AnimalButtonProps) {
       props.changeEditMode()
   }
   return (
-    <Animal ClassName={`${styles.animal}  ${props.ClassName}`} Id={props.Id} onClick={handleClick}>
+    <Ambassador ClassName={`${styles.ambassador}  ${props.ClassName}`} Id={props.Id} onClick={handleClick}>
        <img className={styles.img} src={props.img.src} alt={props.img.altText} />
         <h2 className={styles.name}>{props.name}</h2>
-        <h3 className={styles.animalType}>{props.species}</h3>
-    </Animal>
+        <h3 className={styles.species}>{props.species}</h3>
+    </Ambassador>
   )
 }

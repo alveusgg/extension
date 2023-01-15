@@ -1,56 +1,56 @@
 //utils
 import { useState, useRef, useEffect } from 'react'
-import {AnimalCardProps} from '../../../utils/global/animalCard/AnimalCard'
-import AnimalData from '../../../assets/animals.json'
+import {AmbassadorCardProps} from '../../../utils/global/ambassadorCard/AmbassadorCard'
+import AmbassadorData from '../../../assets/ambassadors.json'
 
 //components
-import AnimalCard from '../../../utils/global/animalCard/AnimalCard'
-import AnimalButton from '../../../utils/global/animalButton/AnimalButton'
+import AmbassadorCard from '../../../utils/global/ambassadorCard/AmbassadorCard'
+import AmbassadorButton from '../../../utils/global/ambassadorButton/AmbassadorButton'
 
 //css & assets
 import styles from './ambassadorList.module.css'
 import arrow from '../../../assets/arrow.jpg'
 
 export interface AmbassadorListProps{
-    showAnimalList: boolean
+    showAmbassadorList: boolean
     chatChosenAmbassador?: string
 }
 export default function AmbassadorList(props: AmbassadorListProps){
-    const [animals] = useState(AnimalData)
-    const [activeAnimal, setActiveAnimal] = useState<AnimalCardProps["cardData"] | null>()
+    const [ambassadors] = useState(AmbassadorData)
+    const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorCardProps["cardData"] | null>()
 
     const upArrowRef = useRef<HTMLImageElement>(null)
-    const animalList = useRef<HTMLDivElement>(null)
+    const ambassadorList = useRef<HTMLDivElement>(null)
     const downArrowRef = useRef<HTMLImageElement>(null)
 
-    useEffect(() =>{ // show the card of the animal that Twitch chat
+    useEffect(() =>{ // show the card of the ambassador that Twitch chat chose
         if(props.chatChosenAmbassador !== undefined){
-            const animal = animals.find(animal => animal.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
-            if(animal){
-                setActiveAnimal(animal)
-                scrollListToAnimal(animal.name.split(" ")[0].toLowerCase())
+            const ambassador = ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
+            if(ambassador){
+                setActiveAmbassador(ambassador)
+                scrollListToAmbassador(ambassador.name.split(" ")[0].toLowerCase())
             }
         }
     }, [props.chatChosenAmbassador])
 
-    const scrollListToAnimal = (name: string) => {
-        if(!animalList.current)
+    const scrollListToAmbassador = (name: string) => {
+        if(!ambassadorList.current)
             return
 
         const offset = 200
-        const anchorElement = animalList.current.querySelector(`#${name}`)
+        const anchorElement = ambassadorList.current.querySelector(`#${name}`)
         if(anchorElement instanceof HTMLDivElement)
-            animalList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
+            ambassadorList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
     }
-    const animalListScroll = (direction: number) => {
-        if(animalList.current)
-            animalList.current.scroll({top: animalList.current.scrollTop - direction, left: 0, behavior: 'smooth'})
+    const ambassadorListScroll = (direction: number) => {
+        if(ambassadorList.current)
+            ambassadorList.current.scroll({top: ambassadorList.current.scrollTop - direction, left: 0, behavior: 'smooth'})
     }
     const handleArrowVisibility = () => {
-        if(animalList.current){
-            if(animalList.current.scrollTop === 0)
+        if(ambassadorList.current){
+            if(ambassadorList.current.scrollTop === 0)
                 upArrowRef.current?.classList.add(styles.hideArrow)
-            else if(animalList.current.scrollTop + animalList.current.clientHeight === animalList.current.scrollHeight)
+            else if(ambassadorList.current.scrollTop + ambassadorList.current.clientHeight === ambassadorList.current.scrollHeight)
                 downArrowRef.current?.classList.add(styles.hideArrow)
             else{
                 upArrowRef.current?.classList.remove(styles.hideArrow)
@@ -61,35 +61,35 @@ export default function AmbassadorList(props: AmbassadorListProps){
 
     return (
         <div className={styles.ambassadorList}>
-            <div className={`${styles.scrollAnimals} ${props.showAnimalList? styles.visible : styles.hidden}`}>
-                <img ref={upArrowRef} src={arrow} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>animalListScroll(250)} alt="Up Arrow"/>
-                <div ref={animalList} className={styles.animalList} onScroll={()=>handleArrowVisibility()}>
-                    {animals && animals.map(animal => (
-                        <AnimalButton
-                            key={animal.name}
-                            name={animal.name}
-                            species={animal.species}
+            <div className={`${styles.scrollAmbassadors} ${props.showAmbassadorList? styles.visible : styles.hidden}`}>
+                <img ref={upArrowRef} src={arrow} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>ambassadorListScroll(250)} alt="Up Arrow"/>
+                <div ref={ambassadorList} className={styles.ambassadors} onScroll={()=>handleArrowVisibility()}>
+                    {ambassadors && ambassadors.map(ambassador => (
+                        <AmbassadorButton
+                            key={ambassador.name}
+                            name={ambassador.name}
+                            species={ambassador.species}
                             img={{
-                                src: animal.img.src,
-                                altText: animal.img.altText
+                                src: ambassador.img.src,
+                                altText: ambassador.img.altText
                             }}
 
-                            getCard={() => {setActiveAnimal(activeAnimal?.name === animal.name ? undefined : animal)}}
+                            getCard={() => {setActiveAmbassador(activeAmbassador?.name === ambassador.name ? undefined : ambassador)}}
 
-                            ClassName={`${styles.animalButton} ${activeAnimal?.name === animal.name ? styles.animalButtonClicked : undefined}`}
-                            Id={animal.name.split(" ")[0].toLowerCase()}
+                            ClassName={`${styles.ambassadorButton} ${activeAmbassador?.name === ambassador.name ? styles.ambassadorButtonClicked : undefined}`}
+                            Id={ambassador.name.split(" ")[0].toLowerCase()}
                         />
                     ))}
                 </div>
-                <img ref={downArrowRef} src={arrow} className={`${styles.arrow} ${styles.down}`} onClick={()=>animalListScroll(-250)} alt="Down Arrow"/>
+                <img ref={downArrowRef} src={arrow} className={`${styles.arrow} ${styles.down}`} onClick={()=>ambassadorListScroll(-250)} alt="Down Arrow"/>
             </div>
 
-            { activeAnimal && props.showAnimalList ? 
-                <AnimalCard
-                    key={activeAnimal.name}
-                    cardData={activeAnimal}
-                    close={() => {setActiveAnimal(undefined)}}
-                    ClassName={styles.animalCard}
+            { activeAmbassador && props.showAmbassadorList ? 
+                <AmbassadorCard
+                    key={activeAmbassador.name}
+                    cardData={activeAmbassador}
+                    close={() => {setActiveAmbassador(undefined)}}
+                    ClassName={styles.ambassadorCard}
                 />: null
             }
         </div>

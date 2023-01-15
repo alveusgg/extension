@@ -1,6 +1,6 @@
 //components 
 import Nav from './nav/Nav';
-import Animals from './animals/Animals';
+import AmbassadorPanel from './ambassadorPanel/AmbassadorPanel';
 
 //css
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Nav/>
-      <Animals/>
+      <AmbassadorPanel/>
     </div>
   );
 }

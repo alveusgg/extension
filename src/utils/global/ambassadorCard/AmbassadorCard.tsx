@@ -1,9 +1,9 @@
-import Animal from "../../compositions/animal/Animal"
+import Ambassador from "../../compositions/ambassador/Ambassador"
 import {calculateAge, formatDate, isBirthday} from "../../dateManager"
 
-import styles from './animalCard.module.css'
+import styles from './ambassadorCard.module.css'
 
-export interface AnimalCardProps {
+export interface AmbassadorCardProps {
   cardData: {
     name: string
     species: string
@@ -21,9 +21,9 @@ export interface AnimalCardProps {
   close?: ()=>void
   ClassName?: string
 }
-export default function AnimalCard(props: AnimalCardProps) {
+export default function AmbassadorCard(props: AmbassadorCardProps) {
   return (
-      <Animal ClassName={`${styles.animalCard} ${props.ClassName} ${isBirthday(props.cardData.dateOfBirth) === true ? styles.birthday : ""}`} >
+      <Ambassador ClassName={`${styles.ambassadorCard} ${props.ClassName} ${isBirthday(props.cardData.dateOfBirth) === true ? styles.birthday : ""}`} >
         {
             props.close ? <div className={styles.close} onClick={props.close}>&times;</div>
             : null
@@ -71,6 +71,6 @@ export default function AnimalCard(props: AnimalCardProps) {
           <h3>Conservation Mission</h3>
           <p>{props.cardData.conservationMission}</p>
         </div>
-      </Animal>
+      </Ambassador>
   )
 }

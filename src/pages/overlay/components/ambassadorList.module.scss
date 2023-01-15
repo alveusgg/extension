@@ -1,7 +1,7 @@
 .ambassadorList{
     display: flex;
 
-    .scrollAnimals{
+    .scrollAmbassadors{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -9,7 +9,7 @@
         transition: 0.3s;
         z-index: 1;
 
-        .animalList{
+        .ambassadors{
             overflow: scroll;
             height: 70vh;
             scrollbar-width: none;//remove scrollbar
@@ -47,17 +47,17 @@
         opacity: 0;
         translate: -40px;
     }
-    .animalButton{
+    .ambassadorButton{
         transition: 0.3s;
         &:hover{
             transform: scale(1.1);
         } 
     }
-    .animalButtonClicked{
+    .ambassadorButtonClicked{
         transform: scale(1.1);
         outline: 3px solid orange;
     }
-    .animalCard{
+    .ambassadorCard{
         align-self: center;
         animation: slideIn 0.5s ease-in-out;
         z-index: 0;

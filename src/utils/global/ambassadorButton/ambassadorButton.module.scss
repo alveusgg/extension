@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+
+.ambassador{
+    width: 100px;
+    height: 100px;
+
+    &:hover{
+        cursor: pointer;
+        filter: brightness(1.1);
+    }
+
+    .img{
+        border-radius: 5px;
+        height: 70px;
+        max-width: 100px;
+        object-fit: cover;
+        margin-bottom: 5px;
+    }
+    .name{
+        color: $primary-text;
+        font-size: 0.8rem;
+    }
+    .species{
+        font-size: 0.7rem;
+        color: $secondary-text;
+    }
+}

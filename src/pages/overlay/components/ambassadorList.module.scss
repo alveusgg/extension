@@ -78,3 +78,27 @@
         transform: translateX(0);
     }
 }
+// accessibility for vestibular motion disorders
+@keyframes dissolveIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    } 
+}
+@media (prefers-reduced-motion) {
+    .ambassadorList{
+         .ambassadorCard{
+            animation: dissolveIn 0.5s ease-in-out;
+            -webkit-animation: dissolveIn 0.5s ease-in-out;
+        }
+        .visible{
+            opacity: 1;
+        }
+        .hidden{
+            opacity: 0;
+            translate: 0;
+        }
+    }
+}

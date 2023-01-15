@@ -42,3 +42,14 @@
         }
     }
 }
+
+@media (prefers-reduced-motion) {
+    //disolve in and out
+    .visible{
+        opacity: 1;
+    }
+    .hidden{
+        opacity: 0;
+        translate: 0;
+    } 
+}

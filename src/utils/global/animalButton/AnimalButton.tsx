@@ -11,7 +11,9 @@ interface AnimalButtonProps{
 
   getCard?: (name: string) => void
   changeEditMode?: () => void
-  containerClassName?: string
+
+  ClassName?: string
+  Id?: string
 }
 export default function AnimalPreview(props: AnimalButtonProps) {
   function handleClick(): void {
@@ -22,7 +24,7 @@ export default function AnimalPreview(props: AnimalButtonProps) {
       props.changeEditMode()
   }
   return (
-    <Animal containerClassName={`${styles.animal} ${props.containerClassName}`} onClick={handleClick}>
+    <Animal ClassName={`${styles.animal}  ${props.ClassName}`} Id={props.Id} onClick={handleClick}>
        <img className={styles.img} src={props.img.src} alt={props.img.altText} />
         <h2 className={styles.name}>{props.name}</h2>
         <h3 className={styles.animalType}>{props.species}</h3>

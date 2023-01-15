@@ -3,12 +3,14 @@ import styles from './animal.module.css';
 
 interface AnimalProps{
   children: React.ReactNode;
-  containerClassName: string
+  ClassName: string
+  Id?: string
+
   onClick?: () => void
 }
 export default function Animal(props: AnimalProps) {
   return (
-    <div className={`${styles.animal} ${props.containerClassName}`} onClick={props.onClick}> 
+    <div id={props.Id} className={`${styles.animal} ${props.ClassName}`} onClick={props.onClick}> 
       {props.children}
     </div>
   )

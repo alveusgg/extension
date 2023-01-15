@@ -3,6 +3,7 @@
 .ambassador{
     width: 100px;
     height: 100px;
+    box-shadow: 0 5px 8px $accent-color;
 
     &:hover{
         cursor: pointer;

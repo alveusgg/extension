@@ -15,10 +15,19 @@ export default function Overlay() {
     const chosenAmbassador = useChatCommand()
 
     useEffect(() => {
+        let timeout: NodeJS.Timeout | undefined 
         if(chosenAmbassador !== undefined){
             setIsOverlayVisible(true)
             setShowAmbassadorList(true)
+
+            // hide overlay after a few seconds
+            timeout = setTimeout(() => {
+                setIsOverlayVisible(false)
+                setShowAmbassadorList(false)
+            }, 10000)
         }
+        return () => clearTimeout(timeout as NodeJS.Timeout) 
+
     }, [chosenAmbassador])
 
     useEffect(() => {

@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react'
 
 //components & hooks
-import ActivationButtons from './components/ActivationButtons'
-import AmbassadorList from './components/AmbassadorList'
-import useChatCommand from '../../utils/chatCommand'
+import ActivationButtons from './ActivationButtons'
+import AmbassadorList from './AmbassadorList'
+import useChatCommand from '../../../utils/chatCommand'
 
 //css
 import styles from './overlay.module.css'
@@ -19,11 +19,6 @@ export default function Overlay() {
             setIsOverlayVisible(true)
             setShowAmbassadorList(true)
         }
-        //after 5 seconds, hide the overlay
-        // setTimeout(() => {
-        //     setIsOverlayVisible(false)
-        //     setShowAmbassadorList(false)
-        // }, 5000)
     }, [chosenAmbassador])
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import DisableChatPopup from "./DisableChatPopup"
+import DisableChatPopup from "../disableChatPopup/DisableChatPopup"
 
 import styles from "./overlaySettings.module.css"
 export default function OverlaySettings(){

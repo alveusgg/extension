@@ -1,15 +1,15 @@
 //utils
 import { useState, useRef, useEffect } from 'react'
-import {AmbassadorCardProps} from '../../../utils/global/ambassadorCard/AmbassadorCard'
-import AmbassadorData from '../../../assets/ambassadors.json'
+import {AmbassadorCardProps} from '../../../../utils/global/ambassadorCard/AmbassadorCard'
+import AmbassadorData from '../../../../assets/ambassadors.json'
 
 //components
-import AmbassadorCard from '../../../utils/global/ambassadorCard/AmbassadorCard'
-import AmbassadorButton from '../../../utils/global/ambassadorButton/AmbassadorButton'
+import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
+import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 
 //css & assets
 import styles from './ambassadorList.module.css'
-import arrow from '../../../assets/arrow.jpg'
+import arrow from '../../../../assets/arrow.jpg'
 
 export interface AmbassadorListProps{
     showAmbassadorList: boolean

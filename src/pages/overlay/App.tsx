@@ -1,5 +1,5 @@
-import Overlay from "./components/Overlay"
-import OverlaySettings from "./components/OverlaySettings"
+import Overlay from "./components/overlay/Overlay"
+import OverlaySettings from "./components/overlaySettings/OverlaySettings"
 
 import "./App.css"
 export default function App(){

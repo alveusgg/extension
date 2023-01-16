@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react'
 
 //components & hooks
-import ActivationButtons from './ActivationButtons'
-import AmbassadorList from './AmbassadorList'
-import useChatCommand from '../../../utils/chatCommand'
+import ActivationButtons from '../activationButtons/ActivationButtons'
+import AmbassadorList from '../ambassadorList/AmbassadorList'
+import useChatCommand from '../../../../utils/chatCommand'
 
 //css
 import styles from './overlay.module.css'

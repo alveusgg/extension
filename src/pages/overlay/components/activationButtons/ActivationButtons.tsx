@@ -1,4 +1,4 @@
-import AlveusLogo from '../../../assets/alveus-logo.png';
+import AlveusLogo from '../../../../assets/alveus-logo.png';
 
 import styles from './activationButtons.module.css'
 

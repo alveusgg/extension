@@ -42,7 +42,7 @@ export default function useChatCommand() {
             reconnect: true
         },
         channels: [
-            'AbdullahMorrison', //! For testing purposes
+            // 'AbdullahMorrison', //! For testing purposes
             'Maya',
             'AlveusSanctuary'
         ]
@@ -58,7 +58,7 @@ export default function useChatCommand() {
         //ignore if user is not a moderator or broadcaster or if the user is not AbdullahMorrison
         if(!tags.mod && !tags.badges?.broadcaster && tags.username !== 'abdullahmorrison') return
         // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
-        if (self || !msg.trim().startsWith('#')) return
+        if (self || !msg.trim().startsWith('!')) return
 
         const commandName = msg.trim().toLowerCase() 
         if(ambassadorNames.find((name) => name === commandName.slice(1))) {

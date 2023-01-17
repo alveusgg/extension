@@ -1,5 +1,5 @@
 // utils
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 //components & hooks
 import ActivationButtons from '../activationButtons/ActivationButtons'
@@ -13,20 +13,20 @@ export default function Overlay() {
     const [showAmbassadorList, setShowAmbassadorList] = useState(false)
     const [isOverlayVisible, setIsOverlayVisible] = useState(false)
     const chosenAmbassador = useChatCommand()
+    const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
     useEffect(() => {
-        let timeout: NodeJS.Timeout | undefined 
         if(chosenAmbassador !== undefined){
             setIsOverlayVisible(true)
             setShowAmbassadorList(true)
 
             // hide overlay after a few seconds
-            timeout = setTimeout(() => {
+            timeoutRef.current = setTimeout(() => {
                 setIsOverlayVisible(false)
                 setShowAmbassadorList(false)
-            }, 10000)
+            }, 6000)
         }
-        return () => clearTimeout(timeout as NodeJS.Timeout) 
+        return () => clearTimeout(timeoutRef.current as NodeJS.Timeout) 
 
     }, [chosenAmbassador])
 
@@ -46,6 +46,7 @@ export default function Overlay() {
         if(body !== null){
             body.addEventListener('mouseenter', () => {
                 setIsOverlayVisible(true)
+                clearTimeout(timeoutRef.current as NodeJS.Timeout)
             })
         }
     }

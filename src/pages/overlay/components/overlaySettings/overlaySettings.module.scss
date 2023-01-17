@@ -2,4 +2,15 @@
     position: absolute;
     bottom: 65%;
     right: 25px;
+
+    transition: all 0.15s ease-out;
+}
+.visible{
+    visibility: visible;
+    opacity: 1;
+}
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+    translate: 40px;
 }

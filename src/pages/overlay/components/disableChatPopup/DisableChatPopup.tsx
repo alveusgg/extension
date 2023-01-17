@@ -1,6 +1,3 @@
-// utils
-import { useState } from 'react'
-
 // css
 import styles from './disableChatPopup.module.css'
 
@@ -17,7 +14,7 @@ export default function DisableChatPopup(props: DisableChatPopupProps){
         <div className={styles.switchContainer}>
             <label>{props.disableChatPopup ? "Enable" : "Disable"} Popups</label>
             <label className={styles.switch}>
-                <input type="checkbox" onClick={()=>toggleDisableChatPopup()} />
+                <input type="checkbox" onClick={()=>toggleDisableChatPopup()} checked={props.disableChatPopup} />
                 <span className={`${styles.slider} ${styles.round}`} ></span>
             </label>
         </div>

@@ -9,14 +9,20 @@ import useChatCommand from '../../../../utils/chatCommand'
 //css
 import styles from './overlay.module.css'
 
-export default function Overlay() {
+interface OverlayProps {
+    settings: {
+        disableChatPopup: boolean
+    }
+}
+export default function Overlay(props: OverlayProps) {
     const [showAmbassadorList, setShowAmbassadorList] = useState(false)
     const [isOverlayVisible, setIsOverlayVisible] = useState(false)
     const chosenAmbassador = useChatCommand()
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
     useEffect(() => {
-        if(chosenAmbassador !== undefined){
+        if(chosenAmbassador !== undefined && props.settings.disableChatPopup === false){
+            console.log(props.settings.disableChatPopup)
             setIsOverlayVisible(true)
             setShowAmbassadorList(true)
 

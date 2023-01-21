@@ -3,17 +3,16 @@
 .overlay {
     display: flex;
     gap: 10px;
-    transition: 0.3s;
+    transition: 0.3s ease-out;
+    transition-property: visibility, translate;
 }
 
 .visible {
     visibility: visible;
-    opacity: 1;
 }
 
 .hidden {
     visibility: hidden;
-    opacity: 0;
     translate: -40px;
 }
 
@@ -45,13 +44,8 @@
 }
 
 @media (prefers-reduced-motion) {
-    // disolve in and out
-    .visible {
-        opacity: 1;
-    }
-
+    // just rely on app fade
     .hidden {
-        opacity: 0;
         translate: 0;
     }
 }

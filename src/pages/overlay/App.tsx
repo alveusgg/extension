@@ -29,28 +29,40 @@ export default function App(){
         }))
     }, [])
 
-    // Hide the overlay after 5s of no mouse movement
-    const inactiveTimer = useRef<NodeJS.Timeout | undefined>(undefined)
-    const [inactive, setInactive] = useState(false)
-    const onMouseMove = useCallback(() => {
-        setInactive(false)
-        if (inactiveTimer.current) clearTimeout(inactiveTimer.current)
-        inactiveTimer.current = setTimeout(() => {
-            setInactive(true)
-        }, 5000)
+    // Show/hide the overlay based on mouse movement
+    const sleepTimer = useRef<NodeJS.Timeout | undefined>(undefined)
+    const [sleeping, setSleeping] = useState(false)
+    const wake = useCallback((time: number) => {
+        setSleeping(false)
+        if (sleepTimer.current) clearTimeout(sleepTimer.current)
+        sleepTimer.current = setTimeout(() => {
+            setSleeping(true)
+        }, time)
+    }, [])
+    const sleep = useCallback(() => {
+        setSleeping(true)
+        if (sleepTimer.current) clearTimeout(sleepTimer.current)
     }, [])
     useEffect(() => () => {
-        if (inactiveTimer.current) clearTimeout(inactiveTimer.current)
+        if (sleepTimer.current) clearTimeout(sleepTimer.current)
     }, [])
 
     return (
-        <div className={`${styles.app} ${inactive ? styles.hidden : styles.visible}`} onMouseMove={onMouseMove}>
+        <div
+            className={`${styles.app} ${sleeping ? styles.hidden : styles.visible}`}
+            onMouseEnter={() => wake(5000)}
+            onMouseMove={() => wake(5000)}
+            onMouseLeave={sleep}
+        >
             <Overlay
+                sleeping={sleeping}
+                wake={wake}
                 settings={{
                     disableChatPopup: overlaySettings.disableChatPopup
                 }}
             />
             <OverlaySettings
+                sleeping={sleeping}
                 settings={{
                     disableChatPopup: overlaySettings.disableChatPopup
                 }}

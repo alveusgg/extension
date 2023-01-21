@@ -1,7 +1,7 @@
 .app {
   margin: 90px 15px 15px;
   position: relative;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease-out;
 }
 
 .visible {

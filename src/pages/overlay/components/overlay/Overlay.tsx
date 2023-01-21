@@ -11,6 +11,10 @@ import styles from './overlay.module.css'
 
 interface OverlayProps {
     sleeping: boolean,
+    awoken: {
+        add: (callback: () => void) => void,
+        remove: (callback: () => void) => void
+    }
     wake: (time: number) => void,
     settings: {
         disableChatPopup: boolean
@@ -20,21 +24,39 @@ export default function Overlay(props: OverlayProps) {
     const [showAmbassadorList, setShowAmbassadorList] = useState(false)
     const chosenAmbassador = useChatCommand()
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
+    const awakingRef = useRef(false)
 
+    // When a chat command is run, show the list and auto-dismiss it after 6s
     useEffect(() => {
         if(chosenAmbassador !== undefined && props.settings.disableChatPopup === false){
             console.log(props.settings.disableChatPopup)
+
+            // Show the list, and dismiss it after 6s
             setShowAmbassadorList(true)
             timeoutRef.current = setTimeout(() => { setShowAmbassadorList(false) }, 6000)
+
+            // Track that we're waking up, so that we don't immediately clear the timeout
+            awakingRef.current = true
+
+            // Wake the overlay for 6s
             props.wake(6000)
         }
         return () => clearTimeout(timeoutRef.current as NodeJS.Timeout)
 
     }, [chosenAmbassador, props.wake])
 
+    // If the user interacts with the overlay, clear the auto-dismiss timer
     useEffect(() => {
-        if (!props.sleeping) clearTimeout(timeoutRef.current as NodeJS.Timeout)
-    }, [props.sleeping])
+        const callback = () => {
+            if (awakingRef.current) {
+                awakingRef.current = false
+            } else {
+                clearTimeout(timeoutRef.current as NodeJS.Timeout)
+            }
+        }
+        props.awoken.add(callback)
+        return () => props.awoken.remove(callback)
+    }, [props.awoken])
 
     return (
     <div className={`${styles.overlay} ${props.sleeping ? styles.hidden : styles.visible}`} >

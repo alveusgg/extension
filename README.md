@@ -8,9 +8,17 @@ https://user-images.githubusercontent.com/49528805/167273992-0cbe7329-9665-4d67-
 
 # Local Set Up
 
-1. Enable `allow invalid certificates for resources loaded from localhost` in Chrome: [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost)
-2. Create an .env file and add the following to it: `HTTPS=true`, `HOST=localhost`, `PORT=8080`
-3. Run the following in the client folder: `npm install` and `npm start`
+1. Head up to https://dev.twitch.tv/console/extensions/create and create a new extension.
+   You will need to create a new version: Select `Panel`, `Mobile` and `Video - Fullscreen` for the extension type. Leave all other settings as they are.
+2. With the version created, scroll to the bottom and click on `View on Twitch and Install`.
+   Install the extension on your channel and activate it.
+3. Enable `allow invalid certificates for resources loaded from localhost` in Chrome: [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost)
+   If using Firefox, once you have started the development server, you will want to navigate to [https://localhost:8080](https://localhost:8080), click advanced and select accept the risk.
+4. Copy the `.env.sample` to `.env` (which sets `HTTPS=true`, `HOST=localhost`, and `PORT=8080`)
+5. Install dependencies for the project with `npm install`
+6. Start the development server with `npm start`
+7. To test the overlay, you will need to be live on Twitch with the extension installed.
+   If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
 
 ## Note
 

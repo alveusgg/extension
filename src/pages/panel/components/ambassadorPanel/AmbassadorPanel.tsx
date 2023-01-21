@@ -41,17 +41,19 @@ export default function AmbassadorPanel() {
             />
             : null
           }
-          <AmbassadorButton
-            key={ambassador.name} // every ambassador will have a unique name
-            name={ambassador.name}
-            species={ambassador.species}
-            img={{
-              src: ambassador.img.src,
-              altText: ambassador.img.altText
-            }}
+          <div className={styles.item}>
+            <AmbassadorButton
+              key={ambassador.name} // every ambassador will have a unique name
+              name={ambassador.name}
+              species={ambassador.species}
+              img={{
+                src: ambassador.img.src,
+                altText: ambassador.img.altText
+              }}
 
-            getCard={()=>handleGetCard(ambassador.name)}
-          />
+              getCard={()=>handleGetCard(ambassador.name)}
+            />
+          </div>
         </>
       ))}
     </main>

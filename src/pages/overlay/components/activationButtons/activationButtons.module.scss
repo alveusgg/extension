@@ -1,16 +1,21 @@
 @import '../../../../variables.scss';
 
 .activationButtons{
-    margin-top: 40px;
+    margin-top: calc(6 * var(--alveus-base-size)); //move slightly lower relative to available height
     button{
         all: unset;
+        display: flex;
+        width: calc(5 * var(--alveus-base-size)); //scale based on available height
         border-radius: 5px;
         background-color: $primary-color;
-        padding: 5px;
+
+        //the logo is not visually centered in the image
+        //so we tweak the position a bit to look centered
+        padding: 5% 10% 10% 5%;
 
         img{
-            width: 55px;
-            height: 55px;
+            width: 100%;
+            height: auto;
         }
 
         &:hover{

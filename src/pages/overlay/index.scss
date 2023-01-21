@@ -1,10 +1,40 @@
 @import '../../variables.scss';
 
+:root{
+    //used to scale various elements based on available height
+    //but clamped between 6px and 10px to prevent tiny/giant UI
+    //the values are chosen so that in a normal desktop resolution
+    //1 base unit === 10px to make the math easier when using it
+    //to scale elements.
+    //
+    //usage example:
+    //  width: calc(5 * var(--alveus-base-size));
+    //  => which would be 50px in normal views and
+    //       would scale down to 30px
+    --alveus-base-size: clamp(6px, 1.46vh, 10px);
+}
+
 *{
     margin: 0;
     padding: 0;
 }
 
+*, *::after, *::before{
+    box-sizing: inherit;
+}
+
+html{
+    //change default box-sizing mode to border-box
+    //meaning total width/height includes padding and border
+    box-sizing: border-box;
+}
+
 body{
     font-family: $font-family;
+
+    //always keep full width/height and never
+    //show scrollbars
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }

@@ -1,11 +1,24 @@
 @import '../../../../variables.scss';
 
 .overlay{
+    position: absolute;
+    width: 100%;
+
+    //the active area of the
+    //overlay should not extend to the
+    //top/bottom 5rem (at 10px root = 50px)
+    //according to twitch dev docs
+    top: 50px;
+    bottom: 50px;
+
+
     display: flex;
-    padding: 20px;
-    padding-top: 90px;
-    gap: 10px;
-    transition: 0.3s;
+
+    //horizontal gaps scaled dynamically based on available height
+    padding: 0 calc(2 * var(--alveus-base-size));
+    gap: var(--alveus-base-size);
+
+    transition: opacity 300ms, translate 300ms;
 }
 .visible{
     visibility: visible;
@@ -15,41 +28,10 @@
     visibility: hidden;
     opacity: 0;
     translate: -40px;
-}
 
-//media query min height 545px
-@media screen and (max-height: 555px) {
-    .overlay{
-        //scale down the overlay
-        scale: 0.8 ;
-        //move the overlay up
-        transform: translateX(-12%);
-        padding-top: 40px;
-        .scrollAmbassadors .ambassadorList{
-            height: 80vh;
-        }
-    }
-}
-@media screen and (max-height: 440px) {
-    .overlay{
-        //scale down the overlay
-        scale: 0.6 ;
-        //move the overlay up
-        transform: translateX(-32%);
-        padding-top: 20px;
-        .scrollAmbassadors .ambassadorList{
-            height: 90vh;
-        }
-    }
-}
-
-@media (prefers-reduced-motion) {
-    //disolve in and out
-    .visible{
-        opacity: 1;
-    }
-    .hidden{
-        opacity: 0;
+    // accessibility for vestibular motion disorders
+    // do not translate overlay but only transition opacity
+    @media (prefers-reduced-motion) {
         translate: 0;
-    } 
+    }
 }

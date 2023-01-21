@@ -19,9 +19,9 @@ export default function AmbassadorList(props: AmbassadorListProps){
     const [ambassadors] = useState(AmbassadorData)
     const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorCardProps["cardData"] | null>()
 
-    const upArrowRef = useRef<HTMLImageElement>(null)
+    const upArrowRef = useRef<HTMLButtonElement>(null)
     const ambassadorList = useRef<HTMLDivElement>(null)
-    const downArrowRef = useRef<HTMLImageElement>(null)
+    const downArrowRef = useRef<HTMLButtonElement>(null)
 
     useEffect(() =>{ // show the card of the ambassador that Twitch chat chose
         if(props.chatChosenAmbassador !== undefined){
@@ -62,7 +62,9 @@ export default function AmbassadorList(props: AmbassadorListProps){
     return (
         <div className={styles.ambassadorList}>
             <div className={`${styles.scrollAmbassadors} ${props.showAmbassadorList? styles.visible : styles.hidden}`}>
-                <img ref={upArrowRef} src={arrow} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>ambassadorListScroll(250)} alt="Up Arrow"/>
+                <button ref={upArrowRef} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`} onClick={()=>ambassadorListScroll(250)}>
+                    <img src={arrow} alt="Up Arrow"/>
+                </button>
                 <div ref={ambassadorList} className={styles.ambassadors} onScroll={()=>handleArrowVisibility()}>
                     {ambassadors && ambassadors.map(ambassador => (
                         <AmbassadorButton
@@ -81,7 +83,9 @@ export default function AmbassadorList(props: AmbassadorListProps){
                         />
                     ))}
                 </div>
-                <img ref={downArrowRef} src={arrow} className={`${styles.arrow} ${styles.down}`} onClick={()=>ambassadorListScroll(-250)} alt="Down Arrow"/>
+                <button ref={downArrowRef} className={`${styles.arrow} ${styles.down}`} onClick={()=>ambassadorListScroll(-250)}>
+                    <img src={arrow} alt="Down Arrow"/>
+                </button>
             </div>
 
             { activeAmbassador && props.showAmbassadorList ? 

@@ -5,11 +5,22 @@
     margin: 0;
     padding: 0;
 }
-body {
+
+*, *::after, *::before{
+  box-sizing: inherit;
+}
+
+html{
+  //change default box-sizing mode to border-box
+  //meaning total width/height includes padding and border
+  box-sizing: border-box;
+}
+
+body{
   font-family: $font-family;
   color: $primary-text;
 
   display: flex;
   justify-content: center;
-  overflow-x: hidden; // no horizontal scrollbar
+  overflow-x: hidden; //no horizontal scrollbar
 }

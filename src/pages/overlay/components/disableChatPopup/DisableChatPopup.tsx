@@ -11,7 +11,7 @@ export default function DisableChatPopup(props: DisableChatPopupProps){
             <label>Popups {props.disableChatPopup ? "disabled" : "enabled"}</label>
             <label className={styles.switch}>
                 <input type="checkbox" onChange={props.toggleDisableChatPopup} checked={!props.disableChatPopup} />
-                <span className={`${styles.slider} ${styles.round}`} ></span>
+                <span className={styles.slider}></span>
             </label>
         </div>
     )

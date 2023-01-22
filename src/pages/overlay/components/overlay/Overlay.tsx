@@ -28,9 +28,7 @@ export default function Overlay(props: OverlayProps) {
 
     // When a chat command is run, show the list and auto-dismiss it after 6s
     useEffect(() => {
-        if(chosenAmbassador !== undefined && props.settings.disableChatPopup === false){
-            console.log(props.settings.disableChatPopup)
-
+        if (chosenAmbassador !== undefined && !props.settings.disableChatPopup) {
             // Show the list, and dismiss it after 6s
             setShowAmbassadorList(true)
             timeoutRef.current = setTimeout(() => { setShowAmbassadorList(false) }, 6000)
@@ -41,18 +39,17 @@ export default function Overlay(props: OverlayProps) {
             // Wake the overlay for 6s
             props.wake(6000)
         }
-        return () => clearTimeout(timeoutRef.current as NodeJS.Timeout)
 
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current)
+        }
     }, [chosenAmbassador, props.wake])
 
     // If the user interacts with the overlay, clear the auto-dismiss timer
     useEffect(() => {
         const callback = () => {
-            if (awakingRef.current) {
-                awakingRef.current = false
-            } else {
-                clearTimeout(timeoutRef.current as NodeJS.Timeout)
-            }
+            if (awakingRef.current) awakingRef.current = false
+            else if (timeoutRef.current) clearTimeout(timeoutRef.current)
         }
         props.awoken.add(callback)
         return () => props.awoken.remove(callback)

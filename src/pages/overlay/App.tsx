@@ -6,14 +6,15 @@ import Overlay from "./components/overlay/Overlay"
 import OverlaySettings from "./components/overlaySettings/OverlaySettings"
 
 // css
-import "./App.css"
+import styles from "./App.module.css"
+
 export default function App(){
     const [overlaySettings, setOverlaySettings] = useState({
         disableChatPopup: false,
     })
 
     useEffect(() => {
-        //load settings from local storage 
+        //load settings from local storage
         setOverlaySettings(JSON.parse(localStorage.getItem("settings") || "{}"))
     }, [])
     useEffect(() => {
@@ -29,18 +30,18 @@ export default function App(){
     }
 
     return (
-        <div className="App">
+        <div className={styles.app}>
             <Overlay
                 settings={{
-                    disableChatPopup: overlaySettings.disableChatPopup 
+                    disableChatPopup: overlaySettings.disableChatPopup
                 }}
             />
-            <OverlaySettings 
+            <OverlaySettings
                 settings={{
                     disableChatPopup: overlaySettings.disableChatPopup
                 }}
                 toggleDisableChatPopup={()=>toggleDisableChatPopup()}
-            /> 
+            />
         </div>
     )
 }

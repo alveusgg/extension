@@ -1,17 +1,17 @@
 @import '../../../../variables.scss';
 
-.overlay{
+.overlay {
     display: flex;
-    padding: 20px;
-    padding-top: 90px;
     gap: 10px;
     transition: 0.3s;
 }
-.visible{
+
+.visible {
     visibility: visible;
     opacity: 1;
 }
-.hidden{
+
+.hidden {
     visibility: hidden;
     opacity: 0;
     translate: -40px;
@@ -19,37 +19,39 @@
 
 //media query min height 545px
 @media screen and (max-height: 555px) {
-    .overlay{
-        //scale down the overlay
-        scale: 0.8 ;
-        //move the overlay up
+    .overlay {
+        // scale down the overlay
+        scale: 0.8;
+        // move the overlay up
         transform: translateX(-12%);
-        padding-top: 40px;
-        .scrollAmbassadors .ambassadorList{
+
+        .scrollAmbassadors .ambassadorList {
             height: 80vh;
         }
     }
 }
+
 @media screen and (max-height: 440px) {
-    .overlay{
-        //scale down the overlay
-        scale: 0.6 ;
-        //move the overlay up
+    .overlay {
+        // scale down the overlay
+        scale: 0.6;
+        // move the overlay up
         transform: translateX(-32%);
-        padding-top: 20px;
-        .scrollAmbassadors .ambassadorList{
+
+        .scrollAmbassadors .ambassadorList {
             height: 90vh;
         }
     }
 }
 
 @media (prefers-reduced-motion) {
-    //disolve in and out
-    .visible{
+    // disolve in and out
+    .visible {
         opacity: 1;
     }
-    .hidden{
+
+    .hidden {
         opacity: 0;
         translate: 0;
-    } 
+    }
 }

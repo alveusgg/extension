@@ -1,7 +1,7 @@
 .overlaySettings {
     position: absolute;
-    top: 130px; // Match the position of the overlay button
-    right: 20px;
+    top: 40px; // Matching the margin-top of the activation buttons
+    right: 0;
     transition: all 0.15s ease-out;
 }
 
@@ -25,17 +25,5 @@
     .hidden {
         opacity: 0;
         translate: 0;
-    }
-}
-
-@media screen and (max-height: 555px) {
-    .overlaySettings {
-        top: 80px;
-    }
-}
-
-@media screen and (max-height: 440px) {
-    .overlaySettings {
-        top: 60px;
     }
 }

@@ -9,16 +9,17 @@ import OverlaySettings from "./components/overlaySettings/OverlaySettings"
 import styles from "./App.module.css"
 
 export default function App(){
-    const [overlaySettings, setOverlaySettings] = useState({
-        disableChatPopup: false,
+    const [overlaySettings, setOverlaySettings] = useState(() => {
+        // Load settings from local storage, merging with defaults
+        const settings = JSON.parse(localStorage.getItem("settings") || "{}")
+        return {
+            disableChatPopup: false,
+            ...settings
+        }
     })
 
     useEffect(() => {
-        //load settings from local storage
-        setOverlaySettings(JSON.parse(localStorage.getItem("settings") || "{}"))
-    }, [])
-    useEffect(() => {
-        //save settings to local storage
+        // save settings to local storage
         localStorage.setItem("settings", JSON.stringify(overlaySettings))
     }, [overlaySettings])
 

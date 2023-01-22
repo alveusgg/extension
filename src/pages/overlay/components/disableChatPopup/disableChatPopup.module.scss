@@ -9,28 +9,40 @@
     border-radius: 5px;
     text-align: center;
     padding: 2px;
-    height: 80px;
-    width: 40px;
+    width: 60px;
     color: white;
     font-size: x-small;
 
-    /* The switch - the box around the slider */
+    // The switch - the box around the slider
     .switch {
         position: relative;
         display: inline-block;
-        width: 23px;
-        height: 40px;
+        width: 40px;
+        height: 23px;
         margin-top: 5px;
+
+        input {
+            // Hide default HTML checkbox
+            opacity: 0;
+            width: 0;
+            height: 0;
+
+            &:focus + .slider {
+                box-shadow: 0 0 1px #2196f3;
+            }
+
+            // Show the active state
+            &:checked + .slider {
+                background-color: $primary-color;
+
+                &::before {
+                    transform: translateX(15px);
+                }
+            }
+        }
     }
 
-    /* Hide default HTML checkbox */
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    /* The slider */
+    // The slider itself
     .slider {
         position: absolute;
         cursor: pointer;
@@ -39,45 +51,26 @@
         right: 0;
         bottom: 0;
         border: 1px solid black;
-        background-color: white;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 17px;
-        width: 17px;
-        left: 2px;
-        top: 3px;
-        -webkit-transition: 0.4s;
-        transition: 0.4s;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196f3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateY(15px);
-        -ms-transform: translateY(15px);
-        transform: translateY(15px);
-    }
-    /* Rounded sliders */
-    .slider.round {
         border-radius: 34px;
-    }
+        background-color: $tertiary-color;
 
-    .slider.round:before {
-        background-color: $primary-color;
-        border-radius: 50%;
+        // The knob inside the slider
+        &::before {
+            position: absolute;
+            content: "";
+            height: 17px;
+            width: 17px;
+            left: 3px;
+            top: 2px;
+            border-radius: 50%;
+            background-color: white;
+            transition: transform 0.4s;
+        }
     }
 }
+
 @media (prefers-reduced-motion) {
     .slider:before {
-        -webkit-transition: none;
         transition: none;
-        -moz-transition: none;
-        -ms-transition: none;
-        -o-transition: none;
     }
 }

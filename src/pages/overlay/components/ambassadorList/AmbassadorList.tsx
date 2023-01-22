@@ -1,37 +1,31 @@
 //utils
-import { useState, useRef, useEffect } from 'react'
-import {AmbassadorCardProps} from '../../../../utils/global/ambassadorCard/AmbassadorCard'
+import {useState, useRef, useEffect} from 'react'
 import AmbassadorData from '../../../../assets/ambassadors.json'
 
 //components
 import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
 import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 
-//css & assets
+//css & map-assets
 import styles from './ambassadorList.module.css'
 import arrow from '../../../../assets/arrow.jpg'
 
 export interface AmbassadorListProps{
     showAmbassadorList: boolean
-    chatChosenAmbassador?: string
+    selectedAmbassadorId?: string
+    setSelectedAmbassadorId: (name?: string) => void
 }
 export default function AmbassadorList(props: AmbassadorListProps){
     const [ambassadors] = useState(AmbassadorData)
-    const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorCardProps["cardData"] | null>()
 
     const upArrowRef = useRef<HTMLButtonElement>(null)
     const ambassadorList = useRef<HTMLDivElement>(null)
     const downArrowRef = useRef<HTMLButtonElement>(null)
 
     useEffect(() =>{ // show the card of the ambassador that Twitch chat chose
-        if(props.chatChosenAmbassador !== undefined){
-            const ambassador = ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
-            if(ambassador){
-                setActiveAmbassador(ambassador)
-                scrollListToAmbassador(ambassador.name.split(" ")[0].toLowerCase())
-            }
-        }
-    }, [props.chatChosenAmbassador])
+        if(props.selectedAmbassadorId !== undefined)
+            scrollListToAmbassador(props.selectedAmbassadorId)
+    }, [props.selectedAmbassadorId])
 
     const scrollListToAmbassador = (name: string) => {
         if(!ambassadorList.current)
@@ -59,6 +53,8 @@ export default function AmbassadorList(props: AmbassadorListProps){
         }
     }
 
+    const activeAmbassador = props.selectedAmbassadorId !== undefined && ambassadors.find(ambassador => ambassador.id === props.selectedAmbassadorId)
+
     return (
         <div className={styles.ambassadorList}>
             <div className={`${styles.scrollAmbassadors} ${props.showAmbassadorList? styles.visible : styles.hidden}`}>
@@ -68,7 +64,7 @@ export default function AmbassadorList(props: AmbassadorListProps){
                 <div ref={ambassadorList} className={styles.ambassadors} onScroll={()=>handleArrowVisibility()}>
                     {ambassadors && ambassadors.map(ambassador => (
                         <AmbassadorButton
-                            key={ambassador.name}
+                            key={ambassador.id}
                             name={ambassador.name}
                             species={ambassador.species}
                             img={{
@@ -76,10 +72,10 @@ export default function AmbassadorList(props: AmbassadorListProps){
                                 altText: ambassador.img.altText
                             }}
 
-                            getCard={() => {setActiveAmbassador(activeAmbassador?.name === ambassador.name ? undefined : ambassador)}}
+                            getCard={() => {props.setSelectedAmbassadorId(props.selectedAmbassadorId === ambassador.id ? undefined : ambassador.id)}}
 
-                            ClassName={`${styles.ambassadorButton} ${activeAmbassador?.name === ambassador.name ? styles.ambassadorButtonClicked : undefined}`}
-                            Id={ambassador.name.split(" ")[0].toLowerCase()}
+                            ClassName={`${styles.ambassadorButton} ${props.selectedAmbassadorId === ambassador.id ? styles.ambassadorButtonClicked : undefined}`}
+                            Id={ambassador.id}
                         />
                     ))}
                 </div>
@@ -88,11 +84,11 @@ export default function AmbassadorList(props: AmbassadorListProps){
                 </button>
             </div>
 
-            { activeAmbassador && props.showAmbassadorList ? 
+            { activeAmbassador && props.showAmbassadorList ?
                 <AmbassadorCard
-                    key={activeAmbassador.name}
+                    key={activeAmbassador.id}
                     cardData={activeAmbassador}
-                    close={() => {setActiveAmbassador(undefined)}}
+                    close={() => {props.setSelectedAmbassadorId(undefined)}}
                     ClassName={styles.ambassadorCard}
                 />: null
             }

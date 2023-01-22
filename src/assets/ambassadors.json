@@ -1,5 +1,6 @@
 [
     {
+        "id": "appa",
         "name": "Appa",
         "species": "Common Marmoset",
         "img": {
@@ -14,6 +15,7 @@
         "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
     },
     {
+        "id": "momo",
         "name": "Momo",
         "species": "Black-tufted Marmoset",
         "img": {
@@ -28,6 +30,7 @@
         "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
     },
     {
+        "id": "chips",
         "name": "Chips Ahoy",
         "species": "Domestic Rat",
         "img": {
@@ -42,6 +45,7 @@
         "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
     {
+        "id": "nilla",
         "name": "Nilla Wafer",
         "species": "Domestic Rat",
         "img": {
@@ -56,6 +60,7 @@
         "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
     {
+        "id": "henrietta",
         "name": "Henrietta",
         "species": "Jersey Giant",
         "img": {
@@ -70,6 +75,7 @@
         "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
+        "id": "henrique",
         "name": "Henrique",
         "species": "Half Dark Brahma, Half Saipan",
         "img": {
@@ -84,6 +90,7 @@
         "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
+        "id": "nugget",
         "name": "Nugget",
         "species": "Ameraucana Chicken",
         "img": {
@@ -98,6 +105,7 @@
         "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
+        "id": "oliver",
         "name": "Oliver",
         "species": "Olive Egger Chicken",
         "img": {
@@ -112,6 +120,7 @@
         "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
+        "id": "toaster",
         "name": "Toaster Strudel",
         "species": "Blue-tongued Skink",
         "img": {
@@ -126,6 +135,7 @@
         "conservationMission": "He is an ambassador for how human development and invasive species can affect natural habitats and native species. "
     },
     {
+        "id": "puppy",
         "name": "Puppy",
         "species": "Emperor Scorpion",
         "img": {
@@ -140,6 +150,7 @@
         "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "tortellini",
         "name": "Tortellini",
         "species": "Emperor Scorpion",
         "img": {
@@ -154,6 +165,7 @@
         "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "fenn",
         "name": "Fenn",
         "species": "European Red Fox",
         "img": {
@@ -168,6 +180,7 @@
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
     },
     {
+        "id": "reed",
         "name": "Reed",
         "species": "European Red Fox",
         "img": {
@@ -182,6 +195,7 @@
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
     },
     {
+        "id": "winnie",
         "name": "Winnie (The Moo)",
         "species": "Red Angus Beef Cow",
         "img": {
@@ -196,6 +210,7 @@
         "conservationMission": "She is an ambassador for the beef industry and how people can use their consumer choice to impact the environment in a positive way."
     },
     {
+        "id": "mia",
         "name": "Mia",
         "species": "African Grey",
         "img": {
@@ -210,6 +225,7 @@
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
+        "id": "siren",
         "name": "Siren",
         "species": "Blue-frontend Amazon",
         "img": {
@@ -224,6 +240,7 @@
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
+        "id": "miley",
         "name": "Miley",
         "species": "Catalina Macaw",
         "img": {
@@ -238,6 +255,7 @@
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
+        "id": "tico",
         "name": "Tico",
         "species": "Blue and Gold Macaw",
         "img": {
@@ -252,6 +270,7 @@
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
+        "id": "moomin",
         "name": "Moomin",
         "species": "Chinchilla",
         "img": {
@@ -266,6 +285,7 @@
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the fur trade."
     },
     {
+        "id": "snork",
         "name": "Snork",
         "species": "Chinchilla",
         "img": {
@@ -280,6 +300,7 @@
         "conservationMission": "She is an ambassador for the exploitation of wildlife in the fur trade."
     },
     {
+        "id": "jalapeno",
         "name": "Jalapeño",
         "species": "Domestic Donkey",
         "img": {
@@ -294,6 +315,7 @@
         "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
     },
     {
+        "id": "serrano",
         "name": "Serrano",
         "species": "Domestic Donkey",
         "img": {
@@ -308,6 +330,7 @@
         "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
     },
     {
+        "id": "stompy",
         "name": "Stompy",
         "species": "Emu",
         "img": {
@@ -322,6 +345,7 @@
         "conservationMission": "He is an ambassador for how the exotic meat trade and the use of animal products in cosmetics has affected his species and others."
     },
     {
+        "id": "georgie",
         "name": "Georgie",
         "species": "African Bullfrog",
         "img": {
@@ -336,6 +360,7 @@
         "conservationMission": "He is an ambassador for the wildlife trade and how chytrid fungus is affecting amphibian species worldwide."
     },
     {
+        "id": "noodle",
         "name": "Noodle",
         "species": "Carpet Python",
         "img": {
@@ -350,6 +375,7 @@
         "conservationMission": "She is an ambassador for how the pet trade and habitat loss has affected hers and many other reptile species worldwide."
     },
     {
+        "id": "patchy",
         "name": "Patchy",
         "species": "Ball Python",
         "img": {
@@ -364,6 +390,7 @@
         "conservationMission": "He is an ambassador for how the pet trade and habitat loss has affected his and many other reptile species worldwide."
     },
     {
+        "id": "abbott",
         "name": "Abbott",
         "species": "American Crow",
         "img": {
@@ -378,6 +405,7 @@
         "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
     },
     {
+        "id": "coconut",
         "name": "Coconut",
         "species": "American Crow",
         "img": {
@@ -392,6 +420,7 @@
         "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
     },
     {
+        "id": "baked",
         "name": "Baked Bean",
         "species": "Madagascar Hissing Cockroach",
         "img":{
@@ -406,6 +435,7 @@
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "barbara",
         "name": "Barbara",
         "species": "Madagascar Hissing Cockroach",
         "img":{
@@ -420,6 +450,7 @@
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "bb",
         "name": "BB",
         "species": "Spanish Orange Isopods",
         "img":{
@@ -434,6 +465,7 @@
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "ducky",
         "name": "Ducky",
         "species": "Rubber Ducky Isopods",
         "img": {
@@ -448,6 +480,7 @@
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "marty",
         "name": "Marty",
         "species": "Zebra Isopods",
         "img": {
@@ -462,6 +495,7 @@
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "hank",
         "name": "Hank (The Tank)",
         "species": "Smokey Ghost Millipede",
         "img": {
@@ -476,6 +510,7 @@
         "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
     },
     {
+        "id": "pickles",
         "name": "Pickles",
         "species": "Vinegaroon",
         "img": {

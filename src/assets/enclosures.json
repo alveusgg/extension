@@ -1,0 +1,235 @@
+{
+  "pasture": {
+    "label": "Pasture",
+    "links": {
+      "introVideo": "https://youtu.be/4_ZrMe_6-CU?t=363"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/pasture-000.jpg",
+        "alt": "",
+        "label": "Pasture (Copyright: station3media.net)",
+        "width": 2485,
+        "height": 1313,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/pasture-001.jpg",
+        "alt": "",
+        "label": "Pasture (Copyright: station3media.net)",
+        "width": 2420,
+        "height": 1244,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/pasture-002.jpg",
+        "alt": "",
+        "label": "Pasture (Copyright: station3media.net)",
+        "width": 1705,
+        "height": 929,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": ["stompy", "winnie", "serrano", "jalapeno"],
+    "nonAmbassadors": ["acero"],
+    "cams": ["pasturecam"],
+    "facilities": []
+  },
+  "parrot-aviary": {
+    "label": "Parrot aviary",
+    "costToBuild": "52,000 USD plus ~7,000 USD addon",
+    "sponsoredBy": "Michele Raffin (previous owner) and flimflam",
+    "links": {
+      "introVideo": "https://youtu.be/4_ZrMe_6-CU?t=30"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/parrots-000.jpg",
+        "alt": "",
+        "label": "Parrot aviary (Copyright: station3media.net)",
+        "width": 1155,
+        "height": 858,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/parrots-001.jpg",
+        "alt": "",
+        "label": "Parrot aviary (Copyright: station3media.net)",
+        "width": 2091,
+        "height": 1226,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/parrots-002.jpg",
+        "alt": "",
+        "label": "Parrot aviary (Copyright: station3media.net)",
+        "width": 2161,
+        "height": 1359,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/parrots-003.jpg",
+        "alt": "",
+        "label": "Parrot aviary (Copyright: station3media.net)",
+        "width": 2022,
+        "height": 1309,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/parrots-004.jpg",
+        "alt": "",
+        "label": "Parrot aviary (Copyright: station3media.net)",
+        "width": 2024,
+        "height": 1336,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": ["mia", "tico", "miley", "siren"],
+    "nonAmbassadors": [],
+    "cams": ["parrotcam"],
+    "facilities": [],
+    "buildAt": "April 2021"
+  },
+  "crow-aviary": {
+    "label": "Crow aviary",
+    "costToBuild": "~8,000 USD",
+    "sponsoredBy": "PointCrow",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=457"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/crows-000.jpg",
+        "alt": "",
+        "label": "Crow enclosure (Copyright: station3media.net)",
+        "width": 2231,
+        "height": 1232,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": ["abbott", "coconut"],
+    "nonAmbassadors": [],
+    "cams": [],
+    "facilities": []
+  },
+  "new-bird-enclosure": {
+    "label": "New bird enclosure",
+    "costToBuild": "~15,000 USD",
+    "sponsoredBy": "Oni Studios and MercX",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=494"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/new-birds-000.jpg",
+        "alt": "",
+        "label": "New bird enclosure (Copyright: station3media.net)",
+        "width": 2268,
+        "height": 1315,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": [],
+    "nonAmbassadors": [],
+    "cams": [],
+    "facilities": []
+  },
+  "foxes": {
+    "label": "Fox enclosure",
+    "costToBuild": "48,000 USD",
+    "sponsoredBy": "QTCinderella and her community",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=546"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/foxes-000.jpg",
+        "alt": "",
+        "label": "Fox enclosure (Copyright: station3media.net)",
+        "width": 1952,
+        "height": 1035,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/foxes-001.jpg",
+        "alt": "",
+        "label": "Fox enclosure (Copyright: station3media.net)",
+        "width": 1939,
+        "height": 1249,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/foxes-002.jpg",
+        "alt": "",
+        "label": "Fox enclosure (Copyright: station3media.net)",
+        "width": 2377,
+        "height": 1316,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": ["fenn", "reed"],
+    "nonAmbassadors": [],
+    "cams": [],
+    "facilities": []
+  },
+  "chinchillas": {
+    "label": "Chinchilla enclosure",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=364"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/chinchillas-000.jpg",
+        "alt": "",
+        "label": "Chinchilla cage (Copyright: station3media.net)",
+        "width": 4032,
+        "height": 3024,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": ["moomin", "snork"],
+    "nonAmbassadors": [],
+    "cams": [],
+    "facilities": []
+  },
+  "rats": {
+    "label": "Rat cage",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=375"
+    },
+    "images": [],
+    "ambassadors": ["nilla", "chips-ahoy"],
+    "nonAmbassadors": [],
+    "cams": [],
+    "facilities": []
+  },
+  "chickens": {
+    "label": "Chicken enclosure",
+    "costToBuild": "~8,000 USD",
+    "links": {
+      "introVideo": "https://youtu.be/4_ZrMe_6-CU?t=180"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/chickens-000.jpg",
+        "alt": "",
+        "label": "Chicken enclosure (Copyright: station3media.net)",
+        "width": 2493,
+        "height": 1266,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/chickens-001.jpg",
+        "alt": "",
+        "label": "Chicken enclosure (Copyright: station3media.net)",
+        "width": 2521,
+        "height": 1310,
+        "type": "jpg"
+      }
+    ],
+    "ambassadors": ["oliver", "nugget", "henrietta", "henrique"],
+    "nonAmbassadors": [],
+    "cams": [],
+    "facilities": []
+  }
+}

@@ -1,6 +1,9 @@
 @import '../../../../variables.scss';
 
 .ambassadorList{
+    position: absolute;
+    inset: 0;
+
     display: flex;
     font-size: calc(1.6 * $overlay-base-size); //dynamic font size based on available height
 
@@ -70,21 +73,6 @@
         .down{
             bottom: 0;
             transform: rotate(180deg);
-        }
-    }
-    .visible{
-        visibility: visible;
-        opacity: 1;
-    }
-    .hidden{
-        visibility: hidden;
-        opacity: 0;
-        translate: -40px;
-
-        //accessibility for vestibular motion disorders
-        //do not translate list (but keep opacity transition)
-        @media (prefers-reduced-motion) {
-            translate: 0;
         }
     }
     .ambassadorButton{

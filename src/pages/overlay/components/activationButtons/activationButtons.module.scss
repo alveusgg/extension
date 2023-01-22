@@ -1,7 +1,11 @@
 @import '../../../../variables.scss';
 
 .activationButtons{
+    display: flex;
+    flex-direction: column;
     margin-top: calc(6 * $overlay-base-size); //move slightly lower relative to available height
+    gap: $overlay-base-size;
+
     button{
         all: unset;
         display: flex;

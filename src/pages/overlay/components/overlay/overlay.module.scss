@@ -20,6 +20,20 @@
 
     transition: opacity 300ms, translate 300ms;
 }
+
+.views {
+    position: relative;
+    width: 100%;
+    align-self: stretch;
+    justify-self: stretch;
+}
+
+.view {
+    position: absolute;
+    inset: 0;
+    transition: opacity 300ms, translate 300ms;
+}
+
 .visible{
     visibility: visible;
     opacity: 1;

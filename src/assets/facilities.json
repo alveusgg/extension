@@ -1,0 +1,81 @@
+{
+  "nuthouse": {
+    "label": "Nutrition House",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=299"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/nuthouse-000.jpg",
+        "alt": "",
+        "label": "Nutrition House (Copyright: station3media.net)",
+        "width": 1930,
+        "height": 1014,
+        "type": "jpg"
+      }
+    ],
+    "description": "The nutrition house (or nut house) is one of the three houses on the court yard. This is where all the diet and enrichment prep is done every day. The nut house is also home to the rat and chinchilla ambassadors. It also provides storage and features a medical station."
+  },
+  "studio": {
+    "label": "Studio",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=156"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/studio-000.jpg",
+        "alt": "",
+        "label": "Studio (Copyright: station3media.net)",
+        "width": 2102,
+        "height": 1279,
+        "type": "jpg"
+      },
+      {
+        "url": "https://alveusgg.github.io/data/images/studio-001.jpg",
+        "alt": "",
+        "label": "Studio (Copyright: station3media.net)",
+        "width": 2482,
+        "height": 1274,
+        "type": "jpg"
+      }
+    ],
+    "description": "The studio is one of the three houses on the court yard. It is used for streams and is used as the office space. The studio is also home of the frog ambassador Georgie, has a separate room attached for the reptile and amphibian ambassadors as well as the insect and arachnid room."
+  },
+  "training-center": {
+    "label": "Training Center",
+    "costToBuild": "135,000 USD",
+    "links": {
+      "introVideo": "https://youtu.be/_PRVsl9Nxok?t=33"
+    },
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/training-center-000.jpg",
+        "alt": "",
+        "label": "Training Center (Copyright: station3media.net)",
+        "width": 2142,
+        "height": 1301,
+        "type": "jpg"
+      }
+    ],
+    "description": "Central place for events and animal training. No animals live here permanently. Ambassadors are brought to the training center. It features a big gras area, perches and holding pens for the ambassadors. It is completely sealed so birds like the crows and parrots can be safely handled."
+  },
+  "pasture-shed": {
+    "label": "Pasture Shed"
+  },
+  "tools-shed": {
+    "label": "Tools Shed"
+  },
+  "purple-martin-nests": {
+    "label": "Purple Martin Nests",
+    "images": [
+      {
+        "url": "https://alveusgg.github.io/data/images/purple-martin-nests-000.jpg",
+        "alt": "",
+        "label": "Purple Martin Nests (Copyright: station3media.net)",
+        "width": 1334,
+        "height": 1355,
+        "type": "jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1438 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822027,
+                    28.55658
+                ]
+            },
+            "properties": {
+                "id": "georgie",
+                "name": "georgie",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822042,
+                    28.556681
+                ]
+            },
+            "properties": {
+                "id": "noodle",
+                "name": "noodle",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.82219,
+                    28.556648
+                ]
+            },
+            "properties": {
+                "id": "tortellini_puppy",
+                "name": "tortellini_puppy",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822102,
+                    28.556726
+                ]
+            },
+            "properties": {
+                "id": "barbara_baked-bean",
+                "name": "barbara_baked-bean",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822228,
+                    28.55671
+                ]
+            },
+            "properties": {
+                "id": "bb",
+                "name": "bb",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822923,
+                    28.557273
+                ]
+            },
+            "properties": {
+                "id": "miley",
+                "name": "miley",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.823217,
+                    28.556843
+                ]
+            },
+            "properties": {
+                "id": "jalapeno",
+                "name": "jalapeno",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.820926,
+                    28.556817
+                ]
+            },
+            "properties": {
+                "id": "abbott",
+                "name": "abbott",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821336,
+                    28.556694
+                ]
+            },
+            "properties": {
+                "id": "momo",
+                "name": "momo",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821205,
+                    28.556661
+                ]
+            },
+            "properties": {
+                "id": "appa",
+                "name": "appa",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822991,
+                    28.556743
+                ]
+            },
+            "properties": {
+                "id": "winnie",
+                "name": "winnie",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.823226,
+                    28.556666
+                ]
+            },
+            "properties": {
+                "id": "serrano",
+                "name": "serrano",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.820371,
+                    28.556794
+                ]
+            },
+            "properties": {
+                "id": "reed",
+                "name": "reed",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822774,
+                    28.557174
+                ]
+            },
+            "properties": {
+                "id": "siren",
+                "name": "siren",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822526,
+                    28.557204
+                ]
+            },
+            "properties": {
+                "id": "nugget_henrique_henrietta",
+                "name": "nugget_henrique_henrietta",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822086,
+                    28.556369
+                ]
+            },
+            "properties": {
+                "id": "moomin_snork",
+                "name": "moomin_snork",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821076,
+                    28.556843
+                ]
+            },
+            "properties": {
+                "id": "coconut",
+                "name": "coconut",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821962,
+                    28.556423
+                ]
+            },
+            "properties": {
+                "id": "nilla_chips-ahoy",
+                "name": "nilla_chips-ahoy",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822966,
+                    28.556983
+                ]
+            },
+            "properties": {
+                "id": "stompy",
+                "name": "stompy",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822179,
+                    28.556697
+                ]
+            },
+            "properties": {
+                "id": "marty",
+                "name": "marty",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822888,
+                    28.557182
+                ]
+            },
+            "properties": {
+                "id": "mia",
+                "name": "mia",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.82278,
+                    28.557273
+                ]
+            },
+            "properties": {
+                "id": "tico",
+                "name": "tico",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822603,
+                    28.557149
+                ]
+            },
+            "properties": {
+                "id": "oliver",
+                "name": "oliver",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.820208,
+                    28.556796
+                ]
+            },
+            "properties": {
+                "id": "fenn",
+                "name": "fenn",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822093,
+                    28.556596
+                ]
+            },
+            "properties": {
+                "id": "facility-studio",
+                "name": "studio",
+                "type": "facility"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822161,
+                    28.556739
+                ]
+            },
+            "properties": {
+                "id": "pickles",
+                "name": "pickles",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822116,
+                    28.556677
+                ]
+            },
+            "properties": {
+                "id": "ducky",
+                "name": "ducky",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822253,
+                    28.556655
+                ]
+            },
+            "properties": {
+                "id": "mctrain",
+                "name": "mctrain",
+                "size": "small",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821986,
+                    28.556645
+                ]
+            },
+            "properties": {
+                "id": "patchy",
+                "name": "patchy",
+                "type": "ambassador"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822967,
+                            28.556488
+                        ],
+                        [
+                            -38.822716,
+                            28.55697
+                        ],
+                        [
+                            -38.822924,
+                            28.557093
+                        ],
+                        [
+                            -38.82357,
+                            28.55706
+                        ],
+                        [
+                            -38.823847,
+                            28.556969
+                        ],
+                        [
+                            -38.823995,
+                            28.556751
+                        ],
+                        [
+                            -38.822967,
+                            28.556488
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "pasture-bg",
+                "name": "pasture-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822068,
+                    28.556442
+                ]
+            },
+            "properties": {
+                "id": "facility-nuthouse",
+                "name": "nuthouse",
+                "type": "facility"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.821799,
+                            28.556719
+                        ],
+                        [
+                            -38.821892,
+                            28.556811
+                        ],
+                        [
+                            -38.821965,
+                            28.556758
+                        ],
+                        [
+                            -38.821865,
+                            28.556665
+                        ],
+                        [
+                            -38.821799,
+                            28.556719
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "tools-shed-bg",
+                "name": "tools-shed-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822965,
+                            28.556499
+                        ],
+                        [
+                            -38.822906,
+                            28.556618
+                        ],
+                        [
+                            -38.822992,
+                            28.556651
+                        ],
+                        [
+                            -38.823055,
+                            28.556527
+                        ],
+                        [
+                            -38.822965,
+                            28.556499
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "pasture-shed-bg",
+                "name": "pasture-shed-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822652,
+                    28.556535
+                ]
+            },
+            "properties": {
+                "id": "facility-training-center",
+                "name": "training-center",
+                "type": "facility"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822078,
+                            28.556372
+                        ],
+                        [
+                            -38.821964,
+                            28.55644
+                        ],
+                        [
+                            -38.822006,
+                            28.556491
+                        ],
+                        [
+                            -38.822119,
+                            28.556426
+                        ],
+                        [
+                            -38.822078,
+                            28.556372
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "nuthouse-bg",
+                "name": "nuthouse-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822642,
+                            28.556467
+                        ],
+                        [
+                            -38.822585,
+                            28.556555
+                        ],
+                        [
+                            -38.822686,
+                            28.556601
+                        ],
+                        [
+                            -38.822743,
+                            28.556509
+                        ],
+                        [
+                            -38.822642,
+                            28.556467
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "training-center-bg",
+                "name": "training-center-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.823001,
+                    28.556582
+                ]
+            },
+            "properties": {
+                "id": "pasture-shed",
+                "name": "pasture-shed",
+                "type": "facility"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822349,
+                            28.556584
+                        ],
+                        [
+                            -38.822371,
+                            28.556469
+                        ],
+                        [
+                            -38.822267,
+                            28.556456
+                        ],
+                        [
+                            -38.82224,
+                            28.556571
+                        ],
+                        [
+                            -38.822349,
+                            28.556584
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "house-bg",
+                "name": "house-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.82281,
+                    28.556595
+                ]
+            },
+            "properties": {
+                "id": "purple-martin-nests",
+                "name": "purple-martin-nests",
+                "type": "facility"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822035,
+                            28.556571
+                        ],
+                        [
+                            -38.822015,
+                            28.556624
+                        ],
+                        [
+                            -38.82214,
+                            28.556658
+                        ],
+                        [
+                            -38.822159,
+                            28.556605
+                        ],
+                        [
+                            -38.822035,
+                            28.556571
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "studio-bg",
+                "name": "studio-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -38.821941,
+                        28.556293
+                    ],
+                    [
+                        -38.821438,
+                        28.556731
+                    ],
+                    [
+                        -38.821367,
+                        28.557298
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "dividing-fence",
+                "name": "dividing-fence",
+                "type": "perimeter"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822832,
+                    28.557215
+                ]
+            },
+            "properties": {
+                "id": "enclosure-parrot-aviary",
+                "name": "parrot-aviary",
+                "type": "enclosure"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.822607,
+                    28.557214
+                ]
+            },
+            "properties": {
+                "id": "enclosure-chickens",
+                "name": "chickens",
+                "type": "enclosure"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821005,
+                    28.556824
+                ]
+            },
+            "properties": {
+                "id": "enclosure-new-bird-enclosure",
+                "name": "new-bird-enclosure",
+                "type": "enclosure"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.823425,
+                    28.556883
+                ]
+            },
+            "properties": {
+                "id": "pasture",
+                "name": "pasture",
+                "type": "enclosure"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.821273,
+                    28.556682
+                ]
+            },
+            "properties": {
+                "id": "enclosure-crow-aviary",
+                "name": "crow-aviary",
+                "type": "enclosure"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -38.820286,
+                    28.556791
+                ]
+            },
+            "properties": {
+                "id": "enclosure-foxes",
+                "name": "foxes",
+                "type": "enclosure"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -38.824091,
+                        28.556769
+                    ],
+                    [
+                        -38.823876,
+                        28.55702
+                    ],
+                    [
+                        -38.823552,
+                        28.557117
+                    ],
+                    [
+                        -38.823208,
+                        28.557155
+                    ],
+                    [
+                        -38.822879,
+                        28.55714
+                    ],
+                    [
+                        -38.82273,
+                        28.557058
+                    ],
+                    [
+                        -38.822624,
+                        28.55692
+                    ],
+                    [
+                        -38.822492,
+                        28.556797
+                    ],
+                    [
+                        -38.822384,
+                        28.556804
+                    ],
+                    [
+                        -38.821992,
+                        28.556856
+                    ],
+                    [
+                        -38.821929,
+                        28.556854
+                    ],
+                    [
+                        -38.821892,
+                        28.556845
+                    ],
+                    [
+                        -38.821838,
+                        28.556798
+                    ],
+                    [
+                        -38.821773,
+                        28.556704
+                    ],
+                    [
+                        -38.821628,
+                        28.556748
+                    ],
+                    [
+                        -38.821428,
+                        28.556796
+                    ],
+                    [
+                        -38.821011,
+                        28.556728
+                    ],
+                    [
+                        -38.820638,
+                        28.556704
+                    ],
+                    [
+                        -38.820166,
+                        28.556716
+                    ],
+                    [
+                        -38.82004,
+                        28.556738
+                    ],
+                    [
+                        -38.819919,
+                        28.556763
+                    ],
+                    [
+                        -38.819846,
+                        28.556839
+                    ],
+                    [
+                        -38.819801,
+                        28.556935
+                    ],
+                    [
+                        -38.819807,
+                        28.557048
+                    ],
+                    [
+                        -38.819837,
+                        28.55715
+                    ],
+                    [
+                        -38.819926,
+                        28.5572
+                    ],
+                    [
+                        -38.820017,
+                        28.557238
+                    ],
+                    [
+                        -38.820199,
+                        28.557253
+                    ],
+                    [
+                        -38.820383,
+                        28.557258
+                    ],
+                    [
+                        -38.820504,
+                        28.557239
+                    ],
+                    [
+                        -38.820625,
+                        28.557216
+                    ],
+                    [
+                        -38.820854,
+                        28.557159
+                    ],
+                    [
+                        -38.820991,
+                        28.557116
+                    ],
+                    [
+                        -38.82112,
+                        28.557065
+                    ],
+                    [
+                        -38.82136,
+                        28.556928
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "path1",
+                "name": "path1",
+                "type": "path"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -38.822357,
+                        28.556717
+                    ],
+                    [
+                        -38.822445,
+                        28.556594
+                    ],
+                    [
+                        -38.822485,
+                        28.556561
+                    ],
+                    [
+                        -38.822531,
+                        28.556573
+                    ],
+                    [
+                        -38.822701,
+                        28.556638
+                    ],
+                    [
+                        -38.82273,
+                        28.556639
+                    ],
+                    [
+                        -38.82276,
+                        28.556628
+                    ],
+                    [
+                        -38.822777,
+                        28.556628
+                    ],
+                    [
+                        -38.822875,
+                        28.556662
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "path3",
+                "name": "path3",
+                "type": "path"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -38.822499,
+                        28.5568
+                    ],
+                    [
+                        -38.822303,
+                        28.556689
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "path2",
+                "name": "path2",
+                "type": "path"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.819722,
+                            28.556265
+                        ],
+                        [
+                            -38.81963,
+                            28.55732
+                        ],
+                        [
+                            -38.824131,
+                            28.55728
+                        ],
+                        [
+                            -38.824182,
+                            28.556757
+                        ],
+                        [
+                            -38.822193,
+                            28.556283
+                        ],
+                        [
+                            -38.819722,
+                            28.556265
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "perimeter",
+                "fill": "#555555",
+                "name": "perimeter",
+                "type": "perimeter",
+                "stroke": "#555555",
+                "z-index": -100,
+                "fill-opacity": 0.5,
+                "stroke-width": 2,
+                "stroke-opacity": 1,
+                "visibility": false
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.82198,
+                            28.556396
+                        ],
+                        [
+                            -38.821937,
+                            28.556434
+                        ],
+                        [
+                            -38.821891,
+                            28.55648
+                        ],
+                        [
+                            -38.821819,
+                            28.556572
+                        ],
+                        [
+                            -38.821749,
+                            28.556701
+                        ],
+                        [
+                            -38.821794,
+                            28.556712
+                        ],
+                        [
+                            -38.821871,
+                            28.556646
+                        ],
+                        [
+                            -38.821965,
+                            28.556624
+                        ],
+                        [
+                            -38.822058,
+                            28.556653
+                        ],
+                        [
+                            -38.82215,
+                            28.5567
+                        ],
+                        [
+                            -38.822222,
+                            28.556706
+                        ],
+                        [
+                            -38.822276,
+                            28.556697
+                        ],
+                        [
+                            -38.822332,
+                            28.556673
+                        ],
+                        [
+                            -38.822369,
+                            28.556629
+                        ],
+                        [
+                            -38.822369,
+                            28.55658
+                        ],
+                        [
+                            -38.822354,
+                            28.556529
+                        ],
+                        [
+                            -38.82233,
+                            28.556496
+                        ],
+                        [
+                            -38.82231,
+                            28.556466
+                        ],
+                        [
+                            -38.822271,
+                            28.556438
+                        ],
+                        [
+                            -38.82222,
+                            28.556402
+                        ],
+                        [
+                            -38.822178,
+                            28.556386
+                        ],
+                        [
+                            -38.822149,
+                            28.556383
+                        ],
+                        [
+                            -38.822084,
+                            28.556365
+                        ],
+                        [
+                            -38.822025,
+                            28.556376
+                        ],
+                        [
+                            -38.822001,
+                            28.556384
+                        ],
+                        [
+                            -38.82198,
+                            28.556396
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "court-bg",
+                "name": "court-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822652,
+                            28.557247
+                        ],
+                        [
+                            -38.822663,
+                            28.557204
+                        ],
+                        [
+                            -38.822569,
+                            28.55718
+                        ],
+                        [
+                            -38.822558,
+                            28.557223
+                        ],
+                        [
+                            -38.822652,
+                            28.557247
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "chickens-bg",
+                "name": "chickens-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.822866,
+                            28.557296
+                        ],
+                        [
+                            -38.822903,
+                            28.557206
+                        ],
+                        [
+                            -38.822795,
+                            28.557162
+                        ],
+                        [
+                            -38.822759,
+                            28.557252
+                        ],
+                        [
+                            -38.822866,
+                            28.557296
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "parrot-aviary-bg",
+                "name": "parrot-aviary-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.820406,
+                            28.556833
+                        ],
+                        [
+                            -38.820402,
+                            28.556745
+                        ],
+                        [
+                            -38.820184,
+                            28.556756
+                        ],
+                        [
+                            -38.820188,
+                            28.556844
+                        ],
+                        [
+                            -38.820406,
+                            28.556833
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "foxes-bg",
+                "name": "foxes-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.821018,
+                            28.556889
+                        ],
+                        [
+                            -38.821066,
+                            28.556792
+                        ],
+                        [
+                            -38.820989,
+                            28.556762
+                        ],
+                        [
+                            -38.820933,
+                            28.556856
+                        ],
+                        [
+                            -38.821018,
+                            28.556889
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "new-crow-enclosure-bg",
+                "name": "new-crow-enclosure-bg",
+                "type": "background"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -38.8213,
+                            28.556724
+                        ],
+                        [
+                            -38.821319,
+                            28.556659
+                        ],
+                        [
+                            -38.821246,
+                            28.556638
+                        ],
+                        [
+                            -38.821226,
+                            28.556702
+                        ],
+                        [
+                            -38.8213,
+                            28.556724
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "crow-aviary-bg",
+                "name": "crow-aviary-bg",
+                "type": "background"
+            }
+        }
+    ]
+}

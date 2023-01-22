@@ -1,11 +1,11 @@
 @import '../../../../variables.scss';
 
 .activationButtons{
-    margin-top: calc(6 * var(--alveus-base-size)); //move slightly lower relative to available height
+    margin-top: calc(6 * $overlay-base-size); //move slightly lower relative to available height
     button{
         all: unset;
         display: flex;
-        width: calc(5 * var(--alveus-base-size)); //scale based on available height
+        width: calc(5 * $overlay-base-size); //scale based on available height
         border-radius: 5px;
         background-color: $primary-color;
 

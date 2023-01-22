@@ -1,6 +1,8 @@
+@import '../../../../variables.scss';
+
 .ambassadorList{
     display: flex;
-    font-size: calc(1.6 * var(--alveus-base-size)); //dynamic font size based on available height
+    font-size: calc(1.6 * $overlay-base-size); //dynamic font size based on available height
 
     .scrollAmbassadors{
         display: flex;
@@ -12,9 +14,9 @@
         .ambassadors{
             display: flex;
             //scale ambassadors based on available height
-            width: calc(17 * var(--alveus-base-size));
-            padding: calc(3 * var(--alveus-base-size)) calc(2 * var(--alveus-base-size));
-            gap: calc(2 * var(--alveus-base-size));
+            width: calc(17 * $overlay-base-size);
+            padding: calc(3 * $overlay-base-size) calc(2 * $overlay-base-size);
+            gap: calc(2 * $overlay-base-size);
 
             flex-direction: column;
             align-items: center;

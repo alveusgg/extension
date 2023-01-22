@@ -15,8 +15,8 @@
     display: flex;
 
     //horizontal gaps scaled dynamically based on available height
-    padding: 0 calc(2 * var(--alveus-base-size));
-    gap: var(--alveus-base-size);
+    padding: 0 calc(2 * $overlay-base-size);
+    gap: $overlay-base-size;
 
     transition: opacity 300ms, translate 300ms;
 }

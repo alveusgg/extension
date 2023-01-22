@@ -23,11 +23,14 @@ If you're using Chrome, enable `allow invalid certificates for resources loaded 
 If using Firefox, once you have started the development server, you will want to navigate to [`https://localhost:8080`](https://localhost:8080), click advanced and select accept the risk.
 
 To test the overlay directly on Twitch, you will need to be live on Twitch with the extension installed.
+The panel for the extension can be tested on Twitch while offline, as this is displayed on the channel page.
 
 Under the `Status` tab of the extension version, scroll to the bottom and click on `View on Twitch and Install`. Install the extension on your channel and activate it.
-If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
 
-With it installed, start broadcasting on Twitch and the extension should show up.
+If you are wanting to test the overlay, activate it for your overlay slot. Once activated, started broadcasting and the extension should be visible.
+If you are testing the panel, make sure to activate the extension for a panel slot. You should then be able to see in on the channel about page.
+
+If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
 
 ## Running via Developer Rig
 

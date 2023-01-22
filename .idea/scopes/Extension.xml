@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Extension" pattern="!file:*.css" />
+</component>

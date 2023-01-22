@@ -15,6 +15,7 @@ https://user-images.githubusercontent.com/49528805/167273992-0cbe7329-9665-4d67-
 4. Start the development server with `npm start`
 
 There are two ways to run the extension. You can either add it to a channel on Twitch, or use the developer rig to test locally.
+Testing via Twitch itself is recommend here, as the developer rig runs a rather outdated version of Chromium and often isn't the best experience.
 
 ## Running via Twitch
 

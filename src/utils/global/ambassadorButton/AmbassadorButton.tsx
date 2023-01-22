@@ -25,9 +25,9 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
   }
   return (
     <Ambassador ClassName={`${styles.ambassador}  ${props.ClassName}`} Id={props.Id} onClick={handleClick}>
-       <img className={styles.img} src={props.img.src} alt={props.img.altText} />
-        <h2 className={styles.name}>{props.name}</h2>
-        <h3 className={styles.species}>{props.species}</h3>
+      <img className={styles.img} src={props.img.src} alt={props.img.altText} loading="lazy" />
+      <h2 className={styles.name}>{props.name}</h2>
+      <h3 className={styles.species}>{props.species}</h3>
     </Ambassador>
   )
 }

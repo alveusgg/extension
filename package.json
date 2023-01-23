@@ -32,10 +32,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm-run-all --parallel watch serve",
+    "start": "npm-run-all --parallel sass:watch serve",
     "serve": "env-cmd -f .env react-app-rewired start",
-    "watch": "sass  --no-source-map --watch src:src",
-    "build": "react-app-rewired build",
+    "sass:build": "sass --no-source-map src:src",
+    "sass:watch": "npm run sass:build -- --watch",
+    "build": "npm run sass:build && react-app-rewired build",
     "test": "react-app-rewired test",
     "lint": "npm run lint:editorconfig",
     "lint:editorconfig": "editorconfig-checker",

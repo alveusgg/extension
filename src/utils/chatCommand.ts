@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState, useMemo } from 'react'
-import tmi, { ChatUserstate } from 'tmi.js'
+import {useCallback, useEffect, useState, useMemo} from 'react'
+import tmi, {ChatUserstate} from 'tmi.js'
 import AmbassadorData from '../assets/ambassadors.json'
+import {ChannelInfo, fetchCurrentChannelInfo} from './twitch-api'
 
 /**
  * @description Some ambassadors have names with diacritics in them (Ex: Jalapeño).
@@ -12,7 +13,7 @@ import AmbassadorData from '../assets/ambassadors.json'
 const getMapOfAmbassadorWithDiacritics = (): Map<string, string> => {
   //store names that have letters with diacritics in them
   const ambassadorsWithDiacriticsInNames = AmbassadorData.filter(
-    (ambassador) =>{
+    (ambassador) => {
       const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
       const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
@@ -47,21 +48,9 @@ export default function useChatCommand(callback: (command: string) => void) {
     return commands
   }, [])
 
-  const [client] = useState(new tmi.Client({
-    connection: {
-      secure: true,
-      reconnect: true
-    },
-    channels: [
-      // 'AbdullahMorrison', //! For testing purposes
-      'Maya',
-      'AlveusSanctuary'
-    ]
-  }))
-
   const messageHandler = useCallback((channel: string, tags: ChatUserstate, msg: string, self: boolean) => {
-    //ignore if user is not a moderator or broadcaster or if the user is not AbdullahMorrison
-    if (!tags.mod && !tags.badges?.broadcaster && tags.username !== 'abdullahmorrison') return
+    //ignore if user is not a moderator or broadcaster or test user
+    if (!tags.mod && !tags.badges?.broadcaster && tags.username !== process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USER) return
     // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
     if (self || !msg.trim().startsWith('!')) return
 
@@ -70,19 +59,46 @@ export default function useChatCommand(callback: (command: string) => void) {
     if (command) callback('!'+command)
   }, [commandsMap, callback])
 
-  useEffect(() => {
-    client.addListener('message', messageHandler)
-    return () => {
-      client.removeListener('message', messageHandler)
-    }
-  }, [client, messageHandler])
-
   const connectedHandler = useCallback(() => {
     console.log('*Twitch extension is connected to chat*')
   }, [])
 
+  const [channelInfo, setChannelInfo] = useState<ChannelInfo | null>(null)
+
   useEffect(() => {
+    if ('Twitch' in window) {
+      window.Twitch.ext.onAuthorized(async (auth: Twitch.ext.Authorized) => {
+        const newChannelInfo = await fetchCurrentChannelInfo(auth.channelId, auth)
+        if (newChannelInfo) {
+          // NOTE: We could use the channel info here to e.g. parse the title and
+          //      highlight the ambassadors for the current scene
+          setChannelInfo(newChannelInfo)
+        }
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    const channels = []
+    if (channelInfo?.broadcaster_name)
+      channels.push(channelInfo.broadcaster_name)
+
+    if (process.env.REACT_APP_CHAT_COMMANDS_TEST_CHANNEL)
+      channels.push(process.env.REACT_APP_CHAT_COMMANDS_TEST_CHANNEL)
+
+    const client = new tmi.Client({
+      connection: {
+        secure: true,
+        reconnect: true,
+      },
+      channels
+    })
+    client.on('message', messageHandler)
     client.on('connected', connectedHandler)
     client.connect()
-  }, [client, connectedHandler])
+
+    return () => {
+      client.disconnect()
+    }
+  }, [channelInfo?.broadcaster_name, connectedHandler, messageHandler])
 }

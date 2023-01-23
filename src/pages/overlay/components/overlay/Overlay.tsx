@@ -22,6 +22,8 @@ interface OverlayProps {
 }
 
 export default function Overlay(props: OverlayProps) {
+  const { sleeping, awoken, wake, settings } = props
+
   const [showAmbassadorList, setShowAmbassadorList] = useState(false)
   const chosenAmbassador = useChatCommand()
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
@@ -29,7 +31,7 @@ export default function Overlay(props: OverlayProps) {
 
   // When a chat command is run, show the list and auto-dismiss it after 6s
   useEffect(() => {
-    if (chosenAmbassador !== undefined && !props.settings.disableChatPopup) {
+    if (chosenAmbassador !== undefined && !settings.disableChatPopup) {
       // Show the list, and dismiss it after 6s
       setShowAmbassadorList(true)
       timeoutRef.current = setTimeout(() => { setShowAmbassadorList(false) }, 6000)
@@ -38,13 +40,13 @@ export default function Overlay(props: OverlayProps) {
       awakingRef.current = true
 
       // Wake the overlay for 8s
-      props.wake(8000)
+      wake(8000)
     }
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [chosenAmbassador, props.wake])
+  }, [chosenAmbassador, settings.disableChatPopup, wake])
 
   // If the user interacts with the overlay, clear the auto-dismiss timer
   useEffect(() => {
@@ -52,12 +54,12 @@ export default function Overlay(props: OverlayProps) {
       if (awakingRef.current) awakingRef.current = false
       else if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-    props.awoken.add(callback)
-    return () => props.awoken.remove(callback)
-  }, [props.awoken])
+    awoken.add(callback)
+    return () => awoken.remove(callback)
+  }, [awoken])
 
   return (
-    <div className={`${styles.overlay} ${props.sleeping ? styles.hidden : styles.visible}`} >
+    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`} >
       <ActivationButtons
         toggleShowAmbassadorList={() => setShowAmbassadorList(!showAmbassadorList)}
       />

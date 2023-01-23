@@ -66,8 +66,10 @@ export default function App() {
 
   // Bind a capturing event listener for scrolling (so we can see scrolling for children)
   useEffect(() => {
-    appRef.current?.addEventListener("scroll", interacted, true)
-    return () => appRef.current?.removeEventListener("scroll", interacted, true)
+    if (!appRef.current) return
+    const node = appRef.current
+    node.addEventListener("scroll", interacted, true)
+    return () => node.removeEventListener("scroll", interacted, true)
   }, [interacted])
 
   // Immediately sleep the overlay

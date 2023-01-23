@@ -32,7 +32,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
         scrollListToAmbassador(ambassador.name.split(" ")[0].toLowerCase())
       }
     }
-  }, [props.chatChosenAmbassador])
+  }, [props.chatChosenAmbassador, ambassadors])
 
   const scrollListToAmbassador = (name: string) => {
     if (!ambassadorList.current) return

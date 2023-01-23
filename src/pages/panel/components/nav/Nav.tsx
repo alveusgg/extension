@@ -1,14 +1,14 @@
 //images
 import AlveusLogo from '../../../../assets/alveus-logo.png';
 
-//css 
+//css
 import styles from './nav.module.css';
 
 export default function Nav() {
   return (
     <nav className={styles.nav}>
-        <img src={AlveusLogo} alt="Alveus Logo" />
-        <h1>Alveus Ambassadors</h1>
+      <img src={AlveusLogo} alt="Alveus Logo" />
+      <h1>Alveus Ambassadors</h1>
     </nav>
   )
 }

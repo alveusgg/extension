@@ -1,6 +1,6 @@
 //css & assets
 import styles from './activationButtons.module.css'
-import AlveusLogo from '../../../assets/alveus-logo.png';
+import AlveusLogo from '../../../../assets/alveus-logo.png';
 
 /** 
  * @Description Activation buttons are buttons that are used to show parts of the overlay.

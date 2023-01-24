@@ -17,11 +17,11 @@ interface OverlayProps {
 export default function Overlay(props: OverlayProps) {
     const [showAmbassadorList, setShowAmbassadorList] = useState(false)
     const [isOverlayVisible, setIsOverlayVisible] = useState(false)
-    const chosenAmbassador = useChatCommand()
+    const chosenAmbassadorId = useChatCommand()
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
     useEffect(() => {
-        if(chosenAmbassador !== undefined && props.settings.disableChatPopup === false){
+        if(chosenAmbassadorId && props.settings.disableChatPopup === false){
             console.log(props.settings.disableChatPopup)
             setIsOverlayVisible(true)
             setShowAmbassadorList(true)
@@ -34,7 +34,7 @@ export default function Overlay(props: OverlayProps) {
         }
         return () => clearTimeout(timeoutRef.current as NodeJS.Timeout) 
 
-    }, [chosenAmbassador])
+    }, [chosenAmbassadorId])
 
     useEffect(() => {
         initMouseEventListener()
@@ -64,7 +64,7 @@ export default function Overlay(props: OverlayProps) {
         />
         <AmbassadorList
             showAmbassadorList={showAmbassadorList}
-            chatChosenAmbassador={chosenAmbassador?.slice(1)}
+            chatChosenAmbassadorId={chosenAmbassadorId}
         />
     </div>
     )

@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 //components & hooks
 import AmbassadorButton from "../../../../utils/global/ambassadorButton/AmbassadorButton";
 import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
@@ -7,42 +9,34 @@ import useChatCommand from "../../../../utils/chatCommand";
 import styles from './ambassadorPanel.module.css'
 
 //data
-import { useState, useEffect } from "react";
 import AmbassadorData from "../../../../assets/ambassadors.json";
 
 
 export default function AmbassadorPanel() {
   const [ambassadors] = useState(AmbassadorData)
-  const [ambassadorCard, setAmbassadorCard] = useState("") //name of ambassador that will show up as a modal
-  const chosenAmbassador = useChatCommand()?.slice(1)
+  const [cardAmbassadorId, setCardAmbassadorId] = useState<string | undefined>(undefined) // id of ambassador that will show up as a modal
+  const chosenAmbassadorId = useChatCommand()
 
   useEffect(() => {
-    if(chosenAmbassador !== undefined){
-      setAmbassadorCard(ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.name || "")
+    if(chosenAmbassadorId){
+      setCardAmbassadorId(chosenAmbassadorId)
     }
-  }, [chosenAmbassador, ambassadors])
-
-  function handleClose(): void{
-    setAmbassadorCard("")
-  }
-  function handleGetCard(name: string): void {
-    setAmbassadorCard(name)
-  }
+  }, [chosenAmbassadorId])
 
   return (
     <main className={styles.ambassadors}> 
       {ambassadors && ambassadors.map(ambassador => (
         <>
-          {ambassadorCard === ambassador.name ? 
+          {cardAmbassadorId === ambassador.id ?
             <AmbassadorCardOverlay
               ambassadorCard={{cardData: ambassador}}
 
-              close={handleClose}
+              close={() => setCardAmbassadorId(undefined)}
             />
             : null
           }
           <AmbassadorButton
-            key={ambassador.name} // every ambassador will have a unique name
+            key={ambassador.id}
             name={ambassador.name}
             species={ambassador.species}
             img={{
@@ -50,7 +44,7 @@ export default function AmbassadorPanel() {
               altText: ambassador.img.altText
             }}
 
-            getCard={()=>handleGetCard(ambassador.name)}
+            getCard={() => setCardAmbassadorId(ambassador.id)}
           />
         </>
       ))}

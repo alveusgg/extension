@@ -13,7 +13,7 @@ import arrow from '../../../../assets/arrow.jpg'
 
 export interface AmbassadorListProps{
     showAmbassadorList: boolean
-    chatChosenAmbassador?: string
+    chatChosenAmbassadorId?: string
 }
 export default function AmbassadorList(props: AmbassadorListProps){
     const [ambassadors] = useState(AmbassadorData)
@@ -24,21 +24,21 @@ export default function AmbassadorList(props: AmbassadorListProps){
     const downArrowRef = useRef<HTMLImageElement>(null)
 
     useEffect(() =>{ // show the card of the ambassador that Twitch chat chose
-        if(props.chatChosenAmbassador !== undefined){
-            const ambassador = ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
+        if(props.chatChosenAmbassadorId){
+            const ambassador = ambassadors.find(ambassador => ambassador.id === props.chatChosenAmbassadorId)
             if(ambassador){
                 setActiveAmbassador(ambassador)
-                scrollListToAmbassador(ambassador.name.split(" ")[0].toLowerCase())
+                scrollListToAmbassador(ambassador.id)
             }
         }
-    }, [props.chatChosenAmbassador])
+    }, [props.chatChosenAmbassadorId])
 
     const scrollListToAmbassador = (name: string) => {
         if(!ambassadorList.current)
             return
 
         const offset = 200
-        const anchorElement = ambassadorList.current.querySelector(`#${name}`)
+        const anchorElement = ambassadorList.current.querySelector(`#ambassador-${name}`)
         if(anchorElement instanceof HTMLDivElement)
             ambassadorList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
     }
@@ -77,7 +77,7 @@ export default function AmbassadorList(props: AmbassadorListProps){
                             getCard={() => {setActiveAmbassador(activeAmbassador?.name === ambassador.name ? undefined : ambassador)}}
 
                             ClassName={`${styles.ambassadorButton} ${activeAmbassador?.name === ambassador.name ? styles.ambassadorButtonClicked : undefined}`}
-                            Id={ambassador.name.split(" ")[0].toLowerCase()}
+                            Id={`ambassador-${ambassador.id}`}
                         />
                     ))}
                 </div>

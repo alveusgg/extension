@@ -9,7 +9,7 @@ interface AmbassadorButtonProps{
   name: string
   species: string
 
-  getCard?: (name: string) => void
+  getCard?: () => void
   changeEditMode?: () => void
 
   ClassName?: string
@@ -18,7 +18,7 @@ interface AmbassadorButtonProps{
 export default function AmbassadorButton(props: AmbassadorButtonProps) {
   function handleClick(): void {
     if(props.getCard)
-      props.getCard(props.name)
+      props.getCard()
 
     if(props.changeEditMode)
       props.changeEditMode()

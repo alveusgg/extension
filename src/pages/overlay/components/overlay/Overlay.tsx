@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 
 //components & hooks
 import ActivationButtons from '../activationButtons/ActivationButtons'
+import AlveusIntro from '../alveusIntro/AlveusIntro'
 import AmbassadorList from '../ambassadorList/AmbassadorList'
 import useChatCommand from '../../../../utils/chatCommand'
 
@@ -21,6 +22,7 @@ interface OverlayProps {
     }
 }
 export default function Overlay(props: OverlayProps) {
+    const [showAlveusIntro, setShowAlveusIntro] = useState(false)
     const [showAmbassadorList, setShowAmbassadorList] = useState(false)
     const chosenAmbassador = useChatCommand()
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
@@ -59,6 +61,10 @@ export default function Overlay(props: OverlayProps) {
     <div className={`${styles.overlay} ${props.sleeping ? styles.hidden : styles.visible}`} >
         <ActivationButtons
             toggleShowAmbassadorList={() => setShowAmbassadorList(!showAmbassadorList)}
+            toggleShowAlveusIntro={() => {setShowAlveusIntro(!showAlveusIntro)}}
+        />
+        <AlveusIntro
+            showAlveusIntro={showAlveusIntro}
         />
         <AmbassadorList
             showAmbassadorList={showAmbassadorList}

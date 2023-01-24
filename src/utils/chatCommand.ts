@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
-import AmbassadorData from '../assets/animals.json'
+import AmbassadorData from '../assets/ambassadors.json'
 
 /**
  * @description Some ambassadors have names with diacritics in them (Ex: Jalapeño). 
@@ -42,7 +42,7 @@ export default function useChatCommand() {
             reconnect: true
         },
         channels: [
-            'AbdullahMorrison',
+            // 'AbdullahMorrison', //! For testing purposes
             'Maya',
             'AlveusSanctuary'
         ]

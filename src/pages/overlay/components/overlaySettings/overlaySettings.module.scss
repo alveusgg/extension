@@ -1,0 +1,23 @@
+.overlaySettings {
+    position: absolute;
+    top: 40px; // Matching the margin-top of the activation buttons
+    right: 0;
+    transition: 0.3s ease-out;
+    transition-property: visibility, translate;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+    translate: 40px;
+}
+
+@media (prefers-reduced-motion) {
+    // just rely on app fade
+    .hidden {
+        translate: 0;
+    }
+}

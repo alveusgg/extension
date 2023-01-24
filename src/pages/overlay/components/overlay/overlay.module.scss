@@ -1,0 +1,51 @@
+@import '../../../../variables.scss';
+
+.overlay {
+    display: flex;
+    gap: 10px;
+    transition: 0.3s ease-out;
+    transition-property: visibility, translate;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+    translate: -40px;
+}
+
+//media query min height 545px
+@media screen and (max-height: 555px) {
+    .overlay {
+        // scale down the overlay
+        scale: 0.8;
+        // move the overlay up
+        transform: translateX(-12%);
+
+        .scrollAmbassadors .ambassadorList {
+            height: 80vh;
+        }
+    }
+}
+
+@media screen and (max-height: 440px) {
+    .overlay {
+        // scale down the overlay
+        scale: 0.6;
+        // move the overlay up
+        transform: translateX(-32%);
+
+        .scrollAmbassadors .ambassadorList {
+            height: 90vh;
+        }
+    }
+}
+
+@media (prefers-reduced-motion) {
+    // just rely on app fade
+    .hidden {
+        translate: 0;
+    }
+}

@@ -1,5 +1,5 @@
 /**
-   * calculates the age of the animal based on the date of birth
+   * calculates the age of the ambassador based on the date of birth
    * in weeks, months, or years
    * @param dateOfBirth date of birth in the format YYYY-MM-DD or YYYY-MM or YYYY
    */
@@ -85,4 +85,14 @@
       return "rd"
     else
       return "th"
+  }
+
+  export function isBirthday(dateOfBirth: string): boolean{
+    if(dateOfBirth.split('-').length !== 3)
+      return false
+
+    const today = new Date();
+    const dob = new Date(dateOfBirth);
+
+    return today.getUTCMonth() === dob.getUTCMonth() && today.getUTCDate() === dob.getUTCDate()
   }

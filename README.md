@@ -8,13 +8,44 @@ https://user-images.githubusercontent.com/49528805/167273992-0cbe7329-9665-4d67-
 
 # Local Set Up
 
-1. Enable `allow invalid certificates for resources loaded from localhost` in Chrome: [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost)
-2. Create an .env file and add the following to it: `HTTPS=true`, `HOST=localhost`, `PORT=8080`
-3. Run the following in the client folder: `npm install` and `npm start`
+1. Head up to https://dev.twitch.tv/console/extensions/create and create a new extension.
+   You will need to create a new version: Select `Panel`, `Mobile` and `Video - Fullscreen` for the extension type. Leave all other settings as they are.
+2. Copy the `.env.sample` file to `.env` (which sets `HTTPS=true`, `HOST=localhost`, and `PORT=8080`)
+3. Install dependencies for the project with `npm install`
+4. Start the development server with `npm start`
 
-## Note
+There are two ways to run the extension. You can either add it to a channel on Twitch, or use the developer rig to test locally.
+Testing via Twitch itself is recommend here, as the developer rig runs a rather outdated version of Chromium and often isn't the best experience.
 
-CSS files are hidden through the settings.json file in .vscode
+## Running via Twitch
+
+If you're using Chrome, enable `allow invalid certificates for resources loaded from localhost`: [`chrome://flags/#allow-insecure-localhost`](chrome://flags/#allow-insecure-localhost).
+If using Firefox, once you have started the development server, you will want to navigate to [`https://localhost:8080`](https://localhost:8080), click advanced and select accept the risk.
+
+To test the overlay directly on Twitch, you will need to be live on Twitch with the extension installed.
+The panel for the extension can be tested on Twitch while offline, as this is displayed on the channel page.
+
+Under the `Status` tab of the extension version, scroll to the bottom and click on `View on Twitch and Install`. Install the extension on your channel and activate it.
+
+If you are wanting to test the overlay, activate it for your overlay slot. Once activated, started broadcasting and the extension should be visible.
+If you are testing the panel, make sure to activate the extension for a panel slot. You should then be able to see in on the channel about page.
+
+If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
+
+## Running via Developer Rig
+
+To test the overlay locally, you'll need to install the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig/).
+
+Open the rig application and authenticate it with your Twitch account. Click on `Create your First Project` in the rig UI, and select the extension you created earlier.
+When prompted, select the root of the repository as the project directory and select `None - I'll use my own code` for the boilerplate code option.
+
+Access the `Extension Views` tab and create a new view. Choose which view you wish to test and save it.
+
+## Hiding CSS Files
+
+If you're using VSCode, CSS files are hidden through the `settings.json` file in `.vscode`.
+
+If you're using an IntelliJ IDE, switch the Project View the `Extension` scope (as defined by `Extension.xml` in `.idea/scopes`).
 
 # Converting Single-Page App to Multi-Page App
 

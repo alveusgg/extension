@@ -6,6 +6,7 @@ import youtube from '../../../../assets/alveusIntro/youtube.jpg'
 import instagram from '../../../../assets/alveusIntro/instagram.jpg'
 import tiktok from '../../../../assets/alveusIntro/tiktok.jpg'
 import twitter from '../../../../assets/alveusIntro/twitter.jpg'
+import gitHub from '../../../../assets/activationButtons/github.jpg'
 
 interface AlveusIntroProps {
     showAlveusIntro: boolean;
@@ -54,6 +55,11 @@ export default function AlveusIntro(props: AlveusIntroProps){
                     </a>
                 </li>
             </ul>
+
+            <a className={styles.footer} href="https://github.com/abdullahmorrison/AlveusTwitchExtension" rel="noreferrer" target="_blank">
+                Contribute to the Extension
+                <img src={gitHub} alt="GitHub" />
+            </a>
         </div>
     )
 }

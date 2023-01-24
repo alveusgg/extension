@@ -10,7 +10,7 @@
     background-color: $primary-color;
     padding: 20px;
     max-width: 500px;
-    max-height: 300px;
+    max-height: 350px;
     transition: 0.3s;
 
     
@@ -37,6 +37,23 @@
                     max-height: 40px;
                 }
             }
+        }
+    }
+    .footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: $primary-text;
+
+        gap: 5px;
+        font-size: smaller;
+        img{
+            max-height: 25px;
+        }
+
+        &:hover{
+            color: #c59d54;
         }
     }
 }

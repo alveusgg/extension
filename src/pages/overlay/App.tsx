@@ -8,8 +8,12 @@ import OverlaySettings from "./components/overlaySettings/OverlaySettings"
 // css
 import styles from "./App.module.css"
 
+interface Settings {
+    disableChatPopup: boolean
+}
+
 export default function App(){
-    const [overlaySettings, setOverlaySettings] = useState(() => {
+    const [overlaySettings, setOverlaySettings] = useState<Settings>(() => {
         // Load settings from local storage, merging with defaults
         const settings = JSON.parse(localStorage.getItem("settings") || "{}")
         return {

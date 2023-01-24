@@ -1,11 +1,11 @@
 //css & images
 import styles from './alveusIntro.module.css';
-import website from '../../../assets/alveusIntro/website.jpg'
-import amazonWishlist from '../../../assets/alveusIntro/amazonWishlist.jpg'
-import youtube from '../../../assets/alveusIntro/youtube.jpg'
-import instagram from '../../../assets/alveusIntro/instagram.jpg'
-import tiktok from '../../../assets/alveusIntro/tiktok.jpg'
-import twitter from '../../../assets/alveusIntro/twitter.jpg'
+import website from '../../../../assets/alveusIntro/website.jpg'
+import amazonWishlist from '../../../../assets/alveusIntro/amazonWishlist.jpg'
+import youtube from '../../../../assets/alveusIntro/youtube.jpg'
+import instagram from '../../../../assets/alveusIntro/instagram.jpg'
+import tiktok from '../../../../assets/alveusIntro/tiktok.jpg'
+import twitter from '../../../../assets/alveusIntro/twitter.jpg'
 
 interface AlveusIntroProps {
     showAlveusIntro: boolean;

@@ -10,56 +10,54 @@ import useChatCommand from '../../../../utils/chatCommand'
 import styles from './overlay.module.css'
 
 interface OverlayProps {
+    sleeping: boolean,
+    awoken: {
+        add: (callback: () => void) => void,
+        remove: (callback: () => void) => void
+    }
+    wake: (time: number) => void,
     settings: {
         disableChatPopup: boolean
     }
 }
 export default function Overlay(props: OverlayProps) {
     const [showAmbassadorList, setShowAmbassadorList] = useState(false)
-    const [isOverlayVisible, setIsOverlayVisible] = useState(false)
     const chosenAmbassador = useChatCommand()
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
+    const awakingRef = useRef(false)
 
+    // When a chat command is run, show the list and auto-dismiss it after 6s
     useEffect(() => {
-        if(chosenAmbassador !== undefined && props.settings.disableChatPopup === false){
-            console.log(props.settings.disableChatPopup)
-            setIsOverlayVisible(true)
+        if (chosenAmbassador !== undefined && !props.settings.disableChatPopup) {
+            // Show the list, and dismiss it after 6s
             setShowAmbassadorList(true)
+            timeoutRef.current = setTimeout(() => { setShowAmbassadorList(false) }, 6000)
 
-            // hide overlay after a few seconds
-            timeoutRef.current = setTimeout(() => {
-                setIsOverlayVisible(false)
-                setShowAmbassadorList(false)
-            }, 6000)
+            // Track that we're waking up, so that we don't immediately clear the timeout
+            awakingRef.current = true
+
+            // Wake the overlay for 6s
+            props.wake(6000)
         }
-        return () => clearTimeout(timeoutRef.current as NodeJS.Timeout) 
 
-    }, [chosenAmbassador])
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current)
+        }
+    }, [chosenAmbassador, props.wake])
 
+    // If the user interacts with the overlay, clear the auto-dismiss timer
     useEffect(() => {
-        initMouseEventListener()
-    }, [])
-
-    // create mouse event listener to show/hide overlay if mouse is in the viewport
-    const initMouseEventListener = () => {
-        let body = document.querySelector("body")
-        //check if mouse is in the viewport
-        if(body !== null){
-            body.addEventListener('mouseleave', () => {
-                setIsOverlayVisible(false)
-            })
+        const callback = () => {
+            if (awakingRef.current) awakingRef.current = false
+            else if (timeoutRef.current) clearTimeout(timeoutRef.current)
         }
-        if(body !== null){
-            body.addEventListener('mouseenter', () => {
-                setIsOverlayVisible(true)
-                clearTimeout(timeoutRef.current as NodeJS.Timeout)
-            })
-        }
-    }
+        props.awoken.add(callback)
+        return () => props.awoken.remove(callback)
+    }, [props.awoken])
 
     return (
-    <div className={`${styles.overlay} ${isOverlayVisible? styles.visible : styles.hidden}`} >
-        <ActivationButtons 
+    <div className={`${styles.overlay} ${props.sleeping ? styles.hidden : styles.visible}`} >
+        <ActivationButtons
             toggleShowAmbassadorList={() => setShowAmbassadorList(!showAmbassadorList)}
         />
         <AmbassadorList

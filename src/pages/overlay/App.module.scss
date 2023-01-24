@@ -1,6 +1,15 @@
 .app {
   margin: 90px 15px 15px;
   position: relative;
+  transition: opacity 0.3s ease-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
 }
 
 @media screen and (max-height: 555px) {

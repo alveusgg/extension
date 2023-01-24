@@ -10,6 +10,10 @@
 
 .hidden {
   opacity: 0;
+
+  * {
+    pointer-events: none;
+  }
 }
 
 @media screen and (max-height: 555px) {

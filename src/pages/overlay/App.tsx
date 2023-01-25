@@ -8,8 +8,12 @@ import OverlaySettings from "./components/overlaySettings/OverlaySettings"
 // css
 import styles from "./App.module.css"
 
+interface Settings {
+    disableChatPopup: boolean
+}
+
 export default function App(){
-    const [overlaySettings, setOverlaySettings] = useState(() => {
+    const [overlaySettings, setOverlaySettings] = useState<Settings>(() => {
         // Load settings from local storage, merging with defaults
         const settings = JSON.parse(localStorage.getItem("settings") || "{}")
         return {
@@ -31,6 +35,7 @@ export default function App(){
     }, [])
 
     // Show/hide the overlay based on mouse movement
+    const appRef = useRef<HTMLDivElement>(null)
     const sleepTimer = useRef<NodeJS.Timeout | undefined>(undefined)
     const [sleeping, setSleeping] = useState(false)
 
@@ -54,6 +59,17 @@ export default function App(){
         }, time)
     }, [awoken])
 
+    // When the user interacts, have a 5s timeout before hiding the overlay
+    const interacted = useCallback(() => {
+        wake(5000)
+    }, [wake])
+
+    // Bind a capturing event listener for scrolling (so we can see scrolling for children)
+    useEffect(() => {
+        appRef.current?.addEventListener("scroll", interacted, true)
+        return () => appRef.current?.removeEventListener("scroll", interacted, true)
+    }, [interacted])
+
     // Immediately sleep the overlay
     const sleep = useCallback(() => {
         setSleeping(true)
@@ -67,9 +83,10 @@ export default function App(){
 
     return (
         <div
+            ref={appRef}
             className={`${styles.app} ${sleeping ? styles.hidden : styles.visible}`}
-            onMouseEnter={() => wake(5000)}
-            onMouseMove={() => wake(5000)}
+            onMouseEnter={interacted}
+            onMouseMove={interacted}
             onMouseLeave={sleep}
         >
             <Overlay

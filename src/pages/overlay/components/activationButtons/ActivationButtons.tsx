@@ -1,5 +1,7 @@
 //css & assets
 import styles from './activationButtons.module.css'
+import Welcome from '../../../../assets/activationButtons/welcome.jpg';
+import Ambassadors from '../../../../assets/activationButtons/ambassadors.jpg';
 import AlveusLogo from '../../../../assets/alveus-logo.png';
 
 /** 
@@ -14,10 +16,10 @@ export default function ActivationButtons(props: ActivationButtonProps) {
   return (
     <div className={styles.activationButtons}>
         <button onClick={props.toggleShowAlveusIntro}>
-            <img src="" alt="A" />
+            <img src={Welcome} alt="Welcome" />
         </button>
         <button onClick={props.toggleShowAmbassadorList}>
-            <img src={AlveusLogo} alt="Alveus Logo" />
+            <img src={Ambassadors} alt="Ambassadors" />
         </button>
 
         {/** Plan on adding another activation button to show non-ambassadors*/}

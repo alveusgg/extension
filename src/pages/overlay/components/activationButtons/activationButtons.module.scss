@@ -12,9 +12,15 @@
         background-color: $primary-color;
         padding: 5px;
 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 55px;
+        height: 55px;
+
         img{
-            width: 55px;
-            height: 55px;
+            max-height: 40px;
         }
 
         &:hover{

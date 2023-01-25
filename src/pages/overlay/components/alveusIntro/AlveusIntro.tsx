@@ -6,7 +6,7 @@ import youtube from '../../../../assets/alveusIntro/youtube.jpg'
 import instagram from '../../../../assets/alveusIntro/instagram.jpg'
 import tiktok from '../../../../assets/alveusIntro/tiktok.jpg'
 import twitter from '../../../../assets/alveusIntro/twitter.jpg'
-import gitHub from '../../../../assets/activationButtons/github.jpg'
+import gitHub from '../../../../assets/alveusIntro/github.jpg'
 
 interface AlveusIntroProps {
     showAlveusIntro: boolean;

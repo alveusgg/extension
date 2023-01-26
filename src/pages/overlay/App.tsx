@@ -28,7 +28,7 @@ export default function App(){
     }, [overlaySettings])
 
     const toggleDisableChatPopup = useCallback(() => {
-        setOverlaySettings(current => ({
+        setOverlaySettings((current: Settings) => ({
             ...current,
             disableChatPopup: !current.disableChatPopup
         }))

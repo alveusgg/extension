@@ -23,7 +23,7 @@ export default function AlveusIntro(props: AlveusIntroProps){
                 a love for the species and the natural world as a whole.
             </p>
 
-            <ul>
+            <ul className={styles.socials}>
                 <li>
                     <a href="https://www.alveussanctuary.org/" rel="noreferrer" target="_blank">
                         <img src={website} alt="Website"/>
@@ -56,7 +56,7 @@ export default function AlveusIntro(props: AlveusIntroProps){
                 </li>
             </ul>
 
-            <a className={styles.footer} href="https://github.com/abdullahmorrison/AlveusTwitchExtension" rel="noreferrer" target="_blank">
+            <a className={styles.contribute} href="https://github.com/abdullahmorrison/AlveusTwitchExtension" rel="noreferrer" target="_blank">
                 Contribute to the Extension
                 <img src={gitHub} alt="GitHub" />
             </a>

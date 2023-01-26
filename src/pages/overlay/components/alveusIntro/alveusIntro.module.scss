@@ -4,28 +4,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
     border: 5px solid white;
     border-radius: 20px;
     background-color: $primary-color;
+    color: $primary-text;
     padding: 20px;
-    max-width: 500px;
-    max-height: 350px;
+    max-width: 450px;
+    max-height: 300px;
     transition: 0.3s;
-
-    
 
     .title{
         text-align: center;
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     .intro{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin: 10px 0 20px 0;
     }
-    ul{
+    .socials{
         display: flex;
+        align-items: center;
         justify-content: center;
         gap: 15px;
+        margin-bottom: 10px;
         li{
             list-style: none;
             &:hover{
@@ -34,22 +37,24 @@
             }
             a{
                 img{
-                    max-height: 40px;
+                    max-height: 30px;
                 }
             }
         }
     }
-    .footer{
+    .contribute{
+        color: $primary-text;
+        font-size: x-small;
+
         display: flex;
         align-items: center;
         justify-content: center;
 
-        color: $primary-text;
-
         gap: 5px;
-        font-size: smaller;
+        width: fit-content;
+
         img{
-            max-height: 25px;
+            max-height: 20px;
         }
 
         &:hover{

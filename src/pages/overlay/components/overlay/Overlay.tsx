@@ -36,8 +36,8 @@ export default function Overlay(props: OverlayProps) {
             // Track that we're waking up, so that we don't immediately clear the timeout
             awakingRef.current = true
 
-            // Wake the overlay for 6s
-            props.wake(6000)
+            // Wake the overlay for 8s
+            props.wake(8000)
         }
 
         return () => {

@@ -1,21 +1,21 @@
 {
-	"files.exclude": {
-		"**/.git": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/.DS_Store": true,
-		"**/Thumbs.db": true,
-		"**/.classpath": true,
-		"**/.project": true,
-		"**/.settings": true,
-		"**/.factorypath": true,
-		"**/*.css": true
-	},
-	"hide-files.files": [],
-	"workbench.colorCustomizations": {
-		"activityBar.background": "#3A254A",
-		"titleBar.activeBackground": "#513368",
-		"titleBar.activeForeground": "#FCFBFD"
-	}
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "**/*.css": true
+  },
+  "hide-files.files": [],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#3A254A",
+    "titleBar.activeBackground": "#513368",
+    "titleBar.activeForeground": "#FCFBFD"
+  }
 }

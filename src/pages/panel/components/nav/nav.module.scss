@@ -1,21 +1,20 @@
 @import '../../../../variables.scss';
 
-.nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  box-shadow: 0 3px 4px #2c2c2c;
+  padding: 10px;
 
-    background-color: $primary-color;
-    box-shadow: 0 3px 4px #2c2c2c;
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
 
-    padding: 10px;
-
-    img{
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-    }
-    h1{
-        font-size: 1.2rem;
-    }
+  h1 {
+    font-size: 1.2rem;
+  }
 }

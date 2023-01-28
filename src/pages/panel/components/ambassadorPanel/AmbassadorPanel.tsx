@@ -17,12 +17,11 @@ export default function AmbassadorPanel() {
   const chosenAmbassador = useChatCommand()?.slice(1)
 
   useEffect(() => {
-    if(chosenAmbassador !== undefined){
+    if (chosenAmbassador !== undefined)
       setAmbassadorCard(ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.name || "")
-    }
   }, [chosenAmbassador, ambassadors])
 
-  function handleClose(): void{
+  function handleClose(): void {
     setAmbassadorCard("")
   }
   function handleGetCard(name: string): void {
@@ -30,17 +29,15 @@ export default function AmbassadorPanel() {
   }
 
   return (
-    <main className={styles.ambassadors}> 
+    <main className={styles.ambassadors}>
       {ambassadors && ambassadors.map(ambassador => (
         <>
-          {ambassadorCard === ambassador.name ? 
+          {ambassadorCard === ambassador.name ? (
             <AmbassadorCardOverlay
               ambassadorCard={{cardData: ambassador}}
-
               close={handleClose}
             />
-            : null
-          }
+          ) : null}
           <AmbassadorButton
             key={ambassador.name} // every ambassador will have a unique name
             name={ambassador.name}

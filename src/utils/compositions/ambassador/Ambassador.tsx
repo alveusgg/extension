@@ -8,9 +8,10 @@ interface AmbassadorProps{
 
   onClick?: () => void
 }
+
 export default function Ambassador(props: AmbassadorProps) {
   return (
-    <div id={props.Id} className={`${styles.ambassador} ${props.ClassName}`} onClick={props.onClick}> 
+    <div id={props.Id} className={`${styles.ambassador} ${props.ClassName}`} onClick={props.onClick}>
       {props.children}
     </div>
   )

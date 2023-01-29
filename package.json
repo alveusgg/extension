@@ -22,8 +22,10 @@
     "sass:watch": "npm run sass:build -- --watch",
     "build": "npm run sass:build && react-app-rewired build",
     "test": "react-app-rewired test",
-    "lint": "npm run lint:editorconfig",
+    "lint": "npm run lint:editorconfig && npm run lint:eslint",
     "lint:editorconfig": "editorconfig-checker",
+    "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint:eslint:fix": "npm run lint:eslint -- --fix",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,6 +57,8 @@
     "@types/tmi.js": "^1.8.2",
     "editorconfig-checker": "^5.0.1",
     "env-cmd": "^10.1.0",
+    "eslint": "^8.33.0",
+    "eslint-config-react-app": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "react-app-rewire-multiple-entry": "^2.2.2",
     "react-app-rewired": "^2.2.1",

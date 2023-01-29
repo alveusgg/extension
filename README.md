@@ -65,7 +65,7 @@ env-cmd: used to add environment variables to the start script in package.json
 
 ## Contribute
 
-Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. Make sure to discuss what you plan to work on either as an issue or in the discussion page. You can contribute by going through the following steps:
+Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. Make sure to discuss what you plan to work on either as an issue or in the discussion page. You can also throw in any ideas at all in the discussion page. You can contribute to the codebase by going through the following steps:
 
 1. Clone this repo
 2. Create a branch: `git checkout -b youruserame/your-feature`

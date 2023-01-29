@@ -8,85 +8,100 @@ import OverlaySettings from "./components/overlaySettings/OverlaySettings"
 // css
 import styles from "./App.module.css"
 
-export default function App(){
-    const [overlaySettings, setOverlaySettings] = useState(() => {
-        // Load settings from local storage, merging with defaults
-        const settings = JSON.parse(localStorage.getItem("settings") || "{}")
-        return {
-            disableChatPopup: false,
-            ...settings
-        }
-    })
+interface Settings {
+  disableChatPopup: boolean
+}
 
-    useEffect(() => {
-        // save settings to local storage
-        localStorage.setItem("settings", JSON.stringify(overlaySettings))
-    }, [overlaySettings])
+export default function App() {
+  const [overlaySettings, setOverlaySettings] = useState<Settings>(() => {
+    // Load settings from local storage, merging with defaults
+    const settings = JSON.parse(localStorage.getItem("settings") || "{}")
+    return {
+      disableChatPopup: false,
+      ...settings
+    }
+  })
 
-    const toggleDisableChatPopup = useCallback(() => {
-        setOverlaySettings(current => ({
-            ...current,
-            disableChatPopup: !current.disableChatPopup
-        }))
-    }, [])
+  useEffect(() => {
+    // save settings to local storage
+    localStorage.setItem("settings", JSON.stringify(overlaySettings))
+  }, [overlaySettings])
 
-    // Show/hide the overlay based on mouse movement
-    const sleepTimer = useRef<NodeJS.Timeout | undefined>(undefined)
-    const [sleeping, setSleeping] = useState(false)
+  const toggleDisableChatPopup = useCallback(() => {
+    setOverlaySettings((current: Settings) => ({
+      ...current,
+      disableChatPopup: !current.disableChatPopup
+    }))
+  }, [])
 
-    // Allow children to know when we have been woken up
-    const [awoken, setAwoken] = useState<(() => void)[]>([])
-    const addAwoken = useCallback((callback: () => void) => {
-        setAwoken(current => [...current, callback])
-    }, [])
-    const removeAwoken = useCallback((callback: () => void) => {
-        setAwoken(current => current.filter(c => c !== callback))
-    }, [])
-    const awokenObj = useMemo(() => ({ add: addAwoken, remove: removeAwoken }), [addAwoken, removeAwoken])
+  // Show/hide the overlay based on mouse movement
+  const appRef = useRef<HTMLDivElement>(null)
+  const sleepTimer = useRef<NodeJS.Timeout | undefined>(undefined)
+  const [sleeping, setSleeping] = useState(false)
 
-    // Wake the overlay for x milliseconds
-    const wake = useCallback((time: number) => {
-        setSleeping(false)
-        awoken.forEach(fn => fn())
-        if (sleepTimer.current) clearTimeout(sleepTimer.current)
-        sleepTimer.current = setTimeout(() => {
-            setSleeping(true)
-        }, time)
-    }, [awoken])
+  // Allow children to know when we have been woken up
+  const [awoken, setAwoken] = useState<(() => void)[]>([])
+  const addAwoken = useCallback((callback: () => void) => {
+    setAwoken(current => [...current, callback])
+  }, [])
+  const removeAwoken = useCallback((callback: () => void) => {
+    setAwoken(current => current.filter(c => c !== callback))
+  }, [])
+  const awokenObj = useMemo(() => ({ add: addAwoken, remove: removeAwoken }), [addAwoken, removeAwoken])
 
-    // Immediately sleep the overlay
-    const sleep = useCallback(() => {
-        setSleeping(true)
-        if (sleepTimer.current) clearTimeout(sleepTimer.current)
-    }, [])
+  // Wake the overlay for x milliseconds
+  const wake = useCallback((time: number) => {
+    setSleeping(false)
+    awoken.forEach(fn => fn())
+    if (sleepTimer.current) clearTimeout(sleepTimer.current)
+    sleepTimer.current = setTimeout(() => {
+      setSleeping(true)
+    }, time)
+  }, [awoken])
 
-    // When we unmount, clear the sleep timer
-    useEffect(() => () => {
-        if (sleepTimer.current) clearTimeout(sleepTimer.current)
-    }, [])
+  // When the user interacts, have a 5s timeout before hiding the overlay
+  const interacted = useCallback(() => {
+    wake(5000)
+  }, [wake])
 
-    return (
-        <div
-            className={`${styles.app} ${sleeping ? styles.hidden : styles.visible}`}
-            onMouseEnter={() => wake(5000)}
-            onMouseMove={() => wake(5000)}
-            onMouseLeave={sleep}
-        >
-            <Overlay
-                sleeping={sleeping}
-                awoken={awokenObj}
-                wake={wake}
-                settings={{
-                    disableChatPopup: overlaySettings.disableChatPopup
-                }}
-            />
-            <OverlaySettings
-                sleeping={sleeping}
-                settings={{
-                    disableChatPopup: overlaySettings.disableChatPopup
-                }}
-                toggleDisableChatPopup={toggleDisableChatPopup}
-            />
-        </div>
-    )
+  // Bind a capturing event listener for scrolling (so we can see scrolling for children)
+  useEffect(() => {
+    if (!appRef.current) return
+    const node = appRef.current
+    node.addEventListener("scroll", interacted, true)
+    return () => node.removeEventListener("scroll", interacted, true)
+  }, [interacted])
+
+  // Immediately sleep the overlay
+  const sleep = useCallback(() => {
+    setSleeping(true)
+    if (sleepTimer.current) clearTimeout(sleepTimer.current)
+  }, [])
+
+  // When we unmount, clear the sleep timer
+  useEffect(() => () => {
+    if (sleepTimer.current) clearTimeout(sleepTimer.current)
+  }, [])
+
+  return (
+    <div
+      ref={appRef}
+      className={`${styles.app} ${sleeping ? styles.hidden : styles.visible}`}
+      onMouseEnter={interacted}
+      onMouseMove={interacted}
+      onMouseLeave={sleep}
+    >
+      <Overlay
+        sleeping={sleeping}
+        awoken={awokenObj}
+        wake={wake}
+        settings={overlaySettings}
+      />
+      <OverlaySettings
+        sleeping={sleeping}
+        settings={overlaySettings}
+        toggleDisableChatPopup={toggleDisableChatPopup}
+      />
+    </div>
+  )
 }

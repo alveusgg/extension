@@ -1,18 +1,16 @@
 @import '../../../variables.scss';
 
-.ambassador{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.ambassador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+  background-color: $primary-color;
+  border-radius: 10px;
+  text-align: center;
 
-    padding: 20px 15px;
-
-    background-color: $primary-color;
+  img {
     border-radius: 10px;
-    text-align: center;
-
-    img{
-        border-radius: 10px;
-    }
+  }
 }

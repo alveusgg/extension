@@ -23,11 +23,11 @@
             max-height: 40px;
         }
 
-        &:hover{
-            outline: 1px solid white;
-            cursor: pointer;
-            filter: brightness(1.2);
-            transition: 0.3s;
-        }
+    &:hover {
+      outline: 1px solid white;
+      cursor: pointer;
+      filter: brightness(1.2);
+      transition: 0.3s;
     }
+  }
 }

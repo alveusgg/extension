@@ -50,9 +50,9 @@ export function formatDate(date: string): string{
   if (day && month && year)
     return `${month} ${day}, ${year}`
   else if (month && year)
-    return `~ ${month}, ${year}`
+    return `~${month}, ${year}`
 
-  return `~ ${year}`
+  return `~${year}`
 }
 
 /**

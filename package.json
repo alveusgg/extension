@@ -8,13 +8,6 @@
     "email": "abdullahmorrison@gmail.com"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.33",
-    "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.3",
     "autoprefixer": "^10.4.6",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
@@ -61,7 +54,14 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^13.5.0",
     "@types/cors": "^2.8.12",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.33",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
     "@types/tmi.js": "^1.8.2",
     "editorconfig-checker": "^5.0.1",
     "react-app-rewire-multiple-entry": "^2.2.2",

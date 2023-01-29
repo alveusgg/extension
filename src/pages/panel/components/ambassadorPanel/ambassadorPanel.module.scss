@@ -3,5 +3,10 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+
   padding: 15px;
+}
+
+.item {
+  width: 120px; //using a fixed size here to scale the dynamic ambassador
 }

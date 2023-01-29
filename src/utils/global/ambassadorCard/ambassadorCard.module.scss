@@ -1,19 +1,20 @@
 @import '../../../variables.scss';
 
 .ambassadorCard {
-  width: 275px;
-  height: 425px;
+  width: 295px;
+  height: 460px;
   justify-content: start;
   align-items: baseline;
   background-color: $accent-color;
   border: 10px solid $primary-color;
   border-radius: 20px;
   box-shadow: 0 3px 3px $accent-color;
-  padding: 5px 0;
-  padding-bottom: 10px;
+  padding: 5px 0 10px 0;
+
   color: $primary-text;
   text-align: left;
   font-size: 0.7rem;
+
   position: relative;
 
   h3 {
@@ -28,7 +29,7 @@
     font-size: x-large;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       filter: brightness(0.7);
     }
   }
@@ -36,7 +37,9 @@
   .img {
     //crop image with a ratio of 2.2:1
     width: 100%;
-    height: 125px;
+    aspect-ratio: 2.2;
+    object-fit: cover;
+
     align-self: center;
     border-radius: 0;
     margin-bottom: 5px;
@@ -59,7 +62,7 @@
 
   .story,
   .conservationmission {
-    height: 60px;
+    height: 65px;
     padding-bottom: 5px;
   }
 

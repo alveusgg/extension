@@ -1,19 +1,32 @@
 @import '../../../../variables.scss';
 
 .activationButtons {
-  margin-top: 40px;
+  margin-top: calc(6 * $overlay-base-size); // move slightly lower relative to available height
 
   button {
     all: unset;
+    display: flex;
+    justify-content: center;
+
+    // scale based on available height
+    width: calc(6.5 * $overlay-base-size);
+    height: calc(6.5 * $overlay-base-size);
+
     border-radius: 5px;
     background-color: $primary-color;
     box-shadow: 0 2px 4px $accent-color;
 
-    padding: 5px;
-
     img {
-      width: 55px;
-      height: 55px;
+      width: 80%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: contain;
+
+      // the logo is not visually centered in the image
+      // so we tweak the position a bit to look centered
+      position: relative;
+      left: -2%;
+      top: -1%;
     }
 
     &:hover {

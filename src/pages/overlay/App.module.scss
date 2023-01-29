@@ -1,29 +1,8 @@
 .app {
-  margin: 90px 15px 15px;
-  position: relative;
-  transition: opacity 0.3s ease-out;
-}
-
-.visible {
-  opacity: 1;
-}
-
-.hidden {
-  opacity: 0;
-
-  * {
-    pointer-events: none;
-  }
-}
-
-@media screen and (max-height: 555px) {
-  .app {
-    margin-top: 40px;
-  }
-}
-
-@media screen and (max-height: 440px) {
-  .app {
-    margin-top: 20px;
-  }
+  // keep space for twitch player ui above and below the extension
+  position: absolute;
+  top: 95px;
+  bottom: 40px;
+  left: 15px;
+  right: 15px;
 }

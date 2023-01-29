@@ -2,50 +2,28 @@
 
 .overlay {
   display: flex;
-  gap: 10px;
-  transition: 0.3s ease-out;
-  transition-property: visibility, translate;
+  height: 100%;
+  width: 100%;
+
+  // horizontal spacing (scaled dynamically based on available height)
+  gap: $overlay-base-size;
+
+  transition: all 0.3s ease-out;
 }
 
 .visible {
   visibility: visible;
+  opacity: 1;
 }
 
 .hidden {
   visibility: hidden;
+  opacity: 0;
   translate: -40px;
-}
 
-//media query min height 545px
-@media screen and (max-height: 555px) {
-  .overlay {
-    // scale down the overlay
-    scale: 0.8;
-    // move the overlay up
-    transform: translateX(-12%);
-
-    .scrollAmbassadors .ambassadorList {
-      height: 80vh;
-    }
-  }
-}
-
-@media screen and (max-height: 440px) {
-  .overlay {
-    // scale down the overlay
-    scale: 0.6;
-    // move the overlay up
-    transform: translateX(-32%);
-
-    .scrollAmbassadors .ambassadorList {
-      height: 90vh;
-    }
-  }
-}
-
-@media (prefers-reduced-motion) {
-  // just rely on app fade
-  .hidden {
+  // accessibility for vestibular motion disorders
+  // do not translate overlay but only transition opacity
+  @media (prefers-reduced-motion) {
     translate: 0;
   }
 }

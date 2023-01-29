@@ -1,8 +1,13 @@
 @import '../../../variables.scss';
 
 .ambassador {
-  width: 100px;
-  height: 100px;
+  // assume the width provided from the parent so
+  // we use the same class in both overlay (dynamic size)
+  // and panel (fixed size)
+  width: 100%;
+
+  aspect-ratio: 1;
+  flex-shrink: 0;
   box-shadow: 0 4px 5px $accent-color;
 
   &:hover {
@@ -11,20 +16,24 @@
   }
 
   .img {
+    margin-bottom: 5px;
     border-radius: 5px;
-    height: 70px;
-    max-width: 100px;
+    flex-shrink: 0; // prevent long names/species to shrink the image height
+    // crop image to 2.2:1:
+    width: 100%;
+    aspect-ratio: 2.2;
     object-fit: cover;
     margin-bottom: 5px;
   }
 
   .name {
     color: $primary-text;
-    font-size: 0.8rem;
+    font-size: 0.8em; // using em so we can scale with the parent
   }
 
   .species {
-    font-size: 0.7rem;
+    font-size: 0.7em; // using em so we can scale with the parent
     color: $secondary-text;
+    line-height: 1.2; // slightly reduce line height if species is multi-line
   }
 }

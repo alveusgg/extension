@@ -7,7 +7,7 @@ import useChatCommand from "../../../../utils/chatCommand";
 import styles from './ambassadorPanel.module.css'
 
 //data
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import AmbassadorData from "../../../../assets/ambassadors.json";
 
 
@@ -31,7 +31,7 @@ export default function AmbassadorPanel() {
   return (
     <main className={styles.ambassadors}>
       {ambassadors && ambassadors.map(ambassador => (
-        <>
+        <Fragment key={ambassador.name}>
           {ambassadorCard === ambassador.name ? (
             <AmbassadorCardOverlay
               ambassadorCard={{cardData: ambassador}}
@@ -50,7 +50,7 @@ export default function AmbassadorPanel() {
 
             getCard={()=>handleGetCard(ambassador.name)}
           />
-        </>
+        </Fragment>
       ))}
     </main>
   )

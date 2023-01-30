@@ -39,7 +39,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
 
     const offset = 200
     const anchorElement = ambassadorList.current.querySelector(`#${name}`)
-    if (anchorElement instanceof HTMLDivElement)
+    if (ambassadorList instanceof HTMLDivElement && anchorElement instanceof HTMLDivElement)
       ambassadorList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
   }
   const ambassadorListScroll = (direction: number) => {

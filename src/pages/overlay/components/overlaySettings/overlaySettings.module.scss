@@ -2,7 +2,7 @@
 
 .overlaySettings {
   position: absolute;
-  top: calc(6 * $overlay-base-size); // Matching the margin-top of the activation buttons
+  bottom: 75%;
   right: 0;
   transition: 0.3s ease-out;
   transition-property: visibility, translate;

@@ -41,7 +41,7 @@ export default function useChatCommand() {
       reconnect: true
     },
     channels: [
-      // 'AbdullahMorrison', //! For testing purposes
+      'AbdullahMorrison', //! For testing purposes
       'Maya',
       'AlveusSanctuary'
     ]
@@ -54,7 +54,9 @@ export default function useChatCommand() {
     if (self || !msg.trim().startsWith('!')) return
 
     const commandName = msg.trim().toLowerCase()
-    if (ambassadorNames.find((name) => name === commandName.slice(1))) {
+    if(commandName === '!welcome') {
+      setCommand(commandName)
+    }else if (ambassadorNames.find((name) => name === commandName.slice(1))) {
       setCommand(commandName)
     } else if (diacriticsMap.get(commandName.slice(1))) { // Check if a user typed a name without diacritics (Ex: !jalapeno should be !Jalapeño)
       setCommand("!"+diacriticsMap.get(commandName.slice(1)))

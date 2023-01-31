@@ -1,6 +1,9 @@
 .ambassadorList {
   display: flex;
 
+  position: absolute;
+  left: 70px;
+
   .scrollAmbassadors {
     display: flex;
     flex-direction: column;

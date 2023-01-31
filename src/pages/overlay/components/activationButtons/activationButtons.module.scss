@@ -9,8 +9,8 @@
     justify-content: center;
 
     // scale based on available height
-    width: calc(6.5 * $overlay-base-size);
-    height: calc(6.5 * $overlay-base-size);
+    width: calc(8 * $overlay-base-size);
+    height: calc(8 * $overlay-base-size);
 
     border-radius: 5px;
     background-color: $primary-color;
@@ -37,3 +37,4 @@
     }
   }
 }
+

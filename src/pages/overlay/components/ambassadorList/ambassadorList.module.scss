@@ -14,13 +14,13 @@
 
     .ambassadors {
       display: flex;
-      // scale ambassadors based on available height
-      width: calc(15 * $overlay-base-size);
-      padding: calc(3 * $overlay-base-size) $overlay-base-size;
-      gap: calc(2 * $overlay-base-size);
-
       flex-direction: column;
       align-items: center;
+
+      // scale ambassadors based on available height
+      width: calc(16 * $overlay-base-size);
+      padding: calc(3 * $overlay-base-size) $overlay-base-size;
+      gap: calc(2 * $overlay-base-size);
 
       overflow: scroll;
 

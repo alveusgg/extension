@@ -1,6 +1,8 @@
 @import '../../../variables.scss';
 
 .ambassador {
+  display: flex;
+  justify-content: center;
   // assume the width provided from the parent so
   // we use the same class in both overlay (dynamic size)
   // and panel (fixed size)

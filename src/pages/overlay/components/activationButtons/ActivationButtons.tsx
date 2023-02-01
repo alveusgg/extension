@@ -2,7 +2,6 @@
 import styles from './activationButtons.module.css'
 import Welcome from '../../../../assets/activationButtons/welcome.jpg';
 import Ambassadors from '../../../../assets/activationButtons/ambassadors.jpg';
-import AlveusLogo from '../../../../assets/alveus-logo.png';
 
 /**
  * @Description Activation buttons are buttons that are used to show parts of the overlay.

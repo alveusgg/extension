@@ -6,21 +6,24 @@
     justify-content: space-between;
     align-items: center;
 
+    position: absolute;
+    left: 80px;
+
     border: 5px solid white;
     border-radius: 20px;
     background-color: $primary-color;
     color: $primary-text;
     padding: 20px;
-    max-width: 450px;
-    max-height: 300px;
+    max-width:  500px;
+    max-height: 350px;
     transition: 0.3s;
 
     .title{
         text-align: center;
-        font-size: 2rem;
+        font-size: 2em;
     }
     .intro{
-        font-size: 1.1rem;
+        font-size: 1.1em;
         margin: 10px 0 20px 0;
     }
     .socials{

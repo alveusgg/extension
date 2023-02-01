@@ -46,6 +46,7 @@ export default function AmbassadorPanel() {
               src: ambassador.img.src,
               altText: ambassador.img.altText
             }}
+            ClassName={styles.item}
 
             getCard={()=>handleGetCard(ambassador.name)}
           />

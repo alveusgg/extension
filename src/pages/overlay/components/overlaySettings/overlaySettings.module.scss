@@ -1,6 +1,8 @@
+@import '../../../../variables.scss';
+
 .overlaySettings {
   position: absolute;
-  top: 40px; // Matching the margin-top of the activation buttons
+  bottom: 75%;
   right: 0;
   transition: 0.3s ease-out;
   transition-property: visibility, translate;

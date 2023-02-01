@@ -1,26 +1,26 @@
 @import '../../../../variables.scss';
 
 .activationButtons {
+  margin-top: calc(6 * $overlay-base-size); // move slightly lower relative to available height
+
+  button {
+    all: unset;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 
-    button {
-      all: unset;
-      border-radius: 5px;
-      background-color: $primary-color;
-      box-shadow: 0 2px 4px $accent-color;
-      padding: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 55px;
-      height: 55px;
+    // scale based on available height
+    width: calc(7 * $overlay-base-size);
+    height: calc(7 * $overlay-base-size);
 
-      img {
-          max-height: 40px;
-      }
+    border-radius: 5px;
+    background-color: $primary-color;
+    box-shadow: 0 2px 4px $accent-color;
+
+    img {
+      height: 60%;
+    }
 
     &:hover {
       outline: 1px solid white;
@@ -30,3 +30,4 @@
     }
   }
 }
+

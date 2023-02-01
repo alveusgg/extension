@@ -4,12 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: $primary-color;
   box-shadow: 0 3px 4px #2c2c2c;
+
   padding: 10px;
 
   img {
-    width: 30px;
+    width: auto;
     height: 30px;
     margin-right: 10px;
   }

@@ -69,7 +69,7 @@ export default function Overlay(props: OverlayProps) {
   }, [awoken])
 
     return (
-    <div className={`${styles.overlay} ${props.sleeping ? styles.hidden : styles.visible}`} >
+    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`} >
         <ActivationButtons
             toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
             toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}

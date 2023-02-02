@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
 import AmbassadorData from '../assets/ambassadors.json'
 
@@ -30,10 +30,22 @@ const getMapOfAmbassadorWithDiacritics = (): Map<string, string> => {
   return diacriticMap
 }
 
-export default function useChatCommand() {
-  const [command, setCommand] = useState<string>()
-  const [ambassadorNames] = useState(AmbassadorData.map((ambassador) => ambassador.name.split(' ')[0].toLowerCase()))
-  const [diacriticsMap] = useState<Map<string, string>>(getMapOfAmbassadorWithDiacritics())
+export default function useChatCommand(callback: (command: string) => void) {
+  const commandsMap = useMemo<Map<string, string>>(() => {
+    // Map the normalized names to their original names
+    const commands = getMapOfAmbassadorWithDiacritics()
+
+    // Add the original names to the map, pointing to themselves
+    AmbassadorData.forEach((ambassador) => {
+      const name = ambassador.name.split(' ')[0].toLowerCase()
+      commands.set(name, name)
+    })
+
+    // Welcome is also a valid command
+    commands.set('welcome', 'welcome')
+
+    return commands
+  }, [])
 
   const [client] = useState(new tmi.Client({
     connection: {
@@ -53,25 +65,24 @@ export default function useChatCommand() {
     // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
     if (self || !msg.trim().startsWith('!')) return
 
-    const commandName = msg.trim().toLowerCase()
-    if(commandName === '!welcome') {
-      setCommand(commandName)
-    }else if (ambassadorNames.find((name) => name === commandName.slice(1))) {
-      setCommand(commandName)
-    } else if (diacriticsMap.get(commandName.slice(1))) { // Check if a user typed a name without diacritics (Ex: !jalapeno should be !Jalapeño)
-      setCommand("!"+diacriticsMap.get(commandName.slice(1)))
+    const commandName = msg.trim().toLowerCase().slice(1)
+    const command = commandsMap.get(commandName)
+    if (command) callback('!'+command)
+  }, [commandsMap, callback])
+
+  useEffect(() => {
+    client.addListener('message', messageHandler)
+    return () => {
+      client.removeListener('message', messageHandler)
     }
-  }, [ambassadorNames, diacriticsMap])
+  }, [client, messageHandler])
 
   const connectedHandler = useCallback(() => {
     console.log('*Twitch extension is connected to chat*')
   }, [])
 
   useEffect(() => {
-    client.on('message', messageHandler)
     client.on('connected', connectedHandler)
     client.connect()
-  }, [client, messageHandler, connectedHandler])
-
-  return command
+  }, [client, connectedHandler])
 }

@@ -38,18 +38,16 @@ export default function Overlay(props: OverlayProps) {
   // When a chat command is run, wake the overlay
   useChatCommand(useCallback((command: string) => {
     if (!settings.disableChatPopup) {
-      if (command === '!welcome') {
-        dispatch({type: ACTIONS.SHOW_ALVEUS_INTRO})
-        return;
-      }
+      if (command !== '!welcome') setChosenAmbassador(command.slice(1))
 
-      // Show the list
-      setChosenAmbassador(command.slice(1))
-      dispatch({type: ACTIONS.SHOW_AMBASSADOR_LIST})
+      // Show the card
+      dispatch({type: command === '!welcome' ? ACTIONS.SHOW_ALVEUS_INTRO : ACTIONS.SHOW_AMBASSADOR_LIST})
 
       // Dismiss the overlay after a delay
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      timeoutRef.current = setTimeout(() => { dispatch({type: ACTIONS.HIDE_AMBASSADOR_LIST}) }, commandDelay)
+      timeoutRef.current = setTimeout(() => {
+        dispatch({type: command === '!welcome' ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.HIDE_AMBASSADOR_LIST})
+      }, commandDelay)
 
       // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
       awakingRef.current = true

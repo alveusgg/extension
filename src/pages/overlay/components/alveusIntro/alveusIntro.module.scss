@@ -14,17 +14,17 @@
     background-color: $primary-color;
     color: $primary-text;
     padding: 20px;
-    max-width:  500px;
-    max-height: 350px;
+    width:  calc(55* $overlay-base-size);
+    height: calc(38* $overlay-base-size);
     transition: 0.3s;
 
     .title{
         text-align: center;
-        font-size: 2em;
+        font-size: calc(3.5 * $overlay-base-size);
     }
     .intro{
-        font-size: 1.1em;
-        margin: 10px 0 20px 0;
+        font-size: calc(1.8 * $overlay-base-size);
+        margin: calc(2 * $overlay-base-size) 0 calc(2.5 * $overlay-base-size) 0;
     }
     .socials{
         display: flex;
@@ -40,24 +40,25 @@
             }
             a{
                 img{
-                    max-height: 30px;
+                    height: calc(3.5 * $overlay-base-size);
                 }
             }
         }
     }
     .contribute{
         color: $primary-text;
-        font-size: x-small;
+        font-size: calc(1.35 * $overlay-base-size);
+        text-decoration: none;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        gap: 5px;
+        gap: calc(0.2 * $overlay-base-size);
         width: fit-content;
 
         img{
-            max-height: 20px;
+            max-height: calc(2 * $overlay-base-size);
         }
 
         &:hover{

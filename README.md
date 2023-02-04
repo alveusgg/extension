@@ -63,6 +63,8 @@ env-cmd: used to add environment variables to the start script in package.json
 
 -    Note: \[ambassador] is the first name of any ambassador (Ex: !nilla = Nilla Wafer, !snork = snork)
 
+!welcome: displays the Alveus introduction section
+
 ## Contribute
 
 Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. Make sure to discuss what you plan to work on either as an issue or in the discussion page. You can also throw in any ideas at all in the discussion page. You can contribute to the codebase by going through the following steps:

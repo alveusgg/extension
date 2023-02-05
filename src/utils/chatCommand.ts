@@ -53,7 +53,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       reconnect: true
     },
     channels: [
-      'AbdullahMorrison', //! For testing purposes
+      // 'AbdullahMorrison', //! For testing purposes
       'Maya',
       'AlveusSanctuary'
     ]

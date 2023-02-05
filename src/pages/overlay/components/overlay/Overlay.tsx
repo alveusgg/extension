@@ -1,5 +1,5 @@
 // utils
-import { useEffect, useRef, useReducer } from 'react'
+import { useEffect, useRef, useReducer, useCallback, useState } from 'react'
 import { ACTIONS, OverlayReducer } from './overlay.reducer'
 
 //components & hooks
@@ -26,37 +26,41 @@ interface OverlayProps {
 export default function Overlay(props: OverlayProps) {
   const { sleeping, awoken, wake, settings } = props
 
+  const [chosenAmbassador, setChosenAmbassador] = useState<string | undefined>(undefined)
   const [{showAmbassadorList, showAlveusIntro}, dispatch] = useReducer(OverlayReducer, {
     showAmbassadorList: false,
     showAlveusIntro: false
   })
-
-  const command = useChatCommand()
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const awakingRef = useRef(false)
+  const commandDelay = 8000
 
-  // When a chat command is run, show the list and auto-dismiss it after 6s
-  useEffect(() => {
-    if (command !== undefined && !settings.disableChatPopup) {
-      if(command === '!welcome')
-        dispatch({type: ACTIONS.SHOW_ALVEUS_INTRO})
-      else{
-        // Show the list, and dismiss it after 6s
-        dispatch({type: ACTIONS.SHOW_AMBASSADOR_LIST})
-        timeoutRef.current = setTimeout(() => {dispatch({type: ACTIONS.HIDE_AMBASSADOR_LIST})}, 6000)
+  // When a chat command is run, wake the overlay
+  useChatCommand(useCallback((command: string) => {
+    if (!settings.disableChatPopup) {
+      if (command !== '!welcome') setChosenAmbassador(command.slice(1))
 
-        // Track that we're waking up, so that we don't immediately clear the timeout
-        awakingRef.current = true
-      }
+      // Show the card
+      dispatch({type: command === '!welcome' ? ACTIONS.SHOW_ALVEUS_INTRO : ACTIONS.SHOW_AMBASSADOR_LIST})
 
-      // Wake the overlay for 8s
-      wake(8000)
+      // Dismiss the overlay after a delay
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => {
+        dispatch({type: command === '!welcome' ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.HIDE_AMBASSADOR_LIST})
+      }, commandDelay)
+
+      // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
+      awakingRef.current = true
+      wake(commandDelay)
     }
+  }, [settings.disableChatPopup, commandDelay, wake]))
 
+  // Ensure we clean up the timer when we unmount
+  useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [command, settings.disableChatPopup, wake])
+  }, [])
 
   // If the user interacts with the overlay, clear the auto-dismiss timer
   useEffect(() => {
@@ -70,17 +74,17 @@ export default function Overlay(props: OverlayProps) {
 
     return (
     <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`} >
-        <ActivationButtons
-            toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
-            toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}
-        />
-        <AlveusIntro
-            showAlveusIntro={showAlveusIntro}
-        />
-        <AmbassadorList
-            showAmbassadorList={showAmbassadorList}
-            chatChosenAmbassador={command?.slice(1)}
-        />
+      <ActivationButtons
+        toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
+        toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}
+      />
+      <AlveusIntro
+        showAlveusIntro={showAlveusIntro}
+      />
+      <AmbassadorList
+        showAmbassadorList={showAmbassadorList}
+        chatChosenAmbassador={chosenAmbassador}
+      />
     </div>
   )
 }

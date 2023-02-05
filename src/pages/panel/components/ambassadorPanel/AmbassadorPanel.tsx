@@ -7,14 +7,18 @@ import useChatCommand from "../../../../utils/chatCommand";
 import styles from './ambassadorPanel.module.css'
 
 //data
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react"
 import AmbassadorData from "../../../../assets/ambassadors.json";
 
 
 export default function AmbassadorPanel() {
   const [ambassadors] = useState(AmbassadorData)
   const [ambassadorCard, setAmbassadorCard] = useState("") //name of ambassador that will show up as a modal
-  const chosenAmbassador = useChatCommand()?.slice(1)
+
+  const [chosenAmbassador, setChosenAmbassador] = useState<string | undefined>(undefined)
+  useChatCommand(useCallback((command: string) => {
+    setChosenAmbassador(command.slice(1))
+  }, []))
 
   useEffect(() => {
     if (chosenAmbassador !== undefined)

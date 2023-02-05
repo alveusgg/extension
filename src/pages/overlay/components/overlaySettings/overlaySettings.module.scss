@@ -15,11 +15,10 @@
 .hidden {
   visibility: hidden;
   translate: 40px;
-}
 
-@media (prefers-reduced-motion) {
-  // just rely on app fade
-  .hidden {
+  // accessibility for vestibular motion disorders
+  // do not translate overlay but only transition opacity
+  @media (prefers-reduced-motion) {
     translate: 0;
   }
 }

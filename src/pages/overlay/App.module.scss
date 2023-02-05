@@ -5,4 +5,17 @@
   bottom: 40px;
   left: 15px;
   right: 15px;
+  transition: opacity 0.3s ease-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+
+  * {
+    pointer-events: none;
+  }
 }

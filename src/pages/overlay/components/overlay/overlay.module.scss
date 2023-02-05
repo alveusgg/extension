@@ -4,21 +4,17 @@
   display: flex;
   height: 100%;
   width: 100%;
-
-  // horizontal spacing (scaled dynamically based on available height)
-  gap: $overlay-base-size;
-
-  transition: all 0.3s ease-out;
+  gap: $overlay-base-size; // horizontal spacing (scaled dynamically based on available height)
+  transition: 0.3s ease-out;
+  transition-property: visibility, translate;
 }
 
 .visible {
   visibility: visible;
-  opacity: 1;
 }
 
 .hidden {
   visibility: hidden;
-  opacity: 0;
   translate: -40px;
 
   // accessibility for vestibular motion disorders

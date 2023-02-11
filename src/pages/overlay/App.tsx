@@ -64,13 +64,29 @@ export default function App() {
     wake(5000)
   }, [wake])
 
+  // When a user scrolls, treat it as an interaction (but handle Firefox being weird)
+  const scrollRef = useRef<[HTMLElement, number]|undefined>(undefined)
+  const scrolled = useCallback((e: Event) => {
+    const target = e.target as HTMLElement
+
+    // If the scroll event is from the same element, and the scroll position is the same, ignore it
+    // This fixes a bug in Firefox where animating translate emits scroll events
+    if (scrollRef.current) {
+      const [node, scrollTop] = scrollRef.current
+      if (node === target && scrollTop === target.scrollTop) return
+    }
+
+    scrollRef.current = [target, target.scrollTop]
+    interacted()
+  }, [interacted])
+
   // Bind a capturing event listener for scrolling (so we can see scrolling for children)
   useEffect(() => {
     if (!appRef.current) return
     const node = appRef.current
-    node.addEventListener("scroll", interacted, true)
-    return () => node.removeEventListener("scroll", interacted, true)
-  }, [interacted])
+    node.addEventListener("scroll", scrolled, true)
+    return () => node.removeEventListener("scroll", scrolled, true)
+  }, [scrolled])
 
   // Immediately sleep the overlay
   const sleep = useCallback(() => {

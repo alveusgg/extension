@@ -1,5 +1,6 @@
 [
     {
+      "cardFront":{
         "name": "Appa",
         "species": "Common Marmoset",
         "img": {
@@ -12,8 +13,16 @@
         "iucnStatus": "Least concern with decreasing population trend",
         "story": "Appa was rescued by Alveus after being surrendered to a veterinarian due to neglect",
         "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
+      },
+      "cardBack": {
+        "helpSpecies": [
+          "Exampoles of how you can help this species",
+          "Example 2 of how you can help this species"
+        ]
+      }
     },
     {
+      "cardFront": {
         "name": "Momo",
         "species": "Black-tufted Marmoset",
         "img": {
@@ -26,8 +35,13 @@
         "iucnStatus": "Vulnerable with decreasing population trend",
         "story": "Momo was rescued by Alveus after being surrendered to a veterinarian due to neglect",
         "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+      "cardFront": {
         "name": "Chips Ahoy",
         "species": "Domestic Rat",
         "img": {
@@ -40,8 +54,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Chips Ahoy was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
         "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+      "cardFront": {
         "name": "Nilla Wafer",
         "species": "Domestic Rat",
         "img": {
@@ -54,8 +73,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Nilla Wafer was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
         "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Henrietta",
         "species": "Jersey Giant",
         "img": {
@@ -68,8 +92,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Henrietta was rehomed from a local farm.",
         "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Henrique",
         "species": "Half Dark Brahma, Half Saipan",
         "img": {
@@ -82,8 +111,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Henrique was rehomed from a local farm.",
         "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Nugget",
         "species": "Ameraucana Chicken",
         "img": {
@@ -96,8 +130,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Nugget was rehomed to Alveus because she was bullied by hens in her previous flock.",
         "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Oliver",
         "species": "Olive Egger Chicken",
         "img": {
@@ -110,8 +149,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Oliver was put in the reject/return cage at a local feed store.",
         "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Toaster Strudel",
         "species": "Blue-tongued Skink",
         "img": {
@@ -124,8 +168,13 @@
         "iucnStatus": "Least Concern",
         "story": "Toaster Strudel was part of an educational program at a zoo and was rehomed to Alveus.",
         "conservationMission": "He is an ambassador for how human development and invasive species can affect natural habitats and native species. "
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Puppy",
         "species": "Emperor Scorpion",
         "img": {
@@ -138,8 +187,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our emperor scorpions were born in captivity and ethically sourced.",
         "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Tortellini",
         "species": "Emperor Scorpion",
         "img": {
@@ -152,8 +206,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our emperor scorpions were born in captivity and ethically sourced. ",
         "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Fenn",
         "species": "European Red Fox",
         "img": {
@@ -166,8 +225,13 @@
         "iucnStatus": "Least Concern",
         "story": "Fenn was confiscated from the illegal pet trade by California Department of Fish and Wildlife. He was then rehomed to Alveus.",
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Reed",
         "species": "European Red Fox",
         "img": {
@@ -180,8 +244,13 @@
         "iucnStatus": "Least Concern",
         "story": "Reed was orphaned as a wild kit and was rescued to be raised at a zoo to be an educational ambassador. He was then rehomed to Alveus.",
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Winnie (The Moo)",
         "species": "Red Angus Beef Cow",
         "img": {
@@ -194,8 +263,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Winnie came from a cattle operation in Oklahoma. ",
         "conservationMission": "She is an ambassador for the beef industry and how people can use their consumer choice to impact the environment in a positive way."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Mia",
         "species": "African Grey",
         "img": {
@@ -208,8 +282,13 @@
         "iucnStatus": "Endangered with decreasing population trend",
         "story": "Mia was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Siren",
         "species": "Blue-frontend Amazon",
         "img": {
@@ -222,8 +301,13 @@
         "iucnStatus": "Least Concern",
         "story": "Siren was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Miley",
         "species": "Catalina Macaw",
         "img": {
@@ -236,8 +320,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Miley was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Tico",
         "species": "Blue and Gold Macaw",
         "img": {
@@ -250,8 +339,13 @@
         "iucnStatus": "Least concern with decreasing population trend",
         "story": "Tico was rehomed to Alveus as the previous sanctuary’s owner was retiring",
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Moomin",
         "species": "Chinchilla",
         "img": {
@@ -264,8 +358,13 @@
         "iucnStatus": "Endangered with decreasing population trend",
         "story": "Moomin was rehomed from a local pet owner.",
         "conservationMission": "He is an ambassador for the exploitation of wildlife in the fur trade."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Snork",
         "species": "Chinchilla",
         "img": {
@@ -278,8 +377,13 @@
         "iucnStatus": "Endangered with decreasing population trend",
         "story": "Snork was part of an educational program at a zoo and was rehomed to Alveus.",
         "conservationMission": "She is an ambassador for the exploitation of wildlife in the fur trade."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Jalapeño",
         "species": "Domestic Donkey",
         "img": {
@@ -292,8 +396,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Rehomed to Alveus from a local equine rescue.",
         "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Serrano",
         "species": "Domestic Donkey",
         "img": {
@@ -306,8 +415,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Rehomed to Alveus from a local equine rescue.",
         "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Stompy",
         "species": "Emu",
         "img": {
@@ -320,8 +434,13 @@
         "iucnStatus": "Least Concern",
         "story": "Stompy was hatched in captivity at a zoo and was hand-raised to be the first Alveus ambassador.",
         "conservationMission": "He is an ambassador for how the exotic meat trade and the use of animal products in cosmetics has affected his species and others."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Georgie",
         "species": "African Bullfrog",
         "img": {
@@ -334,8 +453,13 @@
         "iucnStatus": "Least concern with decreasing population trend",
         "story": "Georgie was part of an educational program at a zoo and was rehomed to Alveus.",
         "conservationMission": "He is an ambassador for the wildlife trade and how chytrid fungus is affecting amphibian species worldwide."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Noodle",
         "species": "Carpet Python",
         "img": {
@@ -348,8 +472,13 @@
         "iucnStatus": "Least concern with decreasing population trend",
         "story": "Noodle was part of an educational program at a zoo and was rehomed to Alveus.",
         "conservationMission": "She is an ambassador for how the pet trade and habitat loss has affected hers and many other reptile species worldwide."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Patchy",
         "species": "Ball Python",
         "img": {
@@ -362,8 +491,13 @@
         "iucnStatus": "Near threatened with decreasing population",
         "story": "Patchy was rehomed to Alveus from a local breeder after it was discovered that he had a genetic defect and was missing an eye.",
         "conservationMission": "He is an ambassador for how the pet trade and habitat loss has affected his and many other reptile species worldwide."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Abbott",
         "species": "American Crow",
         "img": {
@@ -376,8 +510,13 @@
         "iucnStatus": "Least Concern",
         "story": "Abbott was brought into a wildlife rehab center as a baby. He imprinted during the rehab process and then was deemed non-releasable.",
         "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Coconut",
         "species": "American Crow",
         "img": {
@@ -390,8 +529,13 @@
         "iucnStatus": "Least Concern",
         "story": "Coconut was brought into a willdife rehab center as a baby. He imprinted during the rehab process and then was deemed non-releasable.",
         "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Baked Bean",
         "species": "Madagascar Hissing Cockroach",
         "img":{
@@ -404,8 +548,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our cockroach colony was started with 7 roaches that were part of an educational colony at a school in Pennsylvania.",
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Barbara",
         "species": "Madagascar Hissing Cockroach",
         "img":{
@@ -418,8 +567,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our cockroach colony was started with 7 roaches that were part of an educational colony at a school in Pennsylvania.",
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "BB",
         "species": "Spanish Orange Isopods",
         "img":{
@@ -432,8 +586,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our Spanish orange isopods were born in captivity and ethically sourced. ",
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Ducky",
         "species": "Rubber Ducky Isopods",
         "img": {
@@ -446,8 +605,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our rubber ducky isopods were born in captivity and ethically sourced. ",
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+    "cardFront": {
         "name": "Marty",
         "species": "Zebra Isopods",
         "img": {
@@ -460,8 +624,13 @@
         "iucnStatus": "Not evaluated",
         "story": "Our zebra isopods were born in captivity and ethically sourced. ",
         "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     },
     {
+      "cardFront": {
         "name": "Hank (The Tank)",
         "species": "Smokey Ghost Millipede",
         "img": {
@@ -474,5 +643,9 @@
         "iucnStatus": "Not evaluated",
         "story": "Our smokey ghost millipede was born in captivity and ethically sourced. ",
         "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+      },
+      "cardBack":{
+        "helpSpecies": []
+      }
     }
 ]

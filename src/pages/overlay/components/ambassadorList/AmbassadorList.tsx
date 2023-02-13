@@ -18,7 +18,7 @@ export interface AmbassadorListProps {
 
 export default function AmbassadorList(props: AmbassadorListProps) {
   const [ambassadors] = useState(AmbassadorData)
-  const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorCardProps["cardData"] | null>()
+  const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorCardProps| null>()
 
   const upArrowRef = useRef<HTMLButtonElement>(null)
   const ambassadorList = useRef<HTMLDivElement>(null)
@@ -26,10 +26,10 @@ export default function AmbassadorList(props: AmbassadorListProps) {
 
   useEffect(() => { // show the card of the ambassador that Twitch chat chose
     if (props.chatChosenAmbassador !== undefined) {
-      const ambassador = ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
+      const ambassador = ambassadors.find(ambassador => ambassador.cardFront.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
       if (ambassador) {
-        setActiveAmbassador(ambassador)
-        scrollListToAmbassador(ambassador.name.split(" ")[0].toLowerCase())
+        setActiveAmbassador({cardFrontData: ambassador.cardFront, cardBackData: ambassador.cardBack})
+        scrollListToAmbassador(ambassador.cardFront.name.split(" ")[0].toLowerCase())
       }
     }
   }, [props.chatChosenAmbassador, ambassadors])
@@ -69,20 +69,23 @@ export default function AmbassadorList(props: AmbassadorListProps) {
         <div ref={ambassadorList} className={styles.ambassadors} onScroll={() => handleArrowVisibility()}>
           {ambassadors && ambassadors.map(ambassador => (
             <AmbassadorButton
-              key={ambassador.name}
-              name={ambassador.name}
-              species={ambassador.species}
+              key={ambassador.cardFront.name}
+              name={ambassador.cardFront.name}
+              species={ambassador.cardFront.species}
               img={{
-                src: ambassador.img.src,
-                altText: ambassador.img.altText
+                src: ambassador.cardFront.img.src,
+                altText: ambassador.cardFront.img.altText
               }}
 
               getCard={() => {
-                setActiveAmbassador(activeAmbassador?.name === ambassador.name ? undefined : ambassador)
+                setActiveAmbassador(
+                  activeAmbassador?.cardFrontData.name === ambassador.cardFront.name ? undefined
+                  : {cardFrontData: ambassador.cardFront, cardBackData: ambassador.cardBack}
+                )
               }}
 
-              ClassName={`${styles.ambassadorButton} ${activeAmbassador?.name === ambassador.name ? styles.ambassadorButtonClicked : undefined}`}
-              Id={ambassador.name.split(" ")[0].toLowerCase()}
+              ClassName={`${styles.ambassadorButton} ${activeAmbassador?.cardFrontData.name === ambassador.cardFront.name ? styles.ambassadorButtonClicked : undefined}`}
+              Id={ambassador.cardFront.name.split(" ")[0].toLowerCase()}
             />
           ))}
         </div>
@@ -94,8 +97,9 @@ export default function AmbassadorList(props: AmbassadorListProps) {
 
       {activeAmbassador && props.showAmbassadorList ?
         <AmbassadorCard
-          key={activeAmbassador.name}
-          cardData={activeAmbassador}
+          key={activeAmbassador.cardFrontData.name}
+          cardFrontData={activeAmbassador.cardFrontData}
+          cardBackData={activeAmbassador.cardBackData}
           close={() => {
             setActiveAmbassador(undefined)
           }}

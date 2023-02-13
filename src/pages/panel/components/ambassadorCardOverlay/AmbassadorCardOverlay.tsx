@@ -12,7 +12,8 @@ export default function AmbassadorCardOverlay(props: AmbassadorCardOverlayProps)
   return (
     <div className={styles.background}>
       <AmbassadorCard
-        cardData={ props.ambassadorCard.cardData }
+        cardFrontData={ props.ambassadorCard.cardFrontData }
+        cardBackData={ props.ambassadorCard.cardBackData }
         close={props.close}
         ClassName={styles.ambassadorCard}
       />

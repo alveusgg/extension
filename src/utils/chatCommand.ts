@@ -13,7 +13,7 @@ const getMapOfAmbassadorWithDiacritics = (): Map<string, string> => {
   //store names that have letters with diacritics in them
   const ambassadorsWithDiacriticsInNames = AmbassadorData.filter(
     (ambassador) =>{
-      const ambassadorOriginalFirstName = ambassador.cardFront.name.split(' ')[0].toLowerCase()
+      const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
       const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
       return ambassadorOriginalFirstName !== ambassadorFirstNameWithRemovedDiacritic
@@ -22,7 +22,7 @@ const getMapOfAmbassadorWithDiacritics = (): Map<string, string> => {
   // a hashmap of the normalized names and their original names
   const diacriticMap = new Map<string, string>()
   ambassadorsWithDiacriticsInNames.forEach((ambassador) => {
-    const ambassadorOriginalFirstName = ambassador.cardFront.name.split(' ')[0].toLowerCase()
+    const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
     const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     diacriticMap.set(ambassadorFirstNameWithRemovedDiacritic, ambassadorOriginalFirstName)
   })
@@ -37,7 +37,7 @@ export default function useChatCommand(callback: (command: string) => void) {
 
     // Add the original names to the map, pointing to themselves
     AmbassadorData.forEach((ambassador) => {
-      const name = ambassador.cardFront.name.split(' ')[0].toLowerCase()
+      const name = ambassador.name.split(' ')[0].toLowerCase()
       commands.set(name, name)
     })
 

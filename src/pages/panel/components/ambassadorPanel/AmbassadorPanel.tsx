@@ -22,7 +22,7 @@ export default function AmbassadorPanel() {
 
   useEffect(() => {
     if (chosenAmbassador !== undefined)
-      setAmbassadorCard(ambassadors.find(ambassador => ambassador.cardFront.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.cardFront.name || "")
+      setAmbassadorCard(ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.name || "")
   }, [chosenAmbassador, ambassadors])
 
   function handleClose(): void {
@@ -36,23 +36,26 @@ export default function AmbassadorPanel() {
     <main className={styles.ambassadors}>
       {ambassadors && ambassadors.map(ambassador => (
         <>
-          {ambassadorCard === ambassador.cardFront.name ? (
+          {ambassadorCard === ambassador.name ? (
             <AmbassadorCardOverlay
-              ambassadorCard={{cardFrontData: ambassador.cardFront, cardBackData: ambassador.cardBack}}
+              ambassadorCard={{
+                cardData: ambassador,
+                close: handleClose
+              }}
               close={handleClose}
             />
           ) : null}
           <AmbassadorButton
-            key={ambassador.cardFront.name} // every ambassador will have a unique name
-            name={ambassador.cardFront.name}
-            species={ambassador.cardFront.species}
+            key={ambassador.name} // every ambassador will have a unique name
+            name={ambassador.name}
+            species={ambassador.species}
             img={{
-              src: ambassador.cardFront.img.src,
-              altText: ambassador.cardFront.img.altText
+              src: ambassador.img.src,
+              altText: ambassador.img.altText
             }}
             ClassName={styles.item}
 
-            getCard={()=>handleGetCard(ambassador.cardFront.name)}
+            getCard={()=>handleGetCard(ambassador.name)}
           />
         </>
       ))}

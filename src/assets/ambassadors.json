@@ -1,651 +1,499 @@
 [
     {
-      "cardFront":{
-        "name": "Appa",
-        "species": "Common Marmoset",
-        "img": {
-            "src": "ambassador-images/appa.jpg",
-            "altText": "Appa"
-        },
-        "scientificName": "Callithrix jacchus",
-        "sex": "Male",
-        "dateOfBirth": "2020",
-        "iucnStatus": "Least concern with decreasing population trend",
-        "story": "Appa was rescued by Alveus after being surrendered to a veterinarian due to neglect",
-        "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
+      "name": "Appa",
+      "species": "Common Marmoset",
+      "img": {
+          "src": "ambassador-images/appa.jpg",
+          "altText": "Appa"
       },
-      "cardBack": {
-        "helpSpecies": [
-          "Exampoles of how you can help this species",
-          "Example 2 of how you can help this species"
-        ]
-      }
+      "scientificName": "Callithrix jacchus",
+      "sex": "Male",
+      "dateOfBirth": "2020",
+      "iucnStatus": "Least concern with decreasing population trend",
+      "story": "Appa was rescued by Alveus after being surrendered to a veterinarian due to neglect",
+      "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
     },
     {
-      "cardFront": {
-        "name": "Momo",
-        "species": "Black-tufted Marmoset",
-        "img": {
-            "src": "ambassador-images/momo.jpg",
-            "altText": "Momo"
-        },
-        "scientificName": "Callithrix penicillata",
-        "sex": "Male",
-        "dateOfBirth": "2021",
-        "iucnStatus": "Vulnerable with decreasing population trend",
-        "story": "Momo was rescued by Alveus after being surrendered to a veterinarian due to neglect",
-        "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
+      "name": "Momo",
+      "species": "Black-tufted Marmoset",
+      "img": {
+          "src": "ambassador-images/momo.jpg",
+          "altText": "Momo"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Callithrix penicillata",
+      "sex": "Male",
+      "dateOfBirth": "2021",
+      "iucnStatus": "Vulnerable with decreasing population trend",
+      "story": "Momo was rescued by Alveus after being surrendered to a veterinarian due to neglect",
+      "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
     },
     {
-      "cardFront": {
-        "name": "Chips Ahoy",
-        "species": "Domestic Rat",
-        "img": {
-            "src": "ambassador-images/chipsahoy.jpg",
-            "altText": "Chips Ahoy"
-        },
-        "scientificName": "Rattus norvegicus f. domestica",
-        "sex": "Female",
-        "dateOfBirth": "2022-11",
-        "iucnStatus": "Not evaluated",
-        "story": "Chips Ahoy was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
-        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+      "name": "Chips Ahoy",
+      "species": "Domestic Rat",
+      "img": {
+          "src": "ambassador-images/chipsahoy.jpg",
+          "altText": "Chips Ahoy"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Rattus norvegicus f. domestica",
+      "sex": "Female",
+      "dateOfBirth": "2022-11",
+      "iucnStatus": "Not evaluated",
+      "story": "Chips Ahoy was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
+      "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
     {
-      "cardFront": {
-        "name": "Nilla Wafer",
-        "species": "Domestic Rat",
-        "img": {
-            "src": "ambassador-images/nillawafer.jpg",
-            "altText": "Nilla Wafer"
-        },
-        "scientificName": "Rattus norvegicus f. domestica",
-        "sex": "Female",
-        "dateOfBirth": "2022-11",
-        "iucnStatus": "Not evaluated",
-        "story": "Nilla Wafer was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
-        "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
+      "name": "Nilla Wafer",
+      "species": "Domestic Rat",
+      "img": {
+          "src": "ambassador-images/nillawafer.jpg",
+          "altText": "Nilla Wafer"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Rattus norvegicus f. domestica",
+      "sex": "Female",
+      "dateOfBirth": "2022-11",
+      "iucnStatus": "Not evaluated",
+      "story": "Nilla Wafer was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
+      "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
     {
-    "cardFront": {
-        "name": "Henrietta",
-        "species": "Jersey Giant",
-        "img": {
-            "src": "ambassador-images/henrietta.jpg",
-            "altText": "Henrietta"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Female",
-        "dateOfBirth": "2019",
-        "iucnStatus": "Not evaluated",
-        "story": "Henrietta was rehomed from a local farm.",
-        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      "name": "Henrietta",
+      "species": "Jersey Giant",
+      "img": {
+          "src": "ambassador-images/henrietta.jpg",
+          "altText": "Henrietta"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Gallus gallus domesticus",
+      "sex": "Female",
+      "dateOfBirth": "2019",
+      "iucnStatus": "Not evaluated",
+      "story": "Henrietta was rehomed from a local farm.",
+      "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
-    "cardFront": {
-        "name": "Henrique",
-        "species": "Half Dark Brahma, Half Saipan",
-        "img": {
-            "src": "ambassador-images/henrique.jpg",
-            "altText": "Henrique"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Female",
-        "dateOfBirth": "2020",
-        "iucnStatus": "Not evaluated",
-        "story": "Henrique was rehomed from a local farm.",
-        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      "name": "Henrique",
+      "species": "Half Dark Brahma, Half Saipan",
+      "img": {
+          "src": "ambassador-images/henrique.jpg",
+          "altText": "Henrique"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Gallus gallus domesticus",
+      "sex": "Female",
+      "dateOfBirth": "2020",
+      "iucnStatus": "Not evaluated",
+      "story": "Henrique was rehomed from a local farm.",
+      "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
-    "cardFront": {
-        "name": "Nugget",
-        "species": "Ameraucana Chicken",
-        "img": {
-            "src": "ambassador-images/nugget.jpg",
-            "altText": "Nugget"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Female",
-        "dateOfBirth": "2019",
-        "iucnStatus": "Not evaluated",
-        "story": "Nugget was rehomed to Alveus because she was bullied by hens in her previous flock.",
-        "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      "name": "Nugget",
+      "species": "Ameraucana Chicken",
+      "img": {
+          "src": "ambassador-images/nugget.jpg",
+          "altText": "Nugget"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Gallus gallus domesticus",
+      "sex": "Female",
+      "dateOfBirth": "2019",
+      "iucnStatus": "Not evaluated",
+      "story": "Nugget was rehomed to Alveus because she was bullied by hens in her previous flock.",
+      "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way.",
+      "helpSpecies": [
+        {
+          "help": "Purchase eggs with a “certified humane” or “American Humane Certified Pasture-Raised” label.",
+          "img": [
+            {
+              "src": "ambassador-images/nugget-1.jpg",
+              "altText": "Nugget"
+            },
+            {
+              "src": "ambassador-images/nugget-2.jpg",
+              "altText": "Nugget"
+            },
+            {
+              "src": "ambassador-images/nugget-2.jpg",
+              "altText": "Nugget"
+            }
+          ],
+          "explanation": "This makes sure that the chickens are treated humanely.",
+          "note": "If you cannot find these labels the next best is free-range and cage-free eggs respectively."
+        }
+      ]
     },
     {
-    "cardFront": {
-        "name": "Oliver",
-        "species": "Olive Egger Chicken",
-        "img": {
-            "src": "ambassador-images/oliver.jpg",
-            "altText": "Oliver"
-        },
-        "scientificName": "Gallus gallus domesticus",
-        "sex": "Male",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Oliver was put in the reject/return cage at a local feed store.",
-        "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+      "name": "Oliver",
+      "species": "Olive Egger Chicken",
+      "img": {
+          "src": "ambassador-images/oliver.jpg",
+          "altText": "Oliver"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Gallus gallus domesticus",
+      "sex": "Male",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Oliver was put in the reject/return cage at a local feed store.",
+      "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
-    "cardFront": {
-        "name": "Toaster Strudel",
-        "species": "Blue-tongued Skink",
-        "img": {
-            "src": "ambassador-images/toasterstrudel.jpg",
-            "altText": "Toaster Strudel"
-        },
-        "scientificName": "Tiliqua scincoides intermedia",
-        "sex": "Male",
-        "dateOfBirth": "2022-07-04",
-        "iucnStatus": "Least Concern",
-        "story": "Toaster Strudel was part of an educational program at a zoo and was rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for how human development and invasive species can affect natural habitats and native species. "
+      "name": "Toaster Strudel",
+      "species": "Blue-tongued Skink",
+      "img": {
+          "src": "ambassador-images/toasterstrudel.jpg",
+          "altText": "Toaster Strudel"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Tiliqua scincoides intermedia",
+      "sex": "Male",
+      "dateOfBirth": "2022-07-04",
+      "iucnStatus": "Least Concern",
+      "story": "Toaster Strudel was part of an educational program at a zoo and was rehomed to Alveus.",
+      "conservationMission": "He is an ambassador for how human development and invasive species can affect natural habitats and native species. "
     },
     {
-    "cardFront": {
-        "name": "Puppy",
-        "species": "Emperor Scorpion",
-        "img": {
-            "src": "ambassador-images/puppy.jpg",
-            "altText": "Puppy"
-        },
-        "scientificName": "Pandinus imperator",
-        "sex": "Male",
-        "dateOfBirth": "2022-11",
-        "iucnStatus": "Not evaluated",
-        "story": "Our emperor scorpions were born in captivity and ethically sourced.",
-        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+      "name": "Puppy",
+      "species": "Emperor Scorpion",
+      "img": {
+          "src": "ambassador-images/puppy.jpg",
+          "altText": "Puppy"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Pandinus imperator",
+      "sex": "Male",
+      "dateOfBirth": "2022-11",
+      "iucnStatus": "Not evaluated",
+      "story": "Our emperor scorpions were born in captivity and ethically sourced.",
+      "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
     },
     {
-    "cardFront": {
-        "name": "Tortellini",
-        "species": "Emperor Scorpion",
-        "img": {
-            "src": "ambassador-images/tortellini.jpg",
-            "altText": "Tortellini"
-        },
-        "scientificName": "Pandinus imperator",
-        "sex": "Male",
-        "dateOfBirth": "2022-11",
-        "iucnStatus": "Not evaluated",
-        "story": "Our emperor scorpions were born in captivity and ethically sourced. ",
-        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+      "name": "Tortellini",
+      "species": "Emperor Scorpion",
+      "img": {
+          "src": "ambassador-images/tortellini.jpg",
+          "altText": "Tortellini"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Pandinus imperator",
+      "sex": "Male",
+      "dateOfBirth": "2022-11",
+      "iucnStatus": "Not evaluated",
+      "story": "Our emperor scorpions were born in captivity and ethically sourced. ",
+      "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
     },
     {
-    "cardFront": {
-        "name": "Fenn",
-        "species": "European Red Fox",
-        "img": {
-            "src": "ambassador-images/fenn.jpg",
-            "altText": "Fenn"
-        },
-        "scientificName": "Vulpes vulpes",
-        "sex": "Male",
-        "dateOfBirth": "2020",
-        "iucnStatus": "Least Concern",
-        "story": "Fenn was confiscated from the illegal pet trade by California Department of Fish and Wildlife. He was then rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+      "name": "Fenn",
+      "species": "European Red Fox",
+      "img": {
+          "src": "ambassador-images/fenn.jpg",
+          "altText": "Fenn"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Vulpes vulpes",
+      "sex": "Male",
+      "dateOfBirth": "2020",
+      "iucnStatus": "Least Concern",
+      "story": "Fenn was confiscated from the illegal pet trade by California Department of Fish and Wildlife. He was then rehomed to Alveus.",
+      "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
     },
     {
-    "cardFront": {
-        "name": "Reed",
-        "species": "European Red Fox",
-        "img": {
-            "src": "ambassador-images/reed.jpg",
-            "altText": "Reed"
-        },
-        "scientificName": "Vulpes vulpes",
-        "sex": "Male",
-        "dateOfBirth": "2019",
-        "iucnStatus": "Least Concern",
-        "story": "Reed was orphaned as a wild kit and was rescued to be raised at a zoo to be an educational ambassador. He was then rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
+      "name": "Reed",
+      "species": "European Red Fox",
+      "img": {
+          "src": "ambassador-images/reed.jpg",
+          "altText": "Reed"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Vulpes vulpes",
+      "sex": "Male",
+      "dateOfBirth": "2019",
+      "iucnStatus": "Least Concern",
+      "story": "Reed was orphaned as a wild kit and was rescued to be raised at a zoo to be an educational ambassador. He was then rehomed to Alveus.",
+      "conservationMission": "He is an ambassador for the exploitation of wildlife in the pet trade and the fur trade."
     },
     {
-    "cardFront": {
-        "name": "Winnie (The Moo)",
-        "species": "Red Angus Beef Cow",
-        "img": {
-            "src": "ambassador-images/winnie.jpg",
-            "altText": "Winnie (the Moo)"
-        },
-        "scientificName": "Bos (primigenius) taurus",
-        "sex": "Female",
-        "dateOfBirth": "2022-03-22",
-        "iucnStatus": "Not evaluated",
-        "story": "Winnie came from a cattle operation in Oklahoma. ",
-        "conservationMission": "She is an ambassador for the beef industry and how people can use their consumer choice to impact the environment in a positive way."
+      "name": "Winnie (The Moo)",
+      "species": "Red Angus Beef Cow",
+      "img": {
+          "src": "ambassador-images/winnie.jpg",
+          "altText": "Winnie (the Moo)"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Bos (primigenius) taurus",
+      "sex": "Female",
+      "dateOfBirth": "2022-03-22",
+      "iucnStatus": "Not evaluated",
+      "story": "Winnie came from a cattle operation in Oklahoma. ",
+      "conservationMission": "She is an ambassador for the beef industry and how people can use their consumer choice to impact the environment in a positive way."
     },
     {
-    "cardFront": {
-        "name": "Mia",
-        "species": "African Grey",
-        "img": {
-            "src": "ambassador-images/mia.jpg",
-            "altText": "Mia"
-        },
-        "scientificName": "Psittacus erithacus",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Endangered with decreasing population trend",
-        "story": "Mia was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      "name": "Mia",
+      "species": "African Grey",
+      "img": {
+          "src": "ambassador-images/mia.jpg",
+          "altText": "Mia"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Psittacus erithacus",
+      "sex": "Female",
+      "dateOfBirth": "",
+      "iucnStatus": "Endangered with decreasing population trend",
+      "story": "Mia was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+      "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
-    "cardFront": {
-        "name": "Siren",
-        "species": "Blue-frontend Amazon",
-        "img": {
-            "src": "ambassador-images/siren.jpg",
-            "altText": "Siren"
-        },
-        "scientificName": "Amazona aestiva",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Least Concern",
-        "story": "Siren was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      "name": "Siren",
+      "species": "Blue-frontend Amazon",
+      "img": {
+          "src": "ambassador-images/siren.jpg",
+          "altText": "Siren"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Amazona aestiva",
+      "sex": "Female",
+      "dateOfBirth": "",
+      "iucnStatus": "Least Concern",
+      "story": "Siren was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+      "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
-    "cardFront": {
-        "name": "Miley",
-        "species": "Catalina Macaw",
-        "img": {
-            "src": "ambassador-images/miley.jpg",
-            "altText": "Miley"
-        },
-        "scientificName": "Ara ararauna × Ara macao",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Miley was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
-        "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      "name": "Miley",
+      "species": "Catalina Macaw",
+      "img": {
+          "src": "ambassador-images/miley.jpg",
+          "altText": "Miley"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Ara ararauna × Ara macao",
+      "sex": "Female",
+      "dateOfBirth": "",
+      "iucnStatus": "Not evaluated",
+      "story": "Miley was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
+      "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
-    "cardFront": {
-        "name": "Tico",
-        "species": "Blue and Gold Macaw",
-        "img": {
-            "src": "ambassador-images/tico.jpg",
-            "altText": "Tico"
-        },
-        "scientificName": "Ara ararauna",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Least concern with decreasing population trend",
-        "story": "Tico was rehomed to Alveus as the previous sanctuary’s owner was retiring",
-        "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
+      "name": "Tico",
+      "species": "Blue and Gold Macaw",
+      "img": {
+          "src": "ambassador-images/tico.jpg",
+          "altText": "Tico"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Ara ararauna",
+      "sex": "Female",
+      "dateOfBirth": "",
+      "iucnStatus": "Least concern with decreasing population trend",
+      "story": "Tico was rehomed to Alveus as the previous sanctuary’s owner was retiring",
+      "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },
     {
-    "cardFront": {
-        "name": "Moomin",
-        "species": "Chinchilla",
-        "img": {
-            "src": "ambassador-images/moomin.jpg",
-            "altText": "Moomin"
-        },
-        "scientificName": "Chinchilla lanigera",
-        "sex": "Male",
-        "dateOfBirth": "2017",
-        "iucnStatus": "Endangered with decreasing population trend",
-        "story": "Moomin was rehomed from a local pet owner.",
-        "conservationMission": "He is an ambassador for the exploitation of wildlife in the fur trade."
+      "name": "Moomin",
+      "species": "Chinchilla",
+      "img": {
+          "src": "ambassador-images/moomin.jpg",
+          "altText": "Moomin"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Chinchilla lanigera",
+      "sex": "Male",
+      "dateOfBirth": "2017",
+      "iucnStatus": "Endangered with decreasing population trend",
+      "story": "Moomin was rehomed from a local pet owner.",
+      "conservationMission": "He is an ambassador for the exploitation of wildlife in the fur trade."
     },
     {
-    "cardFront": {
-        "name": "Snork",
-        "species": "Chinchilla",
-        "img": {
-            "src": "ambassador-images/snork.jpg",
-            "altText": "Snork"
-        },
-        "scientificName": "Chinchilla lanigera",
-        "sex": "Female",
-        "dateOfBirth": "2021",
-        "iucnStatus": "Endangered with decreasing population trend",
-        "story": "Snork was part of an educational program at a zoo and was rehomed to Alveus.",
-        "conservationMission": "She is an ambassador for the exploitation of wildlife in the fur trade."
+      "name": "Snork",
+      "species": "Chinchilla",
+      "img": {
+          "src": "ambassador-images/snork.jpg",
+          "altText": "Snork"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Chinchilla lanigera",
+      "sex": "Female",
+      "dateOfBirth": "2021",
+      "iucnStatus": "Endangered with decreasing population trend",
+      "story": "Snork was part of an educational program at a zoo and was rehomed to Alveus.",
+      "conservationMission": "She is an ambassador for the exploitation of wildlife in the fur trade."
     },
     {
-    "cardFront": {
-        "name": "Jalapeño",
-        "species": "Domestic Donkey",
-        "img": {
-            "src": "ambassador-images/jalapeno.jpg",
-            "altText": "Jalapeño"
-        },
-        "scientificName": "Equus Africanus Asinus",
-        "sex": "Male",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Rehomed to Alveus from a local equine rescue.",
-        "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
+      "name": "Jalapeño",
+      "species": "Domestic Donkey",
+      "img": {
+          "src": "ambassador-images/jalapeno.jpg",
+          "altText": "Jalapeño"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Equus Africanus Asinus",
+      "sex": "Male",
+      "dateOfBirth": "",
+      "iucnStatus": "Not evaluated",
+      "story": "Rehomed to Alveus from a local equine rescue.",
+      "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
     },
     {
-    "cardFront": {
-        "name": "Serrano",
-        "species": "Domestic Donkey",
-        "img": {
-            "src": "ambassador-images/serrano.jpg",
-            "altText": "Serrano"
-        },
-        "scientificName": "Equus Africanus Asinus",
-        "sex": "Male",
-        "dateOfBirth": "",
-        "iucnStatus": "Not evaluated",
-        "story": "Rehomed to Alveus from a local equine rescue.",
-        "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
+      "name": "Serrano",
+      "species": "Domestic Donkey",
+      "img": {
+          "src": "ambassador-images/serrano.jpg",
+          "altText": "Serrano"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Equus Africanus Asinus",
+      "sex": "Male",
+      "dateOfBirth": "",
+      "iucnStatus": "Not evaluated",
+      "story": "Rehomed to Alveus from a local equine rescue.",
+      "conservationMission": "He is an ambassador for the wildlife trade and use of wild animals in traditional medicine."
     },
     {
-    "cardFront": {
-        "name": "Stompy",
-        "species": "Emu",
-        "img": {
-            "src": "ambassador-images/stompy.jpg",
-            "altText": "Stompy"
-        },
-        "scientificName": "Dromaius novaehollandiae",
-        "sex": "Male",
-        "dateOfBirth": "2021-02-14",
-        "iucnStatus": "Least Concern",
-        "story": "Stompy was hatched in captivity at a zoo and was hand-raised to be the first Alveus ambassador.",
-        "conservationMission": "He is an ambassador for how the exotic meat trade and the use of animal products in cosmetics has affected his species and others."
+      "name": "Stompy",
+      "species": "Emu",
+      "img": {
+          "src": "ambassador-images/stompy.jpg",
+          "altText": "Stompy"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Dromaius novaehollandiae",
+      "sex": "Male",
+      "dateOfBirth": "2021-02-14",
+      "iucnStatus": "Least Concern",
+      "story": "Stompy was hatched in captivity at a zoo and was hand-raised to be the first Alveus ambassador.",
+      "conservationMission": "He is an ambassador for how the exotic meat trade and the use of animal products in cosmetics has affected his species and others."
     },
     {
-    "cardFront": {
-        "name": "Georgie",
-        "species": "African Bullfrog",
-        "img": {
-            "src": "ambassador-images/georgie.jpg",
-            "altText": "Georgie"
-        },
-        "scientificName": "Pyxicephalus adspersus",
-        "sex": "Male",
-        "dateOfBirth": "2021",
-        "iucnStatus": "Least concern with decreasing population trend",
-        "story": "Georgie was part of an educational program at a zoo and was rehomed to Alveus.",
-        "conservationMission": "He is an ambassador for the wildlife trade and how chytrid fungus is affecting amphibian species worldwide."
+      "name": "Georgie",
+      "species": "African Bullfrog",
+      "img": {
+          "src": "ambassador-images/georgie.jpg",
+          "altText": "Georgie"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Pyxicephalus adspersus",
+      "sex": "Male",
+      "dateOfBirth": "2021",
+      "iucnStatus": "Least concern with decreasing population trend",
+      "story": "Georgie was part of an educational program at a zoo and was rehomed to Alveus.",
+      "conservationMission": "He is an ambassador for the wildlife trade and how chytrid fungus is affecting amphibian species worldwide."
     },
     {
-    "cardFront": {
-        "name": "Noodle",
-        "species": "Carpet Python",
-        "img": {
-            "src": "ambassador-images/noodle.jpg",
-            "altText": "Noodle"
-        },
-        "scientificName": "M. spilota mcdowelli",
-        "sex": "Female",
-        "dateOfBirth": "",
-        "iucnStatus": "Least concern with decreasing population trend",
-        "story": "Noodle was part of an educational program at a zoo and was rehomed to Alveus.",
-        "conservationMission": "She is an ambassador for how the pet trade and habitat loss has affected hers and many other reptile species worldwide."
+      "name": "Noodle",
+      "species": "Carpet Python",
+      "img": {
+          "src": "ambassador-images/noodle.jpg",
+          "altText": "Noodle"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "M. spilota mcdowelli",
+      "sex": "Female",
+      "dateOfBirth": "",
+      "iucnStatus": "Least concern with decreasing population trend",
+      "story": "Noodle was part of an educational program at a zoo and was rehomed to Alveus.",
+      "conservationMission": "She is an ambassador for how the pet trade and habitat loss has affected hers and many other reptile species worldwide."
     },
     {
-    "cardFront": {
-        "name": "Patchy",
-        "species": "Ball Python",
-        "img": {
-            "src": "ambassador-images/patchy.jpg",
-            "altText": "Patchy"
-        },
-        "scientificName": "Python Regius",
-        "sex": "Male",
-        "dateOfBirth": "2021-08-15",
-        "iucnStatus": "Near threatened with decreasing population",
-        "story": "Patchy was rehomed to Alveus from a local breeder after it was discovered that he had a genetic defect and was missing an eye.",
-        "conservationMission": "He is an ambassador for how the pet trade and habitat loss has affected his and many other reptile species worldwide."
+      "name": "Patchy",
+      "species": "Ball Python",
+      "img": {
+          "src": "ambassador-images/patchy.jpg",
+          "altText": "Patchy"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Python Regius",
+      "sex": "Male",
+      "dateOfBirth": "2021-08-15",
+      "iucnStatus": "Near threatened with decreasing population",
+      "story": "Patchy was rehomed to Alveus from a local breeder after it was discovered that he had a genetic defect and was missing an eye.",
+      "conservationMission": "He is an ambassador for how the pet trade and habitat loss has affected his and many other reptile species worldwide."
     },
     {
-    "cardFront": {
-        "name": "Abbott",
-        "species": "American Crow",
-        "img": {
-            "src": "ambassador-images/abbott.jpg",
-            "altText": "Abbott"
-        },
-        "scientificName": "Corvus Brachyrhynchos",
-        "sex": "Male",
-        "dateOfBirth": "2021",
-        "iucnStatus": "Least Concern",
-        "story": "Abbott was brought into a wildlife rehab center as a baby. He imprinted during the rehab process and then was deemed non-releasable.",
-        "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
+      "name": "Abbott",
+      "species": "American Crow",
+      "img": {
+          "src": "ambassador-images/abbott.jpg",
+          "altText": "Abbott"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Corvus Brachyrhynchos",
+      "sex": "Male",
+      "dateOfBirth": "2021",
+      "iucnStatus": "Least Concern",
+      "story": "Abbott was brought into a wildlife rehab center as a baby. He imprinted during the rehab process and then was deemed non-releasable.",
+      "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
     },
     {
-    "cardFront": {
-        "name": "Coconut",
-        "species": "American Crow",
-        "img": {
-            "src": "ambassador-images/coconut.jpg",
-            "altText": "Coconut"
-        },
-        "scientificName": "Corvus Brachyrhynchos",
-        "sex": "Male",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Least Concern",
-        "story": "Coconut was brought into a willdife rehab center as a baby. He imprinted during the rehab process and then was deemed non-releasable.",
-        "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
+      "name": "Coconut",
+      "species": "American Crow",
+      "img": {
+          "src": "ambassador-images/coconut.jpg",
+          "altText": "Coconut"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Corvus Brachyrhynchos",
+      "sex": "Male",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Least Concern",
+      "story": "Coconut was brought into a willdife rehab center as a baby. He imprinted during the rehab process and then was deemed non-releasable.",
+      "conservationMission": "He is an ambassador for educating people on the misconceptions that wildlife face as well as human-wildlife conflict."
     },
     {
-    "cardFront": {
-        "name": "Baked Bean",
-        "species": "Madagascar Hissing Cockroach",
-        "img":{
-            "src": "ambassador-images/bakedbean.jpg",
-            "altText": "Baked Bean"
-        },
-        "scientificName": "Gromphadorhina portentosa",
-        "sex": "Male",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Our cockroach colony was started with 7 roaches that were part of an educational colony at a school in Pennsylvania.",
-        "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      "name": "Baked Bean",
+      "species": "Madagascar Hissing Cockroach",
+      "img":{
+          "src": "ambassador-images/bakedbean.jpg",
+          "altText": "Baked Bean"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Gromphadorhina portentosa",
+      "sex": "Male",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Our cockroach colony was started with 7 roaches that were part of an educational colony at a school in Pennsylvania.",
+      "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-    "cardFront": {
-        "name": "Barbara",
-        "species": "Madagascar Hissing Cockroach",
-        "img":{
-            "src": "ambassador-images/bakedbean.jpg",
-            "altText": "Baked Bean"
-        },
-        "scientificName": "Gromphadorhina portentosa",
-        "sex": "Female",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Our cockroach colony was started with 7 roaches that were part of an educational colony at a school in Pennsylvania.",
-        "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      "name": "Barbara",
+      "species": "Madagascar Hissing Cockroach",
+      "img":{
+          "src": "ambassador-images/bakedbean.jpg",
+          "altText": "Baked Bean"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Gromphadorhina portentosa",
+      "sex": "Female",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Our cockroach colony was started with 7 roaches that were part of an educational colony at a school in Pennsylvania.",
+      "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-    "cardFront": {
-        "name": "BB",
-        "species": "Spanish Orange Isopods",
-        "img":{
-            "src": "ambassador-images/bb.jpg",
-            "altText": "BB"
-        },
-        "scientificName": "Porcellionides pruinosus",
-        "sex": "Unknown",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Our Spanish orange isopods were born in captivity and ethically sourced. ",
-        "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      "name": "BB",
+      "species": "Spanish Orange Isopods",
+      "img":{
+          "src": "ambassador-images/bb.jpg",
+          "altText": "BB"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Porcellionides pruinosus",
+      "sex": "Unknown",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Our Spanish orange isopods were born in captivity and ethically sourced. ",
+      "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-    "cardFront": {
-        "name": "Ducky",
-        "species": "Rubber Ducky Isopods",
-        "img": {
-            "src": "ambassador-images/ducky.jpg",
-            "altText": "Rubber Ducky Isopods"
-        },
-        "scientificName": "Cubaris sp.",
-        "sex": "Unknown",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Our rubber ducky isopods were born in captivity and ethically sourced. ",
-        "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      "name": "Ducky",
+      "species": "Rubber Ducky Isopods",
+      "img": {
+          "src": "ambassador-images/ducky.jpg",
+          "altText": "Rubber Ducky Isopods"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Cubaris sp.",
+      "sex": "Unknown",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Our rubber ducky isopods were born in captivity and ethically sourced. ",
+      "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-    "cardFront": {
-        "name": "Marty",
-        "species": "Zebra Isopods",
-        "img": {
-            "src": "ambassador-images/marty.jpg",
-            "altText": "Zebra Isopods"
-        },
-        "scientificName": "Armadillidium Maculatum",
-        "sex": "Unknown",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Our zebra isopods were born in captivity and ethically sourced. ",
-        "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+      "name": "Marty",
+      "species": "Zebra Isopods",
+      "img": {
+          "src": "ambassador-images/marty.jpg",
+          "altText": "Zebra Isopods"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Armadillidium Maculatum",
+      "sex": "Unknown",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Our zebra isopods were born in captivity and ethically sourced. ",
+      "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-      "cardFront": {
-        "name": "Hank (The Tank)",
-        "species": "Smokey Ghost Millipede",
-        "img": {
-            "src": "ambassador-images/hank.jpg",
-            "altText": "Hank (The Tank)"
-        },
-        "scientificName": "Narceus gordanus",
-        "sex": "Male",
-        "dateOfBirth": "2022",
-        "iucnStatus": "Not evaluated",
-        "story": "Our smokey ghost millipede was born in captivity and ethically sourced. ",
-        "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
+      "name": "Hank (The Tank)",
+      "species": "Smokey Ghost Millipede",
+      "img": {
+          "src": "ambassador-images/hank.jpg",
+          "altText": "Hank (The Tank)"
       },
-      "cardBack":{
-        "helpSpecies": []
-      }
+      "scientificName": "Narceus gordanus",
+      "sex": "Male",
+      "dateOfBirth": "2022",
+      "iucnStatus": "Not evaluated",
+      "story": "Our smokey ghost millipede was born in captivity and ethically sourced. ",
+      "conservationMission": "He is an ambassador for the importance of invertebrates and the misconceptions they face."
     }
 ]

@@ -96,11 +96,34 @@
       }
     }
     .back{
-      padding: 10px 20px;
+      padding: 5px 5px;
       transform: rotateY(180deg);
 
-      ul{
-        padding-left: 20px;
+      h2{
+        margin-bottom: 10px;
+      }
+
+      section{
+        h3{
+          font-size: 0.8rem;
+          margin-bottom: 5px;
+        }
+
+        .imgList{
+          display: flex;
+          gap: 10px;
+          img{
+            height: 45px;
+            border-radius: 0;
+          }
+        }
+
+        ul{
+          padding-left: 15px;
+          li{
+            margin-bottom: 5px;
+          }
+        }
       }
     }
   }

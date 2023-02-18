@@ -98,27 +98,29 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             ) : null}
 
             <h2>Help {props.cardData.name.split(" ")[0]}'s Species</h2>
-            <ul>
+            <div className={styles.info}>
               {props.cardData.helpSpecies?.map((helpItem, index) => {
                 return (
-                  <div key={index}>
+                  <section>
                     <h3>{helpItem.help}</h3>
 
-                    {helpItem.img?.map((img, index) => {
-                      return (
-                        <img key={index} src={img.src} alt={img.altText} />
-                      )
-                    })}
+                    <div className={styles.imgList}>
+                      {helpItem.img?.map((img, index) => {
+                        return (
+                          <img key={index} src={img.src} alt={img.altText} />
+                        )
+                      })}
+                    </div>
 
-                    {helpItem.link ? <a href={helpItem.link.href}>{helpItem.link.text}</a> : null}
-
-                    <li>{helpItem.explanation}</li>
-
-                    {helpItem.note ? <li>{helpItem.note}</li> : null}
-                  </div>
+                    <ul>
+                      {helpItem.link ? <li><a href={helpItem.link.href}>{helpItem.link.text}</a></li>: null}
+                      <li>{helpItem.explanation}</li>
+                      {helpItem.note ? <li>{helpItem.note}</li> : null}
+                    </ul>
+                  </section>
                 )
               })}
-            </ul>
+          </div>
         </div>
       </Ambassador>
       <button onClick={()=>setIsFlipped(!isFlipped)}>{!isFlipped ? "Help "+ props.cardData.name.split(" ")[0] + "'s Species" : "About "+props.cardData.name.split(" ")[0]}</button>

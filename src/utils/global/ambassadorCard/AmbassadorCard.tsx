@@ -103,7 +103,18 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 return (
                   <div key={index}>
                     <h3>{helpItem.help}</h3>
+
+                    {helpItem.img?.map((img, index) => {
+                      return (
+                        <img key={index} src={img.src} alt={img.altText} />
+                      )
+                    })}
+
+                    {helpItem.link ? <a href={helpItem.link.href}>{helpItem.link.text}</a> : null}
+
                     <li>{helpItem.explanation}</li>
+
+                    {helpItem.note ? <li>{helpItem.note}</li> : null}
                   </div>
                 )
               })}

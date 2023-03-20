@@ -36,7 +36,7 @@ If you want to use an alternate account, add the account to `Testing Account All
 
 If you just want to test out the overlay, or the panel, locally without Twitch, you can do so by directly opening the pages in a browser. After all, Twitch overlays and panels are just embedded web apps.
 
-The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/overlay.html](https://localhost:8080/overlay.html) while the development server is running.
+The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/video_overlay.html](https://localhost:8080/video_overlay.html) while the development server is running.
 
 ### Running via Developer Rig
 

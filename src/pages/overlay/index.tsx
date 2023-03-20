@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './App';
+import {registerTwitchAuthCallback} from '../../utils/channels'
+import App from './App'
 
 import './index.css';
+
+registerTwitchAuthCallback()
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 

@@ -1,8 +1,8 @@
-export type ChannelsResponse = {
+type ChannelsResponse = {
   data: Array<ChannelInfo>
 }
 
-export type ChannelInfo = {
+type ChannelInfo = {
   broadcaster_id: string
   broadcaster_login: string
   broadcaster_name: string

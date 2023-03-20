@@ -32,9 +32,15 @@ If you are testing the panel, make sure to activate the extension for a panel sl
 
 If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
 
+### Running without Twitch
+
+If you just want to test out the overlay, or the panel, locally without Twitch, you can do so by directly opening the pages in a browser. After all, Twitch overlays and panels are just embedded web apps.
+
+The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/video_overlay.html](https://localhost:8080/video_overlay.html) while the development server is running.
+
 ### Running via Developer Rig
 
-To test the overlay locally, you'll need to install the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig/).
+To test the overlay locally with Twitch, you'll need to install the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig/).
 
 Open the rig application and authenticate it with your Twitch account. Click on `Create your First Project` in the rig UI, and select the extension you created earlier.
 When prompted, select the root of the repository as the project directory and select `None - I'll use my own code` for the boilerplate code option.

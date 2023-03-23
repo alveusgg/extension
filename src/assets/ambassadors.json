@@ -56,20 +56,6 @@
       "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
     {
-      "name": "Henrietta",
-      "species": "Jersey Giant",
-      "img": {
-          "src": "ambassador-images/henrietta.jpg",
-          "altText": "Henrietta"
-      },
-      "scientificName": "Gallus gallus domesticus",
-      "sex": "Female",
-      "dateOfBirth": "2019",
-      "iucnStatus": "Not evaluated",
-      "story": "Henrietta was rehomed from a local farm.",
-      "conservationMission": "She is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
-    },
-    {
       "name": "Henrique",
       "species": "Half Dark Brahma, Half Saipan",
       "img": {
@@ -119,18 +105,18 @@
       ]
     },
     {
-      "name": "Oliver",
-      "species": "Olive Egger Chicken",
-      "img": {
-          "src": "ambassador-images/oliver.jpg",
-          "altText": "Oliver"
-      },
-      "scientificName": "Gallus gallus domesticus",
-      "sex": "Male",
-      "dateOfBirth": "2022",
-      "iucnStatus": "Not evaluated",
-      "story": "Oliver was put in the reject/return cage at a local feed store.",
-      "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
+        "name": "Oliver",
+        "species": "Olive Egger Chicken",
+        "img": {
+            "src": "ambassador-images/oliver.jpg",
+            "altText": "Oliver"
+        },
+        "scientificName": "Gallus gallus domesticus",
+        "sex": "Male",
+        "dateOfBirth": "2021",
+        "iucnStatus": "Not evaluated",
+        "story": "Oliver was put in the reject/return cage at a local feed store.",
+        "conservationMission": "He is an ambassador for the agricultural industry and how people can use consumer choice to impact the environment in a positive way."
     },
     {
       "name": "Toaster Strudel",
@@ -441,18 +427,18 @@
       "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
-      "name": "BB",
-      "species": "Spanish Orange Isopods",
-      "img":{
-          "src": "ambassador-images/bb.jpg",
-          "altText": "BB"
-      },
-      "scientificName": "Porcellionides pruinosus",
-      "sex": "Unknown",
-      "dateOfBirth": "2022",
-      "iucnStatus": "Not evaluated",
-      "story": "Our Spanish orange isopods were born in captivity and ethically sourced. ",
-      "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
+        "name": "BB [Bonus Bug]",
+        "species": "Spanish Orange Isopods",
+        "img":{
+            "src": "ambassador-images/bb.jpg",
+            "altText": "BB"
+        },
+        "scientificName": "Porcellionides pruinosus",
+        "sex": "Unknown",
+        "dateOfBirth": "2022",
+        "iucnStatus": "Not evaluated",
+        "story": "Our Spanish orange isopods were born in captivity and ethically sourced. ",
+        "conservationMission": "They are ambassadors for the importance of invertebrates and the misconceptions they face."
     },
     {
       "name": "Ducky",

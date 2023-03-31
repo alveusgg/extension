@@ -72,8 +72,26 @@ export default function Overlay(props: OverlayProps) {
     return () => awoken.remove(callback)
   }, [awoken])
 
-    return (
-    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`} >
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const bodyClick = useCallback((e: MouseEvent) => {
+    // If the click was inside the overlay parent, and wasn't the overlay itself, ignore it
+    // Check the parent so that clicking on the settings doesn't close the panels
+    if (!overlayRef.current
+      || (overlayRef.current !== e.target && (overlayRef.current.parentElement as Node).contains(e.target as Node))) return
+
+    // Otherwise, close the panels
+    dispatch({type: ACTIONS.HIDE_AMBASSADOR_LIST})
+    dispatch({type: ACTIONS.HIDE_ALVEUS_INTRO})
+  }, []);
+
+  // If the user clicks anywhere in the body, except the overlay itself, close the panels
+  useEffect(() => {
+    document.body.addEventListener('click', bodyClick);
+    return () => document.body.removeEventListener('click', bodyClick);
+  }, [bodyClick]);
+
+  return (
+    <div ref={overlayRef} className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`}>
       <ActivationButtons
         toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
         toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}

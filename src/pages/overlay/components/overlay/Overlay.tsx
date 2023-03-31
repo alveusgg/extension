@@ -72,8 +72,34 @@ export default function Overlay(props: OverlayProps) {
     return () => awoken.remove(callback)
   }, [awoken])
 
-    return (
-    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`} >
+  const bodyClick = useCallback((e: MouseEvent) => {
+    // Get all the elements under the mouse
+    const elements = document.elementsFromPoint(e.clientX, e.clientY);
+
+    // For each element, if it has a background then we want to ignore the click
+    // If we reach the body, then break out of the loop and close the panels
+    for (const element of elements) {
+      if (element === document.body) break;
+
+      const style = getComputedStyle(element);
+      if (style.backgroundImage !== 'none' || style.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+        return;
+      }
+    }
+
+    dispatch({type: ACTIONS.HIDE_AMBASSADOR_LIST})
+    dispatch({type: ACTIONS.HIDE_ALVEUS_INTRO})
+  }, []);
+
+  // If the user clicks anywhere in the body, except the overlay itself, close the panels
+  // Bind it during the capture phase so that we can process it before any other click handlers
+  useEffect(() => {
+    document.body.addEventListener('click', bodyClick, true);
+    return () => document.body.removeEventListener('click', bodyClick, true);
+  }, [bodyClick]);
+
+  return (
+    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`}>
       <ActivationButtons
         toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
         toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}

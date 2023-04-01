@@ -9,15 +9,17 @@ import Ambassadors from '../../../../assets/activationButtons/ambassadors.jpg';
 interface ActivationButtonProps {
   toggleShowAlveusIntro: () => void;
   toggleShowAmbassadorList: () => void;
+  isAlveusIntroActive: boolean;
+  isAmbassadorListActive: boolean;
 }
 
 export default function ActivationButtons(props: ActivationButtonProps) {
   return (
     <div className={styles.activationButtons}>
-        <button onClick={props.toggleShowAlveusIntro}>
+        <button onClick={props.toggleShowAlveusIntro} className={`${props.isAlveusIntroActive && styles.highlighted}`}>
             <img src={Welcome} alt="Welcome" />
         </button>
-        <button onClick={props.toggleShowAmbassadorList}>
+        <button onClick={props.toggleShowAmbassadorList} className={`${props.isAmbassadorListActive && styles.highlighted}`}>
             <img src={Ambassadors} alt="Ambassadors" />
         </button>
 

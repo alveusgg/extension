@@ -22,7 +22,8 @@
       height: 60%;
     }
 
-    &:hover {
+    &:hover,
+    &.highlighted {
       outline: 1px solid white;
       cursor: pointer;
       filter: brightness(1.2);

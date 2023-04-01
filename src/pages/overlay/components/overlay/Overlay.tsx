@@ -103,6 +103,8 @@ export default function Overlay(props: OverlayProps) {
       <ActivationButtons
         toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
         toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}
+        isAlveusIntroActive={showAlveusIntro}
+        isAmbassadorListActive={showAmbassadorList}
       />
       <AlveusIntro
         showAlveusIntro={showAlveusIntro}

@@ -23,7 +23,7 @@
         "scientificName": "Callithrix penicillata",
         "sex": "Male",
         "dateOfBirth": "2021",
-        "iucnStatus": "Vulnerable with decreasing population trend",
+        "iucnStatus": "Least concern with decreasing population trend",
         "story": "Momo was rescued by Alveus after being surrendered to a veterinarian due to neglect",
         "conservationMission": "He is an ambassador for the exotic pet trade and how it affects primate species worldwide."
     },
@@ -37,7 +37,7 @@
         "scientificName": "Rattus norvegicus f. domestica",
         "sex": "Female",
         "dateOfBirth": "2022-11",
-        "iucnStatus": "Not evaluated",
+        "iucnStatus": "Least concern",
         "story": "Chips Ahoy was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
         "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
@@ -51,7 +51,7 @@
         "scientificName": "Rattus norvegicus f. domestica",
         "sex": "Female",
         "dateOfBirth": "2022-11",
-        "iucnStatus": "Not evaluated",
+        "iucnStatus": "Least concern",
         "story": "Nilla Wafer was bred as a feeder rat for snakes, but she will now live out her full life at Alveus.",
         "conservationMission": "She is an ambassadors for how rodenticide use and outdoor cats affect all levels of wildlife."
     },
@@ -205,7 +205,7 @@
         "scientificName": "Amazona aestiva",
         "sex": "Female",
         "dateOfBirth": "",
-        "iucnStatus": "Least Concern",
+        "iucnStatus": "Near threatened with decreasing population trend",
         "story": "Siren was rehomed to Alveus as the previous sanctuary’s owner was retiring.",
         "conservationMission": "She is an ambassador for how the pet trade has affected her parrot species and many others around the world."
     },

@@ -16,10 +16,10 @@ interface ActivationButtonProps {
 export default function ActivationButtons(props: ActivationButtonProps) {
   return (
     <div className={styles.activationButtons}>
-        <button onClick={props.toggleShowAlveusIntro} className={`${props.isAlveusIntroActive && styles.highlighted}`}>
+        <button onClick={props.toggleShowAlveusIntro} className={`${props.isAlveusIntroActive ? styles.highlighted : ''}`}>
             <img src={Welcome} alt="Welcome" />
         </button>
-        <button onClick={props.toggleShowAmbassadorList} className={`${props.isAmbassadorListActive && styles.highlighted}`}>
+        <button onClick={props.toggleShowAmbassadorList} className={`${props.isAmbassadorListActive ? styles.highlighted : ''}`}>
             <img src={Ambassadors} alt="Ambassadors" />
         </button>
 

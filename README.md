@@ -81,11 +81,11 @@ env-cmd: used to add environment variables to the start script in package.json
 
 ## Chatbot Commands
 
-!\[ambassador]: displays the card of the corresponding ambassador
+`![ambassador]`: displays the card of the corresponding ambassador
 
--    Note: \[ambassador] is the first name of any ambassador (Ex: !nilla = Nilla Wafer, !snork = snork)
+-    Note: `[ambassador]` is the first name of any ambassador (Ex: !nilla = Nilla Wafer, !snork = snork)
 
-!welcome: displays the Alveus introduction section
+`!welcome`: displays the Alveus introduction section
 
 ## Contribute
 

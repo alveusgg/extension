@@ -16,14 +16,12 @@ interface ActivationButtonProps {
 export default function ActivationButtons(props: ActivationButtonProps) {
   return (
     <div className={styles.activationButtons}>
-        <button onClick={props.toggleShowAlveusIntro} className={props.isAlveusIntroActive ? styles.highlighted : undefined}>
-            <img src={Welcome} alt="Welcome" />
-        </button>
-        <button onClick={props.toggleShowAmbassadorList} className={props.isAmbassadorListActive ? styles.highlighted : undefined}>
-            <img src={Ambassadors} alt="Ambassadors" />
-        </button>
-
-      {/** Plan on adding another activation button to show non-ambassadors*/}
+      <button onClick={props.toggleShowAlveusIntro} className={props.isAlveusIntroActive ? styles.highlighted : undefined}>
+          <img src={Welcome} alt="Welcome" />
+      </button>
+      <button onClick={props.toggleShowAmbassadorList} className={props.isAmbassadorListActive ? styles.highlighted : undefined}>
+          <img src={Ambassadors} alt="Ambassadors" />
+      </button>
     </div>
   )
 }

@@ -18,10 +18,34 @@ const multipleEntry = require('react-app-rewire-multiple-entry')([
 
 module.exports = {
   webpack: function(config, env) {
+    // Inject the multiple entry plugin
     multipleEntry.addMultiEntry(config)
+
+    // Find the rule for typescript and add the @alveusgg packages ot it
+    const findRule = (condition, rules) => {
+      for (const rule of rules) {
+        if (condition(rule)) return rule
+        if (rule.oneOf) {
+          const found = findRule(condition, rule.oneOf)
+          if (found) return found
+        }
+      }
+    }
+    const loader = findRule(
+      rule => rule.test && rule.include && /\\\.(?:\((?:.+\|)?ts(?:\|.+)?\)|ts)\$/.test(rule.test.toString()),
+      config.module.rules,
+    )
+    if (!loader) throw new Error('Could not find loader rule for typescript')
+    loader.include = [
+      ...(Array.isArray(loader.include) ? loader.include : [loader.include]),
+      /node_modules\/@alveusgg/,
+    ]
+
+    // Disable minification
     config.optimization = {
       minimize: false,
     }
+
     return config
   }
 }

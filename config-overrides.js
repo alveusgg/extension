@@ -1,3 +1,5 @@
+const { basename, dirname } = require('path')
+
 const multipleEntry = require('react-app-rewire-multiple-entry')([
   {
     entry: 'src/index.tsx',
@@ -40,6 +42,27 @@ module.exports = {
       ...(Array.isArray(loader.include) ? loader.include : [loader.include]),
       /node_modules\/@alveusgg/,
     ]
+
+    // Minify ambassador images
+    config.module.rules.push({
+      test: /\.(png|jpe?g)$/,
+      include: /node_modules\/@alveusgg\/data\/assets\/ambassadors/,
+      type: 'asset',
+      generator: {
+        filename: pathData => {
+          const dir = basename(dirname(pathData.filename))
+          return `static/media/ambassadors/${dir}/[name].[contenthash][ext]`
+        },
+      },
+      use: [
+        {
+          loader: "webpack-image-resize-loader",
+          options: {
+            width: 550,
+          },
+        },
+      ],
+    })
 
     // Disable minification
     config.optimization = {

@@ -3,6 +3,7 @@ import { type Ambassador as AmbassadorType, type AmbassadorKey } from '@alveusgg
 import { getAmbassadorImages } from '@alveusgg/data/src/ambassadors/images'
 
 import Ambassador from '../../compositions/ambassador/Ambassador'
+import { getAmbassadorImagePosition } from '../../ambassdaors'
 import styles from './ambassadorButton.module.css'
 
 interface AmbassadorButtonProps{
@@ -30,7 +31,12 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
 
   return (
     <Ambassador ClassName={`${styles.ambassador} ${ClassName}`} Id={Id} onClick={handleClick}>
-      <img className={styles.img} src={images[0].src} alt={images[0].alt} />
+      <img
+        className={styles.img}
+        src={images[0].src}
+        alt={images[0].alt}
+        style={{ objectPosition: getAmbassadorImagePosition(ambassadorKey) }}
+      />
       <h2 className={styles.name}>{ambassador.name}</h2>
       <h3 className={styles.species}>{ambassador.species}</h3>
     </Ambassador>

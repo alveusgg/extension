@@ -4,6 +4,7 @@ import { getIUCNStatus } from '@alveusgg/data/src/iucn'
 
 import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
+import { getAmbassadorImagePosition } from '../../ambassdaors'
 
 import styles from './ambassadorCard.module.css'
 
@@ -25,7 +26,12 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       )}
 
       <h2 className={styles.name}>{ambassador.name}</h2>
-      <img className={styles.img} src={images[0].src} alt={images[0].alt} />
+      <img
+        className={styles.img}
+        src={images[0].src}
+        alt={images[0].alt}
+        style={{ objectPosition: getAmbassadorImagePosition(ambassadorKey) }}
+      />
 
       <div className={styles.row}>
         <h3>Species</h3>

@@ -1,7 +1,7 @@
-import {useCallback, useEffect, useMemo} from 'react'
-import tmi, {ChatUserstate} from 'tmi.js'
-import AmbassadorData from '../assets/ambassadors.json'
-import {useChannelNames} from './channels'
+import { useCallback, useEffect, useMemo } from 'react'
+import tmi, { ChatUserstate } from 'tmi.js'
+import ambassadors from '@alveusgg/data/src/ambassadors/core'
+import { useChannelNames } from './channels'
 
 /**
  * @description Some ambassadors have names with diacritics in them (Ex: Jalapeño).
@@ -12,7 +12,7 @@ import {useChannelNames} from './channels'
  */
 const getMapOfAmbassadorWithDiacritics = (): Map<string, string> => {
   //store names that have letters with diacritics in them
-  const ambassadorsWithDiacriticsInNames = AmbassadorData.filter(
+  const ambassadorsWithDiacriticsInNames = Object.values(ambassadors).filter(
     (ambassador) => {
       const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
       const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -38,7 +38,7 @@ export default function useChatCommand(callback: (command: string) => void) {
     const commands = getMapOfAmbassadorWithDiacritics()
 
     // Add the original names to the map, pointing to themselves
-    AmbassadorData.forEach((ambassador) => {
+    Object.values(ambassadors).forEach((ambassador) => {
       const name = ambassador.name.split(' ')[0].toLowerCase()
       commands.set(name, name)
     })

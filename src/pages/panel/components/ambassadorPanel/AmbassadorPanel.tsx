@@ -1,60 +1,46 @@
 //components & hooks
-import AmbassadorButton from "../../../../utils/global/ambassadorButton/AmbassadorButton";
-import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
-import useChatCommand from "../../../../utils/chatCommand";
+import { useState, useEffect, useCallback, Fragment } from 'react'
+import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
+import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverlay'
+import useChatCommand from '../../../../utils/chatCommand'
 
 //css
 import styles from './ambassadorPanel.module.css'
 
 //data
-import { useState, useEffect, useCallback } from "react"
-import AmbassadorData from "../../../../assets/ambassadors.json";
-
+import { ambassadorEntries, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
 
 export default function AmbassadorPanel() {
-  const [ambassadors] = useState(AmbassadorData)
-  const [ambassadorCard, setAmbassadorCard] = useState("") //name of ambassador that will show up as a modal
+  const [ambassadorCard, setAmbassadorCard] = useState<AmbassadorKey>()
 
-  const [chosenAmbassador, setChosenAmbassador] = useState<string | undefined>(undefined)
+  // Allow chat commands to select an ambassador
+  const [chosenAmbassador, setChosenAmbassador] = useState<string>()
   useChatCommand(useCallback((command: string) => {
     setChosenAmbassador(command.slice(1))
   }, []))
-
   useEffect(() => {
     if (chosenAmbassador !== undefined)
-      setAmbassadorCard(ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.name || "")
-  }, [chosenAmbassador, ambassadors])
-
-  function handleClose(): void {
-    setAmbassadorCard("")
-  }
-  function handleGetCard(name: string): void {
-    setAmbassadorCard(name)
-  }
+      setAmbassadorCard(ambassadorEntries.find(([, ambassador]) => ambassador.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.[0])
+  }, [chosenAmbassador])
 
   return (
     <main className={styles.ambassadors}>
-      {ambassadors && ambassadors.map(ambassador => (
-        <>
-          {ambassadorCard === ambassador.name ? (
+      {ambassadorEntries.map(([key, ambassador]) => (
+        <Fragment key={key}>
+          {ambassadorCard === key && (
             <AmbassadorCardOverlay
-              ambassadorCard={{cardData: ambassador}}
-              close={handleClose}
+              ambassadorCard={{ ambassadorKey: key, ambassador }}
+              close={() => setAmbassadorCard(undefined)}
             />
-          ) : null}
-          <AmbassadorButton
-            key={ambassador.name} // every ambassador will have a unique name
-            name={ambassador.name}
-            species={ambassador.species}
-            img={{
-              src: ambassador.img.src,
-              altText: ambassador.img.altText
-            }}
-            ClassName={styles.item}
+          )}
 
-            getCard={()=>handleGetCard(ambassador.name)}
+          <AmbassadorButton
+            ambassadorKey={key}
+            ambassador={ambassador}
+            ClassName={styles.item}
+            getCard={() => setAmbassadorCard(key)}
           />
-        </>
+        </Fragment>
       ))}
     </main>
   )

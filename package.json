@@ -7,6 +7,13 @@
     "name": "Abdullah Morrison",
     "email": "abdullahmorrison@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alveusgg/extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alveusgg/extension/issues"
+  },
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

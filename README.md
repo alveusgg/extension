@@ -1,25 +1,20 @@
 # The Alveus Twitch Extension
 
-A Twitch extension that helps viewers that watch [Maya Higa](https://www.twitch.tv/maya)'s Twitch streams identify and learn about the ambassadors at [Alveus](https://www.alveussanctuary.org/), Maya's wild life sanctuary.
+Twitch extension for [Alveus Sanctuary](https://www.alveussanctuary.org), allowing stream viewers to learn more about the ambassadors at the sanctuary.
 
 ## Demo
-### Overlay
 
+### Overlay
 
 https://user-images.githubusercontent.com/49528805/229294979-1cf91fc2-420a-43ec-95c4-78c06d4ec99d.mp4
 
 ### Panel
 
-
 https://user-images.githubusercontent.com/49528805/229295136-675313d2-54e4-4758-a42c-76961c4d2e66.mp4
 
 ### Mobile
 
-
-
 https://user-images.githubusercontent.com/49528805/229295376-6490d0a5-5f01-456b-8509-6e551ce82f1c.mp4
-
-
 
 ## Local Set Up
 
@@ -83,7 +78,7 @@ env-cmd: used to add environment variables to the start script in package.json
 
 `![ambassador]`: displays the card of the corresponding ambassador
 
--    Note: `[ambassador]` is the first name of any ambassador (Ex: !nilla = Nilla Wafer, !snork = snork)
+- Note: `[ambassador]` is the first name of any ambassador (Ex: !nilla = Nilla Wafer, !snork = Snork)
 
 `!welcome`: displays the Alveus introduction section
 

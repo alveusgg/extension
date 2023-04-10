@@ -50,7 +50,7 @@ export default function AlveusIntro(props: AlveusIntroProps){
                 </li>
             </ul>
 
-            <a className={styles.contribute} href="https://github.com/abdullahmorrison/AlveusTwitchExtension" rel="noreferrer" target="_blank">
+            <a className={styles.contribute} href="https://github.com/alveusgg/extension" rel="noreferrer" target="_blank">
                 Contribute to the Extension
                 <img src={gitHub} alt="GitHub" />
             </a>

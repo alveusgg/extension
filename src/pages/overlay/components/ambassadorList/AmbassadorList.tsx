@@ -1,6 +1,6 @@
 //utils
 import { useState, useRef, useEffect, useCallback } from 'react'
-import ambassadors, { ambassadorEntries, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
+import ambassadors, { type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
 
 //components
 import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
@@ -9,10 +9,11 @@ import AmbassadorButton from '../../../../utils/global/ambassadorButton/Ambassad
 //css & assets
 import styles from './ambassadorList.module.css'
 import arrow from '../../../../assets/arrow.jpg'
+import { typeSafeObjectEntries } from "../../../../utils/helpers"
 
 export interface AmbassadorListProps {
   showAmbassadorList: boolean
-  chatChosenAmbassador?: string
+  chatChosenAmbassador?: AmbassadorKey
 }
 
 export default function AmbassadorList(props: AmbassadorListProps) {
@@ -36,11 +37,8 @@ export default function AmbassadorList(props: AmbassadorListProps) {
   // Show the ambassador command based on chat commands
   useEffect(() => {
     if (chatChosenAmbassador !== undefined) {
-      const ambassador = ambassadorEntries.find(([, ambassador]) => ambassador.name.split(" ")[0].toLowerCase() === chatChosenAmbassador)
-      if (ambassador) {
-        setActiveAmbassador(ambassador[0])
-        scrollListToAmbassador(ambassador[0])
-      }
+      setActiveAmbassador(chatChosenAmbassador)
+      scrollListToAmbassador(chatChosenAmbassador)
     }
   }, [chatChosenAmbassador, scrollListToAmbassador])
 
@@ -76,7 +74,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
         </button>
 
         <div ref={ambassadorList} className={styles.ambassadors} onScroll={handleArrowVisibility}>
-          {ambassadorEntries.map(([key, ambassador]) => (
+          {typeSafeObjectEntries(ambassadors).map(([key, ambassador]) => (
             <AmbassadorButton
               key={key}
               ambassadorKey={key}
@@ -104,9 +102,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
           key={activeAmbassador}
           ambassadorKey={activeAmbassador}
           ambassador={ambassadors[activeAmbassador]}
-          close={() => {
-            setActiveAmbassador(undefined)
-          }}
+          close={() => setActiveAmbassador(undefined)}
           ClassName={styles.ambassadorCard}
         />
       )}

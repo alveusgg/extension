@@ -1,31 +1,27 @@
 //components & hooks
-import { useState, useEffect, useCallback, Fragment } from 'react'
+import { useState, useCallback, Fragment } from 'react'
 import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverlay'
 import useChatCommand from '../../../../utils/chatCommand'
+import { typeSafeObjectEntries } from '../../../../utils/helpers'
 
 //css
 import styles from './ambassadorPanel.module.css'
 
 //data
-import { ambassadorEntries, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
+import ambassadors, { isAmbassadorKey, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
 
 export default function AmbassadorPanel() {
+  // Allow chat commands to select an ambassador, as well as the user
   const [ambassadorCard, setAmbassadorCard] = useState<AmbassadorKey>()
-
-  // Allow chat commands to select an ambassador
-  const [chosenAmbassador, setChosenAmbassador] = useState<string>()
   useChatCommand(useCallback((command: string) => {
-    setChosenAmbassador(command.slice(1))
+    if (isAmbassadorKey(command))
+      setAmbassadorCard(command)
   }, []))
-  useEffect(() => {
-    if (chosenAmbassador !== undefined)
-      setAmbassadorCard(ambassadorEntries.find(([, ambassador]) => ambassador.name.split(" ")[0].toLowerCase() === chosenAmbassador)?.[0])
-  }, [chosenAmbassador])
 
   return (
     <main className={styles.ambassadors}>
-      {ambassadorEntries.map(([key, ambassador]) => (
+      {typeSafeObjectEntries(ambassadors).map(([key, ambassador]) => (
         <Fragment key={key}>
           {ambassadorCard === key && (
             <AmbassadorCardOverlay

@@ -1,51 +1,35 @@
 import { useCallback, useEffect, useMemo } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
-import ambassadors from '@alveusgg/data/src/ambassadors/core'
+import ambassadors, { type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
 import { useChannelNames } from './channels'
+import { typeSafeObjectEntries } from './helpers'
 
 /**
- * @description Some ambassadors have names with diacritics in them (Ex: Jalapeño).
- * Note: a diacritic is a mark added to a letter to change its sound or meaning (Ex: ñ).
- * This function creates a map of an ambassador with diacritics in their name and their name without diacritics.
- * (Ex: { jalapeno: jalapeño })
- * @returns a map of the normalized names and original names
+ * @description Creates a map of ambassador names to their keys, for chat commands.
+ *
+ * Some ambassadors have names with diacritics in them (Ex: Jalapeño), so this function
+ * also maps normalized names to their original names. (Ex: jalapeno -> jalapeño)
  */
-const getMapOfAmbassadorWithDiacritics = (): Map<string, string> => {
-  //store names that have letters with diacritics in them
-  const ambassadorsWithDiacriticsInNames = Object.values(ambassadors).filter(
-    (ambassador) => {
-      const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
-      const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-
-      return ambassadorOriginalFirstName !== ambassadorFirstNameWithRemovedDiacritic
-    }
-  )
-  // a hashmap of the normalized names and their original names
-  const diacriticMap = new Map<string, string>()
-  ambassadorsWithDiacriticsInNames.forEach((ambassador) => {
+const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
+  const commandMap = new Map<string, AmbassadorKey>()
+  typeSafeObjectEntries(ambassadors).forEach(([key, ambassador]) => {
+    // Always add the original name to the map
     const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
-    const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    diacriticMap.set(ambassadorFirstNameWithRemovedDiacritic, ambassadorOriginalFirstName)
-  })
+    commandMap.set(ambassadorOriginalFirstName, key)
 
-  return diacriticMap
+    // If the ambassador has a diacritic in their name, add the normalized name to the map
+    const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    if (ambassadorOriginalFirstName !== ambassadorFirstNameWithRemovedDiacritic)
+      commandMap.set(ambassadorFirstNameWithRemovedDiacritic, key)
+  })
+  return commandMap
 }
 
 export default function useChatCommand(callback: (command: string) => void) {
   const channelNames = useChannelNames()
-  const commandsMap = useMemo<Map<string, string>>(() => {
-    // Map the normalized names to their original names
-    const commands = getMapOfAmbassadorWithDiacritics()
-
-    // Add the original names to the map, pointing to themselves
-    Object.values(ambassadors).forEach((ambassador) => {
-      const name = ambassador.name.split(' ')[0].toLowerCase()
-      commands.set(name, name)
-    })
-
-    // Welcome is also a valid command
+  const commandsMap = useMemo(() => {
+    const commands = getAmbassadorCommandsMap() as Map<string, string>
     commands.set('welcome', 'welcome')
-
     return commands
   }, [])
 
@@ -57,7 +41,8 @@ export default function useChatCommand(callback: (command: string) => void) {
 
     const commandName = msg.trim().toLowerCase().slice(1)
     const command = commandsMap.get(commandName)
-    if (command) callback('!'+command)
+    console.log(`*Twitch extension received command: ${commandName}*`, command)
+    if (command) callback(command)
   }, [commandsMap, callback])
 
   const connectedHandler = useCallback(() => {

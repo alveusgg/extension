@@ -2,7 +2,6 @@
 import styles from './alveusIntro.module.css';
 import website from '../../../../assets/alveusIntro/website.jpg'
 import amazonWishlist from '../../../../assets/alveusIntro/amazonWishlist.jpg'
-import youtube from '../../../../assets/alveusIntro/youtube.jpg'
 import instagram from '../../../../assets/alveusIntro/instagram.jpg'
 import tiktok from '../../../../assets/alveusIntro/tiktok.jpg'
 import twitter from '../../../../assets/alveusIntro/twitter.jpg'
@@ -26,11 +25,6 @@ export default function AlveusIntro(props: AlveusIntroProps){
                 <li>
                     <a href="https://smile.amazon.com/hz/wishlist/ls/ZM472JRT5QXG" rel="noreferrer" target="_blank">
                         <img src={amazonWishlist} alt="Amazon Wishlist" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/c/AlveusSanctuary" rel="noreferrer" target="_blank">
-                        <img src={youtube} alt="YouTube" />
                     </a>
                 </li>
                 <li>

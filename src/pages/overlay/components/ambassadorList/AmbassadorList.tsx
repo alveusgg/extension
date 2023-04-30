@@ -1,6 +1,5 @@
 //utils
 import { useState, useRef, useEffect, useCallback } from 'react'
-import ambassadors, { type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
 
 //components
 import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
@@ -9,7 +8,13 @@ import AmbassadorButton from '../../../../utils/global/ambassadorButton/Ambassad
 //css & assets
 import styles from './ambassadorList.module.css'
 import arrow from '../../../../assets/arrow.jpg'
-import { typeSafeObjectEntries } from "../../../../utils/helpers"
+import { typeSafeObjectEntries } from '../../../../utils/helpers'
+
+//data
+import ambassadors, { type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
+import { sortDate } from '../../../../utils/dateManager'
+
+const sortedAmbassadors = typeSafeObjectEntries(ambassadors).sort(([, a], [, b]) => sortDate(a.arrival, b.arrival))
 
 export interface AmbassadorListProps {
   showAmbassadorList: boolean
@@ -74,7 +79,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
         </button>
 
         <div ref={ambassadorList} className={styles.ambassadors} onScroll={handleArrowVisibility}>
-          {typeSafeObjectEntries(ambassadors).map(([key, ambassador]) => (
+          {sortedAmbassadors.map(([key, ambassador]) => (
             <AmbassadorButton
               key={key}
               ambassadorKey={key}

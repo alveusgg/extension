@@ -10,6 +10,9 @@ import styles from './ambassadorPanel.module.css'
 
 //data
 import ambassadors, { isAmbassadorKey, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
+import { sortDate } from '../../../../utils/dateManager'
+
+const sortedAmbassadors = typeSafeObjectEntries(ambassadors).sort(([, a], [, b]) => sortDate(a.arrival, b.arrival))
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user
@@ -21,7 +24,7 @@ export default function AmbassadorPanel() {
 
   return (
     <main className={styles.ambassadors}>
-      {typeSafeObjectEntries(ambassadors).map(([key, ambassador]) => (
+      {sortedAmbassadors.map(([key, ambassador]) => (
         <Fragment key={key}>
           {ambassadorCard === key && (
             <AmbassadorCardOverlay

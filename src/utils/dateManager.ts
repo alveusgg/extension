@@ -69,6 +69,7 @@ function monthConverter(month: number){
 
   return monthNames[month-1]
 }
+
 /**
  * @param day day of the month (1-31)
  * @returns the suffix of the day (st, nd, rd, or th)
@@ -95,4 +96,45 @@ export function isBirthday(dateOfBirth: string): boolean{
   const dob = new Date(dateOfBirth);
 
   return today.getUTCMonth() === dob.getUTCMonth() && today.getUTCDate() === dob.getUTCDate()
+}
+
+/**
+ * Parse a partial date string into a Date object
+ *
+ * @param {string} date partial date to parse (e.g. 2023 or 2023-01 or 2023-01-01)
+ * @returns {Date|null} Date object if the date is valid, null otherwise
+ */
+function parseDate(date: string): Date|null {
+  const dateArray = date.split("-")
+  const day = parseInt(dateArray[2])
+  const month = parseInt(dateArray[1])
+  const year = parseInt(dateArray[0])
+
+  if (!isNaN(day) && !isNaN(month) && !isNaN(year))
+    return new Date(year, month-1, day)
+  else if (!isNaN(month) && !isNaN(year))
+    return new Date(year, month-1)
+  else if (!isNaN(year))
+    return new Date(year)
+
+  return null
+}
+
+/**
+ * Sorts the dates in descending order, with nulls at the end
+ *
+ * @param {string|null} a first date to compare
+ * @param {string|null} b second date to compare
+ * @returns {number}
+ */
+export function sortDate(a: string|null, b: string|null): number {
+  const parsedA = typeof a === "string" ? parseDate(a) : null;
+  const parsedB = typeof b === "string" ? parseDate(b) : null;
+
+  if (parsedA === parsedB)
+    return 0
+  else if (parsedA === null || (parsedB !== null && parsedB > parsedA))
+    return 1
+  else
+    return -1
 }

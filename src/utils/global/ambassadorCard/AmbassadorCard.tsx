@@ -33,44 +33,46 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         style={{ objectPosition: getAmbassadorImagePosition(ambassadorKey) }}
       />
 
-      <div className={styles.row}>
-        <h3>Species</h3>
-        <p>{ambassador.species}</p>
-        <p><i>{ambassador.scientific}</i></p>
-      </div>
-
-      <div className={`${styles.row} ${styles.compact}`}>
-        <div>
-          <h3>Sex</h3>
-          <p>{ambassador.sex || "Unknown"}</p>
+      <div className={styles.scrollable}>
+        <div className={styles.row}>
+          <h3>Species</h3>
+          <p>{ambassador.species}</p>
+          <p><i>{ambassador.scientific}</i></p>
         </div>
-        <div>
-          <h3>Age</h3>
-          <p>
-            {ambassador.birth ? calculateAge(ambassador.birth) : "Unknown"}
-          </p>
+
+        <div className={`${styles.row} ${styles.compact}`}>
+          <div>
+            <h3>Sex</h3>
+            <p>{ambassador.sex || "Unknown"}</p>
+          </div>
+          <div>
+            <h3>Age</h3>
+            <p>
+              {ambassador.birth ? calculateAge(ambassador.birth) : "Unknown"}
+            </p>
+          </div>
+          <div>
+            <h3>Birthday</h3>
+            <p>
+              {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
+            </p>
+          </div>
         </div>
-        <div>
-          <h3>Birthday</h3>
-          <p>
-            {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
-          </p>
+
+        <div className={styles.row}>
+          <h3>IUCN Status</h3>
+          <p>{getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
-      </div>
 
-      <div className={styles.row}>
-        <h3>IUCN Status</h3>
-        <p>{getIUCNStatus(ambassador.iucn.status)}</p>
-      </div>
+        <div className={`${styles.row} ${styles.story}`}>
+          <h3>Story</h3>
+          <p>{ambassador.story}</p>
+        </div>
 
-      <div className={`${styles.row} ${styles.story}`}>
-        <h3>Story</h3>
-        <p>{ambassador.story}</p>
-      </div>
-
-      <div className={`${styles.row} ${styles.conservationMission}`}>
-        <h3>Conservation Mission</h3>
-        <p>{ambassador.mission}</p>
+        <div className={`${styles.row} ${styles.conservationMission}`}>
+          <h3>Conservation Mission</h3>
+          <p>{ambassador.mission}</p>
+        </div>
       </div>
     </Ambassador>
   )

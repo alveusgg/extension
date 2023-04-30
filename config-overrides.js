@@ -1,4 +1,4 @@
-const { basename, dirname } = require('path')
+const { basename, dirname, join } = require('path')
 
 const multipleEntry = require('react-app-rewire-multiple-entry')([
   {
@@ -40,13 +40,13 @@ module.exports = {
     if (!loader) throw new Error('Could not find loader rule for typescript')
     loader.include = [
       ...(Array.isArray(loader.include) ? loader.include : [loader.include]),
-      /node_modules\/@alveusgg/,
+      new RegExp(join('node_modules', '@alveusgg')),
     ]
 
     // Minify ambassador images
     config.module.rules.push({
       test: /\.(png|jpe?g)$/,
-      include: /node_modules\/@alveusgg\/data\/assets\/ambassadors/,
+      include: new RegExp(join('node_modules', '@alveusgg', 'data', 'assets', 'ambassadors')),
       type: 'asset',
       generator: {
         filename: pathData => {

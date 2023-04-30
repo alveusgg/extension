@@ -25,7 +25,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         <div className={styles.close} onClick={close}>&times;</div>
       )}
 
-      <h2 className={styles.name}>{ambassador.name}</h2>
+      <h2 className={styles.name} title={ambassador.name}>{ambassador.name}</h2>
       <img
         className={styles.img}
         src={images[0].src}

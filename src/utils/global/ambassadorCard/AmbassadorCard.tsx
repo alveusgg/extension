@@ -1,10 +1,6 @@
-import { type Ambassador as AmbassadorType, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
-import { getAmbassadorImages } from '@alveusgg/data/src/ambassadors/images'
-import { getIUCNStatus } from '@alveusgg/data/src/iucn'
-
 import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
-import { getAmbassadorImagePosition } from '../../ambassdaors'
+import { getAmbassadorImagePosition, getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 
 import styles from './ambassadorCard.module.css'
 

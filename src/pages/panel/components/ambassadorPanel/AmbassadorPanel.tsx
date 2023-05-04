@@ -3,16 +3,12 @@ import { useState, useCallback, Fragment } from 'react'
 import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverlay'
 import useChatCommand from '../../../../utils/chatCommand'
-import { typeSafeObjectEntries } from '../../../../utils/helpers'
 
 //css
 import styles from './ambassadorPanel.module.css'
 
 //data
-import ambassadors, { isAmbassadorKey, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
-import { sortDate } from '../../../../utils/dateManager'
-
-const sortedAmbassadors = typeSafeObjectEntries(ambassadors).sort(([, a], [, b]) => sortDate(a.arrival, b.arrival))
+import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user

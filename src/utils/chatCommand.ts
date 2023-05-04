@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
-import ambassadors, { type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
+
+import { ambassadors, AmbassadorKey } from './ambassdaors'
 import { useChannelNames } from './channels'
 import { typeSafeObjectEntries } from './helpers'
 

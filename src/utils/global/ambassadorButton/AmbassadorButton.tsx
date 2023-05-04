@@ -1,9 +1,12 @@
 import { useCallback } from 'react'
-import { type Ambassador as AmbassadorType, type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
-import { getAmbassadorImages } from '@alveusgg/data/src/ambassadors/images'
 
 import Ambassador from '../../compositions/ambassador/Ambassador'
-import { getAmbassadorImagePosition } from '../../ambassdaors'
+import {
+  getAmbassadorImagePosition,
+  getAmbassadorImages,
+  type AmbassadorKey,
+  type Ambassador as AmbassadorType,
+} from '../../ambassdaors'
 import styles from './ambassadorButton.module.css'
 
 interface AmbassadorButtonProps{

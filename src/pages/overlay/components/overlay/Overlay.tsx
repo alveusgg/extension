@@ -1,6 +1,5 @@
 // utils
 import { useEffect, useRef, useReducer, useCallback, useState } from 'react'
-import { type AmbassadorKey, isAmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
 import { ACTIONS, OverlayReducer } from './overlay.reducer'
 
 //components & hooks
@@ -11,6 +10,9 @@ import useChatCommand from '../../../../utils/chatCommand'
 
 //css
 import styles from './overlay.module.css'
+
+//data
+import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
 
 interface OverlayProps {
   sleeping: boolean,

@@ -8,13 +8,9 @@ import AmbassadorButton from '../../../../utils/global/ambassadorButton/Ambassad
 //css & assets
 import styles from './ambassadorList.module.css'
 import arrow from '../../../../assets/arrow.jpg'
-import { typeSafeObjectEntries } from '../../../../utils/helpers'
 
 //data
-import ambassadors, { type AmbassadorKey } from '@alveusgg/data/src/ambassadors/core'
-import { sortDate } from '../../../../utils/dateManager'
-
-const sortedAmbassadors = typeSafeObjectEntries(ambassadors).sort(([, a], [, b]) => sortDate(a.arrival, b.arrival))
+import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../utils/ambassdaors'
 
 export interface AmbassadorListProps {
   showAmbassadorList: boolean

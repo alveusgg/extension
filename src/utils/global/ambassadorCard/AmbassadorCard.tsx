@@ -2,6 +2,7 @@ import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 import { normalizeAmbassadorName } from '../../chatCommand'
+import { camelToKebab } from '../../helpers'
 
 import styles from './ambassadorCard.module.css'
 import moderatorBadge from '../../../assets/mod.png'
@@ -84,6 +85,21 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         <div className={`${styles.row} ${styles.conservationMission}`}>
           <h3>Conservation Mission</h3>
           <p>{ambassador.mission}</p>
+        </div>
+
+        <div className={`${styles.row} ${styles.site}`}>
+          <p>
+            Learn more about {ambassador.name} on the
+            {' '}
+            <a
+              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(ambassadorKey)}`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Alveus Sanctuary website
+            </a>
+            .
+          </p>
         </div>
       </div>
     </Ambassador>

@@ -82,6 +82,22 @@
     }
   }
 
+  .site {
+    font-style: italic;
+    margin-top: 0.75rem;
+
+    a {
+      color: $secondary-color;
+      text-decoration: underline;
+      white-space: nowrap;
+
+      &:hover,
+      &:focus {
+        color: $tertiary-color;
+      }
+    }
+  }
+
   .scrollable {
     flex: 1 1 auto;
     overflow-y: auto;

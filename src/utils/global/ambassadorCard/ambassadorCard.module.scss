@@ -3,6 +3,7 @@
 .ambassadorCard {
   width: 295px;
   height: 460px;
+  max-height: 100vh;
   justify-content: start;
   align-items: baseline;
   background-color: $accent-color;
@@ -45,25 +46,19 @@
     margin-bottom: 5px;
   }
 
-  .name,
-  .row,
-  .story,
-  .conservationmission {
-    margin-left: 5px;
-  }
-
   .name {
     font-size: 1.3rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: calc(100% - 40px);
+    width: 100%;
+    flex-shrink: 0;
   }
 
+  .name,
   .row {
-    margin-bottom: 5px;
-  }
-
-  .story,
-  .conservationmission {
-    height: 65px;
-    padding-bottom: 5px;
+    margin: 0 5px 5px;
   }
 
   .compact { //multiple data put in one row
@@ -72,6 +67,11 @@
     & > div {
       margin-right: 20px;
     }
+  }
+
+  .scrollable {
+    flex: 1 1 auto;
+    overflow-y: auto;
   }
 }
 

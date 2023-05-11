@@ -1,7 +1,5 @@
 //utils
-import {useState, useRef, useEffect} from 'react'
-import {AmbassadorCardProps} from '../../../../utils/global/ambassadorCard/AmbassadorCard'
-import AmbassadorData from '../../../../assets/ambassadors.json'
+import { useState, useRef, useEffect, useCallback } from 'react'
 
 //components
 import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
@@ -11,42 +9,48 @@ import AmbassadorButton from '../../../../utils/global/ambassadorButton/Ambassad
 import styles from './ambassadorList.module.css'
 import arrow from '../../../../assets/arrow.jpg'
 
+//data
+import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../utils/ambassdaors'
+
 export interface AmbassadorListProps {
   showAmbassadorList: boolean
-  chatChosenAmbassador?: string
+  chatChosenAmbassador?: AmbassadorKey
 }
 
 export default function AmbassadorList(props: AmbassadorListProps) {
-  const [ambassadors] = useState(AmbassadorData)
-  const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorCardProps["cardData"] | null>()
+  const { showAmbassadorList, chatChosenAmbassador } = props
 
+  const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorKey>()
   const upArrowRef = useRef<HTMLButtonElement>(null)
   const ambassadorList = useRef<HTMLDivElement>(null)
   const downArrowRef = useRef<HTMLButtonElement>(null)
 
-  useEffect(() => { // show the card of the ambassador that Twitch chat chose
-    if (props.chatChosenAmbassador !== undefined) {
-      const ambassador = ambassadors.find(ambassador => ambassador.name.split(" ")[0].toLowerCase() === props.chatChosenAmbassador)
-      if (ambassador) {
-        setActiveAmbassador(ambassador)
-        scrollListToAmbassador(ambassador.name.split(" ")[0].toLowerCase())
-      }
-    }
-  }, [props.chatChosenAmbassador, ambassadors])
-
-  const scrollListToAmbassador = (name: string) => {
+  // Scroll the ambassador list to the selected ambassador
+  const scrollListToAmbassador = useCallback((name: AmbassadorKey) => {
     if (!ambassadorList.current) return
 
     const offset = 200
     const anchorElement = ambassadorList.current.querySelector(`#${name}`)
     if (anchorElement instanceof HTMLDivElement)
       ambassadorList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
-  }
-  const ambassadorListScroll = (direction: number) => {
+  }, [])
+
+  // Show the ambassador command based on chat commands
+  useEffect(() => {
+    if (chatChosenAmbassador !== undefined) {
+      setActiveAmbassador(chatChosenAmbassador)
+      scrollListToAmbassador(chatChosenAmbassador)
+    }
+  }, [chatChosenAmbassador, scrollListToAmbassador])
+
+  // Allow the list to be scrolled via the buttons
+  const ambassadorListScroll = useCallback((direction: number) => {
     if (ambassadorList.current)
       ambassadorList.current.scroll({top: ambassadorList.current.scrollTop - direction, left: 0, behavior: 'smooth'})
-  }
-  const handleArrowVisibility = () => {
+  }, [])
+
+  // Ensure the buttons are only shown if the list is scrollable
+  const handleArrowVisibility = useCallback(() => {
     if (ambassadorList.current) {
       if (ambassadorList.current.scrollTop === 0)
         upArrowRef.current?.classList.add(styles.hideArrow)
@@ -57,51 +61,52 @@ export default function AmbassadorList(props: AmbassadorListProps) {
         downArrowRef.current?.classList.remove(styles.hideArrow)
       }
     }
-  }
+  }, [])
 
   return (
     <div className={styles.ambassadorList}>
-      <div className={`${styles.scrollAmbassadors} ${props.showAmbassadorList ? styles.visible : styles.hidden}`}>
-        <button ref={upArrowRef} className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`}
-                onClick={() => ambassadorListScroll(250)}>
+      <div className={`${styles.scrollAmbassadors} ${showAmbassadorList ? styles.visible : styles.hidden}`}>
+        <button
+          ref={upArrowRef}
+          className={`${styles.arrow} ${styles.up} ${styles.hideArrow}`}
+          onClick={() => ambassadorListScroll(250)}
+        >
           <img src={arrow} alt="Up Arrow"/>
         </button>
-        <div ref={ambassadorList} className={styles.ambassadors} onScroll={() => handleArrowVisibility()}>
-          {ambassadors && ambassadors.map(ambassador => (
+
+        <div ref={ambassadorList} className={styles.ambassadors} onScroll={handleArrowVisibility}>
+          {sortedAmbassadors.map(([key, ambassador]) => (
             <AmbassadorButton
-              key={ambassador.name}
-              name={ambassador.name}
-              species={ambassador.species}
-              img={{
-                src: ambassador.img.src,
-                altText: ambassador.img.altText
-              }}
-
+              key={key}
+              ambassadorKey={key}
+              ambassador={ambassador}
               getCard={() => {
-                setActiveAmbassador(activeAmbassador?.name === ambassador.name ? undefined : ambassador)
+                setActiveAmbassador(prev => prev === key ? undefined : key)
               }}
-
-              ClassName={`${styles.ambassadorButton} ${activeAmbassador?.name === ambassador.name ? styles.ambassadorButtonClicked : undefined}`}
-              Id={ambassador.name.split(" ")[0].toLowerCase()}
+              ClassName={`${styles.ambassadorButton} ${activeAmbassador === key ? styles.ambassadorButtonClicked : undefined}`}
+              Id={key}
             />
           ))}
         </div>
-        <button ref={downArrowRef} className={`${styles.arrow} ${styles.down}`}
-                onClick={() => ambassadorListScroll(-250)}>
+
+        <button
+          ref={downArrowRef}
+          className={`${styles.arrow} ${styles.down}`}
+          onClick={() => ambassadorListScroll(-250)}
+        >
           <img src={arrow} alt="Down Arrow"/>
         </button>
       </div>
 
-      {activeAmbassador && props.showAmbassadorList ?
+      {activeAmbassador && showAmbassadorList && (
         <AmbassadorCard
-          key={activeAmbassador.name}
-          cardData={activeAmbassador}
-          close={() => {
-            setActiveAmbassador(undefined)
-          }}
+          key={activeAmbassador}
+          ambassadorKey={activeAmbassador}
+          ambassador={ambassadors[activeAmbassador]}
+          close={() => setActiveAmbassador(undefined)}
           ClassName={styles.ambassadorCard}
-        /> : null
-      }
+        />
+      )}
     </div>
   )
 }

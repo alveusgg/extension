@@ -1,5 +1,5 @@
 {
-  "name": "alveus-ambassadors",
+  "name": "@alveusgg/extension",
   "version": "0.1.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
@@ -16,6 +16,7 @@
     "url": "https://github.com/alveusgg/extension/issues"
   },
   "dependencies": {
+    "@alveusgg/data": "github:alveusgg/data",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
@@ -71,6 +72,7 @@
     "react-app-rewire-multiple-entry": "^2.2.2",
     "react-app-rewired": "^2.2.1",
     "sass": "^1.51.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.9.5",
+    "webpack-image-resize-loader": "^5.0.0"
   }
 }

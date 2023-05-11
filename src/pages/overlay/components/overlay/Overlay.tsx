@@ -11,6 +11,9 @@ import useChatCommand from '../../../../utils/chatCommand'
 //css
 import styles from './overlay.module.css'
 
+//data
+import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
+
 interface OverlayProps {
   sleeping: boolean,
   awoken: {
@@ -26,7 +29,7 @@ interface OverlayProps {
 export default function Overlay(props: OverlayProps) {
   const { sleeping, awoken, wake, settings } = props
 
-  const [chosenAmbassador, setChosenAmbassador] = useState<string | undefined>(undefined)
+  const [chosenAmbassador, setChosenAmbassador] = useState<AmbassadorKey>()
   const [{showAmbassadorList, showAlveusIntro}, dispatch] = useReducer(OverlayReducer, {
     showAmbassadorList: false,
     showAlveusIntro: false
@@ -38,15 +41,16 @@ export default function Overlay(props: OverlayProps) {
   // When a chat command is run, wake the overlay
   useChatCommand(useCallback((command: string) => {
     if (!settings.disableChatPopup) {
-      if (command !== '!welcome') setChosenAmbassador(command.slice(1))
+      if (isAmbassadorKey(command)) setChosenAmbassador(command)
+      else if (command !== 'welcome') return
 
       // Show the card
-      dispatch({type: command === '!welcome' ? ACTIONS.SHOW_ALVEUS_INTRO : ACTIONS.SHOW_AMBASSADOR_LIST})
+      dispatch({type: command === 'welcome' ? ACTIONS.SHOW_ALVEUS_INTRO : ACTIONS.SHOW_AMBASSADOR_LIST})
 
       // Dismiss the overlay after a delay
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
       timeoutRef.current = setTimeout(() => {
-        dispatch({type: command === '!welcome' ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.HIDE_AMBASSADOR_LIST})
+        dispatch({type: command === 'welcome' ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.HIDE_AMBASSADOR_LIST})
       }, commandDelay)
 
       // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay

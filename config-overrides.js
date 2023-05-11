@@ -40,13 +40,13 @@ module.exports = {
     if (!loader) throw new Error('Could not find loader rule for typescript')
     loader.include = [
       ...(Array.isArray(loader.include) ? loader.include : [loader.include]),
-      new RegExp(join('node_modules', '@alveusgg')),
+      new RegExp(join('node_modules', '@alveusgg').replace(/\\/g, '\\\\')),
     ]
 
     // Minify ambassador images
     config.module.rules.push({
       test: /\.(png|jpe?g)$/,
-      include: new RegExp(join('node_modules', '@alveusgg', 'data', 'assets', 'ambassadors')),
+      include: new RegExp(join('node_modules', '@alveusgg', 'data', 'assets', 'ambassadors').replace(/\\/g, '\\\\')),
       type: 'asset',
       generator: {
         filename: pathData => {

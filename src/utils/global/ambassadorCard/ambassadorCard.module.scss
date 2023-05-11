@@ -69,6 +69,20 @@
     }
   }
 
+  .mod {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      object-fit: cover;
+
+      margin-right: 5px;
+      border-radius: 0;
+    }
+  }
+
   .scrollable {
     flex: 1 1 auto;
     overflow-y: auto;

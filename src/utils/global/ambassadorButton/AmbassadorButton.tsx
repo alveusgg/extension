@@ -1,12 +1,7 @@
 import { useCallback } from 'react'
 
 import Ambassador from '../../compositions/ambassador/Ambassador'
-import {
-  getAmbassadorImagePosition,
-  getAmbassadorImages,
-  type AmbassadorKey,
-  type Ambassador as AmbassadorType,
-} from '../../ambassdaors'
+import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 import styles from './ambassadorButton.module.css'
 
 interface AmbassadorButtonProps{
@@ -38,7 +33,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
         className={styles.img}
         src={images[0].src}
         alt={images[0].alt}
-        style={{ objectPosition: getAmbassadorImagePosition(ambassadorKey) }}
+        style={{ objectPosition: images[0].position }}
       />
       <h2 className={styles.name}>{ambassador.name}</h2>
       <h3 className={styles.species}>{ambassador.species}</h3>

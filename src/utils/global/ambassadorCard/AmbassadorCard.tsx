@@ -1,6 +1,6 @@
 import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
-import { getAmbassadorImagePosition, getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
+import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 
 import styles from './ambassadorCard.module.css'
 
@@ -26,7 +26,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         className={styles.img}
         src={images[0].src}
         alt={images[0].alt}
-        style={{ objectPosition: getAmbassadorImagePosition(ambassadorKey) }}
+        style={{ objectPosition: images[0].position }}
       />
 
       <div className={styles.scrollable}>

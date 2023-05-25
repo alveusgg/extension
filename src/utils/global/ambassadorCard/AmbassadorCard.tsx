@@ -1,7 +1,10 @@
 import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
-
+import { useCallback } from "react";
+import type { Container, Engine } from "tsparticles-engine";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
 import styles from './ambassadorCard.module.css'
 
 export interface AmbassadorCardProps {
@@ -14,7 +17,13 @@ export interface AmbassadorCardProps {
 export default function AmbassadorCard(props: AmbassadorCardProps) {
   const { ambassadorKey, ambassador, close, ClassName } = props
   const images = getAmbassadorImages(ambassadorKey)
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadFull(engine);
+}, []);
 
+const particlesLoaded = useCallback(async (container?: Container) => {
+    
+}, []);
   return (
     <Ambassador ClassName={`${styles.ambassadorCard} ${ClassName} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
       {props.close && (
@@ -22,6 +31,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       )}
 
       <h2 className={styles.name} title={ambassador.name}>{ambassador.name}</h2>
+
       <img
         className={styles.img}
         src={images[0].src}
@@ -49,6 +59,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </div>
           <div>
             <h3>Birthday</h3>
+            {ambassador.birth && isBirthday(ambassador.birth) ? <Particles id="tsparticles" url="https://particles.js.org/configs/confetti.json" init={particlesInit} loaded={particlesLoaded} /> : ""}
             <p>
               {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
             </p>

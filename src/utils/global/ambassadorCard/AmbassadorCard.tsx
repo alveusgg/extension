@@ -1,8 +1,11 @@
 import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
+import { normalizeAmbassadorName } from '../../chatCommand'
+import { camelToKebab } from '../../helpers'
 
 import styles from './ambassadorCard.module.css'
+import moderatorBadge from '../../../assets/mod.png'
 
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey
@@ -14,6 +17,7 @@ export interface AmbassadorCardProps {
 export default function AmbassadorCard(props: AmbassadorCardProps) {
   const { ambassadorKey, ambassador, close, ClassName } = props
   const images = getAmbassadorImages(ambassadorKey)
+  const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
   return (
     <Ambassador ClassName={`${styles.ambassadorCard} ${ClassName} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
@@ -30,6 +34,19 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       />
 
       <div className={styles.scrollable}>
+        {mod && (
+          <div className={`${styles.row} ${styles.mod}`}>
+            <img src={moderatorBadge} alt="Moderator badge" />
+            <p>
+              Show this card to everyone by using
+              {' '}
+              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code>
+              {' '}
+              in chat.
+            </p>
+          </div>
+        )}
+
         <div className={styles.row}>
           <h3>Species</h3>
           <p>{ambassador.species}</p>
@@ -56,8 +73,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <div className={styles.row}>
-          <h3>IUCN Status</h3>
-          <p>{getIUCNStatus(ambassador.iucn.status)}</p>
+          <h3>Conservation Status</h3>
+          <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
 
         <div className={`${styles.row} ${styles.story}`}>
@@ -68,6 +85,21 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         <div className={`${styles.row} ${styles.conservationMission}`}>
           <h3>Conservation Mission</h3>
           <p>{ambassador.mission}</p>
+        </div>
+
+        <div className={`${styles.row} ${styles.site}`}>
+          <p>
+            Learn more about {ambassador.name} on the
+            {' '}
+            <a
+              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(ambassadorKey)}`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Alveus Sanctuary website
+            </a>
+            .
+          </p>
         </div>
       </div>
     </Ambassador>

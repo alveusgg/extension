@@ -1,9 +1,17 @@
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
 
 import { ambassadors, AmbassadorKey } from './ambassdaors'
-import { useChannelNames } from './channels'
 import { typeSafeObjectEntries } from './helpers'
+import { fetchCurrentChannelInfo, useTwitchAuth } from './twitch-api'
+
+const testChannelNames = process.env.REACT_APP_TEST_CHANNEL_NAMES?.split(',') ?? []
+const defaultChannelNames = process.env.REACT_APP_DEFAULT_CHANNEL_NAMES?.split(',') ?? []
+
+export const normalizeAmbassadorName = (name: string, stripDiacritic: boolean = false): string => {
+  const first = name.split(' ')[0].toLowerCase();
+  return stripDiacritic ? first.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : first;
+};
 
 /**
  * @description Creates a map of ambassador names to their keys, for chat commands.
@@ -15,15 +23,39 @@ const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
   const commandMap = new Map<string, AmbassadorKey>()
   typeSafeObjectEntries(ambassadors).forEach(([key, ambassador]) => {
     // Always add the original name to the map
-    const ambassadorOriginalFirstName = ambassador.name.split(' ')[0].toLowerCase()
-    commandMap.set(ambassadorOriginalFirstName, key)
+    const normalizedWithDiacritics = normalizeAmbassadorName(ambassador.name)
+    commandMap.set(normalizedWithDiacritics, key)
 
     // If the ambassador has a diacritic in their name, add the normalized name to the map
-    const ambassadorFirstNameWithRemovedDiacritic = ambassadorOriginalFirstName.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    if (ambassadorOriginalFirstName !== ambassadorFirstNameWithRemovedDiacritic)
-      commandMap.set(ambassadorFirstNameWithRemovedDiacritic, key)
+    const normalizedWithoutDiacritics = normalizeAmbassadorName(ambassador.name, true)
+    if (normalizedWithDiacritics !== normalizedWithoutDiacritics)
+      commandMap.set(normalizedWithoutDiacritics, key)
   })
   return commandMap
+}
+
+const useChannelNames = () => {
+  const auth = useTwitchAuth()
+  const [channelNames, setChannelNames] = useState<string[]>([ ...testChannelNames, ...defaultChannelNames ])
+
+  useEffect(() => {
+    if (!auth) return
+
+    fetchCurrentChannelInfo(auth)
+      .then(newChannelInfo => {
+        if (newChannelInfo) {
+          // NOTE: We could use the channel info here to e.g. parse the title and
+          //      highlight the ambassadors for the current scene
+          setChannelNames([ ...testChannelNames, newChannelInfo.broadcaster_name ])
+        }
+      })
+      .catch(e => {
+        console.error('Failed to fetch channel info', e)
+        return undefined
+      })
+  }, [auth])
+
+  return channelNames
 }
 
 export default function useChatCommand(callback: (command: string) => void) {

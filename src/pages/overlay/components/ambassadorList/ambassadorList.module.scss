@@ -110,6 +110,7 @@
   .ambassadorCard {
     align-self: center;
     z-index: 0; // stay below ambassadors list
+    margin-left: 0.5rem;
 
     // we scale the fixed size card based on the available height so it
     // stays completely visible and within the clickable overlay area:

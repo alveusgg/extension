@@ -7,8 +7,10 @@ $accent-color: #272b27;
 
 $primary-text: white;
 $secondary-text: #dcdcdc;
+$outline-color: #ff9f1c;
 
 $font-family: 'Nunito', sans-serif;
+$outline: 0.25rem solid $outline-color;
 $transition: 0.3s ease;
 
 // used to scale various elements based on available height

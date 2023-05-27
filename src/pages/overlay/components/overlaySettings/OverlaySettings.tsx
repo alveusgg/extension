@@ -1,8 +1,6 @@
-//components
-import DisableChatPopup from "../disableChatPopup/DisableChatPopup"
+import DisableChatPopup from '../disableChatPopup/DisableChatPopup'
 
-//css
-import styles from "./overlaySettings.module.css"
+import styles from './overlaySettings.module.css'
 
 interface OverlaySettingsProps {
   sleeping: boolean,
@@ -13,15 +11,11 @@ interface OverlaySettingsProps {
 }
 
 export default function OverlaySettings(props: OverlaySettingsProps) {
-  const toggleDisableChatPopup = () => {
-    props.toggleDisableChatPopup()
-  }
-
   return (
     <div className={`${styles.overlaySettings} ${props.sleeping ? styles.hidden : styles.visible}`}>
       <DisableChatPopup
         disableChatPopup={props.settings.disableChatPopup}
-        toggleDisableChatPopup={()=>toggleDisableChatPopup()}
+        toggleDisableChatPopup={props.toggleDisableChatPopup}
       />
     </div>
   )

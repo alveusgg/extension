@@ -2,10 +2,10 @@
 
 .overlaySettings {
   position: absolute;
-  bottom: 75%;
+  top: 3rem;
   right: 0;
-  transition: 0.3s ease-out;
-  transition-property: visibility, translate;
+  transition: $transition;
+  transition-property: visibility, transform;
 }
 
 .visible {
@@ -14,11 +14,9 @@
 
 .hidden {
   visibility: hidden;
-  translate: 40px;
+  transform: translateX(2.5rem);
 
-  // accessibility for vestibular motion disorders
-  // do not translate overlay but only transition opacity
   @media (prefers-reduced-motion) {
-    translate: 0;
+    transform: unset;
   }
 }

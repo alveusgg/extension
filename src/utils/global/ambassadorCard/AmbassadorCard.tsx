@@ -2,11 +2,11 @@ import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 import { useCallback } from "react";
-import type { Container, Engine } from "tsparticles-engine";
+import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import styles from './ambassadorCard.module.css'
-
+import particleConfig from "./confetti.json"
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey
   ambassador: AmbassadorType
@@ -18,12 +18,13 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const { ambassadorKey, ambassador, close, ClassName } = props
   const images = getAmbassadorImages(ambassadorKey)
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-}, []);
+      await loadFull(engine);
+  }, []);
 
-const particlesLoaded = useCallback(async (container?: Container) => {
-    
-}, []);
+  const particlesLoaded = useCallback(async (container: Container | undefined) => {
+      await console.log(container);
+  }, []);
+  const options: ISourceOptions = particleConfig as ISourceOptions;
   return (
     <Ambassador ClassName={`${styles.ambassadorCard} ${ClassName} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
       {props.close && (
@@ -59,7 +60,7 @@ const particlesLoaded = useCallback(async (container?: Container) => {
           </div>
           <div>
             <h3>Birthday</h3>
-            {ambassador.birth && isBirthday(ambassador.birth) ? <Particles id="tsparticles" url="https://particles.js.org/configs/confetti.json" init={particlesInit} loaded={particlesLoaded} /> : ""}
+            {ambassador.birth && isBirthday(ambassador.birth) ? <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={options} /> : ""}
             <p>
               {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
             </p>

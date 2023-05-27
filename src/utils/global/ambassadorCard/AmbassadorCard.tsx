@@ -9,8 +9,6 @@ import styles from './ambassadorCard.module.css'
 import particleConfig from "./confetti.json"
 import { normalizeAmbassadorName } from '../../chatCommand'
 import { camelToKebab } from '../../helpers'
-
-import styles from './ambassadorCard.module.css'
 import moderatorBadge from '../../../assets/mod.png'
 
 export interface AmbassadorCardProps {

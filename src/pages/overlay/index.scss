@@ -1,22 +1,7 @@
 @import '../../variables.scss';
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-// change default box-sizing mode to border-box
-// meaning total width/height includes padding and border
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
+@import '../../reset.scss';
 
 body {
-  font-family: $font-family;
-
-  // always keep full width/height and never show scrollbars
   width: 100vw;
   height: 100vh;
   overflow: hidden;

@@ -32,8 +32,8 @@ export default function AmbassadorPanel() {
           <AmbassadorButton
             ambassadorKey={key}
             ambassador={ambassador}
-            ClassName={styles.item}
-            getCard={() => setAmbassadorCard(key)}
+            onClick={() => setAmbassadorCard(key)}
+            className={styles.item}
           />
         </Fragment>
       ))}

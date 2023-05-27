@@ -14,14 +14,14 @@
   // and panel (fixed size)
   width: 100%;
 
-  aspect-ratio: 1;
   flex-shrink: 0;
   box-shadow: 0 0.25rem 0.25rem $accent-color;
   border-radius: 0.5rem;
+  transition: $transition;
+  transition-property: filter;
 
   &:hover {
-    cursor: pointer;
-    filter: brightness(1.1);
+    filter: brightness(1.2);
   }
 
   .img {
@@ -40,11 +40,11 @@
 
   .name {
     color: $primary-text;
-    font-size: 0.8em; // using em so we can scale with the parent
+    font-size: 0.8rem;
   }
 
   .species {
-    font-size: 0.7em; // using em so we can scale with the parent
+    font-size: 0.7rem;
     color: $secondary-text;
     line-height: 1.2; // slightly reduce line height if species is multi-line
   }

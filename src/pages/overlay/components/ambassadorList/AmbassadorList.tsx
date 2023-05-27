@@ -80,11 +80,10 @@ export default function AmbassadorList(props: AmbassadorListProps) {
               key={key}
               ambassadorKey={key}
               ambassador={ambassador}
-              getCard={() => {
+              onClick={() => {
                 setActiveAmbassador(prev => prev === key ? undefined : key)
               }}
-              ClassName={`${styles.ambassadorButton} ${activeAmbassador === key ? styles.ambassadorButtonClicked : undefined}`}
-              Id={key}
+              className={`${styles.ambassadorButton} ${activeAmbassador === key ? styles.ambassadorButtonClicked : undefined}`}
             />
           ))}
         </div>

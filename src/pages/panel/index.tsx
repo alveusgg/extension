@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './pages/panel/components/App';
-import reportWebVitals from './reportWebVitals';
-import { bindTwitchAuth } from './utils/twitch-api';
+import App from './App';
+import reportWebVitals from '../../reportWebVitals';
+import { bindTwitchAuth } from '../../utils/twitch-api';
 
 import './index.css';
 

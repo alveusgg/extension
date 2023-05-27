@@ -1,14 +1,11 @@
-//components & hooks
 import { useState, useCallback, Fragment } from 'react'
+
 import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverlay'
 import useChatCommand from '../../../../utils/chatCommand'
-
-//css
-import styles from './ambassadorPanel.module.css'
-
-//data
 import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
+
+import styles from './ambassadorPanel.module.css'
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user

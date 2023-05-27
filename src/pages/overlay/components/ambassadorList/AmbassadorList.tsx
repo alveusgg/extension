@@ -10,7 +10,7 @@ import styles from './ambassadorList.module.css'
 import arrow from '../../../../assets/arrow.jpg'
 
 //data
-import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../utils/ambassdaors'
+import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../utils/ambassadors'
 
 export interface AmbassadorListProps {
   showAmbassadorList: boolean

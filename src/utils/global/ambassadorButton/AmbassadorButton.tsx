@@ -1,6 +1,6 @@
 import { type MouseEventHandler } from 'react'
 
-import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
+import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
 
 import styles from './ambassadorButton.module.css'
 

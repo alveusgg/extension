@@ -1,5 +1,5 @@
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
-import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
+import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
 import { normalizeAmbassadorName } from '../../chatCommand'
 import { camelToKebab } from '../../helpers'
 

@@ -12,7 +12,7 @@ import useChatCommand from '../../../../utils/chatCommand'
 import styles from './overlay.module.css'
 
 //data
-import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
+import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 
 interface OverlayProps {
   sleeping: boolean,

@@ -8,7 +8,7 @@ import useChatCommand from '../../../../utils/chatCommand'
 import styles from './ambassadorPanel.module.css'
 
 //data
-import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
+import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user

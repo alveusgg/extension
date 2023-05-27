@@ -1,13 +1,14 @@
 @import "../../../../variables.scss";
 
 .alveusIntro{
+    position: absolute;
+    left: 1rem;
+    top: 1.5rem;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    position: absolute;
-    left: 80px;
 
     border: 5px solid white;
     border-radius: 20px;

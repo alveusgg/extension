@@ -1,18 +1,13 @@
-// utils
 import { useEffect, useRef, useReducer, useCallback, useState } from 'react'
-import { ACTIONS, OverlayReducer } from './overlay.reducer'
 
-//components & hooks
+import { ACTIONS, OverlayReducer } from './overlay.reducer'
 import ActivationButtons from '../activationButtons/ActivationButtons'
 import AlveusIntro from '../alveusIntro/AlveusIntro'
 import AmbassadorList from '../ambassadorList/AmbassadorList'
 import useChatCommand from '../../../../utils/chatCommand'
-
-//css
-import styles from './overlay.module.css'
-
-//data
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
+
+import styles from './overlay.module.css'
 
 interface OverlayProps {
   sleeping: boolean,
@@ -110,13 +105,15 @@ export default function Overlay(props: OverlayProps) {
         isAlveusIntroActive={showAlveusIntro}
         isAmbassadorListActive={showAmbassadorList}
       />
-      <AlveusIntro
-        showAlveusIntro={showAlveusIntro}
-      />
-      <AmbassadorList
-        showAmbassadorList={showAmbassadorList}
-        chatChosenAmbassador={chosenAmbassador}
-      />
+      <div className={styles.popup}>
+        <AlveusIntro
+          showAlveusIntro={showAlveusIntro}
+        />
+        <AmbassadorList
+          showAmbassadorList={showAmbassadorList}
+          chatChosenAmbassador={chosenAmbassador}
+        />
+      </div>
     </div>
   )
 }

@@ -7,6 +7,12 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import styles from './ambassadorCard.module.css'
 import particleConfig from "./confetti.json"
+import { normalizeAmbassadorName } from '../../chatCommand'
+import { camelToKebab } from '../../helpers'
+
+import styles from './ambassadorCard.module.css'
+import moderatorBadge from '../../../assets/mod.png'
+
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey
   ambassador: AmbassadorType
@@ -20,6 +26,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const particlesInit = useCallback(async (engine: Engine) => {
       await loadFull(engine);
   }, []);
+  const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
   const particlesLoaded = useCallback(async (container: Container | undefined) => {
       await console.log(container);
@@ -41,6 +48,19 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       />
 
       <div className={styles.scrollable}>
+        {mod && (
+          <div className={`${styles.row} ${styles.mod}`}>
+            <img src={moderatorBadge} alt="Moderator badge" />
+            <p>
+              Show this card to everyone by using
+              {' '}
+              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code>
+              {' '}
+              in chat.
+            </p>
+          </div>
+        )}
+
         <div className={styles.row}>
           <h3>Species</h3>
           <p>{ambassador.species}</p>
@@ -68,8 +88,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <div className={styles.row}>
-          <h3>IUCN Status</h3>
-          <p>{getIUCNStatus(ambassador.iucn.status)}</p>
+          <h3>Conservation Status</h3>
+          <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
 
         <div className={`${styles.row} ${styles.story}`}>
@@ -80,6 +100,21 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         <div className={`${styles.row} ${styles.conservationMission}`}>
           <h3>Conservation Mission</h3>
           <p>{ambassador.mission}</p>
+        </div>
+
+        <div className={`${styles.row} ${styles.site}`}>
+          <p>
+            Learn more about {ambassador.name} on the
+            {' '}
+            <a
+              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(ambassadorKey)}`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Alveus Sanctuary website
+            </a>
+            .
+          </p>
         </div>
       </div>
     </Ambassador>

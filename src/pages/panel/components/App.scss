@@ -1,21 +1,19 @@
 @import '../../../variables.scss';
 
 .App {
-  background-color: $secondary-color;
+  background: $secondary-color;
   width: 100vw;
   min-height: 100vh;
-  outline: 1px solid black;
 }
 
-//Scroll Bar
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 0.5rem;
 }
 
-::-webkit-scrollbar-track { //track
+::-webkit-scrollbar-track {
   background: white;
 }
 
-::-webkit-scrollbar-thumb { //handle
+::-webkit-scrollbar-thumb {
   background: $primary-color;
 }

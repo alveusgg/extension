@@ -1,8 +1,6 @@
-//components
 import Nav from './nav/Nav';
 import AmbassadorPanel from './ambassadorPanel/AmbassadorPanel';
 
-//css
 import './App.css';
 
 function App() {

@@ -25,7 +25,7 @@ export default function AmbassadorPanel() {
           {ambassadorCard === key && (
             <AmbassadorCardOverlay
               ambassadorCard={{ ambassadorKey: key, ambassador }}
-              close={() => setAmbassadorCard(undefined)}
+              onClose={() => setAmbassadorCard(undefined)}
             />
           )}
 

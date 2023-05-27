@@ -4,7 +4,7 @@ import styles from './ambassadorCardOverlay.module.css';
 
 interface AmbassadorCardOverlayProps{
   ambassadorCard: AmbassadorCardProps
-  close: () => void
+  onClose: () => void
 }
 
 export default function AmbassadorCardOverlay(props: AmbassadorCardOverlayProps) {
@@ -12,8 +12,8 @@ export default function AmbassadorCardOverlay(props: AmbassadorCardOverlayProps)
     <div className={styles.background}>
       <AmbassadorCard
         {...props.ambassadorCard}
-        close={props.close}
-        ClassName={styles.ambassadorCard}
+        onClose={props.onClose}
+        className={styles.ambassadorCard}
       />
     </div>
   )

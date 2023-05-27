@@ -9,19 +9,19 @@ import moderatorBadge from '../../../assets/mod.png'
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey
   ambassador: AmbassadorType
-  close?: () => void
-  ClassName?: string
+  onClose?: () => void
+  className?: string
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassadorKey, ambassador, close, ClassName } = props
+  const { ambassadorKey, ambassador, onClose, className } = props
   const images = getAmbassadorImages(ambassadorKey)
   const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
   return (
-    <div className={`${styles.ambassadorCard} ${ClassName} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
-      {props.close && (
-        <div className={styles.close} onClick={close}>&times;</div>
+    <div className={`${styles.ambassadorCard} ${className} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
+      {props.onClose && (
+        <div className={styles.close} onClick={onClose}>&times;</div>
       )}
 
       <h2 className={styles.name} title={ambassador.name}>{ambassador.name}</h2>
@@ -76,12 +76,12 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
 
-        <div className={`${styles.row} ${styles.story}`}>
+        <div className={styles.row}>
           <h3>Story</h3>
           <p>{ambassador.story}</p>
         </div>
 
-        <div className={`${styles.row} ${styles.conservationMission}`}>
+        <div className={styles.row}>
           <h3>Conservation Mission</h3>
           <p>{ambassador.mission}</p>
         </div>

@@ -102,8 +102,8 @@ export default function AmbassadorList(props: AmbassadorListProps) {
           key={activeAmbassador}
           ambassadorKey={activeAmbassador}
           ambassador={ambassadors[activeAmbassador]}
-          close={() => setActiveAmbassador(undefined)}
-          ClassName={styles.ambassadorCard}
+          onClose={() => setActiveAmbassador(undefined)}
+          className={styles.ambassadorCard}
         />
       )}
     </div>

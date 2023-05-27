@@ -1,4 +1,3 @@
-import Ambassador from '../../compositions/ambassador/Ambassador'
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 import { normalizeAmbassadorName } from '../../chatCommand'
@@ -20,7 +19,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
   return (
-    <Ambassador ClassName={`${styles.ambassadorCard} ${ClassName} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
+    <div className={`${styles.ambassadorCard} ${ClassName} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
       {props.close && (
         <div className={styles.close} onClick={close}>&times;</div>
       )}
@@ -102,6 +101,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </p>
         </div>
       </div>
-    </Ambassador>
+    </div>
   )
 }

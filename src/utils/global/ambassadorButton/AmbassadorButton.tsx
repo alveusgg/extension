@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 
-import Ambassador from '../../compositions/ambassador/Ambassador'
 import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassdaors'
 import styles from './ambassadorButton.module.css'
 
@@ -28,15 +27,18 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
   }, [getCard, changeEditMode, ambassador.name])
 
   return (
-    <Ambassador ClassName={`${styles.ambassador} ${ClassName}`} Id={Id} onClick={handleClick}>
+    <div className={`${styles.ambassador} ${ClassName}`} id={Id} onClick={handleClick}>
       <img
         className={styles.img}
         src={images[0].src}
         alt={images[0].alt}
         style={{ objectPosition: images[0].position }}
       />
-      <h2 className={styles.name}>{ambassador.name}</h2>
-      <h3 className={styles.species}>{ambassador.species}</h3>
-    </Ambassador>
+
+      <div className={styles.info}>
+        <h2 className={styles.name}>{ambassador.name}</h2>
+        <h3 className={styles.species}>{ambassador.species}</h3>
+      </div>
+    </div>
   )
 }

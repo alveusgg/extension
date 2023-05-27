@@ -2,7 +2,13 @@
 
 .ambassador {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0.85rem;
+  background-color: $primary-color;
+  text-align: center;
+
   // assume the width provided from the parent so
   // we use the same class in both overlay (dynamic size)
   // and panel (fixed size)
@@ -10,7 +16,8 @@
 
   aspect-ratio: 1;
   flex-shrink: 0;
-  box-shadow: 0 4px 5px $accent-color;
+  box-shadow: 0 0.25rem 0.25rem $accent-color;
+  border-radius: 0.5rem;
 
   &:hover {
     cursor: pointer;
@@ -18,14 +25,17 @@
   }
 
   .img {
-    margin-bottom: 5px;
-    border-radius: 5px;
+    margin-bottom: 0.25rem;
+    border-radius: 0.25rem;
     flex-shrink: 0; // prevent long names/species to shrink the image height
     // crop image to 2.2:1:
     width: 100%;
     aspect-ratio: 2.2;
     object-fit: cover;
-    margin-bottom: 5px;
+  }
+
+  .info {
+    margin: auto 0;
   }
 
   .name {

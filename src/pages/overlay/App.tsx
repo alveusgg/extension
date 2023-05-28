@@ -7,7 +7,7 @@ import styles from './App.module.css'
 
 const settings = {
   disableChatPopup: {
-    title: 'Disable Mod-triggered Card Popups',
+    title: 'Prevent Mod-triggered Card Popups',
     type: 'boolean',
     process: (value: any) => !!value,
   },

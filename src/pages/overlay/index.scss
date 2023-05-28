@@ -1,6 +1,26 @@
 @import '../../variables.scss';
 @import '../../reset.scss';
 
+html {
+  font-size: 8px;
+
+  @media (min-width: 480px) {
+    font-size: 10px;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
 body {
   width: 100vw;
   height: 100vh;

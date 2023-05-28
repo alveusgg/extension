@@ -6,23 +6,34 @@
   width: 100%;
   transition: $transition;
   transition-property: visibility, transform;
-}
 
-.visible {
-  visibility: visible;
-}
+  &Hidden {
+    visibility: hidden;
+    transform: translateX(-2.5rem); // match OverlaySettings transform
 
-.hidden {
-  visibility: hidden;
-  transform: translateX(-2.5rem); // match OverlaySettings transform
-
-  @media (prefers-reduced-motion) {
-    transform: unset;
+    @media (prefers-reduced-motion) {
+      transform: unset;
+    }
   }
 }
 
-.popup {
+.wrapper {
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.option {
+  transition: $transition;
+  transition-property: opacity, visibility, transform;
+
+  &Hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-2.5rem); // match OverlaySettings transform
+
+    @media (prefers-reduced-motion) {
+      transform: unset;
+    }
+  }
 }

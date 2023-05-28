@@ -1,4 +1,4 @@
-@import '../../../../variables.scss';
+@import '../../../../../variables';
 
 .ambassadorList {
   position: absolute;
@@ -6,23 +6,6 @@
   left: 0;
   height: 100%;
   display: flex;
-  transition: $transition;
-  transition-property: opacity, visibility, transform;
-
-  &.visible {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  &.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(-2.5rem); // match OverlaySettings transform
-
-    @media (prefers-reduced-motion) {
-      transform: unset;
-    }
-  }
 
   .scrollAmbassadors {
     display: flex;

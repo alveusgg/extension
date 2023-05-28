@@ -1,21 +1,17 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 
-import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
-import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
-import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../utils/ambassadors'
-import { classes } from '../../../../utils/classes'
+import AmbassadorCard from '../../../../../utils/global/ambassadorCard/AmbassadorCard'
+import AmbassadorButton from '../../../../../utils/global/ambassadorButton/AmbassadorButton'
+import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../../utils/ambassadors'
+import { classes } from '../../../../../utils/classes'
+import type { OverlayOptionProps } from '../Overlay'
 
-import arrow from '../../../../assets/arrow.jpg'
+import arrow from '../../../../../assets/arrow.jpg'
 
-import styles from './ambassadorList.module.css'
+import styles from './ambassadors.module.css'
 
-export interface AmbassadorListProps {
-  showAmbassadorList: boolean
-  chatChosenAmbassador?: AmbassadorKey
-}
-
-export default function AmbassadorList(props: AmbassadorListProps) {
-  const { showAmbassadorList, chatChosenAmbassador } = props
+export default function Ambassadors(props: OverlayOptionProps) {
+  const { context, className } = props
 
   const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorKey>()
   const upArrowRef = useRef<HTMLButtonElement>(null)
@@ -34,11 +30,11 @@ export default function AmbassadorList(props: AmbassadorListProps) {
 
   // Show the ambassador command based on chat commands
   useEffect(() => {
-    if (chatChosenAmbassador !== undefined) {
-      setActiveAmbassador(chatChosenAmbassador)
-      scrollListToAmbassador(chatChosenAmbassador)
+    if (context.commandAmbassador !== undefined) {
+      setActiveAmbassador(context.commandAmbassador)
+      scrollListToAmbassador(context.commandAmbassador)
     }
-  }, [chatChosenAmbassador, scrollListToAmbassador])
+  }, [context.commandAmbassador, scrollListToAmbassador])
 
   // Allow the list to be scrolled via the buttons
   const ambassadorListScroll = useCallback((direction: number) => {
@@ -61,7 +57,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
   }, [])
 
   return (
-    <div className={classes(styles.ambassadorList, showAmbassadorList ? styles.visible : styles.hidden)}>
+    <div className={classes(styles.ambassadorList, className)}>
       <div className={styles.scrollAmbassadors}>
         <button
           ref={upArrowRef}
@@ -94,7 +90,7 @@ export default function AmbassadorList(props: AmbassadorListProps) {
         </button>
       </div>
 
-      {activeAmbassador && showAmbassadorList && (
+      {activeAmbassador && (
         <AmbassadorCard
           key={activeAmbassador}
           ambassadorKey={activeAmbassador}

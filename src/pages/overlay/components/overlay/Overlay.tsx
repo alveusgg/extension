@@ -1,12 +1,14 @@
-import { useEffect, useRef, useReducer, useCallback, useState } from 'react'
+import { useEffect, useRef, useCallback, useState, useMemo } from 'react'
 
-import { ACTIONS, OverlayReducer } from './overlay.reducer'
-import ActivationButtons from '../activationButtons/ActivationButtons'
-import AlveusIntro from '../alveusIntro/AlveusIntro'
-import AmbassadorList from '../ambassadorList/AmbassadorList'
+import Buttons from '../buttons/Buttons'
+import Welcome from './welcome/Welcome'
+import Ambassadors from './ambassadors/Ambassadors'
 import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 import { classes } from '../../../../utils/classes'
+
+import WelcomeIcon from '../../../../assets/activationButtons/welcome.jpg'
+import AmbassadorsIcon from '../../../../assets/activationButtons/ambassadors.jpg'
 
 import styles from './overlay.module.css'
 
@@ -15,21 +17,42 @@ interface OverlayProps {
   awoken: {
     add: (callback: () => void) => void,
     remove: (callback: () => void) => void
-  }
+  },
   wake: (time: number) => void,
   settings: {
     disableChatPopup: boolean
-  }
+  },
+}
+
+const overlayOptions = [
+  {
+    key: 'welcome',
+    title: 'Welcome',
+    icon: WelcomeIcon,
+    component: Welcome,
+  },
+  {
+    key: 'ambassadors',
+    title: 'Ambassadors',
+    icon: AmbassadorsIcon,
+    component: Ambassadors,
+  },
+] as const
+
+type OverlayKey = typeof overlayOptions[number]['key']
+
+export interface OverlayOptionProps {
+  context: {
+    commandAmbassador?: AmbassadorKey,
+  },
+  className?: string,
 }
 
 export default function Overlay(props: OverlayProps) {
   const { sleeping, awoken, wake, settings } = props
 
-  const [chosenAmbassador, setChosenAmbassador] = useState<AmbassadorKey>()
-  const [{showAmbassadorList, showAlveusIntro}, dispatch] = useReducer(OverlayReducer, {
-    showAmbassadorList: false,
-    showAlveusIntro: false
-  })
+  const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>()
+  const [visibleOption, setVisibleOption] = useState<OverlayKey>()
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const awakingRef = useRef(false)
   const commandDelay = 8000
@@ -37,16 +60,16 @@ export default function Overlay(props: OverlayProps) {
   // When a chat command is run, wake the overlay
   useChatCommand(useCallback((command: string) => {
     if (!settings.disableChatPopup) {
-      if (isAmbassadorKey(command)) setChosenAmbassador(command)
+      if (isAmbassadorKey(command)) setCommandAmbassador(command)
       else if (command !== 'welcome') return
 
       // Show the card
-      dispatch({type: command === 'welcome' ? ACTIONS.SHOW_ALVEUS_INTRO : ACTIONS.SHOW_AMBASSADOR_LIST})
+      setVisibleOption(command === 'welcome' ? 'welcome' : 'ambassadors')
 
       // Dismiss the overlay after a delay
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
       timeoutRef.current = setTimeout(() => {
-        dispatch({type: command === 'welcome' ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.HIDE_AMBASSADOR_LIST})
+        setVisibleOption(undefined)
       }, commandDelay)
 
       // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
@@ -72,23 +95,23 @@ export default function Overlay(props: OverlayProps) {
     return () => awoken.remove(callback)
   }, [awoken])
 
+  // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {
     // Get all the elements under the mouse
-    const elements = document.elementsFromPoint(e.clientX, e.clientY);
+    const elements = document.elementsFromPoint(e.clientX, e.clientY)
 
     // For each element, if it has a background then we want to ignore the click
     // If we reach the body, then break out of the loop and close the panels
     for (const element of elements) {
       if (element === document.body) break;
 
-      const style = getComputedStyle(element);
+      const style = getComputedStyle(element)
       if (style.backgroundImage !== 'none' || style.backgroundColor !== 'rgba(0, 0, 0, 0)') {
-        return;
+        return
       }
     }
 
-    dispatch({type: ACTIONS.HIDE_AMBASSADOR_LIST})
-    dispatch({type: ACTIONS.HIDE_ALVEUS_INTRO})
+    setVisibleOption(undefined)
   }, []);
 
   // If the user clicks anywhere in the body, except the overlay itself, close the panels
@@ -98,22 +121,26 @@ export default function Overlay(props: OverlayProps) {
     return () => document.body.removeEventListener('click', bodyClick, true);
   }, [bodyClick]);
 
+  // Generate the context for the overlay options
+  const context = useMemo<OverlayOptionProps["context"]>(() => ({
+    commandAmbassador,
+  }), [commandAmbassador])
+
   return (
-    <div className={classes(styles.overlay, sleeping ? styles.hidden : styles.visible)}>
-      <ActivationButtons
-        toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
-        toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}
-        isAlveusIntroActive={showAlveusIntro}
-        isAmbassadorListActive={showAmbassadorList}
+    <div className={classes(styles.overlay, sleeping && styles.overlayHidden)}>
+      <Buttons
+        options={overlayOptions}
+        onClick={setVisibleOption}
+        active={visibleOption}
       />
-      <div className={styles.popup}>
-        <AlveusIntro
-          showAlveusIntro={showAlveusIntro}
-        />
-        <AmbassadorList
-          showAmbassadorList={showAmbassadorList}
-          chatChosenAmbassador={chosenAmbassador}
-        />
+      <div className={styles.wrapper}>
+        {overlayOptions.map(option => (
+          <option.component
+            key={option.key}
+            context={context}
+            className={classes(styles.option, visibleOption !== option.key && styles.optionHidden)}
+          />
+        ))}
       </div>
     </div>
   )

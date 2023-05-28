@@ -21,8 +21,7 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-    "tmi.js": "^1.8.5",
-    "web-vitals": "^2.1.4"
+    "tmi.js": "^1.8.5"
   },
   "scripts": {
     "start": "npm-run-all --parallel sass:watch serve",

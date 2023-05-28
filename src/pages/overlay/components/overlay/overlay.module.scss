@@ -9,7 +9,7 @@
 
   &Hidden {
     visibility: hidden;
-    transform: translateX(-2.5rem); // match OverlaySettings transform
+    transform: translateX(-$slide-distance);
 
     @media (prefers-reduced-motion) {
       transform: unset;
@@ -30,7 +30,7 @@
   &Hidden {
     visibility: hidden;
     opacity: 0;
-    transform: translateX(-2.5rem); // match OverlaySettings transform
+    transform: translateX(-$slide-distance);
 
     @media (prefers-reduced-motion) {
       transform: unset;

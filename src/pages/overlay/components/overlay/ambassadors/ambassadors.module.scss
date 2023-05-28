@@ -106,7 +106,7 @@
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateX(-2.5rem); // match OverlaySettings translate
+    transform: translateX(-$slide-distance);
   }
 
   100% {

@@ -26,11 +26,12 @@
 
   .close {
     position: absolute;
-    top: 0.125rem;
+    top: 0.25rem;
     right: 0.25rem;
     width: 2rem;
     display: block;
-    font-size: x-large;
+    font-size: 1.5rem;
+    line-height: 1.1;
     cursor: pointer;
     text-align: center;
     transition: $transition;
@@ -43,11 +44,15 @@
 
   .img {
     width: 100%;
-    aspect-ratio: 2.2;
+    aspect-ratio: 3;
     object-fit: cover;
     align-self: center;
     border-radius: 0;
     margin-bottom: 0.25rem;
+
+    @media (min-width: 480px) {
+      aspect-ratio: 2.2;
+    }
   }
 
   .name {

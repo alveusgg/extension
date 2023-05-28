@@ -32,18 +32,21 @@ const overlayOptions = [
   {
     key: 'welcome',
     title: 'Welcome',
+    type: 'primary',
     icon: WelcomeIcon,
     component: WelcomeOverlay,
   },
   {
     key: 'ambassadors',
     title: 'Ambassadors',
+    type: 'primary',
     icon: AmbassadorsIcon,
     component: AmbassadorsOverlay,
   },
   {
     key: 'settings',
     title: 'Settings',
+    type: 'secondary',
     icon: SettingsIcon,
     component: SettingsOverlay,
   },

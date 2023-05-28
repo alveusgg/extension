@@ -6,6 +6,7 @@ import AlveusIntro from '../alveusIntro/AlveusIntro'
 import AmbassadorList from '../ambassadorList/AmbassadorList'
 import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
+import { classes } from '../../../../utils/classes'
 
 import styles from './overlay.module.css'
 
@@ -98,7 +99,7 @@ export default function Overlay(props: OverlayProps) {
   }, [bodyClick]);
 
   return (
-    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`}>
+    <div className={classes(styles.overlay, sleeping ? styles.hidden : styles.visible)}>
       <ActivationButtons
         toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
         toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}

@@ -1,6 +1,7 @@
 import { type MouseEventHandler } from 'react'
 
 import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
+import { classes } from '../../classes'
 
 import styles from './ambassadorButton.module.css'
 
@@ -16,7 +17,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
   const images = getAmbassadorImages(ambassadorKey)
 
   return (
-    <button className={`${styles.ambassador} ${className}`} id={ambassadorKey} onClick={onClick}>
+    <button className={classes(styles.ambassador, className)} id={ambassadorKey} onClick={onClick}>
       <img
         className={styles.img}
         src={images[0].src}

@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import AmbassadorCard from '../../../../utils/global/ambassadorCard/AmbassadorCard'
 import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../utils/ambassadors'
+import { classes } from '../../../../utils/classes'
 
 import arrow from '../../../../assets/arrow.jpg'
 
@@ -60,11 +61,11 @@ export default function AmbassadorList(props: AmbassadorListProps) {
   }, [])
 
   return (
-    <div className={`${styles.ambassadorList} ${showAmbassadorList ? styles.visible : styles.hidden}`}>
+    <div className={classes(styles.ambassadorList, showAmbassadorList ? styles.visible : styles.hidden)}>
       <div className={styles.scrollAmbassadors}>
         <button
           ref={upArrowRef}
-          className={`${styles.arrow} ${styles.arrowUp} ${styles.arrowHidden}`}
+          className={classes(styles.arrow, styles.arrowUp, styles.arrowHidden)}
           onClick={() => ambassadorListScroll(250)}
         >
           <img src={arrow} alt="Up Arrow"/>
@@ -79,14 +80,14 @@ export default function AmbassadorList(props: AmbassadorListProps) {
               onClick={() => {
                 setActiveAmbassador(prev => prev === key ? undefined : key)
               }}
-              className={`${styles.ambassadorButton} ${activeAmbassador === key ? styles.highlighted : undefined}`}
+              className={classes(styles.ambassadorButton, activeAmbassador === key && styles.highlighted)}
             />
           ))}
         </div>
 
         <button
           ref={downArrowRef}
-          className={`${styles.arrow} ${styles.arrowDown}`}
+          className={classes(styles.arrow, styles.arrowDown)}
           onClick={() => ambassadorListScroll(-250)}
         >
           <img src={arrow} alt="Down Arrow"/>

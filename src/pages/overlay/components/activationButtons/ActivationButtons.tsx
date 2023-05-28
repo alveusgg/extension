@@ -1,3 +1,5 @@
+import { classes } from '../../../../utils/classes'
+
 import Welcome from '../../../../assets/activationButtons/welcome.jpg';
 import Ambassadors from '../../../../assets/activationButtons/ambassadors.jpg';
 
@@ -13,10 +15,10 @@ interface ActivationButtonProps {
 export default function ActivationButtons(props: ActivationButtonProps) {
   return (
     <div className={styles.activationButtons}>
-      <button onClick={props.toggleShowAlveusIntro} className={props.isAlveusIntroActive ? styles.highlighted : undefined}>
+      <button onClick={props.toggleShowAlveusIntro} className={classes(props.isAlveusIntroActive && styles.highlighted)}>
           <img src={Welcome} alt="Welcome" />
       </button>
-      <button onClick={props.toggleShowAmbassadorList} className={props.isAmbassadorListActive ? styles.highlighted : undefined}>
+      <button onClick={props.toggleShowAmbassadorList} className={classes(props.isAmbassadorListActive && styles.highlighted)}>
           <img src={Ambassadors} alt="Ambassadors" />
       </button>
     </div>

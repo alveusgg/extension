@@ -1,3 +1,5 @@
+import { classes } from '../../../../utils/classes'
+
 import website from '../../../../assets/alveusIntro/website.jpg'
 import amazonWishlist from '../../../../assets/alveusIntro/amazonWishlist.jpg'
 import instagram from '../../../../assets/alveusIntro/instagram.jpg'
@@ -12,7 +14,7 @@ interface AlveusIntroProps {
 }
 export default function AlveusIntro(props: AlveusIntroProps){
     return(
-        <div className={`${styles.alveusIntro} ${props.showAlveusIntro ? styles.visible : styles.hidden}`}>
+        <div className={classes(styles.alveusIntro, props.showAlveusIntro ? styles.visible : styles.hidden)}>
             <h2 className={styles.title}>Welcome to Alveus</h2>
 
             <p className={styles.intro}>

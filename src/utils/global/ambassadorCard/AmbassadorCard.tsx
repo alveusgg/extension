@@ -2,6 +2,7 @@ import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
 import { normalizeAmbassadorName } from '../../chatCommand'
 import { camelToKebab } from '../../helpers'
+import { classes } from '../../classes'
 
 import styles from './ambassadorCard.module.css'
 import moderatorBadge from '../../../assets/mod.png'
@@ -19,7 +20,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
   return (
-    <div className={`${styles.ambassadorCard} ${className} ${ambassador.birth && isBirthday(ambassador.birth) ? styles.birthday : ""}`}>
+    <div className={classes(styles.ambassadorCard, className, ambassador.birth && isBirthday(ambassador.birth) && styles.birthday)}>
       {props.onClose && (
         <div className={styles.close} onClick={onClose}>&times;</div>
       )}
@@ -34,7 +35,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
       <div className={styles.scrollable}>
         {mod && (
-          <div className={`${styles.row} ${styles.mod}`}>
+          <div className={classes(styles.row, styles.mod)}>
             <img src={moderatorBadge} alt="Moderator badge" />
             <p>
               Show this card to everyone by using
@@ -52,7 +53,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <p><i>{ambassador.scientific}</i></p>
         </div>
 
-        <div className={`${styles.row} ${styles.compact}`}>
+        <div className={classes(styles.row, styles.compact)}>
           <div>
             <h3>Sex</h3>
             <p>{ambassador.sex || "Unknown"}</p>
@@ -86,7 +87,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <p>{ambassador.mission}</p>
         </div>
 
-        <div className={`${styles.row} ${styles.site}`}>
+        <div className={classes(styles.row, styles.site)}>
           <p>
             Learn more about {ambassador.name} on the
             {' '}

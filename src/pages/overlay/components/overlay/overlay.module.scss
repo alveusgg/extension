@@ -4,9 +4,8 @@
   display: flex;
   height: 100%;
   width: 100%;
-  gap: $overlay-base-size; // horizontal spacing (scaled dynamically based on available height)
-  transition: 0.3s ease-out;
-  transition-property: visibility, translate;
+  transition: $transition;
+  transition-property: visibility, transform;
 }
 
 .visible {
@@ -15,11 +14,15 @@
 
 .hidden {
   visibility: hidden;
-  translate: -40px;
+  transform: translateX(-2.5rem); // match OverlaySettings transform
 
-  // accessibility for vestibular motion disorders
-  // do not translate overlay but only transition opacity
   @media (prefers-reduced-motion) {
-    translate: 0;
+    transform: unset;
   }
+}
+
+.popup {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }

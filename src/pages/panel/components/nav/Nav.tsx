@@ -1,7 +1,4 @@
-//images
 import AlveusLogo from '../../../../assets/alveus-logo.png';
-
-//css
 import styles from './nav.module.css';
 
 export default function Nav() {

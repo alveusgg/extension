@@ -1,8 +1,6 @@
-//components
-import Nav from './nav/Nav';
-import AmbassadorPanel from './ambassadorPanel/AmbassadorPanel';
+import Nav from './components/nav/Nav';
+import AmbassadorPanel from './components/ambassadorPanel/AmbassadorPanel';
 
-//css
 import './App.css';
 
 function App() {

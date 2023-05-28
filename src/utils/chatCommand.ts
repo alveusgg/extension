@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import tmi, { ChatUserstate } from 'tmi.js'
 
-import { ambassadors, AmbassadorKey } from './ambassdaors'
+import { ambassadors, AmbassadorKey } from './ambassadors'
 import { typeSafeObjectEntries } from './helpers'
 import { fetchCurrentChannelInfo, useTwitchAuth } from './twitch-api'
 

@@ -1,12 +1,9 @@
-// utils
-import { useState, useEffect, useCallback, useRef, useMemo } from "react"
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
-// components
-import Overlay from "./components/overlay/Overlay"
-import OverlaySettings from "./components/overlaySettings/OverlaySettings"
+import Overlay from './components/overlay/Overlay'
+import OverlaySettings from './components/overlaySettings/OverlaySettings'
 
-// css
-import styles from "./App.module.css"
+import styles from './App.module.css'
 
 interface Settings {
   disableChatPopup: boolean

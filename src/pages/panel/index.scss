@@ -1,0 +1,10 @@
+// Global styles
+@import '../../variables.scss';
+@import '../../reset.scss';
+
+body {
+  color: $primary-text;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden; // no horizontal scrollbar
+}

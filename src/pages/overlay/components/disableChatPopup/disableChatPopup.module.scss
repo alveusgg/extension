@@ -1,26 +1,28 @@
 @import '../../../../variables.scss';
 
+$knob: 1rem;
+$padding: 0.2rem;
+
 .switchContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #18181b;
-  border-radius: 5px;
+  border-radius: 0.25rem;
   text-align: center;
-  padding: 10px;
-  width: 60px;
+  padding: 0.5rem;
   box-sizing: border-box;
   color: white;
-  font-size: x-small;
+  font-size: 0.625rem;
 
   // The switch - the box around the slider
   .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 23px;
-    margin-top: 5px;
+    width: ($knob * 2) + ($padding * 2);
+    height: $knob + ($padding * 2);
+    margin-top: 0.25rem;
 
     input {
       // Hide default HTML checkbox
@@ -37,7 +39,7 @@
         background-color: $primary-color;
 
         &::before {
-          transform: translateX(15px);
+          transform: translateX($knob);
         }
       }
     }
@@ -51,7 +53,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid black;
     border-radius: 34px;
     background-color: $tertiary-color;
 
@@ -59,19 +60,18 @@
     &::before {
       position: absolute;
       content: "";
-      height: 17px;
-      width: 17px;
-      left: 3px;
-      top: 2px;
+      height: $knob;
+      width: $knob;
+      left: $padding;
+      top: $padding;
       border-radius: 50%;
       background-color: white;
-      transition: transform 0.4s;
-    }
-  }
-}
+      transition: $transition;
+      transition-property: transform;
 
-@media (prefers-reduced-motion) {
-  .slider:before {
-    transition: none;
+      @media (prefers-reduced-motion) {
+        transition: unset;
+      }
+    }
   }
 }

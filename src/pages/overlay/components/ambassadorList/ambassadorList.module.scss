@@ -1,8 +1,28 @@
 @import '../../../../variables.scss';
 
 .ambassadorList {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   display: flex;
-  font-size: calc(1.6 * $overlay-base-size); // dynamic font size based on available height
+  transition: $transition;
+  transition-property: opacity, visibility, transform;
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-2.5rem); // match OverlaySettings transform
+
+    @media (prefers-reduced-motion) {
+      transform: unset;
+    }
+  }
 
   .scrollAmbassadors {
     display: flex;
@@ -10,19 +30,15 @@
     align-items: center;
     position: relative; // to position arrows absolutely on top of the items
     z-index: 1; // stay above the popup card
-    transition: 300ms;
 
     .ambassadors {
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      // scale ambassadors based on available height
-      width: calc(16 * $overlay-base-size);
-      padding: calc(3 * $overlay-base-size) $overlay-base-size;
-      gap: calc(2 * $overlay-base-size);
-
-      overflow: scroll;
+      width: 10rem;
+      padding: 1.5rem 1rem;
+      gap: 1rem;
 
       // mask image to fade out the list to transparent top and bottom
       // using a gradient as image of which the alpha channel will be
@@ -32,121 +48,82 @@
       // 97% - 100% gradient from 100% to 0% alpha
       mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 3%, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%);
 
-      scrollbar-width: none; // remove scrollbar (supported in Firefox)
+      // scroll, but with no scrollbar
+      overflow: scroll;
+      scrollbar-width: none;
+
       &::-webkit-scrollbar {
-        display: none; // remove scrollbar (supported in Chrome, Safari, Edge etc.)
+        display: none;
       }
     }
 
     .arrow {
-      // position the arrow on top the list
       position: absolute;
       border: 0;
-
-      // keeping a fixed size here so the click target is big enough
-      width: 40px;
-      height: 40px;
-      padding: 10px;
-
-      border-radius: 20px;
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0.5rem;
+      border-radius: 1.25rem;
       background-clip: content-box;
-      background: rgb(0 0 0 / 30%);
-      backdrop-filter: blur(5px);
-      z-index: 10000;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(0.25rem);
+      z-index: 2;
+      transition: 0.3s ease;
+      transition-property: scale, visibility, opacity;
+
+      &:hover {
+        scale: 1.4;
+      }
+
+      &Up {
+        top: 0;
+      }
+
+      &Down {
+        bottom: 0;
+        transform: rotate(180deg);
+      }
+
+      &Hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
 
       img {
         width: 100%;
         height: auto;
       }
-
-      &:hover {
-        scale: 1.4;
-        cursor: pointer;
-      }
-
-      transition: 0.3s;
-    }
-
-    .up {
-      top: 0;
-    }
-
-    .down {
-      bottom: 0;
-      transform: rotate(180deg);
-    }
-  }
-
-  .visible {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .hidden {
-    visibility: hidden;
-    opacity: 0;
-    translate: -40px;
-
-    // accessibility for vestibular motion disorders
-    // do not translate list (but keep opacity transition)
-    @media (prefers-reduced-motion) {
-      translate: 0;
     }
   }
 
   .ambassadorButton {
-    transition: 0.3s;
+    transition: $transition;
+    transition-property: outline, filter;
 
-    &:hover {
-      transform: scale(1.1);
+    &:hover,
+    &.highlighted {
+      outline: $outline;
+      filter: brightness(1.2);
     }
-  }
-
-  .ambassadorButtonClicked {
-    transform: scale(1.1);
-    outline: 3px solid orange;
   }
 
   .ambassadorCard {
     align-self: center;
     z-index: 0; // stay below ambassadors list
-    margin-left: 0.5rem;
-
-    // we scale the fixed size card based on the available height so it
-    // stays completely visible and within the clickable overlay area:
     transform-origin: center left;
-    @media screen and (max-height: 555px) {
-      scale: 0.9;
-    }
-    @media screen and (max-height: 500px) {
-      scale: 0.8;
-    }
-    @media screen and (max-height: 450px) {
-      scale: 0.7;
-    }
-    @media screen and (max-height: 410px) {
-      scale: 0.6;
-    }
-
-    // slide in the card when it gets visible
     animation: slideIn 0.5s ease-in-out;
-    // accessibility for vestibular motion disorders
-    // do not translate card but only animate opacity
+
     @media (prefers-reduced-motion) {
       animation: dissolveIn 0.5s ease-in-out;
     }
-  }
-
-  .hideArrow {
-    visibility: hidden;
-    opacity: 0;
   }
 }
 
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateX(-40%);
+    transform: translateX(-2.5rem); // match OverlaySettings translate
   }
 
   100% {
@@ -155,8 +132,6 @@
   }
 }
 
-// alternative simple opacity animation
-// (accessibility for vestibular motion disorders)
 @keyframes dissolveIn {
   0% {
     opacity: 0;

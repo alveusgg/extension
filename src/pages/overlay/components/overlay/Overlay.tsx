@@ -1,18 +1,14 @@
-// utils
 import { useEffect, useRef, useReducer, useCallback, useState } from 'react'
-import { ACTIONS, OverlayReducer } from './overlay.reducer'
 
-//components & hooks
+import { ACTIONS, OverlayReducer } from './overlay.reducer'
 import ActivationButtons from '../activationButtons/ActivationButtons'
 import AlveusIntro from '../alveusIntro/AlveusIntro'
 import AmbassadorList from '../ambassadorList/AmbassadorList'
 import useChatCommand from '../../../../utils/chatCommand'
+import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
+import { classes } from '../../../../utils/classes'
 
-//css
 import styles from './overlay.module.css'
-
-//data
-import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
 
 interface OverlayProps {
   sleeping: boolean,
@@ -103,20 +99,22 @@ export default function Overlay(props: OverlayProps) {
   }, [bodyClick]);
 
   return (
-    <div className={`${styles.overlay} ${sleeping ? styles.hidden : styles.visible}`}>
+    <div className={classes(styles.overlay, sleeping ? styles.hidden : styles.visible)}>
       <ActivationButtons
         toggleShowAmbassadorList={() => dispatch({type: showAmbassadorList ? ACTIONS.HIDE_AMBASSADOR_LIST : ACTIONS.SHOW_AMBASSADOR_LIST})}
         toggleShowAlveusIntro={() => dispatch({type: showAlveusIntro ? ACTIONS.HIDE_ALVEUS_INTRO : ACTIONS.SHOW_ALVEUS_INTRO})}
         isAlveusIntroActive={showAlveusIntro}
         isAmbassadorListActive={showAmbassadorList}
       />
-      <AlveusIntro
-        showAlveusIntro={showAlveusIntro}
-      />
-      <AmbassadorList
-        showAmbassadorList={showAmbassadorList}
-        chatChosenAmbassador={chosenAmbassador}
-      />
+      <div className={styles.popup}>
+        <AlveusIntro
+          showAlveusIntro={showAlveusIntro}
+        />
+        <AmbassadorList
+          showAmbassadorList={showAmbassadorList}
+          chatChosenAmbassador={chosenAmbassador}
+        />
+      </div>
     </div>
   )
 }

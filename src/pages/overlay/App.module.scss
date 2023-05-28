@@ -1,11 +1,9 @@
 .app {
-  // keep space for twitch player ui above and below the extension
-  position: absolute;
-  top: 95px;
-  bottom: 40px;
-  left: 15px;
-  right: 15px;
+  width: 100%;
+  height: 100%;
+  position: relative;
   transition: opacity 0.3s ease-out;
+  margin: 0 1rem;
 }
 
 .visible {

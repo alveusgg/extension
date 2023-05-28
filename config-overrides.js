@@ -2,12 +2,12 @@ const { basename, dirname, join } = require('path')
 
 const multipleEntry = require('react-app-rewire-multiple-entry')([
   {
-    entry: 'src/index.tsx',
+    entry: 'src/pages/panel/index.tsx',
     template: 'public/index.html',
     outPath: 'panel.html',
   },
   {
-    entry: 'src/index.tsx',
+    entry: 'src/pages/panel/index.tsx',
     template: 'public/index.html',
     outPath: 'mobile.html',
   },

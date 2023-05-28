@@ -1,5 +1,5 @@
-import { classes } from '../../../../../utils/classes'
 import { typeSafeObjectEntries } from '../../../../../utils/helpers'
+import Card from '../../card/Card'
 import Toggle from '../../toggle/Toggle'
 import type { OverlayOptionProps } from '../Overlay'
 
@@ -9,8 +9,8 @@ export default function Settings(props: OverlayOptionProps) {
   const { context, className } = props
 
   return (
-    <div className={classes(styles.settings, className)}>
-      <ul>
+    <Card className={className} title="Extension Settings">
+      <ul className={styles.settings}>
         {typeSafeObjectEntries(context.settings).map(([key, setting]) => (
           <li key={key}>
             {setting.type === 'boolean' && (
@@ -19,6 +19,6 @@ export default function Settings(props: OverlayOptionProps) {
           </li>
         ))}
       </ul>
-    </div>
+    </Card>
   )
 }

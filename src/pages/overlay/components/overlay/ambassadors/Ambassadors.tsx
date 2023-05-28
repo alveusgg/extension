@@ -6,7 +6,7 @@ import { sortedAmbassadors, ambassadors, type AmbassadorKey } from '../../../../
 import { classes } from '../../../../../utils/classes'
 import type { OverlayOptionProps } from '../Overlay'
 
-import arrow from '../../../../../assets/arrow.jpg'
+import arrow from '../../../../../assets/arrow.png'
 
 import styles from './ambassadors.module.css'
 

@@ -16,12 +16,12 @@ export default function Toggle(props: ToggleProps) {
   }, [onChange])
 
   return (
-    <div className={styles.switchContainer}>
-      <label className={styles.switch}>
-        <span>{label}</span> {/* TODO: This needs to be styled */}
+    <label className={styles.container}>
+      <span className={styles.label}>{label}</span>
+      <span className={styles.switch}>
         <input type="checkbox" onChange={onChangeNative} checked={value} />
         <span className={styles.slider}></span>
-      </label>
-    </div>
+      </span>
+    </label>
   )
 }

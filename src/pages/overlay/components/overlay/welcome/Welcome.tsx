@@ -1,12 +1,12 @@
-import { classes } from '../../../../../utils/classes'
+import Card from '../../card/Card'
 import type { OverlayOptionProps } from '../Overlay'
 
-import website from '../../../../../assets/alveusIntro/website.jpg'
-import amazonWishlist from '../../../../../assets/alveusIntro/amazonWishlist.jpg'
-import instagram from '../../../../../assets/alveusIntro/instagram.jpg'
-import tiktok from '../../../../../assets/alveusIntro/tiktok.jpg'
-import twitter from '../../../../../assets/alveusIntro/twitter.jpg'
-import gitHub from '../../../../../assets/alveusIntro/github.jpg'
+import website from '../../../../../assets/welcome/website.png'
+import amazonWishlist from '../../../../../assets/welcome/amazonWishlist.png'
+import instagram from '../../../../../assets/welcome/instagram.png'
+import tiktok from '../../../../../assets/welcome/tiktok.png'
+import twitter from '../../../../../assets/welcome/twitter.png'
+import gitHub from '../../../../../assets/welcome/github.png'
 
 import styles from './welcome.module.css'
 
@@ -14,9 +14,7 @@ export default function Welcome(props: OverlayOptionProps) {
   const { className } = props
 
   return (
-    <div className={classes(styles.welcome, className)}>
-      <h2 className={styles.title}>Welcome to Alveus</h2>
-
+    <Card className={className} title="Welcome to Alveus">
       <p className={styles.intro}>
         Alveus is a 501(c)(3) non-profit organization that functions as
         an exotic animal sanctuary and as a virtual education center.
@@ -57,6 +55,6 @@ export default function Welcome(props: OverlayOptionProps) {
         Contribute to the Extension
         <img src={gitHub} alt="GitHub" />
       </a>
-    </div>
+    </Card>
   )
 }

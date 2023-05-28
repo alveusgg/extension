@@ -7,12 +7,13 @@ import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 import { classes } from '../../../../utils/classes'
 
-import WelcomeIcon from '../../../../assets/activationButtons/welcome.jpg'
+import WelcomeIcon from '../../../../assets/overlay/welcome.png'
 import WelcomeOverlay from './welcome/Welcome'
 
-import AmbassadorsIcon from '../../../../assets/activationButtons/ambassadors.jpg'
+import AmbassadorsIcon from '../../../../assets/overlay/ambassadors.png'
 import AmbassadorsOverlay from './ambassadors/Ambassadors'
 
+import SettingsIcon from '../../../../assets/overlay/settings.png'
 import SettingsOverlay from './settings/Settings'
 
 import styles from './overlay.module.css'
@@ -43,7 +44,7 @@ const overlayOptions = [
   {
     key: 'settings',
     title: 'Settings',
-    icon: WelcomeIcon, // TODO: This needs an icon
+    icon: SettingsIcon,
     component: SettingsOverlay,
   },
 ] as const

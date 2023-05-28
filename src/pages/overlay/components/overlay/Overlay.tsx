@@ -1,14 +1,19 @@
 import { useEffect, useRef, useCallback, useState, useMemo } from 'react'
 
+import type { Settings } from '../../App'
 import Buttons from '../buttons/Buttons'
-import Welcome from './welcome/Welcome'
-import Ambassadors from './ambassadors/Ambassadors'
+
 import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 import { classes } from '../../../../utils/classes'
 
 import WelcomeIcon from '../../../../assets/activationButtons/welcome.jpg'
+import WelcomeOverlay from './welcome/Welcome'
+
 import AmbassadorsIcon from '../../../../assets/activationButtons/ambassadors.jpg'
+import AmbassadorsOverlay from './ambassadors/Ambassadors'
+
+import SettingsOverlay from './settings/Settings'
 
 import styles from './overlay.module.css'
 
@@ -19,9 +24,7 @@ interface OverlayProps {
     remove: (callback: () => void) => void
   },
   wake: (time: number) => void,
-  settings: {
-    disableChatPopup: boolean
-  },
+  settings: Settings,
 }
 
 const overlayOptions = [
@@ -29,13 +32,19 @@ const overlayOptions = [
     key: 'welcome',
     title: 'Welcome',
     icon: WelcomeIcon,
-    component: Welcome,
+    component: WelcomeOverlay,
   },
   {
     key: 'ambassadors',
     title: 'Ambassadors',
     icon: AmbassadorsIcon,
-    component: Ambassadors,
+    component: AmbassadorsOverlay,
+  },
+  {
+    key: 'settings',
+    title: 'Settings',
+    icon: WelcomeIcon, // TODO: This needs an icon
+    component: SettingsOverlay,
   },
 ] as const
 
@@ -44,6 +53,7 @@ type OverlayKey = typeof overlayOptions[number]['key']
 export interface OverlayOptionProps {
   context: {
     commandAmbassador?: AmbassadorKey,
+    settings: Settings,
   },
   className?: string,
 }
@@ -59,7 +69,7 @@ export default function Overlay(props: OverlayProps) {
 
   // When a chat command is run, wake the overlay
   useChatCommand(useCallback((command: string) => {
-    if (!settings.disableChatPopup) {
+    if (!settings.disableChatPopup.value) {
       if (isAmbassadorKey(command)) setCommandAmbassador(command)
       else if (command !== 'welcome') return
 
@@ -124,7 +134,8 @@ export default function Overlay(props: OverlayProps) {
   // Generate the context for the overlay options
   const context = useMemo<OverlayOptionProps["context"]>(() => ({
     commandAmbassador,
-  }), [commandAmbassador])
+    settings,
+  }), [commandAmbassador, settings])
 
   return (
     <div className={classes(styles.overlay, sleeping && styles.overlayHidden)}>

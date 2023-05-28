@@ -1,35 +1,59 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
 import Overlay from './components/overlay/Overlay'
-import OverlaySettings from './components/overlaySettings/OverlaySettings'
+import { typeSafeObjectEntries, typeSafeObjectFromEntries } from '../../utils/helpers'
 
 import styles from './App.module.css'
 
-interface Settings {
-  disableChatPopup: boolean
+const settings = {
+  disableChatPopup: {
+    title: 'Disable Mod-triggered Card Popups',
+    type: 'boolean',
+    process: (value: any) => !!value,
+  },
+} as const
+
+type SettingsKey = keyof typeof settings
+
+type StoredSettings = {
+  [key in SettingsKey]: ReturnType<typeof settings[key]['process']>
+}
+
+export type Settings = {
+  [key in SettingsKey]: typeof settings[key] & {
+    value: StoredSettings[key]
+    change: (value: StoredSettings[key]) => void
+  }
 }
 
 export default function App() {
-  const [overlaySettings, setOverlaySettings] = useState<Settings>(() => {
+  const [storedSettings, setStoredSettings] = useState<StoredSettings>(() => {
     // Load settings from local storage, merging with defaults
-    const settings = JSON.parse(localStorage.getItem("settings") || "{}")
-    return {
-      disableChatPopup: false,
-      ...settings
-    }
+    const storage = JSON.parse(localStorage.getItem("settings") || "{}")
+    return typeSafeObjectEntries(settings)
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: value.process(storage[key]) }), {} as StoredSettings)
   })
 
+  // Save settings to local storage when they change
   useEffect(() => {
-    // save settings to local storage
-    localStorage.setItem("settings", JSON.stringify(overlaySettings))
-  }, [overlaySettings])
+    localStorage.setItem("settings", JSON.stringify(storedSettings))
+  }, [storedSettings])
 
-  const toggleDisableChatPopup = useCallback(() => {
-    setOverlaySettings((current: Settings) => ({
-      ...current,
-      disableChatPopup: !current.disableChatPopup
-    }))
+  // Change the value of a setting
+  const changeSetting = useCallback(<Key extends SettingsKey>(key: Key, value: StoredSettings[Key]) => {
+    setStoredSettings(current => ({ ...current, [key]: value }))
   }, [])
+
+  // Expose a full object for the settings
+  const settingsObj = useMemo<Settings>(() => typeSafeObjectFromEntries(typeSafeObjectEntries(settings)
+    .map(([key, value]) => [
+      key,
+      {
+        ...value,
+        value: storedSettings[key],
+        change: (value: any) => changeSetting(key, value),
+      }
+    ])), [storedSettings, changeSetting])
 
   // Show/hide the overlay based on mouse movement
   const appRef = useRef<HTMLDivElement>(null)
@@ -108,12 +132,7 @@ export default function App() {
         sleeping={sleeping}
         awoken={awokenObj}
         wake={wake}
-        settings={overlaySettings}
-      />
-      <OverlaySettings
-        sleeping={sleeping}
-        settings={overlaySettings}
-        toggleDisableChatPopup={toggleDisableChatPopup}
+        settings={settingsObj}
       />
     </div>
   )

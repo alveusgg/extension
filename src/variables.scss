@@ -13,6 +13,8 @@ $font-family: 'Nunito', sans-serif;
 $outline: 0.25rem solid $outline-color;
 $transition: 0.3s ease;
 
+$slide-distance: 2.5rem;
+
 // used to scale various elements based on available height
 // but clamped between 6px and 10px to prevent tiny/giant UI
 // the values are chosen so that in a normal desktop resolution

@@ -1,0 +1,52 @@
+@import '../../../../../variables';
+
+.intro {
+  margin: 0.5rem 0 1rem;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+
+  li {
+    list-style: none;
+    transition: $transition;
+    transition-property: scale;
+
+    &:hover {
+      scale: 1.2;
+    }
+
+    a {
+      img {
+        height: 2rem;
+      }
+    }
+  }
+}
+
+.contribute {
+  color: $primary-text;
+  font-size: 0.75rem;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: fit-content;
+
+  transition: $transition;
+  transition-property: color;
+
+  &:hover {
+    color: $outline-color;
+  }
+
+  img {
+    height: 1.5rem;
+  }
+}

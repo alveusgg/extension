@@ -58,12 +58,6 @@ When prompted, select the root of the repository as the project directory and se
 
 Access the `Extension Views` tab and create a new view. Choose which view you wish to test and save it.
 
-### Hiding CSS Files
-
-If you're using VSCode, CSS files are hidden through the `settings.json` file in `.vscode`.
-
-If you're using an IntelliJ IDE, switch the Project View the `Extension` scope (as defined by `Extension.xml` in `.idea/scopes`).
-
 ## Converting Single-Page App to Multi-Page App
 
 react-app-rewired-multiple-entry is used to add multiple entry points to the app. it uses the config-overrides.js file to add the entry points.

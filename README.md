@@ -71,12 +71,6 @@ If you just want to test out the overlay, or the panel, locally without Twitch, 
 
 The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/video_overlay.html](https://localhost:8080/video_overlay.html) while the development server is running.
 
-### Hiding CSS Files
-
-If you're using VSCode, CSS files are hidden through the `settings.json` file in `.vscode`.
-
-If you're using an IntelliJ IDE, switch the Project View the `Extension` scope (as defined by `Extension.xml` in `.idea/scopes`).
-
 ## Converting Single-Page App to Multi-Page App
 
 react-app-rewired-multiple-entry is used to add multiple entry points to the app. it uses the config-overrides.js file to add the entry points.

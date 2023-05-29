@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Overlay from './components/overlay/Overlay'
 import { typeSafeObjectEntries, typeSafeObjectFromEntries } from '../../utils/helpers'
 
-import styles from './App.module.css'
+import styles from './App.module.scss'
 
 const settings = {
   disableChatPopup: {

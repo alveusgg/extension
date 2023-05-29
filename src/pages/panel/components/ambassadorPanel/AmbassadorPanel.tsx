@@ -5,7 +5,7 @@ import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverla
 import useChatCommand from '../../../../utils/chatCommand'
 import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 
-import styles from './ambassadorPanel.module.css'
+import styles from './ambassadorPanel.module.scss'
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user

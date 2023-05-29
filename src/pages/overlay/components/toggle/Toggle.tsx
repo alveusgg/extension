@@ -1,6 +1,6 @@
 import { useCallback, type ChangeEvent } from 'react'
 
-import styles from './toggle.module.css'
+import styles from './toggle.module.scss'
 
 interface ToggleProps {
   label: string,

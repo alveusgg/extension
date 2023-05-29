@@ -3,7 +3,7 @@ import { type MouseEventHandler } from 'react'
 import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
 import { classes } from '../../classes'
 
-import styles from './ambassadorButton.module.css'
+import styles from './ambassadorButton.module.scss'
 
 interface AmbassadorButtonProps {
   ambassadorKey: AmbassadorKey

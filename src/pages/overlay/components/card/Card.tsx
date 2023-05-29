@@ -1,6 +1,6 @@
 import { classes } from '../../../../utils/classes'
 
-import styles from './card.module.css'
+import styles from './card.module.scss'
 
 interface CardProps {
   children?: React.ReactNode,

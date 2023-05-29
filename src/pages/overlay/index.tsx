@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { bindTwitchAuth } from '../../utils/twitch-api';
 
-import './index.css';
+import './index.scss';
 
 bindTwitchAuth();
 

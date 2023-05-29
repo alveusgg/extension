@@ -16,7 +16,7 @@ import AmbassadorsOverlay from './ambassadors/Ambassadors'
 import SettingsIcon from '../../../../assets/overlay/settings.png'
 import SettingsOverlay from './settings/Settings'
 
-import styles from './overlay.module.css'
+import styles from './overlay.module.scss'
 
 interface OverlayProps {
   sleeping: boolean,

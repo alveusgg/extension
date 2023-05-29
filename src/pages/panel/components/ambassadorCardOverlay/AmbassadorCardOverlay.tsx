@@ -1,7 +1,7 @@
 import { useCallback, type MouseEventHandler } from 'react'
 
 import AmbassadorCard, { type AmbassadorCardProps } from '../../../../utils/global/ambassadorCard/AmbassadorCard'
-import styles from './ambassadorCardOverlay.module.css'
+import styles from './ambassadorCardOverlay.module.scss'
 
 interface AmbassadorCardOverlayProps{
   ambassadorCard: Omit<AmbassadorCardProps, "onClose" | "className">,

@@ -8,7 +8,7 @@ import tiktok from '../../../../../assets/welcome/tiktok.png'
 import twitter from '../../../../../assets/welcome/twitter.png'
 import gitHub from '../../../../../assets/welcome/github.png'
 
-import styles from './welcome.module.css'
+import styles from './welcome.module.scss'
 
 export default function Welcome(props: OverlayOptionProps) {
   const { className } = props

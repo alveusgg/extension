@@ -1,7 +1,7 @@
 import Nav from './components/nav/Nav';
 import AmbassadorPanel from './components/ambassadorPanel/AmbassadorPanel';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

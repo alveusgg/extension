@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
-import Overlay from './components/overlay/Overlay'
 import { typeSafeObjectEntries, typeSafeObjectFromEntries } from '../../utils/helpers'
+import { classes } from '../../utils/classes'
 
+import Overlay from './components/overlay/Overlay'
 import styles from './App.module.scss'
 
 const settings = {
@@ -10,8 +11,15 @@ const settings = {
     title: 'Prevent Mod-triggered Card Popups',
     type: 'boolean',
     process: (value: any) => !!value,
+    devOnly: false,
   },
-} as const
+  disableOverlayHiding: {
+    title: '(DEV) Prevent app hiding automatically',
+    type: 'boolean',
+    process: (value: any) => !!value,
+    devOnly: true,
+  }
+}
 
 type SettingsKey = keyof typeof settings
 
@@ -120,10 +128,14 @@ export default function App() {
     if (sleepTimer.current) clearTimeout(sleepTimer.current)
   }, [])
 
+  let visibilityClass = sleeping ? styles.hidden : styles.visible
+  if (process.env.NODE_ENV === 'development' && settingsObj.disableOverlayHiding.value)
+    visibilityClass = styles.visible
+
   return (
     <div
       ref={appRef}
-      className={`${styles.app} ${sleeping ? styles.hidden : styles.visible}`}
+      className={classes(styles.app, visibilityClass)}
       onMouseEnter={interacted}
       onMouseMove={interacted}
       onMouseLeave={sleep}

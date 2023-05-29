@@ -11,13 +11,17 @@ export default function Settings(props: OverlayOptionProps) {
   return (
     <Card className={className} title="Extension Settings">
       <ul className={styles.settings}>
-        {typeSafeObjectEntries(context.settings).map(([key, setting]) => (
-          <li key={key}>
-            {setting.type === 'boolean' && (
-              <Toggle label={setting.title} value={setting.value} onChange={setting.change} />
-            )}
-          </li>
-        ))}
+        {typeSafeObjectEntries(context.settings).map(([key, setting]) => {
+          if (setting.devOnly && process.env.NODE_ENV !== 'development') return null
+
+          return (
+            <li key={key}>
+              {setting.type === 'boolean' && (
+                <Toggle label={setting.title} value={setting.value} onChange={setting.change}/>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </Card>
   )

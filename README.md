@@ -42,6 +42,29 @@ If you are testing the panel, make sure to activate the extension for a panel sl
 
 If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
 
+Need a quick script to broadcast a test livestream? `curl` + `ffmpeg` have you covered:
+
+```bash
+#!/bin/bash
+
+KEY="your_stream_key_here"
+
+URL=$(curl -sS "https://ingest.twitch.tv/ingests" \
+  | jq .ingests\[0].url_template -r \
+  | sed "s/{stream_key}/$KEY/")
+
+# Thanks to https://github.com/BarryCarlyon/twitch_misc/blob/main/extensions/test_stream/generic.sh
+ffmpeg -re \
+  -f lavfi -i testsrc2=size=960x540 \
+  -f lavfi -i aevalsrc="sin(0*2*PI*t)" \
+  -vcodec libx264 \
+  -r 30 -g 30 \
+  -preset fast -vb 1000k -pix_fmt rgb24 \
+  -pix_fmt yuv420p \
+  -f flv \
+  $URL
+```
+
 ### Running without Twitch
 
 If you just want to test out the overlay, or the panel, locally without Twitch, you can do so by directly opening the pages in a browser. After all, Twitch overlays and panels are just embedded web apps.

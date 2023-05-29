@@ -24,7 +24,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
 
     const offset = 200
     const anchorElement = ambassadorList.current.querySelector(`#${name}`)
-    if (anchorElement instanceof HTMLDivElement)
+    if (anchorElement instanceof HTMLButtonElement)
       ambassadorList.current.scrollTo({top: Math.max(0, anchorElement.offsetTop - offset), behavior: "smooth"})
   }, [])
 

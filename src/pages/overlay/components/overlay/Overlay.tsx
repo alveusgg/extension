@@ -141,8 +141,12 @@ export default function Overlay(props: OverlayProps) {
     settings,
   }), [commandAmbassador, settings])
 
+  let hiddenClass = sleeping && styles.overlayHidden
+  if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
+    hiddenClass = false
+
   return (
-    <div className={classes(styles.overlay, sleeping && styles.overlayHidden)}>
+    <div className={classes(styles.overlay, hiddenClass)}>
       <Buttons
         options={overlayOptions}
         onClick={setVisibleOption}

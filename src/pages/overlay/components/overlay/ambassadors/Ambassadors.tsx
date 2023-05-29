@@ -8,7 +8,7 @@ import type { OverlayOptionProps } from '../Overlay'
 
 import arrow from '../../../../../assets/arrow.png'
 
-import styles from './ambassadors.module.css'
+import styles from './ambassadors.module.scss'
 
 export default function Ambassadors(props: OverlayOptionProps) {
   const { context, className } = props

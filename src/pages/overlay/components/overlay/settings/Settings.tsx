@@ -3,7 +3,7 @@ import Card from '../../card/Card'
 import Toggle from '../../toggle/Toggle'
 import type { OverlayOptionProps } from '../Overlay'
 
-import styles from './settings.module.css'
+import styles from './settings.module.scss'
 
 export default function Settings(props: OverlayOptionProps) {
   const { context, className } = props

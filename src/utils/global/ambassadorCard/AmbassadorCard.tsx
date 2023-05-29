@@ -4,7 +4,7 @@ import { normalizeAmbassadorName } from '../../chatCommand'
 import { camelToKebab } from '../../helpers'
 import { classes } from '../../classes'
 
-import styles from './ambassadorCard.module.css'
+import styles from './ambassadorCard.module.scss'
 import moderatorBadge from '../../../assets/mod.png'
 
 export interface AmbassadorCardProps {

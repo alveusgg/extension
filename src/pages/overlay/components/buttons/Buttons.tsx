@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { classes } from '../../../../utils/classes'
 
-import styles from './buttons.module.css'
+import styles from './buttons.module.scss'
 
 type ButtonsOptions = Readonly<{ key: string, title: string, type: "primary" | "secondary", icon: string }[]>;
 

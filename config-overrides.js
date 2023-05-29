@@ -3,17 +3,17 @@ const { basename, dirname, join } = require('path')
 const multipleEntry = require('react-app-rewire-multiple-entry')([
   {
     entry: 'src/pages/panel/index.tsx',
-    template: 'public/index.html',
+    template: 'src/template.html',
     outPath: 'panel.html',
   },
   {
     entry: 'src/pages/panel/index.tsx',
-    template: 'public/index.html',
+    template: 'src/template.html',
     outPath: 'mobile.html',
   },
   {
     entry: 'src/pages/overlay/index.tsx',
-    template: 'public/index.html',
+    template: 'src/template.html',
     outPath: 'video_overlay.html',
   }
 ]);

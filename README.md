@@ -25,8 +25,7 @@ https://user-images.githubusercontent.com/49528805/229295376-6490d0a5-5f01-456b-
 4. Install dependencies for the project with `npm install`
 5. Start the development server with `npm start`
 
-There are two ways to run the extension. You can either add it to a channel on Twitch, or use the developer rig to test locally.
-Testing via Twitch itself is recommended here, as the developer rig runs a rather outdated version of Chromium and often isn't the best experience.
+There are two ways to run the extension. You can either add it to a channel on Twitch, or access the web pages for the panel/overlay directly.
 
 ### Running via Twitch
 
@@ -48,15 +47,6 @@ If you want to use an alternate account, add the account to `Testing Account All
 If you just want to test out the overlay, or the panel, locally without Twitch, you can do so by directly opening the pages in a browser. After all, Twitch overlays and panels are just embedded web apps.
 
 The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/video_overlay.html](https://localhost:8080/video_overlay.html) while the development server is running.
-
-### Running via Developer Rig
-
-To test the overlay locally with Twitch, you'll need to install the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig/).
-
-Open the rig application and authenticate it with your Twitch account. Click on `Create your First Project` in the rig UI, and select the extension you created earlier.
-When prompted, select the root of the repository as the project directory and select `None - I'll use my own code` for the boilerplate code option.
-
-Access the `Extension Views` tab and create a new view. Choose which view you wish to test and save it.
 
 ### Hiding CSS Files
 

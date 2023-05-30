@@ -1,6 +1,7 @@
 {
-    "delay": 0.7,
-    "duration": 20,
+    "delay": 0.8,
+    "duration": 10,
+    "detectRetina": true,
     "particles": {
       "move": {
         "direction": "top",
@@ -80,7 +81,7 @@
     "emitters": {
       "rate": {
         "quantity": 20,
-        "delay": 0.3
+        "delay": 0.2
       },
       "size": {
         "width": 0,
@@ -108,6 +109,10 @@
             "sync": false
           }
         }
+      },
+      "life": {
+        "count": 1,
+        "duration": 3
       },
       "position": {
         "x": 50,

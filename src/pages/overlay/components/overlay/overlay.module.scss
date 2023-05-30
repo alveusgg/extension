@@ -4,22 +4,36 @@
   display: flex;
   height: 100%;
   width: 100%;
-  gap: $overlay-base-size; // horizontal spacing (scaled dynamically based on available height)
-  transition: 0.3s ease-out;
-  transition-property: visibility, translate;
+  transition: $transition;
+  transition-property: visibility, transform;
+
+  &Hidden {
+    visibility: hidden;
+    transform: translateX(-$slide-distance);
+
+    @media (prefers-reduced-motion) {
+      transform: unset;
+    }
+  }
 }
 
-.visible {
-  visibility: visible;
+.wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
-.hidden {
-  visibility: hidden;
-  translate: -40px;
+.option {
+  transition: $transition;
+  transition-property: opacity, visibility, transform;
 
-  // accessibility for vestibular motion disorders
-  // do not translate overlay but only transition opacity
-  @media (prefers-reduced-motion) {
-    translate: 0;
+  &Hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-$slide-distance);
+
+    @media (prefers-reduced-motion) {
+      transform: unset;
+    }
   }
 }

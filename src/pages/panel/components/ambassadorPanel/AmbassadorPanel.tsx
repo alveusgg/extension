@@ -1,14 +1,11 @@
-//components & hooks
 import { useState, useCallback, Fragment } from 'react'
+
 import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
 import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverlay'
 import useChatCommand from '../../../../utils/chatCommand'
+import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 
-//css
-import styles from './ambassadorPanel.module.css'
-
-//data
-import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassdaors'
+import styles from './ambassadorPanel.module.scss'
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user
@@ -25,15 +22,15 @@ export default function AmbassadorPanel() {
           {ambassadorCard === key && (
             <AmbassadorCardOverlay
               ambassadorCard={{ ambassadorKey: key, ambassador }}
-              close={() => setAmbassadorCard(undefined)}
+              onClose={() => setAmbassadorCard(undefined)}
             />
           )}
 
           <AmbassadorButton
             ambassadorKey={key}
             ambassador={ambassador}
-            ClassName={styles.item}
-            getCard={() => setAmbassadorCard(key)}
+            onClick={() => setAmbassadorCard(key)}
+            className={styles.item}
           />
         </Fragment>
       ))}

@@ -25,8 +25,7 @@ https://user-images.githubusercontent.com/49528805/229295376-6490d0a5-5f01-456b-
 4. Install dependencies for the project with `npm install`
 5. Start the development server with `npm start`
 
-There are two ways to run the extension. You can either add it to a channel on Twitch, or use the developer rig to test locally.
-Testing via Twitch itself is recommended here, as the developer rig runs a rather outdated version of Chromium and often isn't the best experience.
+There are two ways to run the extension. You can either add it to a channel on Twitch, or access the web pages for the panel/overlay directly.
 
 ### Running via Twitch
 
@@ -43,26 +42,34 @@ If you are testing the panel, make sure to activate the extension for a panel sl
 
 If you want to use an alternate account, add the account to `Testing Account Allowlist` under the `Access` tab of the extension version and install the extension on that account.
 
+Need a quick script to broadcast a test livestream? `curl` + `ffmpeg` have you covered:
+
+```bash
+#!/bin/bash
+
+KEY="your_stream_key_here"
+
+URL=$(curl -sS "https://ingest.twitch.tv/ingests" \
+  | jq .ingests\[0].url_template -r \
+  | sed "s/{stream_key}/$KEY/")
+
+# Thanks to https://github.com/BarryCarlyon/twitch_misc/blob/main/extensions/test_stream/generic.sh
+ffmpeg -re \
+  -f lavfi -i testsrc2=size=960x540 \
+  -f lavfi -i aevalsrc="sin(0*2*PI*t)" \
+  -vcodec libx264 \
+  -r 30 -g 30 \
+  -preset fast -vb 1000k -pix_fmt rgb24 \
+  -pix_fmt yuv420p \
+  -f flv \
+  $URL
+```
+
 ### Running without Twitch
 
 If you just want to test out the overlay, or the panel, locally without Twitch, you can do so by directly opening the pages in a browser. After all, Twitch overlays and panels are just embedded web apps.
 
 The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/video_overlay.html](https://localhost:8080/video_overlay.html) while the development server is running.
-
-### Running via Developer Rig
-
-To test the overlay locally with Twitch, you'll need to install the [Twitch Developer Rig](https://dev.twitch.tv/docs/extensions/rig/).
-
-Open the rig application and authenticate it with your Twitch account. Click on `Create your First Project` in the rig UI, and select the extension you created earlier.
-When prompted, select the root of the repository as the project directory and select `None - I'll use my own code` for the boilerplate code option.
-
-Access the `Extension Views` tab and create a new view. Choose which view you wish to test and save it.
-
-### Hiding CSS Files
-
-If you're using VSCode, CSS files are hidden through the `settings.json` file in `.vscode`.
-
-If you're using an IntelliJ IDE, switch the Project View the `Extension` scope (as defined by `Extension.xml` in `.idea/scopes`).
 
 ## Converting Single-Page App to Multi-Page App
 

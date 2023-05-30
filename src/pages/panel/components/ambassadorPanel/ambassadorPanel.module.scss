@@ -1,12 +1,11 @@
 .ambassadors {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-
-  padding: 15px;
+  gap: 1.25rem;
+  padding: 1rem;
 }
 
 .item {
-  width: 120px; //using a fixed size here to scale the dynamic ambassador
+  width: 8rem;
 }

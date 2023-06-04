@@ -34,6 +34,7 @@ const overlayOptions = [
     title: 'Welcome',
     type: 'primary',
     icon: WelcomeIcon,
+    hoverText: 'Welcome',
     component: WelcomeOverlay,
   },
   {
@@ -41,6 +42,7 @@ const overlayOptions = [
     title: 'Ambassadors',
     type: 'primary',
     icon: AmbassadorsIcon,
+    hoverText: 'List of Ambassadors',
     component: AmbassadorsOverlay,
   },
   {
@@ -48,6 +50,7 @@ const overlayOptions = [
     title: 'Settings',
     type: 'secondary',
     icon: SettingsIcon,
+    hoverText: 'Settings',
     component: SettingsOverlay,
   },
 ] as const

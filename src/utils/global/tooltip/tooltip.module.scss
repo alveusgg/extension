@@ -1,4 +1,4 @@
-$tooltip-background-color: #18181B;
+@import '../../../variables.scss';
 
 .sharedStyles {
   background-color: $tooltip-background-color;
@@ -6,10 +6,7 @@ $tooltip-background-color: #18181B;
   color: white;
   padding: 0.5rem;
   position: absolute;
-  text-align: left;
-  transition: opacity 0.15s ease-in-out;
-  transform: translateX(0%) translateY(-50%);
-}
+  transition: $transition;
 
 .optionStyles {
   font-size: 0.8rem;

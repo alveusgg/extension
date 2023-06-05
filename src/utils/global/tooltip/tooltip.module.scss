@@ -1,0 +1,35 @@
+$tooltip-background-color: #18181B;
+
+.sharedStyles {
+  background-color: $tooltip-background-color;
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.5rem;
+  position: absolute;
+  text-align: left;
+  transition: opacity 0.15s ease-in-out;
+  transform: translateX(0%) translateY(-50%);
+}
+
+.optionStyles {
+  font-size: 0.8rem;
+  left: 120%;
+  top: 50%;
+  white-space: nowrap;
+}
+
+.defaultStyles {
+  font-size: 1rem;
+  left: 60%;
+  top: 56.5%;
+}
+
+.triangle {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent $tooltip-background-color transparent transparent;
+}

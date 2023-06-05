@@ -36,8 +36,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     <Tooltip
       text={iucnText}
       isShown={iucnTooltipShown}
-      offsetLeft={11}
-      offsetTop={16.75}
       width={18}
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" viewBox="0 0 16 16">

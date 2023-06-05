@@ -23,7 +23,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
     <>
       <div
         className={styles.wrapper}
-        // title={props.title}
+        aria-label={props.title}
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       >

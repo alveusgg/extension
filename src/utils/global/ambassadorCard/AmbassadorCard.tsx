@@ -96,7 +96,12 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <div className={styles.row}>
-          <h3>Conservation Status {iucnInfoIcon}</h3>
+          <div className={styles.col}>
+            <h3>Conservation Status</h3>
+          </div>
+          <div className={styles.col}>
+            {iucnInfoIcon}
+          </div>
           <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
 

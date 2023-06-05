@@ -70,6 +70,12 @@
     margin: 0 0.5rem 0.25rem;
   }
 
+  .col {
+    display: inline-flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
   .compact {
     display: flex;
     flex-wrap: wrap;

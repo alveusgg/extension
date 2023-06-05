@@ -27,7 +27,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
     transform: "translateX(0%) translateY(-50%)",
     whiteSpace: props.isOption ? "nowrap" : "normal",
     width: `${props.width}rem` || "auto",
-    zIndex: 3,
+    zIndex: 1, // set to 1 to be above ambassador list. although without this line it still seems to work (@mostafa-damir)
   };
 
   const tooltipArrowStyle: React.CSSProperties = {

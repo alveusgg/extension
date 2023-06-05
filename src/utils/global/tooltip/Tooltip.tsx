@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import styles from "./tooltip.module.scss";
+import styles from './tooltip.module.scss'
 
 interface TooltipProps {
   text: string;
@@ -21,22 +21,18 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
 
   return (
     <>
-    <div className={styles.wrapper}
-    // title={props.title}
-    onMouseEnter={() => setShow(true)}
-    onMouseLeave={() => setShow(false)}
-    >
-      <div className={styles.children}>
-        {props.children}
-      </div>
       <div
-        className={styles.sharedStyles}
-        style={tooltipStyle}
+        className={styles.wrapper}
+        // title={props.title}
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
       >
-        <span className={styles.triangle} />
-        {props.text}
+        <div className={styles.children}>{props.children}</div>
+        <div className={styles.sharedStyles} style={tooltipStyle}>
+          <span className={styles.triangle} />
+          {props.text}
+        </div>
       </div>
-    </div>
     </>
   );
 };

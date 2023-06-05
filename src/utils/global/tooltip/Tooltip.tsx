@@ -5,19 +5,18 @@ import styles from "./tooltip.module.scss";
 interface TooltipProps {
   text: string;
   children: React.ReactNode;
-  isShown: boolean;
-  isOption?: boolean;
-  offsetLeft?: number;
-  offsetTop?: number;
-  width?: number;
+  title: string;
+  textContainerWidth?: string;
+  leftOffset?: string;
 }
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
   const [show, setShow] = useState(false);
 
   const tooltipStyle: React.CSSProperties = {
-    opacity: props.isShown ? 1 : 0,
-    width: `${props.width}rem` || "auto",
+    opacity: show ? 1 : 0,
+    width: props.textContainerWidth ? props.textContainerWidth : "max-content",
+    left: props.leftOffset,
   };
 
   return (

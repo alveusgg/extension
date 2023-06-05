@@ -4,29 +4,36 @@
   background-color: $tooltip-background-color;
   border-radius: 0.5rem;
   color: white;
+  font-size: 1rem;
+  left: calc(100% + .75rem);
   padding: 0.5rem;
   position: absolute;
   transition: $transition;
 
-.optionStyles {
-  font-size: 0.8rem;
-  left: 120%;
-  top: 50%;
-  white-space: nowrap;
-}
-
-.defaultStyles {
-  font-size: 1rem;
-  left: 60%;
-  top: 56.5%;
 }
 
 .triangle {
   position: absolute;
-  top: 50%;
-  right: 100%;
   margin-top: -5px;
+  right: 100%;
+  top: 50%;
   border-width: 5px;
   border-style: solid;
   border-color: transparent $tooltip-background-color transparent transparent;
+}
+
+.children {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }

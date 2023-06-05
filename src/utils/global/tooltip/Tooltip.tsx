@@ -2,6 +2,7 @@ import React from "react";
 
 interface TooltipProps {
   text: string;
+  children: React.ReactNode;
   width?: number;
   isOption?: boolean;
   isShown: boolean;
@@ -40,10 +41,13 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
   };
 
   return (
-    <div style={tooltipStyle}>
-      <span style={tooltipArrowStyle} />
-      {props.text}
-    </div>
+    <>
+      <div style={tooltipStyle}>
+        <span style={tooltipArrowStyle} />
+        {props.text}
+      </div>
+      {props.children}
+    </>
   );
 };
 

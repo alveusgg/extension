@@ -37,14 +37,13 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props
           onMouseEnter={() => setHoveredButton(option.key)}
           onMouseLeave={() => setHoveredButton(undefined)}
         >
-          <img src={option.icon} alt={option.title} />
-          {option.hoverText && (
-            <Tooltip
-              text={option.hoverText}
-              isOption={true}
-              isShown={option.key === hoveredButton && !option.active}
-            />
-          )}
+          <Tooltip
+            text={option.hoverText || option.title}
+            isOption={true}
+            isShown={option.key === hoveredButton && !option.active}
+          >
+              <img src={option.icon} alt={option.title} />
+          </Tooltip>
         </button>
       ))}
     </div>

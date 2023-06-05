@@ -16,7 +16,6 @@ interface ButtonsProps<T extends ButtonsOptions> {
 export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props: ButtonsProps<T>) {
   const { options, onClick, active } = props;
 
-  const [hoveredButton, setHoveredButton] = useState<string | undefined>(undefined);
   // Add onClick handlers to each, sort by primary/secondary (using current order as tiebreaker)
   const optionsWithOnClick = useMemo(() => options.map(option => ({
     ...option,
@@ -34,13 +33,10 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props
           key={option.key}
           onClick={option.onClick}
           className={classes(option.active && styles.highlighted, option.type === "secondary" && styles.secondary)}
-          onMouseEnter={() => setHoveredButton(option.key)}
-          onMouseLeave={() => setHoveredButton(undefined)}
         >
           <Tooltip
-            text={option.hoverText || option.title}
-            isOption={true}
-            isShown={option.key === hoveredButton && !option.active}
+            text={option.hoverText}
+            title={option.title}
           >
               <img src={option.icon} alt={option.title} />
           </Tooltip>

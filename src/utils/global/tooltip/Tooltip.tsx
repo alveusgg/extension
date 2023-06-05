@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./tooltip.module.scss";
 
@@ -13,25 +13,31 @@ interface TooltipProps {
 }
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
+  const [show, setShow] = useState(false);
+
   const tooltipStyle: React.CSSProperties = {
     opacity: props.isShown ? 1 : 0,
     width: `${props.width}rem` || "auto",
   };
 
-  const tooltipClass = props.isOption
-    ? styles.optionStyles
-    : styles.defaultStyles;
-
   return (
     <>
+    <div className={styles.wrapper}
+    // title={props.title}
+    onMouseEnter={() => setShow(true)}
+    onMouseLeave={() => setShow(false)}
+    >
+      <div className={styles.children}>
+        {props.children}
+      </div>
       <div
-        className={`${styles.sharedStyles} ${tooltipClass}`}
+        className={styles.sharedStyles}
         style={tooltipStyle}
       >
         <span className={styles.triangle} />
         {props.text}
       </div>
-      {props.children}
+    </div>
     </>
   );
 };

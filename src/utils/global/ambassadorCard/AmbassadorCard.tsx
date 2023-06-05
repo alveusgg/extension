@@ -1,4 +1,3 @@
-import { useState } from 'react'
 
 import { calculateAge, formatDate, isBirthday } from '../../dateManager'
 import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
@@ -10,7 +9,6 @@ import Tooltip from '../tooltip/Tooltip'
 import styles from './ambassadorCard.module.scss'
 import moderatorBadge from '../../../assets/mod.png'
 
-import Tooltip from '../tooltip/Tooltip'
 
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey

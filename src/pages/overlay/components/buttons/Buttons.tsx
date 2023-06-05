@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react'
 
 import { classes } from '../../../../utils/classes'
+import Tooltip from '../../../../utils/global/tooltip/Tooltip'
 
 import styles from './buttons.module.scss'
-import Tooltip from "../tooltip/Tooltip";
 
 type ButtonsOptions = Readonly<{ key: string, title: string, type: "primary" | "secondary", icon: string, hoverText: string }[]>;
 

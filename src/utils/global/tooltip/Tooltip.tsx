@@ -3,11 +3,11 @@ import React from "react";
 interface TooltipProps {
   text: string;
   children: React.ReactNode;
-  width?: number;
-  isOption?: boolean;
   isShown: boolean;
+  isOption?: boolean;
   offsetLeft?: number;
   offsetTop?: number;
+  width?: number;
 }
 
 // TODO: dynamic styles converted to tooltip.module.scss as import

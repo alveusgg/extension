@@ -5,6 +5,7 @@ import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador
 import { normalizeAmbassadorName } from '../../chatCommand'
 import { camelToKebab } from '../../helpers'
 import { classes } from '../../classes'
+import Tooltip from '../tooltip/Tooltip'
 
 import styles from './ambassadorCard.module.scss'
 import moderatorBadge from '../../../assets/mod.png'

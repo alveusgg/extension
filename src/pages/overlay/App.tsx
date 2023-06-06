@@ -90,7 +90,7 @@ export default function App() {
 
   // When the user interacts, have a 5s timeout before hiding the overlay
   const interacted = useCallback(() => {
-    wake(5000)
+    wake(1000)
   }, [wake])
 
   // When a user scrolls, treat it as an interaction (but handle Firefox being weird)

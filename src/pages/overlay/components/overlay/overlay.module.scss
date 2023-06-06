@@ -10,6 +10,7 @@
   &Hidden {
     visibility: hidden;
     transform: translateX(-$slide-distance);
+    cursor: none;
 
     @media (prefers-reduced-motion) {
       transform: unset;

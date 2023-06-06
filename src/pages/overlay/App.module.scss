@@ -12,8 +12,9 @@
 
 .hidden {
   opacity: 0;
-
+  cursor: none;
   * {
+    cursor: none;
     pointer-events: none;
   }
 }

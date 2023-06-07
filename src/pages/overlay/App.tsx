@@ -145,7 +145,6 @@ export default function App() {
       onMouseEnter={interacted}
       onMouseMove={interacted}
       onMouseLeave={sleep}
-      style={{backgroundColor:'mediumaquamarine'}}
     >
       <Overlay
         sleeping={sleeping}

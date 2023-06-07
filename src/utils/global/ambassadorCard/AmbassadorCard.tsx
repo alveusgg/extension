@@ -21,24 +21,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const images = getAmbassadorImages(ambassadorKey)
   const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
-
-  const iucnText = "An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
-  const iucnInfoIcon = (
-    <Tooltip
-      text={iucnText}
-      title="IUCN"
-      leftOffset="60%"
-      textContainerWidth="18rem"
-    >
-      <button>
-        {/* svg sourced from https://icons.getbootstrap.com/icons/info-circle-fill/. The Tailwind-recommended https://heroicons.com/ wasn't friendly for resizing */}
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" viewBox="0 0 16 16">
-          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-        </svg>
-      </button>
-    </Tooltip>
-  );
-
   return (
     <div className={classes(styles.ambassadorCard, className, ambassador.birth && isBirthday(ambassador.birth) && styles.birthday)}>
       {props.onClose && (
@@ -97,7 +79,25 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             <h3>Conservation Status</h3>
           </div>
           <div className={styles.col}>
-            {iucnInfoIcon}
+            <Tooltip
+              text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
+              title="IUCN"
+              leftOffset="60%"
+              textContainerWidth="18rem"
+            >
+              <button>
+                {/* svg sourced from https://icons.getbootstrap.com/icons/info-circle-fill/. The Tailwind-recommended https://heroicons.com/ wasn't friendly for resizing */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="gray"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                </svg>
+              </button>
+            </Tooltip>
           </div>
           <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>

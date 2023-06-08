@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from "react";
 
-import styles from './tooltip.module.scss'
-import { classes } from '../../classes'
+import styles from "./tooltip.module.scss";
+import { classes } from "../../classes";
 
 interface TooltipProps {
   text: string;
@@ -22,15 +22,16 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
   const containerRect = containerRef.current?.getBoundingClientRect();
   const tooltipRect = tooltipRef.current?.getBoundingClientRect();
 
-  const containerCenter = (containerRect?.top ?? 0) + (containerRect?.height ?? 0) / 2;
-  
+  const containerCenter =
+    (containerRect?.top ?? 0) + (containerRect?.height ?? 0) / 2;
+
   // set tooltip style based on incoming props
   const tooltipStyle = {
     opacity: show ? 1 : 0,
     // restrict width of tooltip with optional prop
-    width: props.textContainerWidth ? props.textContainerWidth : 'auto',
-    fontSize: props.fontSize ? props.fontSize : '1rem',
-  }
+    width: props.textContainerWidth ? props.textContainerWidth : "auto",
+    fontSize: props.fontSize ? props.fontSize : "1rem",
+  };
 
   return (
     <div
@@ -45,18 +46,20 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
       >
         {props.children}
       </div>
-      <div className={styles.tooltip}
+      <div
+        className={styles.tooltip}
         ref={tooltipRef}
         style={{
           ...tooltipStyle,
           top: containerCenter - (tooltipRect?.height ?? 0) / 2,
           left: (containerRef.current?.getBoundingClientRect().right ?? 0) + 10,
-        }}>
+        }}
+      >
         <span className={styles.triangle} />
         {props.text}
       </div>
-    </div >
-  )
+    </div>
+  );
 };
 
 export default Tooltip;

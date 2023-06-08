@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
 .triangle {
   position: absolute;
@@ -9,7 +9,6 @@
   border-style: solid;
   border-color: transparent $tooltip-background-color transparent transparent;
 }
-
 
 .tooltip {
   position: fixed;

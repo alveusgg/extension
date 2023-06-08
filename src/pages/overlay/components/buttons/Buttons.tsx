@@ -28,22 +28,30 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props
 
   return (
     <div className={styles.activationButtons}>
-      {optionsWithOnClick.map(option => (
+      {optionsWithOnClick.map((option) => (
         <Tooltip
           key={option.key}
           text={option.hoverText}
           ariaLabel={option.title}
-          className={classes(styles.tooltip, option.active && styles.highlighted, option.type === "secondary" && styles.secondary)}
+          className={classes(
+            styles.tooltip,
+            option.active && styles.highlighted,
+            option.type === "secondary" && styles.secondary
+          )}
         >
           <button
             key={option.key}
             onClick={option.onClick}
-            className={classes(styles.btn, option.active && styles.highlighted, option.type === "secondary" && styles.secondary)}
+            className={classes(
+              styles.btn,
+              option.active && styles.highlighted,
+              option.type === "secondary" && styles.secondary
+            )}
           >
             <img src={option.icon} alt={option.title} />
           </button>
         </Tooltip>
       ))}
     </div>
-  )
+  );
 }

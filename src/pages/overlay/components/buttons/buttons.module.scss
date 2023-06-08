@@ -1,4 +1,4 @@
-@import '../../../../variables.scss';
+@import "../../../../variables.scss";
 
 .activationButtons {
   display: flex;
@@ -39,7 +39,7 @@
       height: 3rem;
       margin-top: auto;
 
-      ~.secondary {
+      ~ .secondary {
         margin-top: 0;
       }
     }

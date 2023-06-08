@@ -93,11 +93,11 @@ export default function App() {
     wake(5000)
   }, [wake])
 
+  // Hide the cursor when sleeping
   useEffect(() => {
     if (sleeping) document.documentElement.style.cursor = 'none'
-    else document.documentElement.style.cursor = 'default'
+    else document.documentElement.style.removeProperty('cursor')
   }, [sleeping])
-
 
   // When a user scrolls, treat it as an interaction (but handle Firefox being weird)
   const scrollRef = useRef<[HTMLElement, number]|undefined>(undefined)

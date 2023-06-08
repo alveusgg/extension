@@ -1,17 +1,5 @@
 @import '../../../variables.scss';
 
-.sharedStyles {
-  background-color: $tooltip-background-color;
-  border-radius: 0.5rem;
-  color: white;
-  font-size: 1rem;
-  left: calc(100% + .75rem);
-  padding: 0.5rem;
-  position: absolute;
-  transition: $transition;
-
-}
-
 .triangle {
   position: absolute;
   margin-top: -5px;
@@ -22,18 +10,15 @@
   border-color: transparent $tooltip-background-color transparent transparent;
 }
 
-.children {
-  position: relative;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.wrapper {
-  display: inline-flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+
+.tooltip {
+  position: fixed;
+  z-index: 1;
+  background-color: $tooltip-background-color;
+  color: white;
+  transition: $transition;
+  transition-property: opacity;
+  pointer-events: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }

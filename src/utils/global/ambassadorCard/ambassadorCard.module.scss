@@ -70,10 +70,17 @@
     margin: 0 0.5rem 0.25rem;
   }
 
-  .col {
-    display: inline-flex;
-    flex-direction: column;
-    width: fit-content;
+  .info {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    
+    .tooltip {
+      button,
+      svg {
+        display: block;
+      }
+    }
   }
 
   .compact {

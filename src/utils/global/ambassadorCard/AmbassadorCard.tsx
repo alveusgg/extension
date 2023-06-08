@@ -75,15 +75,14 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <div className={styles.row}>
-          <div className={styles.col}>
+          <div className={styles.info}>
             <h3>Conservation Status</h3>
-          </div>
-          <div className={styles.col}>
             <Tooltip
               text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
-              title="IUCN"
-              leftOffset="60%"
+              ariaLabel="IUCN"
               textContainerWidth="18rem"
+              fontSize=".9rem"
+              className={styles.tooltip}
             >
               <button>
                 {/* svg sourced from https://icons.getbootstrap.com/icons/info-circle-fill/. The Tailwind-recommended https://heroicons.com/ wasn't friendly for resizing */}

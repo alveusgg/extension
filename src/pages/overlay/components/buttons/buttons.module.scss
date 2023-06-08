@@ -7,27 +7,31 @@
   margin: 3rem 0 0;
   z-index: 1; // stay above the popups
 
-  button {
+  .btn,
+  .tooltip {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 4rem;
     height: 4rem;
-    border-radius: 0.5rem;
-    background: $primary-color;
-    cursor: pointer;
-    box-shadow: 0 0.125rem 0.25rem $accent-color;
-    transition: $transition;
-    transition-property: outline, filter;
 
-    img {
-      height: 60%;
-    }
+    button {
+      border-radius: 0.5rem;
+      background: $primary-color;
+      cursor: pointer;
+      box-shadow: 0 0.125rem 0.25rem $accent-color;
+      transition: $transition;
+      transition-property: outline, filter;
 
-    &:hover,
-    &.highlighted {
-      outline: $outline;
-      filter: brightness(1.2);
+      img {
+        height: 60%;
+      }
+
+      &:hover,
+      &.highlighted {
+        outline: $outline;
+        filter: brightness(1.2);
+      }
     }
 
     &.secondary {
@@ -35,10 +39,9 @@
       height: 3rem;
       margin-top: auto;
 
-      ~ .secondary {
+      ~.secondary {
         margin-top: 0;
       }
     }
   }
 }
-

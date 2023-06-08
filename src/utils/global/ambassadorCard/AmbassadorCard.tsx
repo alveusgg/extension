@@ -8,7 +8,6 @@ import Tooltip from '../tooltip/Tooltip'
 import styles from './ambassadorCard.module.scss'
 import moderatorBadge from '../../../assets/mod.png'
 
-
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey
   ambassador: AmbassadorType

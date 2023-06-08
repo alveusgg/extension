@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react'
 
-import styles from "./tooltip.module.scss";
-import { classes } from "../../classes";
+import { classes } from '../../classes'
+import styles from './tooltip.module.scss'
 
 interface TooltipProps {
   text: string;

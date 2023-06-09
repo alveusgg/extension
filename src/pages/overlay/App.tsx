@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { typeSafeObjectEntries, typeSafeObjectFromEntries } from '../../utils/helpers'
 import { classes } from '../../utils/classes'
 
+import useHiddenCursor from './hooks/useHiddenCursor'
+
 import Overlay from './components/overlay/Overlay'
 import styles from './App.module.scss'
 
@@ -35,6 +37,9 @@ export type Settings = {
 }
 
 export default function App() {
+  // Hide the cursor when the user is idle
+  const [, showCursor] = useHiddenCursor()
+
   const [storedSettings, setStoredSettings] = useState<StoredSettings>(() => {
     // Load settings from local storage, merging with defaults
     const storage = JSON.parse(localStorage.getItem("settings") || "{}")
@@ -91,13 +96,8 @@ export default function App() {
   // When the user interacts, have a 5s timeout before hiding the overlay
   const interacted = useCallback(() => {
     wake(5000)
-  }, [wake])
-
-  // Hide the cursor when sleeping
-  useEffect(() => {
-    if (sleeping) document.documentElement.style.cursor = 'none'
-    else document.documentElement.style.removeProperty('cursor')
-  }, [sleeping])
+    showCursor()
+  }, [wake, showCursor])
 
   // When a user scrolls, treat it as an interaction (but handle Firefox being weird)
   const scrollRef = useRef<[HTMLElement, number]|undefined>(undefined)

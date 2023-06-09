@@ -1,72 +1,15 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
-import { typeSafeObjectEntries, typeSafeObjectFromEntries } from '../../utils/helpers'
 import { classes } from '../../utils/classes'
-
 import useHiddenCursor from './hooks/useHiddenCursor'
+import useStoredSettings from './hooks/useStoredSettings'
 
 import Overlay from './components/overlay/Overlay'
 import styles from './App.module.scss'
 
-const settings = {
-  disableChatPopup: {
-    title: 'Prevent Mod-triggered Card Popups',
-    type: 'boolean',
-    process: (value: any) => !!value,
-    devOnly: false,
-  },
-  disableOverlayHiding: {
-    title: '(DEV) Prevent app hiding automatically',
-    type: 'boolean',
-    process: (value: any) => !!value,
-    devOnly: true,
-  }
-}
-
-type SettingsKey = keyof typeof settings
-
-type StoredSettings = {
-  [key in SettingsKey]: ReturnType<typeof settings[key]['process']>
-}
-
-export type Settings = {
-  [key in SettingsKey]: typeof settings[key] & {
-    value: StoredSettings[key]
-    change: (value: StoredSettings[key]) => void
-  }
-}
-
 export default function App() {
   // Hide the cursor when the user is idle
   const [, showCursor] = useHiddenCursor()
-
-  const [storedSettings, setStoredSettings] = useState<StoredSettings>(() => {
-    // Load settings from local storage, merging with defaults
-    const storage = JSON.parse(localStorage.getItem("settings") || "{}")
-    return typeSafeObjectEntries(settings)
-      .reduce((acc, [key, value]) => ({ ...acc, [key]: value.process(storage[key]) }), {} as StoredSettings)
-  })
-
-  // Save settings to local storage when they change
-  useEffect(() => {
-    localStorage.setItem("settings", JSON.stringify(storedSettings))
-  }, [storedSettings])
-
-  // Change the value of a setting
-  const changeSetting = useCallback(<Key extends SettingsKey>(key: Key, value: StoredSettings[Key]) => {
-    setStoredSettings(current => ({ ...current, [key]: value }))
-  }, [])
-
-  // Expose a full object for the settings
-  const settingsObj = useMemo<Settings>(() => typeSafeObjectFromEntries(typeSafeObjectEntries(settings)
-    .map(([key, value]) => [
-      key,
-      {
-        ...value,
-        value: storedSettings[key],
-        change: (value: any) => changeSetting(key, value),
-      }
-    ])), [storedSettings, changeSetting])
 
   // Show/hide the overlay based on mouse movement
   const appRef = useRef<HTMLDivElement>(null)
@@ -134,8 +77,10 @@ export default function App() {
     if (sleepTimer.current) clearTimeout(sleepTimer.current)
   }, [])
 
+  // Block sleeping hiding the overlay if dev toggle is on
+  const settings = useStoredSettings()
   let visibilityClass = sleeping ? styles.hidden : styles.visible
-  if (process.env.NODE_ENV === 'development' && settingsObj.disableOverlayHiding.value)
+  if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
     visibilityClass = styles.visible
 
   return (
@@ -150,7 +95,6 @@ export default function App() {
         sleeping={sleeping}
         awoken={awokenObj}
         wake={wake}
-        settings={settingsObj}
       />
     </div>
   )

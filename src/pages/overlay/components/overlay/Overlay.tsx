@@ -1,11 +1,11 @@
 import { useEffect, useRef, useCallback, useState, useMemo } from 'react'
 
-import type { Settings } from '../../App'
 import Buttons from '../buttons/Buttons'
 
 import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 import { classes } from '../../../../utils/classes'
+import useStoredSettings from '../../hooks/useStoredSettings'
 
 import WelcomeIcon from '../../../../assets/overlay/welcome.png'
 import WelcomeOverlay from './welcome/Welcome'
@@ -25,7 +25,6 @@ interface OverlayProps {
     remove: (callback: () => void) => void
   },
   wake: (time: number) => void,
-  settings: Settings,
 }
 
 const overlayOptions = [
@@ -57,14 +56,13 @@ type OverlayKey = typeof overlayOptions[number]['key']
 export interface OverlayOptionProps {
   context: {
     commandAmbassador?: AmbassadorKey,
-    settings: Settings,
   },
   className?: string,
 }
 
 export default function Overlay(props: OverlayProps) {
-  const { sleeping, awoken, wake, settings } = props
-
+  const { sleeping, awoken, wake } = props
+  const settings = useStoredSettings()
   const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>()
   const [visibleOption, setVisibleOption] = useState<OverlayKey>()
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
@@ -93,10 +91,8 @@ export default function Overlay(props: OverlayProps) {
   }, [settings.disableChatPopup, commandDelay, wake]))
 
   // Ensure we clean up the timer when we unmount
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
-    }
+  useEffect(() => () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
   }, [])
 
   // If the user interacts with the overlay, clear the auto-dismiss timer
@@ -138,9 +134,9 @@ export default function Overlay(props: OverlayProps) {
   // Generate the context for the overlay options
   const context = useMemo<OverlayOptionProps["context"]>(() => ({
     commandAmbassador,
-    settings,
-  }), [commandAmbassador, settings])
+  }), [commandAmbassador])
 
+  // Block sleeping hiding the overlay if dev toggle is on
   let hiddenClass = sleeping && styles.overlayHidden
   if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
     hiddenClass = false

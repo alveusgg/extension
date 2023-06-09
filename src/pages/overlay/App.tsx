@@ -8,14 +8,17 @@ import useSleeping from './hooks/useSleeping'
 import Overlay from './components/overlay/Overlay'
 import styles from './App.module.scss'
 
+// Hide the overlay after 5s of inactivity
+const timeout = 5000;
+
 export default function App() {
   // Show/hide the overlay based on mouse movement
   const sleeping = useSleeping();
   const appRef = useRef<HTMLDivElement>(null)
 
-  // When the user interacts, have a 5s timeout before hiding the overlay
+  // When the user interacts, show the overlay
   const interacted = useCallback(() => {
-    sleeping.wake(5000)
+    sleeping.wake(timeout)
   }, [sleeping.wake])
 
   // Hide the cursor when the user is idle

@@ -1,27 +1,31 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+
+import useIntelligentTimer from './useIntelligentTimer'
+
+// Hide the cursor after 5s of inactivity
+const timeout = 5000;
 
 const useHiddenCursor = () => {
   // Hide the cursor if the user is inactive on the whole page
-  const timer = useRef<NodeJS.Timeout | undefined>(undefined)
+  const [startTimer] = useIntelligentTimer()
   const [hidden, setHidden] = useState(false)
 
-  // Any interaction shows the cursor for 5 seconds
-  const show = useCallback(() => {
+  // Show the cursor for x milliseconds
+  const show = useCallback((time: number) => {
     setHidden(false)
-    if (timer.current) clearTimeout(timer.current)
-    timer.current = setTimeout(() => {
-      setHidden(true)
-    }, 5000)
-  }, [])
+    startTimer(() => setHidden(true), time)
+  }, [startTimer])
 
   // Show the cursor as soon as the user interacts with the page
   useEffect(() => {
-    document.addEventListener('mouseenter', show)
-    document.addEventListener('mousemove', show)
+    const callback = () => show(timeout)
+
+    document.addEventListener('mouseenter', callback)
+    document.addEventListener('mousemove', callback)
 
     return () => {
-      document.removeEventListener('mouseenter', show)
-      document.removeEventListener('mousemove', show)
+      document.removeEventListener('mouseenter', callback)
+      document.removeEventListener('mousemove', callback)
     }
   }, [show])
 
@@ -30,11 +34,6 @@ const useHiddenCursor = () => {
     if (hidden) document.documentElement.style.cursor = 'none'
     else document.documentElement.style.removeProperty('cursor')
   }, [hidden])
-
-  // When we unmount, clear the sleep timer
-  useEffect(() => () => {
-    if (timer.current) clearTimeout(timer.current)
-  }, [])
 
   // Expose the state and the active function
   return [hidden, show] as [boolean, () => void]

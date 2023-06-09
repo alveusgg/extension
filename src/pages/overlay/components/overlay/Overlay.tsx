@@ -19,6 +19,9 @@ import SettingsOverlay from './settings/Settings'
 
 import styles from './overlay.module.scss'
 
+// Show command-triggered popups for 8s
+const commandTimeout = 8000
+
 const overlayOptions = [
   {
     key: 'welcome',
@@ -60,7 +63,6 @@ export default function Overlay() {
   const [visibleOption, setVisibleOption] = useState<OverlayKey>()
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
   const awakingRef = useRef(false)
-  const commandDelay = 8000
 
   // When a chat command is run, wake the overlay
   useChatCommand(useCallback((command: string) => {
@@ -75,13 +77,13 @@ export default function Overlay() {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
       timeoutRef.current = setTimeout(() => {
         setVisibleOption(undefined)
-      }, commandDelay)
+      }, commandTimeout)
 
       // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
       awakingRef.current = true
-      sleeping.wake(commandDelay)
+      sleeping.wake(commandTimeout)
     }
-  }, [settings.disableChatPopup, commandDelay, sleeping.wake]))
+  }, [settings.disableChatPopup, commandTimeout, sleeping.wake]))
 
   // Ensure we clean up the timer when we unmount
   useEffect(() => () => {
@@ -89,6 +91,7 @@ export default function Overlay() {
   }, [])
 
   // If the user interacts with the overlay, clear the auto-dismiss timer
+  // Except if we just triggered this wake, in which case we want to ignore it
   useEffect(() => {
     const callback = () => {
       if (awakingRef.current) awakingRef.current = false

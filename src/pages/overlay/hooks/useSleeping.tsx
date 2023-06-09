@@ -1,25 +1,31 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 
-const events = ['wake', 'sleep'] as const
-type Event = typeof events[number]
+import useIntelligentTimer from './useIntelligentTimer'
+
+type Events = {
+  wake: ((time: number) => void) | (() => void),
+  sleep: () => void,
+}
+
+type Event = keyof Events
 
 export type Sleeping = {
   sleeping: boolean,
   wake: (time: number) => void,
   sleep: () => void,
-  on: (event: Event, fn: () => void) => void,
-  off: (event: Event, fn: () => void) => void,
+  on: (event: Event, fn: Events[Event]) => void,
+  off: (event: Event, fn: Events[Event]) => void,
 }
 
 const context = createContext<Sleeping | undefined>(undefined)
 
 export const SleepingProvider = ({ children }: { children: React.ReactNode }) => {
-  const timer = useRef<NodeJS.Timeout | undefined>(undefined)
+  const [startTimer, stopTimer] = useIntelligentTimer()
   const [sleeping, setSleeping] = useState(false)
 
   // Allow subscriptions to wake/sleep events
   // This allows logic to know when the overlay was re-awoken, even if it was already awake
-  const [callbacks, setCallbacks] = useState<{ [k in Event]: (() => void)[] }>(events.reduce((prev, event) => ({ ...prev, [event]: [] }), {} as any))
+  const [callbacks, setCallbacks] = useState<{ [k in Event]: Events[k][] }>({ wake: [], sleep: [] })
   const on = useCallback<Sleeping['on']>((event, fn) => {
     setCallbacks(prev => ({ ...prev, [event]: [...prev[event], fn] }))
   }, [])
@@ -30,24 +36,16 @@ export const SleepingProvider = ({ children }: { children: React.ReactNode }) =>
   // Wake the overlay for x milliseconds
   const wake = useCallback((time: number) => {
     setSleeping(false)
-    callbacks.wake.forEach(fn => fn())
-    if (timer.current) clearTimeout(timer.current)
-    timer.current = setTimeout(() => {
-      setSleeping(true)
-    }, time)
-  }, [callbacks.wake])
+    callbacks.wake.forEach(fn => fn(time))
+    startTimer(() => setSleeping(true), time)
+  }, [callbacks.wake, startTimer])
 
   // Immediately sleep the overlay
   const sleep = useCallback(() => {
     setSleeping(true)
     callbacks.sleep.forEach(fn => fn())
-    if (timer.current) clearTimeout(timer.current)
-  }, [callbacks.sleep])
-
-  // When we unmount, clear the sleep timer
-  useEffect(() => () => {
-    if (timer.current) clearTimeout(timer.current)
-  }, [])
+    stopTimer()
+  }, [callbacks.sleep, stopTimer])
 
   // Expose the full object for sleeping
   const obj = useMemo(() => ({

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
 import { typeSafeObjectEntries, typeSafeObjectFromEntries } from '../../../utils/helpers'
 
@@ -32,7 +32,7 @@ export type Settings = {
 
 const context = createContext<Settings | undefined>(undefined)
 
-export const SettingsProvider = ({ children }: { children: React.ReactNode }) => {
+export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [stored, setStored] = useState<StoredSettings>(() => {
     // Load settings from local storage on mount, merging with defaults
     const storage = JSON.parse(localStorage.getItem('settings') || '{}')

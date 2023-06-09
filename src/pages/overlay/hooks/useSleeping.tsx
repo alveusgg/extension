@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
 
 import useIntelligentTimer from './useIntelligentTimer'
 
@@ -19,7 +19,7 @@ export type Sleeping = {
 
 const context = createContext<Sleeping | undefined>(undefined)
 
-export const SleepingProvider = ({ children }: { children: React.ReactNode }) => {
+export const SleepingProvider = ({ children }: { children: ReactNode }) => {
   const [startTimer, stopTimer] = useIntelligentTimer()
   const [sleeping, setSleeping] = useState(false)
 

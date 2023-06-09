@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import useIntelligentTimer from './useIntelligentTimer'
 
 // Hide the cursor after 5s of inactivity
-const timeout = 5000;
+const timeout = 5_000;
 
 const useHiddenCursor = () => {
   // Hide the cursor if the user is inactive on the whole page

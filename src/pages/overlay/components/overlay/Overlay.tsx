@@ -19,8 +19,8 @@ import SettingsOverlay from './settings/Settings'
 
 import styles from './overlay.module.scss'
 
-// Show command-triggered popups for 8s
-const commandTimeout = 8000
+// Show command-triggered popups for 10s
+const commandTimeout = 10_000
 
 const overlayOptions = [
   {
@@ -57,7 +57,7 @@ export interface OverlayOptionProps {
 
 export default function Overlay() {
   const settings = useStoredSettings()
-  const sleeping = useSleeping()
+  const { sleeping, wake, on: addSleepListener, off: removeSleepListener } = useSleeping()
 
   const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>()
   const [visibleOption, setVisibleOption] = useState<OverlayKey>()
@@ -81,9 +81,9 @@ export default function Overlay() {
 
       // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
       awakingRef.current = true
-      sleeping.wake(commandTimeout)
+      wake(commandTimeout)
     }
-  }, [settings.disableChatPopup, commandTimeout, sleeping.wake]))
+  }, [settings.disableChatPopup, wake]))
 
   // Ensure we clean up the timer when we unmount
   useEffect(() => () => {
@@ -97,9 +97,9 @@ export default function Overlay() {
       if (awakingRef.current) awakingRef.current = false
       else if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-    sleeping.on('wake', callback)
-    return () => sleeping.off('wake', callback)
-  }, [sleeping.on, sleeping.off])
+    addSleepListener('wake', callback)
+    return () => removeSleepListener('wake', callback)
+  }, [addSleepListener, removeSleepListener])
 
   // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {
@@ -133,7 +133,7 @@ export default function Overlay() {
   }), [commandAmbassador])
 
   // Block sleeping hiding the overlay if dev toggle is on
-  let hiddenClass = sleeping.sleeping && styles.overlayHidden
+  let hiddenClass = sleeping && styles.overlayHidden
   if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
     hiddenClass = false
 

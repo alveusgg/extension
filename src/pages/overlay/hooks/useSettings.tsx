@@ -64,10 +64,10 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   return <context.Provider value={obj}>{children}</context.Provider>
 }
 
-const useStoredSettings = () => {
+const useSettings = () => {
   const ctx = useContext(context)
-  if (!ctx) throw new Error("useStoredSettings must be used within a SettingsProvider")
+  if (!ctx) throw new Error("useSettings must be used within a SettingsProvider")
   return ctx
 }
 
-export default useStoredSettings
+export default useSettings

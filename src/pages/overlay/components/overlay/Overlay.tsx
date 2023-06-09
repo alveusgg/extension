@@ -5,7 +5,7 @@ import Buttons from '../buttons/Buttons'
 import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 import { classes } from '../../../../utils/classes'
-import useStoredSettings from '../../hooks/useStoredSettings'
+import useSettings from '../../hooks/useSettings'
 import useSleeping from '../../hooks/useSleeping'
 
 import WelcomeIcon from '../../../../assets/overlay/welcome.png'
@@ -56,7 +56,7 @@ export interface OverlayOptionProps {
 }
 
 export default function Overlay() {
-  const settings = useStoredSettings()
+  const settings = useSettings()
   const { sleeping, wake, on: addSleepListener, off: removeSleepListener } = useSleeping()
 
   const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>()

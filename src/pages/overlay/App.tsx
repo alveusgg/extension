@@ -2,7 +2,7 @@ import { useEffect, useCallback, useRef } from 'react'
 
 import { classes } from '../../utils/classes'
 import useHiddenCursor from './hooks/useHiddenCursor'
-import useStoredSettings from './hooks/useStoredSettings'
+import useSettings from './hooks/useSettings'
 import useSleeping from './hooks/useSleeping'
 
 import Overlay from './components/overlay/Overlay'
@@ -53,7 +53,7 @@ export default function App() {
   }, [scrolled])
 
   // Block sleeping hiding the overlay if dev toggle is on
-  const settings = useStoredSettings()
+  const settings = useSettings()
   let visibilityClass = sleeping ? styles.hidden : styles.visible
   if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
     visibilityClass = styles.visible

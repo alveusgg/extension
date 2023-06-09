@@ -1,5 +1,5 @@
 import { typeSafeObjectEntries } from '../../../../../utils/helpers'
-import useStoredSettings from '../../../hooks/useStoredSettings'
+import useSettings from '../../../hooks/useSettings'
 
 import Card from '../../card/Card'
 import Toggle from '../../toggle/Toggle'
@@ -9,7 +9,7 @@ import styles from './settings.module.scss'
 
 export default function Settings(props: OverlayOptionProps) {
   const { className } = props
-  const settings = useStoredSettings()
+  const settings = useSettings()
 
   return (
     <Card className={className} title="Extension Settings">

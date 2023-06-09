@@ -29,10 +29,10 @@
     "test": "react-app-rewired test",
     "lint:eslint": "eslint src --ext .ts,.tsx",
     "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format:eslint": "eslint src --ext .ts,.tsx --fix",
-    "format:prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "lint-all": "npm run lint:eslint && npm run lint:prettier",
-    "format-all": "npm run format:eslint && npm run format:prettier",
+    "lint": "npm-run-all lint:*",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:prettier": "npm run lint:prettier -- --write",
+    "format": "npm-run-all format:*",
     "eject": "react-scripts eject"
   },
   "browserslist": {
@@ -64,6 +64,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
     "react-app-rewire-multiple-entry": "^2.2.2",
     "react-app-rewired": "^2.2.1",
@@ -72,8 +73,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
-      "eslint --fix",
-      "prettier --write"
+      "eslint src --ext .ts,.tsx",
+      "prettier --check \"src/**/*.{js,jsx,ts,tsx,json}\""
     ]
   },
   "husky": {

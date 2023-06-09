@@ -1,31 +1,50 @@
-import { calculateAge, formatDate, isBirthday } from '../../dateManager'
-import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
-import { normalizeAmbassadorName } from '../../chatCommand'
-import { camelToKebab } from '../../helpers'
-import { classes } from '../../classes'
+import React from "react";
 
-import styles from './ambassadorCard.module.scss'
-import moderatorBadge from '../../../assets/mod.png'
+import { calculateAge, formatDate, isBirthday } from "../../dateManager";
+import {
+  getAmbassadorImages,
+  getIUCNStatus,
+  type AmbassadorKey,
+  type Ambassador as AmbassadorType,
+} from "../../ambassadors";
+import { normalizeAmbassadorName } from "../../chatCommand";
+import { camelToKebab } from "../../helpers";
+import { classes } from "../../classes";
+
+import styles from "./ambassadorCard.module.scss";
+import moderatorBadge from "../../../assets/mod.png";
 
 export interface AmbassadorCardProps {
-  ambassadorKey: AmbassadorKey
-  ambassador: AmbassadorType
-  onClose?: () => void
-  className?: string
+  ambassadorKey: AmbassadorKey;
+  ambassador: AmbassadorType;
+  onClose?: () => void;
+  className?: string;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassadorKey, ambassador, onClose, className } = props
-  const images = getAmbassadorImages(ambassadorKey)
-  const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
+  const { ambassadorKey, ambassador, onClose, className } = props;
+  const images = getAmbassadorImages(ambassadorKey);
+  const mod =
+    window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
+    window?.Twitch?.ext?.viewer?.role === "moderator";
 
   return (
-    <div className={classes(styles.ambassadorCard, className, ambassador.birth && isBirthday(ambassador.birth) && styles.birthday)}>
+    <div
+      className={classes(
+        styles.ambassadorCard,
+        className,
+        ambassador.birth && isBirthday(ambassador.birth) && styles.birthday
+      )}
+    >
       {props.onClose && (
-        <div className={styles.close} onClick={onClose}>&times;</div>
+        <div className={styles.close} onClick={onClose}>
+          &times;
+        </div>
       )}
 
-      <h2 className={styles.name} title={ambassador.name}>{ambassador.name}</h2>
+      <h2 className={styles.name} title={ambassador.name}>
+        {ambassador.name}
+      </h2>
       <img
         className={styles.img}
         src={images[0].src}
@@ -38,11 +57,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <div className={classes(styles.row, styles.mod)}>
             <img src={moderatorBadge} alt="Moderator badge" />
             <p>
-              Show this card to everyone by using
-              {' '}
-              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code>
-              {' '}
-              in chat.
+              Show this card to everyone by using{" "}
+              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code> in
+              chat.
             </p>
           </div>
         )}
@@ -50,7 +67,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         <div className={styles.row}>
           <h3>Species</h3>
           <p>{ambassador.species}</p>
-          <p><i>{ambassador.scientific}</i></p>
+          <p>
+            <i>{ambassador.scientific}</i>
+          </p>
         </div>
 
         <div className={classes(styles.row, styles.compact)}>
@@ -66,9 +85,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </div>
           <div>
             <h3>Birthday</h3>
-            <p>
-              {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
-            </p>
+            <p>{ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}</p>
           </div>
         </div>
 
@@ -89,10 +106,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
         <div className={classes(styles.row, styles.site)}>
           <p>
-            Learn more about {ambassador.name} on the
-            {' '}
+            Learn more about {ambassador.name} on the{" "}
             <a
-              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(ambassadorKey)}`}
+              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
+                ambassadorKey
+              )}`}
               rel="noreferrer"
               target="_blank"
             >
@@ -103,5 +121,5 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

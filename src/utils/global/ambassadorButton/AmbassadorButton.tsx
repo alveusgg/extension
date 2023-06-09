@@ -1,23 +1,31 @@
-import { type MouseEventHandler } from 'react'
+import React, { type MouseEventHandler } from "react";
 
-import { getAmbassadorImages, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
-import { classes } from '../../classes'
+import {
+  getAmbassadorImages,
+  type AmbassadorKey,
+  type Ambassador as AmbassadorType,
+} from "../../ambassadors";
+import { classes } from "../../classes";
 
-import styles from './ambassadorButton.module.scss'
+import styles from "./ambassadorButton.module.scss";
 
 interface AmbassadorButtonProps {
-  ambassadorKey: AmbassadorKey
-  ambassador: AmbassadorType
-  onClick?: MouseEventHandler<HTMLButtonElement>
-  className?: string
+  ambassadorKey: AmbassadorKey;
+  ambassador: AmbassadorType;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }
 
 export default function AmbassadorButton(props: AmbassadorButtonProps) {
-  const { ambassadorKey, ambassador, onClick, className } = props
-  const images = getAmbassadorImages(ambassadorKey)
+  const { ambassadorKey, ambassador, onClick, className } = props;
+  const images = getAmbassadorImages(ambassadorKey);
 
   return (
-    <button className={classes(styles.ambassador, className)} id={ambassadorKey} onClick={onClick}>
+    <button
+      className={classes(styles.ambassador, className)}
+      id={ambassadorKey}
+      onClick={onClick}
+    >
       <img
         className={styles.img}
         src={images[0].src}
@@ -30,5 +38,5 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
         <h3 className={styles.species}>{ambassador.species}</h3>
       </div>
     </button>
-  )
+  );
 }

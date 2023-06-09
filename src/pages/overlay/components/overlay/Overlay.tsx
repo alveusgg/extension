@@ -6,6 +6,7 @@ import useChatCommand from '../../../../utils/chatCommand'
 import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
 import { classes } from '../../../../utils/classes'
 import useStoredSettings from '../../hooks/useStoredSettings'
+import useSleeping from '../../hooks/useSleeping'
 
 import WelcomeIcon from '../../../../assets/overlay/welcome.png'
 import WelcomeOverlay from './welcome/Welcome'
@@ -17,15 +18,6 @@ import SettingsIcon from '../../../../assets/overlay/settings.png'
 import SettingsOverlay from './settings/Settings'
 
 import styles from './overlay.module.scss'
-
-interface OverlayProps {
-  sleeping: boolean,
-  awoken: {
-    add: (callback: () => void) => void,
-    remove: (callback: () => void) => void
-  },
-  wake: (time: number) => void,
-}
 
 const overlayOptions = [
   {
@@ -60,9 +52,10 @@ export interface OverlayOptionProps {
   className?: string,
 }
 
-export default function Overlay(props: OverlayProps) {
-  const { sleeping, awoken, wake } = props
+export default function Overlay() {
   const settings = useStoredSettings()
+  const sleeping = useSleeping()
+
   const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>()
   const [visibleOption, setVisibleOption] = useState<OverlayKey>()
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
@@ -86,9 +79,9 @@ export default function Overlay(props: OverlayProps) {
 
       // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
       awakingRef.current = true
-      wake(commandDelay)
+      sleeping.wake(commandDelay)
     }
-  }, [settings.disableChatPopup, commandDelay, wake]))
+  }, [settings.disableChatPopup, commandDelay, sleeping.wake]))
 
   // Ensure we clean up the timer when we unmount
   useEffect(() => () => {
@@ -101,9 +94,9 @@ export default function Overlay(props: OverlayProps) {
       if (awakingRef.current) awakingRef.current = false
       else if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-    awoken.add(callback)
-    return () => awoken.remove(callback)
-  }, [awoken])
+    sleeping.on('wake', callback)
+    return () => sleeping.off('wake', callback)
+  }, [sleeping.on, sleeping.off])
 
   // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {
@@ -137,7 +130,7 @@ export default function Overlay(props: OverlayProps) {
   }), [commandAmbassador])
 
   // Block sleeping hiding the overlay if dev toggle is on
-  let hiddenClass = sleeping && styles.overlayHidden
+  let hiddenClass = sleeping.sleeping && styles.overlayHidden
   if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
     hiddenClass = false
 

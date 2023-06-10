@@ -66,7 +66,7 @@ export default function useChatCommand(callback: (command: string) => void) {
     return commands
   }, [])
 
-  const messageHandler = useCallback((channel: string, tags: ChatUserstate, msg: string, self: boolean) => {
+  const messageHandler = useCallback((id: number, channel: string, tags: ChatUserstate, msg: string, self: boolean) => {
     // Ignore if user is not a moderator or broadcaster or test user
     if (!tags.mod && !tags.badges?.broadcaster && tags.username !== process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USER) return
     // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
@@ -74,15 +74,15 @@ export default function useChatCommand(callback: (command: string) => void) {
 
     const commandName = msg.trim().toLowerCase().slice(1)
     const command = commandsMap.get(commandName)
-    console.log(`*Twitch extension received command: ${commandName}*`, command)
+    console.log(`*Twitch extension received command: ${commandName} (${command})*`, id)
     if (command) callback(command)
   }, [commandsMap, callback])
 
-  const connectedHandler = useCallback(() => {
-    console.log('*Twitch extension is connected to chat*')
-  }, [])
-
   useEffect(() => {
+    const id = Date.now()
+    console.log('*Twitch extension is connecting to chat*', id)
+
+    // Create the client
     const client = new tmi.Client({
       connection: {
         secure: true,
@@ -90,12 +90,29 @@ export default function useChatCommand(callback: (command: string) => void) {
       },
       channels: channelNames.map(name => `#${name}`),
     })
-    client.on('message', messageHandler)
-    client.on('connected', connectedHandler)
+
+    // Handle incoming messages
+    client.on('message', (...args) => messageHandler(id, ...args))
+
+    // Handle race condition where we connect after being unmounted
+    let closing = false
+    client.on('connected', () => {
+      // If we connected after being unmounted, disconnect (again)
+      if (closing) {
+        client.disconnect().then(() => console.log('*Twitch extension disconnected from chat (after connecting)*', id))
+        return
+      }
+
+      console.log('*Twitch extension is connected to chat*', id)
+    })
+
+    // Connect to chat
     client.connect()
 
+    // Disconnect from chat when unmounting
     return () => {
-      client.disconnect()
+      closing = true
+      client.disconnect().then(() => console.log('*Twitch extension disconnected from chat*', id))
     }
-  }, [channelNames, connectedHandler, messageHandler])
+  }, [channelNames, messageHandler])
 }

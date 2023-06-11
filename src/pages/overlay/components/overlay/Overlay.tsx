@@ -37,6 +37,7 @@ const overlayOptions = [
     title: "Welcome",
     type: "primary",
     icon: WelcomeIcon,
+    hoverText: "Welcome to Alveus",
     component: WelcomeOverlay,
   },
   {
@@ -44,6 +45,7 @@ const overlayOptions = [
     title: "Ambassadors",
     type: "primary",
     icon: AmbassadorsIcon,
+    hoverText: "Explore our Ambassadors",
     component: AmbassadorsOverlay,
   },
   {
@@ -51,6 +53,7 @@ const overlayOptions = [
     title: "Settings",
     type: "secondary",
     icon: SettingsIcon,
+    hoverText: "Extension Settings",
     component: SettingsOverlay,
   },
 ] as const;

@@ -70,6 +70,19 @@
     margin: 0 0.5rem 0.25rem;
   }
 
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .tooltip {
+      button,
+      svg {
+        display: block;
+      }
+    }
+  }
+
   .compact {
     display: flex;
     flex-wrap: wrap;

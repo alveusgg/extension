@@ -2,11 +2,18 @@ import { useMemo } from "react";
 import React from "react";
 
 import { classes } from "../../../../utils/classes";
+import Tooltip from "../../../../utils/global/tooltip/Tooltip";
 
 import styles from "./buttons.module.scss";
 
 type ButtonsOptions = Readonly<
-  { key: string; title: string; type: "primary" | "secondary"; icon: string }[]
+  {
+    key: string;
+    title: string;
+    type: "primary" | "secondary";
+    icon: string;
+    hoverText: string;
+  }[]
 >;
 
 interface ButtonsProps<T extends ButtonsOptions> {
@@ -40,16 +47,23 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
   return (
     <div className={styles.activationButtons}>
       {optionsWithOnClick.map((option) => (
-        <button
+        <Tooltip
           key={option.key}
-          onClick={option.onClick}
+          text={option.hoverText}
+          ariaLabel={option.title}
           className={classes(
-            option.active && styles.highlighted,
+            styles.btn,
             option.type === "secondary" && styles.secondary
           )}
         >
-          <img src={option.icon} alt={option.title} />
-        </button>
+          <button
+            key={option.key}
+            onClick={option.onClick}
+            className={classes(option.active && styles.highlighted)}
+          >
+            <img src={option.icon} alt={option.title} />
+          </button>
+        </Tooltip>
       ))}
     </div>
   );

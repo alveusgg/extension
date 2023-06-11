@@ -6,15 +6,13 @@ import React, {
   useMemo,
 } from "react";
 
-import type { Settings } from "../../App";
-import Buttons from "../buttons/Buttons";
+import Buttons from '../buttons/Buttons'
 
-import useChatCommand from "../../../../utils/chatCommand";
-import {
-  isAmbassadorKey,
-  type AmbassadorKey,
-} from "../../../../utils/ambassadors";
-import { classes } from "../../../../utils/classes";
+import useChatCommand from '../../../../utils/chatCommand'
+import { isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
+import { classes } from '../../../../utils/classes'
+import useSettings from '../../hooks/useSettings'
+import useSleeping from '../../hooks/useSleeping'
 
 import WelcomeIcon from "../../../../assets/overlay/welcome.png";
 import WelcomeOverlay from "./welcome/Welcome";
@@ -27,15 +25,8 @@ import SettingsOverlay from "./settings/Settings";
 
 import styles from "./overlay.module.scss";
 
-interface OverlayProps {
-  sleeping: boolean;
-  awoken: {
-    add: (callback: () => void) => void;
-    remove: (callback: () => void) => void;
-  };
-  wake: (time: number) => void;
-  settings: Settings;
-}
+// Show command-triggered popups for 10s
+const commandTimeout = 10_000
 
 const overlayOptions = [
   {
@@ -65,20 +56,19 @@ type OverlayKey = (typeof overlayOptions)[number]["key"];
 
 export interface OverlayOptionProps {
   context: {
-    commandAmbassador?: AmbassadorKey;
-    settings: Settings;
-  };
-  className?: string;
+    commandAmbassador?: AmbassadorKey,
+  },
+  className?: string,
 }
 
-export default function Overlay(props: OverlayProps) {
-  const { sleeping, awoken, wake, settings } = props;
+export default function Overlay() {
+  const settings = useSettings()
+  const { sleeping, wake, on: addSleepListener, off: removeSleepListener } = useSleeping()
 
-  const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>();
-  const [visibleOption, setVisibleOption] = useState<OverlayKey>();
-  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
-  const awakingRef = useRef(false);
-  const commandDelay = 8000;
+  const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>()
+  const [visibleOption, setVisibleOption] = useState<OverlayKey>()
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
+  const awakingRef = useRef(false)
 
   // When a chat command is run, wake the overlay
   useChatCommand(
@@ -91,37 +81,33 @@ export default function Overlay(props: OverlayProps) {
           // Show the card
           setVisibleOption(command === "welcome" ? "welcome" : "ambassadors");
 
-          // Dismiss the overlay after a delay
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          timeoutRef.current = setTimeout(() => {
-            setVisibleOption(undefined);
-          }, commandDelay);
+      // Dismiss the overlay after a delay
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => {
+        setVisibleOption(undefined)
+      }, commandTimeout)
 
-          // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
-          awakingRef.current = true;
-          wake(commandDelay);
-        }
-      },
-      [settings.disableChatPopup, commandDelay, wake]
-    )
-  );
+      // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
+      awakingRef.current = true
+      wake(commandTimeout)
+    }
+  }, [settings.disableChatPopup, wake]))
 
   // Ensure we clean up the timer when we unmount
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
+  useEffect(() => () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+  }, [])
 
   // If the user interacts with the overlay, clear the auto-dismiss timer
+  // Except if we just triggered this wake, in which case we want to ignore it
   useEffect(() => {
     const callback = () => {
-      if (awakingRef.current) awakingRef.current = false;
-      else if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-    awoken.add(callback);
-    return () => awoken.remove(callback);
-  }, [awoken]);
+      if (awakingRef.current) awakingRef.current = false
+      else if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+    addSleepListener('wake', callback)
+    return () => removeSleepListener('wake', callback)
+  }, [addSleepListener, removeSleepListener])
 
   // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {
@@ -153,20 +139,14 @@ export default function Overlay(props: OverlayProps) {
   }, [bodyClick]);
 
   // Generate the context for the overlay options
-  const context = useMemo<OverlayOptionProps["context"]>(
-    () => ({
-      commandAmbassador,
-      settings,
-    }),
-    [commandAmbassador, settings]
-  );
+  const context = useMemo<OverlayOptionProps["context"]>(() => ({
+    commandAmbassador,
+  }), [commandAmbassador])
 
-  let hiddenClass = sleeping && styles.overlayHidden;
-  if (
-    process.env.NODE_ENV === "development" &&
-    settings.disableOverlayHiding.value
-  )
-    hiddenClass = false;
+  // Block sleeping hiding the overlay if dev toggle is on
+  let hiddenClass = sleeping && styles.overlayHidden
+  if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
+    hiddenClass = false
 
   return (
     <div className={classes(styles.overlay, hiddenClass)}>

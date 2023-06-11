@@ -1,128 +1,32 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  useMemo,
-} from "react";
+import { useEffect, useCallback, useRef } from 'react'
 
-import {
-  typeSafeObjectEntries,
-  typeSafeObjectFromEntries,
-} from "../../utils/helpers";
-import { classes } from "../../utils/classes";
+import { classes } from '../../utils/classes'
+import useHiddenCursor from './hooks/useHiddenCursor'
+import useSettings from './hooks/useSettings'
+import useSleeping from './hooks/useSleeping'
 
 import Overlay from "./components/overlay/Overlay";
 import styles from "./App.module.scss";
 
-const settings = {
-  disableChatPopup: {
-    title: "Prevent Mod-triggered Card Popups",
-    type: "boolean",
-    process: (value: any) => !!value,
-    devOnly: false,
-  },
-  disableOverlayHiding: {
-    title: "(DEV) Prevent app hiding automatically",
-    type: "boolean",
-    process: (value: any) => !!value,
-    devOnly: true,
-  },
-};
-
-type SettingsKey = keyof typeof settings;
-
-type StoredSettings = {
-  [key in SettingsKey]: ReturnType<(typeof settings)[key]["process"]>;
-};
-
-export type Settings = {
-  [key in SettingsKey]: (typeof settings)[key] & {
-    value: StoredSettings[key];
-    change: (value: StoredSettings[key]) => void;
-  };
-};
+// Hide the overlay after 5s of inactivity
+const timeout = 5_000;
 
 export default function App() {
-  const [storedSettings, setStoredSettings] = useState<StoredSettings>(() => {
-    // Load settings from local storage, merging with defaults
-    const storage = JSON.parse(localStorage.getItem("settings") || "{}");
-    return typeSafeObjectEntries(settings).reduce(
-      (acc, [key, value]) => ({ ...acc, [key]: value.process(storage[key]) }),
-      {} as StoredSettings
-    );
-  });
-
-  // Save settings to local storage when they change
-  useEffect(() => {
-    localStorage.setItem("settings", JSON.stringify(storedSettings));
-  }, [storedSettings]);
-
-  // Change the value of a setting
-  const changeSetting = useCallback(
-    <Key extends SettingsKey>(key: Key, value: StoredSettings[Key]) => {
-      setStoredSettings((current) => ({ ...current, [key]: value }));
-    },
-    []
-  );
-
-  // Expose a full object for the settings
-  const settingsObj = useMemo<Settings>(
-    () =>
-      typeSafeObjectFromEntries(
-        typeSafeObjectEntries(settings).map(([key, value]) => [
-          key,
-          {
-            ...value,
-            value: storedSettings[key],
-            change: (value: any) => changeSetting(key, value),
-          },
-        ])
-      ),
-    [storedSettings, changeSetting]
-  );
-
   // Show/hide the overlay based on mouse movement
-  const appRef = useRef<HTMLDivElement>(null);
-  const sleepTimer = useRef<NodeJS.Timeout | undefined>(undefined);
-  const [sleeping, setSleeping] = useState(false);
+  const { sleeping, wake, sleep, on: addSleepListener, off: removeSleepListener } = useSleeping();
+  const appRef = useRef<HTMLDivElement>(null)
 
-  // Allow children to know when we have been woken up
-  const [awoken, setAwoken] = useState<(() => void)[]>([]);
-  const addAwoken = useCallback((callback: () => void) => {
-    setAwoken((current) => [...current, callback]);
-  }, []);
-  const removeAwoken = useCallback((callback: () => void) => {
-    setAwoken((current) => current.filter((c) => c !== callback));
-  }, []);
-  const awokenObj = useMemo(
-    () => ({ add: addAwoken, remove: removeAwoken }),
-    [addAwoken, removeAwoken]
-  );
+  // When the user interacts, show the overlay
+  const interacted = useCallback(() => wake(timeout), [wake])
 
-  // Wake the overlay for x milliseconds
-  const wake = useCallback(
-    (time: number) => {
-      setSleeping(false);
-      awoken.forEach((fn) => fn());
-      if (sleepTimer.current) clearTimeout(sleepTimer.current);
-      sleepTimer.current = setTimeout(() => {
-        setSleeping(true);
-      }, time);
-    },
-    [awoken]
-  );
+  // Hide the cursor when the user is idle
+  const [, showCursor] = useHiddenCursor()
 
-  // When the user interacts, have a 5s timeout before hiding the overlay
-  const interacted = useCallback(() => {
-    wake(5000);
-  }, [wake]);
-
-  // Hide the cursor when sleeping
+  // When the overlay is awoken, show the cursor
   useEffect(() => {
-    if (sleeping) document.documentElement.style.cursor = "none";
-    else document.documentElement.style.removeProperty("cursor");
-  }, [sleeping]);
+    addSleepListener('wake', showCursor)
+    return () => removeSleepListener('wake', showCursor)
+  }, [addSleepListener, removeSleepListener, showCursor])
 
   // When a user scrolls, treat it as an interaction (but handle Firefox being weird)
   const scrollRef = useRef<[HTMLElement, number] | undefined>(undefined);
@@ -151,26 +55,11 @@ export default function App() {
     return () => node.removeEventListener("scroll", scrolled, true);
   }, [scrolled]);
 
-  // Immediately sleep the overlay
-  const sleep = useCallback(() => {
-    setSleeping(true);
-    if (sleepTimer.current) clearTimeout(sleepTimer.current);
-  }, []);
-
-  // When we unmount, clear the sleep timer
-  useEffect(
-    () => () => {
-      if (sleepTimer.current) clearTimeout(sleepTimer.current);
-    },
-    []
-  );
-
-  let visibilityClass = sleeping ? styles.hidden : styles.visible;
-  if (
-    process.env.NODE_ENV === "development" &&
-    settingsObj.disableOverlayHiding.value
-  )
-    visibilityClass = styles.visible;
+  // Block sleeping hiding the overlay if dev toggle is on
+  const settings = useSettings()
+  let visibilityClass = sleeping ? styles.hidden : styles.visible
+  if (process.env.NODE_ENV === 'development' && settings.disableOverlayHiding.value)
+    visibilityClass = styles.visible
 
   return (
     <div
@@ -180,12 +69,7 @@ export default function App() {
       onMouseMove={interacted}
       onMouseLeave={sleep}
     >
-      <Overlay
-        sleeping={sleeping}
-        awoken={awokenObj}
-        wake={wake}
-        settings={settingsObj}
-      />
+      <Overlay />
     </div>
   );
 }

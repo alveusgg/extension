@@ -32,6 +32,16 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
     width: props.textContainerWidth ? props.textContainerWidth : "auto",
     fontSize: props.fontSize ? props.fontSize : "1rem",
   };
+  // add event listeners to the children to show/hide tooltip
+  const childrenWithProps = React.Children.map(props.children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child as React.ReactElement, {
+        onMouseEnter: () => setShow(true),
+        onMouseLeave: () => setShow(false),
+      });
+    }
+    return child;
+  });
 
   return (
     <div
@@ -39,13 +49,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
       ref={containerRef}
       aria-label={props.ariaLabel}
     >
-      <div
-        onMouseEnter={() => setShow(true)}
-        onMouseLeave={() => setShow(false)}
-        className={classes(props.className, styles.children)}
-      >
-        {props.children}
-      </div>
+      {childrenWithProps}
       <div
         className={styles.tooltip}
         ref={tooltipRef}

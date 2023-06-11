@@ -34,8 +34,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props
           text={option.hoverText}
           ariaLabel={option.title}
           className={classes(
-            styles.tooltip,
-            option.active && styles.highlighted,
+            styles.btn,
             option.type === "secondary" && styles.secondary
           )}
         >
@@ -43,9 +42,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props
             key={option.key}
             onClick={option.onClick}
             className={classes(
-              styles.btn,
               option.active && styles.highlighted,
-              option.type === "secondary" && styles.secondary
             )}
           >
             <img src={option.icon} alt={option.title} />

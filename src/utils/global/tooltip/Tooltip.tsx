@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 
-import { classes } from '../../classes'
 import styles from './tooltip.module.scss'
 
 interface TooltipProps {

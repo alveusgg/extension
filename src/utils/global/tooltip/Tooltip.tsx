@@ -52,7 +52,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
         style={{
           ...tooltipStyle,
           top: containerCenter - (tooltipRect?.height ?? 0) / 2,
-          left: (containerRef.current?.getBoundingClientRect().right ?? 0) + 10,
+          left: (containerRect?.right ?? 0) + 10,
         }}
       >
         <span className={styles.triangle} />

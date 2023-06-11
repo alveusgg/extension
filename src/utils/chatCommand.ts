@@ -82,21 +82,38 @@ export default function useChatCommand(callback: (command: string) => void) {
     return commands;
   }, []);
 
-  const messageHandler = useCallback((id: number, channel: string, tags: ChatUserstate, msg: string, self: boolean) => {
-    // Ignore if user is not a moderator or broadcaster or test user
-    if (!tags.mod && !tags.badges?.broadcaster && tags.username !== process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USER) return
-    // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
-    if (self || !msg.trim().startsWith('!')) return
+  const messageHandler = useCallback(
+    (
+      id: number,
+      channel: string,
+      tags: ChatUserstate,
+      msg: string,
+      self: boolean
+    ) => {
+      // Ignore if user is not a moderator or broadcaster or test user
+      if (
+        !tags.mod &&
+        !tags.badges?.broadcaster &&
+        tags.username !== process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USER
+      )
+        return;
+      // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
+      if (self || !msg.trim().startsWith("!")) return;
 
-    const commandName = msg.trim().toLowerCase().slice(1)
-    const command = commandsMap.get(commandName)
-    console.log(`*Twitch extension received command: ${commandName} (${command})*`, id)
-    if (command) callback(command)
-  }, [commandsMap, callback])
+      const commandName = msg.trim().toLowerCase().slice(1);
+      const command = commandsMap.get(commandName);
+      console.log(
+        `*Twitch extension received command: ${commandName} (${command})*`,
+        id
+      );
+      if (command) callback(command);
+    },
+    [commandsMap, callback]
+  );
 
   useEffect(() => {
-    const id = Date.now()
-    console.log('*Twitch extension is connecting to chat*', id)
+    const id = Date.now();
+    console.log("*Twitch extension is connecting to chat*", id);
 
     // Create the client
     const client = new tmi.Client({
@@ -104,31 +121,42 @@ export default function useChatCommand(callback: (command: string) => void) {
         secure: true,
         reconnect: true,
       },
-      channels: channelNames.map(name => `#${name}`),
-    })
+      channels: channelNames.map((name) => `#${name}`),
+    });
 
     // Handle incoming messages
-    client.on('message', (...args) => messageHandler(id, ...args))
+    client.on("message", (...args) => messageHandler(id, ...args));
 
     // Handle race condition where we connect after being unmounted
-    let closing = false
-    client.on('connected', () => {
+    let closing = false;
+    client.on("connected", () => {
       // If we connected after being unmounted, disconnect (again)
       if (closing) {
-        client.disconnect().then(() => console.log('*Twitch extension disconnected from chat (after connecting)*', id))
-        return
+        client
+          .disconnect()
+          .then(() =>
+            console.log(
+              "*Twitch extension disconnected from chat (after connecting)*",
+              id
+            )
+          );
+        return;
       }
 
-      console.log('*Twitch extension is connected to chat*', id)
-    })
+      console.log("*Twitch extension is connected to chat*", id);
+    });
 
     // Connect to chat
-    client.connect()
+    client.connect();
 
     // Disconnect from chat when unmounting
     return () => {
-      closing = true
-      client.disconnect().then(() => console.log('*Twitch extension disconnected from chat*', id))
-    }
-  }, [channelNames, messageHandler])
+      closing = true;
+      client
+        .disconnect()
+        .then(() =>
+          console.log("*Twitch extension disconnected from chat*", id)
+        );
+    };
+  }, [channelNames, messageHandler]);
 }

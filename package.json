@@ -28,11 +28,11 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "lint:eslint": "eslint src --ext .ts,.tsx",
-    "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "lint": "npm-run-all lint:*",
+    "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,scss}\"",
+    "lint": "run-p lint:*",
     "format:eslint": "npm run lint:eslint -- --fix",
     "format:prettier": "npm run lint:prettier -- --write",
-    "format": "npm-run-all format:*",
+    "format": "run-p format:*",
     "eject": "react-scripts eject"
   },
   "browserslist": {
@@ -59,7 +59,6 @@
     "@types/twitch-ext": "^1.24.4",
     "editorconfig-checker": "^5.0.1",
     "eslint": "^8.42.0",
-    "eslint-config-prettier": "^8.8.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
@@ -76,10 +75,5 @@
       "eslint src --ext .ts,.tsx",
       "prettier --check \"src/**/*.{js,jsx,ts,tsx,json}\""
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

@@ -32,15 +32,12 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(props
         <Tooltip
           key={option.key}
           text={option.hoverText}
-          className={classes(
-            styles.btn,
-            option.type === "secondary" && styles.secondary
-          )}
         >
           <button
-            key={option.key}
             onClick={option.onClick}
             className={classes(
+              styles.btn,
+              option.type === "secondary" && styles.secondary,
               option.active && styles.highlighted,
             )}
           >

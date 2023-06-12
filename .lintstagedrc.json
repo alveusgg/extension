@@ -1,6 +1,7 @@
 {
-  "*.{js,jsx,ts,tsx,json,scss}": [
+  "*.{js,jsx,ts,tsx,json}": [
     "eslint src --ext .ts,.tsx",
-    "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,scss}\""
-  ]
+    "prettier --check \"src/**/*.{js,jsx,ts,tsx,json}\""
+  ],
+  "*.{css,scss}": ["prettier --check \"src/**/*.{css,scss}\""]
 }

@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useId, useRef, useState } from 'react'
 
 import styles from './tooltip.module.scss'
 
 interface TooltipProps {
   text: string;
-  ariaLabel: string;
   children: React.ReactNode;
   className?: string;
   fontSize?: string;
@@ -12,6 +11,7 @@ interface TooltipProps {
 }
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
+  const id = useId();
   const [show, setShow] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,7 +36,10 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child as React.ReactElement, {
         onMouseEnter: () => setShow(true),
+        onFocus: () => setShow(true),
         onMouseLeave: () => setShow(false),
+        onBlur: () => setShow(false),
+        'aria-describedby': id,
       });
     }
     return child;
@@ -46,7 +49,6 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
     <div
       className={props.className}
       ref={containerRef}
-      aria-label={props.ariaLabel}
     >
       {childrenWithProps}
       <div
@@ -57,6 +59,8 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
           top: containerCenter - (tooltipRect?.height ?? 0) / 2,
           left: (containerRect?.right ?? 0) + 10,
         }}
+        id={id}
+        role="tooltip"
       >
         <span className={styles.triangle} />
         {props.text}

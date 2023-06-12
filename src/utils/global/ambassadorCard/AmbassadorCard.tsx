@@ -78,7 +78,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             <h3>Conservation Status</h3>
             <Tooltip
               text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
-              ariaLabel="IUCN"
               textContainerWidth="18rem"
               fontSize="0.9rem"
               className={styles.tooltip}

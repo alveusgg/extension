@@ -71,9 +71,9 @@
     "webpack-image-resize-loader": "^5.0.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json}": [
+    "*.{js,jsx,ts,tsx,json,scss}": [
       "eslint src --ext .ts,.tsx",
-      "prettier --check \"src/**/*.{js,jsx,ts,tsx,json}\""
+      "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,scss}\""
     ]
   }
 }

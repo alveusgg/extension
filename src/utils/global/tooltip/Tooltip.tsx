@@ -1,67 +1,91 @@
-import React, { useRef, useState } from "react";
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  type MouseEvent,
+  useMemo,
+  useId,
+  type FocusEvent,
+} from "react";
 
 import styles from "./tooltip.module.scss";
 
 interface TooltipProps {
   text: string;
-  ariaLabel: string;
   children: React.ReactNode;
-  className?: string;
   fontSize?: string;
-  textContainerWidth?: string;
+  maxWidth?: string;
 }
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
-  const [show, setShow] = useState(false);
+  const { text, children, fontSize, maxWidth } = props;
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const id = useId();
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
 
-  // use ref and calculate position on render to determine where to place tooltip
-  const containerRect = containerRef.current?.getBoundingClientRect();
-  const tooltipRect = tooltipRef.current?.getBoundingClientRect();
+  // On hover, compute position of tooltip and show it
+  const handleEnter = useCallback(
+    (e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>) => {
+      if (!tooltipRef.current) return;
 
-  const containerCenter =
-    (containerRect?.top ?? 0) + (containerRect?.height ?? 0) / 2;
+      const target = e.currentTarget as HTMLElement;
+      const rect = target.getBoundingClientRect();
+      const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
-  // set tooltip style based on incoming props
-  const tooltipStyle = {
-    opacity: show ? 1 : 0,
-    // restrict width of tooltip with optional prop
-    width: props.textContainerWidth ? props.textContainerWidth : "auto",
-    fontSize: props.fontSize ? props.fontSize : "1rem",
-  };
-  // add event listeners to the children to show/hide tooltip
-  const childrenWithProps = React.Children.map(props.children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child as React.ReactElement, {
-        onMouseEnter: () => setShow(true),
-        onMouseLeave: () => setShow(false),
+      setPosition({
+        top: rect.top + rect.height / 2 - tooltipRect.height / 2,
+        left: rect.right + 10,
       });
-    }
-    return child;
-  });
+      setShow(true);
+    },
+    []
+  );
+
+  // Compute the style of the tooltip
+  const style = useMemo(
+    () => ({
+      opacity: show ? 1 : 0,
+      top: position.top,
+      left: position.left,
+      maxWidth,
+      fontSize,
+    }),
+    [show, position, maxWidth, fontSize]
+  );
+
+  // Add event listeners + refs to the children to show/hide tooltip
+  const childrenWithProps = useMemo(
+    () =>
+      React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) return child;
+
+        return React.cloneElement(child as React.ReactElement, {
+          onMouseEnter: handleEnter,
+          onFocus: handleEnter,
+          onMouseLeave: () => setShow(false),
+          onBlur: () => setShow(false),
+          "aria-describedby": id,
+        });
+      }),
+    [children, handleEnter, id]
+  );
 
   return (
-    <div
-      className={props.className}
-      ref={containerRef}
-      aria-label={props.ariaLabel}
-    >
+    <>
       {childrenWithProps}
       <div
         className={styles.tooltip}
         ref={tooltipRef}
-        style={{
-          ...tooltipStyle,
-          top: containerCenter - (tooltipRect?.height ?? 0) / 2,
-          left: (containerRect?.right ?? 0) + 10,
-        }}
+        style={style}
+        id={id}
+        role="tooltip"
       >
         <span className={styles.triangle} />
-        {props.text}
+        {text}
       </div>
-    </div>
+    </>
   );
 };
 

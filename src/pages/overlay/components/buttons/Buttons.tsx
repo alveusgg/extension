@@ -47,19 +47,14 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
   return (
     <div className={styles.activationButtons}>
       {optionsWithOnClick.map((option) => (
-        <Tooltip
-          key={option.key}
-          text={option.hoverText}
-          ariaLabel={option.title}
-          className={classes(
-            styles.btn,
-            option.type === "secondary" && styles.secondary
-          )}
-        >
+        <Tooltip key={option.key} text={option.hoverText}>
           <button
-            key={option.key}
             onClick={option.onClick}
-            className={classes(option.active && styles.highlighted)}
+            className={classes(
+              styles.btn,
+              option.type === "secondary" && styles.secondary,
+              option.active && styles.highlighted
+            )}
           >
             <img src={option.icon} alt={option.title} />
           </button>

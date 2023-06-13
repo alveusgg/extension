@@ -71,16 +71,9 @@
   }
 
   .info {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-
-    .tooltip {
-      button,
-      svg {
-        display: block;
-      }
-    }
   }
 
   .compact {

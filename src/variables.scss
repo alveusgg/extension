@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap';
+@import "https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap";
 
 $primary-color: #636a60;
 $secondary-color: #c2b3a7;
@@ -9,7 +9,9 @@ $primary-text: white;
 $secondary-text: #dcdcdc;
 $outline-color: #ff9f1c;
 
-$font-family: 'Nunito', sans-serif;
+$tooltip-background-color: #18181b;
+
+$font-family: "Nunito", sans-serif;
 $outline: 0.25rem solid $outline-color;
 $transition: 0.3s ease;
 

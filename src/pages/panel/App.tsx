@@ -1,13 +1,15 @@
-import Nav from './components/nav/Nav';
-import AmbassadorPanel from './components/ambassadorPanel/AmbassadorPanel';
+import React from "react";
 
-import './App.scss';
+import Nav from "./components/nav/Nav";
+import AmbassadorPanel from "./components/ambassadorPanel/AmbassadorPanel";
+
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <Nav/>
-      <AmbassadorPanel/>
+      <Nav />
+      <AmbassadorPanel />
     </div>
   );
 }

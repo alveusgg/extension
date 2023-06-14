@@ -1,19 +1,22 @@
-import { useCallback, type ChangeEvent } from 'react'
+import React, { useCallback, type ChangeEvent } from "react";
 
-import styles from './toggle.module.scss'
+import styles from "./toggle.module.scss";
 
 interface ToggleProps {
-  label: string,
-  value: boolean
-  onChange: (value: boolean) => void
+  label: string;
+  value: boolean;
+  onChange: (value: boolean) => void;
 }
 
 export default function Toggle(props: ToggleProps) {
-  const { label, value, onChange } = props
+  const { label, value, onChange } = props;
 
-  const onChangeNative = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.checked)
-  }, [onChange])
+  const onChangeNative = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      onChange(e.target.checked);
+    },
+    [onChange]
+  );
 
   return (
     <label className={styles.container}>
@@ -23,5 +26,5 @@ export default function Toggle(props: ToggleProps) {
         <span className={styles.slider}></span>
       </span>
     </label>
-  )
+  );
 }

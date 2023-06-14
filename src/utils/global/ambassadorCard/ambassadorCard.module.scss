@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
 .ambassadorCard {
   width: 18.5rem;
@@ -70,6 +70,12 @@
     margin: 0 0.5rem 0.25rem;
   }
 
+  .info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .compact {
     display: flex;
     flex-wrap: wrap;
@@ -130,7 +136,7 @@
 }
 
 .birthday::after {
-  content: url('../../../assets/partyHat.png');
+  content: url("../../../assets/partyHat.png");
   width: 4rem;
   height: auto;
   position: absolute;

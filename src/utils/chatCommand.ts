@@ -9,6 +9,8 @@ const testChannelNames =
   process.env.REACT_APP_TEST_CHANNEL_NAMES?.split(",") ?? [];
 const defaultChannelNames =
   process.env.REACT_APP_DEFAULT_CHANNEL_NAMES?.split(",") ?? [];
+const privilegedUsers =
+  process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS?.split(",") ?? [];
 
 export const normalizeAmbassadorName = (
   name: string,
@@ -94,7 +96,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       if (
         !tags.mod &&
         !tags.badges?.broadcaster &&
-        tags.username !== process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USER
+        !privilegedUsers.includes(tags.username ?? "")
       )
         return;
       // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'

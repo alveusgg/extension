@@ -3,9 +3,13 @@ import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador
 import { normalizeAmbassadorName } from '../../chatCommand'
 import { camelToKebab } from '../../helpers'
 import { classes } from '../../classes'
-
+import { useCallback } from "react";
+import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
 import styles from './ambassadorCard.module.scss'
 import moderatorBadge from '../../../assets/mod.png'
+import particleConfig from './confetti.json'
 
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey
@@ -74,6 +78,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </div>
           <div>
             <h3>Birthday</h3>
+            <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={options} />
             {ambassador.birth && isBirthday(ambassador.birth) ? <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={options} /> : ""}
             <p>
               {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}

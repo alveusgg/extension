@@ -1,19 +1,24 @@
-import { useState, useCallback, Fragment } from 'react'
+import React, { useState, useCallback, Fragment } from "react";
 
-import AmbassadorButton from '../../../../utils/global/ambassadorButton/AmbassadorButton'
-import AmbassadorCardOverlay from '../ambassadorCardOverlay/AmbassadorCardOverlay'
-import useChatCommand from '../../../../utils/chatCommand'
-import { sortedAmbassadors, isAmbassadorKey, type AmbassadorKey } from '../../../../utils/ambassadors'
+import AmbassadorButton from "../../../../utils/global/ambassadorButton/AmbassadorButton";
+import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
+import useChatCommand from "../../../../utils/chatCommand";
+import {
+  sortedAmbassadors,
+  isAmbassadorKey,
+  type AmbassadorKey,
+} from "../../../../utils/ambassadors";
 
-import styles from './ambassadorPanel.module.scss'
+import styles from "./ambassadorPanel.module.scss";
 
 export default function AmbassadorPanel() {
   // Allow chat commands to select an ambassador, as well as the user
-  const [ambassadorCard, setAmbassadorCard] = useState<AmbassadorKey>()
-  useChatCommand(useCallback((command: string) => {
-    if (isAmbassadorKey(command))
-      setAmbassadorCard(command)
-  }, []))
+  const [ambassadorCard, setAmbassadorCard] = useState<AmbassadorKey>();
+  useChatCommand(
+    useCallback((command: string) => {
+      if (isAmbassadorKey(command)) setAmbassadorCard(command);
+    }, [])
+  );
 
   return (
     <main className={styles.ambassadors}>
@@ -35,5 +40,5 @@ export default function AmbassadorPanel() {
         </Fragment>
       ))}
     </main>
-  )
+  );
 }

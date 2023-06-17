@@ -1,5 +1,7 @@
-import AlveusLogo from '../../../../assets/alveus-logo.png';
-import styles from './nav.module.scss';
+import React from "react";
+
+import AlveusLogo from "../../../../assets/alveus-logo.png";
+import styles from "./nav.module.scss";
 
 export default function Nav() {
   return (
@@ -7,5 +9,5 @@ export default function Nav() {
       <img src={AlveusLogo} alt="Alveus Logo" />
       <h1>Alveus Ambassadors</h1>
     </nav>
-  )
+  );
 }

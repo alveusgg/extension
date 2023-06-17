@@ -1,4 +1,6 @@
-import allAmbassadors, { type Ambassador } from "@alveusgg/data/src/ambassadors/core";
+import allAmbassadors, {
+  type Ambassador,
+} from "@alveusgg/data/src/ambassadors/core";
 import {
   isActiveAmbassadorKey as isAmbassadorKey,
   isActiveAmbassadorEntry,
@@ -8,7 +10,7 @@ import {
 import { getAmbassadorImages } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
-import { typeSafeObjectEntries, typeSafeObjectFromEntries } from "./helpers"
+import { typeSafeObjectEntries, typeSafeObjectFromEntries } from "./helpers";
 import { sortDate } from "./dateManager";
 
 export const sortedAmbassadors = typeSafeObjectEntries(allAmbassadors)
@@ -17,4 +19,11 @@ export const sortedAmbassadors = typeSafeObjectEntries(allAmbassadors)
 
 export const ambassadors = typeSafeObjectFromEntries(sortedAmbassadors);
 
-export { isAmbassadorKey, getAmbassadorImages, getIUCNStatus, type Ambassadors, type AmbassadorKey, type Ambassador };
+export {
+  isAmbassadorKey,
+  getAmbassadorImages,
+  getIUCNStatus,
+  type Ambassadors,
+  type AmbassadorKey,
+  type Ambassador,
+};

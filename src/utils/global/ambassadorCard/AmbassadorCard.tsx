@@ -1,43 +1,64 @@
-import { calculateAge, formatDate, isBirthday } from '../../dateManager'
-import { getAmbassadorImages, getIUCNStatus, type AmbassadorKey, type Ambassador as AmbassadorType } from '../../ambassadors'
-import { normalizeAmbassadorName } from '../../chatCommand'
-import { camelToKebab } from '../../helpers'
-import { classes } from '../../classes'
+import React from "react";
+
+import { calculateAge, formatDate, isBirthday } from "../../dateManager";
+import {
+  getAmbassadorImages,
+  getIUCNStatus,
+  type AmbassadorKey,
+  type Ambassador as AmbassadorType,
+} from "../../ambassadors";
+import { normalizeAmbassadorName } from "../../chatCommand";
+import { camelToKebab } from "../../helpers";
+import { classes } from "../../classes";
+import Tooltip from "../tooltip/Tooltip";
+
+import styles from "./ambassadorCard.module.scss";
+import moderatorBadge from "../../../assets/mod.png";
+        
 import { useCallback } from "react";
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
-import styles from './ambassadorCard.module.scss'
-import moderatorBadge from '../../../assets/mod.png'
 import particleConfig from './confetti.json'
 
 export interface AmbassadorCardProps {
-  ambassadorKey: AmbassadorKey
-  ambassador: AmbassadorType
-  onClose?: () => void
-  className?: string
+  ambassadorKey: AmbassadorKey;
+  ambassador: AmbassadorType;
+  onClose?: () => void;
+  className?: string;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassadorKey, ambassador, onClose, className } = props
-  const images = getAmbassadorImages(ambassadorKey)
+  const { ambassadorKey, ambassador, onClose, className } = props;
+  const images = getAmbassadorImages(ambassadorKey);
+  const mod =
+    window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
+    window?.Twitch?.ext?.viewer?.role === "moderator";
   const particlesInit = useCallback(async (engine: Engine) => {
       await loadFull(engine);
   }, []);
-  const mod = window?.Twitch?.ext?.viewer?.role === 'broadcaster' || window?.Twitch?.ext?.viewer?.role === 'moderator'
 
   const particlesLoaded = useCallback(async (container: Container | undefined) => {
       await console.log(container);
   }, []);
   const options: ISourceOptions = particleConfig as ISourceOptions;
   return (
-    <div className={classes(styles.ambassadorCard, className, ambassador.birth && isBirthday(ambassador.birth) && styles.birthday)}>
+    <div
+      className={classes(
+        styles.ambassadorCard,
+        className,
+        ambassador.birth && isBirthday(ambassador.birth) && styles.birthday
+      )}
+    >
       {props.onClose && (
-        <div className={styles.close} onClick={onClose}>&times;</div>
+        <div className={styles.close} onClick={onClose}>
+          &times;
+        </div>
       )}
 
-      <h2 className={styles.name} title={ambassador.name}>{ambassador.name}</h2>
-
+      <h2 className={styles.name} title={ambassador.name}>
+        {ambassador.name}
+      </h2>
       <img
         className={styles.img}
         src={images[0].src}
@@ -50,11 +71,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <div className={classes(styles.row, styles.mod)}>
             <img src={moderatorBadge} alt="Moderator badge" />
             <p>
-              Show this card to everyone by using
-              {' '}
-              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code>
-              {' '}
-              in chat.
+              Show this card to everyone by using{" "}
+              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code> in
+              chat.
             </p>
           </div>
         )}
@@ -62,7 +81,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         <div className={styles.row}>
           <h3>Species</h3>
           <p>{ambassador.species}</p>
-          <p><i>{ambassador.scientific}</i></p>
+          <p>
+            <i>{ambassador.scientific}</i>
+          </p>
         </div>
 
         <div className={classes(styles.row, styles.compact)}>
@@ -78,16 +99,32 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </div>
           <div>
             <h3>Birthday</h3>
-            <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={options} />
             {ambassador.birth && isBirthday(ambassador.birth) ? <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={options} /> : ""}
-            <p>
-              {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
-            </p>
+            <p>{ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}</p>
           </div>
         </div>
 
         <div className={styles.row}>
-          <h3>Conservation Status</h3>
+          <Tooltip
+            text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
+            maxWidth="18rem"
+            fontSize="0.9rem"
+          >
+            <div className={styles.info}>
+              <h3>Conservation Status</h3>
+
+              {/* svg sourced from https://icons.getbootstrap.com/icons/info-circle-fill/ */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="gray"
+                viewBox="0 0 16 16"
+              >
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+              </svg>
+            </div>
+          </Tooltip>
           <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
 
@@ -103,10 +140,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
         <div className={classes(styles.row, styles.site)}>
           <p>
-            Learn more about {ambassador.name} on the
-            {' '}
+            Learn more about {ambassador.name} on the{" "}
             <a
-              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(ambassadorKey)}`}
+              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
+                ambassadorKey
+              )}`}
               rel="noreferrer"
               target="_blank"
             >
@@ -117,5 +155,5 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

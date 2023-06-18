@@ -4,7 +4,6 @@ import { classes } from "../../utils/classes";
 import useHiddenCursor from "./hooks/useHiddenCursor";
 import useSettings from "./hooks/useSettings";
 import useSleeping from "./hooks/useSleeping";
-import useScrolling from "./hooks/useScrolling";
 
 import Overlay from "./components/overlay/Overlay";
 import styles from "./App.module.scss";
@@ -34,17 +33,6 @@ export default function App() {
     return () => removeSleepListener("wake", showCursor);
   }, [addSleepListener, removeSleepListener, showCursor]);
 
-  // When a user scrolls, treat it as an interaction
-  const {
-    ref: scrollRef,
-    on: addScrollListener,
-    off: removeScrollListener,
-  } = useScrolling();
-  useEffect(() => {
-    addScrollListener(interacted);
-    return () => removeScrollListener(interacted);
-  }, [addScrollListener, removeScrollListener, interacted]);
-
   // Block sleeping hiding the overlay if dev toggle is on
   const settings = useSettings();
   let visibilityClass = sleeping ? styles.hidden : styles.visible;
@@ -56,10 +44,12 @@ export default function App() {
 
   return (
     <div
-      ref={scrollRef}
       className={classes(styles.app, visibilityClass)}
       onMouseEnter={interacted}
       onMouseMove={interacted}
+      onWheel={interacted}
+      onTouchMove={interacted}
+      onKeyDown={interacted}
       onMouseLeave={sleep}
     >
       <Overlay />

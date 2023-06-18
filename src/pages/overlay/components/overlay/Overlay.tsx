@@ -4,6 +4,8 @@ import React, {
   useCallback,
   useState,
   useMemo,
+  type SetStateAction,
+  type Dispatch,
 } from "react";
 
 import Buttons from "../buttons/Buttons";
@@ -60,9 +62,15 @@ const overlayOptions = [
 
 type OverlayKey = (typeof overlayOptions)[number]["key"];
 
+type ActiveAmbassadorState = {
+  key?: AmbassadorKey;
+  isCommand?: boolean;
+};
+
 export interface OverlayOptionProps {
   context: {
-    commandAmbassador?: AmbassadorKey;
+    activeAmbassador: ActiveAmbassadorState;
+    setActiveAmbassador: Dispatch<SetStateAction<ActiveAmbassadorState>>;
   };
   className?: string;
 }
@@ -76,7 +84,8 @@ export default function Overlay() {
     off: removeSleepListener,
   } = useSleeping();
 
-  const [commandAmbassador, setCommandAmbassador] = useState<AmbassadorKey>();
+  const [activeAmbassador, setActiveAmbassador] =
+    useState<ActiveAmbassadorState>({});
   const [visibleOption, setVisibleOption] = useState<OverlayKey>();
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const awakingRef = useRef(false);
@@ -86,7 +95,8 @@ export default function Overlay() {
     useCallback(
       (command: string) => {
         if (!settings.disableChatPopup.value) {
-          if (isAmbassadorKey(command)) setCommandAmbassador(command);
+          if (isAmbassadorKey(command))
+            setActiveAmbassador({ key: command, isCommand: true });
           else if (command !== "welcome") return;
 
           // Show the card
@@ -96,6 +106,7 @@ export default function Overlay() {
           if (timeoutRef.current) clearTimeout(timeoutRef.current);
           timeoutRef.current = setTimeout(() => {
             setVisibleOption(undefined);
+            setActiveAmbassador({});
           }, commandTimeout);
 
           // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
@@ -158,9 +169,10 @@ export default function Overlay() {
   // Generate the context for the overlay options
   const context = useMemo<OverlayOptionProps["context"]>(
     () => ({
-      commandAmbassador,
+      activeAmbassador,
+      setActiveAmbassador,
     }),
-    [commandAmbassador]
+    [activeAmbassador]
   );
 
   // Block sleeping hiding the overlay if dev toggle is on

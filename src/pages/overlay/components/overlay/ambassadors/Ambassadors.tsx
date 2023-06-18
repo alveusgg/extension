@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 
 import AmbassadorCard from "../../../../../utils/global/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../../utils/global/ambassadorButton/AmbassadorButton";
 import {
   sortedAmbassadors,
   ambassadors,
-  type AmbassadorKey,
 } from "../../../../../utils/ambassadors";
 import { classes } from "../../../../../utils/classes";
 import type { OverlayOptionProps } from "../Overlay";
@@ -15,33 +14,34 @@ import arrow from "../../../../../assets/arrow.png";
 import styles from "./ambassadors.module.scss";
 
 export default function Ambassadors(props: OverlayOptionProps) {
-  const { context, className } = props;
+  const {
+    context: { activeAmbassador, setActiveAmbassador },
+    className,
+  } = props;
 
-  const [activeAmbassador, setActiveAmbassador] = useState<AmbassadorKey>();
   const upArrowRef = useRef<HTMLButtonElement>(null);
   const ambassadorList = useRef<HTMLDivElement>(null);
   const downArrowRef = useRef<HTMLButtonElement>(null);
 
   // Scroll the ambassador list to the selected ambassador
-  const scrollListToAmbassador = useCallback((name: AmbassadorKey) => {
-    if (!ambassadorList.current) return;
+  useEffect(() => {
+    if (
+      !ambassadorList.current ||
+      !activeAmbassador.key ||
+      !activeAmbassador.isCommand
+    )
+      return;
 
     const offset = 200;
-    const anchorElement = ambassadorList.current.querySelector(`#${name}`);
+    const anchorElement = ambassadorList.current.querySelector(
+      `#${activeAmbassador.key}`
+    );
     if (anchorElement instanceof HTMLButtonElement)
       ambassadorList.current.scrollTo({
         top: Math.max(0, anchorElement.offsetTop - offset),
         behavior: "smooth",
       });
-  }, []);
-
-  // Show the ambassador command based on chat commands
-  useEffect(() => {
-    if (context.commandAmbassador !== undefined) {
-      setActiveAmbassador(context.commandAmbassador);
-      scrollListToAmbassador(context.commandAmbassador);
-    }
-  }, [context.commandAmbassador, scrollListToAmbassador]);
+  }, [activeAmbassador]);
 
   // Allow the list to be scrolled via the buttons
   const ambassadorListScroll = useCallback((direction: number) => {
@@ -93,11 +93,13 @@ export default function Ambassadors(props: OverlayOptionProps) {
               ambassadorKey={key}
               ambassador={ambassador}
               onClick={() => {
-                setActiveAmbassador((prev) => (prev === key ? undefined : key));
+                setActiveAmbassador((prev) =>
+                  prev.key === key ? {} : { key }
+                );
               }}
               className={classes(
                 styles.ambassadorButton,
-                activeAmbassador === key && styles.highlighted
+                activeAmbassador.key === key && styles.highlighted
               )}
             />
           ))}
@@ -112,12 +114,12 @@ export default function Ambassadors(props: OverlayOptionProps) {
         </button>
       </div>
 
-      {activeAmbassador && (
+      {activeAmbassador.key && (
         <AmbassadorCard
-          key={activeAmbassador}
-          ambassadorKey={activeAmbassador}
-          ambassador={ambassadors[activeAmbassador]}
-          onClose={() => setActiveAmbassador(undefined)}
+          key={activeAmbassador.key}
+          ambassadorKey={activeAmbassador.key}
+          ambassador={ambassadors[activeAmbassador.key]}
+          onClose={() => setActiveAmbassador({})}
           className={styles.ambassadorCard}
         />
       )}

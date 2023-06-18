@@ -55,15 +55,21 @@ const useScrolling = () => {
   );
 
   // Bind the event listeners to the scrollable element
+  const cleanup = useRef<() => void>();
   const ref = useCallback(
     (node: HTMLElement | null) => {
+      if (cleanup.current) {
+        cleanup.current();
+        cleanup.current = undefined;
+      }
+
       if (!node) return;
 
       node.addEventListener("scroll", onScroll, true);
       node.addEventListener("wheel", onWheel, true);
       node.addEventListener("touchmove", onTouchMove, true);
 
-      return () => {
+      cleanup.current = () => {
         node.removeEventListener("scroll", onScroll, true);
         node.removeEventListener("wheel", onWheel, true);
         node.removeEventListener("touchmove", onTouchMove, true);

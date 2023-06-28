@@ -14,6 +14,8 @@ Once local testing is complete, a build can be created with `npm run build`, the
 
 With the assets hosted on Twitch, install the extension version on a test channel and verify that everything is working as expected when running from Twitch.
 
+At this point, the commit being submitted to Twitch should be tagged via git. Do so with `git tag v<version>` if you're currently at the commit being used, or `git tag v<version> <commit>` if not. Once the tag is created, push it with `git push origin v<version>`.
+
 ## Submit for review
 
 With the extension installed on a test channel, submit the extension for review, providing the URL for the channel to use for testing.

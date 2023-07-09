@@ -35,6 +35,28 @@ const getStyleLoader = (isDev: boolean, isModules = false) => [
       sourceMap: true,
     },
   },
+  // Auto-prefix and ensure compatibility based on browserslist
+  {
+    loader: "postcss-loader",
+    options: {
+      postcssOptions: {
+        plugins: [
+          [
+            "postcss-preset-env",
+            {
+              autoprefixer: {
+                flexbox: "no-2009",
+              },
+              stage: 3,
+            },
+          ],
+          "postcss-normalize",
+        ],
+      },
+      sourceMap: true,
+    },
+  },
+  // Resolve relative imports
   {
     loader: "resolve-url-loader",
     options: {
@@ -124,6 +146,8 @@ const config: webpack.Configuration = {
     publicPath: isDev ? "auto" : "./",
     clean: !isDev,
   },
+  // Ensure compatibility based on browserslist
+  target: "browserslist",
   // Setup loaders for all our file types
   module: {
     rules: [

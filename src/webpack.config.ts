@@ -5,6 +5,7 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import DotEnvPlugin from "dotenv-webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import ReactRefreshTypeScript from "react-refresh-typescript";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 import webpack from "webpack";
@@ -15,11 +16,14 @@ const isDev = process.env.NODE_ENV === "development";
 const getTypeScriptLoader = () => ({
   loader: "ts-loader",
   options: {
+    getCustomTransformers: () => ({
+      before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+    }),
     transpileOnly: true,
   },
 });
 
-const getStyleLoader = (isDev: boolean, isModules = false) => [
+const getStyleLoader = (isModules = false) => [
   isDev
     ? "style-loader"
     : {
@@ -169,12 +173,12 @@ const config: webpack.Configuration = {
       {
         test: /\.module\.s[ac]ss$/,
         exclude: /node_modules/,
-        use: getStyleLoader(isDev, true),
+        use: getStyleLoader(true),
       },
       {
         test: /\.s[ac]ss$/i,
         exclude: /(node_modules|\.module\.s[ac]ss$)/,
-        use: getStyleLoader(isDev),
+        use: getStyleLoader(),
       },
       // Load images
       {

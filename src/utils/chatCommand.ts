@@ -14,7 +14,7 @@ const privilegedUsers =
 
 export const normalizeAmbassadorName = (
   name: string,
-  stripDiacritic = false
+  stripDiacritic = false,
 ): string => {
   const first = name.split(" ")[0].toLowerCase();
   return stripDiacritic
@@ -38,7 +38,7 @@ const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
     // If the ambassador has a diacritic in their name, add the normalized name to the map
     const normalizedWithoutDiacritics = normalizeAmbassadorName(
       ambassador.name,
-      true
+      true,
     );
     if (normalizedWithDiacritics !== normalizedWithoutDiacritics)
       commandMap.set(normalizedWithoutDiacritics, key);
@@ -90,7 +90,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       channel: string,
       tags: ChatUserstate,
       msg: string,
-      self: boolean
+      self: boolean,
     ) => {
       // Ignore if user is not a moderator or broadcaster or test user
       if (
@@ -106,11 +106,11 @@ export default function useChatCommand(callback: (command: string) => void) {
       const command = commandsMap.get(commandName);
       console.log(
         `*Twitch extension received command: ${commandName} (${command})*`,
-        id
+        id,
       );
       if (command) callback(command);
     },
-    [commandsMap, callback]
+    [commandsMap, callback],
   );
 
   useEffect(() => {
@@ -139,8 +139,8 @@ export default function useChatCommand(callback: (command: string) => void) {
           .then(() =>
             console.log(
               "*Twitch extension disconnected from chat (after connecting)*",
-              id
-            )
+              id,
+            ),
           );
         return;
       }
@@ -157,7 +157,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       client
         .disconnect()
         .then(() =>
-          console.log("*Twitch extension disconnected from chat*", id)
+          console.log("*Twitch extension disconnected from chat*", id),
         );
     };
   }, [channelNames, messageHandler]);

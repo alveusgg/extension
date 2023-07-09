@@ -114,8 +114,8 @@ export default function Overlay() {
           wake(commandTimeout);
         }
       },
-      [settings.disableChatPopup, wake]
-    )
+      [settings.disableChatPopup, wake],
+    ),
   );
 
   // Ensure we clean up the timer when we unmount
@@ -123,7 +123,7 @@ export default function Overlay() {
     () => () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     },
-    []
+    [],
   );
 
   // If the user interacts with the overlay, clear the auto-dismiss timer
@@ -172,7 +172,7 @@ export default function Overlay() {
       activeAmbassador,
       setActiveAmbassador,
     }),
-    [activeAmbassador]
+    [activeAmbassador],
   );
 
   // Block sleeping hiding the overlay if dev toggle is on
@@ -197,7 +197,7 @@ export default function Overlay() {
             context={context}
             className={classes(
               styles.option,
-              visibleOption !== option.key && styles.optionHidden
+              visibleOption !== option.key && styles.optionHidden,
             )}
           />
         ))}

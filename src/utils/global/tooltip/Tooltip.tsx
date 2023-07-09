@@ -40,7 +40,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
       });
       setShow(true);
     },
-    []
+    [],
   );
 
   // Compute the style of the tooltip
@@ -52,7 +52,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
       maxWidth,
       fontSize,
     }),
-    [show, position, maxWidth, fontSize]
+    [show, position, maxWidth, fontSize],
   );
 
   // Add event listeners + refs to the children to show/hide tooltip
@@ -69,7 +69,7 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
           "aria-describedby": id,
         });
       }),
-    [children, handleEnter, id]
+    [children, handleEnter, id],
   );
 
   return (

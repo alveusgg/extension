@@ -15,7 +15,7 @@ export default function Toggle(props: ToggleProps) {
     (e: ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.checked);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

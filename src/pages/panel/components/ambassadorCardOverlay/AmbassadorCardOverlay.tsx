@@ -11,7 +11,7 @@ interface AmbassadorCardOverlayProps {
 }
 
 export default function AmbassadorCardOverlay(
-  props: AmbassadorCardOverlayProps
+  props: AmbassadorCardOverlayProps,
 ) {
   const { ambassadorCard, onClose } = props;
 
@@ -19,7 +19,7 @@ export default function AmbassadorCardOverlay(
     (e) => {
       if (e.target === e.currentTarget) onClose();
     },
-    [onClose]
+    [onClose],
   );
 
   return (

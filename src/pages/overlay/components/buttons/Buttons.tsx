@@ -23,7 +23,7 @@ interface ButtonsProps<T extends ButtonsOptions> {
 }
 
 export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
-  props: ButtonsProps<T>
+  props: ButtonsProps<T>,
 ) {
   const { options, onClick, active } = props;
 
@@ -41,7 +41,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
           if (a.type === b.type) return 0;
           return a.type === "primary" ? -1 : 1;
         }),
-    [options, onClick, active]
+    [options, onClick, active],
   );
 
   return (
@@ -53,7 +53,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
             className={classes(
               styles.btn,
               option.type === "secondary" && styles.secondary,
-              option.active && styles.highlighted
+              option.active && styles.highlighted,
             )}
           >
             <img src={option.icon} alt={option.title} />

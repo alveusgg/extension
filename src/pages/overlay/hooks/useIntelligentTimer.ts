@@ -29,7 +29,7 @@ const useIntelligentTimer = () => {
     () => () => {
       if (current.current) clearTimeout(current.current);
     },
-    []
+    [],
   );
 
   return [start, stop] as [typeof start, typeof stop];

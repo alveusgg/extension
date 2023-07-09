@@ -34,7 +34,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       className={classes(
         styles.ambassadorCard,
         className,
-        ambassador.birth && isBirthday(ambassador.birth) && styles.birthday
+        ambassador.birth && isBirthday(ambassador.birth) && styles.birthday,
       )}
     >
       {props.onClose && (
@@ -129,7 +129,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             Learn more about {ambassador.name} on the{" "}
             <a
               href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
-                ambassadorKey
+                ambassadorKey,
               )}`}
               rel="noreferrer"
               target="_blank"

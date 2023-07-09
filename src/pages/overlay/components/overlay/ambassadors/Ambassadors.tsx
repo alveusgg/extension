@@ -34,7 +34,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
 
     const offset = 200;
     const anchorElement = ambassadorList.current.querySelector(
-      `#${activeAmbassador.key}`
+      `#${activeAmbassador.key}`,
     );
     if (anchorElement instanceof HTMLButtonElement)
       ambassadorList.current.scrollTo({
@@ -94,12 +94,12 @@ export default function Ambassadors(props: OverlayOptionProps) {
               ambassador={ambassador}
               onClick={() => {
                 setActiveAmbassador((prev) =>
-                  prev.key === key ? {} : { key }
+                  prev.key === key ? {} : { key },
                 );
               }}
               className={classes(
                 styles.ambassadorButton,
-                activeAmbassador.key === key && styles.highlighted
+                activeAmbassador.key === key && styles.highlighted,
               )}
             />
           ))}

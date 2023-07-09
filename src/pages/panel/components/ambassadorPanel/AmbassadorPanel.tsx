@@ -17,7 +17,7 @@ export default function AmbassadorPanel() {
   useChatCommand(
     useCallback((command: string) => {
       if (isAmbassadorKey(command)) setAmbassadorCard(command);
-    }, [])
+    }, []),
   );
 
   return (

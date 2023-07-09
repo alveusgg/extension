@@ -53,7 +53,7 @@ export const SleepingProvider = ({ children }: { children: ReactNode }) => {
       callbacks.wake.forEach((fn) => fn(time));
       startTimer(() => setSleeping(true), time);
     },
-    [callbacks.wake, startTimer]
+    [callbacks.wake, startTimer],
   );
 
   // Immediately sleep the overlay
@@ -72,7 +72,7 @@ export const SleepingProvider = ({ children }: { children: ReactNode }) => {
       on,
       off,
     }),
-    [sleeping, wake, sleep, on, off]
+    [sleeping, wake, sleep, on, off],
   );
 
   return <context.Provider value={obj}>{children}</context.Provider>;

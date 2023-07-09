@@ -49,7 +49,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     const storage = JSON.parse(localStorage.getItem("settings") || "{}");
     return typeSafeObjectEntries(settings).reduce(
       (acc, [key, value]) => ({ ...acc, [key]: value.process(storage[key]) }),
-      {} as StoredSettings
+      {} as StoredSettings,
     );
   });
 
@@ -63,7 +63,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     <Key extends SettingsKey>(key: Key, value: StoredSettings[Key]) => {
       setStored((current) => ({ ...current, [key]: value }));
     },
-    []
+    [],
   );
 
   // Expose a full object for the settings
@@ -77,9 +77,9 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
             value: stored[key],
             change: (value: any) => change(key, value),
           },
-        ])
+        ]),
       ),
-    [stored, change]
+    [stored, change],
   );
 
   return <context.Provider value={obj}>{children}</context.Provider>;

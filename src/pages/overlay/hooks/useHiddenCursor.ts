@@ -16,7 +16,7 @@ const useHiddenCursor = () => {
       setHidden(false);
       startTimer(() => setHidden(true), time);
     },
-    [startTimer]
+    [startTimer],
   );
 
   // Show the cursor as soon as the user interacts with the page

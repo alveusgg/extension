@@ -33,7 +33,7 @@ It is designed to be used by channels that are hosting collaboration streams at 
 It allows viewers to explore more information about the ambassadors seen on the stream, at any time.
 It allows the broadcaster/moderators to run chat commands to display information about specific ambassadors to everyone, as they are shown on stream.
 
-This extension was made with `create-react-app`. The NPM package `react-app-rewired` was used to allow the creation of a multi-page app.
+This extension is made with React, and is bundled with Webpack.
 Due to the nature (frequency and last-minute-ness) of collaboration streams, it is not tenable to maintain an access list and create new releases for each collaboration, so this is published as a global overlay.
 
 Changelog:

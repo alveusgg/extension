@@ -1,5 +1,3 @@
-import React from "react";
-
 import { typeSafeObjectEntries } from "../../../../../utils/helpers";
 import useSettings from "../../../hooks/useSettings";
 

@@ -3,23 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
-  "main": "public/index.html",
-  "author": {
-    "name": "Abdullah Morrison",
-    "email": "abdullahmorrison@gmail.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alveusgg/extension.git"
   },
   "bugs": {
     "url": "https://github.com/alveusgg/extension/issues"
-  },
-  "dependencies": {
-    "@alveusgg/data": "github:alveusgg/data#0.18.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tmi.js": "^1.8.5"
   },
   "scripts": {
     "dev": "NODE_ENV=development webpack serve --config src/webpack.config.ts",
@@ -31,17 +20,11 @@
     "format:prettier": "npm run lint:prettier -- --write",
     "format": "run-p format:*"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@alveusgg/data": "github:alveusgg/data#0.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tmi.js": "^1.8.5"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
@@ -80,5 +63,18 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
     "webpack-image-resize-loader": "^5.0.0"
+  },
+  "main": "public/index.html",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { calculateAge, formatDate, isBirthday } from "../../dateManager";
 import {
   getAmbassadorImages,

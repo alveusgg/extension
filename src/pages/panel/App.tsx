@@ -1,5 +1,3 @@
-import React from "react";
-
 import Nav from "./components/nav/Nav";
 import AmbassadorPanel from "./components/ambassadorPanel/AmbassadorPanel";
 

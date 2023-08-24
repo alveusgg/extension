@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import React from "react";
 
 import { classes } from "../../../../utils/classes";
 import Tooltip from "../../../../utils/global/tooltip/Tooltip";

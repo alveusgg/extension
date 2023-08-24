@@ -3,23 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
-  "main": "public/index.html",
-  "author": {
-    "name": "Abdullah Morrison",
-    "email": "abdullahmorrison@gmail.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alveusgg/extension.git"
   },
   "bugs": {
     "url": "https://github.com/alveusgg/extension/issues"
-  },
-  "dependencies": {
-    "@alveusgg/data": "github:alveusgg/data#0.18.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tmi.js": "^1.8.5"
   },
   "scripts": {
     "dev": "NODE_ENV=development webpack serve --config src/webpack.config.ts",
@@ -31,6 +20,51 @@
     "format:prettier": "npm run lint:prettier -- --write",
     "format": "run-p format:*"
   },
+  "dependencies": {
+    "@alveusgg/data": "github:alveusgg/data#0.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tmi.js": "^1.8.5"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+    "@types/dotenv-webpack": "^7.0.4",
+    "@types/node": "18.17.1",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/tmi.js": "^1.8.3",
+    "@types/twitch-ext": "^1.24.4",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "dotenv-webpack": "^8.0.1",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "fork-ts-checker-webpack-plugin": "^8.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^7.3.3",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^9.1.1",
+    "prettier": "^3.0.2",
+    "react-refresh-typescript": "^2.0.9",
+    "resolve-url-loader": "^5.0.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-image-resize-loader": "^5.0.0"
+  },
+  "main": "public/index.html",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -42,43 +76,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
-    "@types/dotenv-webpack": "^7.0.4",
-    "@types/node": "^20.4.1",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "@types/tmi.js": "^1.8.3",
-    "@types/twitch-ext": "^1.24.4",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.8.1",
-    "dotenv-webpack": "^8.0.1",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "fork-ts-checker-webpack-plugin": "^8.0.0",
-    "html-webpack-plugin": "^5.5.3",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "mini-css-extract-plugin": "^2.7.6",
-    "npm-run-all": "^4.1.5",
-    "postcss-loader": "^7.3.3",
-    "postcss-normalize": "^10.0.1",
-    "postcss-preset-env": "^9.0.0",
-    "prettier": "^3.0.0",
-    "react-refresh-typescript": "^2.0.9",
-    "resolve-url-loader": "^5.0.0",
-    "sass-loader": "^13.3.2",
-    "style-loader": "^3.3.3",
-    "ts-loader": "^9.4.4",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.6",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-image-resize-loader": "^5.0.0"
   }
 }

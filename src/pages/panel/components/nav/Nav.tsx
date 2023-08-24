@@ -1,5 +1,3 @@
-import React from "react";
-
 import AlveusLogo from "../../../../assets/alveus-logo.png";
 import styles from "./nav.module.scss";
 

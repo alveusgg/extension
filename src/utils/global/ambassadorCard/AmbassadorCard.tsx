@@ -1,5 +1,6 @@
 import { calculateAge, formatDate, isBirthday } from "../../dateManager";
 import {
+  getClassification,
   getAmbassadorImages,
   getIUCNStatus,
   type AmbassadorKey,
@@ -67,7 +68,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <h3>Species</h3>
           <p>{ambassador.species}</p>
           <p>
-            <i>{ambassador.scientific}</i>
+            <i>
+              {ambassador.scientific} ({getClassification(ambassador.class)})
+            </i>
           </p>
         </div>
 

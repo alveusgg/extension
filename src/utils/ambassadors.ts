@@ -7,6 +7,7 @@ import {
   type ActiveAmbassadors as Ambassadors,
   type ActiveAmbassadorKey as AmbassadorKey,
 } from "@alveusgg/data/src/ambassadors/filters";
+import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
 import { getAmbassadorImages } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
@@ -21,6 +22,7 @@ export const ambassadors = typeSafeObjectFromEntries(sortedAmbassadors);
 
 export {
   isAmbassadorKey,
+  getClassification,
   getAmbassadorImages,
   getIUCNStatus,
   type Ambassadors,

@@ -125,6 +125,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
         </div>
 
+        <div className={styles.row}>
+          <h3>Native To</h3>
+          <p>{ambassador.native.text}</p>
+        </div>
+
         <div className={classes(styles.row, styles.site)}>
           <p>
             Learn more about {ambassador.name} on the{" "}

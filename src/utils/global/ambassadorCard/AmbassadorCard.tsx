@@ -89,6 +89,16 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <div className={styles.row}>
+          <h3>Story</h3>
+          <p>{ambassador.story}</p>
+        </div>
+
+        <div className={styles.row}>
+          <h3>Conservation Mission</h3>
+          <p>{ambassador.mission}</p>
+        </div>
+
+        <div className={styles.row}>
           <Tooltip
             text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
             maxWidth="18rem"
@@ -110,16 +120,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </div>
           </Tooltip>
           <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
-        </div>
-
-        <div className={styles.row}>
-          <h3>Story</h3>
-          <p>{ambassador.story}</p>
-        </div>
-
-        <div className={styles.row}>
-          <h3>Conservation Mission</h3>
-          <p>{ambassador.mission}</p>
         </div>
 
         <div className={classes(styles.row, styles.site)}>

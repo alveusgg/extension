@@ -1,5 +1,6 @@
 import { calculateAge, formatDate, isBirthday } from "../../dateManager";
 import {
+  getClassification,
   getAmbassadorImages,
   getIUCNStatus,
   type AmbassadorKey,
@@ -67,7 +68,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <h3>Species</h3>
           <p>{ambassador.species}</p>
           <p>
-            <i>{ambassador.scientific}</i>
+            <i>
+              {ambassador.scientific} ({getClassification(ambassador.class)})
+            </i>
           </p>
         </div>
 
@@ -86,6 +89,16 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             <h3>Birthday</h3>
             <p>{ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}</p>
           </div>
+        </div>
+
+        <div className={styles.row}>
+          <h3>Story</h3>
+          <p>{ambassador.story}</p>
+        </div>
+
+        <div className={styles.row}>
+          <h3>Conservation Mission</h3>
+          <p>{ambassador.mission}</p>
         </div>
 
         <div className={styles.row}>
@@ -113,13 +126,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <div className={styles.row}>
-          <h3>Story</h3>
-          <p>{ambassador.story}</p>
-        </div>
-
-        <div className={styles.row}>
-          <h3>Conservation Mission</h3>
-          <p>{ambassador.mission}</p>
+          <h3>Native To</h3>
+          <p>{ambassador.native.text}</p>
         </div>
 
         <div className={classes(styles.row, styles.site)}>

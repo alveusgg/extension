@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import tmi, { ChatUserstate } from "tmi.js";
 
-import { ambassadors, AmbassadorKey } from "./ambassadors";
-import { typeSafeObjectEntries } from "./helpers";
-import { fetchCurrentChannelInfo, useTwitchAuth } from "./twitch-api";
+import { ambassadors, AmbassadorKey } from "../utils/ambassadors";
+import { typeSafeObjectEntries } from "../utils/helpers";
+import { fetchCurrentChannelInfo } from "../utils/twitchApi";
+
+import useTwitchAuth from "./useTwitchAuth";
 
 const testChannelNames =
   process.env.REACT_APP_TEST_CHANNEL_NAMES?.split(",") ?? [];

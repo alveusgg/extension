@@ -10,7 +10,7 @@ import React, {
 
 import Buttons from "../buttons/Buttons";
 
-import useChatCommand from "../../../../utils/chatCommand";
+import useChatCommand from "../../../../hooks/useChatCommand";
 import {
   isAmbassadorKey,
   type AmbassadorKey,

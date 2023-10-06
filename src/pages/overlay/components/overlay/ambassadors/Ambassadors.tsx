@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from "react";
 
-import AmbassadorCard from "../../../../../utils/global/ambassadorCard/AmbassadorCard";
-import AmbassadorButton from "../../../../../utils/global/ambassadorButton/AmbassadorButton";
+import AmbassadorCard from "../../../../../components/ambassadorCard/AmbassadorCard";
+import AmbassadorButton from "../../../../../components/ambassadorButton/AmbassadorButton";
 import {
   sortedAmbassadors,
   ambassadors,

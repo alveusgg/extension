@@ -1,8 +1,8 @@
 import React, { useState, useCallback, Fragment } from "react";
 
-import AmbassadorButton from "../../../../utils/global/ambassadorButton/AmbassadorButton";
+import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
 import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
-import useChatCommand from "../../../../utils/chatCommand";
+import useChatCommand from "../../../../hooks/useChatCommand";
 import {
   sortedAmbassadors,
   isAmbassadorKey,

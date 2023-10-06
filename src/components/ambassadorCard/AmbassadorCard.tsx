@@ -1,18 +1,19 @@
-import { calculateAge, formatDate, isBirthday } from "../../dateManager";
+import { calculateAge, formatDate, isBirthday } from "../../utils/dateManager";
 import {
   getClassification,
   getAmbassadorImages,
   getIUCNStatus,
   type AmbassadorKey,
   type Ambassador as AmbassadorType,
-} from "../../ambassadors";
-import { normalizeAmbassadorName } from "../../chatCommand";
-import { camelToKebab } from "../../helpers";
-import { classes } from "../../classes";
+} from "../../utils/ambassadors";
+import { camelToKebab } from "../../utils/helpers";
+import { classes } from "../../utils/classes";
+import { normalizeAmbassadorName } from "../../hooks/useChatCommand";
+import moderatorBadge from "../../assets/mod.png";
+
 import Tooltip from "../tooltip/Tooltip";
 
 import styles from "./ambassadorCard.module.scss";
-import moderatorBadge from "../../../assets/mod.png";
 
 export interface AmbassadorCardProps {
   ambassadorKey: AmbassadorKey;

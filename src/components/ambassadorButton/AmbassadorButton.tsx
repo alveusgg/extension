@@ -1,11 +1,11 @@
-import React, { type MouseEventHandler } from "react";
+import { type MouseEventHandler } from "react";
 
 import {
   getAmbassadorImages,
   type AmbassadorKey,
   type Ambassador as AmbassadorType,
-} from "../../ambassadors";
-import { classes } from "../../classes";
+} from "../../utils/ambassadors";
+import { classes } from "../../utils/classes";
 
 import styles from "./ambassadorButton.module.scss";
 

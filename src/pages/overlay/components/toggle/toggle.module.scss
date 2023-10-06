@@ -1,78 +1,56 @@
 @import "../../../../variables.scss";
 
-$knob: 1rem;
-$padding: 0.2rem;
-
 .container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   cursor: pointer;
 
   &:hover {
-    .slider {
-      outline: $outline !important;
+    .toggle {
+      input {
+        outline: $outline;
+      }
+    }
+  }
+
+  .toggle {
+    position: relative;
+
+    input {
+      appearance: none;
+      background: $tertiary-color;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: inherit;
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      outline-color: $outline-color;
+      transition: $transition outline;
+
+      &:checked {
+        background: $secondary-color;
+
+        ~ span {
+          opacity: 1;
+        }
+      }
+    }
+
+    span {
+      color: $primary-color;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      transition: $transition opacity;
     }
   }
 
   .label {
     font-size: 0.75rem;
-  }
-
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: ($knob * 2) + ($padding * 2);
-    height: $knob + ($padding * 2);
-    margin-top: 0.25rem;
-
-    input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-
-      &:focus + .slider {
-        outline: $outline !important;
-      }
-
-      &:checked + .slider {
-        background: $primary-color;
-        outline: 0.125rem solid $tertiary-color;
-
-        &::before {
-          transform: translateX($knob);
-        }
-      }
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: $knob;
-      background: $tertiary-color;
-      transition: $transition;
-      transition-property: background, outline;
-
-      &::before {
-        position: absolute;
-        content: "";
-        height: $knob;
-        width: $knob;
-        left: $padding;
-        top: $padding;
-        border-radius: 50%;
-        background-color: white;
-        transition: $transition;
-        transition-property: transform;
-
-        @media (prefers-reduced-motion) {
-          transition: unset;
-        }
-      }
-    }
   }
 }

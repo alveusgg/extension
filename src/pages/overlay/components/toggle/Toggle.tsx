@@ -20,11 +20,11 @@ export default function Toggle(props: ToggleProps) {
 
   return (
     <label className={styles.container}>
-      <span className={styles.label}>{label}</span>
-      <span className={styles.switch}>
+      <span className={styles.toggle}>
         <input type="checkbox" onChange={onChangeNative} checked={value} />
-        <span className={styles.slider}></span>
+        <span>&#x2713;</span>
       </span>
+      <span className={styles.label}>{label}</span>
     </label>
   );
 }

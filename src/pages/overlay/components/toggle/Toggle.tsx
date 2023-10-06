@@ -1,4 +1,4 @@
-import React, { useCallback, type ChangeEvent } from "react";
+import { useCallback, type ChangeEvent } from "react";
 
 import styles from "./toggle.module.scss";
 

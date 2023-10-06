@@ -1,15 +1,17 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 import AmbassadorCard from "../../../../../components/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../../components/ambassadorButton/AmbassadorButton";
+
 import {
   sortedAmbassadors,
   ambassadors,
 } from "../../../../../utils/ambassadors";
 import { classes } from "../../../../../utils/classes";
-import type { OverlayOptionProps } from "../Overlay";
 
 import arrow from "../../../../../assets/arrow.png";
+
+import type { OverlayOptionProps } from "../Overlay";
 
 import styles from "./ambassadors.module.scss";
 

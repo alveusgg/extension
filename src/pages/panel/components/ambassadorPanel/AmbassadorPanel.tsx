@@ -1,13 +1,16 @@
-import React, { useState, useCallback, Fragment } from "react";
+import { useState, useCallback, Fragment } from "react";
 
 import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
-import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
-import useChatCommand from "../../../../hooks/useChatCommand";
+
 import {
   sortedAmbassadors,
   isAmbassadorKey,
   type AmbassadorKey,
 } from "../../../../utils/ambassadors";
+
+import useChatCommand from "../../../../hooks/useChatCommand";
+
+import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
 
 import styles from "./ambassadorPanel.module.scss";
 

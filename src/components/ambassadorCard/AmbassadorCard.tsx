@@ -8,7 +8,9 @@ import {
 } from "../../utils/ambassadors";
 import { camelToKebab } from "../../utils/helpers";
 import { classes } from "../../utils/classes";
+
 import { normalizeAmbassadorName } from "../../hooks/useChatCommand";
+
 import moderatorBadge from "../../assets/mod.png";
 
 import Tooltip from "../tooltip/Tooltip";

@@ -1,4 +1,4 @@
-import React, {
+import {
   useCallback,
   useRef,
   useState,
@@ -6,6 +6,9 @@ import React, {
   useMemo,
   useId,
   type FocusEvent,
+  Children,
+  isValidElement,
+  cloneElement,
 } from "react";
 
 import styles from "./tooltip.module.scss";
@@ -17,7 +20,7 @@ interface TooltipProps {
   maxWidth?: string;
 }
 
-const Tooltip: React.FC<TooltipProps> = (props) => {
+const Tooltip = (props: TooltipProps) => {
   const { text, children, fontSize, maxWidth } = props;
 
   const id = useId();
@@ -58,10 +61,10 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
   // Add event listeners + refs to the children to show/hide tooltip
   const childrenWithProps = useMemo(
     () =>
-      React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) return child;
+      Children.map(children, (child) => {
+        if (!isValidElement(child)) return child;
 
-        return React.cloneElement(child as React.ReactElement, {
+        return cloneElement(child as React.ReactElement, {
           onMouseEnter: handleEnter,
           onFocus: handleEnter,
           onMouseLeave: () => setShow(false),

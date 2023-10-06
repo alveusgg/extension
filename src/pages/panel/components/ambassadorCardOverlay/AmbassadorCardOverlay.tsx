@@ -1,8 +1,9 @@
-import React, { useCallback, type MouseEventHandler } from "react";
+import { useCallback, type MouseEventHandler } from "react";
 
 import AmbassadorCard, {
   type AmbassadorCardProps,
 } from "../../../../components/ambassadorCard/AmbassadorCard";
+
 import styles from "./ambassadorCardOverlay.module.scss";
 
 interface AmbassadorCardOverlayProps {

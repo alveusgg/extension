@@ -11,6 +11,7 @@
     "url": "https://github.com/alveusgg/extension/issues"
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "NODE_ENV=development webpack serve --config src/webpack.config.ts",
     "build": "webpack --config src/webpack.config.ts",
     "lint:eslint": "eslint src --ext .ts,.tsx",

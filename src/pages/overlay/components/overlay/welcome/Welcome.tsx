@@ -1,9 +1,9 @@
-import website from "../../../../../assets/welcome/website.png";
-import amazonWishlist from "../../../../../assets/welcome/amazonWishlist.png";
-import instagram from "../../../../../assets/welcome/instagram.png";
-import tiktok from "../../../../../assets/welcome/tiktok.png";
-import twitter from "../../../../../assets/welcome/twitter.png";
-import gitHub from "../../../../../assets/welcome/github.png";
+import IconGlobe from "../../../../../components/icons/IconGlobe";
+import IconAmazon from "../../../../../components/icons/IconAmazon";
+import IconInstagram from "../../../../../components/icons/IconInstagram";
+import IconTikTok from "../../../../../components/icons/IconTikTok";
+import IconTwitter from "../../../../../components/icons/IconTwitter";
+import IconGitHub from "../../../../../components/icons/IconGitHub";
 
 import Card from "../../card/Card";
 
@@ -29,8 +29,9 @@ export default function Welcome(props: OverlayOptionProps) {
             href="https://www.alveussanctuary.org/"
             rel="noreferrer"
             target="_blank"
+            title="Website"
           >
-            <img src={website} alt="Website" />
+            <IconGlobe size={32} />
           </a>
         </li>
         <li>
@@ -38,8 +39,9 @@ export default function Welcome(props: OverlayOptionProps) {
             href="https://smile.amazon.com/hz/wishlist/ls/ZM472JRT5QXG"
             rel="noreferrer"
             target="_blank"
+            title="Amazon Wishlist"
           >
-            <img src={amazonWishlist} alt="Amazon Wishlist" />
+            <IconAmazon size={32} />
           </a>
         </li>
         <li>
@@ -47,8 +49,9 @@ export default function Welcome(props: OverlayOptionProps) {
             href="https://www.instagram.com/alveussanctuary/"
             rel="noreferrer"
             target="_blank"
+            title="Instagram"
           >
-            <img src={instagram} alt="Instagram" />
+            <IconInstagram size={32} />
           </a>
         </li>
         <li>
@@ -56,8 +59,9 @@ export default function Welcome(props: OverlayOptionProps) {
             href="https://www.tiktok.com/@alveussanctuary"
             rel="noreferrer"
             target="_blank"
+            title="TikTok"
           >
-            <img src={tiktok} alt="TikTok" />
+            <IconTikTok size={32} />
           </a>
         </li>
         <li>
@@ -65,8 +69,9 @@ export default function Welcome(props: OverlayOptionProps) {
             href="https://twitter.com/AlveusSanctuary"
             rel="noreferrer"
             target="_blank"
+            title="Twitter"
           >
-            <img src={twitter} alt="Twitter" />
+            <IconTwitter size={32} />
           </a>
         </li>
       </ul>
@@ -77,8 +82,8 @@ export default function Welcome(props: OverlayOptionProps) {
         rel="noreferrer"
         target="_blank"
       >
-        Contribute to the Extension
-        <img src={gitHub} alt="GitHub" />
+        Contribute on GitHub
+        <IconGitHub size={16} />
       </a>
     </Card>
   );

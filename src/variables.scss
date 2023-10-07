@@ -13,7 +13,9 @@ $tooltip-background-color: #18181b;
 
 $font-family: "Nunito", sans-serif;
 $outline: 0.25rem solid $outline-color;
-$shadow: 0 0.125rem 1rem $accent-color;
+$shadow:
+  0 0.125rem 0.5rem rgba($accent-color, 0.75),
+  0 0.125rem 1rem rgba($accent-color, 0.25);
 $transition: 0.3s ease;
 
 $slide-distance: 2.5rem;

@@ -9,21 +9,23 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 
   li {
     list-style: none;
-    transition: $transition;
-    transition-property: scale;
+    transition: $transition scale;
 
     &:hover {
       scale: 1.2;
+
+      a {
+        color: $outline-color;
+      }
     }
 
     a {
-      img {
-        height: 2rem;
-      }
+      color: $primary-text;
+      transition: $transition color;
     }
   }
 }
@@ -44,9 +46,5 @@
 
   &:hover {
     color: $outline-color;
-  }
-
-  img {
-    height: 1.5rem;
   }
 }

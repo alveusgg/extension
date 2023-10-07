@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem 0.85rem;
   background-color: $primary-color;
   text-align: center;
 
@@ -25,8 +24,7 @@
   }
 
   .img {
-    margin-bottom: 0.25rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem 0.5rem 0 0;
     flex-shrink: 0; // prevent long names/species to shrink the image height
     // crop image to 2.2:1:
     width: 100%;
@@ -36,16 +34,17 @@
 
   .info {
     margin: auto 0;
-  }
+    padding: 0.75rem 0.25rem;
 
-  .name {
-    color: $primary-text;
-    font-size: 0.8rem;
-  }
+    .name {
+      color: $primary-text;
+      font-size: 0.8rem;
+    }
 
-  .species {
-    font-size: 0.7rem;
-    color: $secondary-text;
-    line-height: 1.2; // slightly reduce line height if species is multi-line
+    .species {
+      font-size: 0.7rem;
+      color: $secondary-text;
+      line-height: 1.2; // slightly reduce line height if species is multi-line
+    }
   }
 }

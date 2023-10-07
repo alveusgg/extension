@@ -88,6 +88,7 @@
   }
 
   .ambassadorButton {
+    outline-color: $outline-color;
     transition: $transition;
     transition-property: outline, filter;
 

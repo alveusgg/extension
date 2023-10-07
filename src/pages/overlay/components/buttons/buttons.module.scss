@@ -16,7 +16,8 @@
     border-radius: 0.5rem;
     background: $primary-color;
     cursor: pointer;
-    box-shadow: 0 0.125rem 0.25rem $accent-color;
+    box-shadow: $shadow;
+    outline-color: $outline-color;
     transition: $transition;
     transition-property: outline, filter;
 

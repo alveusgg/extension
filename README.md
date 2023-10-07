@@ -71,16 +71,6 @@ If you just want to test out the overlay, or the panel, locally without Twitch, 
 
 The panel is available at [localhost:8080/panel.html](https://localhost:8080/panel.html) and the overlay is available at [localhost:8080/video_overlay.html](https://localhost:8080/video_overlay.html) while the development server is running.
 
-## Converting Single-Page App to Multi-Page App
-
-react-app-rewired-multiple-entry is used to add multiple entry points to the app. it uses the config-overrides.js file to add the entry points.
-
-found out about it through this web link: https://gitgud.io/-/snippets/376
-
-package link: https://www.npmjs.com/package/react-app-rewire-multiple-entry
-
-env-cmd: used to add environment variables to the start script in package.json
-
 ## Chatbot Commands
 
 `![ambassador]`: displays the card of the corresponding ambassador

@@ -18,10 +18,9 @@ export default function Welcome(props: OverlayOptionProps) {
     <Card className={className} title="Welcome to Alveus">
       <p className={styles.intro}>
         Alveus is a 501(c)(3) non-profit organization that functions as an
-        exotic animal sanctuary and as a virtual education center. These animals
-        function as educational ambassadors so viewers can learn from and build
-        a connection to them. This helps viewers develop a love for the species
-        and the natural world as a whole.
+        exotic animal sanctuary and as a virtual education center. These
+        non-releasable animals are educational ambassadors so viewers can learn
+        from and build a connection to them.
       </p>
 
       <ul className={styles.socials}>

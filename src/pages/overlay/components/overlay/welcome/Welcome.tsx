@@ -1,9 +1,14 @@
+import { useMemo } from "react";
+
 import IconGlobe from "../../../../../components/icons/IconGlobe";
 import IconAmazon from "../../../../../components/icons/IconAmazon";
 import IconInstagram from "../../../../../components/icons/IconInstagram";
 import IconTikTok from "../../../../../components/icons/IconTikTok";
 import IconTwitter from "../../../../../components/icons/IconTwitter";
+import IconTwitch from "../../../../../components/icons/IconTwitch";
 import IconGitHub from "../../../../../components/icons/IconGitHub";
+
+import useChannel from "../../../../../hooks/useChannel";
 
 import Card from "../../card/Card";
 
@@ -13,6 +18,12 @@ import styles from "./welcome.module.scss";
 
 export default function Welcome(props: OverlayOptionProps) {
   const { className } = props;
+
+  const channel = useChannel();
+  const nonDefault = useMemo(
+    () => !channel || channel.toLowerCase() !== "alveussanctuary",
+    [channel],
+  );
 
   return (
     <Card className={className} title="Welcome to Alveus">
@@ -74,6 +85,18 @@ export default function Welcome(props: OverlayOptionProps) {
             <IconTwitter size={32} />
           </a>
         </li>
+        {nonDefault && (
+          <li>
+            <a
+              href="https://www.twitch.tv/AlveusSanctuary"
+              rel="noreferrer"
+              target="_blank"
+              title="Twitch"
+            >
+              <IconTwitch size={32} />
+            </a>
+          </li>
+        )}
       </ul>
 
       <a

@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import tmi, { ChatUserstate } from "tmi.js";
 
 import { ambassadors, AmbassadorKey } from "../utils/ambassadors";
 import { typeSafeObjectEntries } from "../utils/helpers";
-import { fetchCurrentChannelInfo } from "../utils/twitchApi";
 
-import useTwitchAuth from "./useTwitchAuth";
+import useChannel from "./useChannel";
 
 const testChannelNames =
   process.env.REACT_APP_TEST_CHANNEL_NAMES?.split(",") ?? [];
@@ -48,38 +47,13 @@ const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
   return commandMap;
 };
 
-const useChannelNames = () => {
-  const auth = useTwitchAuth();
-  const [channelNames, setChannelNames] = useState<string[]>([
-    ...testChannelNames,
-    ...defaultChannelNames,
-  ]);
-
-  useEffect(() => {
-    if (!auth) return;
-
-    fetchCurrentChannelInfo(auth)
-      .then((newChannelInfo) => {
-        if (newChannelInfo) {
-          // NOTE: We could use the channel info here to e.g. parse the title and
-          //      highlight the ambassadors for the current scene
-          setChannelNames([
-            ...testChannelNames,
-            newChannelInfo.broadcaster_name,
-          ]);
-        }
-      })
-      .catch((e) => {
-        console.error("Failed to fetch channel info", e);
-        return undefined;
-      });
-  }, [auth]);
-
-  return channelNames;
-};
-
 export default function useChatCommand(callback: (command: string) => void) {
-  const channelNames = useChannelNames();
+  const channel = useChannel();
+  const channelNames = useMemo(
+    () => [...testChannelNames, ...(channel ? [channel] : defaultChannelNames)],
+    [channel],
+  );
+
   const commandsMap = useMemo(() => {
     const commands = getAmbassadorCommandsMap() as Map<string, string>;
     commands.set("welcome", "welcome");

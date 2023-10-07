@@ -1,4 +1,4 @@
-@import "../../../variables.scss";
+@import "../../variables.scss";
 
 .ambassadorCard {
   width: 18.5rem;
@@ -136,7 +136,7 @@
 }
 
 .birthday::after {
-  content: url("../../../assets/partyHat.png");
+  content: url("../../assets/partyHat.png");
   width: 4rem;
   height: auto;
   position: absolute;

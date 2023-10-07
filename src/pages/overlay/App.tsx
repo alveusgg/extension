@@ -1,11 +1,13 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 
 import { classes } from "../../utils/classes";
+
 import useHiddenCursor from "./hooks/useHiddenCursor";
 import useSettings from "./hooks/useSettings";
 import useSleeping from "./hooks/useSleeping";
 
 import Overlay from "./components/overlay/Overlay";
+
 import styles from "./App.module.scss";
 
 // Hide the overlay after 5s of inactivity

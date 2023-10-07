@@ -1,4 +1,4 @@
-import React, {
+import {
   useEffect,
   useRef,
   useCallback,
@@ -8,14 +8,14 @@ import React, {
   type Dispatch,
 } from "react";
 
-import Buttons from "../buttons/Buttons";
-
-import useChatCommand from "../../../../utils/chatCommand";
 import {
   isAmbassadorKey,
   type AmbassadorKey,
 } from "../../../../utils/ambassadors";
 import { classes } from "../../../../utils/classes";
+
+import useChatCommand from "../../../../hooks/useChatCommand";
+
 import useSettings from "../../hooks/useSettings";
 import useSleeping from "../../hooks/useSleeping";
 
@@ -27,6 +27,8 @@ import AmbassadorsOverlay from "./ambassadors/Ambassadors";
 
 import SettingsIcon from "../../../../assets/overlay/settings.png";
 import SettingsOverlay from "./settings/Settings";
+
+import Buttons from "../buttons/Buttons";
 
 import styles from "./overlay.module.scss";
 

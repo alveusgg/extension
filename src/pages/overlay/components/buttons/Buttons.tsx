@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 
+import Tooltip from "../../../../components/tooltip/Tooltip";
+
 import { classes } from "../../../../utils/classes";
-import Tooltip from "../../../../utils/global/tooltip/Tooltip";
 
 import styles from "./buttons.module.scss";
 

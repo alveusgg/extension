@@ -1,12 +1,13 @@
-import Card from "../../card/Card";
-import type { OverlayOptionProps } from "../Overlay";
-
 import website from "../../../../../assets/welcome/website.png";
 import amazonWishlist from "../../../../../assets/welcome/amazonWishlist.png";
 import instagram from "../../../../../assets/welcome/instagram.png";
 import tiktok from "../../../../../assets/welcome/tiktok.png";
 import twitter from "../../../../../assets/welcome/twitter.png";
 import gitHub from "../../../../../assets/welcome/github.png";
+
+import Card from "../../card/Card";
+
+import type { OverlayOptionProps } from "../Overlay";
 
 import styles from "./welcome.module.scss";
 

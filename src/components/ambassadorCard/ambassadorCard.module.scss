@@ -67,10 +67,11 @@
 
       .name {
         font-size: 1.3rem;
+        line-height: 1;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        padding: 0 0.5rem;
+        padding: 0.2rem 0.5rem 0;
         align-self: center;
         max-width: calc(100% - 2.5rem);
         width: 100%;

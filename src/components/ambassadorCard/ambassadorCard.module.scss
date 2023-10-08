@@ -122,6 +122,7 @@
     }
 
     h3 {
+      color: $heading-text;
       font-size: 0.9rem;
     }
 
@@ -145,6 +146,7 @@
     }
 
     .info {
+      color: $heading-text;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;

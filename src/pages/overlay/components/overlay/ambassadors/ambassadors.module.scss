@@ -99,7 +99,8 @@ $fade-distance: 3rem;
       z-index: 2;
       transition: $transition opacity;
 
-      &:hover {
+      &:hover,
+      &:focus {
         svg {
           scale: 1.2;
 
@@ -141,14 +142,8 @@ $fade-distance: 3rem;
   }
 
   .ambassadorButton {
-    outline-color: $outline-color;
-    transition: $transition;
-    transition-property: outline, filter;
-
-    &:hover,
     &.highlighted {
       outline: $outline;
-      filter: brightness(1.2);
     }
   }
 

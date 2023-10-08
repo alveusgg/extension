@@ -6,7 +6,8 @@
   gap: 0.5rem;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     .toggle {
       input {
         outline: $outline;

@@ -23,8 +23,12 @@
     transition-property: outline, filter;
 
     &:hover,
+    &:focus,
     &.highlighted {
       outline: $outline;
+    }
+
+    &:hover {
       filter: brightness(1.2);
     }
 

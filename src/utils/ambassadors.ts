@@ -8,7 +8,10 @@ import {
   type ActiveAmbassadorKey as AmbassadorKey,
 } from "@alveusgg/data/src/ambassadors/filters";
 import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
-import { getAmbassadorImages } from "@alveusgg/data/src/ambassadors/images";
+import {
+  getAmbassadorImages,
+  type AmbassadorImage,
+} from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
 import { typeSafeObjectEntries, typeSafeObjectFromEntries } from "./helpers";
@@ -28,4 +31,5 @@ export {
   type Ambassadors,
   type AmbassadorKey,
   type Ambassador,
+  type AmbassadorImage,
 };

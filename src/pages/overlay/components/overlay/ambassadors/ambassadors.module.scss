@@ -1,5 +1,8 @@
 @import "../../../../../variables";
 
+$container-overflow: $twitch-vertical-padding;
+$fade-distance: 3rem;
+
 .ambassadorList {
   position: absolute;
   top: 0;
@@ -8,7 +11,7 @@
   display: flex;
   z-index: 0; // lets tooltips appear above the list
 
-  .scrollAmbassadors {
+  .scroll {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,20 +24,24 @@
       align-items: center;
 
       width: 10rem;
-      padding: 1.5rem 1rem;
+      margin: -$container-overflow 0;
+      padding: ($container-overflow + $fade-distance) 1rem;
       gap: 1rem;
 
       // mask image to fade out the list to transparent top and bottom
       // using a gradient as image of which the alpha channel will be
       // applied to the content of the list
-      //  0% -   3% gradient from 0% to 100% alpha
-      //  3% -  97% 100% alpha
-      // 97% - 100% gradient from 100% to 0% alpha
       mask-image: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 1) 3%,
-        rgba(0, 0, 0, 1) 97%,
+        /* gradient from 0% to 100% alpha,
+           with most of the transition between the overflow and fade distance */
+          rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0.25) #{$container-overflow},
+        rgba(0, 0, 0, 1) #{$container-overflow + $fade-distance},
+        /* gradient from 100% to 0% alpha,
+           with most of the transition between the overflow and fade distance */
+          rgba(0, 0, 0, 1) calc(100% - #{$container-overflow + $fade-distance}),
+        rgba(0, 0, 0, 0.25) calc(100% - #{$container-overflow}),
         rgba(0, 0, 0, 0) 100%
       );
 
@@ -47,42 +54,88 @@
       }
     }
 
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+
+      height: #{$container-overflow + $fade-distance};
+      mask-image: linear-gradient(
+        to bottom,
+        /* gradient from 100% to 0% alpha/blur,
+           with the transition happening after the overflow */
+          rgba(0, 0, 0, 1) 0,
+        rgba(0, 0, 0, 1) #{$container-overflow},
+        rgba(0, 0, 0, 0) 100%
+      );
+      backdrop-filter: blur(0.125rem);
+
+      z-index: 1;
+    }
+
+    &::before {
+      top: -$container-overflow;
+    }
+
+    &::after {
+      bottom: -$container-overflow;
+      transform: rotate(180deg);
+    }
+
     .arrow {
       position: absolute;
       border: 0;
       cursor: pointer;
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0.5rem;
-      border-radius: 1.25rem;
-      background-clip: content-box;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(0.25rem);
+      color: $primary-color;
+      width: 100%;
+      height: $fade-distance;
+      padding: 0 0 1rem; // offset toward the faded edge
+      background: rgba(
+        $accent-color,
+        0.01%
+      ); // non-default "transparent" background to avoid dismissing
       z-index: 2;
-      transition: 0.3s ease;
-      transition-property: scale, visibility, opacity;
+      transition: $transition opacity;
 
       &:hover {
-        scale: 1.4;
+        svg {
+          scale: 1.2;
+
+          path {
+            stroke: $outline-color;
+            stroke-width: 0.375rem;
+          }
+        }
       }
 
-      &Up {
+      &.up {
         top: 0;
       }
 
-      &Down {
+      &.down {
         bottom: 0;
         transform: rotate(180deg);
       }
 
-      &Hidden {
-        visibility: hidden;
+      &.hidden {
         opacity: 0;
+        pointer-events: none;
       }
 
-      img {
-        width: 100%;
-        height: auto;
+      svg {
+        filter: drop-shadow(0 0 0.5rem rgba($accent-color, 0.75));
+        overflow: visible; // ensure stroke doesn't get clipped
+        transition: $transition scale;
+
+        path {
+          stroke: $secondary-color;
+          stroke-width: 0.25rem;
+          paint-order: stroke; // force the stroke to be under the fill
+          transition: $transition;
+          transition-property: stroke-width, stroke;
+        }
       }
     }
   }

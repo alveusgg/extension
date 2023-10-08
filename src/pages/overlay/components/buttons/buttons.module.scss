@@ -15,15 +15,12 @@
     align-items: center;
     border-radius: 0.5rem;
     background: $primary-color;
+    color: $primary-text;
     cursor: pointer;
     box-shadow: $shadow;
     outline-color: $outline-color;
     transition: $transition;
     transition-property: outline, filter;
-
-    img {
-      height: 60%;
-    }
 
     &:hover,
     &.highlighted {

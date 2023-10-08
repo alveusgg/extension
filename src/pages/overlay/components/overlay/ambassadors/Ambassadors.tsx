@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, type MouseEvent } from "react";
 
 import AmbassadorCard from "../../../../../components/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../../components/ambassadorButton/AmbassadorButton";
@@ -9,11 +9,10 @@ import {
 } from "../../../../../utils/ambassadors";
 import { classes } from "../../../../../utils/classes";
 
-import arrow from "../../../../../assets/arrow.png";
-
 import type { OverlayOptionProps } from "../Overlay";
 
 import styles from "./ambassadors.module.scss";
+import IconChevron from "../../../../../components/icons/IconChevron";
 
 export default function Ambassadors(props: OverlayOptionProps) {
   const {
@@ -46,44 +45,48 @@ export default function Ambassadors(props: OverlayOptionProps) {
   }, [activeAmbassador]);
 
   // Allow the list to be scrolled via the buttons
-  const ambassadorListScroll = useCallback((direction: number) => {
-    if (ambassadorList.current)
-      ambassadorList.current.scroll({
-        top: ambassadorList.current.scrollTop - direction,
-        left: 0,
-        behavior: "smooth",
-      });
-  }, []);
+  const ambassadorListScroll = useCallback(
+    (event: MouseEvent, direction: number) => {
+      if (ambassadorList.current) {
+        event.stopPropagation();
+
+        ambassadorList.current.scroll({
+          top: ambassadorList.current.scrollTop - direction,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    },
+    [],
+  );
 
   // Ensure the buttons are only shown if the list is scrollable
   const handleArrowVisibility = useCallback(() => {
     if (ambassadorList.current) {
       if (ambassadorList.current.scrollTop === 0)
-        upArrowRef.current?.classList.add(styles.arrowHidden);
+        upArrowRef.current?.classList.add(styles.hidden);
       else if (
         ambassadorList.current.scrollTop +
           ambassadorList.current.clientHeight ===
         ambassadorList.current.scrollHeight
       )
-        downArrowRef.current?.classList.add(styles.arrowHidden);
+        downArrowRef.current?.classList.add(styles.hidden);
       else {
-        upArrowRef.current?.classList.remove(styles.arrowHidden);
-        downArrowRef.current?.classList.remove(styles.arrowHidden);
+        upArrowRef.current?.classList.remove(styles.hidden);
+        downArrowRef.current?.classList.remove(styles.hidden);
       }
     }
   }, []);
 
+  // Check the arrow visibility on mount
+  // Sometimes browsers restore odd scroll positions
+  useEffect(() => {
+    handleArrowVisibility();
+  }, [handleArrowVisibility]);
+
   return (
     <div className={classes(styles.ambassadorList, className)}>
-      <div className={styles.scrollAmbassadors}>
-        <button
-          ref={upArrowRef}
-          className={classes(styles.arrow, styles.arrowUp, styles.arrowHidden)}
-          onClick={() => ambassadorListScroll(250)}
-        >
-          <img src={arrow} alt="Up Arrow" />
-        </button>
-
+      <div className={styles.scroll}>
         <div
           ref={ambassadorList}
           className={styles.ambassadors}
@@ -108,11 +111,21 @@ export default function Ambassadors(props: OverlayOptionProps) {
         </div>
 
         <button
-          ref={downArrowRef}
-          className={classes(styles.arrow, styles.arrowDown)}
-          onClick={() => ambassadorListScroll(-250)}
+          ref={upArrowRef}
+          className={classes(styles.arrow, styles.up, styles.hidden)}
+          onClick={(e) => ambassadorListScroll(e, 250)}
+          title="Scroll up"
         >
-          <img src={arrow} alt="Down Arrow" />
+          <IconChevron />
+        </button>
+
+        <button
+          ref={downArrowRef}
+          className={classes(styles.arrow, styles.down)}
+          onClick={(e) => ambassadorListScroll(e, -250)}
+          title="Scroll down"
+        >
+          <IconChevron />
         </button>
       </div>
 

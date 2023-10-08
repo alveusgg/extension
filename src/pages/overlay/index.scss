@@ -25,7 +25,8 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  padding: 5rem 7rem 5rem 0; // https://dev.twitch.tv/docs/extensions/designing/#video-overlay-extensions
+  padding: $twitch-vertical-padding $twitch-right-padding
+    $twitch-vertical-padding $twitch-left-padding;
 
   #root {
     width: 100%;

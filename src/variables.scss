@@ -20,14 +20,7 @@ $transition: 0.3s ease;
 
 $slide-distance: 2.5rem;
 
-// used to scale various elements based on available height
-// but clamped between 6px and 10px to prevent tiny/giant UI
-// the values are chosen so that in a normal desktop resolution
-// 1 base unit === 10px to make the math easier when using it
-// to scale elements.
-//
-// usage example:
-//   width: calc(5 * $overlay-base-size);
-//   => which would be 50px in normal views and
-//        would scale down to 30px
-$overlay-base-size: clamp(6px, 1.46vh, 10px);
+// https://dev.twitch.tv/docs/extensions/designing/#video-overlay-extensions
+$twitch-vertical-padding: 5rem;
+$twitch-right-padding: 7rem;
+$twitch-left-padding: 0rem;

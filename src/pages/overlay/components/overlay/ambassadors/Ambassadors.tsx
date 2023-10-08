@@ -78,6 +78,12 @@ export default function Ambassadors(props: OverlayOptionProps) {
     }
   }, []);
 
+  // Check the arrow visibility on mount
+  // Sometimes browsers restore odd scroll positions
+  useEffect(() => {
+    handleArrowVisibility();
+  }, [handleArrowVisibility]);
+
   return (
     <div className={classes(styles.ambassadorList, className)}>
       <div className={styles.scroll}>

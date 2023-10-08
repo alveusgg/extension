@@ -25,6 +25,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
       className={classes(styles.ambassador, className)}
       id={ambassadorKey}
       onClick={onClick}
+      type="button"
     >
       <img
         className={styles.img}

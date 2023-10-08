@@ -84,14 +84,18 @@
         right: 0.25rem;
         transform: translateY(-50%);
         width: 2rem;
+
+        appearance: none;
         display: block;
         font-size: 1.5rem;
         line-height: 1.1;
+        color: $primary-text;
         cursor: pointer;
         text-align: center;
         transition: $transition color;
 
-        &:hover {
+        &:hover,
+        &:focus {
           color: $outline-color;
         }
       }

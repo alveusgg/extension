@@ -16,8 +16,14 @@
   flex-shrink: 0;
   box-shadow: $shadow;
   border-radius: 0.5rem;
+  outline-color: $outline-color;
   transition: $transition;
-  transition-property: filter;
+  transition-property: filter, outline;
+
+  &:hover,
+  &:focus {
+    outline: $outline;
+  }
 
   &:hover {
     filter: brightness(1.2);

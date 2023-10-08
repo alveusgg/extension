@@ -57,9 +57,14 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
         <div className={styles.overlay}>
           {props.onClose && (
-            <div className={styles.close} onClick={onClose}>
+            <button
+              className={styles.close}
+              onClick={onClose}
+              type="button"
+              aria-label="Close"
+            >
               &times;
-            </div>
+            </button>
           )}
 
           <h2 className={styles.name} title={ambassador.name}>

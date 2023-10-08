@@ -15,7 +15,8 @@
     list-style: none;
     transition: $transition scale;
 
-    &:hover {
+    &:hover,
+    &:focus {
       scale: 1.2;
 
       a {
@@ -44,7 +45,8 @@
   transition: $transition;
   transition-property: color;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $outline-color;
   }
 }

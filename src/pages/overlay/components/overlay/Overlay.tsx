@@ -8,6 +8,10 @@ import {
   type Dispatch,
 } from "react";
 
+import IconWelcome from "../../../../components/icons/IconWelcome";
+import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
+import IconSettings from "../../../../components/icons/IconSettings";
+
 import {
   isAmbassadorKey,
   type AmbassadorKey,
@@ -19,13 +23,8 @@ import useChatCommand from "../../../../hooks/useChatCommand";
 import useSettings from "../../hooks/useSettings";
 import useSleeping from "../../hooks/useSleeping";
 
-import WelcomeIcon from "../../../../assets/overlay/welcome.png";
 import WelcomeOverlay from "./welcome/Welcome";
-
-import AmbassadorsIcon from "../../../../assets/overlay/ambassadors.png";
 import AmbassadorsOverlay from "./ambassadors/Ambassadors";
-
-import SettingsIcon from "../../../../assets/overlay/settings.png";
 import SettingsOverlay from "./settings/Settings";
 
 import Buttons from "../buttons/Buttons";
@@ -38,26 +37,23 @@ const commandTimeout = 10_000;
 const overlayOptions = [
   {
     key: "welcome",
-    title: "Welcome",
     type: "primary",
-    icon: WelcomeIcon,
-    hoverText: "Welcome to Alveus",
+    icon: IconWelcome,
+    title: "Welcome to Alveus",
     component: WelcomeOverlay,
   },
   {
     key: "ambassadors",
-    title: "Ambassadors",
     type: "primary",
-    icon: AmbassadorsIcon,
-    hoverText: "Explore our Ambassadors",
+    icon: IconAmbassadors,
+    title: "Explore our Ambassadors",
     component: AmbassadorsOverlay,
   },
   {
     key: "settings",
-    title: "Settings",
     type: "secondary",
-    icon: SettingsIcon,
-    hoverText: "Extension Settings",
+    icon: IconSettings,
+    title: "Extension Settings",
     component: SettingsOverlay,
   },
 ] as const;

@@ -12,12 +12,13 @@ import { classes } from "../../utils/classes";
 
 import { normalizeAmbassadorName } from "../../hooks/useChatCommand";
 
-import moderatorBadge from "../../assets/mod.png";
+import IconInfo from "../icons/IconInfo";
 
 import Tooltip from "../tooltip/Tooltip";
 
+import moderatorBadge from "../../assets/mod.svg";
+
 import styles from "./ambassadorCard.module.scss";
-import IconInfo from "../icons/IconInfo";
 
 const offsetPosition = (position: AmbassadorImage["position"]) => {
   const [x, y] = (position || "50% 50%").split(" ");

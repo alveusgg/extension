@@ -32,13 +32,13 @@
       &:checked {
         background: $secondary-color;
 
-        ~ span {
+        ~ svg {
           opacity: 1;
         }
       }
     }
 
-    span {
+    svg {
       color: $primary-color;
       opacity: 0;
       position: absolute;

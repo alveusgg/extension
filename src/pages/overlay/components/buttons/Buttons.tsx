@@ -9,10 +9,9 @@ import styles from "./buttons.module.scss";
 type ButtonsOptions = Readonly<
   {
     key: string;
-    title: string;
     type: "primary" | "secondary";
-    icon: string;
-    hoverText: string;
+    icon: (props: { size: number }) => JSX.Element;
+    title: string;
   }[]
 >;
 
@@ -47,7 +46,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
   return (
     <div className={styles.activationButtons}>
       {optionsWithOnClick.map((option) => (
-        <Tooltip key={option.key} text={option.hoverText}>
+        <Tooltip key={option.key} text={option.title}>
           <button
             onClick={option.onClick}
             className={classes(
@@ -56,7 +55,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
               option.active && styles.highlighted,
             )}
           >
-            <img src={option.icon} alt={option.title} />
+            <option.icon size={option.type === "secondary" ? 32 : 48} />
           </button>
         </Tooltip>
       ))}

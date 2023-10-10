@@ -5,7 +5,7 @@ import IconAmazon from "../../../../../components/icons/IconAmazon";
 import IconInstagram from "../../../../../components/icons/IconInstagram";
 import IconTikTok from "../../../../../components/icons/IconTikTok";
 import IconTwitter from "../../../../../components/icons/IconTwitter";
-import IconTwitch from "../../../../../components/icons/IconTwitch";
+import IconPlay from "../../../../../components/icons/IconPlay";
 import IconGitHub from "../../../../../components/icons/IconGitHub";
 
 import useChannel from "../../../../../hooks/useChannel";
@@ -91,9 +91,9 @@ export default function Welcome(props: OverlayOptionProps) {
               href="https://www.twitch.tv/AlveusSanctuary"
               rel="noreferrer"
               target="_blank"
-              title="Twitch"
+              title="Live"
             >
-              <IconTwitch size={32} />
+              <IconPlay size={32} />
             </a>
           </li>
         )}

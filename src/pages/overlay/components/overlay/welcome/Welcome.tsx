@@ -5,7 +5,7 @@ import IconAmazon from "../../../../../components/icons/IconAmazon";
 import IconInstagram from "../../../../../components/icons/IconInstagram";
 import IconTikTok from "../../../../../components/icons/IconTikTok";
 import IconTwitter from "../../../../../components/icons/IconTwitter";
-import IconTwitch from "../../../../../components/icons/IconTwitch";
+import IconPlay from "../../../../../components/icons/IconPlay";
 import IconGitHub from "../../../../../components/icons/IconGitHub";
 
 import useChannel from "../../../../../hooks/useChannel";
@@ -37,7 +37,7 @@ export default function Welcome(props: OverlayOptionProps) {
       <ul className={styles.socials}>
         <li>
           <a
-            href="https://www.alveussanctuary.org/"
+            href="https://www.alveussanctuary.org"
             rel="noreferrer"
             target="_blank"
             title="Website"
@@ -47,7 +47,7 @@ export default function Welcome(props: OverlayOptionProps) {
         </li>
         <li>
           <a
-            href="https://smile.amazon.com/hz/wishlist/ls/ZM472JRT5QXG"
+            href="https://www.alveussanctuary.org/wishlist"
             rel="noreferrer"
             target="_blank"
             title="Amazon Wishlist"
@@ -57,7 +57,7 @@ export default function Welcome(props: OverlayOptionProps) {
         </li>
         <li>
           <a
-            href="https://www.instagram.com/alveussanctuary/"
+            href="https://www.alveussanctuary.org/instagram"
             rel="noreferrer"
             target="_blank"
             title="Instagram"
@@ -67,7 +67,7 @@ export default function Welcome(props: OverlayOptionProps) {
         </li>
         <li>
           <a
-            href="https://www.tiktok.com/@alveussanctuary"
+            href="https://www.alveussanctuary.org/tiktok"
             rel="noreferrer"
             target="_blank"
             title="TikTok"
@@ -77,7 +77,7 @@ export default function Welcome(props: OverlayOptionProps) {
         </li>
         <li>
           <a
-            href="https://twitter.com/AlveusSanctuary"
+            href="https://www.alveussanctuary.org/twitter"
             rel="noreferrer"
             target="_blank"
             title="Twitter"
@@ -88,12 +88,12 @@ export default function Welcome(props: OverlayOptionProps) {
         {nonDefault && (
           <li>
             <a
-              href="https://www.twitch.tv/AlveusSanctuary"
+              href="https://www.alveussanctuary.org/live"
               rel="noreferrer"
               target="_blank"
-              title="Twitch"
+              title="Live"
             >
-              <IconTwitch size={32} />
+              <IconPlay size={32} />
             </a>
           </li>
         )}

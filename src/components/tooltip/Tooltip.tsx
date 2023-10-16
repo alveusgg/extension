@@ -19,7 +19,6 @@ interface TooltipProps {
   fontSize?: string;
   maxWidth?: string;
 }
-
 const Tooltip = (props: TooltipProps) => {
   const { text, children, fontSize, maxWidth } = props;
 
@@ -27,6 +26,7 @@ const Tooltip = (props: TooltipProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
+  const [isOverflowing, setIsOverflowing] = useState(false);
 
   // On hover, compute position of tooltip and show it
   const handleEnter = useCallback(
@@ -37,10 +37,21 @@ const Tooltip = (props: TooltipProps) => {
       const rect = target.getBoundingClientRect();
       const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
-      setPosition({
-        top: rect.top + rect.height / 2 - tooltipRect.height / 2,
-        left: rect.right + 10,
-      });
+      if (rect.right + tooltipRect.width > window.innerWidth) {
+        // If the tooltip box is past the right edge of the page, position it to the top
+        setIsOverflowing(true);
+        setPosition({
+          top: rect.top - tooltipRect.height - 7,
+          left: rect.left - 4,
+        });
+      } else {
+        // Position tooltip to the left
+        setIsOverflowing(false);
+        setPosition({
+          top: rect.top + rect.height / 2 - tooltipRect.height / 2,
+          left: rect.right + 10,
+        });
+      }
       setShow(true);
     },
     [],
@@ -85,7 +96,11 @@ const Tooltip = (props: TooltipProps) => {
         id={id}
         role="tooltip"
       >
-        <span className={styles.triangle} />
+        <div
+          className={
+            isOverflowing ? styles.triangle_bottom : styles.triangle_left
+          }
+        />
         {text}
       </div>
     </>

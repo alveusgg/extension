@@ -54,36 +54,6 @@ $fade-distance: 3rem;
       }
     }
 
-    &::before,
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-
-      height: #{$container-overflow + $fade-distance};
-      mask-image: linear-gradient(
-        to bottom,
-        /* gradient from 100% to 0% alpha/blur,
-           with the transition happening after the overflow */
-          rgba(0, 0, 0, 1) 0,
-        rgba(0, 0, 0, 1) #{$container-overflow},
-        rgba(0, 0, 0, 0) 100%
-      );
-      backdrop-filter: blur(0.125rem);
-
-      z-index: 1;
-    }
-
-    &::before {
-      top: -$container-overflow;
-    }
-
-    &::after {
-      bottom: -$container-overflow;
-      transform: rotate(180deg);
-    }
-
     .arrow {
       position: absolute;
       border: 0;

@@ -42,8 +42,16 @@ const Tooltip = (props: TooltipProps) => {
         setIsOverflowing(true);
         setPosition({
           top: rect.top - rect.height / 2 - tooltipRect.height,
-          left: rect.right - tooltipRect.width / 2 - 5,
+          left: window.innerWidth / 2 - tooltipRect.width / 2,
         });
+        // Calculate margin so triangle will be pointing to info icon
+        const calcTriangleMargin = `${
+          window.innerWidth / 2 - rect.right + 5
+        }px`;
+        document.documentElement.style.setProperty(
+          "--tooltip-margin-right",
+          calcTriangleMargin,
+        );
       } else {
         // Position tooltip to the left
         setIsOverflowing(false);

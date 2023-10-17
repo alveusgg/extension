@@ -41,8 +41,8 @@ const Tooltip = (props: TooltipProps) => {
         // If the tooltip box is past the right edge of the page, position it to the top
         setIsOverflowing(true);
         setPosition({
-          top: rect.top - tooltipRect.height - 7,
-          left: rect.left - 4,
+          top: rect.top - rect.height / 2 - tooltipRect.height,
+          left: rect.right - tooltipRect.width / 2 - 5,
         });
       } else {
         // Position tooltip to the left

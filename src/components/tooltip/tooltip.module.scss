@@ -16,10 +16,9 @@
     border-color: $tooltip-background-color transparent transparent transparent;
     border-style: solid;
     border-width: 5px;
-    margin-top: -5px;
     position: absolute;
-    top: 105%;
-    right: 43.6%;
+    top: 100%;
+    right: 50%;
   }
   .triangle_left {
     border-color: transparent $tooltip-background-color transparent transparent;

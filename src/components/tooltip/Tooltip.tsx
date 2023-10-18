@@ -19,6 +19,7 @@ interface TooltipProps {
   fontSize?: string;
   maxWidth?: string;
 }
+
 const Tooltip = (props: TooltipProps) => {
   const { text, children, fontSize, maxWidth } = props;
 
@@ -26,7 +27,8 @@ const Tooltip = (props: TooltipProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
-  const [isOverflowing, setIsOverflowing] = useState(false);
+  const [above, setAbove] = useState(false);
+  const [triangleMargin, setTriangleMargin] = useState("0px");
 
   // On hover, compute position of tooltip and show it
   const handleEnter = useCallback(
@@ -39,22 +41,16 @@ const Tooltip = (props: TooltipProps) => {
 
       if (rect.right + tooltipRect.width > window.innerWidth) {
         // If the tooltip box is past the right edge of the page, position it to the top
-        setIsOverflowing(true);
+        setAbove(true);
         setPosition({
           top: rect.top - rect.height / 2 - tooltipRect.height,
           left: window.innerWidth / 2 - tooltipRect.width / 2,
         });
         // Calculate margin so triangle will be pointing to info icon
-        const calcTriangleMargin = `${
-          window.innerWidth / 2 - rect.right + 5
-        }px`;
-        document.documentElement.style.setProperty(
-          "--tooltip-margin-right",
-          calcTriangleMargin,
-        );
+        setTriangleMargin(`${window.innerWidth / 2 - rect.right + 5}px`);
       } else {
         // Position tooltip to the left
-        setIsOverflowing(false);
+        setAbove(false);
         setPosition({
           top: rect.top + rect.height / 2 - tooltipRect.height / 2,
           left: rect.right + 10,
@@ -105,9 +101,8 @@ const Tooltip = (props: TooltipProps) => {
         role="tooltip"
       >
         <div
-          className={
-            isOverflowing ? styles.triangle_bottom : styles.triangle_left
-          }
+          className={above ? styles.triangleBottom : styles.triangleLeft}
+          style={{ marginRight: above ? triangleMargin : "0" }}
         />
         {text}
       </div>

@@ -28,7 +28,7 @@ const Tooltip = (props: TooltipProps) => {
   const [show, setShow] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const [above, setAbove] = useState(false);
-  const [triangleMargin, setTriangleMargin] = useState("0px");
+  const [triangleMargin, setTriangleMargin] = useState<string>();
 
   // On hover, compute position of tooltip and show it
   const handleEnter = useCallback(
@@ -47,7 +47,7 @@ const Tooltip = (props: TooltipProps) => {
           left: window.innerWidth / 2 - tooltipRect.width / 2,
         });
         // Calculate margin so triangle will be pointing to info icon
-        setTriangleMargin(`${window.innerWidth / 2 - rect.right + 5}px`);
+        setTriangleMargin(`0 ${window.innerWidth / 2 - rect.right + 5}px 0 0`);
       } else {
         // Position tooltip to the left
         setAbove(false);
@@ -55,6 +55,8 @@ const Tooltip = (props: TooltipProps) => {
           top: rect.top + rect.height / 2 - tooltipRect.height / 2,
           left: rect.right + 10,
         });
+        // Have the triangle be in the center of the tooltip
+        setTriangleMargin("-5px 0 0");
       }
       setShow(true);
     },
@@ -102,7 +104,7 @@ const Tooltip = (props: TooltipProps) => {
       >
         <div
           className={above ? styles.triangleBottom : styles.triangleLeft}
-          style={{ marginRight: above ? triangleMargin : "0" }}
+          style={{ margin: triangleMargin }}
         />
         {text}
       </div>

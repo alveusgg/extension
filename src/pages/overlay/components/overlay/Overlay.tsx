@@ -135,13 +135,11 @@ export default function Overlay() {
     return () => removeSleepListener("wake", callback);
   }, [addSleepListener, removeSleepListener]);
 
-  // Handle body clicks, dismissing the overlay if the user clicks outside of it
-  const bodyClick = useCallback((e: MouseEvent) => {
+  const visibleUnderCursor = (e: MouseEvent) => {
     // Get all the elements under the mouse
     const elements = document.elementsFromPoint(e.clientX, e.clientY);
 
-    // For each element, if it has a background then we want to ignore the click
-    // If we reach the body, then break out of the loop and close the panels
+    // For each element, if it has a background then it is part of the overlay
     for (const element of elements) {
       if (element === document.body) break;
 
@@ -150,11 +148,18 @@ export default function Overlay() {
         style.backgroundImage !== "none" ||
         style.backgroundColor !== "rgba(0, 0, 0, 0)"
       ) {
-        return;
+        return true;
       }
     }
 
-    setVisibleOption(undefined);
+    return false;
+  };
+
+  // Handle body clicks, dismissing the overlay if the user clicks outside of it
+  const bodyClick = useCallback((e: MouseEvent) => {
+    if (!visibleUnderCursor(e)) {
+      setVisibleOption(undefined);
+    }
   }, []);
 
   // If the user clicks anywhere in the body, except the overlay itself, close the panels
@@ -166,22 +171,8 @@ export default function Overlay() {
 
   // Handle body double clicks, ignoring them inside of overlay elements
   const bodyDblClick = useCallback((e: MouseEvent) => {
-    // Get all the elements under the mouse
-    const elements = document.elementsFromPoint(e.clientX, e.clientY);
-
-    // For each element, if it has a background then we want to ignore the click
-    // If we reach the body, then break out of the loop and propagate the event
-    for (const element of elements) {
-      if (element === document.body) break;
-
-      const style = getComputedStyle(element);
-      if (
-        style.backgroundImage !== "none" ||
-        style.backgroundColor !== "rgba(0, 0, 0, 0)"
-      ) {
-        e.stopPropagation();
-        return;
-      }
+    if (visibleUnderCursor(e)) {
+      e.stopPropagation();
     }
   }, []);
 

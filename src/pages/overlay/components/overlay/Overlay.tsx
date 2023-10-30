@@ -17,6 +17,7 @@ import {
   type AmbassadorKey,
 } from "../../../../utils/ambassadors";
 import { classes } from "../../../../utils/classes";
+import { visibleUnderCursor } from "../../../../utils/dom";
 
 import useChatCommand from "../../../../hooks/useChatCommand";
 
@@ -134,26 +135,6 @@ export default function Overlay() {
     addSleepListener("wake", callback);
     return () => removeSleepListener("wake", callback);
   }, [addSleepListener, removeSleepListener]);
-
-  const visibleUnderCursor = (e: MouseEvent) => {
-    // Get all the elements under the mouse
-    const elements = document.elementsFromPoint(e.clientX, e.clientY);
-
-    // For each element, if it has a background then it is part of the overlay
-    for (const element of elements) {
-      if (element === document.body) break;
-
-      const style = getComputedStyle(element);
-      if (
-        style.backgroundImage !== "none" ||
-        style.backgroundColor !== "rgba(0, 0, 0, 0)"
-      ) {
-        return true;
-      }
-    }
-
-    return false;
-  };
 
   // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {

@@ -1,8 +1,10 @@
 /**
  * Finds overlay element that is visible under the cursor
- * @param e Mouse event containing cursor position
+ *
+ * @param {MouseEvent} e Mouse event containing cursor position
+ * @returns {Element|null} Element if one is visible under the cursor, null otherwise
  */
-export function visibleUnderCursor(e: MouseEvent) {
+export function visibleUnderCursor(e: MouseEvent): Element | null {
   // Get all the elements under the mouse
   const elements = document.elementsFromPoint(e.clientX, e.clientY);
 
@@ -18,4 +20,6 @@ export function visibleUnderCursor(e: MouseEvent) {
       return element;
     }
   }
+
+  return null;
 }

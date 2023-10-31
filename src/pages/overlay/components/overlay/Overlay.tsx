@@ -17,6 +17,7 @@ import {
   type AmbassadorKey,
 } from "../../../../utils/ambassadors";
 import { classes } from "../../../../utils/classes";
+import { visibleUnderCursor } from "../../../../utils/dom";
 
 import useChatCommand from "../../../../hooks/useChatCommand";
 
@@ -137,24 +138,9 @@ export default function Overlay() {
 
   // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {
-    // Get all the elements under the mouse
-    const elements = document.elementsFromPoint(e.clientX, e.clientY);
-
-    // For each element, if it has a background then we want to ignore the click
-    // If we reach the body, then break out of the loop and close the panels
-    for (const element of elements) {
-      if (element === document.body) break;
-
-      const style = getComputedStyle(element);
-      if (
-        style.backgroundImage !== "none" ||
-        style.backgroundColor !== "rgba(0, 0, 0, 0)"
-      ) {
-        return;
-      }
+    if (!visibleUnderCursor(e)) {
+      setVisibleOption(undefined);
     }
-
-    setVisibleOption(undefined);
   }, []);
 
   // If the user clicks anywhere in the body, except the overlay itself, close the panels
@@ -163,6 +149,21 @@ export default function Overlay() {
     document.body.addEventListener("click", bodyClick, true);
     return () => document.body.removeEventListener("click", bodyClick, true);
   }, [bodyClick]);
+
+  // Handle body double clicks, ignoring them inside of overlay elements
+  const bodyDblClick = useCallback((e: MouseEvent) => {
+    if (visibleUnderCursor(e)) {
+      e.stopPropagation();
+    }
+  }, []);
+
+  // If the user double clicks anywhere in the overlay itself, stop propagating the event
+  // This stops double clicks from toggling fullscreen video which is the default behavior
+  useEffect(() => {
+    document.body.addEventListener("dblclick", bodyDblClick, true);
+    return () =>
+      document.body.removeEventListener("dblclick", bodyDblClick, true);
+  }, [bodyDblClick]);
 
   // Generate the context for the overlay options
   const context = useMemo<OverlayOptionProps["context"]>(

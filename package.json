@@ -66,6 +66,11 @@
     "webpack-dev-server": "^4.15.1",
     "webpack-image-resize-loader": "^5.0.0"
   },
+  "overrides": {
+    "webpack-image-resize-loader": {
+      "sharp": "^0.32.6"
+    }
+  },
   "main": "public/index.html",
   "browserslist": {
     "production": [

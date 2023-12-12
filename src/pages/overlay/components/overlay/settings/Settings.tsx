@@ -22,7 +22,7 @@ export default function Settings(props: OverlayOptionProps) {
 
           return (
             <li key={key}>
-              {setting.type === "boolean" && (
+              {setting.type === "boolean" && setting.configurable && (
                 <Toggle
                   label={setting.title}
                   value={setting.value}

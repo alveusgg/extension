@@ -32,8 +32,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
       options
         .map((option) => ({
           ...option,
-          onClick: () =>
-            onClick(active === option.key ? undefined : option.key),
+          onClick: () => onClick(active === option.key ? "" : option.key),
           active: active === option.key,
         }))
         .sort((a, b) => {

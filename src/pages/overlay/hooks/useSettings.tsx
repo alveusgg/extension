@@ -19,23 +19,45 @@ const settings = {
     type: "boolean",
     process: (value: any) => !!value,
     devOnly: false,
+    configurable: true,
   },
   disableOverlayHiding: {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",
     process: (value: any) => !!value,
     devOnly: true,
+    configurable: true,
   },
+  openedMenu: {
+    title: "Menu that was last opened",
+    type: "string",
+    process: (value: any) =>
+      typeof value === "string" ? value : "ambassadors",
+    devOnly: false,
+    configurable: false,
+  },
+};
+
+type SettingsProcessReturnTypes = {
+  boolean: boolean;
+  string: string;
 };
 
 type SettingsKey = keyof typeof settings;
 
 type StoredSettings = {
-  [key in SettingsKey]: ReturnType<(typeof settings)[key]["process"]>;
+  [key in SettingsKey]: key extends keyof SettingsProcessReturnTypes
+    ? SettingsProcessReturnTypes[key]
+    : any;
 };
 
 export type Settings = {
-  [key in SettingsKey]: (typeof settings)[key] & {
+  [key in SettingsKey]: {
+    title: string;
+    type: string;
+    process: (value: any) => boolean | string;
+    devOnly: boolean;
+    configurable: boolean;
     value: StoredSettings[key];
     change: (value: StoredSettings[key]) => void;
   };

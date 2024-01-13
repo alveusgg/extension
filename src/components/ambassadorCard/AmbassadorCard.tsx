@@ -141,6 +141,15 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <p>{ambassador.native.text}</p>
         </div>
 
+        <div>
+          <h3>Arrived at Alveus</h3>
+          <p>
+            {ambassador.arrival
+              ? formatDate(ambassador.arrival, false)
+              : "Unknown"}
+          </p>
+        </div>
+
         <div className={styles.site}>
           <p>
             Learn more about {ambassador.name} on the{" "}

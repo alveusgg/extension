@@ -25,4 +25,14 @@
   h1 {
     font-size: 1.2rem;
   }
+
+  .filler {
+    margin-right: auto;
+  }
+
+  .info {
+    color: $primary-text;
+    margin-left: auto;
+    padding: 0.25rem 0.25rem;
+  }
 }

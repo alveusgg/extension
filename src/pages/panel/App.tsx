@@ -1,24 +1,20 @@
+import { useState } from "react";
+
 import Nav from "./components/nav/Nav";
 import AmbassadorPanel from "./components/ambassadorPanel/AmbassadorPanel";
-
-import "./App.scss";
-import { useState } from "react";
 import WelcomeCardOverlay from "./components/welcomeCardOverlay/WelcomeCardOverlay";
 
+import "./App.scss";
+
 function App() {
-  const [shouldShowWelcomeCardOverlay, setShouldShowWelcomeCardOverlay] =
-    useState<boolean>(false);
+  const [showWelcome, setShowWelcome] = useState<boolean>(false);
 
   return (
     <div className="App">
-      <Nav
-        onShowWelcomeCardClicked={() => setShouldShowWelcomeCardOverlay(true)}
-      />
+      <Nav onWelcomeClick={() => setShowWelcome(true)} />
       <AmbassadorPanel />
-      {shouldShowWelcomeCardOverlay && (
-        <WelcomeCardOverlay
-          onClose={() => setShouldShowWelcomeCardOverlay(false)}
-        />
+      {showWelcome && (
+        <WelcomeCardOverlay onClose={() => setShowWelcome(false)} />
       )}
     </div>
   );

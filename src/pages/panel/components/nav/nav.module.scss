@@ -2,7 +2,7 @@
 
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   background-color: rgba($primary-color, 0.875);
@@ -11,10 +11,16 @@
 
   position: fixed;
   top: 0;
-  width: 100vw;
+  right: 0;
+  left: 0;
+  padding: 0.5rem calc(2rem + 0.5rem + 20px) 0.5rem 1rem; // account for info button (right only)
   height: 3rem;
-  padding: 0.5rem;
   z-index: 5;
+
+  @media (min-width: 25rem) {
+    justify-content: center;
+    padding: 0.5rem calc(2rem + 0.5rem + 20px); // account for info button (balanced)
+  }
 
   img {
     width: auto;
@@ -26,13 +32,17 @@
     font-size: 1.2rem;
   }
 
-  .filler {
-    margin-right: auto;
-  }
-
   .info {
     color: $primary-text;
-    margin-left: auto;
-    padding: 0.25rem 0.25rem;
+    margin: 0 1rem;
+    padding: 0.25rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      display: block;
+    }
   }
 }

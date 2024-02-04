@@ -1,4 +1,4 @@
-import { classes } from "../../../../utils/classes";
+import { classes } from "../../utils/classes";
 
 import styles from "./card.module.scss";
 

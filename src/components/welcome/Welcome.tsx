@@ -10,7 +10,7 @@ import IconGitHub from "../icons/IconGitHub";
 
 import useChannel from "../../hooks/useChannel";
 
-import Card from "../../pages/overlay/components/card/Card";
+import Card from "../card/Card";
 
 import styles from "./welcome.module.scss";
 

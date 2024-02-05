@@ -1,22 +1,24 @@
 import { useMemo } from "react";
 
-import IconGlobe from "../../../../../components/icons/IconGlobe";
-import IconAmazon from "../../../../../components/icons/IconAmazon";
-import IconInstagram from "../../../../../components/icons/IconInstagram";
-import IconTikTok from "../../../../../components/icons/IconTikTok";
-import IconTwitter from "../../../../../components/icons/IconTwitter";
-import IconPlay from "../../../../../components/icons/IconPlay";
-import IconGitHub from "../../../../../components/icons/IconGitHub";
+import IconGlobe from "../icons/IconGlobe";
+import IconAmazon from "../icons/IconAmazon";
+import IconInstagram from "../icons/IconInstagram";
+import IconTikTok from "../icons/IconTikTok";
+import IconTwitter from "../icons/IconTwitter";
+import IconPlay from "../icons/IconPlay";
+import IconGitHub from "../icons/IconGitHub";
 
-import useChannel from "../../../../../hooks/useChannel";
+import useChannel from "../../hooks/useChannel";
 
-import Card from "../../card/Card";
-
-import type { OverlayOptionProps } from "../Overlay";
+import Card from "../card/Card";
 
 import styles from "./welcome.module.scss";
 
-export default function Welcome(props: OverlayOptionProps) {
+interface WelcomeProps {
+  className?: string;
+}
+
+export default function Welcome(props: WelcomeProps) {
   const { className } = props;
 
   const channel = useChannel();

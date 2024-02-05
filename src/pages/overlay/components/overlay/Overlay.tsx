@@ -24,7 +24,7 @@ import useChatCommand from "../../../../hooks/useChatCommand";
 import useSettings from "../../hooks/useSettings";
 import useSleeping from "../../hooks/useSleeping";
 
-import WelcomeOverlay from "./welcome/Welcome";
+import WelcomeOverlay from "./welcome/WelcomeOverlay";
 import AmbassadorsOverlay from "./ambassadors/Ambassadors";
 import SettingsOverlay from "./settings/Settings";
 

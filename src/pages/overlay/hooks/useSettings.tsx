@@ -12,52 +12,39 @@ import {
   typeSafeObjectEntries,
   typeSafeObjectFromEntries,
 } from "../../../utils/helpers";
+import { OverlayKey, isValidOverlayKey } from "../components/overlay/Overlay";
 
 const settings = {
   disableChatPopup: {
     title: "Prevent Mod-triggered Card Popups",
     type: "boolean",
     process: (value: any) => !!value,
-    devOnly: false,
     configurable: true,
   },
   disableOverlayHiding: {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",
     process: (value: any) => !!value,
-    devOnly: true,
-    configurable: true,
+    configurable: false,
   },
   openedMenu: {
     title: "Menu that was last opened",
     type: "string",
-    process: (value: any) =>
-      typeof value === "string" ? value : "ambassadors",
-    devOnly: false,
+    process: (value: any): OverlayKey => {
+      return isValidOverlayKey(value) ? value : "ambassadors";
+    },
     configurable: false,
   },
-};
-
-type SettingsProcessReturnTypes = {
-  boolean: boolean;
-  string: string;
 };
 
 type SettingsKey = keyof typeof settings;
 
 type StoredSettings = {
-  [key in SettingsKey]: key extends keyof SettingsProcessReturnTypes
-    ? SettingsProcessReturnTypes[key]
-    : any;
+  [key in SettingsKey]: ReturnType<(typeof settings)[key]["process"]>;
 };
 
 export type Settings = {
-  [key in SettingsKey]: {
-    title: string;
-    type: string;
-    process: (value: any) => boolean | string;
-    devOnly: boolean;
-    configurable: boolean;
+  [key in SettingsKey]: (typeof settings)[key] & {
     value: StoredSettings[key];
     change: (value: StoredSettings[key]) => void;
   };
@@ -100,7 +87,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
             change: (value: any) => change(key, value),
           },
         ]),
-      ),
+      ) as Settings,
     [stored, change],
   );
 

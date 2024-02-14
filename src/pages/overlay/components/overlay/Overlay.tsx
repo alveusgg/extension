@@ -59,7 +59,10 @@ const overlayOptions = [
   },
 ] as const;
 
-type OverlayKey = (typeof overlayOptions)[number]["key"] | "";
+export const isValidOverlayKey = (key: string) =>
+  key == "" || overlayOptions.some((option) => option.key === key);
+
+export type OverlayKey = (typeof overlayOptions)[number]["key"] | "";
 
 type ActiveAmbassadorState = {
   key?: AmbassadorKey;
@@ -85,7 +88,7 @@ export default function Overlay() {
 
   const [activeAmbassador, setActiveAmbassador] =
     useState<ActiveAmbassadorState>({});
-  const [visibleOption, setVisibleOption] = useState<OverlayKey>();
+  const [visibleOption, setVisibleOption] = useState<OverlayKey>("");
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const awakingRef = useRef(false);
 

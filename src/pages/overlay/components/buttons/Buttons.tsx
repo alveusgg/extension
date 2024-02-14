@@ -17,7 +17,7 @@ type ButtonsOptions = Readonly<
 
 interface ButtonsProps<T extends ButtonsOptions> {
   options: T;
-  onClick: (key: T[number]["key"] | undefined) => void;
+  onClick: (key: T[number]["key"] | "") => void;
   active?: string;
 }
 

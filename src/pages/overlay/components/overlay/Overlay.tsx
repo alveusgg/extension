@@ -88,7 +88,9 @@ export default function Overlay() {
 
   const [activeAmbassador, setActiveAmbassador] =
     useState<ActiveAmbassadorState>({});
-  const [visibleOption, setVisibleOption] = useState<OverlayKey>("");
+  const [visibleOption, setVisibleOption] = useState<OverlayKey>(
+    settings.openedMenu.value,
+  );
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const awakingRef = useRef(false);
 
@@ -100,7 +102,7 @@ export default function Overlay() {
   // open saved (or default) menu when mounted
   useEffect(() => {
     setVisibleOption(settings.openedMenu.value);
-  }, []);
+  }, [settings.openedMenu.value]);
 
   // When a chat command is run, wake the overlay
   useChatCommand(
@@ -117,6 +119,7 @@ export default function Overlay() {
           // Dismiss the overlay after a delay
           if (timeoutRef.current) clearTimeout(timeoutRef.current);
           timeoutRef.current = setTimeout(() => {
+            console.log(`setting visible option in timeout`);
             setVisibleOption("");
             setActiveAmbassador({});
           }, commandTimeout);

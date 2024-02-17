@@ -33,7 +33,7 @@ const settings = {
     process: (value: any): OverlayKey => {
       return isValidOverlayKey(value) ? value : "ambassadors";
     },
-    configurable: process.env.NODE_ENV === "development",
+    configurable: false,
   },
 };
 

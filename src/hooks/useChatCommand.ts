@@ -10,6 +10,8 @@ const testChannelNames =
   process.env.REACT_APP_TEST_CHANNEL_NAMES?.split(",") ?? [];
 const defaultChannelNames =
   process.env.REACT_APP_DEFAULT_CHANNEL_NAMES?.split(",") ?? [];
+const extraChannelNames =
+  process.env.REACT_APP_EXTRA_CHANNEL_NAMES?.split(",") ?? [];
 const privilegedUsers =
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS?.split(",") ?? [];
 
@@ -50,7 +52,24 @@ const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
 export default function useChatCommand(callback: (command: string) => void) {
   const channel = useChannel();
   const channelNames = useMemo(
-    () => [...testChannelNames, ...(channel ? [channel] : defaultChannelNames)],
+    () =>
+      Array.from(
+        new Set(
+          [
+            // Always connect to any test channels, for development.
+            ...testChannelNames,
+            // If we know what channel we're in, connect to it.
+            // Otherwise, connect to the default channels.
+            ...(channel ? [channel] : defaultChannelNames),
+            // If we're not in a default channel, connect to the extra channels.
+            // Extra channels are used for mod control during collaborations,
+            //  so we don't need to connect to them if we're in a default channel.
+            ...(channel && !defaultChannelNames.includes(channel)
+              ? extraChannelNames
+              : []),
+          ].map((name) => name.toLowerCase()),
+        ),
+      ),
     [channel],
   );
 
@@ -121,7 +140,10 @@ export default function useChatCommand(callback: (command: string) => void) {
         return;
       }
 
-      console.log("*Twitch extension is connected to chat*", id);
+      console.log(
+        `*Twitch extension is connected to chat: ${channelNames.join(", ")}*`,
+        id,
+      );
     });
 
     // Connect to chat

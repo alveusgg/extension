@@ -1,4 +1,4 @@
-@import "../../../../../variables";
+@import "../../variables.scss";
 
 .intro {
   margin: 0.5rem 0 1rem;
@@ -6,6 +6,7 @@
 
 .socials {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 1rem;

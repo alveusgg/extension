@@ -46,7 +46,7 @@ export function calculateAge(dateOfBirth: string): string {
  * @param date date in the format YYYY-MM-DD or YYYY-MM or YYYY
  * @returns a string of the date in the format Month DD, YYYY or Month YYYY or YYYY
  */
-export function formatDate(date: string): string {
+export function formatDate(date: string, approximate = true): string {
   const dateArray = date.split("-");
   let day = dateArray[2];
   let month = dateArray[1];
@@ -60,9 +60,9 @@ export function formatDate(date: string): string {
   }
 
   if (day && month && year) return `${month} ${day}, ${year}`;
-  else if (month && year) return `~${month}, ${year}`;
+  else if (month && year) return `${approximate ? "~" : ""}${month}, ${year}`;
 
-  return `~${year}`;
+  return `${approximate ? "~" : ""}${year}`;
 }
 
 /**

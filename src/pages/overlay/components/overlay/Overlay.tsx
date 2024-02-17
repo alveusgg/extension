@@ -60,7 +60,7 @@ const overlayOptions = [
 ] as const;
 
 export const isValidOverlayKey = (key: string) =>
-  key == "" || overlayOptions.some((option) => option.key === key);
+  key === "" || overlayOptions.some((option) => option.key === key);
 
 export type OverlayKey = (typeof overlayOptions)[number]["key"] | "";
 
@@ -119,7 +119,6 @@ export default function Overlay() {
           // Dismiss the overlay after a delay
           if (timeoutRef.current) clearTimeout(timeoutRef.current);
           timeoutRef.current = setTimeout(() => {
-            console.log(`setting visible option in timeout`);
             setVisibleOption("");
             setActiveAmbassador({});
           }, commandTimeout);

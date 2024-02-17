@@ -17,8 +17,7 @@ export default function Settings(props: OverlayOptionProps) {
     <Card className={className} title="Extension Settings">
       <ul className={styles.settings}>
         {typeSafeObjectEntries(settings).map(([key, setting]) => {
-          if (process.env.NODE_ENV !== "development" && !setting.configurable)
-            return null;
+          if (!setting.configurable) return null;
 
           return (
             <li key={key}>

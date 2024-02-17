@@ -25,7 +25,7 @@ const settings = {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",
     process: (value: any) => !!value,
-    configurable: false,
+    configurable: process.env.NODE_ENV === "development",
   },
   openedMenu: {
     title: "Menu that was last opened",
@@ -33,7 +33,7 @@ const settings = {
     process: (value: any): OverlayKey => {
       return isValidOverlayKey(value) ? value : "ambassadors";
     },
-    configurable: false,
+    configurable: process.env.NODE_ENV === "development",
   },
 };
 

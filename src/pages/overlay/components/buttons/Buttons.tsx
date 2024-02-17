@@ -17,7 +17,7 @@ type ButtonsOptions = Readonly<
 
 interface ButtonsProps<T extends ButtonsOptions> {
   options: T;
-  onClick: (key: T[number]["key"] | undefined) => void;
+  onClick: (key: T[number]["key"] | "") => void;
   active?: string;
 }
 
@@ -32,8 +32,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
       options
         .map((option) => ({
           ...option,
-          onClick: () =>
-            onClick(active === option.key ? undefined : option.key),
+          onClick: () => onClick(active === option.key ? "" : option.key),
           active: active === option.key,
         }))
         .sort((a, b) => {

@@ -59,7 +59,10 @@ const overlayOptions = [
   },
 ] as const;
 
-type OverlayKey = (typeof overlayOptions)[number]["key"];
+export const isValidOverlayKey = (key: string) =>
+  key === "" || overlayOptions.some((option) => option.key === key);
+
+export type OverlayKey = (typeof overlayOptions)[number]["key"] | "";
 
 type ActiveAmbassadorState = {
   key?: AmbassadorKey;
@@ -85,9 +88,21 @@ export default function Overlay() {
 
   const [activeAmbassador, setActiveAmbassador] =
     useState<ActiveAmbassadorState>({});
-  const [visibleOption, setVisibleOption] = useState<OverlayKey>();
+  const [visibleOption, setVisibleOption] = useState<OverlayKey>(
+    settings.openedMenu.value,
+  );
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const awakingRef = useRef(false);
+
+  // update setting when opened menu changes
+  useEffect(() => {
+    settings.openedMenu.change(visibleOption);
+  }, [visibleOption]);
+
+  // open saved (or default) menu when mounted
+  useEffect(() => {
+    setVisibleOption(settings.openedMenu.value);
+  }, [settings.openedMenu.value]);
 
   // When a chat command is run, wake the overlay
   useChatCommand(
@@ -104,7 +119,7 @@ export default function Overlay() {
           // Dismiss the overlay after a delay
           if (timeoutRef.current) clearTimeout(timeoutRef.current);
           timeoutRef.current = setTimeout(() => {
-            setVisibleOption(undefined);
+            setVisibleOption("");
             setActiveAmbassador({});
           }, commandTimeout);
 
@@ -139,7 +154,7 @@ export default function Overlay() {
   // Handle body clicks, dismissing the overlay if the user clicks outside of it
   const bodyClick = useCallback((e: MouseEvent) => {
     if (!visibleUnderCursor(e)) {
-      setVisibleOption(undefined);
+      setVisibleOption("");
     }
   }, []);
 

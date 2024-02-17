@@ -12,19 +12,28 @@ import {
   typeSafeObjectEntries,
   typeSafeObjectFromEntries,
 } from "../../../utils/helpers";
+import { OverlayKey, isValidOverlayKey } from "../components/overlay/Overlay";
 
 const settings = {
   disableChatPopup: {
     title: "Prevent Mod-triggered Card Popups",
     type: "boolean",
     process: (value: any) => !!value,
-    devOnly: false,
+    configurable: true,
   },
   disableOverlayHiding: {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",
     process: (value: any) => !!value,
-    devOnly: true,
+    configurable: process.env.NODE_ENV === "development",
+  },
+  openedMenu: {
+    title: "Menu that was last opened",
+    type: "string",
+    process: (value: any): OverlayKey => {
+      return isValidOverlayKey(value) ? value : "ambassadors";
+    },
+    configurable: false,
   },
 };
 
@@ -78,7 +87,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
             change: (value: any) => change(key, value),
           },
         ]),
-      ),
+      ) as Settings,
     [stored, change],
   );
 

@@ -32,20 +32,25 @@ export interface AmbassadorCardProps {
   ambassador: AmbassadorType;
   onClose?: () => void;
   className?: string;
+  disableCardEffects?: boolean;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassadorKey, ambassador, onClose, className } = props;
+  const { ambassadorKey, ambassador, onClose, className, disableCardEffects } =
+    props;
   const images = getAmbassadorImages(ambassadorKey);
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
+  const glareOpacity = disableCardEffects ? 0.0 : 0.5;
 
   return (
     <Tilt
-      glareEnable={true}
-      glareMaxOpacity={0.5}
+      tiltEnable={!disableCardEffects}
+      glareEnable={!disableCardEffects}
+      glareMaxOpacity={glareOpacity}
       glareBorderRadius="1rem"
+      glarePosition="bottom"
       scale={1.0}
       perspective={5000}
       className={classes(styles.ambassadorCard, className)}

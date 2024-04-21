@@ -25,6 +25,7 @@
     "@alveusgg/data": "github:alveusgg/data#0.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-parallax-tilt": "^1.7.222",
     "tmi.js": "^1.8.5"
   },
   "devDependencies": {

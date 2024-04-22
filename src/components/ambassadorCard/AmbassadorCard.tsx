@@ -52,134 +52,130 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       glareBorderRadius="1rem"
       glarePosition="bottom"
       scale={1.0}
-      perspective={5000}
-      className={classes(styles.ambassadorCard, className)}
+      perspective={2500}
+      className={classes(
+        styles.ambassadorCard,
+        className,
+        ambassador.birth && isBirthday(ambassador.birth) && styles.birthday,
+      )}
     >
-      <div
-        className={classes(
-          ambassador.birth && isBirthday(ambassador.birth) && styles.birthday,
+      <div className={styles.hero}>
+        <img
+          className={styles.img}
+          src={images[0].src}
+          alt={images[0].alt}
+          style={{ objectPosition: offsetPosition(images[0].position) }}
+        />
+
+        <div className={styles.overlay}>
+          {props.onClose && (
+            <button
+              className={styles.close}
+              onClick={onClose}
+              type="button"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+          )}
+
+          <h2 className={styles.name} title={ambassador.name}>
+            {ambassador.name}
+          </h2>
+        </div>
+      </div>
+
+      <div className={styles.scrollable}>
+        {mod && (
+          <div className={styles.mod}>
+            <img src={moderatorBadge} alt="Moderator badge" />
+            <p>
+              Show this card to everyone by using{" "}
+              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code> in
+              chat.
+            </p>
+          </div>
         )}
-      >
-        <div className={styles.hero}>
-          <img
-            className={styles.img}
-            src={images[0].src}
-            alt={images[0].alt}
-            style={{ objectPosition: offsetPosition(images[0].position) }}
-          />
 
-          <div className={styles.overlay}>
-            {props.onClose && (
-              <button
-                className={styles.close}
-                onClick={onClose}
-                type="button"
-                aria-label="Close"
-              >
-                &times;
-              </button>
-            )}
+        <div>
+          <h3>Species</h3>
+          <p>{ambassador.species}</p>
+          <p>
+            <i>
+              {ambassador.scientific} ({getClassification(ambassador.class)})
+            </i>
+          </p>
+        </div>
 
-            <h2 className={styles.name} title={ambassador.name}>
-              {ambassador.name}
-            </h2>
+        <div className={styles.compact}>
+          <div>
+            <h3>Sex</h3>
+            <p>{ambassador.sex || "Unknown"}</p>
+          </div>
+          <div>
+            <h3>Age</h3>
+            <p>
+              {ambassador.birth ? calculateAge(ambassador.birth) : "Unknown"}
+            </p>
+          </div>
+          <div>
+            <h3>Birthday</h3>
+            <p>{ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}</p>
           </div>
         </div>
 
-        <div className={styles.scrollable}>
-          {mod && (
-            <div className={styles.mod}>
-              <img src={moderatorBadge} alt="Moderator badge" />
-              <p>
-                Show this card to everyone by using{" "}
-                <code>!{normalizeAmbassadorName(ambassador.name, true)}</code>{" "}
-                in chat.
-              </p>
+        <div>
+          <h3>Story</h3>
+          <p>{ambassador.story}</p>
+        </div>
+
+        <div>
+          <h3>Conservation Mission</h3>
+          <p>{ambassador.mission}</p>
+        </div>
+
+        <div>
+          <Tooltip
+            text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
+            maxWidth="18rem"
+            fontSize="0.9rem"
+          >
+            <div className={styles.info}>
+              <h3>Conservation Status</h3>
+              <IconInfo size={20} />
             </div>
-          )}
+          </Tooltip>
+          <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
+        </div>
 
-          <div>
-            <h3>Species</h3>
-            <p>{ambassador.species}</p>
-            <p>
-              <i>
-                {ambassador.scientific} ({getClassification(ambassador.class)})
-              </i>
-            </p>
-          </div>
+        <div>
+          <h3>Native To</h3>
+          <p>{ambassador.native.text}</p>
+        </div>
 
-          <div className={styles.compact}>
-            <div>
-              <h3>Sex</h3>
-              <p>{ambassador.sex || "Unknown"}</p>
-            </div>
-            <div>
-              <h3>Age</h3>
-              <p>
-                {ambassador.birth ? calculateAge(ambassador.birth) : "Unknown"}
-              </p>
-            </div>
-            <div>
-              <h3>Birthday</h3>
-              <p>
-                {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
-              </p>
-            </div>
-          </div>
+        <div>
+          <h3>Arrived at Alveus</h3>
+          <p>
+            {ambassador.arrival
+              ? formatDate(ambassador.arrival, false)
+              : "Unknown"}
+          </p>
+        </div>
 
-          <div>
-            <h3>Story</h3>
-            <p>{ambassador.story}</p>
-          </div>
-
-          <div>
-            <h3>Conservation Mission</h3>
-            <p>{ambassador.mission}</p>
-          </div>
-
-          <div>
-            <Tooltip
-              text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
-              maxWidth="18rem"
-              fontSize="0.9rem"
+        <div className={styles.site}>
+          <p>
+            Learn more about {ambassador.name} on the{" "}
+            <a
+              href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
+                ambassadorKey,
+              )}`}
+              rel="noreferrer"
+              target="_blank"
             >
-              <div className={styles.info}>
-                <h3>Conservation Status</h3>
-                <IconInfo size={20} />
-              </div>
-            </Tooltip>
-            <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
-          </div>
-
-          <div>
-            <h3>Native To</h3>
-            <p>{ambassador.native.text}</p>
-          </div>
-
-          <div>
-            <h3>Arrived at Alveus</h3>
-            <p>
-              {ambassador.arrival
-                ? formatDate(ambassador.arrival, false)
-                : "Unknown"}
-            </p>
-          </div>
-
-          <div className={styles.site}>
-            <p>
-              Learn more about {ambassador.name} on the{" "}
-              <a
-                href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
-                  ambassadorKey,
-                )}`}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Alveus Sanctuary website
-              </a>
-              .
-            </p>
-          </div>
+              Alveus Sanctuary website
+            </a>
+            .
+          </p>
         </div>
       </div>
     </Tilt>

@@ -53,6 +53,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       glarePosition="bottom"
       scale={1.0}
       perspective={2500}
+      tiltReverse
       className={classes(
         styles.ambassadorCard,
         className,

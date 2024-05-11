@@ -22,7 +22,7 @@
     "format": "run-p format:*"
   },
   "dependencies": {
-    "@alveusgg/data": "github:alveusgg/data#0.36.0",
+    "@alveusgg/data": "github:alveusgg/data#0.37.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tmi.js": "^1.8.5"

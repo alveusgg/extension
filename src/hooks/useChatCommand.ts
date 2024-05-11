@@ -15,36 +15,12 @@ const extraChannelNames =
 const privilegedUsers =
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS?.split(",") ?? [];
 
-export const normalizeAmbassadorName = (
-  name: string,
-  stripDiacritic = false,
-): string => {
-  const first = name.split(" ")[0].toLowerCase();
-  return stripDiacritic
-    ? first.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    : first;
-};
-
-/**
- * @description Creates a map of ambassador names to their keys, for chat commands.
- *
- * Some ambassadors have names with diacritics in them (Ex: Jalapeño), so this function
- * also maps normalized names to their original names. (Ex: jalapeno -> jalapeño)
- */
 const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
   const commandMap = new Map<string, AmbassadorKey>();
   typeSafeObjectEntries(ambassadors).forEach(([key, ambassador]) => {
-    // Always add the original name to the map
-    const normalizedWithDiacritics = normalizeAmbassadorName(ambassador.name);
-    commandMap.set(normalizedWithDiacritics, key);
-
-    // If the ambassador has a diacritic in their name, add the normalized name to the map
-    const normalizedWithoutDiacritics = normalizeAmbassadorName(
-      ambassador.name,
-      true,
-    );
-    if (normalizedWithDiacritics !== normalizedWithoutDiacritics)
-      commandMap.set(normalizedWithoutDiacritics, key);
+    ambassador.commands.forEach((command) => {
+      commandMap.set(command.toLowerCase(), key);
+    });
   });
   return commandMap;
 };

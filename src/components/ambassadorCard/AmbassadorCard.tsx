@@ -40,7 +40,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
-  const glareOpacity = disableCardEffects ? 0.0 : 0.5;
+  const glareOpacity = disableCardEffects ? 0.0 : 0.3;
 
   return (
     <Tilt
@@ -52,6 +52,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       scale={1.0}
       perspective={2500}
       tiltReverse
+      transitionSpeed={3000}
       className={classes(
         styles.ambassadorCard,
         className,

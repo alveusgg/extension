@@ -10,8 +10,6 @@ import {
 import { camelToKebab } from "../../utils/helpers";
 import { classes } from "../../utils/classes";
 
-import { normalizeAmbassadorName } from "../../hooks/useChatCommand";
-
 import IconInfo from "../icons/IconInfo";
 
 import Tooltip from "../tooltip/Tooltip";
@@ -92,8 +90,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             <img src={moderatorBadge} alt="Moderator badge" />
             <p>
               Show this card to everyone by using{" "}
-              <code>!{normalizeAmbassadorName(ambassador.name, true)}</code> in
-              chat.
+              <code>!{ambassador.commands[0]}</code> in chat.
             </p>
           </div>
         )}

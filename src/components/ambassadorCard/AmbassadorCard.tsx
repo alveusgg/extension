@@ -18,6 +18,8 @@ import moderatorBadge from "../../assets/mod.svg";
 
 import styles from "./ambassadorCard.module.scss";
 
+import Tilt from "react-parallax-tilt";
+
 const offsetPosition = (position: AmbassadorImage["position"]) => {
   const [x, y] = (position || "50% 50%").split(" ");
   return `${x} min(calc(${y} + 1.5rem), 0%)`;
@@ -28,17 +30,29 @@ export interface AmbassadorCardProps {
   ambassador: AmbassadorType;
   onClose?: () => void;
   className?: string;
+  disableCardEffects?: boolean;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassadorKey, ambassador, onClose, className } = props;
+  const { ambassadorKey, ambassador, onClose, className, disableCardEffects } =
+    props;
   const images = getAmbassadorImages(ambassadorKey);
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
+  const glareOpacity = disableCardEffects ? 0.0 : 0.3;
 
   return (
-    <div
+    <Tilt
+      tiltEnable={!disableCardEffects}
+      glareEnable={!disableCardEffects}
+      glareMaxOpacity={glareOpacity}
+      glareBorderRadius="1rem"
+      glarePosition="bottom"
+      scale={1.0}
+      perspective={2500}
+      tiltReverse
+      transitionSpeed={3000}
       className={classes(
         styles.ambassadorCard,
         className,
@@ -163,6 +177,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </p>
         </div>
       </div>
-    </div>
+    </Tilt>
   );
 }

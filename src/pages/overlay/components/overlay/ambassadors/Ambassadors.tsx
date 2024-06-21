@@ -14,6 +14,8 @@ import type { OverlayOptionProps } from "../Overlay";
 import styles from "./ambassadors.module.scss";
 import IconChevron from "../../../../../components/icons/IconChevron";
 
+import useSettings from "../../../hooks/useSettings";
+
 export default function Ambassadors(props: OverlayOptionProps) {
   const {
     context: { activeAmbassador, setActiveAmbassador },
@@ -84,6 +86,8 @@ export default function Ambassadors(props: OverlayOptionProps) {
     handleArrowVisibility();
   }, [handleArrowVisibility]);
 
+  const settings = useSettings();
+
   return (
     <div className={classes(styles.ambassadorList, className)}>
       <div className={styles.scroll}>
@@ -136,6 +140,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
           ambassador={ambassadors[activeAmbassador.key]}
           onClose={() => setActiveAmbassador({})}
           className={styles.ambassadorCard}
+          disableCardEffects={settings.disableCardEffects.value}
         />
       )}
     </div>

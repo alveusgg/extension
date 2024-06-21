@@ -120,7 +120,6 @@ $fade-distance: 3rem;
   .ambassadorCard {
     align-self: center;
     z-index: 0; // stay below ambassadors list
-    transform-origin: center left;
     animation: slideIn 0.5s ease-in-out;
 
     @media (prefers-reduced-motion) {

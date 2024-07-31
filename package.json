@@ -22,7 +22,7 @@
     "format": "run-p format:*"
   },
   "dependencies": {
-    "@alveusgg/data": "github:alveusgg/data#pjeweb/wolfhybrid-species",
+    "@alveusgg/data": "github:alveusgg/data#0.38.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tmi.js": "^1.8.5"

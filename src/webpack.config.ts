@@ -35,7 +35,7 @@ const getStyleLoader = (isModules = false) => [
   {
     loader: "css-loader",
     options: {
-      modules: isModules,
+      modules: isModules ? { namedExport: false } : false,
       sourceMap: true,
     },
   },
@@ -83,7 +83,9 @@ const config: webpack.Configuration = {
   devServer: {
     open: true,
     hot: true,
-    https: true,
+    server: {
+      type: "https",
+    },
     client: {
       overlay: {
         errors: true,

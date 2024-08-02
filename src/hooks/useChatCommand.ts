@@ -6,14 +6,19 @@ import { typeSafeObjectEntries } from "../utils/helpers";
 
 import useChannel from "./useChannel";
 
-const testChannelNames =
-  process.env.REACT_APP_TEST_CHANNEL_NAMES?.split(",") ?? [];
-const defaultChannelNames =
-  process.env.REACT_APP_DEFAULT_CHANNEL_NAMES?.split(",") ?? [];
-const extraChannelNames =
-  process.env.REACT_APP_EXTRA_CHANNEL_NAMES?.split(",") ?? [];
-const privilegedUsers =
-  process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS?.split(",") ?? [];
+const parseCsvEnv = (env: string | undefined): string[] =>
+  env?.split(",").map((str) => str.toLowerCase()) ?? [];
+
+const testChannelNames = parseCsvEnv(process.env.REACT_APP_TEST_CHANNEL_NAMES);
+const defaultChannelNames = parseCsvEnv(
+  process.env.REACT_APP_DEFAULT_CHANNEL_NAMES,
+);
+const extraChannelNames = parseCsvEnv(
+  process.env.REACT_APP_EXTRA_CHANNEL_NAMES,
+);
+const privilegedUsers = parseCsvEnv(
+  process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
+);
 
 const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
   const commandMap = new Map<string, AmbassadorKey>();
@@ -67,7 +72,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       if (
         !tags.mod &&
         !tags.badges?.broadcaster &&
-        !privilegedUsers.includes(tags.username ?? "")
+        !privilegedUsers.includes(tags.username?.toLowerCase() ?? "")
       )
         return;
       // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'

@@ -13,8 +13,8 @@ export default () => {
 
     fetchCurrentChannelInfo(auth)
       .then((newChannelInfo) => {
-        if (typeof newChannelInfo?.broadcaster_name === "string") {
-          setChannelName(newChannelInfo.broadcaster_name);
+        if (typeof newChannelInfo?.broadcaster_login === "string") {
+          setChannelName(newChannelInfo.broadcaster_login.toLowerCase());
         }
       })
       .catch((e) => {

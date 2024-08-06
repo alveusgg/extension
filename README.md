@@ -90,3 +90,11 @@ Contributions are always welcome! If you have any ideas, suggestions, fixes, fee
 5. Push your branch and open a Pull Request
 
 <b>\*Note:</b> All contributions must be possible for all displays (Overlay & Panel) and responsive to their different sizes (including mobile).
+
+## User Data
+
+When using the extension, the extension will create an anonymous connection to the current Twitch channel's chat, as well as a few other Alveus-related Twitch channels. This is to allow the extension to listen for commands run by moderators to trigger popups in the overlay. The extension does not store any messages from chat.
+
+When using the extension, it will create a local storage entry in your browser to store the last section of the overlay that you accessed, and any preferences you set (such as disabling the mod-triggered popups). This is to allow the extension to remember your preferences between sessions. The data stored in local storage is not shared with anyone and does not include any personal information.
+
+As a moderator, you can grant the extension access to your identity. This gives the extension information about your Twitch account, including your role in the current Twitch channel chat. This is used to determine if you are a moderator or broadcaster, and if so, shows you the chat commands in the extension to trigger the popups. The extension does not store any information about your Twitch account.

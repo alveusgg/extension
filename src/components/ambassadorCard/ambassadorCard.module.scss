@@ -13,28 +13,30 @@
   align-items: flex-start;
   background-color: $accent-color;
   box-shadow: $shadow;
-
   border-radius: 1rem;
-  overflow: hidden;
 
   color: $primary-text;
   font-size: 0.7rem;
 
   &.birthday {
-    &::after {
+    &::before {
       content: url("../../assets/party.png");
       width: 4rem;
       height: auto;
       position: absolute;
       left: 50%;
       top: 0;
-      transform: translate(-50%, -90%);
+      transform: translate(-50%, -85%);
+      z-index: 1;
     }
   }
 
   .hero {
     position: relative;
     width: 100%;
+
+    border-radius: 1rem 1rem 0 0;
+    overflow: hidden;
 
     .img {
       display: block;

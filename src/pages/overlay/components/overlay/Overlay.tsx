@@ -128,7 +128,7 @@ export default function Overlay() {
           wake(commandTimeout);
         }
       },
-      [settings.disableChatPopup, wake],
+      [settings.disableChatPopup.value, wake],
     ),
   );
 

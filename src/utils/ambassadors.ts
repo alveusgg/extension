@@ -23,6 +23,8 @@ import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 import { typeSafeObjectEntries, type ObjectEntries } from "./helpers";
 import { sortDate } from "./dateManager";
 
+import winstonImage from "../assets/winston.png";
+
 const dateKey = () => {
   const date = new Date();
   return `${(date.getMonth() + 1).toLocaleString(undefined, { minimumIntegerDigits: 2 })}-${date.getDate().toLocaleString(undefined, { minimumIntegerDigits: 2 })}`;
@@ -60,8 +62,9 @@ const winston = {
 
 const winstonImages: AmbassadorImages = [
   {
-    src: "https://alveus.gg/images/ambassadors/winston.png",
+    src: winstonImage,
     alt: "Winston the polar bear",
+    position: "50% 25%",
   },
 ];
 

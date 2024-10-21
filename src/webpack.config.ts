@@ -191,15 +191,18 @@ const config: webpack.Configuration = {
       // Load ambassador images in @alveusgg packages
       {
         test: /\.(png|jpe?g)$/,
-        include: new RegExp(
-          join(
-            "node_modules",
-            "@alveusgg",
-            "data",
-            "assets",
-            "ambassadors",
-          ).replace(/\\/g, "\\\\"),
-        ),
+        include: [
+          new RegExp(
+            join(
+              "node_modules",
+              "@alveusgg",
+              "data",
+              "assets",
+              "ambassadors",
+            ).replace(/\\/g, "\\\\"),
+          ),
+          new RegExp(join("src", "assets", "winston").replace(/\\/g, "\\\\")),
+        ],
         type: "asset",
         generator: {
           filename: (pathData) => {

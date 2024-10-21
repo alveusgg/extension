@@ -33,7 +33,6 @@ export {
   getClassification,
   getAmbassadorImages,
   getIUCNStatus,
-  type Ambassadors,
   type AmbassadorKey,
   type Ambassador,
   type AmbassadorImage,

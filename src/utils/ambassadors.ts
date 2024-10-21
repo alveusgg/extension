@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import allAmbassadors, {
   type Ambassador,
 } from "@alveusgg/data/src/ambassadors/core";
@@ -17,12 +19,14 @@ import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 import { typeSafeObjectEntries } from "./helpers";
 import { sortDate } from "./dateManager";
 
-export const sortedAmbassadors = typeSafeObjectEntries(allAmbassadors)
+const sortedAmbassadors = typeSafeObjectEntries(allAmbassadors)
   .filter(isActiveAmbassadorEntry)
   .sort(([, a], [, b]) => sortDate(a.arrival, b.arrival));
 
-export const getAmbassador = (key: AmbassadorKey): Ambassadors[typeof key] =>
-  sortedAmbassadors.find(([k]) => k === key)![1];
+export const useAmbassadors = () => sortedAmbassadors;
+
+export const useAmbassador = (key: AmbassadorKey): Ambassadors[typeof key] =>
+  useMemo(() => sortedAmbassadors.find(([k]) => k === key)![1], [key]);
 
 export {
   isAmbassadorKey,

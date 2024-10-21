@@ -9,7 +9,7 @@ import {
   getIUCNStatus,
   type AmbassadorKey,
   type AmbassadorImage,
-  getAmbassador,
+  useAmbassador,
 } from "../../utils/ambassadors";
 import { camelToKebab } from "../../utils/helpers";
 import { classes } from "../../utils/classes";
@@ -35,7 +35,7 @@ export interface AmbassadorCardProps {
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
   const { ambassador: ambassadorKey, onClose, className } = props;
-  const ambassador = getAmbassador(ambassadorKey);
+  const ambassador = useAmbassador(ambassadorKey);
   const images = getAmbassadorImages(ambassadorKey);
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||

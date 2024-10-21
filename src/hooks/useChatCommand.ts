@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from "react";
 import tmi, { ChatUserstate } from "tmi.js";
 
-import { type AmbassadorKey, sortedAmbassadors } from "../utils/ambassadors";
+import { type AmbassadorKey, useAmbassadors } from "../utils/ambassadors";
 
 import useChannel from "./useChannel";
 
@@ -18,16 +18,6 @@ const extraChannelNames = parseCsvEnv(
 const privilegedUsers = parseCsvEnv(
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
 );
-
-const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
-  const commandMap = new Map<string, AmbassadorKey>();
-  sortedAmbassadors.forEach(([key, ambassador]) => {
-    ambassador.commands.forEach((command) => {
-      commandMap.set(command.toLowerCase(), key);
-    });
-  });
-  return commandMap;
-};
 
 export default function useChatCommand(callback: (command: string) => void) {
   const channel = useChannel();
@@ -53,11 +43,17 @@ export default function useChatCommand(callback: (command: string) => void) {
     [channel],
   );
 
+  const ambassadors = useAmbassadors();
   const commandsMap = useMemo(() => {
-    const commands = getAmbassadorCommandsMap() as Map<string, string>;
+    const commands = new Map<string, AmbassadorKey | "welcome">();
+    ambassadors.forEach(([key, ambassador]) => {
+      ambassador.commands.forEach((command) => {
+        commands.set(command.toLowerCase(), key);
+      });
+    });
     commands.set("welcome", "welcome");
     return commands;
-  }, []);
+  }, [ambassadors]);
 
   const messageHandler = useCallback(
     (

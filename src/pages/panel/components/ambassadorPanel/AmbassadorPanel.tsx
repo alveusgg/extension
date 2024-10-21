@@ -3,8 +3,8 @@ import { useState, useCallback, Fragment } from "react";
 import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
 
 import {
-  sortedAmbassadors,
   isAmbassadorKey,
+  useAmbassadors,
   type AmbassadorKey,
 } from "../../../../utils/ambassadors";
 
@@ -15,6 +15,8 @@ import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverla
 import styles from "./ambassadorPanel.module.scss";
 
 export default function AmbassadorPanel() {
+  const ambassadors = useAmbassadors();
+
   // Allow chat commands to select an ambassador, as well as the user
   const [ambassadorCard, setAmbassadorCard] = useState<AmbassadorKey>();
   useChatCommand(
@@ -25,7 +27,7 @@ export default function AmbassadorPanel() {
 
   return (
     <main className={styles.ambassadors}>
-      {sortedAmbassadors.map(([key, ambassador]) => (
+      {ambassadors.map(([key, ambassador]) => (
         <Fragment key={key}>
           {ambassadorCard === key && (
             <AmbassadorCardOverlay

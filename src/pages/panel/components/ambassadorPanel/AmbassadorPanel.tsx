@@ -29,7 +29,7 @@ export default function AmbassadorPanel() {
         <Fragment key={key}>
           {ambassadorCard === key && (
             <AmbassadorCardOverlay
-              ambassadorCard={{ ambassadorKey: key, ambassador }}
+              ambassadorCard={{ ambassador: key }}
               onClose={() => setAmbassadorCard(undefined)}
             />
           )}

@@ -8,8 +8,8 @@ import {
   getAmbassadorImages,
   getIUCNStatus,
   type AmbassadorKey,
-  type Ambassador as AmbassadorType,
   type AmbassadorImage,
+  getAmbassador,
 } from "../../utils/ambassadors";
 import { camelToKebab } from "../../utils/helpers";
 import { classes } from "../../utils/classes";
@@ -28,14 +28,14 @@ const offsetPosition = (position: AmbassadorImage["position"]) => {
 };
 
 export interface AmbassadorCardProps {
-  ambassadorKey: AmbassadorKey;
-  ambassador: AmbassadorType;
+  ambassador: AmbassadorKey;
   onClose?: () => void;
   className?: string;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassadorKey, ambassador, onClose, className } = props;
+  const { ambassador: ambassadorKey, onClose, className } = props;
+  const ambassador = getAmbassador(ambassadorKey);
   const images = getAmbassadorImages(ambassadorKey);
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||

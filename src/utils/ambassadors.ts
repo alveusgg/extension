@@ -14,14 +14,15 @@ import {
 } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
-import { typeSafeObjectEntries, typeSafeObjectFromEntries } from "./helpers";
+import { typeSafeObjectEntries } from "./helpers";
 import { sortDate } from "./dateManager";
 
 export const sortedAmbassadors = typeSafeObjectEntries(allAmbassadors)
   .filter(isActiveAmbassadorEntry)
   .sort(([, a], [, b]) => sortDate(a.arrival, b.arrival));
 
-export const ambassadors = typeSafeObjectFromEntries(sortedAmbassadors);
+export const getAmbassador = (key: AmbassadorKey): Ambassadors[typeof key] =>
+  sortedAmbassadors.find(([k]) => k === key)![1];
 
 export {
   isAmbassadorKey,

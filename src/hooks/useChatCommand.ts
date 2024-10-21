@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useMemo } from "react";
 import tmi, { ChatUserstate } from "tmi.js";
 
-import { ambassadors, AmbassadorKey } from "../utils/ambassadors";
-import { typeSafeObjectEntries } from "../utils/helpers";
+import { type AmbassadorKey, sortedAmbassadors } from "../utils/ambassadors";
 
 import useChannel from "./useChannel";
 
@@ -22,7 +21,7 @@ const privilegedUsers = parseCsvEnv(
 
 const getAmbassadorCommandsMap = (): Map<string, AmbassadorKey> => {
   const commandMap = new Map<string, AmbassadorKey>();
-  typeSafeObjectEntries(ambassadors).forEach(([key, ambassador]) => {
+  sortedAmbassadors.forEach(([key, ambassador]) => {
     ambassador.commands.forEach((command) => {
       commandMap.set(command.toLowerCase(), key);
     });

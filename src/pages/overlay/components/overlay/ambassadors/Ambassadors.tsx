@@ -3,10 +3,7 @@ import { useRef, useEffect, useCallback, type MouseEvent } from "react";
 import AmbassadorCard from "../../../../../components/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../../components/ambassadorButton/AmbassadorButton";
 
-import {
-  sortedAmbassadors,
-  ambassadors,
-} from "../../../../../utils/ambassadors";
+import { sortedAmbassadors } from "../../../../../utils/ambassadors";
 import { classes } from "../../../../../utils/classes";
 
 import type { OverlayOptionProps } from "../Overlay";
@@ -132,8 +129,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
       {activeAmbassador.key && (
         <AmbassadorCard
           key={activeAmbassador.key}
-          ambassadorKey={activeAmbassador.key}
-          ambassador={ambassadors[activeAmbassador.key]}
+          ambassador={activeAmbassador.key}
           onClose={() => setActiveAmbassador({})}
           className={styles.ambassadorCard}
         />

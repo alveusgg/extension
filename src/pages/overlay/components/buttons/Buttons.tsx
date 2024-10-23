@@ -4,13 +4,11 @@ import Tooltip from "../../../../components/tooltip/Tooltip";
 
 import { classes } from "../../../../utils/classes";
 
-import styles from "./buttons.module.scss";
-
 type ButtonsOptions = Readonly<
   {
     key: string;
     type: "primary" | "secondary";
-    icon: (props: { size: number }) => JSX.Element;
+    icon: (props: { size: number; className?: string }) => JSX.Element;
     title: string;
   }[]
 >;
@@ -43,18 +41,25 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
   );
 
   return (
-    <div className={styles.activationButtons}>
-      {optionsWithOnClick.map((option) => (
+    <div className="z-10 mt-12 flex flex-col gap-4">
+      {optionsWithOnClick.map((option, idx) => (
         <Tooltip key={option.key} text={option.title}>
           <button
             onClick={option.onClick}
             className={classes(
-              styles.btn,
-              option.type === "secondary" && styles.secondary,
-              option.active && styles.highlighted,
+              "bg-alveus-green outline-highlight flex cursor-pointer items-center justify-center rounded-lg p-2 shadow transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
+              option.type === "primary" ? "h-16 w-16" : "h-12 w-12",
+              option.active && "outline",
+              // If the previous type is not the same, add a margin
+              idx > 0 &&
+                optionsWithOnClick[idx - 1].type !== option.type &&
+                "mt-auto",
             )}
           >
-            <option.icon size={option.type === "secondary" ? 32 : 48} />
+            <option.icon
+              size={option.type === "primary" ? 48 : 32}
+              className="h-full w-full"
+            />
           </button>
         </Tooltip>
       ))}

@@ -10,7 +10,7 @@ function App() {
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
 
   return (
-    <div className="App">
+    <div className="App min-h-screen w-screen">
       <Nav onWelcomeClick={() => setShowWelcome(true)} />
       <AmbassadorPanel />
       {showWelcome && (

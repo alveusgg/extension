@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <div
-      className={classes(styles.app, visibilityClass)}
+      className={classes("h-full w-full", styles.app, visibilityClass)}
       onMouseEnter={interacted}
       onMouseMove={interacted}
       onWheel={interacted}

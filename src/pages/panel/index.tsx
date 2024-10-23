@@ -6,6 +6,7 @@ import { bindTwitchAuth } from "../../hooks/useTwitchAuth";
 import App from "./App";
 
 import "./index.scss";
+import "./globals.css";
 
 bindTwitchAuth();
 

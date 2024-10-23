@@ -23,7 +23,7 @@ const getTypeScriptLoader = () => ({
   },
 });
 
-const getStyleLoader = (isModules = false) => [
+const getStyleLoader = (isModules = false, isTailwind = false) => [
   isDev
     ? "style-loader"
     : {
@@ -44,35 +44,41 @@ const getStyleLoader = (isModules = false) => [
     loader: "postcss-loader",
     options: {
       postcssOptions: {
-        plugins: [
-          [
-            "postcss-preset-env",
-            {
-              autoprefixer: {
-                flexbox: "no-2009",
-              },
-              stage: 3,
-            },
-          ],
-          "postcss-normalize",
-        ],
+        plugins: isTailwind
+          ? [["tailwindcss", "src/tailwind.config.ts"], "autoprefixer"]
+          : [
+              [
+                "postcss-preset-env",
+                {
+                  autoprefixer: {
+                    flexbox: "no-2009",
+                  },
+                  stage: 3,
+                },
+              ],
+              "postcss-normalize",
+            ],
       },
       sourceMap: true,
     },
   },
-  // Resolve relative imports
-  {
-    loader: "resolve-url-loader",
-    options: {
-      sourceMap: true,
-    },
-  },
-  {
-    loader: "sass-loader",
-    options: {
-      sourceMap: true,
-    },
-  },
+  ...(isTailwind
+    ? []
+    : [
+        // Resolve relative imports
+        {
+          loader: "resolve-url-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: "sass-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
+      ]),
 ];
 
 const config: webpack.Configuration = {
@@ -181,6 +187,12 @@ const config: webpack.Configuration = {
         test: /\.s[ac]ss$/i,
         exclude: /(node_modules|\.module\.s[ac]ss$)/,
         use: getStyleLoader(),
+      },
+      // Load tailwind
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: getStyleLoader(false, true),
       },
       // Load images
       {

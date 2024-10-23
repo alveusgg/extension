@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply w-screen h-screen overflow-hidden font-sans text-alveus-tan bg-alveus-tan;
+  }
+
+  #root {
+    @apply w-full h-full relative;
+  }
+}

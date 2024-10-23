@@ -4,13 +4,11 @@ import Nav from "./components/nav/Nav";
 import AmbassadorPanel from "./components/ambassadorPanel/AmbassadorPanel";
 import WelcomeCardOverlay from "./components/welcomeCardOverlay/WelcomeCardOverlay";
 
-import "./App.scss";
-
 function App() {
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
 
   return (
-    <div className="App min-h-screen w-screen">
+    <div className="relative h-full w-full">
       <Nav onWelcomeClick={() => setShowWelcome(true)} />
       <AmbassadorPanel />
       {showWelcome && (

@@ -3,7 +3,9 @@ import { useState } from "react";
 import alveus from "../../../../assets/alveus.png";
 
 import IconInfo from "../../../../components/icons/IconInfo";
-import WelcomeCardOverlay from "../welcomeCardOverlay/WelcomeCardOverlay";
+import Welcome from "../../../../components/welcome/Welcome";
+
+import Overlay from "../overlay/Overlay";
 
 export default function Nav() {
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
@@ -23,10 +25,9 @@ export default function Nav() {
         />
       </button>
 
-      <WelcomeCardOverlay
-        show={showWelcome}
-        onClose={() => setShowWelcome(false)}
-      />
+      <Overlay show={showWelcome} onClose={() => setShowWelcome(false)}>
+        <Welcome />
+      </Overlay>
     </nav>
   );
 }

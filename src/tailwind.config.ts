@@ -7,6 +7,9 @@ const config = {
   presets: [alveusgg],
   theme: {
     extend: {
+      colors: {
+        highlight: "#FF9F1C",
+      },
       fontFamily: {
         sans: ["Nunito", ...fontFamily.sans],
       },

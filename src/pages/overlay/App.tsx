@@ -8,13 +8,12 @@ import useSleeping from "./hooks/useSleeping";
 
 import Overlay from "./components/overlay/Overlay";
 
-import styles from "./App.module.scss";
-
 // Hide the overlay after 5s of inactivity
 const timeout = 5_000;
 
 export default function App() {
   // Show/hide the overlay based on mouse movement
+  const settings = useSettings();
   const {
     sleeping,
     wake,
@@ -35,18 +34,18 @@ export default function App() {
     return () => removeSleepListener("wake", showCursor);
   }, [addSleepListener, removeSleepListener, showCursor]);
 
-  // Block sleeping hiding the overlay if dev toggle is on
-  const settings = useSettings();
-  let visibilityClass = sleeping ? styles.hidden : styles.visible;
-  if (
-    process.env.NODE_ENV === "development" &&
-    settings.disableOverlayHiding.value
-  )
-    visibilityClass = styles.visible;
-
   return (
     <div
-      className={classes("h-full w-full", styles.app, visibilityClass)}
+      className={classes(
+        "relative mx-4 h-full w-full transition-opacity",
+        sleeping &&
+          !(
+            process.env.NODE_ENV === "development" &&
+            settings.disableOverlayHiding.value
+          )
+          ? "opacity-0 [&_*]:pointer-events-none"
+          : "opacity-100",
+      )}
       onMouseEnter={interacted}
       onMouseMove={interacted}
       onWheel={interacted}

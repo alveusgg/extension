@@ -3,3 +3,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* https://dev.twitch.tv/docs/extensions/designing/#video-overlay-extensions */
+  --twitch-vertical-padding: 5rem;
+  --twitch-right-padding: 7rem;
+  --twitch-left-padding: 0rem;
+}
+
+@layer base {
+  html {
+    font-size: 10px;
+
+    @media screen(sm) {
+      font-size: 12px;
+    }
+
+    @media screen(md) {
+      font-size: 14px;
+    }
+
+    @media screen(lg) {
+      font-size: 16px;
+    }
+  }
+
+  body {
+    @apply w-screen h-screen overflow-hidden py-[var(--twitch-vertical-padding)] pl-[var(--twitch-left-padding)] pr-[var(--twitch-right-padding)] font-sans text-alveus-tan;
+  }
+
+  #root {
+    @apply w-full h-full relative;
+  }
+}

@@ -1,19 +1,13 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
-import AmbassadorCard, {
-  type AmbassadorCardProps,
-} from "../../../../components/ambassadorCard/AmbassadorCard";
-
-interface AmbassadorCardOverlayProps {
-  ambassador: AmbassadorCardProps["ambassador"];
+interface OverlayProps {
   show: boolean;
   onClose: () => void;
+  children: React.ReactNode;
 }
 
-export default function AmbassadorCardOverlay(
-  props: AmbassadorCardOverlayProps,
-) {
-  const { ambassador, show, onClose } = props;
+export default function Overlay(props: OverlayProps) {
+  const { show, onClose, children } = props;
 
   return (
     <Dialog
@@ -25,9 +19,7 @@ export default function AmbassadorCardOverlay(
       <DialogBackdrop className="fixed inset-0 bg-black/50" />
 
       <div className="fixed inset-0 flex h-full w-full items-center justify-center">
-        <DialogPanel>
-          <AmbassadorCard ambassador={ambassador} onClose={onClose} />
-        </DialogPanel>
+        <DialogPanel>{children}</DialogPanel>
       </div>
     </Dialog>
   );

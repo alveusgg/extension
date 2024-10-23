@@ -1,5 +1,6 @@
 import { useState, useCallback, Fragment } from "react";
 
+import AmbassadorCard from "../../../../components/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
 
 import {
@@ -10,7 +11,7 @@ import {
 
 import useChatCommand from "../../../../hooks/useChatCommand";
 
-import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
+import Overlay from "../overlay/Overlay";
 
 export default function AmbassadorPanel() {
   const ambassadors = useAmbassadors();
@@ -29,11 +30,15 @@ export default function AmbassadorPanel() {
 
       {ambassadors.map(([key, ambassador]) => (
         <Fragment key={key}>
-          <AmbassadorCardOverlay
-            ambassador={key}
+          <Overlay
             show={ambassadorCard === key}
             onClose={() => setAmbassadorCard(undefined)}
-          />
+          >
+            <AmbassadorCard
+              ambassador={key}
+              onClose={() => setAmbassadorCard(undefined)}
+            />
+          </Overlay>
 
           <AmbassadorButton
             ambassadorKey={key}

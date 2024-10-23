@@ -12,8 +12,6 @@ import useChatCommand from "../../../../hooks/useChatCommand";
 
 import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
 
-import styles from "./ambassadorPanel.module.scss";
-
 export default function AmbassadorPanel() {
   const ambassadors = useAmbassadors();
 
@@ -26,7 +24,9 @@ export default function AmbassadorPanel() {
   );
 
   return (
-    <main className={styles.ambassadors}>
+    <main className="scrollbar scrollbar-track-alveus-tan scrollbar-thumb-alveus-green relative flex max-h-full flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden px-4 pb-4 pt-16">
+      <div className="bg-alveus-green absolute inset-x-0 top-0 h-12 w-screen" />
+
       {ambassadors.map(([key, ambassador]) => (
         <Fragment key={key}>
           {ambassadorCard === key && (
@@ -40,7 +40,7 @@ export default function AmbassadorPanel() {
             ambassadorKey={key}
             ambassador={ambassador}
             onClick={() => setAmbassadorCard(key)}
-            className={styles.item}
+            className="w-32 md:w-48"
           />
         </Fragment>
       ))}

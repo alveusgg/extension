@@ -1,5 +1,7 @@
+export type ObjectEntries<T extends object> = Array<[keyof T, T[keyof T]]>;
+
 export const typeSafeObjectEntries = <T extends object>(obj: T) =>
-  Object.entries(obj) as Array<[keyof T, T[keyof T]]>;
+  Object.entries(obj) as ObjectEntries<T>;
 
 export const typeSafeObjectFromEntries = <T extends [string, unknown][]>(
   entries: T,

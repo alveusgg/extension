@@ -3,10 +3,7 @@ import { useRef, useEffect, useCallback, type MouseEvent } from "react";
 import AmbassadorCard from "../../../../../components/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../../components/ambassadorButton/AmbassadorButton";
 
-import {
-  sortedAmbassadors,
-  ambassadors,
-} from "../../../../../utils/ambassadors";
+import { useAmbassadors } from "../../../../../utils/ambassadors";
 import { classes } from "../../../../../utils/classes";
 
 import type { OverlayOptionProps } from "../Overlay";
@@ -19,6 +16,8 @@ export default function Ambassadors(props: OverlayOptionProps) {
     context: { activeAmbassador, setActiveAmbassador },
     className,
   } = props;
+
+  const ambassadors = useAmbassadors();
 
   const upArrowRef = useRef<HTMLButtonElement>(null);
   const ambassadorList = useRef<HTMLDivElement>(null);
@@ -92,7 +91,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
           className={styles.ambassadors}
           onScroll={handleArrowVisibility}
         >
-          {sortedAmbassadors.map(([key, ambassador]) => (
+          {ambassadors.map(([key, ambassador]) => (
             <AmbassadorButton
               key={key}
               ambassadorKey={key}
@@ -132,8 +131,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
       {activeAmbassador.key && (
         <AmbassadorCard
           key={activeAmbassador.key}
-          ambassadorKey={activeAmbassador.key}
-          ambassador={ambassadors[activeAmbassador.key]}
+          ambassador={activeAmbassador.key}
           onClose={() => setActiveAmbassador({})}
           className={styles.ambassadorCard}
         />

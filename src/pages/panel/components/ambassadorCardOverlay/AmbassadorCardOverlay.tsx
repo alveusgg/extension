@@ -1,35 +1,34 @@
-import { useCallback, type MouseEventHandler } from "react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
 import AmbassadorCard, {
   type AmbassadorCardProps,
 } from "../../../../components/ambassadorCard/AmbassadorCard";
 
-import styles from "./ambassadorCardOverlay.module.scss";
-
 interface AmbassadorCardOverlayProps {
-  ambassadorCard: Omit<AmbassadorCardProps, "onClose" | "className">;
+  ambassador: AmbassadorCardProps["ambassador"];
+  show: boolean;
   onClose: () => void;
 }
 
 export default function AmbassadorCardOverlay(
   props: AmbassadorCardOverlayProps,
 ) {
-  const { ambassadorCard, onClose } = props;
-
-  const onClick = useCallback<MouseEventHandler<HTMLDivElement>>(
-    (e) => {
-      if (e.target === e.currentTarget) onClose();
-    },
-    [onClose],
-  );
+  const { ambassador, show, onClose } = props;
 
   return (
-    <div className={styles.background} onClick={onClick}>
-      <AmbassadorCard
-        {...ambassadorCard}
-        onClose={onClose}
-        className={styles.ambassadorCard}
-      />
-    </div>
+    <Dialog
+      open={show}
+      onClose={onClose}
+      transition
+      className="relative z-10 transition-opacity data-[closed]:opacity-0"
+    >
+      <DialogBackdrop className="fixed inset-0 bg-black/50" />
+
+      <div className="fixed inset-0 flex h-full w-full items-center justify-center">
+        <DialogPanel>
+          <AmbassadorCard ambassador={ambassador} onClose={onClose} />
+        </DialogPanel>
+      </div>
+    </Dialog>
   );
 }

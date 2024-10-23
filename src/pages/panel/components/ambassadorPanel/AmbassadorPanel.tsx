@@ -29,12 +29,11 @@ export default function AmbassadorPanel() {
 
       {ambassadors.map(([key, ambassador]) => (
         <Fragment key={key}>
-          {ambassadorCard === key && (
-            <AmbassadorCardOverlay
-              ambassadorCard={{ ambassador: key }}
-              onClose={() => setAmbassadorCard(undefined)}
-            />
-          )}
+          <AmbassadorCardOverlay
+            ambassador={key}
+            show={ambassadorCard === key}
+            onClose={() => setAmbassadorCard(undefined)}
+          />
 
           <AmbassadorButton
             ambassadorKey={key}

@@ -1,4 +1,5 @@
 import { type Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
 
 const config = {
@@ -109,6 +110,11 @@ const config = {
         800: "#28122f",
       },
       twitch: "#6441a5",
+    },
+    extend: {
+      fontFamily: {
+        sans: ["Nunito", ...fontFamily.sans],
+      },
     },
   },
 } satisfies Config;

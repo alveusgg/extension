@@ -12,7 +12,8 @@ import useChannel from "../../hooks/useChannel";
 
 import Card from "../card/Card";
 
-import styles from "./welcome.module.scss";
+const socialClass =
+  "transition-[color,transform] hover:scale-125 focus:scale-125 hover:text-highlight focus:text-highlight";
 
 interface WelcomeProps {
   className?: string;
@@ -29,15 +30,15 @@ export default function Welcome(props: WelcomeProps) {
 
   return (
     <Card className={className} title="Welcome to Alveus">
-      <p className={styles.intro}>
+      <p className="mb-4 mt-2">
         Alveus is a 501(c)(3) non-profit organization that functions as an
         exotic animal sanctuary and as a virtual education center. These
         non-releasable animals are educational ambassadors so viewers can learn
         from and build a connection to them.
       </p>
 
-      <ul className={styles.socials}>
-        <li>
+      <ul className="mb-2 flex flex-wrap items-center justify-center gap-4">
+        <li className={socialClass}>
           <a
             href="https://www.alveussanctuary.org"
             rel="noreferrer"
@@ -47,7 +48,7 @@ export default function Welcome(props: WelcomeProps) {
             <IconGlobe size={32} />
           </a>
         </li>
-        <li>
+        <li className={socialClass}>
           <a
             href="https://www.alveussanctuary.org/wishlist"
             rel="noreferrer"
@@ -57,7 +58,7 @@ export default function Welcome(props: WelcomeProps) {
             <IconAmazon size={32} />
           </a>
         </li>
-        <li>
+        <li className={socialClass}>
           <a
             href="https://www.alveussanctuary.org/instagram"
             rel="noreferrer"
@@ -67,7 +68,7 @@ export default function Welcome(props: WelcomeProps) {
             <IconInstagram size={32} />
           </a>
         </li>
-        <li>
+        <li className={socialClass}>
           <a
             href="https://www.alveussanctuary.org/tiktok"
             rel="noreferrer"
@@ -77,7 +78,7 @@ export default function Welcome(props: WelcomeProps) {
             <IconTikTok size={32} />
           </a>
         </li>
-        <li>
+        <li className={socialClass}>
           <a
             href="https://www.alveussanctuary.org/twitter"
             rel="noreferrer"
@@ -88,7 +89,7 @@ export default function Welcome(props: WelcomeProps) {
           </a>
         </li>
         {nonDefault && (
-          <li>
+          <li className={socialClass}>
             <a
               href="https://www.alveussanctuary.org/live"
               rel="noreferrer"
@@ -102,7 +103,7 @@ export default function Welcome(props: WelcomeProps) {
       </ul>
 
       <a
-        className={styles.contribute}
+        className="hover:text-highlight focus:text-highlight flex w-fit items-center justify-center gap-1 text-xs transition-colors"
         href="https://github.com/alveusgg/extension"
         rel="noreferrer"
         target="_blank"

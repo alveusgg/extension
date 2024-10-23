@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { forwardRef, useCallback, useEffect, useRef } from "react";
 import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
@@ -33,8 +33,11 @@ export interface AmbassadorCardProps {
   className?: string;
 }
 
-export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassador: ambassadorKey, onClose, className } = props;
+export default forwardRef(function AmbassadorCard(
+  props: AmbassadorCardProps,
+  ref,
+) {
+  const { ambassador: ambassadorKey, onClose, className, ...extras } = props;
   const ambassador = useAmbassador(ambassadorKey);
   const images = getAmbassadorImages(ambassadorKey);
   const mod =
@@ -43,11 +46,22 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
   const birthday = ambassador.birth && isBirthday(ambassador.birth);
 
-  const ref = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>();
+  const callbackRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (ref) {
+        if (typeof ref === "function") ref(node);
+        else ref.current = node;
+      }
+      internalRef.current = node ?? undefined;
+    },
+    [ref],
+  );
+
   const timeout = useRef<NodeJS.Timeout>();
   const confettiInit = useCallback(
     ({ confetti }: { confetti: CreateTypes }) => {
-      const node = ref.current;
+      const node = internalRef.current;
       if (
         !node ||
         window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -108,7 +122,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           birthday && styles.birthday,
           className,
         )}
-        ref={ref}
+        ref={callbackRef}
+        {...extras}
       >
         <div className={styles.hero}>
           <img
@@ -233,4 +248,4 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       </div>
     </>
   );
-}
+});

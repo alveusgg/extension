@@ -13,6 +13,15 @@ const config = {
       fontFamily: {
         sans: ["Nunito", ...fontFamily.sans],
       },
+      // TODO: Abstract into alveusgg/data
+      gridTemplateColumns: {
+        ...Object.fromEntries(
+          Array.from({ length: 12 }, (_, i) => [
+            `${i + 1}-auto`,
+            `repeat(${i + 1}, auto)`,
+          ]),
+        ),
+      },
     },
   },
 } satisfies Config;

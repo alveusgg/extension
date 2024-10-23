@@ -9,6 +9,7 @@
   --twitch-vertical-padding: 5rem;
   --twitch-right-padding: 7rem;
   --twitch-left-padding: 0rem;
+  --list-fade-padding: 3rem;
 }
 
 @layer base {
@@ -34,5 +35,43 @@
 
   #root {
     @apply w-full h-full relative;
+  }
+}
+
+/* TODO: Also present in alveusgg/alveusgg, can this be abstracted into alveusgg/data? */
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    /* Safari and Chrome */
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+@layer components {
+  .list-fade {
+    /* mask image to fade out the list to transparent top and bottom
+      using a gradient as image of which the alpha channel will be
+      applied to the content of the list */
+    mask-image: linear-gradient(
+      to bottom,
+      /* gradient from 0% to 100% alpha,
+           with most of the transition between the overflow and fade distance */
+        rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.25) var(--twitch-vertical-padding),
+      rgba(0, 0, 0, 1)
+        calc(var(--twitch-vertical-padding) + var(--list-fade-padding)),
+      /* gradient from 100% to 0% alpha,
+           with most of the transition between the overflow and fade distance */
+        rgba(0, 0, 0, 1)
+        calc(100% - var(--twitch-vertical-padding) - var(--list-fade-padding)),
+      rgba(0, 0, 0, 0.25) calc(100% - var(--twitch-vertical-padding)),
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 }

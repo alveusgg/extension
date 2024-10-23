@@ -38,21 +38,6 @@
   }
 }
 
-/* TODO: Also present in alveusgg/alveusgg, can this be abstracted into alveusgg/data? */
-@layer utilities {
-  .scrollbar-none {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-  }
-
-  .scrollbar-none::-webkit-scrollbar {
-    /* Safari and Chrome */
-    width: 0;
-    height: 0;
-    display: none;
-  }
-}
-
 @layer components {
   .list-fade {
     /* mask image to fade out the list to transparent top and bottom

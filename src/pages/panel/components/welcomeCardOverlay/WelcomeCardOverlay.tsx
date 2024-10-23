@@ -1,26 +1,29 @@
-import { useCallback, type MouseEventHandler } from "react";
-
 import Welcome from "../../../../components/welcome/Welcome";
 
-import styles from "./welcomeCardOverlay.module.scss";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
 interface WelcomeCardOverlayProps {
+  show: boolean;
   onClose: () => void;
 }
 
 export default function WelcomeCardOverlay(props: WelcomeCardOverlayProps) {
-  const { onClose } = props;
-
-  const onClick = useCallback<MouseEventHandler<HTMLDivElement>>(
-    (e) => {
-      if (e.target === e.currentTarget) onClose();
-    },
-    [onClose],
-  );
+  const { show, onClose } = props;
 
   return (
-    <div className={styles.background} onClick={onClick}>
-      <Welcome className={styles.overlay} />
-    </div>
+    <Dialog
+      open={show}
+      onClose={onClose}
+      transition
+      className="relative z-10 transition-opacity data-[closed]:opacity-0"
+    >
+      <DialogBackdrop className="fixed inset-0 bg-black/50" />
+
+      <div className="fixed inset-0 flex h-full w-full items-center justify-center">
+        <DialogPanel>
+          <Welcome />
+        </DialogPanel>
+      </div>
+    </Dialog>
   );
 }

@@ -104,11 +104,10 @@ export default function Ambassadors(props: OverlayOptionProps) {
           className="list-fade scrollbar-none -my-[var(--twitch-vertical-padding)] flex w-40 flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
           onScroll={handleArrowVisibility}
         >
-          {ambassadors.map(([key, ambassador]) => (
+          {ambassadors.map(([key]) => (
             <AmbassadorButton
               key={key}
-              ambassadorKey={key}
-              ambassador={ambassador}
+              ambassador={key}
               onClick={() => {
                 setActiveAmbassador((prev) =>
                   prev.key === key ? {} : { key },

@@ -7,9 +7,9 @@ import {
   getClassification,
   getAmbassadorImages,
   getIUCNStatus,
+  useAmbassador,
   type AmbassadorKey,
   type AmbassadorImage,
-  useAmbassador,
 } from "../../utils/ambassadors";
 import { camelToKebab } from "../../utils/helpers";
 import { classes } from "../../utils/classes";

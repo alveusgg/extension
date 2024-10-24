@@ -23,7 +23,7 @@ const getTypeScriptLoader = () => ({
   },
 });
 
-const getStyleLoader = (isModules = false, isTailwind = false) => [
+const getStyleLoader = () => [
   isDev
     ? "style-loader"
     : {
@@ -35,7 +35,7 @@ const getStyleLoader = (isModules = false, isTailwind = false) => [
   {
     loader: "css-loader",
     options: {
-      modules: isModules ? { namedExport: false } : false,
+      modules: false,
       sourceMap: true,
     },
   },
@@ -44,41 +44,11 @@ const getStyleLoader = (isModules = false, isTailwind = false) => [
     loader: "postcss-loader",
     options: {
       postcssOptions: {
-        plugins: isTailwind
-          ? [["tailwindcss", "src/tailwind.config.ts"], "autoprefixer"]
-          : [
-              [
-                "postcss-preset-env",
-                {
-                  autoprefixer: {
-                    flexbox: "no-2009",
-                  },
-                  stage: 3,
-                },
-              ],
-              "postcss-normalize",
-            ],
+        plugins: [["tailwindcss", "src/tailwind.config.ts"], "autoprefixer"],
       },
       sourceMap: true,
     },
   },
-  ...(isTailwind
-    ? []
-    : [
-        // Resolve relative imports
-        {
-          loader: "resolve-url-loader",
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: "sass-loader",
-          options: {
-            sourceMap: true,
-          },
-        },
-      ]),
 ];
 
 const config: webpack.Configuration = {
@@ -177,22 +147,11 @@ const config: webpack.Configuration = {
         ),
         use: getTypeScriptLoader(),
       },
-      // Load sass/scss
-      {
-        test: /\.module\.s[ac]ss$/,
-        exclude: /node_modules/,
-        use: getStyleLoader(true),
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        exclude: /(node_modules|\.module\.s[ac]ss$)/,
-        use: getStyleLoader(),
-      },
       // Load tailwind
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: getStyleLoader(false, true),
+        use: getStyleLoader(),
       },
       // Load images
       {

@@ -2,20 +2,20 @@ import { type MouseEventHandler } from "react";
 
 import {
   getAmbassadorImages,
+  useAmbassador,
   type AmbassadorKey,
-  type Ambassador as AmbassadorType,
 } from "../../utils/ambassadors";
 import { classes } from "../../utils/classes";
 
 interface AmbassadorButtonProps {
-  ambassadorKey: AmbassadorKey;
-  ambassador: AmbassadorType;
+  ambassador: AmbassadorKey;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
 }
 
 export default function AmbassadorButton(props: AmbassadorButtonProps) {
-  const { ambassadorKey, ambassador, onClick, className } = props;
+  const { ambassador: ambassadorKey, onClick, className } = props;
+  const ambassador = useAmbassador(ambassadorKey);
   const images = getAmbassadorImages(ambassadorKey);
 
   return (

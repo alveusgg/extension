@@ -28,7 +28,7 @@ export default function AmbassadorPanel() {
     <main className="scrollbar scrollbar-track-alveus-tan scrollbar-thumb-alveus-green relative flex max-h-full flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden px-4 pb-4 pt-16">
       <div className="bg-alveus-green absolute inset-x-0 top-0 h-12 w-screen" />
 
-      {ambassadors.map(([key, ambassador]) => (
+      {ambassadors.map(([key]) => (
         <Fragment key={key}>
           <Overlay
             show={ambassadorCard === key}
@@ -41,8 +41,7 @@ export default function AmbassadorPanel() {
           </Overlay>
 
           <AmbassadorButton
-            ambassadorKey={key}
-            ambassador={ambassador}
+            ambassador={key}
             onClick={() => setAmbassadorCard(key)}
             className="w-32 md:w-48"
           />

@@ -12,6 +12,10 @@ export function visibleUnderCursor(e: MouseEvent): Element | null {
   for (const element of elements) {
     if (element === document.body) break;
 
+    // Sometimes we want a transparent element to be clickable still
+    if (element instanceof HTMLElement && element.dataset.transparentClicks)
+      return element;
+
     const style = getComputedStyle(element);
     if (
       style.backgroundImage !== "none" ||

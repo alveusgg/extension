@@ -11,6 +11,9 @@ const config = {
       fontFamily: {
         sans: ["Nunito", ...fontFamily.sans],
       },
+      backdropBlur: {
+        xs: "2px",
+      },
     },
   },
   plugins: [scrollbar],

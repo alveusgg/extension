@@ -19,7 +19,7 @@ import IconInfo from "../icons/IconInfo";
 import Tooltip from "../tooltip/Tooltip";
 
 import moderatorBadge from "../../assets/mod.svg";
-import partyHat from "../../assets/party.png";
+import partyHat from "../../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
 

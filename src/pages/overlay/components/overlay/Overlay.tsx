@@ -75,7 +75,8 @@ export interface OverlayOptionProps {
   className?: string;
 }
 
-const hiddenClass = "invisible -translate-x-10 motion-reduce:translate-x-0";
+const hiddenClass =
+  "invisible opacity-0 -translate-x-10 motion-reduce:translate-x-0";
 
 export default function Overlay() {
   const settings = useSettings();
@@ -192,7 +193,7 @@ export default function Overlay() {
   return (
     <div
       className={classes(
-        "flex h-full w-full transition-[visibility,transform]",
+        "flex h-full w-full transition-[opacity,visibility,transform] will-change-[opacity,transform]",
         sleeping &&
           !(
             process.env.NODE_ENV === "development" &&
@@ -212,9 +213,8 @@ export default function Overlay() {
             key={option.key}
             context={context}
             className={classes(
-              "transition-[opacity,visibility,transform]",
+              "transition-[opacity,visibility,transform] will-change-[opacity,transform]",
               visibleOption !== option.key && hiddenClass,
-              visibleOption !== option.key && "opacity-0",
             )}
           />
         ))}

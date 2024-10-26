@@ -12,6 +12,7 @@ import {
 } from "react";
 
 import { classes } from "../../utils/classes";
+import { mutableDOMRect } from "../../utils/dom";
 
 interface TooltipProps {
   text: string;
@@ -36,7 +37,16 @@ const Tooltip = (props: TooltipProps) => {
       if (!tooltipRef.current) return;
 
       const target = e.currentTarget as HTMLElement;
-      const rect = target.getBoundingClientRect();
+      const rect = mutableDOMRect(target.getBoundingClientRect());
+
+      const offsetRect = target.offsetParent?.getBoundingClientRect();
+      if (offsetRect) {
+        rect.top -= offsetRect.top;
+        rect.bottom -= offsetRect.top;
+        rect.left -= offsetRect.left;
+        rect.right -= offsetRect.left;
+      }
+
       const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
       if (rect.right + tooltipRect.width > window.innerWidth) {

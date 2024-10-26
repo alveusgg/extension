@@ -1,10 +1,10 @@
 /**
  * Finds overlay element that is visible under the cursor
  *
- * @param {MouseEvent} e Mouse event containing cursor position
- * @returns {Element|null} Element if one is visible under the cursor, null otherwise
+ * @param e Mouse event containing cursor position
+ * @returns Element if one is visible under the cursor, null otherwise
  */
-export function visibleUnderCursor(e: MouseEvent): Element | null {
+export function visibleUnderCursor(e: MouseEvent) {
   // Get all the elements under the mouse
   const elements = document.elementsFromPoint(e.clientX, e.clientY);
 
@@ -26,4 +26,31 @@ export function visibleUnderCursor(e: MouseEvent): Element | null {
   }
 
   return null;
+}
+
+/**
+ * Creates a copy of a DOMRect with the properties being mutable
+ *
+ * @param rect DOMRect to make mutable
+ * @returns Mutable DOMRect
+ */
+export function mutableDOMRect(rect: DOMRect) {
+  const mutable = DOMRect.fromRect(rect);
+  const props = {
+    x: rect.x,
+    y: rect.y,
+    top: rect.top,
+    right: rect.right,
+    bottom: rect.bottom,
+    left: rect.left,
+    width: rect.width,
+    height: rect.height,
+  };
+  Object.entries(props).forEach(([key, value]) => {
+    Object.defineProperty(mutable, key, {
+      writable: true,
+      value,
+    });
+  });
+  return mutable as typeof rect & typeof props;
 }

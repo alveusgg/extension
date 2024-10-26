@@ -14,6 +14,9 @@ const config = {
       backdropBlur: {
         xs: "2px",
       },
+      transitionDuration: {
+        DEFAULT: "300ms",
+      },
     },
   },
   plugins: [scrollbar],

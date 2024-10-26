@@ -1,17 +1,17 @@
 import { useState, useCallback, Fragment } from "react";
 
-import AmbassadorCard from "../../../../components/ambassadorCard/AmbassadorCard";
-import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
+import AmbassadorCard from "../../../components/AmbassadorCard";
+import AmbassadorButton from "../../../components/AmbassadorButton";
 
 import {
   isAmbassadorKey,
   useAmbassadors,
   type AmbassadorKey,
-} from "../../../../utils/ambassadors";
+} from "../../../utils/ambassadors";
 
-import useChatCommand from "../../../../hooks/useChatCommand";
+import useChatCommand from "../../../hooks/useChatCommand";
 
-import Overlay from "../overlay/Overlay";
+import Overlay from "./Overlay";
 
 export default function AmbassadorPanel() {
   const ambassadors = useAmbassadors();

@@ -11,8 +11,8 @@ import {
   cloneElement,
 } from "react";
 
-import { classes } from "../../utils/classes";
-import { mutableDOMRect } from "../../utils/dom";
+import { classes } from "../utils/classes";
+import { mutableDOMRect } from "../utils/dom";
 
 interface TooltipProps {
   text: string;

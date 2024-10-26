@@ -8,6 +8,7 @@ import {
   type Dispatch,
 } from "react";
 
+import Welcome from "../../../../components/Welcome";
 import IconWelcome from "../../../../components/icons/IconWelcome";
 import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
 import IconSettings from "../../../../components/icons/IconSettings";
@@ -24,11 +25,10 @@ import useChatCommand from "../../../../hooks/useChatCommand";
 import useSettings from "../../hooks/useSettings";
 import useSleeping from "../../hooks/useSleeping";
 
-import WelcomeOverlay from "./welcome/WelcomeOverlay";
-import AmbassadorsOverlay from "./ambassadors/Ambassadors";
-import SettingsOverlay from "./settings/Settings";
+import AmbassadorsOverlay from "./Ambassadors";
+import SettingsOverlay from "./Settings";
 
-import Buttons from "../buttons/Buttons";
+import Buttons from "../Buttons";
 
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;
@@ -39,7 +39,9 @@ const overlayOptions = [
     type: "primary",
     icon: IconWelcome,
     title: "Welcome to Alveus",
-    component: WelcomeOverlay,
+    component: (props: OverlayOptionProps) => (
+      <Welcome className={classes("absolute left-0 top-0", props.className)} />
+    ),
   },
   {
     key: "ambassadors",

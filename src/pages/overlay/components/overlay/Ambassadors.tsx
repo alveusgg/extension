@@ -1,15 +1,15 @@
 import { useRef, useEffect, useCallback, type MouseEvent } from "react";
 import { Transition } from "@headlessui/react";
 
-import AmbassadorCard from "../../../../../components/ambassadorCard/AmbassadorCard";
-import AmbassadorButton from "../../../../../components/ambassadorButton/AmbassadorButton";
+import AmbassadorCard from "../../../../components/AmbassadorCard";
+import AmbassadorButton from "../../../../components/AmbassadorButton";
 
-import { useAmbassadors } from "../../../../../utils/ambassadors";
-import { classes } from "../../../../../utils/classes";
+import { useAmbassadors } from "../../../../utils/ambassadors";
+import { classes } from "../../../../utils/classes";
 
-import type { OverlayOptionProps } from "../Overlay";
+import type { OverlayOptionProps } from "./Overlay";
 
-import IconChevron from "../../../../../components/icons/IconChevron";
+import IconChevron from "../../../../components/icons/IconChevron";
 
 const arrowClass =
   "absolute border-0 cursor-pointer text-alveus-green w-full h-[var(--list-fade-padding)] z-20 transition-opacity group pt-[var(--twitch-vertical-padding)] pb-4 box-content";

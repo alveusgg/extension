@@ -1,16 +1,16 @@
 import { useMemo } from "react";
 
-import IconGlobe from "../icons/IconGlobe";
-import IconAmazon from "../icons/IconAmazon";
-import IconInstagram from "../icons/IconInstagram";
-import IconTikTok from "../icons/IconTikTok";
-import IconTwitter from "../icons/IconTwitter";
-import IconPlay from "../icons/IconPlay";
-import IconGitHub from "../icons/IconGitHub";
+import IconGlobe from "./icons/IconGlobe";
+import IconAmazon from "./icons/IconAmazon";
+import IconInstagram from "./icons/IconInstagram";
+import IconTikTok from "./icons/IconTikTok";
+import IconTwitter from "./icons/IconTwitter";
+import IconPlay from "./icons/IconPlay";
+import IconGitHub from "./icons/IconGitHub";
 
-import useChannel from "../../hooks/useChannel";
+import useChannel from "../hooks/useChannel";
 
-import Card from "../card/Card";
+import Card from "./Card";
 
 const socialClass =
   "transition-[color,transform] hover:scale-125 focus:scale-125 hover:text-highlight focus:text-highlight";

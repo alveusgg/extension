@@ -1,5 +1,5 @@
-import Nav from "./components/nav/Nav";
-import AmbassadorPanel from "./components/ambassadorPanel/AmbassadorPanel";
+import Nav from "./components/Nav";
+import AmbassadorPanel from "./components/AmbassadorPanel";
 
 function App() {
   return (

@@ -4,7 +4,7 @@ import { Transition } from "@headlessui/react";
 import AmbassadorCard from "../../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../../components/AmbassadorButton";
 
-import { useAmbassadors } from "../../../../utils/ambassadors";
+import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 
 import type { OverlayOptionProps } from "./Overlay";

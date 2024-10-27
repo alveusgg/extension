@@ -16,7 +16,7 @@ import IconSettings from "../../../../components/icons/IconSettings";
 import {
   isAmbassadorKey,
   type AmbassadorKey,
-} from "../../../../utils/ambassadors";
+} from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { visibleUnderCursor } from "../../../../utils/dom";
 

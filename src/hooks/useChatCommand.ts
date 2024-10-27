@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo } from "react";
 import tmi, { ChatUserstate } from "tmi.js";
 
-import { type AmbassadorKey, useAmbassadors } from "../utils/ambassadors";
+import { type AmbassadorKey, useAmbassadors } from "./useAmbassadors";
 
 import useChannel from "./useChannel";
 

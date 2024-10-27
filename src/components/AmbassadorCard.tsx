@@ -10,7 +10,7 @@ import {
   useAmbassador,
   type AmbassadorKey,
   type AmbassadorImage,
-} from "../utils/ambassadors";
+} from "../hooks/useAmbassadors";
 import { camelToKebab } from "../utils/helpers";
 import { classes } from "../utils/classes";
 

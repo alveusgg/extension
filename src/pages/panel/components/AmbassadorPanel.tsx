@@ -7,7 +7,7 @@ import {
   isAmbassadorKey,
   useAmbassadors,
   type AmbassadorKey,
-} from "../../../utils/ambassadors";
+} from "../../../hooks/useAmbassadors";
 
 import useChatCommand from "../../../hooks/useChatCommand";
 

@@ -13,7 +13,7 @@ import useChatCommand from "../../../hooks/useChatCommand";
 
 import Overlay from "./Overlay";
 
-export default function AmbassadorPanel() {
+export default function Ambassadors() {
   const ambassadors = useAmbassadors();
 
   // Allow chat commands to select an ambassador, as well as the user

@@ -1,11 +1,11 @@
 import Nav from "./components/Nav";
-import AmbassadorPanel from "./components/AmbassadorPanel";
+import Ambassadors from "./components/Ambassadors";
 
 function App() {
   return (
     <div className="relative h-full w-full">
       <Nav />
-      <AmbassadorPanel />
+      <Ambassadors />
     </div>
   );
 }

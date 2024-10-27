@@ -30,8 +30,6 @@ import SettingsOverlay from "./settings/Settings";
 
 import Buttons from "../buttons/Buttons";
 
-import styles from "./overlay.module.scss";
-
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;
 
@@ -76,6 +74,9 @@ export interface OverlayOptionProps {
   };
   className?: string;
 }
+
+const hiddenClass =
+  "invisible opacity-0 -translate-x-10 motion-reduce:translate-x-0";
 
 export default function Overlay() {
   const settings = useSettings();
@@ -189,29 +190,31 @@ export default function Overlay() {
     [activeAmbassador],
   );
 
-  // Block sleeping hiding the overlay if dev toggle is on
-  let hiddenClass = sleeping && styles.overlayHidden;
-  if (
-    process.env.NODE_ENV === "development" &&
-    settings.disableOverlayHiding.value
-  )
-    hiddenClass = false;
-
   return (
-    <div className={classes(styles.overlay, hiddenClass)}>
+    <div
+      className={classes(
+        "flex h-full w-full transition-[opacity,visibility,transform] will-change-[opacity,transform]",
+        sleeping &&
+          !(
+            process.env.NODE_ENV === "development" &&
+            settings.disableOverlayHiding.value
+          ) &&
+          hiddenClass,
+      )}
+    >
       <Buttons
         options={overlayOptions}
         onClick={setVisibleOption}
         active={visibleOption}
       />
-      <div className={styles.wrapper}>
+      <div className="relative h-full w-full">
         {overlayOptions.map((option) => (
           <option.component
             key={option.key}
             context={context}
             className={classes(
-              styles.option,
-              visibleOption !== option.key && styles.optionHidden,
+              "transition-[opacity,visibility,transform] will-change-[opacity,transform]",
+              visibleOption !== option.key && hiddenClass,
             )}
           />
         ))}

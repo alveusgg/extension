@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { forwardRef, useCallback, useEffect, useRef } from "react";
 import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
@@ -7,9 +7,9 @@ import {
   getClassification,
   getAmbassadorImages,
   getIUCNStatus,
+  useAmbassador,
   type AmbassadorKey,
   type AmbassadorImage,
-  useAmbassador,
 } from "../../utils/ambassadors";
 import { camelToKebab } from "../../utils/helpers";
 import { classes } from "../../utils/classes";
@@ -19,8 +19,9 @@ import IconInfo from "../icons/IconInfo";
 import Tooltip from "../tooltip/Tooltip";
 
 import moderatorBadge from "../../assets/mod.svg";
+import partyHat from "../../assets/party.svg";
 
-import styles from "./ambassadorCard.module.scss";
+const headingClass = "text-base text-alveus-green-400";
 
 const offsetPosition = (position: AmbassadorImage["position"]) => {
   const [x, y] = (position || "50% 50%").split(" ");
@@ -33,21 +34,35 @@ export interface AmbassadorCardProps {
   className?: string;
 }
 
-export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassador: ambassadorKey, onClose, className } = props;
+export default forwardRef(function AmbassadorCard(
+  props: AmbassadorCardProps,
+  ref,
+) {
+  const { ambassador: ambassadorKey, onClose, className, ...extras } = props;
   const ambassador = useAmbassador(ambassadorKey);
   const images = getAmbassadorImages(ambassadorKey);
+
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
-
   const birthday = ambassador.birth && isBirthday(ambassador.birth);
 
-  const ref = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLDivElement>();
+  const callbackRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (ref) {
+        if (typeof ref === "function") ref(node);
+        else ref.current = node;
+      }
+      internalRef.current = node ?? undefined;
+    },
+    [ref],
+  );
+
   const timeout = useRef<NodeJS.Timeout>();
   const confettiInit = useCallback(
     ({ confetti }: { confetti: CreateTypes }) => {
-      const node = ref.current;
+      const node = internalRef.current;
       if (
         !node ||
         window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -104,24 +119,31 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       {birthday && <Confetti onInit={confettiInit} />}
       <div
         className={classes(
-          styles.ambassadorCard,
-          birthday && styles.birthday,
+          "bg-alveus-green-900 relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg align-top text-xs shadow-xl",
           className,
         )}
-        ref={ref}
+        ref={callbackRef}
+        {...extras}
       >
-        <div className={styles.hero}>
+        {birthday && (
           <img
-            className={styles.img}
+            src={partyHat}
+            alt=""
+            className="absolute left-1/2 top-0 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
+          />
+        )}
+        <div className="relative w-full overflow-hidden rounded-t-lg">
+          <img
+            className="peer aspect-[2.2] w-full object-cover sm:aspect-[1.8]"
             src={images[0].src}
             alt={images[0].alt}
             style={{ objectPosition: offsetPosition(images[0].position) }}
           />
 
-          <div className={styles.overlay}>
+          <div className="peer-hover:backdrop-blur-xs bg-alveus-green-900/50 absolute inset-x-0 top-0 flex h-9 w-full backdrop-blur-sm transition-[opacity,backdrop-filter] peer-hover:opacity-10">
             {props.onClose && (
               <button
-                className={styles.close}
+                className="hover:text-highlight focus:text-highlight absolute right-1 top-1/2 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors"
                 onClick={onClose}
                 type="button"
                 aria-label="Close"
@@ -130,16 +152,23 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
               </button>
             )}
 
-            <h2 className={styles.name} title={ambassador.name}>
+            <h2
+              className="w-full shrink-0 self-center overflow-hidden overflow-ellipsis text-nowrap py-1 pl-2 pr-10 text-xl"
+              title={ambassador.name}
+            >
               {ambassador.name}
             </h2>
           </div>
         </div>
 
-        <div className={styles.scrollable}>
+        <div className="scrollbar-thin scrollbar-track-alveus-green-900 scrollbar-thumb-alveus-green mb-2 flex flex-auto flex-col gap-1 overflow-y-auto p-2">
           {mod && (
-            <div className={styles.mod}>
-              <img src={moderatorBadge} alt="Moderator badge" />
+            <div className="flex items-center gap-2">
+              <img
+                className="h-6 w-6 object-cover"
+                src={moderatorBadge}
+                alt="Moderator badge"
+              />
               <p>
                 Show this card to everyone by using{" "}
                 <code>!{ambassador.commands[0]}</code> in chat.
@@ -148,7 +177,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           )}
 
           <div>
-            <h3>Species</h3>
+            <h3 className={headingClass}>Species</h3>
             <p>{ambassador.species}</p>
             <p>
               <i>
@@ -157,19 +186,19 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
           </div>
 
-          <div className={styles.compact}>
+          <div className="flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto">
             <div>
-              <h3>Sex</h3>
+              <h3 className={headingClass}>Sex</h3>
               <p>{ambassador.sex || "Unknown"}</p>
             </div>
             <div>
-              <h3>Age</h3>
+              <h3 className={headingClass}>Age</h3>
               <p>
                 {ambassador.birth ? calculateAge(ambassador.birth) : "Unknown"}
               </p>
             </div>
             <div>
-              <h3>Birthday</h3>
+              <h3 className={headingClass}>Birthday</h3>
               <p>
                 {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
               </p>
@@ -177,12 +206,12 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </div>
 
           <div>
-            <h3>Story</h3>
+            <h3 className={headingClass}>Story</h3>
             <p>{ambassador.story}</p>
           </div>
 
           <div>
-            <h3>Conservation Mission</h3>
+            <h3 className={headingClass}>Conservation Mission</h3>
             <p>{ambassador.mission}</p>
           </div>
 
@@ -192,21 +221,24 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
               maxWidth="18rem"
               fontSize="0.9rem"
             >
-              <div className={styles.info}>
-                <h3>Conservation Status</h3>
-                <IconInfo size={20} />
+              <div className="inline-flex items-center gap-2">
+                <h3 className={headingClass}>Conservation Status</h3>
+                <IconInfo
+                  size={20}
+                  className="text-alveus-green-400 outline-highlight rounded-full transition-[outline] hover:outline"
+                />
               </div>
             </Tooltip>
             <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
           </div>
 
           <div>
-            <h3>Native To</h3>
+            <h3 className={headingClass}>Native To</h3>
             <p>{ambassador.native.text}</p>
           </div>
 
           <div>
-            <h3>Arrived at Alveus</h3>
+            <h3 className={headingClass}>Arrived at Alveus</h3>
             <p>
               {ambassador.arrival
                 ? formatDate(ambassador.arrival, false)
@@ -214,7 +246,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
           </div>
 
-          <div className={styles.site}>
+          <div className="mt-3 italic">
             <p>
               Learn more about {ambassador.name} on the{" "}
               <a
@@ -223,6 +255,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 )}`}
                 rel="noreferrer"
                 target="_blank"
+                className="hover:text-highlight focus:text-highlight text-nowrap underline transition-colors"
               >
                 Alveus Sanctuary website
               </a>
@@ -233,4 +266,4 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       </div>
     </>
   );
-}
+});

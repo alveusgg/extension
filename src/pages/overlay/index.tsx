@@ -7,7 +7,7 @@ import App from "./App";
 import { SettingsProvider } from "./hooks/useSettings";
 import { SleepingProvider } from "./hooks/useSleeping";
 
-import "./index.scss";
+import "./globals.css";
 
 bindTwitchAuth();
 

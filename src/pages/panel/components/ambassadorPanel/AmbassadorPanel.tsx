@@ -1,5 +1,6 @@
 import { useState, useCallback, Fragment } from "react";
 
+import AmbassadorCard from "../../../../components/ambassadorCard/AmbassadorCard";
 import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
 
 import {
@@ -10,9 +11,7 @@ import {
 
 import useChatCommand from "../../../../hooks/useChatCommand";
 
-import AmbassadorCardOverlay from "../ambassadorCardOverlay/AmbassadorCardOverlay";
-
-import styles from "./ambassadorPanel.module.scss";
+import Overlay from "../overlay/Overlay";
 
 export default function AmbassadorPanel() {
   const ambassadors = useAmbassadors();
@@ -26,21 +25,25 @@ export default function AmbassadorPanel() {
   );
 
   return (
-    <main className={styles.ambassadors}>
-      {ambassadors.map(([key, ambassador]) => (
+    <main className="scrollbar scrollbar-track-alveus-tan scrollbar-thumb-alveus-green relative flex max-h-full flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden px-4 pb-4 pt-16">
+      <div className="bg-alveus-green absolute inset-x-0 top-0 h-12 w-screen" />
+
+      {ambassadors.map(([key]) => (
         <Fragment key={key}>
-          {ambassadorCard === key && (
-            <AmbassadorCardOverlay
-              ambassadorCard={{ ambassador: key }}
+          <Overlay
+            show={ambassadorCard === key}
+            onClose={() => setAmbassadorCard(undefined)}
+          >
+            <AmbassadorCard
+              ambassador={key}
               onClose={() => setAmbassadorCard(undefined)}
             />
-          )}
+          </Overlay>
 
           <AmbassadorButton
-            ambassadorKey={key}
-            ambassador={ambassador}
+            ambassador={key}
             onClick={() => setAmbassadorCard(key)}
-            className={styles.item}
+            className="w-32 md:w-48"
           />
         </Fragment>
       ))}

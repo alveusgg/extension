@@ -11,7 +11,8 @@ import {
   cloneElement,
 } from "react";
 
-import styles from "./tooltip.module.scss";
+import { classes } from "../../utils/classes";
+import { mutableDOMRect } from "../../utils/dom";
 
 interface TooltipProps {
   text: string;
@@ -36,7 +37,16 @@ const Tooltip = (props: TooltipProps) => {
       if (!tooltipRef.current) return;
 
       const target = e.currentTarget as HTMLElement;
-      const rect = target.getBoundingClientRect();
+      const rect = mutableDOMRect(target.getBoundingClientRect());
+
+      const offsetRect = target.offsetParent?.getBoundingClientRect();
+      if (offsetRect) {
+        rect.top -= offsetRect.top;
+        rect.bottom -= offsetRect.top;
+        rect.left -= offsetRect.left;
+        rect.right -= offsetRect.left;
+      }
+
       const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
       if (rect.right + tooltipRect.width > window.innerWidth) {
@@ -96,14 +106,19 @@ const Tooltip = (props: TooltipProps) => {
     <>
       {childrenWithProps}
       <div
-        className={styles.tooltip}
+        className="pointer-events-none fixed z-10 w-max rounded-lg bg-black/50 p-2 shadow-lg backdrop-blur transition-opacity"
         ref={tooltipRef}
         style={style}
         id={id}
         role="tooltip"
       >
         <div
-          className={above ? styles.triangleBottom : styles.triangleLeft}
+          className={classes(
+            "absolute border-[5px] border-solid border-transparent",
+            above
+              ? "right-1/2 top-full border-t-black/50"
+              : "right-full top-1/2 border-r-black/50",
+          )}
           style={{ margin: triangleMargin }}
         />
         {text}

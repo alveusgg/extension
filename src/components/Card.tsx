@@ -1,4 +1,4 @@
-import { classes } from "../../utils/classes";
+import { classes } from "../utils/classes";
 
 interface CardProps {
   children?: React.ReactNode;

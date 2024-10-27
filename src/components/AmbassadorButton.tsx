@@ -4,8 +4,8 @@ import {
   getAmbassadorImages,
   useAmbassador,
   type AmbassadorKey,
-} from "../../utils/ambassadors";
-import { classes } from "../../utils/classes";
+} from "../hooks/useAmbassadors";
+import { classes } from "../utils/classes";
 
 interface AmbassadorButtonProps {
   ambassador: AmbassadorKey;

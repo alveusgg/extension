@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import alveus from "../../../../assets/alveus.png";
+import alveus from "../../../assets/alveus.png";
 
-import IconInfo from "../../../../components/icons/IconInfo";
-import Welcome from "../../../../components/welcome/Welcome";
+import IconInfo from "../../../components/icons/IconInfo";
+import Welcome from "../../../components/Welcome";
 
-import Overlay from "../overlay/Overlay";
+import Overlay from "./Overlay";
 
 export default function Nav() {
   const [showWelcome, setShowWelcome] = useState<boolean>(false);

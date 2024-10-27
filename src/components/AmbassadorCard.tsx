@@ -2,7 +2,7 @@ import { forwardRef, useCallback, useEffect, useRef } from "react";
 import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
-import { calculateAge, formatDate, isBirthday } from "../../utils/dateManager";
+import { calculateAge, formatDate, isBirthday } from "../utils/dateManager";
 import {
   getClassification,
   getAmbassadorImages,
@@ -10,16 +10,16 @@ import {
   useAmbassador,
   type AmbassadorKey,
   type AmbassadorImage,
-} from "../../utils/ambassadors";
-import { camelToKebab } from "../../utils/helpers";
-import { classes } from "../../utils/classes";
+} from "../hooks/useAmbassadors";
+import { camelToKebab } from "../utils/helpers";
+import { classes } from "../utils/classes";
 
-import IconInfo from "../icons/IconInfo";
+import IconInfo from "./icons/IconInfo";
 
-import Tooltip from "../tooltip/Tooltip";
+import Tooltip from "./Tooltip";
 
-import moderatorBadge from "../../assets/mod.svg";
-import partyHat from "../../assets/party.svg";
+import moderatorBadge from "../assets/mod.svg";
+import partyHat from "../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
 

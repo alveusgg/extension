@@ -1,6 +1,6 @@
 import { useCallback, type ChangeEvent } from "react";
 
-import IconCheck from "../../../../components/icons/IconCheck";
+import IconCheck from "../../../components/icons/IconCheck";
 
 interface ToggleProps {
   label: string;

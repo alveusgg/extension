@@ -1,12 +1,12 @@
-import { typeSafeObjectEntries } from "../../../../../utils/helpers";
-import { classes } from "../../../../../utils/classes";
+import { typeSafeObjectEntries } from "../../../../utils/helpers";
+import { classes } from "../../../../utils/classes";
 
-import useSettings from "../../../hooks/useSettings";
+import useSettings from "../../hooks/useSettings";
 
-import Card from "../../../../../components/card/Card";
-import Toggle from "../../toggle/Toggle";
+import Card from "../../../../components/Card";
+import Toggle from "../Toggle";
 
-import type { OverlayOptionProps } from "../Overlay";
+import type { OverlayOptionProps } from "./Overlay";
 
 export default function Settings(props: OverlayOptionProps) {
   const { className } = props;

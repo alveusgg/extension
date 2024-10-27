@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 
-import Tooltip from "../../../../components/tooltip/Tooltip";
+import Tooltip from "../../../components/Tooltip";
 
-import { classes } from "../../../../utils/classes";
+import { classes } from "../../../utils/classes";
 
 type ButtonsOptions = Readonly<
   {

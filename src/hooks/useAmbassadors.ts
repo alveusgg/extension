@@ -20,8 +20,8 @@ import {
 } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
-import { typeSafeObjectEntries, type ObjectEntries } from "./helpers";
-import { sortDate } from "./dateManager";
+import { typeSafeObjectEntries, type ObjectEntries } from "../utils/helpers";
+import { sortDate } from "../utils/dateManager";
 
 import winstonImage from "../assets/winston.png";
 

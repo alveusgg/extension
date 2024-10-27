@@ -1,19 +1,19 @@
 import { useState, useCallback, Fragment } from "react";
 
-import AmbassadorCard from "../../../../components/ambassadorCard/AmbassadorCard";
-import AmbassadorButton from "../../../../components/ambassadorButton/AmbassadorButton";
+import AmbassadorCard from "../../../components/AmbassadorCard";
+import AmbassadorButton from "../../../components/AmbassadorButton";
 
 import {
   isAmbassadorKey,
   useAmbassadors,
   type AmbassadorKey,
-} from "../../../../utils/ambassadors";
+} from "../../../hooks/useAmbassadors";
 
-import useChatCommand from "../../../../hooks/useChatCommand";
+import useChatCommand from "../../../hooks/useChatCommand";
 
-import Overlay from "../overlay/Overlay";
+import Overlay from "./Overlay";
 
-export default function AmbassadorPanel() {
+export default function Ambassadors() {
   const ambassadors = useAmbassadors();
 
   // Allow chat commands to select an ambassador, as well as the user

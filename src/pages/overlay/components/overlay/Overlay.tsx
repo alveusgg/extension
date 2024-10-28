@@ -40,7 +40,9 @@ const overlayOptions = [
     icon: IconWelcome,
     title: "Welcome to Alveus",
     component: (props: OverlayOptionProps) => (
-      <Welcome className={classes("absolute left-0 top-0", props.className)} />
+      <Welcome
+        className={classes("absolute left-0 top-0 mx-4 my-6", props.className)}
+      />
     ),
   },
   {

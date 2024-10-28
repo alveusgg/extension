@@ -21,7 +21,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
   return (
     <button
       className={classes(
-        "bg-alveus-green outline-highlight flex w-full shrink-0 flex-col items-center justify-start rounded-lg text-center shadow-lg transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
+        "bg-alveus-green outline-highlight flex shrink-0 flex-col items-center justify-start rounded-lg text-center shadow-lg transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
         className,
       )}
       id={ambassadorKey}

@@ -14,13 +14,13 @@ export default function Overlay(props: OverlayProps) {
       open={show}
       onClose={onClose}
       transition
-      className="relative z-10 transition-opacity data-[closed]:opacity-0"
+      className="fixed inset-0 z-10 flex items-center justify-center transition-opacity data-[closed]:opacity-0"
     >
-      <DialogBackdrop className="fixed inset-0 bg-black/50" />
+      <DialogBackdrop className="fixed inset-0 -z-10 bg-black/50" />
 
-      <div className="fixed inset-0 flex h-full w-full items-center justify-center">
-        <DialogPanel>{children}</DialogPanel>
-      </div>
+      <DialogPanel className="flex max-h-full max-w-full flex-col">
+        {children}
+      </DialogPanel>
     </Dialog>
   );
 }

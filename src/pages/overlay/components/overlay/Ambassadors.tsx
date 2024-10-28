@@ -114,6 +114,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
                 );
               }}
               className={classes(
+                "w-full",
                 activeAmbassador.key === key && "outline-highlight outline",
               )}
             />

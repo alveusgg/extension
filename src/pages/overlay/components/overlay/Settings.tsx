@@ -14,7 +14,7 @@ export default function Settings(props: OverlayOptionProps) {
 
   return (
     <Card
-      className={classes("absolute left-0 top-0", className)}
+      className={classes("absolute left-0 top-0 mx-4 my-6", className)}
       title="Extension Settings"
     >
       <ul className="flex flex-col gap-4">

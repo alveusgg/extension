@@ -25,7 +25,7 @@ export default function Ambassadors() {
   );
 
   return (
-    <main className="scrollbar scrollbar-track-alveus-tan scrollbar-thumb-alveus-green relative flex max-h-full flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden px-4 pb-4 pt-16">
+    <main className="scrollbar scrollbar-track-alveus-tan scrollbar-thumb-alveus-green relative flex max-h-full flex-wrap justify-center gap-4 overflow-y-auto overflow-x-hidden px-2 pb-4 pt-16 md:px-4">
       <div className="bg-alveus-green absolute inset-x-0 top-0 h-12 w-screen" />
 
       {ambassadors.map(([key]) => (
@@ -43,7 +43,7 @@ export default function Ambassadors() {
           <AmbassadorButton
             ambassador={key}
             onClick={() => setAmbassadorCard(key)}
-            className="w-32 md:w-48"
+            className="w-32 max-w-full md:w-48"
           />
         </Fragment>
       ))}

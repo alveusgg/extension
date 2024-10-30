@@ -15,7 +15,7 @@
     "dev": "cross-env NODE_ENV=development webpack serve --config src/webpack.config.ts",
     "build": "webpack --config src/webpack.config.ts",
     "lint:eslint": "eslint src --ext .ts,.tsx",
-    "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,scss}\"",
+    "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,json}\"",
     "lint": "run-p lint:*",
     "format:eslint": "npm run lint:eslint -- --fix",
     "format:prettier": "npm run lint:prettier -- --write",

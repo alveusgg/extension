@@ -31,8 +31,8 @@ export default function Welcome(props: WelcomeProps) {
   return (
     <Card className={className} title="Welcome to Alveus">
       <p className="mb-4 mt-2">
-        Alveus is a 501(c)(3) non-profit organization that functions as an
-        exotic animal sanctuary and as a virtual education center. These
+        Alveus Sanctuary is a 501(c)(3) non-profit organization that functions
+        as a wildlife sanctuary and as a virtual education center. These
         non-releasable animals are educational ambassadors so viewers can learn
         from and build a connection to them.
       </p>

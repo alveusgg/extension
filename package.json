@@ -14,7 +14,7 @@
     "prepare": "husky",
     "dev": "cross-env NODE_ENV=development webpack serve --config src/webpack.config.ts",
     "build": "webpack --config src/webpack.config.ts",
-    "lint:eslint": "eslint src --ext .ts,.tsx",
+    "lint:eslint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,json,html}\"",
     "lint": "run-p lint:*",
     "format:eslint": "npm run lint:eslint -- --fix",

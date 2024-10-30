@@ -180,9 +180,10 @@ export default forwardRef(function AmbassadorCard(
             <h3 className={headingClass}>Species</h3>
             <p>{ambassador.species}</p>
             <p>
-              <i>
-                {ambassador.scientific} ({getClassification(ambassador.class)})
-              </i>
+              <i>{ambassador.scientific}</i>{" "}
+              <span className="text-alveus-green-200">
+                ({getClassification(ambassador.class)})
+              </span>
             </p>
           </div>
 
@@ -255,7 +256,7 @@ export default forwardRef(function AmbassadorCard(
                 )}`}
                 rel="noreferrer"
                 target="_blank"
-                className="hover:text-highlight focus:text-highlight text-nowrap underline transition-colors"
+                className="hover:text-highlight focus:text-highlight text-alveus-green-200 text-nowrap underline transition-colors"
               >
                 Alveus Sanctuary website
               </a>

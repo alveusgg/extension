@@ -9,7 +9,8 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Nunito", ...fontFamily.sans],
+        sans: ["PT Sans", ...fontFamily.sans],
+        serif: ["PT Serif", ...fontFamily.serif],
       },
       backdropBlur: {
         xs: "2px",

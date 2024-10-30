@@ -45,7 +45,10 @@ export default forwardRef(function AmbassadorCard(
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
+
   const birthday = ambassador.birth && isBirthday(ambassador.birth);
+  const age = ambassador.birth ? calculateAge(ambassador.birth) : "Unknown";
+  const birth = ambassador.birth ? formatDate(ambassador.birth) : "Unknown";
 
   const internalRef = useRef<HTMLDivElement>();
   const callbackRef = useCallback(
@@ -195,13 +198,23 @@ export default forwardRef(function AmbassadorCard(
             <div>
               <h3 className={headingClass}>Age</h3>
               <p>
-                {ambassador.birth ? calculateAge(ambassador.birth) : "Unknown"}
+                {age[0] === "~" && (
+                  <span className="text-base leading-none" title="Approx.">
+                    ~
+                  </span>
+                )}
+                {age.slice(age[0] === "~" ? 1 : 0)}
               </p>
             </div>
             <div>
               <h3 className={headingClass}>Birthday</h3>
               <p>
-                {ambassador.birth ? formatDate(ambassador.birth) : "Unknown"}
+                {birth[0] === "~" && (
+                  <span className="text-base leading-none" title="Approx.">
+                    ~
+                  </span>
+                )}
+                {birth.slice(birth[0] === "~" ? 1 : 0)}
               </p>
             </div>
           </div>

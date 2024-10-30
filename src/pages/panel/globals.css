@@ -6,10 +6,10 @@
 
 @layer base {
   body {
-    @apply w-screen h-screen overflow-hidden font-sans text-alveus-tan bg-alveus-tan;
+    @apply text-alveus-tan bg-alveus-tan h-screen w-screen overflow-hidden font-sans;
   }
 
   #root {
-    @apply w-full h-full relative;
+    @apply relative h-full w-full;
   }
 }

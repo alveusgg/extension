@@ -180,9 +180,8 @@ export default forwardRef(function AmbassadorCard(
             <h3 className={headingClass}>Species</h3>
             <p>{ambassador.species}</p>
             <p>
-              <i>
-                {ambassador.scientific} ({getClassification(ambassador.class)})
-              </i>
+              <i>{ambassador.scientific}</i> (
+              {getClassification(ambassador.class)})
             </p>
           </div>
 

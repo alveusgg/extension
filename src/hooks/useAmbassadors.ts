@@ -55,6 +55,9 @@ const winston = {
     source:
       "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
   },
+  lifespan: {
+    source: "",
+  },
   clips: [],
   homepage: null,
   plush: null,

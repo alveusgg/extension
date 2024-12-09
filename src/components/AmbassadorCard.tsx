@@ -28,6 +28,10 @@ const offsetPosition = (position: AmbassadorImage["position"]) => {
   return `${x} min(calc(${y} + 1.5rem), 0%)`;
 };
 
+const stringifyLifespan = (value: number | { min: number; max: number }) => {
+  return typeof value === "number" ? `${value}` : `${value.min}-${value.max}`;
+};
+
 export interface AmbassadorCardProps {
   ambassador: AmbassadorKey;
   onClose?: () => void;
@@ -249,6 +253,36 @@ export default forwardRef(function AmbassadorCard(
           <div>
             <h3 className={headingClass}>Native To</h3>
             <p>{ambassador.native.text}</p>
+          </div>
+
+          <div>
+            <h3 className={headingClass}>Species Lifespan</h3>
+            <p>
+              Wild:{" "}
+              {"wild" in ambassador.lifespan ? (
+                <>
+                  <span className="text-base leading-none" title="Approx.">
+                    ~
+                  </span>
+                  {stringifyLifespan(ambassador.lifespan.wild)} years
+                </>
+              ) : (
+                "Unknown"
+              )}
+            </p>
+            <p>
+              Captivity:{" "}
+              {"captivity" in ambassador.lifespan ? (
+                <>
+                  <span className="text-base leading-none" title="Approx.">
+                    ~
+                  </span>
+                  {stringifyLifespan(ambassador.lifespan.captivity)} years
+                </>
+              ) : (
+                "Unknown"
+              )}
+            </p>
           </div>
 
           <div>

@@ -22,7 +22,7 @@
     "format": "run-p format:*"
   },
   "dependencies": {
-    "@alveusgg/data": "github:alveusgg/data#0.45.0",
+    "@alveusgg/data": "github:alveusgg/data#0.46.0",
     "@headlessui/react": "^2.2.0",
     "react": "^18.3.1",
     "react-canvas-confetti": "^2.0.7",

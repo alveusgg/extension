@@ -1,6 +1,7 @@
 import {
   ContextType,
   createContext,
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -9,12 +10,7 @@ import {
 import allAmbassadors, {
   type Ambassador,
 } from "@alveusgg/data/src/ambassadors/core";
-import {
-  isActiveAmbassadorKey,
-  isActiveAmbassadorEntry,
-  type ActiveAmbassadors,
-  type ActiveAmbassadorKey,
-} from "@alveusgg/data/src/ambassadors/filters";
+import { isActiveAmbassadorEntry } from "@alveusgg/data/src/ambassadors/filters";
 import {
   Class,
   getClassification,
@@ -29,9 +25,7 @@ import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 import {
   typeSafeObjectEntries,
   typeSafeObjectFromEntries,
-  type ObjectEntries,
 } from "../utils/helpers";
-import { sortDate } from "../utils/dateManager";
 
 import winstonImage from "../assets/winston.png";
 
@@ -132,16 +126,9 @@ const winstonImages: AmbassadorImages = [
 
 const isWinstonDate = (date: string) => date === "04-01";
 
-// While Winston is always in the types, the runtime check should only expose him on April 1st
-type Ambassadors = ActiveAmbassadors & { winston: typeof winston };
-export type AmbassadorKey = ActiveAmbassadorKey | "winston";
-export const isAmbassadorKey = (key: string): key is AmbassadorKey =>
-  isActiveAmbassadorKey(key) || (key === "winston" && isWinstonDate(dateKey()));
+export const useAmbassadors = (): Record<string, Ambassador> | null => {
+  const ambassadors = useContext(context);
 
-const sortedAmbassadors = typeSafeObjectEntries(allAmbassadors)
-  .filter(isActiveAmbassadorEntry)
-  .sort(([, a], [, b]) => sortDate(a.arrival, b.arrival));
-export const useAmbassadors = () => {
   // Setup a timer to store the current month and day
   const [date, setDate] = useState<string>(() => dateKey());
   useEffect(() => {
@@ -150,23 +137,24 @@ export const useAmbassadors = () => {
   }, []);
 
   // Return the ambassadors, with Winston added to the start if it's April 1st
-  return useMemo(() => {
-    const ambassadors: ObjectEntries<Ambassadors> = sortedAmbassadors.slice();
-    if (isWinstonDate(date)) ambassadors.unshift(["winston", winston]);
-    return ambassadors;
-  }, [date]);
+  return useMemo(
+    () =>
+      ambassadors
+        ? {
+            ...ambassadors,
+            ...(isWinstonDate(date) ? { winston } : {}),
+          }
+        : null,
+    [ambassadors, date],
+  );
 };
 
-// We can always expose Winston here as the key will only be present in runtime logic on April 1st
-export const useAmbassador = (key: AmbassadorKey): Ambassadors[typeof key] =>
-  useMemo(
-    () =>
-      key === "winston"
-        ? winston
-        : sortedAmbassadors.find(([k]) => k === key)![1],
-    [key],
-  );
-export const getAmbassadorImages = (key: AmbassadorKey): AmbassadorImages =>
+export const useAmbassador = (key: string) => {
+  const ambassadors = useAmbassadors();
+  return ambassadors?.[key];
+};
+
+export const getAmbassadorImages = (key: string) =>
   key === "winston" ? winstonImages : getAmbassadorImagesSrc(key);
 
 export {

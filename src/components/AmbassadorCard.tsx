@@ -8,7 +8,6 @@ import {
   getAmbassadorImages,
   getIUCNStatus,
   useAmbassador,
-  type AmbassadorKey,
   type AmbassadorImage,
 } from "../hooks/useAmbassadors";
 import { camelToKebab } from "../utils/helpers";
@@ -33,7 +32,7 @@ const stringifyLifespan = (value: number | { min: number; max: number }) => {
 };
 
 export interface AmbassadorCardProps {
-  ambassador: AmbassadorKey;
+  ambassador: string;
   onClose?: () => void;
   className?: string;
 }
@@ -50,9 +49,9 @@ export default forwardRef(function AmbassadorCard(
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
 
-  const birthday = ambassador.birth && isBirthday(ambassador.birth);
-  const age = ambassador.birth ? calculateAge(ambassador.birth) : "Unknown";
-  const birth = ambassador.birth ? formatDate(ambassador.birth) : "Unknown";
+  const birthday = ambassador?.birth && isBirthday(ambassador.birth);
+  const age = ambassador?.birth ? calculateAge(ambassador.birth) : "Unknown";
+  const birth = ambassador?.birth ? formatDate(ambassador.birth) : "Unknown";
 
   const internalRef = useRef<HTMLDivElement>();
   const callbackRef = useCallback(
@@ -120,6 +119,8 @@ export default forwardRef(function AmbassadorCard(
     [origin],
   );
   useEffect(() => () => clearTimeout(timeout.current), []);
+
+  if (!ambassador || !images) return null;
 
   return (
     <>
@@ -259,7 +260,8 @@ export default forwardRef(function AmbassadorCard(
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {"wild" in ambassador.lifespan ? (
+              {"wild" in ambassador.lifespan &&
+              ambassador.lifespan.wild !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
@@ -272,7 +274,8 @@ export default forwardRef(function AmbassadorCard(
             </p>
             <p>
               Captivity:{" "}
-              {"captivity" in ambassador.lifespan ? (
+              {"captivity" in ambassador.lifespan &&
+              ambassador.lifespan.captivity !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~

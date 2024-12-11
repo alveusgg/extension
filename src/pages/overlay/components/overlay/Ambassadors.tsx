@@ -1,4 +1,10 @@
-import { useRef, useEffect, useCallback, type MouseEvent } from "react";
+import {
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+  type MouseEvent,
+} from "react";
 import { Transition } from "@headlessui/react";
 
 import AmbassadorCard from "../../../../components/AmbassadorCard";
@@ -6,6 +12,8 @@ import AmbassadorButton from "../../../../components/AmbassadorButton";
 
 import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
+import { typeSafeObjectEntries } from "../../../../utils/helpers";
+import { sortDate } from "../../../../utils/dateManager";
 
 import type { OverlayOptionProps } from "./Overlay";
 
@@ -25,7 +33,14 @@ export default function Ambassadors(props: OverlayOptionProps) {
     className,
   } = props;
 
-  const ambassadors = useAmbassadors();
+  const rawAmbassadors = useAmbassadors();
+  const ambassadors = useMemo(
+    () =>
+      typeSafeObjectEntries(rawAmbassadors ?? {}).sort(([, a], [, b]) =>
+        sortDate(a.arrival, b.arrival),
+      ),
+    [rawAmbassadors],
+  );
 
   const upArrowRef = useRef<HTMLButtonElement>(null);
   const ambassadorList = useRef<HTMLDivElement>(null);

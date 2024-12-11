@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alveusgg/extension.git"
@@ -14,7 +15,7 @@
     "prepare": "husky",
     "dev": "cross-env NODE_ENV=development webpack serve --config src/webpack.config.ts",
     "build": "webpack --config src/webpack.config.ts",
-    "lint:eslint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:eslint": "eslint src 'src/**/*.{js,jsx,ts,tsx,css,json,html}'",
     "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,json,html}\"",
     "lint": "run-p lint:*",
     "format:eslint": "npm run lint:eslint -- --fix",
@@ -43,7 +44,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "dotenv-webpack": "^8.1.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",

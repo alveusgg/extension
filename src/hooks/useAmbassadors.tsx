@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import {
+  ContextType,
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import allAmbassadors, {
   type Ambassador,
@@ -20,10 +26,63 @@ import {
 } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
-import { typeSafeObjectEntries, type ObjectEntries } from "../utils/helpers";
+import {
+  typeSafeObjectEntries,
+  typeSafeObjectFromEntries,
+  type ObjectEntries,
+} from "../utils/helpers";
 import { sortDate } from "../utils/dateManager";
 
 import winstonImage from "../assets/winston.png";
+
+// TODO: Fetch the ambassadors from the API
+const fetchAmbassadors = async () => {
+  throw new Error("Not implemented");
+};
+
+const fallbackAmbassadors: Record<string, Ambassador> =
+  typeSafeObjectFromEntries(
+    typeSafeObjectEntries(allAmbassadors).filter(isActiveAmbassadorEntry),
+  );
+
+// Use a context to fetch the ambassadors from the API
+const context = createContext<Record<string, Ambassador> | null>(null);
+export const AmbassadorsProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [ambassadors, setAmbassadors] =
+    useState<ContextType<typeof context>>(null);
+
+  // On mount, attempt to fetch the ambassadors from the API
+  // If we can't fetch the ambassadors, use the data from the data package
+  useEffect(() => {
+    fetchAmbassadors()
+      .catch((err) => {
+        console.error(err);
+        return fallbackAmbassadors;
+      })
+      .then(setAmbassadors);
+  }, []);
+
+  // Every 2 hours, attempt to fetch the ambassadors from the API
+  // If we can't fetch the ambassadors, we'll just use the existing data
+  useEffect(() => {
+    const interval = setInterval(
+      () => {
+        fetchAmbassadors()
+          .then(setAmbassadors)
+          .catch((err) => console.error(err));
+      },
+      2 * 60 * 60 * 1000,
+    );
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return <context.Provider value={ambassadors}>{children}</context.Provider>;
+};
 
 const dateKey = () => {
   const date = new Date();

@@ -3,13 +3,7 @@ import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
 import { calculateAge, formatDate, isBirthday } from "../utils/dateManager";
-import {
-  getClassification,
-  getAmbassadorImages,
-  getIUCNStatus,
-  useAmbassador,
-  type AmbassadorImage,
-} from "../hooks/useAmbassadors";
+import { useAmbassador } from "../hooks/useAmbassadors";
 import { camelToKebab } from "../utils/helpers";
 import { classes } from "../utils/classes";
 
@@ -22,7 +16,7 @@ import partyHat from "../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
 
-const offsetPosition = (position: AmbassadorImage["position"]) => {
+const offsetPosition = (position?: string) => {
   const [x, y] = (position || "50% 50%").split(" ");
   return `${x} min(calc(${y} + 1.5rem), 0%)`;
 };
@@ -43,7 +37,6 @@ export default forwardRef(function AmbassadorCard(
 ) {
   const { ambassador: ambassadorKey, onClose, className, ...extras } = props;
   const ambassador = useAmbassador(ambassadorKey);
-  const images = getAmbassadorImages(ambassadorKey);
 
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
@@ -120,7 +113,7 @@ export default forwardRef(function AmbassadorCard(
   );
   useEffect(() => () => clearTimeout(timeout.current), []);
 
-  if (!ambassador || !images) return null;
+  if (!ambassador) return null;
 
   return (
     <>
@@ -143,9 +136,11 @@ export default forwardRef(function AmbassadorCard(
         <div className="relative w-full overflow-hidden rounded-t-lg">
           <img
             className="peer aspect-[2.2] w-full object-cover sm:aspect-[1.8]"
-            src={images[0].src}
-            alt={images[0].alt}
-            style={{ objectPosition: offsetPosition(images[0].position) }}
+            src={ambassador.image.src}
+            alt={ambassador.image.alt}
+            style={{
+              objectPosition: offsetPosition(ambassador.image.position),
+            }}
           />
 
           <div className="peer-hover:backdrop-blur-xs bg-alveus-green-900/50 absolute inset-x-0 top-0 flex h-9 w-full backdrop-blur-sm transition-[opacity,backdrop-filter] peer-hover:opacity-10">
@@ -190,7 +185,7 @@ export default forwardRef(function AmbassadorCard(
             <p>
               <i>{ambassador.scientific}</i>{" "}
               <span className="text-alveus-green-200">
-                ({getClassification(ambassador.class)})
+                ({ambassador.class.title})
               </span>
             </p>
           </div>
@@ -248,7 +243,7 @@ export default forwardRef(function AmbassadorCard(
                 />
               </div>
             </Tooltip>
-            <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
+            <p>IUCN: {ambassador.iucn.title}</p>
           </div>
 
           <div>

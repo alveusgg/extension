@@ -1,6 +1,6 @@
 import { type MouseEventHandler } from "react";
 
-import { getAmbassadorImages, useAmbassador } from "../hooks/useAmbassadors";
+import { useAmbassador } from "../hooks/useAmbassadors";
 import { classes } from "../utils/classes";
 
 interface AmbassadorButtonProps {
@@ -12,9 +12,8 @@ interface AmbassadorButtonProps {
 export default function AmbassadorButton(props: AmbassadorButtonProps) {
   const { ambassador: ambassadorKey, onClick, className } = props;
   const ambassador = useAmbassador(ambassadorKey);
-  const images = getAmbassadorImages(ambassadorKey);
 
-  if (!ambassador || !images) return null;
+  if (!ambassador) return null;
 
   return (
     <button
@@ -28,9 +27,9 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
     >
       <img
         className="aspect-[2.2] w-full shrink-0 rounded-t-lg object-cover"
-        src={images[0].src}
-        alt={images[0].alt}
-        style={{ objectPosition: images[0].position }}
+        src={ambassador.image.src}
+        alt={ambassador.image.alt}
+        style={{ objectPosition: ambassador.image.position }}
       />
 
       <div className="my-auto px-1 pb-2 pt-2">

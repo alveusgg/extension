@@ -14,9 +14,8 @@ import allAmbassadors, {
 import { isActiveAmbassadorEntry } from "@alveusgg/data/src/ambassadors/filters";
 import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
 import {
-  getAmbassadorImages as getAmbassadorImagesSrc,
-  type AmbassadorImage,
-  type AmbassadorImages,
+  getAmbassadorImages,
+  ambassadorImageSchema,
 } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 
@@ -27,18 +26,62 @@ import {
 
 import winstonImage from "../assets/winston.png";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const apiSchema = ambassadorSchema.extend({});
-type Ambassador = z.infer<typeof apiSchema>;
+// These schema should match the type exposed by the API
+const apiAmbassadorSchema = ambassadorSchema.extend({
+  image: ambassadorImageSchema,
+  iucn: ambassadorSchema.shape.iucn.extend({
+    title: z.string(),
+  }),
+  class: z.object({
+    name: ambassadorSchema.shape.class,
+    title: z.string(),
+  }),
+});
 
-// TODO: Fetch the ambassadors from the API
-const fetchAmbassadors = async () => {
-  throw new Error("Not implemented");
+const apiSchema = z.object({
+  ambassadors: z.record(apiAmbassadorSchema),
+});
+
+type Ambassador = z.infer<typeof apiAmbassadorSchema>;
+
+const websiteUrl = process.env.REACT_APP_WEBSITE_URL?.replace(/\/+$/, "");
+if (!websiteUrl)
+  throw new Error("REACT_APP_WEBSITE_URL environment variable is not set");
+
+const fetchAmbassadors = async (): Promise<Record<string, Ambassador>> => {
+  const response = await fetch(`${websiteUrl}/api/stream/ambassadors`);
+  if (!response.ok)
+    throw new Error(
+      `Failed to fetch ambassadors: ${response.status} ${response.statusText} ${await response.text()}`,
+    );
+
+  const data = await response.json();
+  return apiSchema.parse(data).ambassadors;
 };
 
 const fallbackAmbassadors: Record<string, Ambassador> =
   typeSafeObjectFromEntries(
-    typeSafeObjectEntries(allAmbassadors).filter(isActiveAmbassadorEntry),
+    typeSafeObjectEntries(allAmbassadors)
+      .filter(isActiveAmbassadorEntry)
+      .map<[string, Ambassador]>(([key, val]) => {
+        const image = getAmbassadorImages(key)[0];
+
+        return [
+          key,
+          {
+            ...val,
+            image,
+            iucn: {
+              ...val.iucn,
+              title: getIUCNStatus(val.iucn.status),
+            },
+            class: {
+              name: val.class,
+              title: getClassification(val.class),
+            },
+          },
+        ];
+      }),
   );
 
 // Use a context to fetch the ambassadors from the API
@@ -89,7 +132,10 @@ const winston = {
   name: "Winston",
   alternate: [],
   commands: ["winston"],
-  class: "mammalia",
+  class: {
+    name: "mammalia",
+    title: getClassification("mammalia"),
+  },
   species: "Polar Bear",
   scientific: "Twitchus memeticus",
   sex: "Male",
@@ -99,6 +145,7 @@ const winston = {
   iucn: {
     id: null,
     status: "NE",
+    title: getIUCNStatus("NE"),
   },
   enclosure: "wolves",
   story:
@@ -116,15 +163,12 @@ const winston = {
   clips: [],
   homepage: null,
   plush: null,
-} as const satisfies Ambassador;
-
-const winstonImages: AmbassadorImages = [
-  {
+  image: {
     src: winstonImage,
     alt: "Winston the polar bear",
     position: "50% 25%",
   },
-];
+} as const satisfies Ambassador;
 
 const isWinstonDate = (date: string) => date === "04-01";
 
@@ -154,14 +198,4 @@ export const useAmbassadors = (): Record<string, Ambassador> | null => {
 export const useAmbassador = (key: string) => {
   const ambassadors = useAmbassadors();
   return ambassadors?.[key];
-};
-
-export const getAmbassadorImages = (key: string) =>
-  key === "winston" ? winstonImages : getAmbassadorImagesSrc(key);
-
-export {
-  getClassification,
-  getIUCNStatus,
-  type Ambassador,
-  type AmbassadorImage,
 };

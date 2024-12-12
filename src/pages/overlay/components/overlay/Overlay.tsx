@@ -13,10 +13,7 @@ import IconWelcome from "../../../../components/icons/IconWelcome";
 import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
 import IconSettings from "../../../../components/icons/IconSettings";
 
-import {
-  isAmbassadorKey,
-  type AmbassadorKey,
-} from "../../../../hooks/useAmbassadors";
+import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { visibleUnderCursor } from "../../../../utils/dom";
 
@@ -67,7 +64,7 @@ export const isValidOverlayKey = (key: string) =>
 export type OverlayKey = (typeof overlayOptions)[number]["key"] | "";
 
 type ActiveAmbassadorState = {
-  key?: AmbassadorKey;
+  key?: string;
   isCommand?: boolean;
 };
 
@@ -90,6 +87,8 @@ export default function Overlay() {
     on: addSleepListener,
     off: removeSleepListener,
   } = useSleeping();
+
+  const ambassadors = useAmbassadors();
 
   const [activeAmbassador, setActiveAmbassador] =
     useState<ActiveAmbassadorState>({});
@@ -114,7 +113,7 @@ export default function Overlay() {
     useCallback(
       (command: string) => {
         if (!settings.disableChatPopup.value) {
-          if (isAmbassadorKey(command))
+          if (Object.keys(ambassadors ?? {}).includes(command))
             setActiveAmbassador({ key: command, isCommand: true });
           else if (command !== "welcome") return;
 
@@ -133,7 +132,7 @@ export default function Overlay() {
           wake(commandTimeout);
         }
       },
-      [settings.disableChatPopup.value, wake],
+      [settings.disableChatPopup.value, ambassadors, wake],
     ),
   );
 

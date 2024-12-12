@@ -1,27 +1,36 @@
-import { useState, useCallback, Fragment } from "react";
+import { useState, useCallback, Fragment, useMemo } from "react";
 
 import AmbassadorCard from "../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../components/AmbassadorButton";
 
-import {
-  isAmbassadorKey,
-  useAmbassadors,
-  type AmbassadorKey,
-} from "../../../hooks/useAmbassadors";
+import { useAmbassadors } from "../../../hooks/useAmbassadors";
 
 import useChatCommand from "../../../hooks/useChatCommand";
+import { typeSafeObjectEntries } from "../../../utils/helpers";
+import { sortDate } from "../../../utils/dateManager";
 
 import Overlay from "./Overlay";
 
 export default function Ambassadors() {
-  const ambassadors = useAmbassadors();
+  const rawAmbassadors = useAmbassadors();
+  const ambassadors = useMemo(
+    () =>
+      typeSafeObjectEntries(rawAmbassadors ?? {}).sort(([, a], [, b]) =>
+        sortDate(a.arrival, b.arrival),
+      ),
+    [rawAmbassadors],
+  );
 
   // Allow chat commands to select an ambassador, as well as the user
-  const [ambassadorCard, setAmbassadorCard] = useState<AmbassadorKey>();
+  const [ambassadorCard, setAmbassadorCard] = useState<string>();
   useChatCommand(
-    useCallback((command: string) => {
-      if (isAmbassadorKey(command)) setAmbassadorCard(command);
-    }, []),
+    useCallback(
+      (command: string) => {
+        if (Object.keys(rawAmbassadors ?? {}).includes(command))
+          setAmbassadorCard(command);
+      },
+      [rawAmbassadors],
+    ),
   );
 
   return (

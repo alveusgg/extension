@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo } from "react";
 import tmi, { ChatUserstate } from "tmi.js";
 
-import { type AmbassadorKey, useAmbassadors } from "./useAmbassadors";
+import { typeSafeObjectEntries } from "../utils/helpers";
+
+import { useAmbassadors } from "./useAmbassadors";
 
 import useChannel from "./useChannel";
 
@@ -45,12 +47,14 @@ export default function useChatCommand(callback: (command: string) => void) {
 
   const ambassadors = useAmbassadors();
   const commandsMap = useMemo(() => {
-    const commands = new Map<string, AmbassadorKey | "welcome">();
-    ambassadors.forEach(([key, ambassador]) => {
-      ambassador.commands.forEach((command) => {
-        commands.set(command.toLowerCase(), key);
+    const commands = new Map<string, string>();
+    if (ambassadors) {
+      typeSafeObjectEntries(ambassadors).forEach(([key, ambassador]) => {
+        ambassador.commands.forEach((command) => {
+          commands.set(command.toLowerCase(), key);
+        });
       });
-    });
+    }
     commands.set("welcome", "welcome");
     return commands;
   }, [ambassadors]);

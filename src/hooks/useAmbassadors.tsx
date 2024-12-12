@@ -6,15 +6,13 @@ import {
   useMemo,
   useState,
 } from "react";
+import { z } from "zod";
 
 import allAmbassadors, {
-  type Ambassador,
+  ambassadorSchema,
 } from "@alveusgg/data/src/ambassadors/core";
 import { isActiveAmbassadorEntry } from "@alveusgg/data/src/ambassadors/filters";
-import {
-  Class,
-  getClassification,
-} from "@alveusgg/data/src/ambassadors/classification";
+import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
 import {
   getAmbassadorImages as getAmbassadorImagesSrc,
   type AmbassadorImage,
@@ -28,6 +26,10 @@ import {
 } from "../utils/helpers";
 
 import winstonImage from "../assets/winston.png";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const apiSchema = ambassadorSchema.extend({});
+type Ambassador = z.infer<typeof apiSchema>;
 
 // TODO: Fetch the ambassadors from the API
 const fetchAmbassadors = async () => {
@@ -87,7 +89,7 @@ const winston = {
   name: "Winston",
   alternate: [],
   commands: ["winston"],
-  class: Class.Mammalia,
+  class: "mammalia",
   species: "Polar Bear",
   scientific: "Twitchus memeticus",
   sex: "Male",

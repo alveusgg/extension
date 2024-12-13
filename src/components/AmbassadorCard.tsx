@@ -3,14 +3,7 @@ import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
 import { calculateAge, formatDate, isBirthday } from "../utils/dateManager";
-import {
-  getClassification,
-  getAmbassadorImages,
-  getIUCNStatus,
-  useAmbassador,
-  type AmbassadorKey,
-  type AmbassadorImage,
-} from "../hooks/useAmbassadors";
+import { useAmbassador } from "../hooks/useAmbassadors";
 import { camelToKebab } from "../utils/helpers";
 import { classes } from "../utils/classes";
 
@@ -23,7 +16,7 @@ import partyHat from "../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
 
-const offsetPosition = (position: AmbassadorImage["position"]) => {
+const offsetPosition = (position?: string) => {
   const [x, y] = (position || "50% 50%").split(" ");
   return `${x} min(calc(${y} + 1.5rem), 0%)`;
 };
@@ -33,7 +26,7 @@ const stringifyLifespan = (value: number | { min: number; max: number }) => {
 };
 
 export interface AmbassadorCardProps {
-  ambassador: AmbassadorKey;
+  ambassador: string;
   onClose?: () => void;
   className?: string;
 }
@@ -44,15 +37,14 @@ export default forwardRef(function AmbassadorCard(
 ) {
   const { ambassador: ambassadorKey, onClose, className, ...extras } = props;
   const ambassador = useAmbassador(ambassadorKey);
-  const images = getAmbassadorImages(ambassadorKey);
 
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
 
-  const birthday = ambassador.birth && isBirthday(ambassador.birth);
-  const age = ambassador.birth ? calculateAge(ambassador.birth) : "Unknown";
-  const birth = ambassador.birth ? formatDate(ambassador.birth) : "Unknown";
+  const birthday = ambassador?.birth && isBirthday(ambassador.birth);
+  const age = ambassador?.birth ? calculateAge(ambassador.birth) : "Unknown";
+  const birth = ambassador?.birth ? formatDate(ambassador.birth) : "Unknown";
 
   const internalRef = useRef<HTMLDivElement>();
   const callbackRef = useCallback(
@@ -121,6 +113,8 @@ export default forwardRef(function AmbassadorCard(
   );
   useEffect(() => () => clearTimeout(timeout.current), []);
 
+  if (!ambassador) return null;
+
   return (
     <>
       {birthday && <Confetti onInit={confettiInit} />}
@@ -142,9 +136,11 @@ export default forwardRef(function AmbassadorCard(
         <div className="relative w-full overflow-hidden rounded-t-lg">
           <img
             className="peer aspect-[2.2] w-full object-cover sm:aspect-[1.8]"
-            src={images[0].src}
-            alt={images[0].alt}
-            style={{ objectPosition: offsetPosition(images[0].position) }}
+            src={ambassador.image.src}
+            alt={ambassador.image.alt}
+            style={{
+              objectPosition: offsetPosition(ambassador.image.position),
+            }}
           />
 
           <div className="peer-hover:backdrop-blur-xs bg-alveus-green-900/50 absolute inset-x-0 top-0 flex h-9 w-full backdrop-blur-sm transition-[opacity,backdrop-filter] peer-hover:opacity-10">
@@ -189,7 +185,7 @@ export default forwardRef(function AmbassadorCard(
             <p>
               <i>{ambassador.scientific}</i>{" "}
               <span className="text-alveus-green-200">
-                ({getClassification(ambassador.class)})
+                ({ambassador.class.title})
               </span>
             </p>
           </div>
@@ -247,7 +243,7 @@ export default forwardRef(function AmbassadorCard(
                 />
               </div>
             </Tooltip>
-            <p>IUCN: {getIUCNStatus(ambassador.iucn.status)}</p>
+            <p>IUCN: {ambassador.iucn.title}</p>
           </div>
 
           <div>
@@ -259,7 +255,8 @@ export default forwardRef(function AmbassadorCard(
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {"wild" in ambassador.lifespan ? (
+              {"wild" in ambassador.lifespan &&
+              ambassador.lifespan.wild !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
@@ -272,7 +269,8 @@ export default forwardRef(function AmbassadorCard(
             </p>
             <p>
               Captivity:{" "}
-              {"captivity" in ambassador.lifespan ? (
+              {"captivity" in ambassador.lifespan &&
+              ambassador.lifespan.captivity !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~

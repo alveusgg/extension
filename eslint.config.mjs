@@ -1,14 +1,21 @@
 // @ts-check
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import reactPlugin from "eslint-plugin-react";
+import prettiereslint from "eslint-config-prettier";
 
-export default [
-  eslint.configs.recommended,
+export default tseslint.config(
+  {
+    name: "eslint/recommended",
+    ...eslint.configs.recommended,
+  },
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat?.recommended,
-  eslintPluginPrettierRecommended,
+  // @ts-expect-error - incorrect types
+  reactPlugin.configs.flat.recommended,
+  {
+    name: "prettier/config",
+    ...prettiereslint,
+  },
   {
     languageOptions: {
       parserOptions: {
@@ -30,4 +37,4 @@ export default [
       "react/react-in-jsx-scope": "off",
     },
   },
-];
+);

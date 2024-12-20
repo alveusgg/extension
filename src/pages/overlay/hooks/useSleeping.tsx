@@ -24,7 +24,7 @@ export type Sleeping = {
   off: (event: Event, fn: Events[Event]) => void;
 };
 
-const context = createContext<Sleeping | undefined>(undefined);
+const Context = createContext<Sleeping | undefined>(undefined);
 
 export const SleepingProvider = ({ children }: { children: ReactNode }) => {
   const [startTimer, stopTimer] = useIntelligentTimer();
@@ -75,11 +75,11 @@ export const SleepingProvider = ({ children }: { children: ReactNode }) => {
     [sleeping, wake, sleep, on, off],
   );
 
-  return <context.Provider value={obj}>{children}</context.Provider>;
+  return <Context value={obj}>{children}</Context>;
 };
 
 const useSleeping = () => {
-  const ctx = useContext(context);
+  const ctx = useContext(Context);
   if (!ctx)
     throw new Error("useSleeping must be used within a SleepingProvider");
   return ctx;

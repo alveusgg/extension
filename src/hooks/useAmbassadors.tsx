@@ -85,14 +85,14 @@ const fallbackAmbassadors: Record<string, Ambassador> =
   );
 
 // Use a context to fetch the ambassadors from the API
-const context = createContext<Record<string, Ambassador> | null>(null);
+const Context = createContext<Record<string, Ambassador> | null>(null);
 export const AmbassadorsProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
   const [ambassadors, setAmbassadors] =
-    useState<ContextType<typeof context>>(null);
+    useState<ContextType<typeof Context>>(null);
 
   // On mount, attempt to fetch the ambassadors from the API
   // If we can't fetch the ambassadors, use the data from the data package
@@ -120,7 +120,7 @@ export const AmbassadorsProvider = ({
     return () => clearInterval(interval);
   }, []);
 
-  return <context.Provider value={ambassadors}>{children}</context.Provider>;
+  return <Context value={ambassadors}>{children}</Context>;
 };
 
 const dateKey = () => {
@@ -173,7 +173,7 @@ const winston = {
 const isWinstonDate = (date: string) => date === "04-01";
 
 export const useAmbassadors = (): Record<string, Ambassador> | null => {
-  const ambassadors = useContext(context);
+  const ambassadors = useContext(Context);
 
   // Setup a timer to store the current month and day
   const [date, setDate] = useState<string>(() => dateKey());

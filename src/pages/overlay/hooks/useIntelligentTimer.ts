@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 
 const useIntelligentTimer = () => {
-  const current = useRef<NodeJS.Timeout | undefined>(undefined);
-  const end = useRef<number | undefined>(undefined);
+  const current = useRef<NodeJS.Timeout>(null);
+  const end = useRef<number>(null);
 
   const start = useCallback((callback: () => void, time: number) => {
     // If the requested time is less than the current time, do nothing
@@ -16,13 +16,13 @@ const useIntelligentTimer = () => {
     end.current = newEnd;
     current.current = setTimeout(() => {
       callback();
-      end.current = undefined;
+      end.current = null;
     }, time);
   }, []);
 
   const stop = useCallback(() => {
     if (current.current) clearTimeout(current.current);
-    end.current = undefined;
+    end.current = null;
   }, []);
 
   useEffect(

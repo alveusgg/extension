@@ -50,7 +50,7 @@ export type Settings = {
   };
 };
 
-const context = createContext<Settings | undefined>(undefined);
+const Context = createContext<Settings | undefined>(undefined);
 
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [stored, setStored] = useState<StoredSettings>(() => {
@@ -91,11 +91,11 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     [stored, change],
   );
 
-  return <context.Provider value={obj}>{children}</context.Provider>;
+  return <Context value={obj}>{children}</Context>;
 };
 
 const useSettings = () => {
-  const ctx = useContext(context);
+  const ctx = useContext(Context);
   if (!ctx)
     throw new Error("useSettings must be used within a SettingsProvider");
   return ctx;

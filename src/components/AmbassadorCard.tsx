@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, type Ref } from "react";
 import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
@@ -29,13 +29,17 @@ export interface AmbassadorCardProps {
   ambassador: string;
   onClose?: () => void;
   className?: string;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export default forwardRef(function AmbassadorCard(
-  props: AmbassadorCardProps,
-  ref,
-) {
-  const { ambassador: ambassadorKey, onClose, className, ...extras } = props;
+export default function AmbassadorCard(props: AmbassadorCardProps) {
+  const {
+    ambassador: ambassadorKey,
+    onClose,
+    className,
+    ref,
+    ...extras
+  } = props;
   const ambassador = useAmbassador(ambassadorKey);
 
   const mod =
@@ -312,4 +316,4 @@ export default forwardRef(function AmbassadorCard(
       </div>
     </>
   );
-});
+}

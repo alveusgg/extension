@@ -46,19 +46,19 @@ export default forwardRef(function AmbassadorCard(
   const age = ambassador?.birth ? calculateAge(ambassador.birth) : "Unknown";
   const birth = ambassador?.birth ? formatDate(ambassador.birth) : "Unknown";
 
-  const internalRef = useRef<HTMLDivElement>();
+  const internalRef = useRef<HTMLDivElement>(null);
   const callbackRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (ref) {
         if (typeof ref === "function") ref(node);
         else ref.current = node;
       }
-      internalRef.current = node ?? undefined;
+      internalRef.current = node;
     },
     [ref],
   );
 
-  const timeout = useRef<NodeJS.Timeout>();
+  const timeout = useRef<NodeJS.Timeout>(null);
   const confettiInit = useCallback(
     ({ confetti }: { confetti: CreateTypes }) => {
       const node = internalRef.current;
@@ -111,7 +111,7 @@ export default forwardRef(function AmbassadorCard(
     },
     [origin],
   );
-  useEffect(() => () => clearTimeout(timeout.current), []);
+  useEffect(() => () => clearTimeout(timeout.current ?? undefined), []);
 
   if (!ambassador) return null;
 

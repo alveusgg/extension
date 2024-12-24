@@ -9,6 +9,7 @@ import {
   Children,
   isValidElement,
   cloneElement,
+  type HTMLAttributes,
 } from "react";
 
 import { classes } from "../utils/classes";
@@ -91,13 +92,16 @@ const Tooltip = (props: TooltipProps) => {
       Children.map(children, (child) => {
         if (!isValidElement(child)) return child;
 
-        return cloneElement(child as React.ReactElement, {
-          onMouseEnter: handleEnter,
-          onFocus: handleEnter,
-          onMouseLeave: () => setShow(false),
-          onBlur: () => setShow(false),
-          "aria-describedby": id,
-        });
+        return cloneElement(
+          child as React.ReactElement<HTMLAttributes<HTMLElement>>,
+          {
+            onMouseEnter: handleEnter,
+            onFocus: handleEnter,
+            onMouseLeave: () => setShow(false),
+            onBlur: () => setShow(false),
+            "aria-describedby": id,
+          },
+        );
       }),
     [children, handleEnter, id],
   );

@@ -95,7 +95,7 @@ export default function Overlay() {
   const [visibleOption, setVisibleOption] = useState<OverlayKey>(
     settings.openedMenu.value,
   );
-  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const timeoutRef = useRef<NodeJS.Timeout>(null);
   const awakingRef = useRef(false);
 
   // update setting when opened menu changes

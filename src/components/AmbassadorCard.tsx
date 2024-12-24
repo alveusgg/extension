@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, type Ref } from "react";
 import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
+import { getSpecies } from "../../../data/src/ambassadors/species";
 import { calculateAge, formatDate, isBirthday } from "../utils/dateManager";
 import { useAmbassador } from "../hooks/useAmbassadors";
 import { camelToKebab } from "../utils/helpers";
@@ -119,6 +120,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
   if (!ambassador) return null;
 
+  const species = getSpecies(ambassador.species);
+
   return (
     <>
       {birthday && <Confetti onInit={confettiInit} />}
@@ -185,9 +188,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
           <div>
             <h3 className={headingClass}>Species</h3>
-            <p>{ambassador.species}</p>
+            <p>{species.name}</p>
             <p>
-              <i>{ambassador.scientific}</i>{" "}
+              <i>{species.scientificName}</i>{" "}
               <span className="text-alveus-green-200">
                 ({ambassador.class.title})
               </span>
@@ -252,20 +255,20 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
           <div>
             <h3 className={headingClass}>Native To</h3>
-            <p>{ambassador.native.text}</p>
+            <p>{species.native.text}</p>
           </div>
 
           <div>
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {"wild" in ambassador.lifespan &&
-              ambassador.lifespan.wild !== undefined ? (
+              {"wild" in species.lifespan &&
+              species.lifespan.wild !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
-                  {stringifyLifespan(ambassador.lifespan.wild)} years
+                  {stringifyLifespan(species.lifespan.wild)} years
                 </>
               ) : (
                 "Unknown"
@@ -273,13 +276,13 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
             <p>
               Captivity:{" "}
-              {"captivity" in ambassador.lifespan &&
-              ambassador.lifespan.captivity !== undefined ? (
+              {"captivity" in species.lifespan &&
+              species.lifespan.captivity !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
-                  {stringifyLifespan(ambassador.lifespan.captivity)} years
+                  {stringifyLifespan(species.lifespan.captivity)} years
                 </>
               ) : (
                 "Unknown"

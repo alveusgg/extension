@@ -10,14 +10,18 @@ import { z } from "zod";
 
 import allAmbassadors, {
   ambassadorSchema,
-} from "@alveusgg/data/src/ambassadors/core";
-import { isActiveAmbassadorEntry } from "@alveusgg/data/src/ambassadors/filters";
-import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
+} from "../../../data/src/ambassadors/core";
+import { isActiveAmbassadorEntry } from "../../../data/src/ambassadors/filters";
+import { getClassification } from "../../../data/src/ambassadors/classification";
 import {
   getAmbassadorImages,
   ambassadorImageSchema,
-} from "@alveusgg/data/src/ambassadors/images";
-import { getIUCNStatus } from "@alveusgg/data/src/iucn";
+} from "../../../data/src/ambassadors/images";
+import { getIUCNStatus } from "../../../data/src/iucn";
+import {
+  getSpecies,
+  speciesSchema,
+} from "../../../data/src/ambassadors/species";
 
 import {
   typeSafeObjectEntries,
@@ -29,7 +33,7 @@ import winstonImage from "../assets/winston.png";
 // These schema should match the type exposed by the API
 const apiAmbassadorSchema = ambassadorSchema.extend({
   image: ambassadorImageSchema,
-  iucn: ambassadorSchema.shape.iucn.extend({
+  iucn: speciesSchema.shape.iucn.extend({
     title: z.string(),
   }),
   class: z.object({
@@ -65,6 +69,7 @@ const fallbackAmbassadors: Record<string, Ambassador> =
       .filter(isActiveAmbassadorEntry)
       .map<[string, Ambassador]>(([key, val]) => {
         const image = getAmbassadorImages(key)[0];
+        const species = getSpecies(val.species);
 
         return [
           key,
@@ -72,8 +77,8 @@ const fallbackAmbassadors: Record<string, Ambassador> =
             ...val,
             image,
             iucn: {
-              ...val.iucn,
-              title: getIUCNStatus(val.iucn.status),
+              ...species.iucn,
+              title: getIUCNStatus(species.iucn.status),
             },
             class: {
               name: val.class,
@@ -136,8 +141,7 @@ const winston = {
     name: "mammalia",
     title: getClassification("mammalia"),
   },
-  species: "Polar Bear",
-  scientific: "Twitchus memeticus",
+  species: "winston",
   sex: "Male",
   birth: "2020-04-01",
   arrival: "2022-12-01",
@@ -152,14 +156,6 @@ const winston = {
     "Winston was rescued by the Ontario Zoo in Canada after it was noticed that he was watching streams too often and not touching grass. Originally on loan to Alveus for two years, he is now a permanent resident of Texas.",
   mission:
     "He is an ambassador for stream-life balance and encouraging all chatters to step away from their devices more often.",
-  native: {
-    text: "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
-    source:
-      "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
-  },
-  lifespan: {
-    source: "",
-  },
   clips: [],
   homepage: null,
   plush: null,

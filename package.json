@@ -34,7 +34,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@types/dotenv-webpack": "^7.0.8",
     "@types/eslint-config-prettier": "^6.11.3",
-    "@types/node": "~20.17.10",
+    "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@types/tmi.js": "^1.8.6",

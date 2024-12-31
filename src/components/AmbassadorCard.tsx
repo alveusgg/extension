@@ -185,11 +185,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
           <div>
             <h3 className={headingClass}>Species</h3>
-            <p>{ambassador.species}</p>
+            <p>{ambassador.species.name}</p>
             <p>
-              <i>{ambassador.scientific}</i>{" "}
+              <i>{ambassador.species.scientificName}</i>{" "}
               <span className="text-alveus-green-200">
-                ({ambassador.class.title})
+                ({ambassador.species.class.title})
               </span>
             </p>
           </div>
@@ -247,25 +247,25 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 />
               </div>
             </Tooltip>
-            <p>IUCN: {ambassador.iucn.title}</p>
+            <p>IUCN: {ambassador.species.iucn.title}</p>
           </div>
 
           <div>
             <h3 className={headingClass}>Native To</h3>
-            <p>{ambassador.native.text}</p>
+            <p>{ambassador.species.native.text}</p>
           </div>
 
           <div>
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {"wild" in ambassador.lifespan &&
-              ambassador.lifespan.wild !== undefined ? (
+              {"wild" in ambassador.species.lifespan &&
+              ambassador.species.lifespan.wild !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
-                  {stringifyLifespan(ambassador.lifespan.wild)} years
+                  {stringifyLifespan(ambassador.species.lifespan.wild)} years
                 </>
               ) : (
                 "Unknown"
@@ -273,13 +273,14 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
             <p>
               Captivity:{" "}
-              {"captivity" in ambassador.lifespan &&
-              ambassador.lifespan.captivity !== undefined ? (
+              {"captivity" in ambassador.species.lifespan &&
+              ambassador.species.lifespan.captivity !== undefined ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
-                  {stringifyLifespan(ambassador.lifespan.captivity)} years
+                  {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
+                  years
                 </>
               ) : (
                 "Unknown"

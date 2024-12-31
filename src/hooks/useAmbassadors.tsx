@@ -18,6 +18,10 @@ import {
   ambassadorImageSchema,
 } from "@alveusgg/data/src/ambassadors/images";
 import { getIUCNStatus } from "@alveusgg/data/src/iucn";
+import {
+  getSpecies,
+  speciesSchema,
+} from "@alveusgg/data/src/ambassadors/species";
 
 import {
   typeSafeObjectEntries,
@@ -29,17 +33,19 @@ import winstonImage from "../assets/winston.png";
 // These schema should match the type exposed by the API
 const apiAmbassadorSchema = ambassadorSchema.extend({
   image: ambassadorImageSchema,
-  iucn: ambassadorSchema.shape.iucn.extend({
-    title: z.string(),
-  }),
-  class: z.object({
-    name: ambassadorSchema.shape.class,
-    title: z.string(),
+  species: speciesSchema.extend({
+    iucn: speciesSchema.shape.iucn.extend({
+      title: z.string(),
+    }),
+    class: z.object({
+      name: speciesSchema.shape.class,
+      title: z.string(),
+    }),
   }),
 });
 
 const apiSchema = z.object({
-  ambassadors: z.record(apiAmbassadorSchema),
+  v2: z.record(apiAmbassadorSchema),
 });
 
 type Ambassador = z.infer<typeof apiAmbassadorSchema>;
@@ -56,7 +62,7 @@ const fetchAmbassadors = async (): Promise<Record<string, Ambassador>> => {
     );
 
   const data = await response.json();
-  return apiSchema.parse(data).ambassadors;
+  return apiSchema.parse(data).v2;
 };
 
 const fallbackAmbassadors: Record<string, Ambassador> =
@@ -65,19 +71,23 @@ const fallbackAmbassadors: Record<string, Ambassador> =
       .filter(isActiveAmbassadorEntry)
       .map<[string, Ambassador]>(([key, val]) => {
         const image = getAmbassadorImages(key)[0];
+        const species = getSpecies(val.species);
 
         return [
           key,
           {
             ...val,
             image,
-            iucn: {
-              ...val.iucn,
-              title: getIUCNStatus(val.iucn.status),
-            },
-            class: {
-              name: val.class,
-              title: getClassification(val.class),
+            species: {
+              ...species,
+              iucn: {
+                ...species.iucn,
+                title: getIUCNStatus(species.iucn.status),
+              },
+              class: {
+                name: species.class,
+                title: getClassification(species.class),
+              },
             },
           },
         ];
@@ -132,34 +142,36 @@ const winston = {
   name: "Winston",
   alternate: [],
   commands: ["winston"],
-  class: {
-    name: "mammalia",
-    title: getClassification("mammalia"),
+  species: {
+    name: "Polar Bear",
+    scientificName: "Twitchus memeticus",
+    iucn: {
+      id: null,
+      title: getIUCNStatus("NE"),
+      status: "NE",
+    },
+    native: {
+      text: "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
+      source:
+        "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
+    },
+    lifespan: {
+      source: "",
+    },
+    class: {
+      name: "mammalia",
+      title: getClassification("mammalia"),
+    },
   },
-  species: "Polar Bear",
-  scientific: "Twitchus memeticus",
   sex: "Male",
   birth: "2020-04-01",
   arrival: "2022-12-01",
   retired: null,
-  iucn: {
-    id: null,
-    status: "NE",
-    title: getIUCNStatus("NE"),
-  },
   enclosure: "wolves",
   story:
     "Winston was rescued by the Ontario Zoo in Canada after it was noticed that he was watching streams too often and not touching grass. Originally on loan to Alveus for two years, he is now a permanent resident of Texas.",
   mission:
     "He is an ambassador for stream-life balance and encouraging all chatters to step away from their devices more often.",
-  native: {
-    text: "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
-    source:
-      "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
-  },
-  lifespan: {
-    source: "",
-  },
   clips: [],
   homepage: null,
   plush: null,

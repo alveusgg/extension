@@ -34,7 +34,9 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
 
       <div className="my-auto px-1 pb-2 pt-2">
         <h2 className="text-sm">{ambassador.name}</h2>
-        <h3 className="text-alveus-green-200 text-xs">{ambassador.species}</h3>
+        <h3 className="text-alveus-green-200 text-xs">
+          {ambassador.species.name}
+        </h3>
       </div>
     </button>
   );

@@ -10,18 +10,18 @@ import { z } from "zod";
 
 import allAmbassadors, {
   ambassadorSchema,
-} from "../../../data/src/ambassadors/core";
-import { isActiveAmbassadorEntry } from "../../../data/src/ambassadors/filters";
-import { getClassification } from "../../../data/src/ambassadors/classification";
+} from "@alveusgg/data/src/ambassadors/core";
+import { isActiveAmbassadorEntry } from "@alveusgg/data/src/ambassadors/filters";
+import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
 import {
   getAmbassadorImages,
   ambassadorImageSchema,
-} from "../../../data/src/ambassadors/images";
-import { getIUCNStatus } from "../../../data/src/iucn";
+} from "@alveusgg/data/src/ambassadors/images";
+import { getIUCNStatus } from "@alveusgg/data/src/iucn";
 import {
   getSpecies,
   speciesSchema,
-} from "../../../data/src/ambassadors/species";
+} from "@alveusgg/data/src/ambassadors/species";
 
 import {
   typeSafeObjectEntries,
@@ -33,17 +33,19 @@ import winstonImage from "../assets/winston.png";
 // These schema should match the type exposed by the API
 const apiAmbassadorSchema = ambassadorSchema.extend({
   image: ambassadorImageSchema,
-  iucn: speciesSchema.shape.iucn.extend({
-    title: z.string(),
-  }),
-  class: z.object({
-    name: ambassadorSchema.shape.class,
-    title: z.string(),
+  species: speciesSchema.extend({
+    iucn: speciesSchema.shape.iucn.extend({
+      title: z.string(),
+    }),
+    class: z.object({
+      name: speciesSchema.shape.class,
+      title: z.string(),
+    }),
   }),
 });
 
 const apiSchema = z.object({
-  ambassadors: z.record(apiAmbassadorSchema),
+  v2: z.record(apiAmbassadorSchema),
 });
 
 type Ambassador = z.infer<typeof apiAmbassadorSchema>;
@@ -60,7 +62,7 @@ const fetchAmbassadors = async (): Promise<Record<string, Ambassador>> => {
     );
 
   const data = await response.json();
-  return apiSchema.parse(data).ambassadors;
+  return apiSchema.parse(data).v2;
 };
 
 const fallbackAmbassadors: Record<string, Ambassador> =
@@ -76,13 +78,16 @@ const fallbackAmbassadors: Record<string, Ambassador> =
           {
             ...val,
             image,
-            iucn: {
-              ...species.iucn,
-              title: getIUCNStatus(species.iucn.status),
-            },
-            class: {
-              name: val.class,
-              title: getClassification(val.class),
+            species: {
+              ...species,
+              iucn: {
+                ...species.iucn,
+                title: getIUCNStatus(species.iucn.status),
+              },
+              class: {
+                name: species.class,
+                title: getClassification(species.class),
+              },
             },
           },
         ];
@@ -137,20 +142,31 @@ const winston = {
   name: "Winston",
   alternate: [],
   commands: ["winston"],
-  class: {
-    name: "mammalia",
-    title: getClassification("mammalia"),
+  species: {
+    name: "Polar Bear",
+    scientificName: "Twitchus memeticus",
+    iucn: {
+      id: null,
+      title: getIUCNStatus("NE"),
+      status: "NE",
+    },
+    native: {
+      text: "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
+      source:
+        "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
+    },
+    lifespan: {
+      source: "",
+    },
+    class: {
+      name: "mammalia",
+      title: getClassification("mammalia"),
+    },
   },
-  species: "winston",
   sex: "Male",
   birth: "2020-04-01",
   arrival: "2022-12-01",
   retired: null,
-  iucn: {
-    id: null,
-    status: "NE",
-    title: getIUCNStatus("NE"),
-  },
   enclosure: "wolves",
   story:
     "Winston was rescued by the Ontario Zoo in Canada after it was noticed that he was watching streams too often and not touching grass. Originally on loan to Alveus for two years, he is now a permanent resident of Texas.",

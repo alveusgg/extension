@@ -25,8 +25,7 @@
     "format:eslint": "pnpm lint:eslint --fix",
     "format:prettier": "pnpm lint:prettier --write",
     "format": "run-p format:*",
-    "types": "tsc --noEmit",
-    "clean": "rm -rf build node_modules"
+    "types": "tsc --noEmit"
   },
   "dependencies": {
     "@alveusgg/data": "github:alveusgg/data#0.50.0",

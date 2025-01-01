@@ -2,6 +2,7 @@
   "name": "@alveusgg/extension",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   "packageManager": "pnpm@9.14.2",
   "scripts": {
     "prepare": "husky",
+    "lint-staged": "lint-staged --relative",
     "dev": "cross-env NODE_ENV=development webpack serve --config src/webpack.config.ts",
     "build": "webpack --config src/webpack.config.ts",
     "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",

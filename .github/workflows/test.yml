@@ -9,23 +9,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout commit
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
-        env:
-          NODE_ENV: development
-          CI: true
+        run: pnpm install --frozen-lockfile
+
+      - name: Check types
+        run: pnpm types
 
       - name: Run linting
-        run: npm run lint
+        run: pnpm lint
 
       - name: Build extension
-        run: npm run build
+        run: pnpm build

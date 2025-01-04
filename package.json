@@ -77,9 +77,9 @@
     "webpack-dev-server": "^5.2.0",
     "webpack-image-resize-loader": "^5.0.0"
   },
-  "overrides": {
-    "webpack-image-resize-loader": {
-      "sharp": "^0.33.4"
+  "pnpm": {
+    "overrides": {
+      "webpack-image-resize-loader>sharp": "^0.33.4"
     }
   },
   "main": "public/index.html",

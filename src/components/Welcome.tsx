@@ -84,7 +84,7 @@ export default function Welcome(props: WelcomeProps) {
             href="https://www.alveussanctuary.org/twitter"
             rel="noreferrer"
             target="_blank"
-            title="Twitter"
+            title="X (Twitter)"
           >
             <IconTwitter size={32} />
           </a>

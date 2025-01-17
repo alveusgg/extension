@@ -1,12 +1,23 @@
 /**
  * Finds overlay element that is visible under the cursor
+ * Uses the center of the target element if triggered by keyboard
  *
  * @param e Mouse event containing cursor position
  * @returns Element if one is visible under the cursor, null otherwise
  */
 export function visibleUnderCursor(e: MouseEvent) {
-  // Get all the elements under the mouse
-  const elements = document.elementsFromPoint(e.clientX, e.clientY);
+  let { clientX: x, clientY: y } = e;
+
+  // If the click event was triggered by a keyboard (e.g. 'Enter')
+  // Then use the center of the target element as the position of the click
+  if (e.detail === 0 && e.target instanceof HTMLElement) {
+    const box = e.target.getBoundingClientRect();
+    x = box.left + box.width / 2;
+    y = box.top + box.height / 2;
+  }
+
+  // Get all the elements under the click
+  const elements = document.elementsFromPoint(x, y);
 
   // For each element, if it has a background then assume it is part of the overlay and return it
   for (const element of elements) {

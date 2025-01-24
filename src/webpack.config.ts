@@ -168,6 +168,7 @@ const config: webpack.Configuration = {
               "node_modules",
               "@alveusgg",
               "data",
+              "build",
               "assets",
               "ambassadors",
             ).replace(/\\/g, "\\\\"),

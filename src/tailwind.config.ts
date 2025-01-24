@@ -1,6 +1,6 @@
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
-import alveusgg from "@alveusgg/data/src/tailwind";
+import alveusgg from "@alveusgg/data/build/tailwind";
 import scrollbar from "tailwind-scrollbar";
 
 const config = {

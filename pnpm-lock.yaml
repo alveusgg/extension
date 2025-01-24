@@ -7,8 +7,6 @@ settings:
 overrides:
   webpack-image-resize-loader>sharp: ^0.33.4
 
-pnpmfileChecksum: urn4mmnpyjudaqso7jbqi45omq
-
 importers:
 
   .:

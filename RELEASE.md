@@ -10,7 +10,7 @@ Ensure that the allowlist for image domains is set to allow `https://www.alveuss
 
 ## Hosted test
 
-Once local testing is complete, a build can be created with `npm run build`, the files within the `build` directory compressed into a ZIP file (the files within, not folder itself), and uploaded to Twitch for testing.
+Once local testing is complete, a build can be created with `pnpm build`, the files within the `build` directory compressed into a ZIP file (the files within, not folder itself), and uploaded to Twitch for testing.
 
 With the assets hosted on Twitch, install the extension version on a test channel and verify that everything is working as expected when running from Twitch.
 

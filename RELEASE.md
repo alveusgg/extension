@@ -48,7 +48,8 @@ External links:
     - Alveus Amazon Wishlist
     - Alveus Instagram
     - Alveus TikTok
-    - Alveus Twitter
+    - Alveus X/Twitter
+    - Alveus Bluesky
     - Extension GitHub (Open-source code for the extension, encouraging users to contribute to and improve the extension)
 
 Allowlist explanations:

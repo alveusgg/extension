@@ -10,18 +10,18 @@ import { z } from "zod";
 
 import allAmbassadors, {
   ambassadorSchema,
-} from "@alveusgg/data/src/ambassadors/core";
-import { isActiveAmbassadorEntry } from "@alveusgg/data/src/ambassadors/filters";
-import { getClassification } from "@alveusgg/data/src/ambassadors/classification";
+} from "@alveusgg/data/build/ambassadors/core";
+import { isActiveAmbassadorEntry } from "@alveusgg/data/build/ambassadors/filters";
+import { getClassification } from "@alveusgg/data/build/ambassadors/classification";
 import {
   getAmbassadorImages,
   ambassadorImageSchema,
-} from "@alveusgg/data/src/ambassadors/images";
-import { getIUCNStatus } from "@alveusgg/data/src/iucn";
+} from "@alveusgg/data/build/ambassadors/images";
+import { getIUCNStatus } from "@alveusgg/data/build/iucn";
 import {
   getSpecies,
   speciesSchema,
-} from "@alveusgg/data/src/ambassadors/species";
+} from "@alveusgg/data/build/ambassadors/species";
 
 import {
   typeSafeObjectEntries,

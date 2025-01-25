@@ -18,12 +18,16 @@ https://user-images.githubusercontent.com/49528805/229295376-6490d0a5-5f01-456b-
 
 ## Local Set Up
 
-1. Head up to https://dev.twitch.tv/console/extensions/create and create a new extension.
+1. Install Node.js (see `engines` in `package.json` for the required versions), or use `fnm`/`nvm` to install the correct version of Node.js, and use `corepack enable` to use PNPM.
+2. Authenticate with the GitHub Package Registry: `npm login --auth-type=legacy --registry=https://npm.pkg.github.com`
+   1. Use your GitHub username (lowercase) as the username when prompted
+   2. Create a [GitHub personal access token (classic)](https://github.com/settings/tokens/new) with the `read:packages` scope and use it as the password when prompted
+3. Install dependencies for the project with `pnpm install --frozen-lockfile`
+4. Head up to https://dev.twitch.tv/console/extensions/create and create a new extension.
    You will need to create a new version: Select `Panel`, `Mobile` and `Video - Fullscreen` for the extension type. Leave all other settings as they are.
-2. Copy the `.env.sample` file to `.env` (which sets `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS` and `REACT_APP_DEFAULT_CHANNEL_NAMES`)
-3. Copy the `.env.development.sample` file to `.env.development`. You may add a channel and user to test chat commands here (e.g. `REACT_APP_CHAT_COMMANDS_TEST_CHANNEL=testuser` and `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS=testuser`)
-4. Install dependencies for the project with `pnpm install --frozen-lockfile`
-5. Start the development server with `pnpm dev`
+5. Copy the `.env.sample` file to `.env` (which sets `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS` and `REACT_APP_DEFAULT_CHANNEL_NAMES`)
+6. Copy the `.env.development.sample` file to `.env.development`. You may add a channel and user to test chat commands here (e.g. `REACT_APP_CHAT_COMMANDS_TEST_CHANNEL=testuser` and `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS=testuser`)
+7. Start the development server with `pnpm dev`
 
 There are two ways to run the extension. You can either add it to a channel on Twitch, or access the web pages for the panel/overlay directly.
 

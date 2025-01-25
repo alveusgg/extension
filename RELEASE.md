@@ -1,5 +1,7 @@
 # Releasing a new version on Twitch
 
+First and foremost, we need to establish the new version number. Compare `main` to the most recent tagged version in the repository and decide if the release is a minor (new features) or patch (bug fixes) release. The commit being submitted to Twitch should be tagged via git with `git tag v<version>` if you're currently at the commit being used, or `git tag v<version> <commit>` if not. Once the tag is created, push it with `git push origin v<version>`.
+
 ## Local test
 
 All new versions start in local test where the base URI is `https://localhost:8080/`, allowing a locally run version to be tested.
@@ -10,11 +12,9 @@ Ensure that the allowlist for image domains is set to allow `https://www.alveuss
 
 ## Hosted test
 
-Once local testing is complete, a build can be created with `npm run build`, the files within the `build` directory compressed into a ZIP file (the files within, not folder itself), and uploaded to Twitch for testing.
+Once local testing is complete, a build can be created with `pnpm build`, the files within the `build` directory compressed into a ZIP file (the files within, not folder itself), and uploaded to Twitch for testing.
 
 With the assets hosted on Twitch, install the extension version on a test channel and verify that everything is working as expected when running from Twitch.
-
-At this point, the commit being submitted to Twitch should be tagged via git. Do so with `git tag v<version>` if you're currently at the commit being used, or `git tag v<version> <commit>` if not. Once the tag is created, push it with `git push origin v<version>`.
 
 ## Submit for review
 
@@ -48,7 +48,8 @@ External links:
     - Alveus Amazon Wishlist
     - Alveus Instagram
     - Alveus TikTok
-    - Alveus Twitter
+    - Alveus X/Twitter
+    - Alveus Bluesky
     - Extension GitHub (Open-source code for the extension, encouraging users to contribute to and improve the extension)
 
 Allowlist explanations:

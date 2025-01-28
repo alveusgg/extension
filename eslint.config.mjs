@@ -10,7 +10,6 @@ export default tseslint.config(
     ...eslint.configs.recommended,
   },
   ...tseslint.configs.recommended,
-  // @ts-expect-error - incorrect types
   reactPlugin.configs.flat.recommended,
   {
     name: "prettier/config",

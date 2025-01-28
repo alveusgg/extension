@@ -3,12 +3,14 @@
 /// <reference types="react-dom" />
 
 declare namespace NodeJS {
-  interface ProcessEnv {
-    readonly NODE_ENV: "development" | "production";
-    readonly REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS: string;
-    readonly REACT_APP_DEFAULT_CHANNEL_NAMES: string;
-    readonly REACT_APP_TEST_CHANNEL_NAMES: string | undefined;
-  }
+  type ProcessEnv = Record<string, never> & {
+    readonly NODE_ENV?: "development" | "production";
+    readonly REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS?: string;
+    readonly REACT_APP_DEFAULT_CHANNEL_NAMES?: string;
+    readonly REACT_APP_EXTRA_CHANNEL_NAMES?: string;
+    readonly REACT_APP_TEST_CHANNEL_NAMES?: string;
+    readonly REACT_APP_WEBSITE_URL?: string;
+  };
 }
 
 declare module "*.png" {

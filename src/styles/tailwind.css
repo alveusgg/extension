@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "@alveusgg/data/build/tailwind.css";
+
+@import "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;1,400&family=PT+Serif:ital,wght@0,700&display=swap";
+
+@plugin "tailwind-scrollbar";
+
+/* FIXME: https://github.com/tailwindlabs/tailwindcss/discussions/15253 */
+@theme inline {
+  --font-sans:
+    "PT Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif:
+    "PT Serif", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@theme {
+  --default-transition-duration: 300ms;
+}

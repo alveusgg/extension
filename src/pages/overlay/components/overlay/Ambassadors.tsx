@@ -109,7 +109,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
   return (
     <div
       className={classes(
-        "grid-cols-2-auto absolute left-0 top-0 z-0 grid h-full grid-rows-1",
+        "grid-cols-auto-2 absolute left-0 top-0 z-0 grid h-full grid-rows-1",
         className,
       )}
     >

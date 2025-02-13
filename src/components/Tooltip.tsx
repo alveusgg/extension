@@ -110,7 +110,7 @@ const Tooltip = (props: TooltipProps) => {
     <>
       {childrenWithProps}
       <div
-        className="pointer-events-none fixed z-10 w-max rounded-lg bg-black/50 p-2 shadow-lg backdrop-blur transition-opacity"
+        className="pointer-events-none fixed z-10 w-max rounded-lg bg-black/50 p-2 shadow-lg backdrop-blur-sm transition-opacity"
         ref={tooltipRef}
         style={style}
         id={id}

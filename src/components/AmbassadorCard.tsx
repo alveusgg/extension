@@ -147,7 +147,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             }}
           />
 
-          <div className="peer-hover:backdrop-blur-xs bg-alveus-green-900/50 absolute inset-x-0 top-0 flex h-9 w-full backdrop-blur-sm transition-[opacity,backdrop-filter] peer-hover:opacity-10">
+          <div className="peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)] bg-alveus-green-900/50 absolute inset-x-0 top-0 flex h-9 w-full backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10">
             {props.onClose && (
               <button
                 className="hover:text-highlight focus:text-highlight absolute right-1 top-1/2 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors"

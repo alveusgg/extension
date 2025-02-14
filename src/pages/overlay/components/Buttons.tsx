@@ -47,7 +47,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
           <button
             onClick={option.onClick}
             className={classes(
-              "bg-alveus-green outline-highlight flex cursor-pointer items-center justify-center rounded-lg p-2 shadow-sm transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
+              "flex cursor-pointer items-center justify-center rounded-lg bg-alveus-green p-2 shadow-sm outline-highlight transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
               option.type === "primary" ? "h-16 w-16" : "h-12 w-12",
               option.active && "outline",
               // If the previous type is not the same, add a margin

@@ -124,7 +124,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       {birthday && <Confetti onInit={confettiInit} />}
       <div
         className={classes(
-          "bg-alveus-green-900 relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg align-top text-xs shadow-xl",
+          "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs shadow-xl",
           className,
         )}
         ref={callbackRef}
@@ -134,7 +134,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <img
             src={partyHat}
             alt=""
-            className="absolute left-1/2 top-0 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
+            className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
         )}
         <div className="relative w-full overflow-hidden rounded-t-lg">
@@ -147,10 +147,10 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             }}
           />
 
-          <div className="peer-hover:backdrop-blur-xs bg-alveus-green-900/50 absolute inset-x-0 top-0 flex h-9 w-full backdrop-blur-sm transition-[opacity,backdrop-filter] peer-hover:opacity-10">
+          <div className="absolute inset-x-0 top-0 flex h-9 w-full bg-alveus-green-900/50 backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10 peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)]">
             {props.onClose && (
               <button
-                className="hover:text-highlight focus:text-highlight absolute right-1 top-1/2 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors"
+                className="absolute top-1/2 right-1 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors hover:text-highlight focus:text-highlight"
                 onClick={onClose}
                 type="button"
                 aria-label="Close"
@@ -160,7 +160,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             )}
 
             <h2
-              className="w-full shrink-0 self-center overflow-hidden overflow-ellipsis text-nowrap py-1 pl-2 pr-10 text-xl"
+              className="w-full shrink-0 self-center overflow-hidden py-1 pr-10 pl-2 text-xl text-nowrap overflow-ellipsis"
               title={ambassador.name}
             >
               {ambassador.name}
@@ -168,7 +168,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </div>
         </div>
 
-        <div className="scrollbar-thin scrollbar-track-alveus-green-900 scrollbar-thumb-alveus-green mb-2 flex flex-auto flex-col gap-1 overflow-y-auto p-2">
+        <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (
             <div className="flex items-center gap-2">
               <img
@@ -243,7 +243,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 <h3 className={headingClass}>Conservation Status</h3>
                 <IconInfo
                   size={20}
-                  className="text-alveus-green-400 outline-highlight rounded-full transition-[outline] hover:outline"
+                  className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline"
                 />
               </div>
             </Tooltip>
@@ -306,7 +306,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 )}`}
                 rel="noreferrer"
                 target="_blank"
-                className="hover:text-highlight focus:text-highlight text-alveus-green-200 text-nowrap underline transition-colors"
+                className="text-nowrap text-alveus-green-200 underline transition-colors hover:text-highlight focus:text-highlight"
               >
                 Alveus Sanctuary website
               </a>

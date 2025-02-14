@@ -18,7 +18,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
   return (
     <button
       className={classes(
-        "bg-alveus-green outline-highlight flex shrink-0 flex-col items-center justify-start rounded-lg text-center shadow-lg transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
+        "flex shrink-0 flex-col items-center justify-start rounded-lg bg-alveus-green text-center shadow-lg outline-highlight transition-[outline,filter] hover:outline hover:brightness-125 focus:outline",
         className,
       )}
       id={ambassadorKey}
@@ -32,9 +32,9 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
         style={{ objectPosition: ambassador.image.position }}
       />
 
-      <div className="my-auto px-1 pb-2 pt-2">
+      <div className="my-auto px-1 pt-2 pb-2">
         <h2 className="text-sm">{ambassador.name}</h2>
-        <h3 className="text-alveus-green-200 text-xs">
+        <h3 className="text-xs text-alveus-green-200">
           {ambassador.species.name}
         </h3>
       </div>

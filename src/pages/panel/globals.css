@@ -1,12 +1,8 @@
-@import "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;1,400&family=PT+Serif:ital,wght@0,700&display=swap";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "../../styles/tailwind.css";
 
 @layer base {
   body {
-    @apply text-alveus-tan bg-alveus-tan h-screen w-screen overflow-hidden font-sans;
+    @apply h-screen w-screen overflow-hidden bg-alveus-tan font-sans text-alveus-tan;
   }
 
   #root {

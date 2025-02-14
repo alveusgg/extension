@@ -12,7 +12,7 @@ export default function Card(props: CardProps) {
   return (
     <div
       className={classes(
-        "bg-alveus-green scrollbar-thin scrollbar-track-alveus-green-900 scrollbar-thumb-alveus-green flex max-h-full w-[32rem] max-w-full flex-col items-center justify-between overflow-y-auto rounded-3xl p-5 shadow",
+        "scrollbar-thin flex max-h-full w-[32rem] max-w-full flex-col items-center justify-between overflow-y-auto rounded-3xl bg-alveus-green p-5 shadow-sm scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900",
         className,
       )}
     >

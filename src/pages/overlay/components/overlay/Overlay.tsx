@@ -38,7 +38,7 @@ const overlayOptions = [
     title: "Welcome to Alveus",
     component: (props: OverlayOptionProps) => (
       <Welcome
-        className={classes("absolute left-0 top-0 mx-4 my-6", props.className)}
+        className={classes("absolute top-0 left-0 mx-4 my-6", props.className)}
       />
     ),
   },

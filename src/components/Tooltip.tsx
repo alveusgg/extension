@@ -120,8 +120,8 @@ const Tooltip = (props: TooltipProps) => {
           className={classes(
             "absolute border-[5px] border-solid border-transparent",
             above
-              ? "right-1/2 top-full border-t-black/50"
-              : "right-full top-1/2 border-r-black/50",
+              ? "top-full right-1/2 border-t-black/50"
+              : "top-1/2 right-full border-r-black/50",
           )}
           style={{ margin: triangleMargin }}
         />

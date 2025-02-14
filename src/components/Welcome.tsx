@@ -31,7 +31,7 @@ export default function Welcome(props: WelcomeProps) {
 
   return (
     <Card className={className} title="Welcome to Alveus">
-      <p className="mb-4 mt-2">
+      <p className="mt-2 mb-4">
         Alveus Sanctuary is a 501(c)(3) non-profit organization that functions
         as a wildlife sanctuary and as a virtual education center. These
         non-releasable animals are educational ambassadors so viewers can learn
@@ -114,7 +114,7 @@ export default function Welcome(props: WelcomeProps) {
       </ul>
 
       <a
-        className="hover:text-highlight focus:text-highlight flex w-fit items-center justify-center gap-1 text-xs transition-colors"
+        className="flex w-fit items-center justify-center gap-1 text-xs transition-colors hover:text-highlight focus:text-highlight"
         href="https://github.com/alveusgg/extension"
         rel="noreferrer"
         target="_blank"

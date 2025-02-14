@@ -14,7 +14,7 @@ import useChannel from "../hooks/useChannel";
 import Card from "./Card";
 
 const socialClass =
-  "transition-[color,transform] hover:scale-125 focus:scale-125 hover:text-highlight focus:text-highlight";
+  "transition-[color,transform,scale] hover:scale-125 focus:scale-125 hover:text-highlight focus:text-highlight";
 
 interface WelcomeProps {
   className?: string;

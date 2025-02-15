@@ -39,12 +39,11 @@ const getStyleLoader = () => [
       sourceMap: true,
     },
   },
-  // Auto-prefix and ensure compatibility based on browserslist
   {
     loader: "postcss-loader",
     options: {
       postcssOptions: {
-        plugins: [["tailwindcss", "src/tailwind.config.ts"], "autoprefixer"],
+        plugins: ["@tailwindcss/postcss"],
       },
       sourceMap: true,
     },

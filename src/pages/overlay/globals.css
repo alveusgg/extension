@@ -1,10 +1,6 @@
-@import "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;1,400&family=PT+Serif:ital,wght@0,700&display=swap";
+@import "../../styles/tailwind.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
+@theme {
   /* https://dev.twitch.tv/docs/extensions/designing/#video-overlay-extensions */
   --twitch-vertical-padding: 5rem;
   --twitch-right-padding: 7rem;
@@ -16,21 +12,21 @@
   html {
     font-size: 10px;
 
-    @media screen(sm) {
+    @media (width >= theme(--breakpoint-sm)) {
       font-size: 12px;
     }
 
-    @media screen(md) {
+    @media (width >= theme(--breakpoint-md)) {
       font-size: 14px;
     }
 
-    @media screen(lg) {
+    @media (width >= theme(--breakpoint-lg)) {
       font-size: 16px;
     }
   }
 
   body {
-    @apply text-alveus-tan h-screen w-screen overflow-hidden py-[var(--twitch-vertical-padding)] pl-[var(--twitch-left-padding)] pr-[var(--twitch-right-padding)] font-sans;
+    @apply h-screen w-screen overflow-hidden py-[var(--twitch-vertical-padding)] pr-[var(--twitch-right-padding)] pl-[var(--twitch-left-padding)] font-sans text-alveus-tan;
   }
 
   #root {

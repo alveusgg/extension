@@ -109,14 +109,14 @@ export default function Ambassadors(props: OverlayOptionProps) {
   return (
     <div
       className={classes(
-        "grid-cols-2-auto absolute left-0 top-0 z-0 grid h-full grid-rows-1",
+        "absolute top-0 left-0 z-0 grid h-full grid-cols-auto-2 grid-rows-1",
         className,
       )}
     >
       <div className="relative z-10 flex flex-col items-center">
         <div
           ref={ambassadorList}
-          className="list-fade scrollbar-none -my-[var(--twitch-vertical-padding)] flex w-40 flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
+          className="list-fade -my-[var(--twitch-vertical-padding)] flex scrollbar-none w-40 flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
           onScroll={handleArrowVisibility}
         >
           {ambassadors.map(([key]) => (
@@ -130,7 +130,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
               }}
               className={classes(
                 "w-full",
-                activeAmbassador.key === key && "outline-highlight outline",
+                activeAmbassador.key === key && "outline outline-highlight",
               )}
             />
           ))}
@@ -172,7 +172,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
             key={key}
             ambassador={key}
             onClose={() => setActiveAmbassador({})}
-            className="z-0 col-start-2 row-start-1 origin-[center_left] self-center transition-[opacity,transform] will-change-[opacity,transform] data-[closed]:-translate-x-10 data-[closed]:opacity-0 data-[closed]:motion-reduce:translate-x-0"
+            className="z-0 col-start-2 row-start-1 origin-[center_left] self-center transition-[opacity,transform,translate] will-change-[opacity,transform,translate] data-[closed]:-translate-x-10 data-[closed]:opacity-0 data-[closed]:motion-reduce:translate-x-0"
           />
         </Transition>
       ))}

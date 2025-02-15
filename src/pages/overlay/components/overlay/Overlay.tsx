@@ -38,7 +38,7 @@ const overlayOptions = [
     title: "Welcome to Alveus",
     component: (props: OverlayOptionProps) => (
       <Welcome
-        className={classes("absolute left-0 top-0 mx-4 my-6", props.className)}
+        className={classes("absolute top-0 left-0 mx-4 my-6", props.className)}
       />
     ),
   },
@@ -196,7 +196,7 @@ export default function Overlay() {
   return (
     <div
       className={classes(
-        "flex h-full w-full transition-[opacity,visibility,transform] will-change-[opacity,transform]",
+        "flex h-full w-full transition-[opacity,visibility,transform,translate] will-change-[opacity,transform,translate]",
         sleeping &&
           !(
             process.env.NODE_ENV === "development" &&
@@ -216,7 +216,7 @@ export default function Overlay() {
             key={option.key}
             context={context}
             className={classes(
-              "transition-[opacity,visibility,transform] will-change-[opacity,transform]",
+              "transition-[opacity,visibility,transform,translate] will-change-[opacity,transform,translate]",
               visibleOption !== option.key && hiddenClass,
             )}
           />

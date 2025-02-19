@@ -86,16 +86,31 @@ const config: webpack.Configuration = {
       template: "src/template.html",
       filename: "panel.html",
       chunks: ["panel"],
+      templateParameters: {
+        process: {
+          env,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "src/template.html",
       filename: "mobile.html",
       chunks: ["mobile"],
+      templateParameters: {
+        process: {
+          env,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "src/template.html",
       filename: "video_overlay.html",
       chunks: ["overlay"],
+      templateParameters: {
+        process: {
+          env,
+        },
+      },
     }),
     // Include the public directory
     new CopyWebpackPlugin({

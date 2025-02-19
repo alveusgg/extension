@@ -243,7 +243,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 <h3 className={headingClass}>Conservation Status</h3>
                 <IconInfo
                   size={20}
-                  className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline"
+                  className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
                 />
               </div>
             </Tooltip>

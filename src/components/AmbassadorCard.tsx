@@ -145,6 +145,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             style={{
               objectPosition: offsetPosition(ambassador.image.position),
             }}
+            loading="lazy"
           />
 
           <div className="absolute inset-x-0 top-0 flex h-9 w-full bg-alveus-green-900/50 backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10 peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)]">

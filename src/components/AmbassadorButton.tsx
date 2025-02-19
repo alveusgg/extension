@@ -30,6 +30,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
         src={ambassador.image.src}
         alt={ambassador.image.alt}
         style={{ objectPosition: ambassador.image.position }}
+        loading="lazy"
       />
 
       <div className="my-auto px-1 pt-2 pb-2">

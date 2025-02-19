@@ -130,7 +130,7 @@ export default function Ambassadors(props: OverlayOptionProps) {
               }}
               className={classes(
                 "w-full",
-                activeAmbassador.key === key && "outline outline-highlight",
+                activeAmbassador.key === key && "outline-3 outline-highlight",
               )}
             />
           ))}

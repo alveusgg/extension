@@ -21,7 +21,7 @@ export default function Nav() {
       >
         <IconInfo
           size={20}
-          className="rounded-full outline-highlight transition-[outline] group-hover:outline"
+          className="rounded-full outline-highlight transition-[outline] group-hover:outline-3"
         />
       </button>
 

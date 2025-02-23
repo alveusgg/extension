@@ -6,6 +6,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ReactRefreshTypeScript from "react-refresh-typescript";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ZipWebpackPlugin from "zip-webpack-plugin";
 import dotenv from "dotenv";
 
 import webpack from "webpack";
@@ -116,15 +117,10 @@ const config: webpack.Configuration = {
     new CopyWebpackPlugin({
       patterns: [{ from: "public", to: "." }],
     }),
-    // Load environment variables
-    new webpack.DefinePlugin(
-      Object.fromEntries(
-        Object.entries(env).map(([key, value]) => [
-          `process.env.${key}`,
-          JSON.stringify(value),
-        ]),
-      ),
-    ),
+    // Load environment variables as a single object
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(env),
+    }),
     // Enforce type checking on a separate process
     new ForkTsCheckerWebpackPlugin(),
     // Enable react hot reloading in development
@@ -137,6 +133,11 @@ const config: webpack.Configuration = {
       new MiniCssExtractPlugin({
         filename: "static/css/[name].[contenthash:8].css",
         chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
+      }),
+    // Zip the build for easy distribution
+    !isDev &&
+      new ZipWebpackPlugin({
+        filename: "build.zip",
       }),
   ].filter(Boolean),
   output: {

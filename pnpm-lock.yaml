@@ -6,6 +6,7 @@ settings:
 
 overrides:
   webpack-image-resize-loader>sharp: ^0.33.4
+  '@types/zip-webpack-plugin>@types/webpack': ^5.0.0
 
 importers:
 
@@ -35,7 +36,7 @@ importers:
     devDependencies:
       '@pmmmwh/react-refresh-webpack-plugin':
         specifier: ^0.5.15
-        version: 0.5.15(@types/webpack@4.41.40)(react-refresh@0.16.0)(webpack-dev-server@5.2.0)(webpack@5.98.0)
+        version: 0.5.15(@types/webpack@5.28.5(webpack-cli@6.0.1))(react-refresh@0.16.0)(webpack-dev-server@5.2.0)(webpack@5.98.0)
       '@tailwindcss/postcss':
         specifier: ^4.0.7
         version: 4.0.7
@@ -60,6 +61,9 @@ importers:
       '@types/twitch-ext':
         specifier: ^1.24.9
         version: 1.24.9
+      '@types/zip-webpack-plugin':
+        specifier: ^3.0.6
+        version: 3.0.6(webpack-cli@6.0.1)
       copy-webpack-plugin:
         specifier: ^12.0.2
         version: 12.0.2(webpack@5.98.0)
@@ -144,6 +148,9 @@ importers:
       webpack-image-resize-loader:
         specifier: ^5.0.0
         version: 5.0.0(webpack@5.98.0)
+      zip-webpack-plugin:
+        specifier: ^4.0.3
+        version: 4.0.3(webpack-sources@3.2.3)(webpack@5.98.0)
 
 packages:
 
@@ -707,8 +714,14 @@ packages:
   '@types/webpack@4.41.40':
     resolution: {integrity: sha512-u6kMFSBM9HcoTpUXnL6mt2HSzftqb3JgYV6oxIgL2dl6sX6aCa5k6SOkzv5DuZjBTPUE/dJltKtwwuqrkZHpfw==}
 
+  '@types/webpack@5.28.5':
+    resolution: {integrity: sha512-wR87cgvxj3p6D0Crt1r5avwqffqPXUkNlnQ1mjU93G7gCuFjufZR4I6j8cz5g1F1tTYpfOOFvly+cmIQwL9wvw==}
+
   '@types/ws@8.5.13':
     resolution: {integrity: sha512-osM/gWBTPKgHV8XkTunnegTRIsvF6owmf5w+JtAfOw472dptdm0dlGv4xCt6GwQRcC2XVOvvRE/0bAoQcL2QkA==}
+
+  '@types/zip-webpack-plugin@3.0.6':
+    resolution: {integrity: sha512-TBaTxxBdA4prtSdKqZncXKnwy8F5dE4btFW3cLqPbhDoRA5fhAi8nJt2CxuMrpG1FtOTSDSoRAwualpfU/BMOw==}
 
   '@typescript-eslint/eslint-plugin@8.24.1':
     resolution: {integrity: sha512-ll1StnKtBigWIGqvYDVuDmXJHVH4zLVot1yQ4fJtLpL7qacwkxJc1T0bptqw+miBQ/QfUbhl1TcQ4accW5KUyA==}
@@ -987,6 +1000,9 @@ packages:
     resolution: {integrity: sha512-KDi1Ny1gSePi1vm0q4oxSF8b4DR44GF4BbmS2YdhPLOEqd8pDviZOGH/GsmRwoWJ2+5Lr085X7naowMwKHDG1A==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
+
+  buffer-crc32@0.2.13:
+    resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
@@ -3291,6 +3307,9 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  yazl@2.5.1:
+    resolution: {integrity: sha512-phENi2PLiHnHb6QBVot+dJnaAZ0xosj7p3fWl+znIjBDlnMI2PsZCJZ306BPTFOaHf5qdDEI8x5qFrSOBN5vrw==}
+
   yn@3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
@@ -3298,6 +3317,12 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  zip-webpack-plugin@4.0.3:
+    resolution: {integrity: sha512-F9JmhbFwmTqCNi2evY5j7cnyRz6NCAc8Scgzjiw2ZDBjrvVZ56WhKm8VGGVe+4o3B6BJ+J6WViMQ4xSDI2JpVQ==}
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+      webpack-sources: '*'
 
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
@@ -3562,7 +3587,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.18.0
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(@types/webpack@4.41.40)(react-refresh@0.16.0)(webpack-dev-server@5.2.0)(webpack@5.98.0)':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.15(@types/webpack@5.28.5(webpack-cli@6.0.1))(react-refresh@0.16.0)(webpack-dev-server@5.2.0)(webpack@5.98.0)':
     dependencies:
       ansi-html: 0.0.9
       core-js-pure: 3.39.0
@@ -3574,7 +3599,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.98.0(webpack-cli@6.0.1)
     optionalDependencies:
-      '@types/webpack': 4.41.40
+      '@types/webpack': 5.28.5(webpack-cli@6.0.1)
       webpack-dev-server: 5.2.0(webpack-cli@6.0.1)(webpack@5.98.0)
 
   '@react-aria/focus@3.19.0(react@19.0.0)':
@@ -3843,9 +3868,29 @@ snapshots:
       anymatch: 3.1.3
       source-map: 0.6.1
 
+  '@types/webpack@5.28.5(webpack-cli@6.0.1)':
+    dependencies:
+      '@types/node': 22.13.4
+      tapable: 2.2.1
+      webpack: 5.98.0(webpack-cli@6.0.1)
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+      - webpack-cli
+
   '@types/ws@8.5.13':
     dependencies:
       '@types/node': 22.13.4
+
+  '@types/zip-webpack-plugin@3.0.6(webpack-cli@6.0.1)':
+    dependencies:
+      '@types/webpack': 5.28.5(webpack-cli@6.0.1)
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+      - webpack-cli
 
   '@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
     dependencies:
@@ -4202,6 +4247,8 @@ snapshots:
       electron-to-chromium: 1.5.102
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
+
+  buffer-crc32@0.2.13: {}
 
   buffer-from@1.1.2: {}
 
@@ -6698,8 +6745,18 @@ snapshots:
 
   yaml@2.7.0: {}
 
+  yazl@2.5.1:
+    dependencies:
+      buffer-crc32: 0.2.13
+
   yn@3.1.1: {}
 
   yocto-queue@0.1.0: {}
+
+  zip-webpack-plugin@4.0.3(webpack-sources@3.2.3)(webpack@5.98.0):
+    dependencies:
+      webpack: 5.98.0(webpack-cli@6.0.1)
+      webpack-sources: 3.2.3
+      yazl: 2.5.1
 
   zod@3.24.2: {}

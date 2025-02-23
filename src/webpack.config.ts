@@ -116,15 +116,10 @@ const config: webpack.Configuration = {
     new CopyWebpackPlugin({
       patterns: [{ from: "public", to: "." }],
     }),
-    // Load environment variables
-    new webpack.DefinePlugin(
-      Object.fromEntries(
-        Object.entries(env).map(([key, value]) => [
-          `process.env.${key}`,
-          JSON.stringify(value),
-        ]),
-      ),
-    ),
+    // Load environment variables as a single object
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(env),
+    }),
     // Enforce type checking on a separate process
     new ForkTsCheckerWebpackPlugin(),
     // Enable react hot reloading in development

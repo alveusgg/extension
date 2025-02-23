@@ -2,16 +2,21 @@ import { basename, dirname, join } from "path";
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import DotEnvPlugin from "dotenv-webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ReactRefreshTypeScript from "react-refresh-typescript";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import dotenv from "dotenv";
 
 import webpack from "webpack";
 import "webpack-dev-server";
 
 const isDev = process.env.NODE_ENV === "development";
+
+const env = {
+  ...dotenv.config({ path: "./.env" }).parsed,
+  ...(isDev && dotenv.config({ path: "./.env.development" }).parsed),
+};
 
 const getTypeScriptLoader = () => ({
   loader: "ts-loader",
@@ -81,26 +86,45 @@ const config: webpack.Configuration = {
       template: "src/template.html",
       filename: "panel.html",
       chunks: ["panel"],
+      templateParameters: {
+        process: {
+          env,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "src/template.html",
       filename: "mobile.html",
       chunks: ["mobile"],
+      templateParameters: {
+        process: {
+          env,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "src/template.html",
       filename: "video_overlay.html",
       chunks: ["overlay"],
+      templateParameters: {
+        process: {
+          env,
+        },
+      },
     }),
     // Include the public directory
     new CopyWebpackPlugin({
       patterns: [{ from: "public", to: "." }],
     }),
     // Load environment variables
-    new DotEnvPlugin({
-      path: isDev ? "./.env.development" : "./.env",
-      defaults: "./.env",
-    }),
+    new webpack.DefinePlugin(
+      Object.fromEntries(
+        Object.entries(env).map(([key, value]) => [
+          `process.env.${key}`,
+          JSON.stringify(value),
+        ]),
+      ),
+    ),
     // Enforce type checking on a separate process
     new ForkTsCheckerWebpackPlugin(),
     // Enable react hot reloading in development

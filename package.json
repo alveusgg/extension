@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alveusgg/extension.git"
@@ -18,8 +19,8 @@
   "scripts": {
     "prepare": "husky",
     "lint-staged": "lint-staged --relative",
-    "dev": "cross-env NODE_ENV=development webpack serve --config src/webpack.config.ts",
-    "build": "webpack --config src/webpack.config.ts",
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--loader ts-node/esm\" webpack serve --config src/webpack.config.ts",
+    "build": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" webpack --config src/webpack.config.ts",
     "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,json,html}\"",
     "lint": "run-p lint:*",

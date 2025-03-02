@@ -124,9 +124,9 @@ export function isBirthday(dateOfBirth: string): boolean {
  */
 function parseDate(date: string): Date | null {
   const dateArray = date.split("-");
-  const day = parseInt(dateArray[2]);
-  const month = parseInt(dateArray[1]);
-  const year = parseInt(dateArray[0]);
+  const day = parseInt(dateArray[2] ?? "");
+  const month = parseInt(dateArray[1] ?? "");
+  const year = parseInt(dateArray[0] ?? "");
 
   if (!isNaN(day) && !isNaN(month) && !isNaN(year))
     return new Date(year, month - 1, day);

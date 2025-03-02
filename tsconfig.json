@@ -10,6 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,

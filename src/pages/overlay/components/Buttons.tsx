@@ -52,7 +52,7 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
               option.active && "outline-3",
               // If the previous type is not the same, add a margin
               idx > 0 &&
-                optionsWithOnClick[idx - 1].type !== option.type &&
+                optionsWithOnClick[idx - 1]!.type !== option.type &&
                 "mt-auto",
             )}
           >

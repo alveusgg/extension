@@ -29,6 +29,8 @@ https://user-images.githubusercontent.com/49528805/229295376-6490d0a5-5f01-456b-
 6. Copy the `.env.development.sample` file to `.env.development`. You may add a channel and user to test chat commands here (e.g. `REACT_APP_CHAT_COMMANDS_TEST_CHANNEL=testuser` and `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS=testuser`)
 7. Start the development server with `pnpm dev`
 
+If you're using VSCode, add `"typescript.tsdk": "node_modules/typescript/lib"` to `.vscode/settings.json` to ensure you're using the correct TypeScript version.
+
 There are two ways to run the extension. You can either add it to a channel on Twitch, or access the web pages for the panel/overlay directly.
 
 ### Running via Twitch

@@ -12,7 +12,10 @@ import {
   typeSafeObjectEntries,
   typeSafeObjectFromEntries,
 } from "../../../utils/helpers";
-import { OverlayKey, isValidOverlayKey } from "../components/overlay/Overlay";
+import {
+  isValidOverlayKey,
+  type OverlayKey,
+} from "../components/overlay/Overlay";
 
 const settings = {
   disableChatPopup: {

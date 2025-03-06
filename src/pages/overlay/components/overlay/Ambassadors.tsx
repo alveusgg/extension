@@ -93,16 +93,15 @@ export default function Ambassadors(props: AmbassadorsProps) {
     if (ambassadorList.current) {
       if (ambassadorList.current.scrollTop === 0)
         upArrowRef.current?.classList.add(...hiddenClass.split(" "));
-      else if (
+      else upArrowRef.current?.classList.remove(...hiddenClass.split(" "));
+
+      if (
         ambassadorList.current.scrollTop +
-          ambassadorList.current.clientHeight ===
+          ambassadorList.current.clientHeight >=
         ambassadorList.current.scrollHeight
       )
         downArrowRef.current?.classList.add(...hiddenClass.split(" "));
-      else {
-        upArrowRef.current?.classList.remove(...hiddenClass.split(" "));
-        downArrowRef.current?.classList.remove(...hiddenClass.split(" "));
-      }
+      else downArrowRef.current?.classList.remove(...hiddenClass.split(" "));
     }
   }, []);
 

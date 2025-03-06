@@ -11,6 +11,7 @@ import {
 import Welcome from "../../../../components/Welcome";
 import IconWelcome from "../../../../components/icons/IconWelcome";
 import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
+import IconPlant from "../../../../components/icons/IconPlant";
 import IconSettings from "../../../../components/icons/IconSettings";
 
 import { useAmbassadors } from "../../../../hooks/useAmbassadors";
@@ -46,8 +47,17 @@ const overlayOptions = [
     key: "ambassadors",
     type: "primary",
     icon: IconAmbassadors,
-    title: "Explore our Ambassadors",
+    title: "Explore our Animal Ambassadors",
     component: AmbassadorsOverlay,
+  },
+  {
+    key: "ambassadorPlants",
+    type: "primary",
+    icon: IconPlant,
+    title: "Explore our Plant Ambassadors",
+    component: (props: OverlayOptionProps) => (
+      <AmbassadorsOverlay {...props} plants />
+    ),
   },
   {
     key: "settings",
@@ -113,12 +123,19 @@ export default function Overlay() {
     useCallback(
       (command: string) => {
         if (!settings.disableChatPopup.value) {
-          if (Object.keys(ambassadors ?? {}).includes(command))
+          const ambassador = ambassadors?.[command];
+          if (ambassador)
             setActiveAmbassador({ key: command, isCommand: true });
           else if (command !== "welcome") return;
 
           // Show the card
-          setVisibleOption(command === "welcome" ? "welcome" : "ambassadors");
+          setVisibleOption(
+            ambassador
+              ? ambassador.species.class.name === "plantae"
+                ? "ambassadorPlants"
+                : "ambassadors"
+              : "welcome",
+          );
 
           // Dismiss the overlay after a delay
           if (timeoutRef.current) clearTimeout(timeoutRef.current);

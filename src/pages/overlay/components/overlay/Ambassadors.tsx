@@ -105,11 +105,15 @@ export default function Ambassadors(props: AmbassadorsProps) {
     }
   }, []);
 
-  // Check the arrow visibility on mount
-  // Sometimes browsers restore odd scroll positions
+  // Check the arrow visibility on mount, as browsers restore odd scroll positions
+  // Also, check it whenever the ambassador list changes as the list may change size
   useEffect(() => {
     handleArrowVisibility();
-  }, [handleArrowVisibility]);
+
+    // If the window is resized, check the arrow visibility again
+    window.addEventListener("resize", handleArrowVisibility);
+    return () => window.removeEventListener("resize", handleArrowVisibility);
+  }, [handleArrowVisibility, ambassadors]);
 
   return (
     <div

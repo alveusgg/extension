@@ -6,6 +6,7 @@ import {
   useMemo,
   type SetStateAction,
   type Dispatch,
+  type JSX,
 } from "react";
 
 import Welcome from "../../../../components/Welcome";
@@ -26,10 +27,17 @@ import useSleeping from "../../hooks/useSleeping";
 import AmbassadorsOverlay from "./Ambassadors";
 import SettingsOverlay from "./Settings";
 
-import Buttons from "../Buttons";
+import Buttons, { type ButtonsOption } from "../Buttons";
 
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;
+
+type OverlayOption = ButtonsOption & {
+  component: (props: OverlayOptionProps) => JSX.Element;
+  condition?: (props: {
+    ambassadors: ReturnType<typeof useAmbassadors>;
+  }) => boolean;
+};
 
 const overlayOptions = [
   {
@@ -37,8 +45,9 @@ const overlayOptions = [
     type: "primary",
     icon: IconWelcome,
     title: "Welcome to Alveus",
-    component: (props: OverlayOptionProps) => (
+    component: (props) => (
       <Welcome
+        {...props}
         className={classes("absolute top-0 left-0 mx-4 my-6", props.className)}
       />
     ),
@@ -49,15 +58,21 @@ const overlayOptions = [
     icon: IconAmbassadors,
     title: "Explore our Animal Ambassadors",
     component: AmbassadorsOverlay,
+    condition: ({ ambassadors }) =>
+      Object.values(ambassadors ?? {}).some(
+        (a) => a.species.class.name !== "plantae",
+      ),
   },
   {
     key: "ambassadorPlants",
     type: "primary",
     icon: IconPlant,
     title: "Explore our Plant Ambassadors",
-    component: (props: OverlayOptionProps) => (
-      <AmbassadorsOverlay {...props} plants />
-    ),
+    component: (props) => <AmbassadorsOverlay {...props} plants />,
+    condition: ({ ambassadors }) =>
+      Object.values(ambassadors ?? {}).some(
+        (a) => a.species.class.name === "plantae",
+      ),
   },
   {
     key: "settings",
@@ -66,7 +81,7 @@ const overlayOptions = [
     title: "Extension Settings",
     component: SettingsOverlay,
   },
-] as const;
+] as const satisfies OverlayOption[];
 
 export const isValidOverlayKey = (key: string) =>
   key === "" || overlayOptions.some((option) => option.key === key);
@@ -99,6 +114,14 @@ export default function Overlay() {
   } = useSleeping();
 
   const ambassadors = useAmbassadors();
+  const options = useMemo(
+    () =>
+      overlayOptions.filter(
+        (option) =>
+          !("condition" in option) || option.condition({ ambassadors }),
+      ),
+    [ambassadors],
+  );
 
   const [activeAmbassador, setActiveAmbassador] =
     useState<ActiveAmbassadorState>({});
@@ -223,12 +246,12 @@ export default function Overlay() {
       )}
     >
       <Buttons
-        options={overlayOptions}
+        options={options}
         onClick={setVisibleOption}
         active={visibleOption}
       />
       <div className="relative h-full w-full">
-        {overlayOptions.map((option) => (
+        {options.map((option) => (
           <option.component
             key={option.key}
             context={context}

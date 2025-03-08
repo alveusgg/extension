@@ -38,10 +38,11 @@ const apiAmbassadorSchema = ambassadorSchema.extend({
       title: z.string(),
     }),
     class: z.object({
-      name: speciesSchema.shape.class,
+      name: z.string(),
       title: z.string(),
     }),
   }),
+  enclosure: z.string(),
 });
 
 type Ambassador = z.infer<typeof apiAmbassadorSchema>;

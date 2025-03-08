@@ -44,11 +44,35 @@ const apiAmbassadorSchema = ambassadorSchema.extend({
   }),
 });
 
-const apiSchema = z.object({
-  v2: z.record(apiAmbassadorSchema),
-});
-
 type Ambassador = z.infer<typeof apiAmbassadorSchema>;
+
+// Use transform here so we parse each ambassador individually
+const apiSchema = z.object({
+  v2: z
+    .record(
+      // Use nullable here as the fallback for when we fail to parse an ambassador
+      apiAmbassadorSchema.nullable().catch((ctx) => {
+        console.error(
+          "Failed to parse ambassador",
+          ctx.input,
+          ctx.error.message,
+        );
+        return null;
+      }),
+    )
+    .transform((val) =>
+      // Filter out any null values that failed to parse
+      typeSafeObjectFromEntries(
+        Object.entries(val).filter(
+          (entry): entry is [string, Ambassador] => !!entry[1],
+        ),
+      ),
+    )
+    // Ensure we didn't fail to parse all ambassadors
+    .refine((val) => Object.keys(val).length > 0, {
+      message: "No ambassadors found",
+    }),
+});
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL?.replace(/\/+$/, "");
 if (!apiBaseUrl)

@@ -90,19 +90,27 @@ export default function Ambassadors(props: AmbassadorsProps) {
 
   // Ensure the buttons are only shown if the list is scrollable
   const handleArrowVisibility = useCallback(() => {
-    if (ambassadorList.current) {
-      if (ambassadorList.current.scrollTop === 0)
-        upArrowRef.current?.classList.add(...hiddenClass.split(" "));
-      else upArrowRef.current?.classList.remove(...hiddenClass.split(" "));
+    const list = ambassadorList.current;
+    if (!list) return;
 
-      if (
-        ambassadorList.current.scrollTop +
-          ambassadorList.current.clientHeight >=
-        ambassadorList.current.scrollHeight
-      )
-        downArrowRef.current?.classList.add(...hiddenClass.split(" "));
-      else downArrowRef.current?.classList.remove(...hiddenClass.split(" "));
-    }
+    const listRect = list.getBoundingClientRect();
+    const firstRect = list.firstElementChild?.getBoundingClientRect();
+    const lastRect = list.lastElementChild?.getBoundingClientRect();
+    if (!firstRect || !lastRect) return;
+
+    // If more than 50% of the first element is hidden, show the up arrow
+    for (const className of hiddenClass.split(" "))
+      upArrowRef.current?.classList.toggle(
+        className,
+        firstRect.top >= listRect.top + firstRect.height / 2,
+      );
+
+    // If more than 50% of the last element is hidden, show the down arrow
+    for (const className of hiddenClass.split(" "))
+      downArrowRef.current?.classList.toggle(
+        className,
+        lastRect.bottom <= listRect.bottom - lastRect.height / 2,
+      );
   }, []);
 
   // Check the arrow visibility on mount, as browsers restore odd scroll positions

@@ -144,18 +144,23 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
         )}
-        <div className="relative w-full overflow-hidden rounded-t-lg">
+
+        <div className="relative w-full rounded-t-lg">
           <img
-            className="peer aspect-[2.2] w-full object-cover sm:aspect-[1.8]"
+            className="peer max-h-30 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out active:max-h-96 sm:max-h-32 sm:hover:max-h-96"
             src={ambassador.image.src}
             alt={ambassador.image.alt}
             style={{
-              objectPosition: offsetPosition(ambassador.image.position),
+              objectPosition: offsetPosition(
+                ambassador.image.position
+                  ? ambassador.image.position
+                  : "50% 75%",
+              ),
             }}
             loading="lazy"
           />
 
-          <div className="absolute inset-x-0 top-0 flex h-9 w-full bg-alveus-green-900/50 backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10 peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)]">
+          <div className="absolute inset-x-0 top-0 flex h-9 w-full rounded-t-lg bg-alveus-green-900/50 backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10 peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)]">
             {props.onClose && (
               <button
                 className="absolute top-1/2 right-1 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors hover:text-highlight focus:text-highlight"

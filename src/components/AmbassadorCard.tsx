@@ -151,11 +151,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             src={ambassador.image.src}
             alt={ambassador.image.alt}
             style={{
-              objectPosition: offsetPosition(
-                ambassador.image.position
-                  ? ambassador.image.position
-                  : "50% 75%",
-              ),
+              objectPosition: offsetPosition(ambassador.image.position),
             }}
             loading="lazy"
           />

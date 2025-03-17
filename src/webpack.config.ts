@@ -49,7 +49,10 @@ const getStyleLoader = () => [
     loader: "postcss-loader",
     options: {
       postcssOptions: {
-        plugins: ["@tailwindcss/postcss"],
+        plugins: [
+          "@tailwindcss/postcss",
+          "@csstools/postcss-relative-color-syntax",
+        ],
       },
       sourceMap: true,
     },

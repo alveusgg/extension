@@ -22,9 +22,6 @@ const offsetPosition = (position?: `${number}% ${number}%`) => {
     `${number}%`,
   ];
 
-  const yPct = Number(y.replace("%", ""));
-  if (yPct <= 50) return `${x} min(calc(${y} + 1.5rem), 0%)`;
-
   return `${x} ${y}`;
 };
 

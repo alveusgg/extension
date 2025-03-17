@@ -39,7 +39,6 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@csstools/postcss-relative-color-syntax": "^3.0.8",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@tailwindcss/postcss": "^4.0.13",
     "@types/canvas-confetti": "^1.9.0",

@@ -16,15 +16,6 @@ import partyHat from "../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
 
-const offsetPosition = (position?: `${number}% ${number}%`) => {
-  const [x, y] = (position || "50% 50%").split(" ") as [
-    `${number}%`,
-    `${number}%`,
-  ];
-
-  return `${x} ${y}`;
-};
-
 const stringifyLifespan = (value: number | { min: number; max: number }) => {
   return typeof value === "number" ? `${value}` : `${value.min}-${value.max}`;
 };
@@ -148,7 +139,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             src={ambassador.image.src}
             alt={ambassador.image.alt}
             style={{
-              objectPosition: offsetPosition(ambassador.image.position),
+              objectPosition: ambassador.image.position,
             }}
             loading="lazy"
           />

@@ -125,7 +125,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
         )}
-        <div className="relative w-full overflow-hidden rounded-t-lg">
+        <div className="relative w-full rounded-t-lg">
           <img
             className="peer max-h-30 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out active:max-h-96 sm:max-h-32 sm:hover:max-h-96"
             src={ambassador.image.src}

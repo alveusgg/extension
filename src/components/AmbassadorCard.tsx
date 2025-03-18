@@ -22,19 +22,12 @@ const stringifyLifespan = (value: number | { min: number; max: number }) => {
 
 export interface AmbassadorCardProps {
   ambassador: string;
-  onClose?: () => void;
   className?: string;
   ref?: Ref<HTMLDivElement>;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const {
-    ambassador: ambassadorKey,
-    onClose,
-    className,
-    ref,
-    ...extras
-  } = props;
+  const { ambassador: ambassadorKey, className, ref, ...extras } = props;
   const ambassador = useAmbassador(ambassadorKey);
 
   const mod =
@@ -132,8 +125,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
         )}
-
-        <div className="relative w-full rounded-t-lg">
+        <div className="relative w-full overflow-hidden rounded-t-lg">
           <img
             className="peer max-h-30 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out active:max-h-96 sm:max-h-32 sm:hover:max-h-96"
             src={ambassador.image.src}
@@ -143,27 +135,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             }}
             loading="lazy"
           />
-
-          <div className="absolute inset-x-0 top-0 flex h-9 w-full rounded-t-lg bg-alveus-green-900/50 backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10 peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)]">
-            {props.onClose && (
-              <button
-                className="absolute top-1/2 right-1 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors hover:text-highlight focus:text-highlight"
-                onClick={onClose}
-                type="button"
-                aria-label="Close"
-              >
-                &times;
-              </button>
-            )}
-
-            <h2
-              className="w-full shrink-0 self-center overflow-hidden py-1 pr-10 pl-2 text-xl text-nowrap overflow-ellipsis"
-              title={ambassador.name}
-            >
-              {ambassador.name}
-            </h2>
-          </div>
         </div>
+
+        <h2 className="bg-alveus-green py-0.5 text-center text-base text-white">
+          {ambassador.name}
+        </h2>
 
         <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (

@@ -13,6 +13,7 @@ import Tooltip from "./Tooltip";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
+import IconBack from "./icons/IconBack";
 
 const headingClass = "text-base text-alveus-green-400";
 
@@ -22,12 +23,19 @@ const stringifyLifespan = (value: number | { min: number; max: number }) => {
 
 export interface AmbassadorCardProps {
   ambassador: string;
+  onClose?: () => void;
   className?: string;
   ref?: Ref<HTMLDivElement>;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const { ambassador: ambassadorKey, className, ref, ...extras } = props;
+  const {
+    ambassador: ambassadorKey,
+    onClose,
+    className,
+    ref,
+    ...extras
+  } = props;
   const ambassador = useAmbassador(ambassadorKey);
 
   const mod =
@@ -125,22 +133,28 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
         )}
-        <div className="relative w-full rounded-t-lg">
-          <img
-            className="peer max-h-30 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out active:max-h-96 sm:max-h-32 sm:hover:max-h-96"
-            src={ambassador.image.src}
-            alt={ambassador.image.alt}
-            style={{
-              objectPosition: ambassador.image.position,
-            }}
-            loading="lazy"
-          />
+        <img
+          className="max-h-30 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out active:max-h-96 sm:max-h-32 sm:hover:max-h-96"
+          src={ambassador.image.src}
+          alt={ambassador.image.alt}
+          style={{
+            objectPosition: ambassador.image.position,
+          }}
+          loading="lazy"
+        />
+
+        <div className="relative flex w-full items-center justify-center bg-alveus-green px-16 py-1">
+          <button
+            className="absolute left-0 p-1 transition-colors active:text-highlight sm:hidden"
+            onClick={onClose}
+            type="button"
+            aria-label="Close"
+          >
+            <IconBack size={20} alt="Back arrow" />
+          </button>
+
+          <h2 className="text-base text-white">{ambassador.name}</h2>
         </div>
-
-        <h2 className="bg-alveus-green py-0.5 text-center text-base text-white">
-          {ambassador.name}
-        </h2>
-
         <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (
             <div className="flex items-center gap-2">

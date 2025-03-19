@@ -22,20 +22,14 @@ const stringifyLifespan = (value: number | { min: number; max: number }) => {
 
 export interface AmbassadorCardProps {
   ambassador: string;
-  onClose?: () => void;
   className?: string;
   ref?: Ref<HTMLDivElement>;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
-  const {
-    ambassador: ambassadorKey,
-    onClose,
-    className,
-    ref,
-    ...extras
-  } = props;
+  const { ambassador: ambassadorKey, className, ref, ...extras } = props;
   const ambassador = useAmbassador(ambassadorKey);
+
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
@@ -143,18 +137,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           />
         </div>
 
-        <div className="flex w-full items-center justify-center bg-alveus-green py-1">
-          <button
-            className="absolute w-8 cursor-pointer text-2xl text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight sm:hidden"
-            onClick={onClose}
-            type="button"
-            aria-label="Close"
-          >
-            &lt;
-          </button>
-
-          <h2 className="text-base text-white">{ambassador.name}</h2>
-        </div>
+        <h2 className="bg-alveus-green py-0.5 text-center text-base text-white">
+          {ambassador.name}
+        </h2>
 
         <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (

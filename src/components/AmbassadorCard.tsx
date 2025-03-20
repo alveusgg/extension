@@ -134,7 +134,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           />
         )}
         <img
-          className="max-h-30 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out active:max-h-96 sm:max-h-32 sm:hover:max-h-96"
+          className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
           src={ambassador.image.src}
           alt={ambassador.image.alt}
           style={{

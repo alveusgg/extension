@@ -8,12 +8,12 @@ import { camelToKebab } from "../utils/helpers";
 import { classes } from "../utils/classes";
 
 import IconInfo from "./icons/IconInfo";
+import IconBack from "./icons/IconBack";
 
 import Tooltip from "./Tooltip";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
-import IconBack from "./icons/IconBack";
 
 const headingClass = "text-base text-alveus-green-400";
 

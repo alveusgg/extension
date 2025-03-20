@@ -8,6 +8,7 @@ import { camelToKebab } from "../utils/helpers";
 import { classes } from "../utils/classes";
 
 import IconInfo from "./icons/IconInfo";
+import IconBack from "./icons/IconBack";
 
 import Tooltip from "./Tooltip";
 
@@ -15,18 +16,6 @@ import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
-
-const offsetPosition = (position?: `${number}% ${number}%`) => {
-  const [x, y] = (position || "50% 50%").split(" ") as [
-    `${number}%`,
-    `${number}%`,
-  ];
-
-  const yPct = Number(y.replace("%", ""));
-  if (yPct <= 50) return `${x} min(calc(${y} + 1.5rem), 0%)`;
-
-  return `${x} ${y}`;
-};
 
 const stringifyLifespan = (value: number | { min: number; max: number }) => {
   return typeof value === "number" ? `${value}` : `${value.min}-${value.max}`;
@@ -144,38 +133,32 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
         )}
-        <div className="relative w-full overflow-hidden rounded-t-lg">
-          <img
-            className="peer aspect-[2.2] w-full object-cover sm:aspect-[1.8]"
-            src={ambassador.image.src}
-            alt={ambassador.image.alt}
-            style={{
-              objectPosition: offsetPosition(ambassador.image.position),
-            }}
-            loading="lazy"
-          />
+        <img
+          className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
+          src={ambassador.image.src}
+          alt={ambassador.image.alt}
+          style={{
+            objectPosition: ambassador.image.position,
+          }}
+          loading="lazy"
+        />
 
-          <div className="absolute inset-x-0 top-0 flex h-9 w-full bg-alveus-green-900/50 backdrop-blur-xs transition-[opacity,backdrop-filter] peer-hover:opacity-10 peer-hover:backdrop-blur-[calc(var(--blur-xs)/2)]">
-            {props.onClose && (
-              <button
-                className="absolute top-1/2 right-1 block w-8 -translate-y-1/2 cursor-pointer text-center text-2xl transition-colors hover:text-highlight focus:text-highlight"
-                onClick={onClose}
-                type="button"
-                aria-label="Close"
-              >
-                &times;
-              </button>
-            )}
-
-            <h2
-              className="w-full shrink-0 self-center overflow-hidden py-1 pr-10 pl-2 text-xl text-nowrap overflow-ellipsis"
-              title={ambassador.name}
+        <div className="relative flex w-full items-center justify-center bg-alveus-green px-8 py-1">
+          {onClose && (
+            <button
+              className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight sm:hidden"
+              onClick={onClose}
+              type="button"
+              aria-label="Close"
             >
-              {ambassador.name}
-            </h2>
-          </div>
-        </div>
+              <IconBack size={20} alt="Back arrow" />
+            </button>
+          )}
 
+          <h2 className="text-base text-balance text-white">
+            {ambassador.name}
+          </h2>
+        </div>
         <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (
             <div className="flex items-center gap-2">

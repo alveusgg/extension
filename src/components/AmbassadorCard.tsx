@@ -144,14 +144,16 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         />
 
         <div className="relative flex w-full items-center justify-center bg-alveus-green px-16 py-1">
-          <button
-            className="absolute left-0 p-1 transition-colors active:text-highlight sm:hidden"
-            onClick={onClose}
-            type="button"
-            aria-label="Close"
-          >
-            <IconBack size={20} alt="Back arrow" />
-          </button>
+          {onClose && (
+            <button
+              className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight sm:hidden"
+              onClick={onClose}
+              type="button"
+              aria-label="Close"
+            >
+              <IconBack size={20} alt="Back arrow" />
+            </button>
+          )}
 
           <h2 className="text-base text-white">{ambassador.name}</h2>
         </div>

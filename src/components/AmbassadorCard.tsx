@@ -143,7 +143,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           loading="lazy"
         />
 
-        <div className="relative flex w-full items-center justify-center bg-alveus-green px-16 py-1">
+        <div className="relative flex w-full items-center justify-center bg-alveus-green px-8 py-1">
           {onClose && (
             <button
               className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight sm:hidden"
@@ -155,7 +155,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </button>
           )}
 
-          <h2 className="text-base text-white">{ambassador.name}</h2>
+          <h2 className="text-base text-balance text-white">
+            {ambassador.name}
+          </h2>
         </div>
         <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (

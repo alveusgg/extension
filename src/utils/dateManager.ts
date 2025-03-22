@@ -15,6 +15,18 @@ const splitPartialDate = (partialDate: PartialDate) =>
     | [number, number]
     | [number, number, number];
 
+const parsePartialDate = (partialDate: PartialDate) => {
+  const [year, month, day] = splitPartialDate(partialDate);
+  return DateTime.fromObject(
+    {
+      year,
+      month: month || 1,
+      day: day || 1,
+    },
+    { zone: timezone },
+  ).startOf("day");
+};
+
 export const isBirthday = (dateOfBirth: PartialDate) => {
   const [, month, day] = splitPartialDate(dateOfBirth);
   if (month === undefined || day === undefined) return false;
@@ -23,48 +35,20 @@ export const isBirthday = (dateOfBirth: PartialDate) => {
   return today.month === month && today.day === day;
 };
 
-/**
- * calculates the age of the ambassador based on the date of birth
- * in weeks, months, or years
- * @param dateOfBirth date of birth in the format YYYY-MM-DD or YYYY-MM or YYYY
- */
-export function calculateAge(dateOfBirth: string): string {
-  const accurateDOB = dateOfBirth.split("-").length === 3;
+export const calculateAge = (dateOfBirth: PartialDate) => {
+  const accurate = splitPartialDate(dateOfBirth).length === 3;
+  const { years, months, days } = getToday()
+    .diff(parsePartialDate(dateOfBirth), ["years", "months", "days"])
+    .toObject();
 
-  const today = new Date();
-  const dob = new Date(dateOfBirth);
+  if (years)
+    return `${accurate ? "" : "~"}${years} year${years === 1 ? "" : "s"}`;
+  if (months)
+    return `${accurate ? "" : "~"}${months} month${months === 1 ? "" : "s"}`;
 
-  const ageInMilliseconds = today.getTime() - dob.getTime();
-  const ageInYears = ageInMilliseconds / 3.154e10; // 3.154e+10 is the number of milliseconds in a year
-  if (ageInYears < 1) {
-    const ageInMonths = ageInMilliseconds / 2.628e9; // 2.628e+9 is the number of milliseconds in a month
-    if (ageInMonths < 1) {
-      const ageInWeeks = ageInMilliseconds / 6.048e8; // 6.048e+8 is the number of milliseconds in a week
-      if (ageInWeeks < 1) {
-        const ageInDays = Math.floor(ageInMilliseconds / 8.64e7); // 8.64e+7 is the number of milliseconds in a day
-        return `${ageInDays} day` + (ageInDays > 1 ? "s" : "");
-      } else {
-        return (
-          (!accurateDOB ? "~" : "") +
-          `${Math.floor(ageInWeeks)} wk` +
-          (Math.floor(ageInWeeks) > 1 ? "s" : "")
-        );
-      }
-    } else {
-      return (
-        (!accurateDOB ? "~" : "") +
-        `${Math.floor(ageInMonths)} mth` +
-        (Math.floor(ageInMonths) > 1 ? "s" : "")
-      );
-    }
-  } else {
-    return (
-      (!accurateDOB ? "~" : "") +
-      `${Math.floor(ageInYears)} yr` +
-      (Math.floor(ageInYears) > 1 ? "s" : "")
-    );
-  }
-}
+  const floorDays = Math.floor(days ?? 0);
+  return `${accurate ? "" : "~"}${floorDays} day${floorDays === 1 ? "" : "s"}`;
+};
 
 /**
  * converts a date to a string of the date in the format Month DD, YYYY or Month YYYY or YYYY

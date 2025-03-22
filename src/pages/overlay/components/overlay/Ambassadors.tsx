@@ -13,7 +13,7 @@ import AmbassadorButton from "../../../../components/AmbassadorButton";
 import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { typeSafeObjectEntries } from "../../../../utils/helpers";
-import { sortDate } from "../../../../utils/dateManager";
+import { sortPartialDates } from "../../../../utils/dateManager";
 
 import type { OverlayOptionProps } from "./Overlay";
 
@@ -44,7 +44,7 @@ export default function Ambassadors(props: AmbassadorsProps) {
           ([, ambassador]) =>
             (ambassador.species.class.name === "plantae") === plants,
         )
-        .sort(([, a], [, b]) => sortDate(a.arrival, b.arrival)),
+        .sort(([, a], [, b]) => sortPartialDates(a.arrival, b.arrival)),
     [rawAmbassadors, plants],
   );
 

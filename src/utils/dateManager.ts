@@ -1,4 +1,4 @@
-import { DateTime } from "luxon";
+import { DateTime, Info } from "luxon";
 
 const timezone = process.env.REACT_APP_TIMEZONE || "UTC";
 
@@ -50,68 +50,33 @@ export const calculateAge = (dateOfBirth: PartialDate) => {
   return `${accurate ? "" : "~"}${floorDays} day${floorDays === 1 ? "" : "s"}`;
 };
 
-/**
- * converts a date to a string of the date in the format Month DD, YYYY or Month YYYY or YYYY
- * @param date date in the format YYYY-MM-DD or YYYY-MM or YYYY
- * @returns a string of the date in the format Month DD, YYYY or Month YYYY or YYYY
- */
-export function formatDate(date: string, approximate = true): string {
-  const dateArray = date.split("-");
-  let day = dateArray[2];
-  let month = dateArray[1];
-  const year = dateArray[0];
+const getMonthName = (month: number) => {
+  if (month < 1 || month > 12) throw new Error("Invalid month");
+  return Info.months("long")[month - 1];
+};
 
-  if (month && day) {
-    month = monthConverter(parseInt(month));
-    day = parseInt(day) + getDaySuffix(parseInt(day));
-  } else if (month) {
-    month = monthConverter(parseInt(month));
-  }
+const getOrdinal = (number: number) => {
+  if (number < 1) throw new Error("Invalid number");
+  const lastDigit = number % 10;
+  const lastTwoDigits = number % 100;
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 13) return "th";
+  if (lastDigit === 1) return "st";
+  if (lastDigit === 2) return "nd";
+  if (lastDigit === 3) return "rd";
+  return "th";
+};
 
-  if (day && month && year) return `${month} ${day}, ${year}`;
-  else if (month && year) return `${approximate ? "~" : ""}${month}, ${year}`;
+export const formatDate = (date: PartialDate, showApproximate = true) => {
+  const [year, month, day] = splitPartialDate(date);
 
-  return `${approximate ? "~" : ""}${year}`;
-}
+  const formattedMonth = month && getMonthName(month);
+  const formattedDay = day && `${day}${getOrdinal(day)}`;
 
-/**
- * converts the numerical month to the name of the month
- * @param month month number (1-12)
- * @returns the name corresponding to the month number
- */
-function monthConverter(month: number) {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  if (month < 0 || month > 12) return "Invalid month";
-
-  return monthNames[month - 1];
-}
-
-/**
- * @param day day of the month (1-31)
- * @returns the suffix of the day (st, nd, rd, or th)
- */
-function getDaySuffix(day: number): string {
-  if (day < 1 || day > 31) return "";
-
-  if (day === 1 || day === 21 || day === 31) return "st";
-  else if (day === 2 || day === 22) return "nd";
-  else if (day === 3 || day === 23) return "rd";
-  else return "th";
-}
+  if (day && month && year) return `${formattedMonth} ${formattedDay}, ${year}`;
+  if (month && year)
+    return `${showApproximate ? "~" : ""}${formattedMonth}, ${year}`;
+  return `${showApproximate ? "~" : ""}${year}`;
+};
 
 /**
  * Parse a partial date string into a Date object

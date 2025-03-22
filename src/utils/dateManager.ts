@@ -1,3 +1,28 @@
+import { DateTime } from "luxon";
+
+const timezone = process.env.REACT_APP_TIMEZONE || "UTC";
+
+const getToday = () => DateTime.now().setZone(timezone).startOf("day");
+
+type PartialDate =
+  | `${number}`
+  | `${number}-${number}`
+  | `${number}-${number}-${number}`;
+
+const splitPartialDate = (partialDate: PartialDate) =>
+  partialDate.split("-").map((x) => parseInt(x)) as
+    | [number]
+    | [number, number]
+    | [number, number, number];
+
+export const isBirthday = (dateOfBirth: PartialDate) => {
+  const [, month, day] = splitPartialDate(dateOfBirth);
+  if (month === undefined || day === undefined) return false;
+
+  const today = getToday();
+  return today.month === month && today.day === day;
+};
+
 /**
  * calculates the age of the ambassador based on the date of birth
  * in weeks, months, or years
@@ -102,18 +127,6 @@ function getDaySuffix(day: number): string {
   else if (day === 2 || day === 22) return "nd";
   else if (day === 3 || day === 23) return "rd";
   else return "th";
-}
-
-export function isBirthday(dateOfBirth: string): boolean {
-  if (dateOfBirth.split("-").length !== 3) return false;
-
-  const today = new Date();
-  const dob = new Date(dateOfBirth);
-
-  return (
-    today.getUTCMonth() === dob.getUTCMonth() &&
-    today.getUTCDate() === dob.getUTCDate()
-  );
 }
 
 /**

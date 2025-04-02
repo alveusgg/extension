@@ -64,6 +64,7 @@ Testing the Extension:
     - For overlay, mobile + panel: Click the buttons to explore the extension
     - For overlay: As a moderator or broadcaster, type `!welcome` in chat to trigger the welcome card, type `!snork` to trigger an ambassador card
 ```
+
 </details>
 
 ## Release

@@ -22,7 +22,7 @@
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--loader ts-node/esm\" webpack serve",
     "build": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" webpack",
     "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint:prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,json,html}\"",
+    "lint:prettier": "prettier --check .",
     "lint": "run-p lint:*",
     "format:eslint": "pnpm lint:eslint --fix",
     "format:prettier": "pnpm lint:prettier --write",

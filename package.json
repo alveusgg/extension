@@ -18,7 +18,6 @@
   "packageManager": "pnpm@9.14.2",
   "scripts": {
     "prepare": "husky",
-    "lint-staged": "lint-staged --relative",
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--loader ts-node/esm\" webpack serve",
     "build": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" webpack",
     "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",

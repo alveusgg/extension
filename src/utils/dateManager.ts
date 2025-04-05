@@ -2,7 +2,7 @@ import { DateTime, Info } from "luxon";
 
 const timezone = process.env.REACT_APP_TIMEZONE || "UTC";
 
-const getToday = () => DateTime.now().setZone(timezone).startOf("day");
+export const getToday = () => DateTime.now().setZone(timezone).startOf("day");
 
 type PartialDate =
   | `${number}`

@@ -221,9 +221,8 @@ const config: webpack.Configuration = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
-  // Disable any minification
   optimization: {
-    minimize: false,
+    minimize: !isDev,
   },
 };
 

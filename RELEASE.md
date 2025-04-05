@@ -20,7 +20,7 @@ With the assets hosted on Twitch, install the extension version on a test channe
 
 With the extension installed on a test channel, submit the extension for review, providing the URL for the channel to use for testing.
 
-Include the walkthrough guide for the extension, with an updated changelog of what changed since the last version submitted:
+Include the walkthrough guide for the extension, with an updated changelog of what changed for users of the extension since the last version submitted and a link to the compare the versions on GitHub:
 
 <details>
 <summary>Walkthrough guide and changelog template</summary>
@@ -39,6 +39,10 @@ Due to the nature (frequency and last-minute-ness) of collaboration streams, it 
 Changelog:
 
     - <insert changes here>
+
+Source code diff:
+
+    https://github.com/alveusgg/extension/compare/v<previous version here>...v<new version here>
 
 External links:
 

@@ -27,6 +27,7 @@ import {
   typeSafeObjectEntries,
   typeSafeObjectFromEntries,
 } from "../utils/helpers";
+import { getToday } from "../utils/dateManager";
 
 import winstonImage from "../assets/winston.png";
 
@@ -158,11 +159,6 @@ export const AmbassadorsProvider = ({
   return <Context value={ambassadors}>{children}</Context>;
 };
 
-const dateKey = () => {
-  const date = new Date();
-  return `${(date.getMonth() + 1).toLocaleString(undefined, { minimumIntegerDigits: 2 })}-${date.getDate().toLocaleString(undefined, { minimumIntegerDigits: 2 })}`;
-};
-
 const winston = {
   name: "Winston",
   alternate: [],
@@ -213,9 +209,11 @@ export const useAmbassadors = (): Record<string, Ambassador> | null => {
   const ambassadors = useContext(Context);
 
   // Setup a timer to store the current month and day
-  const [date, setDate] = useState<string>(() => dateKey());
+  const [date, setDate] = useState<string>("");
   useEffect(() => {
-    const interval = setInterval(() => setDate(dateKey()), 60 * 1000);
+    const updateDate = () => setDate(getToday().toFormat("MM-dd"));
+    updateDate();
+    const interval = setInterval(updateDate, 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 

@@ -33,7 +33,9 @@ import winstonImage from "../assets/winston.png";
 
 // These schema should match the type exposed by the API
 const apiAmbassadorSchema = ambassadorSchema.extend({
-  image: ambassadorImageSchema,
+  image: ambassadorImageSchema.extend({
+    src: z.string().url(),
+  }),
   species: speciesSchema.extend({
     iucn: speciesSchema.shape.iucn.extend({
       title: z.string(),

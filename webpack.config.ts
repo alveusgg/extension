@@ -168,14 +168,6 @@ const config: webpack.Configuration = {
         exclude: /node_modules/,
         use: getTypeScriptLoader(),
       },
-      // Load typescript in @alveusgg packages
-      {
-        test: /\.tsx?$/,
-        include: new RegExp(
-          join("node_modules", "@alveusgg").replace(/\\/g, "\\\\"),
-        ),
-        use: getTypeScriptLoader(),
-      },
       // Load tailwind
       {
         test: /\.css$/i,

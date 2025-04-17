@@ -76,6 +76,11 @@ const config: webpack.Configuration = {
       },
     },
   },
+  // Don't watch node_modules in development (too many files)
+  // FIXME: https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues/859
+  watchOptions: {
+    ignored: /node_modules/,
+  },
   // We need three entry points, and three outputs w/ html
   entry: {
     panel: "./src/pages/panel/index.tsx",

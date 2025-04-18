@@ -42,7 +42,7 @@ export default function Ambassadors(props: AmbassadorsProps) {
       typeSafeObjectEntries(rawAmbassadors ?? {})
         .filter(
           ([, ambassador]) =>
-            (ambassador.species.class.name === "plantae") === plants,
+            (ambassador.species.class.key === "plantae") === plants,
         )
         .sort(([, a], [, b]) => sortPartialDates(a.arrival, b.arrival)),
     [rawAmbassadors, plants],

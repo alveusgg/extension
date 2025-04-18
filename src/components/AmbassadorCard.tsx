@@ -284,7 +284,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <div className={rowClass}>
             <div>
               <h3 className={headingClass}>Enclosure</h3>
-              <p>{ambassador.enclosure}</p>
+              <p>{ambassador.enclosure.title}</p>
             </div>
             <div>
               <h3 className={headingClass}>Arrived at Alveus</h3>

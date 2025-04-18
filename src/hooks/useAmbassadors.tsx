@@ -22,6 +22,7 @@ import {
   getSpecies,
   speciesSchema,
 } from "@alveusgg/data/build/ambassadors/species";
+import enclosures from "@alveusgg/data/build/enclosures";
 
 import {
   typeSafeObjectEntries,
@@ -35,22 +36,26 @@ import winstonImage from "../assets/winston.png";
 const apiAmbassadorSchema = ambassadorSchema.extend({
   image: ambassadorImageSchema,
   species: speciesSchema.extend({
+    key: z.string(),
     iucn: speciesSchema.shape.iucn.extend({
       title: z.string(),
     }),
     class: z.object({
-      name: z.string(),
+      key: z.string(),
       title: z.string(),
     }),
   }),
-  enclosure: z.string(),
+  enclosure: z.object({
+    key: z.string(),
+    title: z.string(),
+  }),
 });
 
 type Ambassador = z.infer<typeof apiAmbassadorSchema>;
 
 // Use transform here so we parse each ambassador individually
 const apiSchema = z.object({
-  v2: z
+  v3: z
     .record(
       // Use nullable here as the fallback for when we fail to parse an ambassador
       apiAmbassadorSchema.nullable().catch((ctx) => {
@@ -88,7 +93,7 @@ const fetchAmbassadors = async (): Promise<Record<string, Ambassador>> => {
     );
 
   const data = await response.json();
-  return apiSchema.parse(data).v2;
+  return apiSchema.parse(data).v3;
 };
 
 const fallbackAmbassadors: Record<string, Ambassador> =
@@ -106,14 +111,19 @@ const fallbackAmbassadors: Record<string, Ambassador> =
             image,
             species: {
               ...species,
+              key: val.species,
               iucn: {
                 ...species.iucn,
                 title: getIUCNStatus(species.iucn.status),
               },
               class: {
-                name: species.class,
+                key: species.class,
                 title: getClassification(species.class),
               },
+            },
+            enclosure: {
+              key: val.enclosure,
+              title: enclosures[val.enclosure].name,
             },
           },
         ];
@@ -164,6 +174,7 @@ const winston = {
   alternate: [],
   commands: ["winston"],
   species: {
+    key: "polarBear",
     name: "Polar Bear",
     scientificName: "Twitchus memeticus",
     iucn: {
@@ -180,7 +191,7 @@ const winston = {
       source: "",
     },
     class: {
-      name: "mammalia",
+      key: "mammalia",
       title: getClassification("mammalia"),
     },
   },
@@ -188,7 +199,10 @@ const winston = {
   birth: "2020-04-01",
   arrival: "2022-12-01",
   retired: null,
-  enclosure: "wolves",
+  enclosure: {
+    key: "ice",
+    title: "Ice Pool",
+  },
   story:
     "Winston was rescued by the Ontario Zoo in Canada after it was noticed that he was watching streams too often and not touching grass. Originally on loan to Alveus for two years, he is now a permanent resident of Texas.",
   mission:

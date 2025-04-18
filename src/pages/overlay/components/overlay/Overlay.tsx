@@ -60,7 +60,7 @@ const overlayOptions = [
     component: AmbassadorsOverlay,
     condition: ({ ambassadors }) =>
       Object.values(ambassadors ?? {}).some(
-        (a) => a.species.class.name !== "plantae",
+        (a) => a.species.class.key !== "plantae",
       ),
   },
   {
@@ -71,7 +71,7 @@ const overlayOptions = [
     component: (props) => <AmbassadorsOverlay {...props} plants />,
     condition: ({ ambassadors }) =>
       Object.values(ambassadors ?? {}).some(
-        (a) => a.species.class.name === "plantae",
+        (a) => a.species.class.key === "plantae",
       ),
   },
   {
@@ -154,7 +154,7 @@ export default function Overlay() {
           // Show the card
           setVisibleOption(
             ambassador
-              ? ambassador.species.class.name === "plantae"
+              ? ambassador.species.class.key === "plantae"
                 ? "ambassadorPlants"
                 : "ambassadors"
               : "welcome",

@@ -145,10 +145,8 @@ export default function Ambassadors(props: AmbassadorsProps) {
                   prev.key === key ? {} : { key },
                 );
               }}
-              className={classes(
-                "w-full",
-                activeAmbassador.key === key && "outline-3 outline-highlight",
-              )}
+              className="w-full"
+              active={activeAmbassador.key === key}
             />
           ))}
         </div>

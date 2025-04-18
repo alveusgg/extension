@@ -2,15 +2,17 @@ import { type MouseEventHandler } from "react";
 
 import { useAmbassador } from "../hooks/useAmbassadors";
 import { classes } from "../utils/classes";
+import Ring from "./Ring";
 
 interface AmbassadorButtonProps {
   ambassador: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  active?: boolean;
   className?: string;
 }
 
 export default function AmbassadorButton(props: AmbassadorButtonProps) {
-  const { ambassador: ambassadorKey, onClick, className } = props;
+  const { ambassador: ambassadorKey, onClick, active, className } = props;
   const ambassador = useAmbassador(ambassadorKey);
 
   if (!ambassador) return null;
@@ -18,7 +20,7 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
   return (
     <button
       className={classes(
-        "flex shrink-0 flex-col items-center justify-start rounded-lg bg-alveus-green text-center shadow-lg outline-highlight transition-[outline,filter] hover:outline-3 hover:brightness-125 focus:outline-3",
+        "group/button relative flex shrink-0 flex-col items-center justify-start rounded-lg bg-alveus-green text-center shadow-lg transition-[filter] hover:brightness-125",
         className,
       )}
       id={ambassadorKey}
@@ -39,6 +41,8 @@ export default function AmbassadorButton(props: AmbassadorButtonProps) {
           {ambassador.species.name}
         </h3>
       </div>
+
+      <Ring active={active} />
     </button>
   );
 }

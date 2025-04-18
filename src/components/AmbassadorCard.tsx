@@ -9,6 +9,7 @@ import { classes } from "../utils/classes";
 
 import IconInfo from "./icons/IconInfo";
 import IconBack from "./icons/IconBack";
+import IconExternal from "./icons/IconExternal";
 
 import Tooltip from "./Tooltip";
 import Ring from "./Ring";
@@ -284,7 +285,19 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           <div className={rowClass}>
             <div>
               <h3 className={headingClass}>Enclosure</h3>
-              <p>{ambassador.enclosure.title}</p>
+              <p>
+                <a
+                  href={`https://www.alveussanctuary.org/ambassadors#enclosures:${camelToKebab(ambassador.enclosure.key)}`}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
+                >
+                  <span className="underline">
+                    {ambassador.enclosure.title}
+                  </span>{" "}
+                  <IconExternal className="mb-0.5 inline-block" size={12} />
+                </a>
+              </p>
             </div>
             <div>
               <h3 className={headingClass}>Arrived at Alveus</h3>
@@ -305,11 +318,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 )}`}
                 rel="noreferrer"
                 target="_blank"
-                className="text-nowrap text-alveus-green-200 underline transition-colors hover:text-highlight focus:text-highlight"
+                className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
               >
-                Alveus Sanctuary website
+                <span className="underline">Alveus Sanctuary website</span>{" "}
+                <IconExternal className="mb-0.5 inline-block" size={12} />
               </a>
-              .
             </p>
           </div>
         </div>

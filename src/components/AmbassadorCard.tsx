@@ -9,6 +9,7 @@ import { classes } from "../utils/classes";
 
 import IconInfo from "./icons/IconInfo";
 import IconBack from "./icons/IconBack";
+import IconExternal from "./icons/IconExternal";
 
 import Tooltip from "./Tooltip";
 import Ring from "./Ring";
@@ -17,6 +18,7 @@ import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
 
 const headingClass = "text-base text-alveus-green-400";
+const rowClass = "flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto";
 
 const stringifyLifespan = (value: number | { min: number; max: number }) => {
   return typeof value === "number" ? `${value}` : `${value.min}-${value.max}`;
@@ -186,7 +188,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto">
+          <div className={rowClass}>
             <div>
               <h3 className={headingClass}>Sex</h3>
               <p>{ambassador.sex || "Unknown"}</p>
@@ -280,13 +282,31 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
           </div>
 
-          <div>
-            <h3 className={headingClass}>Arrived at Alveus</h3>
-            <p>
-              {ambassador.arrival
-                ? formatDate(ambassador.arrival, false)
-                : "Unknown"}
-            </p>
+          <div className={rowClass}>
+            <div>
+              <h3 className={headingClass}>Enclosure</h3>
+              <p>
+                <a
+                  href={`https://www.alveussanctuary.org/ambassadors#enclosures:${camelToKebab(ambassador.enclosure.key)}`}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
+                >
+                  <span className="underline">
+                    {ambassador.enclosure.title}
+                  </span>{" "}
+                  <IconExternal className="mb-0.5 inline-block" size={12} />
+                </a>
+              </p>
+            </div>
+            <div>
+              <h3 className={headingClass}>Arrived at Alveus</h3>
+              <p>
+                {ambassador.arrival
+                  ? formatDate(ambassador.arrival, false)
+                  : "Unknown"}
+              </p>
+            </div>
           </div>
 
           <div className="mt-3 italic">
@@ -298,11 +318,11 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 )}`}
                 rel="noreferrer"
                 target="_blank"
-                className="text-nowrap text-alveus-green-200 underline transition-colors hover:text-highlight focus:text-highlight"
+                className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
               >
-                Alveus Sanctuary website
+                <span className="underline">Alveus Sanctuary website</span>{" "}
+                <IconExternal className="mb-0.5 inline-block" size={12} />
               </a>
-              .
             </p>
           </div>
         </div>

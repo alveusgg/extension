@@ -11,6 +11,7 @@ import IconInfo from "./icons/IconInfo";
 import IconBack from "./icons/IconBack";
 
 import Tooltip from "./Tooltip";
+import Ring from "./Ring";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
@@ -305,6 +306,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
           </div>
         </div>
+
+        <Ring />
       </div>
     </>
   );

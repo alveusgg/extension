@@ -1,6 +1,7 @@
 import { useMemo, type JSX } from "react";
 
 import Tooltip from "../../../components/Tooltip";
+import Ring from "../../../components/Ring";
 
 import { classes } from "../../../utils/classes";
 
@@ -47,9 +48,8 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
           <button
             onClick={option.onClick}
             className={classes(
-              "flex cursor-pointer items-center justify-center rounded-lg bg-alveus-green p-2 shadow-sm outline-highlight transition-[outline,filter] hover:outline-3 hover:brightness-125 focus:outline-3",
+              "group/button relative flex cursor-pointer items-center justify-center rounded-lg bg-alveus-green p-2 shadow-sm transition-[filter] hover:brightness-125",
               option.type === "primary" ? "h-16 w-16" : "h-12 w-12",
-              option.active && "outline-3",
               // If the previous type is not the same, add a margin
               idx > 0 &&
                 optionsWithOnClick[idx - 1]!.type !== option.type &&
@@ -60,6 +60,8 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
               size={option.type === "primary" ? 48 : 32}
               className="h-full w-full"
             />
+
+            <Ring active={option.active} />
           </button>
         </Tooltip>
       ))}

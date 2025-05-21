@@ -30,13 +30,13 @@
   },
   "dependencies": {
     "@alveusgg/data": "0.58.1",
-    "@headlessui/react": "^2.2.3",
+    "@headlessui/react": "^2.2.4",
     "luxon": "^3.6.1",
     "react": "^19.1.0",
     "react-canvas-confetti": "^2.0.7",
     "react-dom": "^19.1.0",
     "tmi.js": "^1.8.5",
-    "zod": "^3.24.4"
+    "zod": "^3.25.12"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",

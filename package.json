@@ -22,10 +22,10 @@
     "build": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" webpack",
     "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:prettier": "prettier --check .",
-    "lint": "run-p lint:*",
+    "lint": "pnpm run \"/^lint:.*/\"",
     "format:eslint": "pnpm lint:eslint --fix",
     "format:prettier": "pnpm lint:prettier --write",
-    "format": "run-p format:*",
+    "format": "pnpm run \"/^format:.*/\"",
     "types": "tsc --noEmit"
   },
   "dependencies": {
@@ -62,7 +62,6 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
     "mini-css-extract-plugin": "^2.9.2",
-    "npm-run-all2": "^8.0.4",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",

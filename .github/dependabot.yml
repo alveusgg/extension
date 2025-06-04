@@ -40,6 +40,7 @@ updates:
         patterns:
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "@headlessui/react"
 
       # Update `dependencies` and `devDependencies` separately
       # Create grouped PRs for minor/patch updates with majors getting dedicated PRs
@@ -52,6 +53,7 @@ updates:
         exclude-patterns:
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "@headlessui/react"
       development:
         dependency-type: development
         update-types:
@@ -60,6 +62,7 @@ updates:
         exclude-patterns:
           - "tailwindcss"
           - "@tailwindcss/*"
+          - "@headlessui/react"
 
     # Manually update major versions of `@types/node` with the version specified within .nvmrc
     ignore:

@@ -29,14 +29,14 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@alveusgg/data": "0.59.0",
+    "@alveusgg/data": "0.60.0",
     "@headlessui/react": "^2.2.4",
     "luxon": "^3.6.1",
     "react": "^19.1.0",
     "react-canvas-confetti": "^2.0.7",
     "react-dom": "^19.1.0",
     "tmi.js": "^1.8.5",
-    "zod": "^3.25.32"
+    "zod": "^3.25.50"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",

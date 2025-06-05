@@ -80,12 +80,6 @@
     "webpack-image-resize-loader": "^5.0.0",
     "zip-webpack-plugin": "^4.0.3"
   },
-  "pnpm": {
-    "overrides": {
-      "webpack-image-resize-loader>sharp": "^0.33.4",
-      "@types/zip-webpack-plugin>@types/webpack": "^5.0.0"
-    }
-  },
   "main": "public/index.html",
   "browserslist": {
     "production": [

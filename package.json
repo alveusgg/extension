@@ -13,9 +13,9 @@
   },
   "engines": {
     "node": "22.x",
-    "pnpm": "^9.14.2"
+    "pnpm": "^10.11.1"
   },
-  "packageManager": "pnpm@9.14.2",
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "prepare": "husky",
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--loader ts-node/esm\" webpack serve",
@@ -39,6 +39,7 @@
     "zod": "^3.25.50"
   },
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
     "@tailwindcss/postcss": "^4.1.8",
     "@types/canvas-confetti": "^1.9.0",
@@ -78,12 +79,6 @@
     "webpack-dev-server": "^5.2.2",
     "webpack-image-resize-loader": "^5.0.0",
     "zip-webpack-plugin": "^4.0.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "webpack-image-resize-loader>sharp": "^0.33.4",
-      "@types/zip-webpack-plugin>@types/webpack": "^5.0.0"
-    }
   },
   "main": "public/index.html",
   "browserslist": {

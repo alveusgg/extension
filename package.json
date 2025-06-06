@@ -29,7 +29,7 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@alveusgg/data": "0.61.0",
+    "@alveusgg/data": "0.63.0",
     "@headlessui/react": "^2.2.4",
     "luxon": "^3.6.1",
     "react": "^19.1.0",

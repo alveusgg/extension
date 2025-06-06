@@ -192,6 +192,7 @@ const winston = {
     lifespan: {
       source: "",
     },
+    birth: "live",
     class: {
       key: "mammalia",
       title: getClassification("mammalia"),

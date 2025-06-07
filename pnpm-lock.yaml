@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@alveusgg/data':
-        specifier: 0.60.0
-        version: 0.60.0(tailwindcss@4.1.8)(zod@3.25.50)
+        specifier: 0.61.0-pre.65797bc030112528a8cb3a40669d89933c3ea7ed
+        version: 0.61.0-pre.65797bc030112528a8cb3a40669d89933c3ea7ed(tailwindcss@4.1.8)(zod@3.25.50)
       '@headlessui/react':
         specifier: ^2.2.4
         version: 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -161,11 +161,11 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alveusgg/data@0.60.0':
-    resolution: {integrity: sha512-f7fZoxs2LdD7ezen5SexFqHT4gF+Jm6j4gajmPpoGpOebQbRtN5s+ZlB/VUiOPmZEivrgAB99F9IK20AQJwVAA==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.60.0/64f0e320cf1b7138492b6e935d02473e19b8a3c4}
+  '@alveusgg/data@0.61.0-pre.65797bc030112528a8cb3a40669d89933c3ea7ed':
+    resolution: {integrity: sha512-dnmKbLfyhQWoSW37zTqn4Nb2a2EpbGoFLt4DCHcQO2sqkHUjm6CA/QCQNA9DxRvno6BanhBrzITWTtz4USmf/Q==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.61.0-pre.65797bc030112528a8cb3a40669d89933c3ea7ed/f75fc00fd5774cd19cdede069602d12916a36605}
     peerDependencies:
       tailwindcss: ^4.0.0
-      zod: ^3.0.0
+      zod: ^3.25.0
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -3382,7 +3382,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.60.0(tailwindcss@4.1.8)(zod@3.25.50)':
+  '@alveusgg/data@0.61.0-pre.65797bc030112528a8cb3a40669d89933c3ea7ed(tailwindcss@4.1.8)(zod@3.25.50)':
     dependencies:
       tailwindcss: 4.1.8
       zod: 3.25.50

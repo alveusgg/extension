@@ -64,8 +64,8 @@ const apiSchema = z.object({
       apiAmbassadorSchema.nullable().catch((ctx) => {
         console.error(
           "Failed to parse ambassador",
-          ctx.input,
-          ctx.error.message,
+          ctx.value,
+          z.prettifyError(ctx.error),
         );
         return null;
       }),

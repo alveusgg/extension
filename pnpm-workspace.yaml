@@ -1,0 +1,8 @@
+overrides:
+  "webpack-image-resize-loader>sharp": "^0.33.4"
+  "@types/zip-webpack-plugin>@types/webpack": "^5.0.0"
+
+onlyBuiltDependencies:
+  - "@tailwindcss/oxide"
+  - "core-js-pure"
+  - "sharp"

@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@alveusgg/data':
         specifier: 0.60.0
-        version: 0.60.0(tailwindcss@4.1.8)(zod@3.25.50)
+        version: 0.60.0(tailwindcss@4.1.8)(zod@3.25.58)
       '@headlessui/react':
         specifier: ^2.2.4
         version: 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -34,8 +34,8 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^3.25.50
-        version: 3.25.50
+        specifier: ^3.25.58
+        version: 3.25.58
     devDependencies:
       '@eslint/js':
         specifier: ^9.28.0
@@ -3382,17 +3382,17 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@3.25.50:
-    resolution: {integrity: sha512-VstOnRxf4tlSq0raIwbn0n+LA34SxVoZ8r3pkwSUM0jqNiA/HCMQEVjTuS5FZmHsge+9MDGTiAuHyml5T0um6A==}
+  zod@3.25.58:
+    resolution: {integrity: sha512-DVLmMQzSZwNYzQoMaM3MQWnxr2eq+AtM9Hx3w1/Yl0pH8sLTSjN4jGP7w6f7uand6Hw44tsnSu1hz1AOA6qI2Q==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.60.0(tailwindcss@4.1.8)(zod@3.25.50)':
+  '@alveusgg/data@0.60.0(tailwindcss@4.1.8)(zod@3.25.58)':
     dependencies:
       tailwindcss: 4.1.8
-      zod: 3.25.50
+      zod: 3.25.58
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -6843,4 +6843,4 @@ snapshots:
       webpack-sources: 3.2.3
       yazl: 2.5.1
 
-  zod@3.25.50: {}
+  zod@3.25.58: {}

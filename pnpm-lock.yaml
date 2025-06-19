@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@alveusgg/data':
-        specifier: 0.60.0
-        version: 0.60.0(tailwindcss@4.1.10)(zod@3.25.58)
+        specifier: 0.61.0
+        version: 0.61.0(tailwindcss@4.1.10)(zod@3.25.67)
       '@headlessui/react':
         specifier: ^2.2.4
         version: 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -34,8 +34,8 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^3.25.58
-        version: 3.25.58
+        specifier: ^3.25.67
+        version: 3.25.67
     devDependencies:
       '@eslint/js':
         specifier: ^9.29.0
@@ -164,8 +164,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alveusgg/data@0.60.0':
-    resolution: {integrity: sha512-f7fZoxs2LdD7ezen5SexFqHT4gF+Jm6j4gajmPpoGpOebQbRtN5s+ZlB/VUiOPmZEivrgAB99F9IK20AQJwVAA==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.60.0/64f0e320cf1b7138492b6e935d02473e19b8a3c4}
+  '@alveusgg/data@0.61.0':
+    resolution: {integrity: sha512-T9EYtRO0dV+caM474gK+xk0CyD6dEfqt3OEGtAMuzQh9ouKpYCAr6xU5ON6Mg15fRiRIQnFOuy9cBEhdXT8gWw==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.61.0/5b07e339775c55f5d435ebb9143e0763683e6010}
     peerDependencies:
       tailwindcss: ^4.0.0
       zod: ^3.0.0
@@ -3390,17 +3390,17 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@3.25.58:
-    resolution: {integrity: sha512-DVLmMQzSZwNYzQoMaM3MQWnxr2eq+AtM9Hx3w1/Yl0pH8sLTSjN4jGP7w6f7uand6Hw44tsnSu1hz1AOA6qI2Q==}
+  zod@3.25.67:
+    resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.60.0(tailwindcss@4.1.10)(zod@3.25.58)':
+  '@alveusgg/data@0.61.0(tailwindcss@4.1.10)(zod@3.25.67)':
     dependencies:
       tailwindcss: 4.1.10
-      zod: 3.25.58
+      zod: 3.25.67
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -6857,4 +6857,4 @@ snapshots:
       webpack-sources: 3.2.3
       yazl: 2.5.1
 
-  zod@3.25.58: {}
+  zod@3.25.67: {}

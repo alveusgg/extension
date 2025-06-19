@@ -6,7 +6,7 @@ import {
   useState,
   type ContextType,
 } from "react";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import allAmbassadors, {
   ambassadorSchema,
@@ -59,12 +59,13 @@ type Ambassador = z.infer<typeof apiAmbassadorSchema>;
 const apiSchema = z.object({
   v3: z
     .record(
+      z.string(),
       // Use nullable here as the fallback for when we fail to parse an ambassador
       apiAmbassadorSchema.nullable().catch((ctx) => {
         console.error(
           "Failed to parse ambassador",
-          ctx.input,
-          ctx.error.message,
+          ctx.value,
+          z.prettifyError(ctx.error),
         );
         return null;
       }),
@@ -192,6 +193,7 @@ const winston = {
     lifespan: {
       source: "",
     },
+    birth: "live",
     class: {
       key: "mammalia",
       title: getClassification("mammalia"),

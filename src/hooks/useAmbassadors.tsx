@@ -39,9 +39,11 @@ const apiAmbassadorSchema = ambassadorSchema.extend({
   }),
   species: speciesSchema.extend({
     key: z.string(),
-    iucn: speciesSchema.shape.iucn.extend({
-      title: z.string(),
-    }),
+    iucn: speciesSchema.shape.iucn.and(
+      z.object({
+        title: z.string(),
+      }),
+    ),
     class: z.object({
       key: z.string(),
       title: z.string(),
@@ -182,6 +184,7 @@ const winston = {
     scientificName: "Twitchus memeticus",
     iucn: {
       id: null,
+      assessment: null,
       title: getIUCNStatus("NE"),
       status: "NE",
     },

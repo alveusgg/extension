@@ -1,5 +1,5 @@
 import type { CreateTypes } from "canvas-confetti";
-import { type Ref, useCallback, useEffect, useRef } from "react";
+import { type Ref, useCallback, useEffect, useRef, useState } from "react";
 import Confetti from "react-canvas-confetti";
 import { createPortal } from "react-dom";
 
@@ -47,6 +47,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     ...extras
   } = props;
   const ambassador = useAmbassador(ambassadorKey);
+
+  const [flipped, setFlipped] = useState(false);
+  const flipCard = useCallback(() => setFlipped((prev) => !prev), []);
 
   const mod =
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
@@ -130,6 +133,14 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         !disableCardEffects && "mb-4",
         className,
       )}
+      style={
+        ambassador.fact
+          ? {
+              clipPath:
+                "polygon(0 0, calc(100% - 2.5rem) 0, 100% 2.5rem, 100% 100%, 0 100%)",
+            }
+          : undefined
+      }
       ref={callbackRef}
       {...extras}
     >
@@ -151,214 +162,278 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </>
       )}
 
-      <div className="flex min-h-0 flex-auto flex-col justify-start overflow-y-clip rounded-lg align-top">
-        <img
-          className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
-          src={ambassador.image.src}
-          alt={ambassador.image.alt}
-          style={{
-            objectPosition: ambassador.image.position,
-          }}
-          loading="lazy"
-        />
+      {!flipped && (
+        <div className="flex min-h-0 flex-auto flex-col justify-start overflow-y-clip rounded-lg align-top">
+          <img
+            className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
+            src={ambassador.image.src}
+            alt={ambassador.image.alt}
+            style={{
+              objectPosition: ambassador.image.position,
+            }}
+            loading="lazy"
+          />
 
-        <div className="relative flex w-full items-center justify-center bg-alveus-green px-8 py-1">
-          {onClose && (
+          <div className="relative flex w-full items-center justify-center bg-alveus-green px-8 py-1">
+            {onClose && (
+              <button
+                className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight sm:hidden"
+                onClick={onClose}
+                type="button"
+                aria-label="Close"
+              >
+                <IconBack size={20} alt="Back arrow" />
+              </button>
+            )}
+
+            <h2 className="text-base text-balance text-white">
+              {ambassador.name}
+            </h2>
+          </div>
+          <div className="mb-2 flex min-h-0 flex-auto scrollbar-thin scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900 flex-col gap-1 overflow-y-auto p-2">
+            {mod && (
+              <div className="flex items-center gap-2">
+                <img
+                  className="h-6 w-6 object-cover"
+                  src={moderatorBadge}
+                  alt="Moderator badge"
+                />
+                <p>
+                  Show this card to everyone by using{" "}
+                  <code>!{ambassador.commands[0]}</code> in chat.
+                </p>
+              </div>
+            )}
+
+            <div>
+              <h3 className={headingClass}>Species</h3>
+              <p>{ambassador.species.name}</p>
+              <p>
+                <i>{ambassador.species.scientificName}</i>{" "}
+                <span className="text-alveus-green-200">
+                  ({ambassador.species.class.title})
+                </span>
+              </p>
+            </div>
+
+            <div className={rowClass}>
+              <div>
+                <h3 className={headingClass}>Sex</h3>
+                <p>{ambassador.sex || "Unknown"}</p>
+              </div>
+              <div>
+                <h3 className={headingClass}>Age</h3>
+                <p>
+                  {age[0] === "~" && (
+                    <span className="text-base leading-none" title="Approx.">
+                      ~
+                    </span>
+                  )}
+                  {age.slice(age[0] === "~" ? 1 : 0)}
+                </p>
+              </div>
+              <div>
+                <h3 className={headingClass}>Birthday</h3>
+                <p>
+                  {birth[0] === "~" && (
+                    <span className="text-base leading-none" title="Approx.">
+                      ~
+                    </span>
+                  )}
+                  {birth.slice(birth[0] === "~" ? 1 : 0)}
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className={headingClass}>Story</h3>
+              <p>{ambassador.story}</p>
+            </div>
+
+            <div>
+              <h3 className={headingClass}>Conservation Mission</h3>
+              <p>{ambassador.mission}</p>
+            </div>
+
+            <div>
+              <Tooltip
+                text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
+                maxWidth="18rem"
+                fontSize="0.9rem"
+              >
+                <div className="inline-flex items-center gap-2">
+                  <h3 className={headingClass}>Conservation Status</h3>
+                  <IconInfo
+                    size={20}
+                    className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
+                  />
+                </div>
+              </Tooltip>
+              <p>
+                IUCN:{" "}
+                {ambassador.species.iucn.id &&
+                ambassador.species.iucn.assessment ? (
+                  <a
+                    href={`https://www.iucnredlist.org/species/${ambassador.species.iucn.id}/${ambassador.species.iucn.assessment}`}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
+                  >
+                    <span className="underline">
+                      {ambassador.species.iucn.title}
+                    </span>{" "}
+                    <IconExternal className="mb-0.5 inline-block" size={12} />
+                  </a>
+                ) : (
+                  ambassador.species.iucn.title
+                )}
+              </p>
+            </div>
+
+            {ambassador.fact && (
+              <div>
+                <Tooltip
+                  text="Click to see a fun fact about this ambassador!"
+                  maxWidth="18rem"
+                  fontSize="0.9rem"
+                >
+                  <div className="inline-flex items-center gap-2">
+                    <h3 className={headingClass}>Did you know?</h3>
+                    <button
+                      onClick={flipCard}
+                      aria-label="Flip card to see fact"
+                      className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
+                    >
+                      <IconInfo size={20} />
+                    </button>
+                  </div>
+                </Tooltip>
+              </div>
+            )}
+
+            <div>
+              <h3 className={headingClass}>Native To</h3>
+              <p>{ambassador.species.native}</p>
+            </div>
+
+            <div>
+              <h3 className={headingClass}>Species Lifespan</h3>
+              <p>
+                Wild:{" "}
+                {typeof ambassador.species.lifespan.wild === "string" ? (
+                  ambassador.species.lifespan.wild
+                ) : (
+                  <>
+                    <span className="text-base leading-none" title="Approx.">
+                      ~
+                    </span>
+                    {stringifyLifespan(ambassador.species.lifespan.wild)} years
+                  </>
+                )}
+              </p>
+              <p>
+                Captivity:{" "}
+                {typeof ambassador.species.lifespan.captivity === "string" ? (
+                  ambassador.species.lifespan.captivity
+                ) : (
+                  <>
+                    <span className="text-base leading-none" title="Approx.">
+                      ~
+                    </span>
+                    {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
+                    years
+                  </>
+                )}
+              </p>
+            </div>
+
+            <div className={rowClass}>
+              <div>
+                <h3 className={headingClass}>Enclosure</h3>
+                <p>
+                  <a
+                    href={`https://www.alveussanctuary.org/ambassadors#enclosures:${camelToKebab(ambassador.enclosure.key)}`}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
+                  >
+                    <span className="underline">
+                      {ambassador.enclosure.title}
+                    </span>{" "}
+                    <IconExternal className="mb-0.5 inline-block" size={12} />
+                  </a>
+                </p>
+              </div>
+              <div>
+                <h3 className={headingClass}>Arrived at Alveus</h3>
+                <p>
+                  {ambassador.arrival
+                    ? formatDate(ambassador.arrival, false)
+                    : "Unknown"}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-3 italic">
+              <p>
+                Learn more about {ambassador.name} on the{" "}
+                <a
+                  href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
+                    ambassadorKey,
+                  )}`}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
+                >
+                  <span className="underline">Alveus Sanctuary website</span>{" "}
+                  <IconExternal className="mb-0.5 inline-block" size={12} />
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {flipped && (
+        <div className="flex min-h-0 flex-auto flex-col rounded-lg align-top">
+          <div className="relative flex w-full items-center justify-center rounded-t-lg bg-alveus-green px-8 py-1">
             <button
-              className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight sm:hidden"
-              onClick={onClose}
+              className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight"
+              onClick={flipCard}
               type="button"
-              aria-label="Close"
+              aria-label="back"
             >
               <IconBack size={20} alt="Back arrow" />
             </button>
-          )}
-
-          <h2 className="text-base text-balance text-white">
-            {ambassador.name}
-          </h2>
-        </div>
-        <div className="mb-2 flex min-h-0 flex-auto scrollbar-thin scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900 flex-col gap-1 overflow-y-auto p-2">
-          {mod && (
-            <div className="flex items-center gap-2">
-              <img
-                className="h-6 w-6 object-cover"
-                src={moderatorBadge}
-                alt="Moderator badge"
-              />
-              <p>
-                Show this card to everyone by using{" "}
-                <code>!{ambassador.commands[0]}</code> in chat.
-              </p>
-            </div>
-          )}
-
-          <div>
-            <h3 className={headingClass}>Species</h3>
-            <p>{ambassador.species.name}</p>
-            <p>
-              <i>{ambassador.species.scientificName}</i>{" "}
-              <span className="text-alveus-green-200">
-                ({ambassador.species.class.title})
-              </span>
-            </p>
+            <h2 className="text-base text-balance text-white">
+              {ambassador.name}
+            </h2>
           </div>
-
-          <div className={rowClass}>
-            <div>
-              <h3 className={headingClass}>Sex</h3>
-              <p>{ambassador.sex || "Unknown"}</p>
-            </div>
-            <div>
-              <h3 className={headingClass}>Age</h3>
-              <p>
-                {age[0] === "~" && (
-                  <span className="text-base leading-none" title="Approx.">
-                    ~
-                  </span>
-                )}
-                {age.slice(age[0] === "~" ? 1 : 0)}
-              </p>
-            </div>
-            <div>
-              <h3 className={headingClass}>Birthday</h3>
-              <p>
-                {birth[0] === "~" && (
-                  <span className="text-base leading-none" title="Approx.">
-                    ~
-                  </span>
-                )}
-                {birth.slice(birth[0] === "~" ? 1 : 0)}
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className={headingClass}>Story</h3>
-            <p>{ambassador.story}</p>
-          </div>
-
-          <div>
-            <h3 className={headingClass}>Conservation Mission</h3>
-            <p>{ambassador.mission}</p>
-          </div>
-
-          <div>
-            <Tooltip
-              text="An objective assessment system for classifying the status of plants, animals, and other organisms threatened with extinction."
-              maxWidth="18rem"
-              fontSize="0.9rem"
+          <p className="mt-2 px-4 text-center text-lg text-alveus-green-400">
+            Did you know?
+          </p>
+          <p className="mt-2 px-4 text-sm text-alveus-green-200">
+            {ambassador.fact}
+          </p>
+          <div className="mt-3 flex items-center justify-center">
+            <button
+              className="mb-3 rounded bg-alveus-green-400 px-2 py-2 text-white transition-colors hover:bg-highlight active:bg-highlight"
+              onClick={() => {
+                window.open(
+                  `https://www.alveussanctuary.org/ambassadors/${camelToKebab(ambassadorKey)}`,
+                  "_blank",
+                );
+              }}
+              type="button"
             >
-              <div className="inline-flex items-center gap-2">
-                <h3 className={headingClass}>Conservation Status</h3>
-                <IconInfo
-                  size={20}
-                  className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
-                />
-              </div>
-            </Tooltip>
-            <p>
-              IUCN:{" "}
-              {ambassador.species.iucn.id &&
-              ambassador.species.iucn.assessment ? (
-                <a
-                  href={`https://www.iucnredlist.org/species/${ambassador.species.iucn.id}/${ambassador.species.iucn.assessment}`}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
-                >
-                  <span className="underline">
-                    {ambassador.species.iucn.title}
-                  </span>{" "}
-                  <IconExternal className="mb-0.5 inline-block" size={12} />
-                </a>
-              ) : (
-                ambassador.species.iucn.title
-              )}
-            </p>
-          </div>
-
-          <div>
-            <h3 className={headingClass}>Native To</h3>
-            <p>{ambassador.species.native}</p>
-          </div>
-
-          <div>
-            <h3 className={headingClass}>Species Lifespan</h3>
-            <p>
-              Wild:{" "}
-              {typeof ambassador.species.lifespan.wild === "string" ? (
-                ambassador.species.lifespan.wild
-              ) : (
-                <>
-                  <span className="text-base leading-none" title="Approx.">
-                    ~
-                  </span>
-                  {stringifyLifespan(ambassador.species.lifespan.wild)} years
-                </>
-              )}
-            </p>
-            <p>
-              Captivity:{" "}
-              {typeof ambassador.species.lifespan.captivity === "string" ? (
-                ambassador.species.lifespan.captivity
-              ) : (
-                <>
-                  <span className="text-base leading-none" title="Approx.">
-                    ~
-                  </span>
-                  {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
-                  years
-                </>
-              )}
-            </p>
-          </div>
-
-          <div className={rowClass}>
-            <div>
-              <h3 className={headingClass}>Enclosure</h3>
-              <p>
-                <a
-                  href={`https://www.alveussanctuary.org/ambassadors#enclosures:${camelToKebab(ambassador.enclosure.key)}`}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
-                >
-                  <span className="underline">
-                    {ambassador.enclosure.title}
-                  </span>{" "}
-                  <IconExternal className="mb-0.5 inline-block" size={12} />
-                </a>
-              </p>
-            </div>
-            <div>
-              <h3 className={headingClass}>Arrived at Alveus</h3>
-              <p>
-                {ambassador.arrival
-                  ? formatDate(ambassador.arrival, false)
-                  : "Unknown"}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-3 italic">
-            <p>
-              Learn more about {ambassador.name} on the{" "}
-              <a
-                href={`https://www.alveussanctuary.org/ambassadors/${camelToKebab(
-                  ambassadorKey,
-                )}`}
-                rel="noreferrer"
-                target="_blank"
-                className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
-              >
-                <span className="underline">Alveus Sanctuary website</span>{" "}
+              <p className="text-alveus-green-900">
+                Learn more on the Alveus Sanctuary website{" "}
                 <IconExternal className="mb-0.5 inline-block" size={12} />
-              </a>
-            </p>
+              </p>
+            </button>
           </div>
         </div>
-      </div>
+      )}
 
       <Ring />
     </TiltCard>

@@ -366,9 +366,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
               className,
             )}
           >
-            <div className="relative flex w-full items-center justify-center bg-alveus-green px-8 py-1">
+            <div className="relative flex w-full items-center justify-center rounded-t-lg bg-alveus-green px-8 py-1">
               <button
-                className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight sm:hidden"
+                className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight"
                 onClick={flipCard}
                 type="button"
                 aria-label="back"

@@ -379,7 +379,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
               Did you know?
             </p>
             <p className="mt-2 px-4 text-sm text-alveus-green-200">
-              {ambassador.fact || "No fact available."}
+              {ambassador.fact}
             </p>
             <div className="mt-3 flex items-center justify-center">
               <button

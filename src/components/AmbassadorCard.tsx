@@ -11,11 +11,13 @@ import { useAmbassador } from "../hooks/useAmbassadors";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
+import Dogear from "./Dogear";
 
 import IconBack from "./icons/IconBack";
 import IconExternal from "./icons/IconExternal";
 import IconInfo from "./icons/IconInfo";
 
+import Dogear from "./Dogear";
 import Ring from "./Ring";
 import TiltCard from "./TiltCard";
 import Tooltip from "./Tooltip";
@@ -144,6 +146,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       ref={callbackRef}
       {...extras}
     >
+      {ambassador.fact && <Dogear onClick={flipCard} />}
+
       {birthday && (
         <>
           <img

@@ -11,7 +11,6 @@ import { useAmbassador } from "../hooks/useAmbassadors";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
-import Dogear from "./Dogear";
 
 import IconBack from "./icons/IconBack";
 import IconExternal from "./icons/IconExternal";

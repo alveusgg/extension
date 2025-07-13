@@ -23,7 +23,11 @@ import { classes } from "../utils/classes";
           </button>
 */
 
-export default function CardDogear(props: { onClick?: () => void }) {
+export default function CardDogear(props: {
+  onClick?: () => void;
+  onHover?: () => void;
+  onMouseLeave?: () => void;
+}) {
   return (
     <Tooltip text="Click me to flip the card!">
       <button

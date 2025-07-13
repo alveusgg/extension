@@ -16,6 +16,7 @@ import Ring from "./Ring";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
+import Dogear from "./Dogear";
 
 const headingClass = "text-base text-alveus-green-400";
 const rowClass = "flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto";
@@ -130,12 +131,23 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       {birthday && <Confetti onInit={confettiInit} />}
       <div
         className={classes(
-          "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs shadow-xl",
+          "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs",
           className,
         )}
+        // If the card is flippable, we need to cut away at the card to make room for the dogear.
+        style={
+          ambassador.fact
+            ? {
+                clipPath:
+                  "polygon(0 0, calc(100% - 2.5rem) 0, 100% 2.5rem, 100% 100%, 0 100%)",
+              }
+            : undefined
+        }
         ref={callbackRef}
         {...extras}
       >
+        {ambassador.fact && <Dogear onClick={flipCard} />}
+
         {birthday && (
           <img
             src={partyHat}

@@ -134,7 +134,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       {birthday && <Confetti onInit={confettiInit} />}
       <div
         className={classes(
-          "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs",
+          "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs shadow-xl",
           className,
           // TODO
           dogearIsHovered && "",

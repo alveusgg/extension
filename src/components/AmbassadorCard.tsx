@@ -360,7 +360,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           </>
         )}
         {flipped && (
-          <CardContainer className={className}>
+          <div className={className}>
             <div className="relative flex w-full items-center justify-center rounded-t-lg bg-alveus-green px-8 py-1">
               <button
                 className="absolute left-0 p-1 transition-colors hover:text-highlight active:text-highlight"

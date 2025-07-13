@@ -41,6 +41,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     ...extras
   } = props;
   const ambassador = useAmbassador(ambassadorKey);
+
+  const [dogearIsHovered, setDogearIsHovered] = useState(false);
+
   const [flipped, setFlipped] = useState(false);
 
   const flipCard = useCallback(() => {
@@ -133,6 +136,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         className={classes(
           "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs",
           className,
+          // TODO
+          dogearIsHovered && "",
         )}
         // If the card is flippable, we need to cut away at the card to make room for the dogear.
         style={
@@ -146,7 +151,13 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         ref={callbackRef}
         {...extras}
       >
-        {ambassador.fact && <Dogear onClick={flipCard} />}
+        {ambassador.fact && (
+          <Dogear
+            onHover={() => setDogearIsHovered(true)}
+            onMouseLeave={() => setDogearIsHovered(false)}
+            onClick={flipCard}
+          />
+        )}
 
         {birthday && (
           <img

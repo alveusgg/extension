@@ -262,13 +262,13 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                   >
                     <div className="inline-flex items-center gap-2">
                       <h3 className={headingClass}>Did you know?</h3>
-                      <IconInfo
-                        size={20}
-                        className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
+                      <button
                         onClick={flipCard}
                         aria-label="Flip card to see fact"
-                        cursor="pointer"
-                      />
+                        className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
+                      >
+                        <IconInfo size={20} />
+                      </button>
                     </div>
                   </Tooltip>
                 </div>

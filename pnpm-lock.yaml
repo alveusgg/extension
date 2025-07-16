@@ -19,8 +19,8 @@ importers:
         specifier: ^2.2.4
         version: 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       luxon:
-        specifier: ^3.6.1
-        version: 3.6.1
+        specifier: ^3.7.1
+        version: 3.7.1
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -2201,8 +2201,8 @@ packages:
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
-  luxon@3.6.1:
-    resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
+  luxon@3.7.1:
+    resolution: {integrity: sha512-RkRWjA926cTvz5rAb1BqyWkKbbjzCGchDUIKMCUvNi17j6f6j8uHGDV82Aqcqtzd+icoYpELmG3ksgGiFNNcNg==}
     engines: {node: '>=12'}
 
   magic-string@0.30.17:
@@ -5608,7 +5608,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  luxon@3.6.1: {}
+  luxon@3.7.1: {}
 
   magic-string@0.30.17:
     dependencies:

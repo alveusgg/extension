@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@alveusgg/data':
-        specifier: 0.64.0
-        version: 0.64.0(tailwindcss@4.1.11)(zod@4.0.5)
+        specifier: 0.65.0
+        version: 0.65.0(tailwindcss@4.1.11)(zod@4.0.5)
       '@headlessui/react':
         specifier: ^2.2.4
         version: 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -164,14 +164,11 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alveusgg/data@0.64.0':
-    resolution: {integrity: sha512-zJZRpBzYBFe5+Jr5ihLnNoWQgkN3bjxLfvGTYmUGBKy1Ou7adf6a7qg0I3Y9UrYNg838aha/d0VeCHQ/8AoNIA==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.64.0/bb06ccc72152c448fef640e88feb228513cff2e9}
+  '@alveusgg/data@0.65.0':
+    resolution: {integrity: sha512-ZNwD/2DMbWgS58VYxcbaUsfNxIlNKJgsbpCmyyjeGGySWN99R95VV1uWyv6pyQaUZsztkD8B1T2HMH0N9tZaKw==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.65.0/2570be06964aecf1795e497ab88f4d977512b0ee}
     peerDependencies:
       tailwindcss: ^4.0.0
-      zod: ^3.25.0
-    peerDependenciesMeta:
-      tailwindcss:
-        optional: true
+      zod: ^4.0.0
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -3401,11 +3398,10 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.64.0(tailwindcss@4.1.11)(zod@4.0.5)':
+  '@alveusgg/data@0.65.0(tailwindcss@4.1.11)(zod@4.0.5)':
     dependencies:
-      zod: 4.0.5
-    optionalDependencies:
       tailwindcss: 4.1.11
+      zod: 4.0.5
 
   '@ampproject/remapping@2.3.0':
     dependencies:

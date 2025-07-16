@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@alveusgg/data':
         specifier: 0.64.0
-        version: 0.64.0(tailwindcss@4.1.11)(zod@3.25.76)
+        version: 0.64.0(tailwindcss@4.1.11)(zod@4.0.5)
       '@headlessui/react':
         specifier: ^2.2.4
         version: 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -34,8 +34,8 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^3.25.76
-        version: 3.25.76
+        specifier: ^4.0.5
+        version: 4.0.5
     devDependencies:
       '@eslint/js':
         specifier: ^9.31.0
@@ -169,6 +169,9 @@ packages:
     peerDependencies:
       tailwindcss: ^4.0.0
       zod: ^3.25.0
+    peerDependenciesMeta:
+      tailwindcss:
+        optional: true
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -3391,17 +3394,18 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@3.25.76:
-    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+  zod@4.0.5:
+    resolution: {integrity: sha512-/5UuuRPStvHXu7RS+gmvRf4NXrNxpSllGwDnCBcJZtQsKrviYXm54yDGV2KYNLT5kq0lHGcl7lqWJLgSaG+tgA==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.64.0(tailwindcss@4.1.11)(zod@3.25.76)':
+  '@alveusgg/data@0.64.0(tailwindcss@4.1.11)(zod@4.0.5)':
     dependencies:
+      zod: 4.0.5
+    optionalDependencies:
       tailwindcss: 4.1.11
-      zod: 3.25.76
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -6861,4 +6865,4 @@ snapshots:
       webpack-sources: 3.3.3
       yazl: 2.5.1
 
-  zod@3.25.76: {}
+  zod@4.0.5: {}

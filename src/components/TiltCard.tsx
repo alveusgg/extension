@@ -1,30 +1,44 @@
 import { useRef, useState, useCallback } from "react";
 
-interface TiltCardProps {
-  children: React.ReactNode;
+interface ConditionalTiltCardProps extends TiltCardProps {
   disabled?: boolean;
-  maxTilt?: number;
-  glareMaxOpacity?: number;
-  className?: string;
 }
 
-export default function TiltCard({
+export default function ConditionalTiltCard({
   children,
   disabled = false,
   maxTilt = 15,
   glareMaxOpacity = 0.3,
   className = "",
-}: Readonly<TiltCardProps>) {
+}: Readonly<ConditionalTiltCardProps>) {
   if (disabled) {
-    return (
-      <div className="relative inline-block">
-        <div className={`relative overflow-visible ${className}`}>
-          {children}
-        </div>
-      </div>
-    );
+    return children;
   }
 
+  return (
+    <TiltCard
+      maxTilt={maxTilt}
+      glareMaxOpacity={glareMaxOpacity}
+      className={className}
+    >
+      {children}
+    </TiltCard>
+  );
+}
+
+interface TiltCardProps {
+  children: React.ReactNode;
+  maxTilt?: number;
+  glareMaxOpacity?: number;
+  className?: string;
+}
+
+function TiltCard({
+  children,
+  maxTilt = 15,
+  glareMaxOpacity = 0.3,
+  className = "",
+}: Readonly<TiltCardProps>) {
   const cardRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});

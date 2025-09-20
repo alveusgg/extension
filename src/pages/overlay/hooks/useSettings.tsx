@@ -38,6 +38,12 @@ const settings = {
     },
     configurable: false,
   },
+  disableCardEffects: {
+    title: "Disable Ambassador Card Effects",
+    type: "boolean",
+    process: (value: any) => !!value,
+    configurable: true,
+  },
 };
 
 type SettingsKey = keyof typeof settings;

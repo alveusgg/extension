@@ -30,6 +30,7 @@ export interface AmbassadorCardProps {
   onClose?: () => void;
   className?: string;
   ref?: Ref<HTMLDivElement>;
+  disableCardEffects?: boolean;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
@@ -38,6 +39,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     onClose,
     className,
     ref,
+    disableCardEffects,
     ...extras
   } = props;
   const ambassador = useAmbassador(ambassadorKey);
@@ -122,7 +124,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   return (
     <>
       {birthday && <Confetti onInit={confettiInit} />}
-      <TiltCard>
+      <TiltCard disabled={disableCardEffects}>
         <div
           className={classes(
             "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs shadow-xl",

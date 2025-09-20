@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from "react";
 
 interface TiltCardProps {
   children: React.ReactNode;
+  disabled?: boolean;
   maxTilt?: number;
   glareMaxOpacity?: number;
   className?: string;
@@ -9,10 +10,21 @@ interface TiltCardProps {
 
 export default function TiltCard({
   children,
+  disabled = false,
   maxTilt = 15,
   glareMaxOpacity = 0.3,
   className = "",
 }: Readonly<TiltCardProps>) {
+  if (disabled) {
+    return (
+      <div className="relative inline-block">
+        <div className={`relative overflow-visible ${className}`}>
+          {children}
+        </div>
+      </div>
+    );
+  }
+
   const cardRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});

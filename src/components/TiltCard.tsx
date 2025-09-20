@@ -15,8 +15,8 @@ export default function TiltCard({
 }: Readonly<TiltCardProps>) {
   const cardRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [tiltStyle, setTiltStyle] = useState({});
-  const [glareStyle, setGlareStyle] = useState({});
+  const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
+  const [glareStyle, setGlareStyle] = useState<React.CSSProperties>({});
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = useCallback(
@@ -39,9 +39,11 @@ export default function TiltCard({
       const glareX = 100 - (Math.max(-1, Math.min(1, mouseX)) + 1) * 50;
       const glareY = 100 - (Math.max(-1, Math.min(1, mouseY)) + 1) * 50;
 
-      const distanceFromCenter = Math.sqrt(mouseX * mouseX + mouseY * mouseY);
+      const clampedDistanceFromCenter = Math.sqrt(
+        clampedMouseX * clampedMouseX + clampedMouseY * clampedMouseY,
+      );
       const glareOpacity = Math.min(
-        distanceFromCenter * glareMaxOpacity,
+        clampedDistanceFromCenter * glareMaxOpacity,
         glareMaxOpacity,
       );
 

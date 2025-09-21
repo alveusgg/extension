@@ -62,24 +62,28 @@ function TiltCard({
       const tiltX = clampedMouseY * maxTilt * -1;
       const tiltY = clampedMouseX * maxTilt;
 
-      const glareX = 100 - (Math.max(-1, Math.min(1, mouseX)) + 1) * 50;
-      const glareY = 100 - (Math.max(-1, Math.min(1, mouseY)) + 1) * 50;
+      const glareX = (Math.max(-1, Math.min(1, mouseX)) + 1) * 50;
+      const glareY = (Math.max(-1, Math.min(1, mouseY)) + 1) * 50;
 
-      const clampedDistanceFromCenter = Math.sqrt(
-        clampedMouseX * clampedMouseX + clampedMouseY * clampedMouseY,
-      );
-      const glareOpacity = Math.min(
-        clampedDistanceFromCenter * glareMaxOpacity,
-        glareMaxOpacity,
-      );
+      const distanceFromCenter = Math.sqrt(mouseX * mouseX + mouseY * mouseY);
+      const normalizedDistance = Math.min(distanceFromCenter, 1);
+
+      const glareOpacity = Math.pow(normalizedDistance, 0.8) * glareMaxOpacity;
+
+      const glareSize = 70 + normalizedDistance * 40;
 
       setTiltStyle({
         transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`,
       });
 
       setGlareStyle({
-        background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,${glareOpacity}) 0%, transparent 50%)`,
-        opacity: glareOpacity,
+        background: `radial-gradient(ellipse ${glareSize * 1.1}% ${glareSize * 0.9}% at ${glareX}% ${glareY}%,
+          transparent 0%,
+          transparent 70%,
+          rgba(255,255,255,${glareOpacity / 4}) 80%,
+          transparent 90%,
+          rgba(255,255,255,${glareOpacity}) 100%)`,
+        opacity: normalizedDistance > 0.1 ? 1 : normalizedDistance / 0.1, // Fade in smoothly
       });
     },
     [maxTilt, glareMaxOpacity],
@@ -128,12 +132,10 @@ function TiltCard({
       >
         {children}
 
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div
-            className="absolute -inset-full transition-opacity duration-300"
-            style={glareStyle}
-          />
-        </div>
+        <div
+          className="pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-300"
+          style={glareStyle}
+        />
       </div>
     </div>
   );

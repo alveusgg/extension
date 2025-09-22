@@ -129,7 +129,7 @@ const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
     if (!cardRef.current) return;
     setIsHovered(false);
 
-    cardRef.current.style.transition = "transform 0.5s ease-out";
+    cardRef.current.style.transition = "all 0.5s ease-out";
 
     setTiltStyle({
       transform:

@@ -1,30 +1,50 @@
-import { useRef, useState, useCallback } from "react";
+import {
+  useRef,
+  useState,
+  useCallback,
+  forwardRef,
+  type CSSProperties,
+} from "react";
+import { classes } from "../utils/classes";
 
 interface ConditionalTiltCardProps extends TiltCardProps {
   disabled?: boolean;
 }
 
-export default function ConditionalTiltCard({
-  children,
-  disabled = false,
-  maxTilt = 15,
-  glareMaxOpacity = 0.3,
-  className = "",
-}: Readonly<ConditionalTiltCardProps>) {
+const ConditionalTiltCard = forwardRef<
+  HTMLDivElement,
+  ConditionalTiltCardProps
+>(function ConditionalTiltCard(
+  {
+    children,
+    disabled = true,
+    maxTilt = 15,
+    glareMaxOpacity = 0.3,
+    className = "",
+    ...extras
+  },
+  ref,
+) {
   if (disabled) {
-    return children;
+    return (
+      <div ref={ref} className={className} {...extras}>
+        {children}
+      </div>
+    );
   }
 
   return (
     <TiltCard
+      ref={ref}
       maxTilt={maxTilt}
       glareMaxOpacity={glareMaxOpacity}
       className={className}
+      {...extras}
     >
       {children}
     </TiltCard>
   );
-}
+});
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -33,16 +53,26 @@ interface TiltCardProps {
   className?: string;
 }
 
-function TiltCard({
-  children,
-  maxTilt = 15,
-  glareMaxOpacity = 0.3,
-  className = "",
-}: Readonly<TiltCardProps>) {
-  const cardRef = useRef<HTMLDivElement>(null);
+const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
+  { children, maxTilt = 15, glareMaxOpacity = 0.3, className = "", ...extras },
+  ref,
+) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
-  const [glareStyle, setGlareStyle] = useState<React.CSSProperties>({});
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const callbackRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (ref) {
+        if (typeof ref === "function") ref(node);
+        else ref.current = node;
+      }
+      cardRef.current = node;
+    },
+    [ref],
+  );
+
+  const [tiltStyle, setTiltStyle] = useState<CSSProperties>({});
+  const [glareStyle, setGlareStyle] = useState<CSSProperties>({});
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = useCallback(
@@ -59,8 +89,8 @@ function TiltCard({
       const clampedMouseX = Math.max(-1.5, Math.min(1.5, mouseX));
       const clampedMouseY = Math.max(-1.5, Math.min(1.5, mouseY));
 
-      const tiltX = clampedMouseY * maxTilt * -1;
-      const tiltY = clampedMouseX * maxTilt;
+      const tiltX = clampedMouseY * maxTilt;
+      const tiltY = clampedMouseX * maxTilt * -1;
 
       const glareX = (Math.max(-1, Math.min(1, mouseX)) + 1) * 50;
       const glareY = (Math.max(-1, Math.min(1, mouseY)) + 1) * 50;
@@ -74,6 +104,7 @@ function TiltCard({
 
       setTiltStyle({
         transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`,
+        transformOrigin: "50% 50%",
       });
 
       setGlareStyle({
@@ -113,7 +144,7 @@ function TiltCard({
   }, []);
 
   return (
-    <div className="relative inline-block">
+    <>
       <div
         ref={wrapperRef}
         className="pointer-events-none absolute -inset-4"
@@ -124,11 +155,12 @@ function TiltCard({
       />
 
       <div
-        ref={cardRef}
-        className={`relative overflow-visible will-change-transform ${className}`}
+        ref={callbackRef}
+        className={classes("overflow-visible will-change-transform", className)}
         style={tiltStyle}
         onMouseEnter={handleMouseEnter}
         onMouseMove={isHovered ? handleMouseMove : undefined}
+        {...extras}
       >
         {children}
 
@@ -137,6 +169,8 @@ function TiltCard({
           style={glareStyle}
         />
       </div>
-    </div>
+    </>
   );
-}
+});
+
+export default ConditionalTiltCard;

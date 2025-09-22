@@ -57,7 +57,6 @@ const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
   { children, maxTilt = 15, glareMaxOpacity = 0.3, className = "", ...extras },
   ref,
 ) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const callbackRef = useCallback(
@@ -77,7 +76,7 @@ const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
 
   const handleMouseMove = useCallback(
     (e: { clientX: number; clientY: number }) => {
-      if (!cardRef.current || !wrapperRef.current) return;
+      if (!cardRef.current) return;
 
       const rect = cardRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
@@ -144,32 +143,22 @@ const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
   }, []);
 
   return (
-    <>
+    <div
+      ref={callbackRef}
+      className={classes("overflow-visible will-change-transform", className)}
+      style={tiltStyle}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={isHovered ? handleMouseMove : undefined}
+      onMouseLeave={handleMouseLeave}
+      {...extras}
+    >
+      {children}
+
       <div
-        ref={wrapperRef}
-        className="pointer-events-none absolute -inset-4"
-        onMouseMove={isHovered ? handleMouseMove : undefined}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ pointerEvents: isHovered ? "auto" : "none" }}
+        className="pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-300"
+        style={glareStyle}
       />
-
-      <div
-        ref={callbackRef}
-        className={classes("overflow-visible will-change-transform", className)}
-        style={tiltStyle}
-        onMouseEnter={handleMouseEnter}
-        onMouseMove={isHovered ? handleMouseMove : undefined}
-        {...extras}
-      >
-        {children}
-
-        <div
-          className="pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-300"
-          style={glareStyle}
-        />
-      </div>
-    </>
+    </div>
   );
 });
 

@@ -19,7 +19,7 @@ const ConditionalTiltCard = forwardRef<
     children,
     disabled = true,
     maxTilt = 15,
-    glareMaxOpacity = 0.3,
+    glareMaxOpacity = 0.4,
     className = "",
     ...extras
   },
@@ -54,7 +54,7 @@ interface TiltCardProps {
 }
 
 const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
-  { children, maxTilt = 15, glareMaxOpacity = 0.3, className = "", ...extras },
+  { children, maxTilt = 15, glareMaxOpacity = 0.4, className = "", ...extras },
   ref,
 ) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -91,29 +91,66 @@ const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
       const tiltX = clampedMouseY * maxTilt;
       const tiltY = clampedMouseX * maxTilt * -1;
 
-      const glareX = (Math.max(-1, Math.min(1, mouseX)) + 1) * 50;
-      const glareY = (Math.max(-1, Math.min(1, mouseY)) + 1) * 50;
+      // Calculate light reflection angle based on tilt
+      // Simulate light source coming from top-left (more natural)
+      const lightSourceX = -0.3; // Light coming from upper left
+      const lightSourceY = -0.5; // Light coming from above
 
+      // Calculate reflection vector based on surface normal (tilt)
+      const normalX = (tiltY / maxTilt) * 0.1; // Surface normal X based on Y tilt
+      const normalY = (-tiltX / maxTilt) * 0.1; // Surface normal Y based on X tilt
+
+      // Reflection calculation: reflected = incident - 2 * (incident · normal) * normal
+      const incidentX = lightSourceX;
+      const incidentY = lightSourceY;
+
+      const dotProduct = incidentX * normalX + incidentY * normalY;
+      const reflectedX = incidentX - 2 * dotProduct * normalX;
+      const reflectedY = incidentY - 2 * dotProduct * normalY;
+
+      // Position glare based on reflection angle
+      const glareX = 50 + reflectedX * 40 + mouseX * 15;
+      const glareY = 50 + reflectedY * 40 + mouseY * 15;
+
+      // Calculate distance from center for intensity
       const distanceFromCenter = Math.sqrt(mouseX * mouseX + mouseY * mouseY);
-      const normalizedDistance = Math.min(distanceFromCenter, 1);
+      const normalizedDistance = Math.min(distanceFromCenter, 1.2);
 
-      const glareOpacity = Math.pow(normalizedDistance, 0.8) * glareMaxOpacity;
+      // More realistic opacity calculation
+      const angleFactor = Math.abs(tiltX) + Math.abs(tiltY);
+      const baseOpacity = Math.max(0, (angleFactor / maxTilt) * 0.7);
+      const distanceOpacity = Math.pow(1 - normalizedDistance / 1.2, 1.5);
+      const glareOpacity = baseOpacity * distanceOpacity * glareMaxOpacity;
 
-      const glareSize = 70 + normalizedDistance * 40;
+      // Dynamic glare size based on tilt angle
+      const tiltMagnitude = Math.sqrt(tiltX * tiltX + tiltY * tiltY);
+      const sizeMultiplier = 1 + (tiltMagnitude / maxTilt) * 0.8;
+      const glareSize = 40 * sizeMultiplier;
 
       setTiltStyle({
         transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`,
         transformOrigin: "50% 50%",
       });
 
+      // Create multiple layers for more realistic light reflection
+      const primaryGlare = `radial-gradient(ellipse ${glareSize * 1.8}% ${glareSize * 0.6}% at ${glareX}% ${glareY}%,
+        rgba(255, 255, 255, ${glareOpacity * 0.8}) 0%,
+        rgba(255, 255, 255, ${glareOpacity * 0.4}) 30%,
+        transparent 70%)`;
+
+      const secondaryGlare = `radial-gradient(ellipse ${glareSize * 3}% ${glareSize * 1.2}% at ${glareX}% ${glareY}%,
+        transparent 0%,
+        rgba(255, 255, 255, ${glareOpacity * 0.15}) 40%,
+        transparent 80%)`;
+
+      // Add subtle color tinting for more realism
+      const colorGlare = `radial-gradient(ellipse ${glareSize * 1.2}% ${glareSize * 0.4}% at ${glareX}% ${glareY}%,
+        rgba(200, 230, 255, ${glareOpacity * 0.3}) 0%,
+        transparent 60%)`;
+
       setGlareStyle({
-        background: `radial-gradient(ellipse ${glareSize * 1.1}% ${glareSize * 0.9}% at ${glareX}% ${glareY}%,
-          transparent 0%,
-          transparent 70%,
-          rgba(255,255,255,${glareOpacity / 4}) 80%,
-          transparent 90%,
-          rgba(255,255,255,${glareOpacity}) 100%)`,
-        opacity: normalizedDistance > 0.1 ? 1 : normalizedDistance / 0.1, // Fade in smoothly
+        background: `${primaryGlare}, ${secondaryGlare}, ${colorGlare}`,
+        opacity: glareOpacity > 0.02 ? 1 : glareOpacity / 0.02,
       });
     },
     [maxTilt, glareMaxOpacity],
@@ -155,7 +192,7 @@ const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(function TiltCard(
       {children}
 
       <div
-        className="pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-200"
         style={glareStyle}
       />
     </div>

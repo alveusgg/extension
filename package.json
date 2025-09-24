@@ -29,14 +29,14 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@alveusgg/data": "0.65.0",
+    "@alveusgg/data": "0.66.1",
     "@headlessui/react": "^2.2.8",
-    "luxon": "^3.7.1",
+    "luxon": "^3.7.2",
     "react": "^19.1.1",
     "react-canvas-confetti": "^2.0.7",
     "react-dom": "^19.1.1",
     "tmi.js": "^1.8.5",
-    "zod": "^4.1.5"
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

@@ -13,14 +13,14 @@ importers:
   .:
     dependencies:
       '@alveusgg/data':
-        specifier: 0.65.0
-        version: 0.65.0(tailwindcss@4.1.13)(zod@4.1.5)
+        specifier: 0.66.1
+        version: 0.66.1(tailwindcss@4.1.13)(zod@4.1.11)
       '@headlessui/react':
         specifier: ^2.2.8
         version: 2.2.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       luxon:
-        specifier: ^3.7.1
-        version: 3.7.1
+        specifier: ^3.7.2
+        version: 3.7.2
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -34,8 +34,8 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^4.1.5
-        version: 4.1.5
+        specifier: ^4.1.11
+        version: 4.1.11
     devDependencies:
       '@eslint/js':
         specifier: ^9.36.0
@@ -164,8 +164,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alveusgg/data@0.65.0':
-    resolution: {integrity: sha512-ZNwD/2DMbWgS58VYxcbaUsfNxIlNKJgsbpCmyyjeGGySWN99R95VV1uWyv6pyQaUZsztkD8B1T2HMH0N9tZaKw==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.65.0/2570be06964aecf1795e497ab88f4d977512b0ee}
+  '@alveusgg/data@0.66.1':
+    resolution: {integrity: sha512-I9suxOyurWA7ZIWH+iIWhuLjrRprta84g/j/CigY1xIQW20iOGpo144JpQmgHMaU+3BRt682EX0F/fFTsRDCmg==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.66.1/7acd0e2f2946e85bd1fd5e3ce0ec79e608d9491f}
     peerDependencies:
       tailwindcss: ^4.0.0
       zod: ^4.0.0
@@ -2209,8 +2209,8 @@ packages:
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
-  luxon@3.7.1:
-    resolution: {integrity: sha512-RkRWjA926cTvz5rAb1BqyWkKbbjzCGchDUIKMCUvNi17j6f6j8uHGDV82Aqcqtzd+icoYpELmG3ksgGiFNNcNg==}
+  luxon@3.7.2:
+    resolution: {integrity: sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew==}
     engines: {node: '>=12'}
 
   magic-string@0.30.19:
@@ -3398,17 +3398,17 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@4.1.5:
-    resolution: {integrity: sha512-rcUUZqlLJgBC33IT3PNMgsCq6TzLQEG/Ei/KTCU0PedSWRMAXoOUN+4t/0H+Q8bdnLPdqUYnvboJT0bn/229qg==}
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.65.0(tailwindcss@4.1.13)(zod@4.1.5)':
+  '@alveusgg/data@0.66.1(tailwindcss@4.1.13)(zod@4.1.11)':
     dependencies:
       tailwindcss: 4.1.13
-      zod: 4.1.5
+      zod: 4.1.11
 
   '@babel/code-frame@7.26.2':
     dependencies:
@@ -5618,7 +5618,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  luxon@3.7.1: {}
+  luxon@3.7.2: {}
 
   magic-string@0.30.19:
     dependencies:
@@ -6861,4 +6861,4 @@ snapshots:
       webpack-sources: 3.3.3
       yazl: 2.5.1
 
-  zod@4.1.5: {}
+  zod@4.1.11: {}

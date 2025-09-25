@@ -14,7 +14,7 @@ interface ConditionalTiltCardProps extends TiltCardProps {
 
 function ConditionalTiltCard({
   children,
-  disabled = true,
+  disabled = false,
   maxTilt,
   glareMaxOpacity,
   className,

@@ -52,7 +52,7 @@ interface TiltCardProps {
 
 function TiltCard({
   children,
-  maxTilt = 15,
+  maxTilt = 10,
   glareMaxOpacity = 0.4,
   className,
   ref,
@@ -159,14 +159,11 @@ function TiltCard({
   const handleMouseEnter = useCallback(() => {
     if (!cardRef.current) return;
     setIsHovered(true);
-    cardRef.current.style.transition = "none";
   }, []);
 
   const handleMouseLeave = useCallback(() => {
     if (!cardRef.current) return;
     setIsHovered(false);
-
-    cardRef.current.style.transition = "all 0.3s ease-out";
 
     setTiltStyle({
       transform:
@@ -182,7 +179,10 @@ function TiltCard({
   return (
     <div
       ref={callbackRef}
-      className={classes("overflow-visible will-change-transform", className)}
+      className={classes(
+        "overflow-visible transition-all duration-300 ease-in-out will-change-transform",
+        className,
+      )}
       style={tiltStyle}
       onMouseEnter={handleMouseEnter}
       onMouseMove={isHovered ? handleMouseMove : undefined}
@@ -192,7 +192,7 @@ function TiltCard({
       {children}
 
       <div
-        className="pointer-events-none absolute inset-0 overflow-hidden transition-all duration-75 ease-out"
+        className="pointer-events-none absolute inset-0 overflow-hidden transition-all duration-100 ease-in-out"
         style={glareStyle}
       />
     </div>

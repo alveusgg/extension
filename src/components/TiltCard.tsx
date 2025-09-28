@@ -51,6 +51,10 @@ interface TiltCardProps {
   ref: Ref<HTMLDivElement>;
 }
 
+// Light reflection angle based on tilt
+// Simulate light source coming from top-left (more natural)
+const lightSource = { x: -0.3, y: -0.5 };
+
 function TiltCard({
   children,
   maxTilt = 12,
@@ -103,10 +107,6 @@ function TiltCard({
       if (timeout) clearTimeout(timeout);
     };
   }, [isHovered]);
-
-  // Light reflection angle based on tilt
-  // Simulate light source coming from top-left (more natural)
-  const lightSource = { x: -0.3, y: -0.5 };
 
   const handleMouseMove = useCallback(
     (e: { clientX: number; clientY: number }) => {

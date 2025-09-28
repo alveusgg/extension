@@ -185,13 +185,14 @@ export default function Ambassadors(props: AmbassadorsProps) {
 
       {ambassadors.map(([key]) => (
         <Transition show={activeAmbassador.key === key} key={key}>
-          <AmbassadorCard
-            key={key}
-            ambassador={key}
-            onClose={() => setActiveAmbassador({})}
-            className="z-0 col-start-2 row-start-1 origin-[center_left] self-center transition-[opacity,transform,translate] will-change-[opacity,transform,translate] data-[closed]:-translate-x-10 data-[closed]:opacity-0 data-[closed]:motion-reduce:translate-x-0"
-            disableCardEffects={settings.disableCardEffects.value}
-          />
+          <div className="z-0 col-start-2 row-start-1 origin-[center_left] self-center transition-[opacity,transform,translate] will-change-[opacity,transform,translate] data-[closed]:-translate-x-10 data-[closed]:opacity-0 data-[closed]:motion-reduce:translate-x-0">
+            <AmbassadorCard
+              key={key}
+              ambassador={key}
+              onClose={() => setActiveAmbassador({})}
+              disableCardEffects={settings.disableCardEffects.value}
+            />
+          </div>
         </Transition>
       ))}
     </div>

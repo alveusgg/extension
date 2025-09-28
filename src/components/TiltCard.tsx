@@ -5,7 +5,6 @@ import {
   type CSSProperties,
   type Ref,
   type ReactNode,
-  useEffect,
 } from "react";
 import { classes } from "../utils/classes";
 
@@ -79,34 +78,8 @@ function TiltCard({
   const [tiltStyle, setTiltStyle] = useState<CSSProperties>({});
   const [glareStyle, setGlareStyle] = useState<CSSProperties>({});
   const [isHovered, setIsHovered] = useState(false);
-  const [transitionTimeout, setTransitionTimeout] = useState<NodeJS.Timeout>();
-
-  useEffect(() => {
-    if (!cardRef.current) return;
-
-    if (isHovered) {
-      // Smooth enter transition
-      cardRef.current.style.transition =
-        "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)";
-    } else {
-      // Smooth exit transition
-      cardRef.current.style.transition =
-        "all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-    }
-
-    if (transitionTimeout) clearTimeout(transitionTimeout);
-    const timeout = setTimeout(
-      () => {
-        if (cardRef.current) cardRef.current.style.transition = "none";
-      },
-      isHovered ? 400 : 350,
-    );
-    setTransitionTimeout(timeout);
-
-    return () => {
-      if (timeout) clearTimeout(timeout);
-    };
-  }, [isHovered]);
+  const [tiltTransition, setTiltTransition] = useState("");
+  let transitionTimeout: NodeJS.Timeout;
 
   const handleMouseMove = useCallback(
     (e: { clientX: number; clientY: number }) => {
@@ -182,13 +155,15 @@ function TiltCard({
   );
 
   const handleMouseEnter = useCallback(() => {
-    if (!cardRef.current) return;
     setIsHovered(true);
+    setTiltTransitionWithTimeout(
+      "duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
+    );
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    if (!cardRef.current) return;
     setIsHovered(false);
+    setTiltTransitionWithTimeout("duration-300 ease-out");
     setTiltStyle({
       transform:
         "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
@@ -199,10 +174,22 @@ function TiltCard({
     });
   }, []);
 
+  const setTiltTransitionWithTimeout = (transition: string) => {
+    setTiltTransition(transition);
+    if (transitionTimeout) clearTimeout(transitionTimeout);
+    transitionTimeout = setTimeout(() => {
+      setTiltTransition("duration-0 ease-out");
+    }, 300);
+  };
+
   return (
     <div
       ref={callbackRef}
-      className={classes("overflow-visible will-change-transform", className)}
+      className={classes(
+        "overflow-visible transition-all will-change-transform",
+        tiltTransition,
+        className,
+      )}
       style={tiltStyle}
       onMouseEnter={handleMouseEnter}
       onMouseMove={isHovered ? handleMouseMove : undefined}

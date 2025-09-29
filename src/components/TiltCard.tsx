@@ -5,6 +5,7 @@ import {
   type CSSProperties,
   type Ref,
   type ReactNode,
+  useEffect,
 } from "react";
 import { classes } from "../utils/classes";
 
@@ -79,7 +80,16 @@ function TiltCard({
   const [glareStyle, setGlareStyle] = useState<CSSProperties>({});
   const [isHovered, setIsHovered] = useState(false);
   const [tiltTransition, setTiltTransition] = useState("");
-  let transitionTimeout: NodeJS.Timeout;
+  const transitionTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(
+    () => () => {
+      if (transitionTimeout.current) {
+        clearTimeout(transitionTimeout.current);
+      }
+    },
+    [],
+  );
 
   const handleMouseMove = useCallback(
     (e: { clientX: number; clientY: number }) => {
@@ -154,12 +164,20 @@ function TiltCard({
     [maxTilt, glareMaxOpacity],
   );
 
+  const setTiltTransitionWithTimeout = useCallback((transition: string) => {
+    setTiltTransition(transition);
+    if (transitionTimeout.current) clearTimeout(transitionTimeout.current);
+    transitionTimeout.current = setTimeout(() => {
+      setTiltTransition("duration-0 ease-out");
+    }, 300);
+  }, []);
+
   const handleMouseEnter = useCallback(() => {
     setIsHovered(true);
     setTiltTransitionWithTimeout(
       "duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
     );
-  }, []);
+  }, [setTiltTransitionWithTimeout]);
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
@@ -172,15 +190,7 @@ function TiltCard({
       background: "none",
       opacity: 0,
     });
-  }, []);
-
-  const setTiltTransitionWithTimeout = (transition: string) => {
-    setTiltTransition(transition);
-    if (transitionTimeout) clearTimeout(transitionTimeout);
-    transitionTimeout = setTimeout(() => {
-      setTiltTransition("duration-0 ease-out");
-    }, 300);
-  };
+  }, [setTiltTransitionWithTimeout]);
 
   return (
     <div

@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -137,6 +138,8 @@ const fallbackAmbassadors: Record<string, Ambassador> =
 
 // Use a context to fetch the ambassadors from the API
 const Context = createContext<Record<string, Ambassador> | null>(null);
+// Seperate context for the refreshing ambassadors
+const RefreshContext = createContext<(() => void) | null>(null);
 export const AmbassadorsProvider = ({
   children,
 }: {
@@ -156,6 +159,14 @@ export const AmbassadorsProvider = ({
       .then(setAmbassadors);
   }, []);
 
+  // Refresh ambassador function for privileged users
+  const refreshAmbassadors = useCallback(async () => {
+    fetchAmbassadors()
+      .then(setAmbassadors)
+      .catch((err) => console.error(err));
+    console.log("Ambassadors refreshed, it has made it to the end");
+  }, []);
+
   // Every 2 hours, attempt to fetch the ambassadors from the API
   // If we can't fetch the ambassadors, we'll just use the existing data
   useEffect(() => {
@@ -171,7 +182,13 @@ export const AmbassadorsProvider = ({
     return () => clearInterval(interval);
   }, []);
 
-  return <Context value={ambassadors}>{children}</Context>;
+  return (
+    <Context.Provider value={ambassadors}>
+      <RefreshContext.Provider value={refreshAmbassadors}>
+        {children}
+      </RefreshContext.Provider>
+    </Context.Provider>
+  );
 };
 
 const winston = {
@@ -254,4 +271,14 @@ export const useAmbassadors = (): Record<string, Ambassador> | null => {
 export const useAmbassador = (key: string) => {
   const ambassadors = useAmbassadors();
   return ambassadors?.[key];
+};
+
+export const useRefreshAmbassadors = () => {
+  const refreshAmbassadors = useContext(RefreshContext);
+  if (!refreshAmbassadors) {
+    throw new Error(
+      "useRefreshAmbassadors must be used within a AmbassadorsProvider",
+    );
+  }
+  return refreshAmbassadors;
 };

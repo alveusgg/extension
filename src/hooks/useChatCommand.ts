@@ -3,7 +3,7 @@ import tmi, { type ChatUserstate } from "tmi.js";
 
 import { typeSafeObjectEntries } from "../utils/helpers";
 
-import { useAmbassadors } from "./useAmbassadors";
+import { useAmbassadors, useRefreshAmbassadors } from "./useAmbassadors";
 
 import useChannel from "./useChannel";
 
@@ -46,6 +46,7 @@ export default function useChatCommand(callback: (command: string) => void) {
   );
 
   const ambassadors = useAmbassadors();
+  const refreshAmbassadors = useRefreshAmbassadors();
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
     if (ambassadors) {
@@ -56,6 +57,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       });
     }
     commands.set("welcome", "welcome");
+    commands.set("refresh", "refresh");
     return commands;
   }, [ambassadors]);
 
@@ -76,6 +78,14 @@ export default function useChatCommand(callback: (command: string) => void) {
         return;
       // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
       if (self || !msg.trim().startsWith("!")) return;
+      // Only privileged users can refresh the ambassadors
+      if (
+        privilegedUsers.includes(tags.username?.toLowerCase() ?? "") &&
+        msg.trim().toLowerCase().slice(1) === "refresh"
+      ) {
+        refreshAmbassadors();
+        return;
+      }
 
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
@@ -85,7 +95,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       );
       if (command) callback(command);
     },
-    [commandsMap, callback],
+    [commandsMap, callback, refreshAmbassadors],
   );
 
   useEffect(() => {

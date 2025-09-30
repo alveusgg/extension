@@ -21,6 +21,9 @@ export default function CardDogear(props: {
           className={classes(
             "absolute top-0 right-0 w-0 border-13 border-solid border-t-transparent border-r-transparent border-b-alveus-green border-l-alveus-green transition-all duration-300 ease-in-out hover:scale-[1.6] sm:border-15 md:border-18 lg:border-20",
           )}
+          style={{
+            boxShadow: "-4px 4px 2px rgba(0,0,0,0.3)",
+          }}
         />
       </button>
     </Tooltip>

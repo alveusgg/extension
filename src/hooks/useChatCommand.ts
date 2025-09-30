@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import tmi, { type ChatUserstate } from "tmi.js";
 
 import { typeSafeObjectEntries } from "../utils/helpers";
@@ -21,9 +21,7 @@ const privilegedUsers = parseCsvEnv(
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
 );
 
-export default function useChatCommand(
-  callback: (command: string, isPrivileged?: boolean) => void,
-) {
+export default function useChatCommand(callback: (command: string) => void) {
   const channel = useChannel();
   const channelNames = useMemo(
     () =>
@@ -48,8 +46,6 @@ export default function useChatCommand(
   );
 
   const ambassadors = useAmbassadors();
-  const callbackRef = useRef(callback);
-  callbackRef.current = callback;
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
     if (ambassadors) {
@@ -88,14 +84,9 @@ export default function useChatCommand(
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
       );
-      if (command) {
-        const isPrivileged = privilegedUsers.includes(
-          tags.username?.toLowerCase() ?? "",
-        );
-        callback(command, isPrivileged);
-      }
+      if (command) callback(command);
     },
-    [commandsMap],
+    [commandsMap, callback],
   );
 
   useEffect(() => {
@@ -148,5 +139,5 @@ export default function useChatCommand(
           console.log("*Twitch extension disconnected from chat*", id),
         );
     };
-  }, [channelNames]);
+  }, [channelNames, messageHandler]);
 }

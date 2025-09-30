@@ -3,7 +3,10 @@ import { useState, useCallback, Fragment, useMemo } from "react";
 import AmbassadorCard from "../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../components/AmbassadorButton";
 
-import { useAmbassadors } from "../../../hooks/useAmbassadors";
+import {
+  useAmbassadors,
+  useRefreshAmbassadors,
+} from "../../../hooks/useAmbassadors";
 
 import useChatCommand from "../../../hooks/useChatCommand";
 import { typeSafeObjectEntries } from "../../../utils/helpers";
@@ -12,6 +15,7 @@ import Overlay from "./Overlay";
 
 export default function Ambassadors() {
   const rawAmbassadors = useAmbassadors();
+  const refreshAmbassadors = useRefreshAmbassadors();
   const ambassadors = useMemo(
     () => typeSafeObjectEntries(rawAmbassadors ?? {}),
     [rawAmbassadors],
@@ -21,11 +25,23 @@ export default function Ambassadors() {
   const [ambassadorCard, setAmbassadorCard] = useState<string>();
   useChatCommand(
     useCallback(
-      (command: string) => {
+      (command: string, isPrivileged?: boolean) => {
+        if (isPrivileged && command === "refresh") {
+          refreshAmbassadors().then(() => {
+            setAmbassadorCard(undefined);
+            const ambassadorLists = document.querySelectorAll(".scrollbar");
+            ambassadorLists.forEach((list) => {
+              list.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            });
+          });
+        }
         if (Object.keys(rawAmbassadors ?? {}).includes(command))
           setAmbassadorCard(command);
       },
-      [rawAmbassadors],
+      [rawAmbassadors, refreshAmbassadors],
     ),
   );
 

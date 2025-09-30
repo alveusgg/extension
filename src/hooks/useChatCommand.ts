@@ -21,7 +21,9 @@ const privilegedUsers = parseCsvEnv(
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
 );
 
-export default function useChatCommand(callback: (command: string) => void) {
+export default function useChatCommand(
+  callback: (command: string, isPrivileged?: boolean) => void,
+) {
   const channel = useChannel();
   const channelNames = useMemo(
     () =>
@@ -84,7 +86,12 @@ export default function useChatCommand(callback: (command: string) => void) {
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
       );
-      if (command) callback(command);
+      if (command) {
+        const isPrivileged = privilegedUsers.includes(
+          tags.username?.toLowerCase() ?? "",
+        );
+        callback(command, isPrivileged);
+      }
     },
     [commandsMap, callback],
   );

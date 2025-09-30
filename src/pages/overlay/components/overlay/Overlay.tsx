@@ -15,7 +15,10 @@ import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
 import IconPlant from "../../../../components/icons/IconPlant";
 import IconSettings from "../../../../components/icons/IconSettings";
 
-import { useAmbassadors } from "../../../../hooks/useAmbassadors";
+import {
+  useAmbassadors,
+  useRefreshAmbassadors,
+} from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { visibleUnderCursor } from "../../../../utils/dom";
 
@@ -114,6 +117,7 @@ export default function Overlay() {
   } = useSleeping();
 
   const ambassadors = useAmbassadors();
+  const refreshAmbassadors = useRefreshAmbassadors();
   const options = useMemo(
     () =>
       overlayOptions.filter(
@@ -144,12 +148,23 @@ export default function Overlay() {
   // When a chat command is run, wake the overlay
   useChatCommand(
     useCallback(
-      (command: string) => {
+      (command: string, isPrivileged?: boolean) => {
         if (!settings.disableChatPopup.value) {
           const ambassador = ambassadors?.[command];
           if (ambassador)
             setActiveAmbassador({ key: command, isCommand: true });
-          else if (command !== "welcome") return;
+          else if (command === "refresh" && isPrivileged) {
+            refreshAmbassadors();
+            setActiveAmbassador({});
+            setVisibleOption("");
+            const ambassadorLists = document.querySelectorAll(".list-fade");
+            ambassadorLists.forEach((list) => {
+              list.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            });
+          } else if (command !== "welcome") return;
 
           // Show the card
           setVisibleOption(

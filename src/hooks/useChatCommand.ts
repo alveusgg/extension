@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import tmi, { type ChatUserstate } from "tmi.js";
 
 import { typeSafeObjectEntries } from "../utils/helpers";
 
-import { useAmbassadors, useRefreshAmbassadors } from "./useAmbassadors";
+import { useAmbassadors } from "./useAmbassadors";
 
 import useChannel from "./useChannel";
 
@@ -21,7 +21,9 @@ const privilegedUsers = parseCsvEnv(
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
 );
 
-export default function useChatCommand(callback: (command: string) => void) {
+export default function useChatCommand(
+  callback: (command: string, isPrivileged?: boolean) => void,
+) {
   const channel = useChannel();
   const channelNames = useMemo(
     () =>
@@ -46,7 +48,8 @@ export default function useChatCommand(callback: (command: string) => void) {
   );
 
   const ambassadors = useAmbassadors();
-  const refreshAmbassadors = useRefreshAmbassadors();
+  const callbackRef = useRef(callback);
+  callbackRef.current = callback;
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
     if (ambassadors) {
@@ -78,14 +81,6 @@ export default function useChatCommand(callback: (command: string) => void) {
         return;
       // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
       if (self || !msg.trim().startsWith("!")) return;
-      // Only privileged users can refresh the ambassadors
-      if (
-        privilegedUsers.includes(tags.username?.toLowerCase() ?? "") &&
-        msg.trim().toLowerCase().slice(1) === "refresh"
-      ) {
-        refreshAmbassadors();
-        return;
-      }
 
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
@@ -93,9 +88,14 @@ export default function useChatCommand(callback: (command: string) => void) {
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
       );
-      if (command) callback(command);
+      if (command) {
+        const isPrivileged = privilegedUsers.includes(
+          tags.username?.toLowerCase() ?? "",
+        );
+        callback(command, isPrivileged);
+      }
     },
-    [commandsMap, callback, refreshAmbassadors],
+    [commandsMap],
   );
 
   useEffect(() => {
@@ -148,5 +148,5 @@ export default function useChatCommand(callback: (command: string) => void) {
           console.log("*Twitch extension disconnected from chat*", id),
         );
     };
-  }, [channelNames, messageHandler]);
+  }, [channelNames]);
 }

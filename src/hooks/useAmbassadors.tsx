@@ -164,7 +164,6 @@ export const AmbassadorsProvider = ({
     fetchAmbassadors()
       .then(setAmbassadors)
       .catch((err) => console.error(err));
-    console.log("Ambassadors refreshed, it has made it to the end");
   }, []);
 
   // Every 2 hours, attempt to fetch the ambassadors from the API

@@ -139,7 +139,7 @@ const fallbackAmbassadors: Record<string, Ambassador> =
 // Use a context to fetch the ambassadors from the API
 const Context = createContext<Record<string, Ambassador> | null>(null);
 // Seperate context for the refreshing ambassadors
-const RefreshContext = createContext<(() => void) | null>(null);
+const RefreshContext = createContext<(() => Promise<void>) | null>(null);
 export const AmbassadorsProvider = ({
   children,
 }: {
@@ -159,11 +159,25 @@ export const AmbassadorsProvider = ({
       .then(setAmbassadors);
   }, []);
 
-  // Refresh ambassador function for privileged users
+  // Special refreshAmbassadors function with a delay
+  // Only used when !refresh is called by a privileged user
   const refreshAmbassadors = useCallback(async () => {
-    fetchAmbassadors()
-      .then(setAmbassadors)
-      .catch((err) => console.error(err));
+    return new Promise<void>((resolve) => {
+      setTimeout(
+        () => {
+          fetchAmbassadors()
+            .then(setAmbassadors)
+            .then(() => resolve())
+            .catch((err) => {
+              console.error(err);
+              resolve();
+            });
+        },
+        Math.floor(
+          Math.random() * (Math.floor(120) - Math.ceil(1) + 1) + Math.ceil(1),
+        ) * 1000,
+      );
+    });
   }, []);
 
   // Every 2 hours, attempt to fetch the ambassadors from the API
@@ -272,7 +286,7 @@ export const useAmbassador = (key: string) => {
   return ambassadors?.[key];
 };
 
-export const useRefreshAmbassadors = () => {
+export const useRefreshAmbassadors = (): (() => Promise<void>) => {
   const refreshAmbassadors = useContext(RefreshContext);
   if (!refreshAmbassadors) {
     throw new Error(

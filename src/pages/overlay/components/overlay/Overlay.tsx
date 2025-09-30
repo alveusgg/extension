@@ -154,16 +154,18 @@ export default function Overlay() {
           if (ambassador)
             setActiveAmbassador({ key: command, isCommand: true });
           else if (command === "refresh" && isPrivileged) {
-            refreshAmbassadors();
-            setActiveAmbassador({});
-            setVisibleOption("");
-            const ambassadorLists = document.querySelectorAll(".list-fade");
-            ambassadorLists.forEach((list) => {
-              list.scrollTo({
-                top: 0,
-                behavior: "smooth",
+            refreshAmbassadors().then(() => {
+              setActiveAmbassador({});
+              setVisibleOption("welcome");
+              const ambassadorLists = document.querySelectorAll(".list-fade");
+              ambassadorLists.forEach((list) => {
+                list.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
               });
             });
+            return;
           } else if (command !== "welcome") return;
 
           // Show the card

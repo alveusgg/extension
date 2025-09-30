@@ -153,20 +153,7 @@ export default function Overlay() {
           const ambassador = ambassadors?.[command];
           if (ambassador)
             setActiveAmbassador({ key: command, isCommand: true });
-          else if (command === "refresh" && isPrivileged) {
-            refreshAmbassadors().then(() => {
-              setActiveAmbassador({});
-              setVisibleOption("welcome");
-              const ambassadorLists = document.querySelectorAll(".list-fade");
-              ambassadorLists.forEach((list) => {
-                list.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              });
-            });
-            return;
-          } else if (command !== "welcome") return;
+          else if (command !== "welcome") return;
 
           // Show the card
           setVisibleOption(
@@ -188,8 +175,23 @@ export default function Overlay() {
           awakingRef.current = true;
           wake(commandTimeout);
         }
+
+        // Ignore chat popup preference, the refresh should always go through and show if called
+        if (command === "refresh" && isPrivileged) {
+          refreshAmbassadors().then(() => {
+            setActiveAmbassador({});
+            setVisibleOption("welcome");
+            const ambassadorLists = document.querySelectorAll(".list-fade");
+            ambassadorLists.forEach((list) => {
+              list.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            });
+          });
+        }
       },
-      [settings.disableChatPopup.value, ambassadors, wake],
+      [settings.disableChatPopup.value, ambassadors, wake, refreshAmbassadors],
     ),
   );
 

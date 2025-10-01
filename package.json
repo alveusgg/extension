@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@alveusgg/data": "0.66.1",
-    "@headlessui/react": "^2.2.8",
+    "@headlessui/react": "^2.2.9",
     "luxon": "^3.7.2",
     "react": "^19.1.1",
     "react-canvas-confetti": "^2.0.7",

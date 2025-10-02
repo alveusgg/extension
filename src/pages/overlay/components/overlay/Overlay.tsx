@@ -7,6 +7,8 @@ import {
   type SetStateAction,
   type Dispatch,
   type JSX,
+  type KeyboardEventHandler,
+  type Ref,
 } from "react";
 
 import Welcome from "../../../../components/Welcome";
@@ -31,6 +33,8 @@ import AmbassadorsOverlay from "./Ambassadors";
 import SettingsOverlay from "./Settings";
 
 import Buttons, { type ButtonsOption } from "../Buttons";
+
+import * as keyBinds from "../../../../keyBinds";
 
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;
@@ -102,6 +106,7 @@ export interface OverlayOptionProps {
     setActiveAmbassador: Dispatch<SetStateAction<ActiveAmbassadorState>>;
   };
   className?: string;
+  ref?: Ref<HTMLDivElement>;
 }
 
 const hiddenClass =
@@ -134,6 +139,9 @@ export default function Overlay() {
   );
   const timeoutRef = useRef<NodeJS.Timeout>(null);
   const awakingRef = useRef(false);
+
+  const activeOverlayButtonRef = useRef<HTMLButtonElement>(null);
+  const activeOverlayRef = useRef<HTMLDivElement>(null);
 
   // update setting when opened menu changes
   useEffect(() => {
@@ -258,6 +266,40 @@ export default function Overlay() {
     }
   }, [ambassadors, activeAmbassador.key]);
 
+  const onKeyDown: KeyboardEventHandler = (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    if (
+      visibleOption !== "" &&
+      keyBinds.BACK.includes(event.code as keyBinds.KeyCode)
+    ) {
+      // Close current overlay
+      setVisibleOption("");
+
+      // De-select active ambassador in case this got triggered while one is
+      // selected
+      setActiveAmbassador({});
+
+      activeOverlayButtonRef.current?.focus();
+      activeOverlayButtonRef.current = null;
+
+      event.preventDefault();
+      return;
+    }
+  };
+
+  const activeOverlayRefCallback = useCallback(
+    (node: HTMLDivElement | null) => {
+      activeOverlayRef.current = node;
+
+      // Auto focus the overlay that's currently selected
+      node?.focus();
+    },
+    [],
+  );
+
   return (
     <div
       className={classes(
@@ -269,10 +311,16 @@ export default function Overlay() {
           ) &&
           hiddenClass,
       )}
+      onKeyDown={onKeyDown}
     >
       <Buttons
         options={options}
-        onClick={setVisibleOption}
+        onClick={(event, option) => {
+          // @ts-expect-error this is fine
+          activeOverlayButtonRef.current = event.target;
+
+          setVisibleOption(option);
+        }}
         active={visibleOption}
       />
       <div className="relative h-full w-full">
@@ -284,6 +332,11 @@ export default function Overlay() {
               "transition-[opacity,visibility,transform,translate] will-change-[opacity,transform,translate]",
               visibleOption !== option.key && hiddenClass,
             )}
+            ref={
+              visibleOption === option.key
+                ? activeOverlayRefCallback
+                : undefined
+            }
           />
         ))}
       </div>

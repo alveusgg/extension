@@ -28,7 +28,9 @@ const settings = {
     title: "Disable Ambassador Card Effects",
     type: "boolean",
     process: (value: any) =>
-      value ?? window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      !!(
+        value ?? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ),
     configurable: true,
   },
   disableOverlayHiding: {

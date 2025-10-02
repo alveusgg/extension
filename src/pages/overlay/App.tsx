@@ -19,6 +19,8 @@ export default function App() {
     sleeping,
     wake,
     sleep,
+    stayAwake,
+    resumeTimer,
     on: addSleepListener,
     off: removeSleepListener,
   } = useSleeping();
@@ -54,6 +56,8 @@ export default function App() {
         onTouchMove={interacted}
         onKeyDown={interacted}
         onMouseLeave={sleep}
+        onFocus={() => stayAwake()}
+        onBlur={() => resumeTimer(timeout)}
       >
         <Overlay />
       </div>

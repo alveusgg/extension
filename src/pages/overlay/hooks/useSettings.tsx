@@ -19,13 +19,13 @@ import {
 
 const settings = {
   disableChatPopup: {
-    title: "Prevent Mod-triggered Card Popups",
+    title: "Prevent mod-triggered card pop-ups",
     type: "boolean",
     process: (value: any) => !!value,
     configurable: true,
   },
   disableCardEffects: {
-    title: "Disable Ambassador Card Effects",
+    title: "Disable ambassador card effects",
     type: "boolean",
     process: (value: any) =>
       !!(

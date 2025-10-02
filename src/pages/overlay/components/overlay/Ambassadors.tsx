@@ -18,6 +18,7 @@ import { sortPartialDates } from "../../../../utils/dateManager";
 import type { OverlayOptionProps } from "./Overlay";
 
 import IconChevron from "../../../../components/icons/IconChevron";
+import useSettings from "../../hooks/useSettings";
 
 const arrowClass =
   "absolute border-0 cursor-pointer text-alveus-green w-full h-[var(--list-fade-padding)] z-20 transition-opacity group pt-[var(--twitch-vertical-padding)] pb-4 box-content";
@@ -30,6 +31,7 @@ const hiddenClass = "opacity-0 pointer-events-none";
 type AmbassadorsProps = OverlayOptionProps & { plants?: boolean };
 
 export default function Ambassadors(props: AmbassadorsProps) {
+  const settings = useSettings();
   const {
     context: { activeAmbassador, setActiveAmbassador },
     className,
@@ -183,12 +185,14 @@ export default function Ambassadors(props: AmbassadorsProps) {
 
       {ambassadors.map(([key]) => (
         <Transition show={activeAmbassador.key === key} key={key}>
-          <AmbassadorCard
-            key={key}
-            ambassador={key}
-            onClose={() => setActiveAmbassador({})}
-            className="z-0 col-start-2 row-start-1 origin-[center_left] self-center transition-[opacity,transform,translate] will-change-[opacity,transform,translate] data-[closed]:-translate-x-10 data-[closed]:opacity-0 data-[closed]:motion-reduce:translate-x-0"
-          />
+          <div className="z-0 col-start-2 row-start-1 origin-[center_left] self-center transition-[opacity,transform,translate] will-change-[opacity,transform,translate] data-[closed]:-translate-x-10 data-[closed]:opacity-0 data-[closed]:motion-reduce:translate-x-0">
+            <AmbassadorCard
+              key={key}
+              ambassador={key}
+              onClose={() => setActiveAmbassador({})}
+              disableCardEffects={settings.disableCardEffects.value}
+            />
+          </div>
         </Transition>
       ))}
     </div>

@@ -16,6 +16,7 @@ import Ring from "./Ring";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
+import TiltCard from "./TiltCard";
 
 const headingClass = "text-base text-alveus-green-400";
 const rowClass = "flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto";
@@ -29,6 +30,7 @@ export interface AmbassadorCardProps {
   onClose?: () => void;
   className?: string;
   ref?: Ref<HTMLDivElement>;
+  disableCardEffects?: boolean;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
@@ -37,6 +39,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     onClose,
     className,
     ref,
+    disableCardEffects,
     ...extras
   } = props;
   const ambassador = useAmbassador(ambassadorKey);
@@ -121,7 +124,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   return (
     <>
       {birthday && <Confetti onInit={confettiInit} />}
-      <div
+      <TiltCard
+        disabled={disableCardEffects}
         className={classes(
           "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs shadow-xl",
           className,
@@ -328,7 +332,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </div>
 
         <Ring />
-      </div>
+      </TiltCard>
     </>
   );
 }

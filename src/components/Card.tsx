@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import { classes } from "../utils/classes";
 
 import Ring from "./Ring";
@@ -6,10 +7,12 @@ interface CardProps {
   children?: React.ReactNode;
   title?: string;
   className?: string;
+  ref?: Ref<HTMLDivElement>;
+  tabIndex?: number | undefined;
 }
 
 export default function Card(props: CardProps) {
-  const { children, title, className } = props;
+  const { children, title, className, ref, tabIndex } = props;
 
   return (
     <div
@@ -19,6 +22,8 @@ export default function Card(props: CardProps) {
           "relative",
         className,
       )}
+      ref={ref}
+      tabIndex={tabIndex}
     >
       {title && (
         <h2 className="mb-2 text-center font-serif text-3xl font-bold text-balance">

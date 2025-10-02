@@ -11,6 +11,7 @@ import { classes } from "../utils/classes";
 
 interface ConditionalTiltCardProps extends TiltCardProps {
   disabled?: boolean;
+  tabIndex?: number | undefined;
 }
 
 function ConditionalTiltCard({

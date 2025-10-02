@@ -1,4 +1,4 @@
-import { useMemo, type JSX } from "react";
+import { useMemo, type JSX, type MouseEvent } from "react";
 
 import Tooltip from "../../../components/Tooltip";
 import Ring from "../../../components/Ring";
@@ -16,7 +16,7 @@ type ButtonsOptions = Readonly<ButtonsOption[]>;
 
 interface ButtonsProps<T extends ButtonsOptions> {
   options: T;
-  onClick: (key: T[number]["key"] | "") => void;
+  onClick: (event: MouseEvent, key: T[number]["key"] | "") => void;
   active?: string;
 }
 
@@ -31,7 +31,8 @@ export default function Buttons<T extends ButtonsOptions = ButtonsOptions>(
       options
         .map((option) => ({
           ...option,
-          onClick: () => onClick(active === option.key ? "" : option.key),
+          onClick: (event: MouseEvent) =>
+            onClick(event, active === option.key ? "" : option.key),
           active: active === option.key,
         }))
         .sort((a, b) => {

@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   type MouseEvent,
+  type KeyboardEventHandler,
 } from "react";
 
 import AmbassadorButton from "../../../../components/AmbassadorButton";
@@ -20,6 +21,8 @@ import type { OverlayOptionProps } from "./Overlay";
 
 import IconChevron from "../../../../components/icons/IconChevron";
 import useSettings from "../../hooks/useSettings";
+
+import * as keyBinds from "../../../../keyBinds";
 
 const arrowClass =
   "absolute border-0 cursor-pointer text-alveus-green w-full h-[var(--list-fade-padding)] z-20 transition-opacity group pt-[var(--twitch-vertical-padding)] pb-4 box-content";
@@ -53,6 +56,8 @@ export default function Ambassadors(props: AmbassadorsProps) {
     [rawAmbassadors, plants, settings.ambassadorSort.value],
   );
 
+  const activeAmbassadorButtonRef = useRef<HTMLButtonElement>(null);
+  const activeAmbassadorRef = useRef<HTMLDivElement>(null);
   const upArrowRef = useRef<HTMLButtonElement>(null);
   const ambassadorList = useRef<HTMLDivElement>(null);
   const downArrowRef = useRef<HTMLButtonElement>(null);
@@ -128,6 +133,57 @@ export default function Ambassadors(props: AmbassadorsProps) {
     return () => window.removeEventListener("resize", handleArrowVisibility);
   }, [handleArrowVisibility, ambassadors]);
 
+  const ambassadorListCallback = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (props.ref) {
+        if (typeof props.ref === "function") {
+          props.ref(node);
+        } else {
+          props.ref.current = node;
+        }
+      }
+
+      ambassadorList.current = node;
+    },
+    [props.ref],
+  );
+
+  const activeAmbassadorOnClose = () => {
+    setActiveAmbassador({});
+    activeAmbassadorButtonRef.current?.focus();
+    activeAmbassadorButtonRef.current = null;
+    activeAmbassadorRef.current = null;
+  };
+
+  const activeAmbassadorOnKeyDown: KeyboardEventHandler = (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    // Select keys used here to mimic default browser behavior. If you press
+    // enter or space, it counts as clicking the ambassador's button again to
+    // close it.
+    if (
+      keyBinds.BACK.includes(event.code as keyBinds.KeyCode) ||
+      (keyBinds.SELECT.includes(event.code as keyBinds.KeyCode) &&
+        event.target === activeAmbassadorRef.current)
+    ) {
+      event.preventDefault();
+      activeAmbassadorOnClose();
+      return;
+    }
+  };
+
+  const activeAmbassadorRefCallback = useCallback(
+    (node: HTMLDivElement | null) => {
+      activeAmbassadorRef.current = node;
+
+      // Auto focus the ambassador that's currently active
+      node?.focus();
+    },
+    [],
+  );
+
   return (
     <div
       className={classes(
@@ -137,15 +193,19 @@ export default function Ambassadors(props: AmbassadorsProps) {
     >
       <div className="relative z-10 flex flex-col items-center">
         <div
-          ref={ambassadorList}
+          ref={ambassadorListCallback}
           className="list-fade -my-[var(--twitch-vertical-padding)] scrollbar-none flex w-40 flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
           onScroll={handleArrowVisibility}
+          tabIndex={-1}
         >
           {ambassadors.map(([key]) => (
             <AmbassadorButton
               key={key}
               ambassador={key}
-              onClick={() => {
+              onClick={(event) => {
+                // @ts-expect-error this is fine
+                activeAmbassadorButtonRef.current = event.target;
+
                 setActiveAmbassador((prev) =>
                   prev.key === key ? {} : { key },
                 );
@@ -166,6 +226,7 @@ export default function Ambassadors(props: AmbassadorsProps) {
           onClick={(e) => ambassadorListScroll(e, 250)}
           title="Scroll up"
           type="button"
+          tabIndex={-1}
           data-transparent-clicks
         >
           <IconChevron className={classes(arrowSvgClass, arrowPathClass)} />
@@ -180,6 +241,7 @@ export default function Ambassadors(props: AmbassadorsProps) {
           onClick={(e) => ambassadorListScroll(e, -250)}
           title="Scroll down"
           type="button"
+          tabIndex={-1}
           data-transparent-clicks
         >
           <IconChevron className={classes(arrowSvgClass, arrowPathClass)} />
@@ -192,7 +254,17 @@ export default function Ambassadors(props: AmbassadorsProps) {
             <AmbassadorCard
               key={key}
               ambassador={key}
-              onClose={() => setActiveAmbassador({})}
+              onClose={activeAmbassadorOnClose}
+              onKeyDown={
+                activeAmbassador.key === key
+                  ? activeAmbassadorOnKeyDown
+                  : undefined
+              }
+              ref={
+                activeAmbassador.key === key
+                  ? activeAmbassadorRefCallback
+                  : undefined
+              }
               disableCardEffects={settings.disableCardEffects.value}
             />
           </div>

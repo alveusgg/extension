@@ -58,6 +58,7 @@ export default function Ambassadors() {
             <AmbassadorCard
               ambassador={key}
               onClose={() => setAmbassadorCard(undefined)}
+              disableCardEffects
             />
           </Overlay>
 

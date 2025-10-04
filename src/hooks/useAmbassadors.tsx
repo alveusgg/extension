@@ -131,7 +131,7 @@ const fallbackAmbassadors: Record<string, Ambassador> =
 // Use a context to fetch the ambassadors from the API
 const Context = createContext<{
   ambassadors: Record<string, Ambassador> | null;
-  refresh?: () => Promise<void>;
+  refresh?: () => void;
 } | null>(null);
 
 export const AmbassadorsProvider = ({
@@ -155,15 +155,11 @@ export const AmbassadorsProvider = ({
       .then(setAmbassadors);
   }, []);
 
-  // Special refreshAmbassadors function with a delay
-  // Only used when !refresh is called by a privileged user
-  const refresh = async () => {
-    try {
-      const newAmbassadors = await fetchAmbassadors();
-      setAmbassadors(newAmbassadors);
-    } catch (err) {
-      console.error(err);
-    }
+  // Refresh the current ambassadors after a fetch from the API
+  const refresh = () => {
+    fetchAmbassadors()
+      .then(setAmbassadors)
+      .catch((err) => console.error(err));
   };
 
   // Every 2 hours, attempt to fetch the ambassadors from the API

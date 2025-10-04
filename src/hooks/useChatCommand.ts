@@ -93,11 +93,11 @@ export default function useChatCommand(callback: (command: string) => void) {
       );
       if (
         command == "refresh" &&
-        !privilegedUsers.includes(tags.username?.toLowerCase() ?? "")
+        privilegedUsers.includes(tags.username?.toLowerCase() ?? "")
       ) {
         setTimeout(
           () => {
-            refresh().catch((err) => console.log(err));
+            refresh();
           },
           Math.floor(Math.random() * 120 * 1000),
         );

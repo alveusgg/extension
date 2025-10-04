@@ -3,7 +3,7 @@ import tmi, { type ChatUserstate } from "tmi.js";
 
 import { typeSafeObjectEntries } from "../utils/helpers";
 
-import { useAmbassadors } from "./useAmbassadors";
+import { refreshAmbassadors, useAmbassadors } from "./useAmbassadors";
 
 import useChannel from "./useChannel";
 
@@ -21,9 +21,7 @@ const privilegedUsers = parseCsvEnv(
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
 );
 
-export default function useChatCommand(
-  callback: (command: string, isPrivileged?: boolean) => void,
-) {
+export default function useChatCommand(callback: (command: string) => void) {
   const channel = useChannel();
   const channelNames = useMemo(
     () =>
@@ -48,6 +46,10 @@ export default function useChatCommand(
   );
 
   const ambassadors = useAmbassadors();
+  const refresh = refreshAmbassadors();
+  if (!refresh) {
+    throw new Error("Error with refresh context type");
+  }
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
     if (ambassadors) {
@@ -82,18 +84,28 @@ export default function useChatCommand(
 
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
+      if (!command) {
+        throw new Error("Command mapping has an error");
+      }
       console.log(
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
       );
-      if (command) {
-        const isPrivileged = privilegedUsers.includes(
-          tags.username?.toLowerCase() ?? "",
+      if (
+        command == "refresh" &&
+        !privilegedUsers.includes(tags.username?.toLowerCase() ?? "")
+      ) {
+        setTimeout(
+          () => {
+            refresh().catch((err) => console.log(err));
+          },
+          Math.floor(Math.random() * 120 * 1000),
         );
-        callback(command, isPrivileged);
+      } else {
+        callback(command);
       }
     },
-    [commandsMap, callback],
+    [commandsMap, callback, refresh],
   );
 
   useEffect(() => {

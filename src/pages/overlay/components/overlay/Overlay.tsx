@@ -15,10 +15,7 @@ import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
 import IconPlant from "../../../../components/icons/IconPlant";
 import IconSettings from "../../../../components/icons/IconSettings";
 
-import {
-  useAmbassadors,
-  useRefreshAmbassadors,
-} from "../../../../hooks/useAmbassadors";
+import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { visibleUnderCursor } from "../../../../utils/dom";
 
@@ -117,7 +114,6 @@ export default function Overlay() {
   } = useSleeping();
 
   const ambassadors = useAmbassadors();
-  const refreshAmbassadors = useRefreshAmbassadors();
   const options = useMemo(
     () =>
       overlayOptions.filter(
@@ -148,7 +144,7 @@ export default function Overlay() {
   // When a chat command is run, wake the overlay
   useChatCommand(
     useCallback(
-      (command: string, isPrivileged?: boolean) => {
+      (command: string) => {
         if (!settings.disableChatPopup.value) {
           const ambassador = ambassadors?.[command];
           if (ambassador)
@@ -175,23 +171,8 @@ export default function Overlay() {
           awakingRef.current = true;
           wake(commandTimeout);
         }
-
-        // Ignore chat popup preference, the refresh should always go through and show if called
-        if (command === "refresh" && isPrivileged) {
-          refreshAmbassadors().then(() => {
-            setActiveAmbassador({});
-            setVisibleOption("welcome");
-            const ambassadorLists = document.querySelectorAll(".list-fade");
-            ambassadorLists.forEach((list) => {
-              list.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-            });
-          });
-        }
       },
-      [settings.disableChatPopup.value, ambassadors, wake, refreshAmbassadors],
+      [settings.disableChatPopup.value, ambassadors, wake],
     ),
   );
 
@@ -251,6 +232,17 @@ export default function Overlay() {
     }),
     [activeAmbassador],
   );
+
+  // Unselect ambassador if ambassador is no longer in db after refresh
+  useEffect(() => {
+    if (
+      ambassadors &&
+      activeAmbassador.key &&
+      !ambassadors[activeAmbassador.key]
+    ) {
+      setActiveAmbassador({});
+    }
+  }, [ambassadors]);
 
   return (
     <div

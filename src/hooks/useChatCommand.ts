@@ -47,9 +47,6 @@ export default function useChatCommand(callback: (command: string) => void) {
 
   const ambassadors = useAmbassadors();
   const refresh = refreshAmbassadors();
-  if (!refresh) {
-    throw new Error("Refresh context value may be undefined");
-  }
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
     if (ambassadors) {

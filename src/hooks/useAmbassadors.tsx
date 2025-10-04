@@ -238,9 +238,7 @@ const isWinstonDate = (date: string) => date === "04-01";
 
 export const useAmbassadors = (): Record<string, Ambassador> | null => {
   const context = useContext(Context);
-  if (!context) {
-    throw new Error("AmbassadorsProvider Context is null");
-  }
+
   // Setup a timer to store the current month and day
   const [date, setDate] = useState<string>("");
   useEffect(() => {
@@ -253,13 +251,13 @@ export const useAmbassadors = (): Record<string, Ambassador> | null => {
   // Return the ambassadors, with Winston added to the start if it's April 1st
   return useMemo(
     () =>
-      context.ambassadors
+      context?.ambassadors
         ? {
-            ...context.ambassadors,
+            ...context?.ambassadors,
             ...(isWinstonDate(date) ? { winston } : {}),
           }
         : null,
-    [context.ambassadors, date],
+    [context?.ambassadors, date],
   );
 };
 
@@ -270,8 +268,5 @@ export const useAmbassador = (key: string) => {
 
 export const refreshAmbassadors = () => {
   const context = useContext(Context);
-  if (!context) {
-    throw new Error("AmbassadorsProvider Context is null");
-  }
-  return context.refresh;
+  return context?.refresh;
 };

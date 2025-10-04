@@ -93,7 +93,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       ) {
         setTimeout(
           () => {
-            refresh();
+            refresh?.();
           },
           Math.floor(Math.random() * 120 * 1000),
         );

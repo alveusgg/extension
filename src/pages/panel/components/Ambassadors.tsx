@@ -31,7 +31,7 @@ export default function Ambassadors() {
 
   // Unselect ambassador card if ambassador is no longer available after refresh
   useEffect(() => {
-    if (ambassadorCard && rawAmbassadors && !rawAmbassadors[ambassadorCard]) {
+    if (ambassadorCard && rawAmbassadors && !rawAmbassadors?.[ambassadorCard]) {
       setAmbassadorCard(undefined);
     }
   }, [rawAmbassadors]);

@@ -238,7 +238,7 @@ export default function Overlay() {
     if (
       ambassadors &&
       activeAmbassador.key &&
-      !ambassadors[activeAmbassador.key]
+      !ambassadors?.[activeAmbassador.key]
     ) {
       setActiveAmbassador({});
     }

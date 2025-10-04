@@ -233,7 +233,7 @@ export default function Overlay() {
     [activeAmbassador],
   );
 
-  // Unselect ambassador if ambassador is no longer in db after refresh
+  // Unselect ambassador if ambassador is no longer available after refresh
   useEffect(() => {
     if (
       ambassadors &&

@@ -131,7 +131,7 @@ const fallbackAmbassadors: Record<string, Ambassador> =
 // Use a context to fetch the ambassadors from the API
 const Context = createContext<{
   ambassadors: Record<string, Ambassador> | null;
-  refresh?: () => void;
+  refresh: () => void;
 } | null>(null);
 
 export const AmbassadorsProvider = ({

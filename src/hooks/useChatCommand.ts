@@ -48,7 +48,7 @@ export default function useChatCommand(callback: (command: string) => void) {
   const ambassadors = useAmbassadors();
   const refresh = refreshAmbassadors();
   if (!refresh) {
-    throw new Error("Error with refresh context type");
+    throw new Error("Refresh context value may be undefined");
   }
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
@@ -85,7 +85,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
       if (!command) {
-        throw new Error("Command mapping has an error");
+        throw new Error("Command mapping error");
       }
       console.log(
         `*Twitch extension received command: ${commandName} (${command})*`,

@@ -1,4 +1,4 @@
-import { useState, useCallback, Fragment, useMemo } from "react";
+import { useState, useCallback, Fragment, useMemo, useEffect } from "react";
 
 import AmbassadorCard from "../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../components/AmbassadorButton";
@@ -28,6 +28,13 @@ export default function Ambassadors() {
       [rawAmbassadors],
     ),
   );
+
+  // Unselect ambassador card if ambassador is no longer available after refresh
+  useEffect(() => {
+    if (ambassadorCard && rawAmbassadors && !rawAmbassadors?.[ambassadorCard]) {
+      setAmbassadorCard(undefined);
+    }
+  }, [rawAmbassadors]);
 
   return (
     <main className="relative scrollbar flex max-h-full flex-wrap justify-center gap-4 overflow-x-hidden overflow-y-auto px-2 pt-16 pb-4 scrollbar-thumb-alveus-green scrollbar-track-alveus-tan md:px-4">

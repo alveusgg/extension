@@ -233,6 +233,17 @@ export default function Overlay() {
     [activeAmbassador],
   );
 
+  // Unselect ambassador if ambassador is no longer available after refresh
+  useEffect(() => {
+    if (
+      ambassadors &&
+      activeAmbassador.key &&
+      !ambassadors?.[activeAmbassador.key]
+    ) {
+      setActiveAmbassador({});
+    }
+  }, [ambassadors]);
+
   return (
     <div
       className={classes(

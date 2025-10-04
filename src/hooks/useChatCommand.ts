@@ -84,9 +84,8 @@ export default function useChatCommand(callback: (command: string) => void) {
 
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
-      if (!command) {
-        throw new Error("Command mapping error");
-      }
+      // Ignore if message is not a valid command
+      if (!command) return;
       console.log(
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
@@ -101,7 +100,7 @@ export default function useChatCommand(callback: (command: string) => void) {
           },
           Math.floor(Math.random() * 120 * 1000),
         );
-      } else {
+      } else if (command !== "refresh") {
         callback(command);
       }
     },

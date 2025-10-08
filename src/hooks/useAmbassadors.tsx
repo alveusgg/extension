@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ContextType,
-} from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 
 import allAmbassadors, {
@@ -136,14 +129,20 @@ const fallbackAmbassadors: Record<string, Ambassador> =
   );
 
 // Use a context to fetch the ambassadors from the API
-const Context = createContext<Record<string, Ambassador> | null>(null);
+const Context = createContext<{
+  ambassadors: Record<string, Ambassador> | null;
+  refresh: () => void;
+} | null>(null);
+
 export const AmbassadorsProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [ambassadors, setAmbassadors] =
-    useState<ContextType<typeof Context>>(null);
+  const [ambassadors, setAmbassadors] = useState<Record<
+    string,
+    Ambassador
+  > | null>(null);
 
   // On mount, attempt to fetch the ambassadors from the API
   // If we can't fetch the ambassadors, use the data from the data package
@@ -155,6 +154,13 @@ export const AmbassadorsProvider = ({
       })
       .then(setAmbassadors);
   }, []);
+
+  // Refresh the current ambassadors after a fetch from the API
+  const refresh = () => {
+    fetchAmbassadors()
+      .then(setAmbassadors)
+      .catch((err) => console.error(err));
+  };
 
   // Every 2 hours, attempt to fetch the ambassadors from the API
   // If we can't fetch the ambassadors, we'll just use the existing data
@@ -171,7 +177,11 @@ export const AmbassadorsProvider = ({
     return () => clearInterval(interval);
   }, []);
 
-  return <Context value={ambassadors}>{children}</Context>;
+  return (
+    <Context.Provider value={{ ambassadors, refresh }}>
+      {children}
+    </Context.Provider>
+  );
 };
 
 const winston = {
@@ -227,7 +237,7 @@ const winston = {
 const isWinstonDate = (date: string) => date === "04-01";
 
 export const useAmbassadors = (): Record<string, Ambassador> | null => {
-  const ambassadors = useContext(Context);
+  const context = useContext(Context);
 
   // Setup a timer to store the current month and day
   const [date, setDate] = useState<string>("");
@@ -241,17 +251,22 @@ export const useAmbassadors = (): Record<string, Ambassador> | null => {
   // Return the ambassadors, with Winston added to the start if it's April 1st
   return useMemo(
     () =>
-      ambassadors
+      context?.ambassadors
         ? {
-            ...ambassadors,
+            ...context?.ambassadors,
             ...(isWinstonDate(date) ? { winston } : {}),
           }
         : null,
-    [ambassadors, date],
+    [context?.ambassadors, date],
   );
 };
 
 export const useAmbassador = (key: string) => {
   const ambassadors = useAmbassadors();
   return ambassadors?.[key];
+};
+
+export const refreshAmbassadors = () => {
+  const context = useContext(Context);
+  return context?.refresh;
 };

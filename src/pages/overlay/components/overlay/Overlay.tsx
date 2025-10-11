@@ -150,22 +150,21 @@ export default function Overlay() {
     useCallback(
       (command: string) => {
         if (!settings.disableChatPopup.value || command == "refresh") {
-          const ambassador = ambassadors?.[command];
-          if (ambassador)
-            setActiveAmbassador({ key: command, isCommand: true });
-          else if (command == "refresh") {
+          if (command == "refresh") {
             setTimeout(
               () => {
                 refresh?.();
               },
               Math.floor(Math.random() * 120 * 1000),
             );
-          } else if (command !== "welcome") return;
+          } else if (ambassadors?.[command])
+            setActiveAmbassador({ key: command, isCommand: true });
+          else if (command !== "welcome") return;
 
           // Show the card
           setVisibleOption(
-            ambassador
-              ? ambassador.species.class.key === "plantae"
+            ambassadors?.[command]
+              ? ambassadors?.[command].species.class.key === "plantae"
                 ? "ambassadorPlants"
                 : "ambassadors"
               : "welcome",

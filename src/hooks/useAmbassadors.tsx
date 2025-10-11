@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { z } from "zod";
 
 import allAmbassadors, {
@@ -155,12 +162,12 @@ export const AmbassadorsProvider = ({
       .then(setAmbassadors);
   }, []);
 
-  // Refresh the current ambassadors after a fetch from the API
-  const refresh = () => {
+  // Refresh the current ambassadors after a !refresh command
+  const refresh = useCallback(() => {
     fetchAmbassadors()
       .then(setAmbassadors)
       .catch((err) => console.error(err));
-  };
+  }, []);
 
   // Every 2 hours, attempt to fetch the ambassadors from the API
   // If we can't fetch the ambassadors, we'll just use the existing data
@@ -266,7 +273,7 @@ export const useAmbassador = (key: string) => {
   return ambassadors?.[key];
 };
 
-export const refreshAmbassadors = () => {
+export const useAmbassadorsRefresh = () => {
   const context = useContext(Context);
   return context?.refresh;
 };

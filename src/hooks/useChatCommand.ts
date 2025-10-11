@@ -3,7 +3,7 @@ import tmi, { type ChatUserstate } from "tmi.js";
 
 import { typeSafeObjectEntries } from "../utils/helpers";
 
-import { refreshAmbassadors, useAmbassadors } from "./useAmbassadors";
+import { useAmbassadors } from "./useAmbassadors";
 
 import useChannel from "./useChannel";
 
@@ -46,7 +46,6 @@ export default function useChatCommand(callback: (command: string) => void) {
   );
 
   const ambassadors = useAmbassadors();
-  const refresh = refreshAmbassadors();
   const commandsMap = useMemo(() => {
     const commands = new Map<string, string>();
     if (ambassadors) {
@@ -81,27 +80,19 @@ export default function useChatCommand(callback: (command: string) => void) {
 
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
-      // Ignore if message is not a valid command
       if (!command) return;
       console.log(
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
       );
       if (
-        command == "refresh" &&
+        command !== "refresh" ||
         privilegedUsers.includes(tags.username?.toLowerCase() ?? "")
       ) {
-        setTimeout(
-          () => {
-            refresh?.();
-          },
-          Math.floor(Math.random() * 120 * 1000),
-        );
-      } else if (command !== "refresh") {
         callback(command);
       }
     },
-    [commandsMap, callback, refresh],
+    [commandsMap, callback],
   );
 
   useEffect(() => {

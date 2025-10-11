@@ -3,7 +3,10 @@ import { useState, useCallback, Fragment, useMemo, useEffect } from "react";
 import AmbassadorCard from "../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../components/AmbassadorButton";
 
-import { useAmbassadors } from "../../../hooks/useAmbassadors";
+import {
+  useAmbassadors,
+  useAmbassadorsRefresh,
+} from "../../../hooks/useAmbassadors";
 
 import useChatCommand from "../../../hooks/useChatCommand";
 import { typeSafeObjectEntries } from "../../../utils/helpers";
@@ -12,6 +15,7 @@ import Overlay from "./Overlay";
 
 export default function Ambassadors() {
   const rawAmbassadors = useAmbassadors();
+  const refresh = useAmbassadorsRefresh();
   const ambassadors = useMemo(
     () => typeSafeObjectEntries(rawAmbassadors ?? {}),
     [rawAmbassadors],
@@ -22,7 +26,14 @@ export default function Ambassadors() {
   useChatCommand(
     useCallback(
       (command: string) => {
-        if (Object.keys(rawAmbassadors ?? {}).includes(command))
+        if (command == "refresh") {
+          setTimeout(
+            () => {
+              refresh?.();
+            },
+            Math.floor(Math.random() * 120 * 1000),
+          );
+        } else if (Object.keys(rawAmbassadors ?? {}).includes(command))
           setAmbassadorCard(command);
       },
       [rawAmbassadors],

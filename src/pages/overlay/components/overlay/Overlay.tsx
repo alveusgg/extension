@@ -15,7 +15,10 @@ import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
 import IconPlant from "../../../../components/icons/IconPlant";
 import IconSettings from "../../../../components/icons/IconSettings";
 
-import { useAmbassadors } from "../../../../hooks/useAmbassadors";
+import {
+  useAmbassadors,
+  useAmbassadorsRefresh,
+} from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { visibleUnderCursor } from "../../../../utils/dom";
 
@@ -114,6 +117,7 @@ export default function Overlay() {
   } = useSleeping();
 
   const ambassadors = useAmbassadors();
+  const refresh = useAmbassadorsRefresh();
   const options = useMemo(
     () =>
       overlayOptions.filter(
@@ -145,11 +149,18 @@ export default function Overlay() {
   useChatCommand(
     useCallback(
       (command: string) => {
-        if (!settings.disableChatPopup.value) {
+        if (!settings.disableChatPopup.value || command == "refresh") {
           const ambassador = ambassadors?.[command];
           if (ambassador)
             setActiveAmbassador({ key: command, isCommand: true });
-          else if (command !== "welcome") return;
+          else if (command == "refresh") {
+            setTimeout(
+              () => {
+                refresh?.();
+              },
+              Math.floor(Math.random() * 120 * 1000),
+            );
+          } else if (command !== "welcome") return;
 
           // Show the card
           setVisibleOption(

@@ -39,7 +39,7 @@ export default function Ambassadors() {
         if (Object.keys(rawAmbassadors ?? {}).includes(command))
           setAmbassadorCard(command);
       },
-      [rawAmbassadors],
+      [refresh, rawAmbassadors],
     ),
   );
 

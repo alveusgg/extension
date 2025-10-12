@@ -186,7 +186,7 @@ export default function Overlay() {
           wake(commandTimeout);
         }
       },
-      [settings.disableChatPopup.value, ambassadors, wake],
+      [refresh, settings.disableChatPopup.value, ambassadors, wake],
     ),
   );
 
@@ -256,7 +256,7 @@ export default function Overlay() {
     ) {
       setActiveAmbassador({});
     }
-  }, [ambassadors, activeAmbassador]);
+  }, [ambassadors, activeAmbassador.key]);
 
   return (
     <div

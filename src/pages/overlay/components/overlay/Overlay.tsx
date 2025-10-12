@@ -149,22 +149,26 @@ export default function Overlay() {
   useChatCommand(
     useCallback(
       (command: string) => {
-        if (!settings.disableChatPopup.value || command == "refresh") {
-          if (command == "refresh") {
-            setTimeout(
-              () => {
-                refresh?.();
-              },
-              Math.floor(Math.random() * 120 * 1000),
-            );
-          } else if (ambassadors?.[command])
+        if (command === "refresh") {
+          setTimeout(
+            () => {
+              refresh?.();
+            },
+            Math.floor(Math.random() * 120 * 1000),
+          );
+          return;
+        }
+
+        if (!settings.disableChatPopup.value) {
+          const ambassador = ambassadors?.[command];
+          if (ambassador)
             setActiveAmbassador({ key: command, isCommand: true });
           else if (command !== "welcome") return;
 
           // Show the card
           setVisibleOption(
-            ambassadors?.[command]
-              ? ambassadors?.[command].species.class.key === "plantae"
+            ambassador
+              ? ambassador.species.class.key === "plantae"
                 ? "ambassadorPlants"
                 : "ambassadors"
               : "welcome",
@@ -252,7 +256,7 @@ export default function Overlay() {
     ) {
       setActiveAmbassador({});
     }
-  }, [ambassadors]);
+  }, [ambassadors, activeAmbassador]);
 
   return (
     <div

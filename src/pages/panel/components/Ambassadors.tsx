@@ -26,14 +26,17 @@ export default function Ambassadors() {
   useChatCommand(
     useCallback(
       (command: string) => {
-        if (command == "refresh") {
+        if (command === "refresh") {
           setTimeout(
             () => {
               refresh?.();
             },
             Math.floor(Math.random() * 120 * 1000),
           );
-        } else if (Object.keys(rawAmbassadors ?? {}).includes(command))
+          return;
+        }
+
+        if (Object.keys(rawAmbassadors ?? {}).includes(command))
           setAmbassadorCard(command);
       },
       [rawAmbassadors],
@@ -45,7 +48,7 @@ export default function Ambassadors() {
     if (ambassadorCard && rawAmbassadors && !rawAmbassadors?.[ambassadorCard]) {
       setAmbassadorCard(undefined);
     }
-  }, [rawAmbassadors]);
+  }, [ambassadorCard, rawAmbassadors]);
 
   return (
     <main className="relative scrollbar flex max-h-full flex-wrap justify-center gap-4 overflow-x-hidden overflow-y-auto px-2 pt-16 pb-4 scrollbar-thumb-alveus-green scrollbar-track-alveus-tan md:px-4">

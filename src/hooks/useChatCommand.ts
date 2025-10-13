@@ -56,6 +56,7 @@ export default function useChatCommand(callback: (command: string) => void) {
       });
     }
     commands.set("welcome", "welcome");
+    commands.set("refresh", "refresh");
     return commands;
   }, [ambassadors]);
 
@@ -79,11 +80,20 @@ export default function useChatCommand(callback: (command: string) => void) {
 
       const commandName = msg.trim().toLowerCase().slice(1);
       const command = commandsMap.get(commandName);
+      if (!command) return;
+
+      // Handle any special commands + privilege edge cases
+      if (
+        command === "refresh" &&
+        !privilegedUsers.includes(tags.username?.toLowerCase() ?? "")
+      )
+        return;
+
       console.log(
         `*Twitch extension received command: ${commandName} (${command})*`,
         id,
       );
-      if (command) callback(command);
+      callback(command);
     },
     [commandsMap, callback],
   );

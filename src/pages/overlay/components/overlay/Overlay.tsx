@@ -15,7 +15,10 @@ import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
 import IconPlant from "../../../../components/icons/IconPlant";
 import IconSettings from "../../../../components/icons/IconSettings";
 
-import { useAmbassadors } from "../../../../hooks/useAmbassadors";
+import {
+  useAmbassadors,
+  useAmbassadorsRefresh,
+} from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { visibleUnderCursor } from "../../../../utils/dom";
 
@@ -114,6 +117,7 @@ export default function Overlay() {
   } = useSleeping();
 
   const ambassadors = useAmbassadors();
+  const refresh = useAmbassadorsRefresh();
   const options = useMemo(
     () =>
       overlayOptions.filter(
@@ -145,6 +149,16 @@ export default function Overlay() {
   useChatCommand(
     useCallback(
       (command: string) => {
+        if (command === "refresh") {
+          setTimeout(
+            () => {
+              refresh?.();
+            },
+            Math.floor(Math.random() * 120 * 1000),
+          );
+          return;
+        }
+
         if (!settings.disableChatPopup.value) {
           const ambassador = ambassadors?.[command];
           if (ambassador)
@@ -172,7 +186,7 @@ export default function Overlay() {
           wake(commandTimeout);
         }
       },
-      [settings.disableChatPopup.value, ambassadors, wake],
+      [refresh, settings.disableChatPopup.value, ambassadors, wake],
     ),
   );
 
@@ -232,6 +246,17 @@ export default function Overlay() {
     }),
     [activeAmbassador],
   );
+
+  // Unselect ambassador if ambassador is no longer available after refresh
+  useEffect(() => {
+    if (
+      ambassadors &&
+      activeAmbassador.key &&
+      !ambassadors?.[activeAmbassador.key]
+    ) {
+      setActiveAmbassador({});
+    }
+  }, [ambassadors, activeAmbassador.key]);
 
   return (
     <div

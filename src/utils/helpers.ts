@@ -44,11 +44,13 @@ export const sortAmbassadors = <
       );
     case "name":
       return [...ambassadors].sort(([, a], [, b]) =>
-        a.name.localeCompare(b.name),
+        a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),
       );
     case "species":
       return [...ambassadors].sort(([, a], [, b]) =>
-        a.species.name.localeCompare(b.species.name),
+        a.species.name.localeCompare(b.species.name, undefined, {
+          sensitivity: "base",
+        }),
       );
     case "default":
     default:

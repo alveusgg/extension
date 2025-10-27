@@ -1,7 +1,7 @@
-import { useState, useCallback, Fragment, useMemo, useEffect } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 
-import AmbassadorCard from "../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../components/AmbassadorButton";
+import AmbassadorCard from "../../../components/AmbassadorCard";
 
 import {
   useAmbassadors,
@@ -9,16 +9,24 @@ import {
 } from "../../../hooks/useAmbassadors";
 
 import useChatCommand from "../../../hooks/useChatCommand";
-import { typeSafeObjectEntries } from "../../../utils/helpers";
+import { sortPartialDates } from "../../../utils/dateManager";
+import { sortAmbassadors, typeSafeObjectEntries } from "../../../utils/helpers";
+import useSettings from "../../overlay/hooks/useSettings";
 
 import Overlay from "./Overlay";
 
 export default function Ambassadors() {
+  const settings = useSettings();
   const rawAmbassadors = useAmbassadors();
   const refresh = useAmbassadorsRefresh();
   const ambassadors = useMemo(
-    () => typeSafeObjectEntries(rawAmbassadors ?? {}),
-    [rawAmbassadors],
+    () =>
+      sortAmbassadors(
+        typeSafeObjectEntries(rawAmbassadors ?? {}),
+        settings.ambassadorSort.value,
+        sortPartialDates,
+      ),
+    [rawAmbassadors, settings.ambassadorSort.value],
   );
 
   // Allow chat commands to select an ambassador, as well as the user

@@ -1,19 +1,22 @@
+import { Transition } from "@headlessui/react";
 import {
-  useRef,
-  useEffect,
   useCallback,
+  useEffect,
   useMemo,
+  useRef,
   type MouseEvent,
 } from "react";
-import { Transition } from "@headlessui/react";
 
-import AmbassadorCard from "../../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../../components/AmbassadorButton";
+import AmbassadorCard from "../../../../components/AmbassadorCard";
 
 import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
-import { typeSafeObjectEntries } from "../../../../utils/helpers";
 import { sortPartialDates } from "../../../../utils/dateManager";
+import {
+  sortAmbassadors,
+  typeSafeObjectEntries,
+} from "../../../../utils/helpers";
 
 import type { OverlayOptionProps } from "./Overlay";
 
@@ -41,13 +44,15 @@ export default function Ambassadors(props: AmbassadorsProps) {
   const rawAmbassadors = useAmbassadors();
   const ambassadors = useMemo(
     () =>
-      typeSafeObjectEntries(rawAmbassadors ?? {})
-        .filter(
+      sortAmbassadors(
+        typeSafeObjectEntries(rawAmbassadors ?? {}).filter(
           ([, ambassador]) =>
             (ambassador.species.class.key === "plantae") === plants,
-        )
-        .sort(([, a], [, b]) => sortPartialDates(a.arrival, b.arrival)),
-    [rawAmbassadors, plants],
+        ),
+        settings.ambassadorSort.value,
+        sortPartialDates,
+      ),
+    [rawAmbassadors, plants, settings.ambassadorSort.value],
   );
 
   const upArrowRef = useRef<HTMLButtonElement>(null);

@@ -1,9 +1,10 @@
-import { typeSafeObjectEntries } from "../../../../utils/helpers";
 import { classes } from "../../../../utils/classes";
+import { typeSafeObjectEntries } from "../../../../utils/helpers";
 
 import useSettings from "../../hooks/useSettings";
 
 import Card from "../../../../components/Card";
+import Select from "../Select";
 import Toggle from "../Toggle";
 
 import type { OverlayOptionProps } from "./Overlay";
@@ -28,6 +29,16 @@ export default function Settings(props: OverlayOptionProps) {
                   label={setting.title}
                   value={setting.value as boolean}
                   onChange={setting.change as (value: boolean) => void}
+                />
+              )}
+              {setting.type === "select" && "options" in setting && (
+                <Select
+                  label={setting.title}
+                  value={setting.value as string}
+                  options={
+                    setting.options as { value: string; label: string }[]
+                  }
+                  onChange={setting.change as (value: string) => void}
                 />
               )}
             </li>

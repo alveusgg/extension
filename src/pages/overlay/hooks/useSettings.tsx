@@ -33,6 +33,21 @@ const settings = {
       ),
     configurable: true,
   },
+  ambassadorSort: {
+    title: "Sort ambassadors by",
+    type: "select",
+    options: [
+      { value: "default", label: "Default" },
+      { value: "arrival", label: "Arrival date" },
+      { value: "name", label: "Name (A-Z)" },
+      { value: "species", label: "Species (A-Z)" },
+    ],
+    process: (value: any): "default" | "arrival" | "name" | "species" => {
+      const validValues = ["default", "arrival", "name", "species"] as const;
+      return validValues.includes(value) ? value : "default";
+    },
+    configurable: true,
+  },
   disableOverlayHiding: {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",

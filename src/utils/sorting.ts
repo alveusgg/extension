@@ -1,4 +1,6 @@
-type SortOption = { value: string; label: string };
+import type { SelectOption } from "../pages/overlay/components/Select";
+
+export type SortOption = SelectOption;
 
 export const sortOptions = [
   { value: "default", label: "Default" },

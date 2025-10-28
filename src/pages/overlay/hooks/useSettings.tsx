@@ -16,6 +16,7 @@ import {
   sortMethods,
   sortOptions,
   type SortMethod,
+  type SortOption,
 } from "../../../utils/sorting";
 import {
   isValidOverlayKey,
@@ -27,7 +28,7 @@ type Setting = { title: string; configurable: boolean } & (
   | { type: "string"; process: (value: any) => string }
   | {
       type: "select";
-      options: { value: string; label: string }[];
+      options: SortOption[];
       process: (value: any) => string;
     }
 );

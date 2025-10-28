@@ -1,6 +1,6 @@
 import { useCallback, type ChangeEvent } from "react";
 
-interface SelectOption<T extends string = string> {
+export interface SelectOption<T extends string = string> {
   value: T;
   label: string;
 }

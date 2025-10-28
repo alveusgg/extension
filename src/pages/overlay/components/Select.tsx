@@ -1,23 +1,25 @@
 import { useCallback, type ChangeEvent } from "react";
 
-interface SelectOption {
-  value: string;
+interface SelectOption<T extends string = string> {
+  value: T;
   label: string;
 }
 
-interface SelectProps {
+interface SelectProps<T extends string = string> {
   label: string;
-  value: string;
-  options: SelectOption[];
-  onChange: (value: string) => void;
+  value: T;
+  options: SelectOption<T>[];
+  onChange: (value: T) => void;
 }
 
-export default function Select(props: SelectProps) {
-  const { label, value, options, onChange } = props;
+export default function Select<T extends string = string>(
+  props: SelectProps<T>,
+) {
+  const { label, value, options, onChange } = props as SelectProps<T>;
 
   const onChangeNative = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
-      onChange(e.target.value);
+      onChange(e.target.value as T);
     },
     [onChange],
   );

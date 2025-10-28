@@ -13,6 +13,11 @@ import {
   typeSafeObjectFromEntries,
 } from "../../../utils/helpers";
 import {
+  sortMethods,
+  sortOptions,
+  type SortMethod,
+} from "../../../utils/sorting";
+import {
   isValidOverlayKey,
   type OverlayKey,
 } from "../components/overlay/Overlay";
@@ -36,15 +41,11 @@ const settings = {
   ambassadorSort: {
     title: "Sort ambassadors by",
     type: "select",
-    options: [
-      { value: "default", label: "Default" },
-      { value: "arrival", label: "Arrival date" },
-      { value: "name", label: "Name (A-Z)" },
-      { value: "species", label: "Species (A-Z)" },
-    ],
-    process: (value: any): "default" | "arrival" | "name" | "species" => {
-      const validValues = ["default", "arrival", "name", "species"] as const;
-      return validValues.includes(value) ? value : "default";
+    options: sortOptions,
+    process: (value: any): SortMethod => {
+      return (sortMethods as readonly SortMethod[]).includes(value)
+        ? value
+        : "default";
     },
     configurable: true,
   },
@@ -62,7 +63,7 @@ const settings = {
     },
     configurable: false,
   },
-};
+} as const;
 
 type SettingsKey = keyof typeof settings;
 

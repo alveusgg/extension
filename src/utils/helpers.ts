@@ -1,3 +1,5 @@
+import type { SortMethod } from "./sorting";
+
 export type ObjectEntries<T extends object> = Array<[keyof T, T[keyof T]]>;
 
 export const typeSafeObjectEntries = <T extends object>(obj: T) =>
@@ -11,8 +13,6 @@ export const camelToKebab = (str: string) =>
   str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 
 export type AmbassadorEntry<T> = [string, T];
-
-export type SortMethod = "default" | "arrival" | "name" | "species";
 
 type PartialDate =
   | `${number}`

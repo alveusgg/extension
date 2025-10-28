@@ -34,11 +34,9 @@ export default function Settings(props: OverlayOptionProps) {
               {setting.type === "select" && "options" in setting && (
                 <Select
                   label={setting.title}
-                  value={setting.value as string}
-                  options={
-                    setting.options as { value: string; label: string }[]
-                  }
-                  onChange={setting.change as (value: string) => void}
+                  value={setting.value}
+                  options={setting.options}
+                  onChange={setting.change}
                 />
               )}
             </li>

@@ -20,6 +20,8 @@ export type Sleeping = {
   sleeping: boolean;
   wake: (time: number) => void;
   sleep: () => void;
+  stayAwake: () => void;
+  resumeTimer: (time: number) => void;
   on: (event: Event, fn: Events[Event]) => void;
   off: (event: Event, fn: Events[Event]) => void;
 };
@@ -63,12 +65,28 @@ export const SleepingProvider = ({ children }: { children: ReactNode }) => {
     stopTimer();
   }, [callbacks.sleep, stopTimer]);
 
+  // Pause the timer and keep the overlay awake
+  const stayAwake = useCallback(() => {
+    setSleeping(false);
+    stopTimer();
+  }, [stopTimer]);
+
+  // Resume the timer
+  const resumeTimer = useCallback(
+    (time: number) => {
+      startTimer(() => setSleeping(true), time);
+    },
+    [startTimer],
+  );
+
   // Expose the full object for sleeping
   const obj = useMemo(
     () => ({
       sleeping,
       wake,
       sleep,
+      stayAwake,
+      resumeTimer,
       on,
       off,
     }),

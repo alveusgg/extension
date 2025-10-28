@@ -13,9 +13,25 @@ import {
   typeSafeObjectFromEntries,
 } from "../../../utils/helpers";
 import {
+  sortMethods,
+  sortOptions,
+  type SortMethod,
+  type SortOption,
+} from "../../../utils/sorting";
+import {
   isValidOverlayKey,
   type OverlayKey,
 } from "../components/overlay/Overlay";
+
+type Setting = { title: string; configurable: boolean } & (
+  | { type: "boolean"; process: (value: any) => boolean }
+  | { type: "string"; process: (value: any) => string }
+  | {
+      type: "select";
+      options: SortOption[];
+      process: (value: any) => string;
+    }
+);
 
 const settings = {
   disableChatPopup: {
@@ -33,6 +49,15 @@ const settings = {
       ),
     configurable: true,
   },
+  ambassadorSort: {
+    title: "Sort ambassadors by",
+    type: "select",
+    options: sortOptions,
+    process: (value: any): SortMethod => {
+      return sortMethods.includes(value) ? value : "default";
+    },
+    configurable: true,
+  },
   disableOverlayHiding: {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",
@@ -47,7 +72,7 @@ const settings = {
     },
     configurable: false,
   },
-};
+} as const satisfies Record<string, Setting>;
 
 type SettingsKey = keyof typeof settings;
 

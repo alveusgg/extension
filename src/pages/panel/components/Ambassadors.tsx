@@ -1,7 +1,7 @@
-import { useState, useCallback, Fragment, useMemo, useEffect } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 
-import AmbassadorCard from "../../../components/AmbassadorCard";
 import AmbassadorButton from "../../../components/AmbassadorButton";
+import AmbassadorCard from "../../../components/AmbassadorCard";
 
 import {
   useAmbassadors,
@@ -9,15 +9,25 @@ import {
 } from "../../../hooks/useAmbassadors";
 
 import useChatCommand from "../../../hooks/useChatCommand";
+import { sortPartialDates } from "../../../utils/dateManager";
 import { typeSafeObjectEntries } from "../../../utils/helpers";
+import type { SortMethod } from "../../../utils/sorting";
+import { sortAmbassadors } from "../../../utils/sorting";
 
 import Overlay from "./Overlay";
 
 export default function Ambassadors() {
+  // Panel uses default settings (no SettingsProvider) — default sort method is "default"
+  const settingsSort: SortMethod = "default";
   const rawAmbassadors = useAmbassadors();
   const refresh = useAmbassadorsRefresh();
   const ambassadors = useMemo(
-    () => typeSafeObjectEntries(rawAmbassadors ?? {}),
+    () =>
+      sortAmbassadors(
+        typeSafeObjectEntries(rawAmbassadors ?? {}),
+        settingsSort,
+        sortPartialDates,
+      ),
     [rawAmbassadors],
   );
 

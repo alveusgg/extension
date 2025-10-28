@@ -10,8 +10,9 @@ import {
 
 import useChatCommand from "../../../hooks/useChatCommand";
 import { sortPartialDates } from "../../../utils/dateManager";
-import { sortAmbassadors, typeSafeObjectEntries } from "../../../utils/helpers";
+import { typeSafeObjectEntries } from "../../../utils/helpers";
 import type { SortMethod } from "../../../utils/sorting";
+import { sortAmbassadors } from "../../../utils/sorting";
 
 import Overlay from "./Overlay";
 

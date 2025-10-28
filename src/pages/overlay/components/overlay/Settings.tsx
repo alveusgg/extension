@@ -27,11 +27,11 @@ export default function Settings(props: OverlayOptionProps) {
               {setting.type === "boolean" && (
                 <Toggle
                   label={setting.title}
-                  value={setting.value as boolean}
-                  onChange={setting.change as (value: boolean) => void}
+                  value={setting.value}
+                  onChange={setting.change}
                 />
               )}
-              {setting.type === "select" && "options" in setting && (
+              {setting.type === "select" && (
                 <Select
                   label={setting.title}
                   value={setting.value}

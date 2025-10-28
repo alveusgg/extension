@@ -15,7 +15,7 @@ interface SelectProps<T extends string = string> {
 export default function Select<T extends string = string>(
   props: SelectProps<T>,
 ) {
-  const { label, value, options, onChange } = props as SelectProps<T>;
+  const { label, value, options, onChange } = props;
 
   const onChangeNative = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {

@@ -22,6 +22,16 @@ import {
   type OverlayKey,
 } from "../components/overlay/Overlay";
 
+type Setting = { title: string; configurable: boolean } & (
+  | { type: "boolean"; process: (value: any) => boolean }
+  | { type: "string"; process: (value: any) => string }
+  | {
+      type: "select";
+      options: { value: string; label: string }[];
+      process: (value: any) => string;
+    }
+);
+
 const settings = {
   disableChatPopup: {
     title: "Prevent mod-triggered card pop-ups",
@@ -43,9 +53,7 @@ const settings = {
     type: "select",
     options: sortOptions,
     process: (value: any): SortMethod => {
-      return (sortMethods as readonly SortMethod[]).includes(value)
-        ? value
-        : "default";
+      return sortMethods.includes(value) ? value : "default";
     },
     configurable: true,
   },
@@ -63,7 +71,7 @@ const settings = {
     },
     configurable: false,
   },
-} as const;
+} as const satisfies Record<string, Setting>;
 
 type SettingsKey = keyof typeof settings;
 

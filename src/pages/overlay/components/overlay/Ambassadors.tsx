@@ -13,10 +13,8 @@ import AmbassadorCard from "../../../../components/AmbassadorCard";
 import { useAmbassadors } from "../../../../hooks/useAmbassadors";
 import { classes } from "../../../../utils/classes";
 import { sortPartialDates } from "../../../../utils/dateManager";
-import {
-  sortAmbassadors,
-  typeSafeObjectEntries,
-} from "../../../../utils/helpers";
+import { typeSafeObjectEntries } from "../../../../utils/helpers";
+import { sortAmbassadors } from "../../../../utils/sorting";
 
 import type { OverlayOptionProps } from "./Overlay";
 

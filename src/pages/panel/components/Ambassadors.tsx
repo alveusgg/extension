@@ -11,22 +11,23 @@ import {
 import useChatCommand from "../../../hooks/useChatCommand";
 import { sortPartialDates } from "../../../utils/dateManager";
 import { sortAmbassadors, typeSafeObjectEntries } from "../../../utils/helpers";
-import useSettings from "../../overlay/hooks/useSettings";
+import type { SortMethod } from "../../../utils/sorting";
 
 import Overlay from "./Overlay";
 
 export default function Ambassadors() {
-  const settings = useSettings();
+  // Panel uses default settings (no SettingsProvider) — default sort method is "default"
+  const settingsSort: SortMethod = "default";
   const rawAmbassadors = useAmbassadors();
   const refresh = useAmbassadorsRefresh();
   const ambassadors = useMemo(
     () =>
       sortAmbassadors(
         typeSafeObjectEntries(rawAmbassadors ?? {}),
-        settings.ambassadorSort.value,
+        settingsSort,
         sortPartialDates,
       ),
-    [rawAmbassadors, settings.ambassadorSort.value],
+    [rawAmbassadors],
   );
 
   // Allow chat commands to select an ambassador, as well as the user

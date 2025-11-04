@@ -20,8 +20,8 @@ export type Sleeping = {
   sleeping: boolean;
   wake: (time: number) => void;
   sleep: () => void;
-  stayAwake: () => void;
-  resumeTimer: (time: number) => void;
+  caffeinate: () => void;
+  uncaffeinate: (time: number) => void;
   on: (event: Event, fn: Events[Event]) => void;
   off: (event: Event, fn: Events[Event]) => void;
 };
@@ -66,13 +66,13 @@ export const SleepingProvider = ({ children }: { children: ReactNode }) => {
   }, [callbacks.sleep, stopTimer]);
 
   // Pause the timer and keep the overlay awake
-  const stayAwake = useCallback(() => {
+  const caffeinate = useCallback(() => {
     setSleeping(false);
     stopTimer();
   }, [stopTimer]);
 
   // Resume the timer
-  const resumeTimer = useCallback(
+  const uncaffeinate = useCallback(
     (time: number) => {
       startTimer(() => setSleeping(true), time);
     },
@@ -85,8 +85,8 @@ export const SleepingProvider = ({ children }: { children: ReactNode }) => {
       sleeping,
       wake,
       sleep,
-      stayAwake,
-      resumeTimer,
+      caffeinate,
+      uncaffeinate,
       on,
       off,
     }),

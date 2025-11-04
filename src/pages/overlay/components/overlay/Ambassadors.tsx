@@ -22,7 +22,7 @@ import type { OverlayOptionProps } from "./Overlay";
 import IconChevron from "../../../../components/icons/IconChevron";
 import useSettings from "../../hooks/useSettings";
 
-import * as keyBinds from "../../../../keyBinds";
+import * as keyBinds from "../../../../utils/keyBinds";
 
 const arrowClass =
   "absolute border-0 cursor-pointer text-alveus-green w-full h-[var(--list-fade-padding)] z-20 transition-opacity group pt-[var(--twitch-vertical-padding)] pb-4 box-content";
@@ -203,8 +203,9 @@ export default function Ambassadors(props: AmbassadorsProps) {
               key={key}
               ambassador={key}
               onClick={(event) => {
-                // @ts-expect-error this is fine
-                activeAmbassadorButtonRef.current = event.target;
+                if (event.target instanceof HTMLButtonElement) {
+                  activeAmbassadorButtonRef.current = event.target;
+                }
 
                 setActiveAmbassador((prev) =>
                   prev.key === key ? {} : { key },

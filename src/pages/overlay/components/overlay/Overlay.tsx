@@ -34,7 +34,7 @@ import SettingsOverlay from "./Settings";
 
 import Buttons, { type ButtonsOption } from "../Buttons";
 
-import * as keyBinds from "../../../../keyBinds";
+import * as keyBinds from "../../../../utils/keyBinds";
 
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;
@@ -316,8 +316,9 @@ export default function Overlay() {
       <Buttons
         options={options}
         onClick={(event, option) => {
-          // @ts-expect-error this is fine
-          activeOverlayButtonRef.current = event.target;
+          if (event.target instanceof HTMLButtonElement) {
+            activeOverlayButtonRef.current = event.target;
+          }
 
           setVisibleOption(option);
         }}

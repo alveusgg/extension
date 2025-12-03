@@ -36,7 +36,7 @@
     "react-canvas-confetti": "^2.0.7",
     "react-dom": "^19.2.0",
     "tmi.js": "^1.8.5",
-    "zod": "^4.1.12"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

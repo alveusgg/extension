@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@alveusgg/data':
         specifier: 0.69.0
-        version: 0.69.0(tailwindcss@4.1.17)(zod@4.1.12)
+        version: 0.69.0(tailwindcss@4.1.17)(zod@4.1.13)
       '@headlessui/react':
         specifier: ^2.2.9
         version: 2.2.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -34,8 +34,8 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^4.1.12
-        version: 4.1.12
+        specifier: ^4.1.13
+        version: 4.1.13
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.1
@@ -3325,17 +3325,17 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@4.1.12:
-    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
+  zod@4.1.13:
+    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.69.0(tailwindcss@4.1.17)(zod@4.1.12)':
+  '@alveusgg/data@0.69.0(tailwindcss@4.1.17)(zod@4.1.13)':
     dependencies:
       tailwindcss: 4.1.17
-      zod: 4.1.12
+      zod: 4.1.13
 
   '@babel/code-frame@7.26.2':
     dependencies:
@@ -6725,4 +6725,4 @@ snapshots:
       webpack-sources: 3.3.3
       yazl: 2.5.1
 
-  zod@4.1.12: {}
+  zod@4.1.13: {}

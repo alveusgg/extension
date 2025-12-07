@@ -19,6 +19,57 @@ const env = {
   ...(isDev && dotenv.config({ path: "./.env.development" }).parsed),
 };
 
+class UnusedAssetsPlugin {
+  apply(compiler: webpack.Compiler) {
+    compiler.hooks.compilation.tap(
+      "UnusedAssetsPlugin",
+      (compilation: webpack.Compilation) => {
+        compilation.hooks.processAssets.tap(
+          {
+            name: "UnusedAssetsPlugin",
+            stage: webpack.Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_TRANSFER,
+          },
+          () => {
+            // Get all JS source code
+            const jsSource = Object.entries(compilation.assets)
+              .filter(
+                ([name]) => name.endsWith(".js") && !name.endsWith(".map"),
+              )
+              .map(([, source]) => source.source().toString())
+              .join("\n");
+
+            // Find all asset modules and check if they're referenced in the final JS
+            const unusedAssets = Array.from(compilation.modules)
+              .filter((module) => /^asset(\/.+)?$/.test(module.type))
+              .map((module) => module.buildInfo?.filename)
+              .filter(
+                (filename): filename is string =>
+                  !!filename && !jsSource.includes(filename),
+              );
+            if (unusedAssets.length === 0) return;
+
+            // Remove unused assets from the compilation
+            unusedAssets.forEach((asset) => {
+              compilation.deleteAsset(asset);
+            });
+            console.warn(
+              [
+                "",
+                `UnusedAssetsPlugin: Removed ${unusedAssets.length} unused assets:`,
+                ...unusedAssets.slice(0, 10).map((asset) => ` - ${asset}`),
+                ...(unusedAssets.length > 10
+                  ? [` ...and ${unusedAssets.length - 10} more`]
+                  : []),
+                "",
+              ].join("\n"),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
 const getTypeScriptLoader = () => ({
   loader: "ts-loader",
   options: {
@@ -128,6 +179,8 @@ const config: webpack.Configuration = {
     }),
     // Enforce type checking on a separate process
     new ForkTsCheckerWebpackPlugin(),
+    // Remove any unused assets after code optimization
+    new UnusedAssetsPlugin(),
     // Enable react hot reloading in development
     isDev &&
       new ReactRefreshWebpackPlugin({

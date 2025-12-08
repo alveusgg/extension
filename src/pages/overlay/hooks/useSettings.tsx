@@ -41,7 +41,7 @@ const settings = {
     configurable: true,
   },
   disableCardEffects: {
-    title: "Disable ambassador card effects",
+    title: "Disable 3D card effects",
     type: "boolean",
     process: (value: any) =>
       !!(
@@ -50,7 +50,7 @@ const settings = {
     configurable: true,
   },
   ambassadorSort: {
-    title: "Sort ambassadors by",
+    title: "Sort cards by",
     type: "select",
     options: sortOptions,
     process: (value: any): SortMethod => {

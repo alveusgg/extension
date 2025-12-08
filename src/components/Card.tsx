@@ -21,7 +21,7 @@ export default function Card(props: CardProps) {
       )}
     >
       {title && (
-        <h2 className="mb-2 text-center font-serif text-3xl font-bold">
+        <h2 className="mb-2 text-center font-serif text-3xl font-bold text-balance">
           {title}
         </h2>
       )}

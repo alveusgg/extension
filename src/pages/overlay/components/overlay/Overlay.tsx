@@ -121,8 +121,8 @@ export default function Overlay() {
   const options = useMemo(
     () =>
       overlayOptions.filter(
-        (option) =>
-          !("condition" in option) || option.condition({ ambassadors }),
+        (option: OverlayOption) =>
+          !option.condition || option.condition({ ambassadors }),
       ),
     [ambassadors],
   );

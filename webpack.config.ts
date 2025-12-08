@@ -21,6 +21,8 @@ const env = {
 
 class UnusedAssetsPlugin {
   apply(compiler: webpack.Compiler) {
+    if (compiler.options.mode && compiler.options.mode !== "production") return;
+
     compiler.hooks.compilation.tap(
       "UnusedAssetsPlugin",
       (compilation: webpack.Compilation) => {

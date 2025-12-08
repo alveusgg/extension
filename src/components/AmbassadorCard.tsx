@@ -245,7 +245,25 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 />
               </div>
             </Tooltip>
-            <p>IUCN: {ambassador.species.iucn.title}</p>
+            <p>
+              IUCN:{" "}
+              {ambassador.species.iucn.id &&
+              ambassador.species.iucn.assessment ? (
+                <a
+                  href={`https://www.iucnredlist.org/species/${ambassador.species.iucn.id}/${ambassador.species.iucn.assessment}`}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="text-nowrap text-alveus-green-200 transition-colors hover:text-highlight focus:text-highlight"
+                >
+                  <span className="underline">
+                    {ambassador.species.iucn.title}
+                  </span>{" "}
+                  <IconExternal className="mb-0.5 inline-block" size={12} />
+                </a>
+              ) : (
+                ambassador.species.iucn.title
+              )}
+            </p>
           </div>
 
           <div>

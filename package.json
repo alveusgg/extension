@@ -32,9 +32,9 @@
     "@alveusgg/data": "0.69.0",
     "@headlessui/react": "^2.2.9",
     "luxon": "^3.7.2",
-    "react": "^19.2.0",
+    "react": "^19.2.1",
     "react-canvas-confetti": "^2.0.7",
-    "react-dom": "^19.2.0",
+    "react-dom": "^19.2.1",
     "tmi.js": "^1.8.5",
     "zod": "^4.1.13"
   },

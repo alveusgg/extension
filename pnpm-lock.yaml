@@ -17,19 +17,19 @@ importers:
         version: 0.69.0(tailwindcss@4.1.17)(zod@4.1.13)
       '@headlessui/react':
         specifier: ^2.2.9
-        version: 2.2.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 2.2.9(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       luxon:
         specifier: ^3.7.2
         version: 3.7.2
       react:
-        specifier: ^19.2.0
-        version: 19.2.0
+        specifier: ^19.2.1
+        version: 19.2.1
       react-canvas-confetti:
         specifier: ^2.0.7
-        version: 2.0.7(react@19.2.0)
+        version: 2.0.7(react@19.2.1)
       react-dom:
-        specifier: ^19.2.0
-        version: 19.2.0(react@19.2.0)
+        specifier: ^19.2.1
+        version: 19.2.1(react@19.2.1)
       tmi.js:
         specifier: ^1.8.5
         version: 1.8.5
@@ -126,7 +126,7 @@ importers:
         version: 4.0.0(webpack@5.103.0)
       tailwind-scrollbar:
         specifier: ^4.0.2
-        version: 4.0.2(react@19.2.0)(tailwindcss@4.1.17)
+        version: 4.0.2(react@19.2.1)(tailwindcss@4.1.17)
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
@@ -2614,10 +2614,10 @@ packages:
     peerDependencies:
       react: '*'
 
-  react-dom@19.2.0:
-    resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
+  react-dom@19.2.1:
+    resolution: {integrity: sha512-ibrK8llX2a4eOskq1mXKu/TGZj9qzomO+sNfO98M6d9zIPOEhlBkMkBUBLd1vgS0gQsLDBzA+8jJBVXDnfHmJg==}
     peerDependencies:
-      react: ^19.2.0
+      react: ^19.2.1
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -2632,8 +2632,8 @@ packages:
     resolution: {integrity: sha512-FPvF2XxTSikpJxcr+bHut2H4gJ17+18Uy20D5/F+SKzFap62R3cM5wH6b8WN3LyGSYeQilLEcJcR1fjBSI2S1A==}
     engines: {node: '>=0.10.0'}
 
-  react@19.2.0:
-    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
+  react@19.2.1:
+    resolution: {integrity: sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@2.3.8:
@@ -3427,31 +3427,31 @@ snapshots:
       '@floating-ui/core': 1.7.3
       '@floating-ui/utils': 0.2.10
 
-  '@floating-ui/react-dom@2.1.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@floating-ui/react-dom@2.1.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@floating-ui/dom': 1.7.4
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  '@floating-ui/react@0.26.28(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@floating-ui/react@0.26.28(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@floating-ui/react-dom': 2.1.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@floating-ui/utils': 0.2.10
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
       tabbable: 6.2.0
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@headlessui/react@2.2.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@headlessui/react@2.2.9(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@floating-ui/react': 0.26.28(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@react-aria/focus': 3.21.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@react-aria/interactions': 3.25.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@tanstack/react-virtual': 3.13.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      use-sync-external-store: 1.6.0(react@19.2.0)
+      '@floating-ui/react': 0.26.28(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@react-aria/focus': 3.21.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@react-aria/interactions': 3.25.5(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@tanstack/react-virtual': 3.13.12(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      use-sync-external-store: 1.6.0(react@19.2.1)
 
   '@humanfs/core@0.19.1': {}
 
@@ -3602,54 +3602,54 @@ snapshots:
       '@types/webpack': 5.28.5(webpack-cli@6.0.1)
       webpack-dev-server: 5.2.2(webpack-cli@6.0.1)(webpack@5.103.0)
 
-  '@react-aria/focus@3.21.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@react-aria/focus@3.21.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@react-aria/interactions': 3.25.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@react-aria/utils': 3.30.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@react-types/shared': 3.32.0(react@19.2.0)
+      '@react-aria/interactions': 3.25.5(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@react-aria/utils': 3.30.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@react-types/shared': 3.32.0(react@19.2.1)
       '@swc/helpers': 0.5.17
       clsx: 2.1.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  '@react-aria/interactions@3.25.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@react-aria/interactions@3.25.5(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@react-aria/ssr': 3.9.10(react@19.2.0)
-      '@react-aria/utils': 3.30.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@react-aria/ssr': 3.9.10(react@19.2.1)
+      '@react-aria/utils': 3.30.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@react-stately/flags': 3.1.2
-      '@react-types/shared': 3.32.0(react@19.2.0)
+      '@react-types/shared': 3.32.0(react@19.2.1)
       '@swc/helpers': 0.5.17
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  '@react-aria/ssr@3.9.10(react@19.2.0)':
+  '@react-aria/ssr@3.9.10(react@19.2.1)':
     dependencies:
       '@swc/helpers': 0.5.17
-      react: 19.2.0
+      react: 19.2.1
 
-  '@react-aria/utils@3.30.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@react-aria/utils@3.30.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@react-aria/ssr': 3.9.10(react@19.2.0)
+      '@react-aria/ssr': 3.9.10(react@19.2.1)
       '@react-stately/flags': 3.1.2
-      '@react-stately/utils': 3.10.8(react@19.2.0)
-      '@react-types/shared': 3.32.0(react@19.2.0)
+      '@react-stately/utils': 3.10.8(react@19.2.1)
+      '@react-types/shared': 3.32.0(react@19.2.1)
       '@swc/helpers': 0.5.17
       clsx: 2.1.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
   '@react-stately/flags@3.1.2':
     dependencies:
       '@swc/helpers': 0.5.17
 
-  '@react-stately/utils@3.10.8(react@19.2.0)':
+  '@react-stately/utils@3.10.8(react@19.2.1)':
     dependencies:
       '@swc/helpers': 0.5.17
-      react: 19.2.0
+      react: 19.2.1
 
-  '@react-types/shared@3.32.0(react@19.2.0)':
+  '@react-types/shared@3.32.0(react@19.2.1)':
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
 
   '@swc/helpers@0.5.17':
     dependencies:
@@ -3724,11 +3724,11 @@ snapshots:
       postcss: 8.5.6
       tailwindcss: 4.1.17
 
-  '@tanstack/react-virtual@3.13.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@tanstack/react-virtual@3.13.12(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@tanstack/virtual-core': 3.13.12
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
   '@tanstack/virtual-core@3.13.12': {}
 
@@ -5812,11 +5812,11 @@ snapshots:
       lodash: 4.17.21
       renderkid: 3.0.0
 
-  prism-react-renderer@2.4.1(react@19.2.0):
+  prism-react-renderer@2.4.1(react@19.2.1):
     dependencies:
       '@types/prismjs': 1.26.5
       clsx: 2.1.1
-      react: 19.2.0
+      react: 19.2.1
 
   process-nextick-args@2.0.1: {}
 
@@ -5850,15 +5850,15 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-canvas-confetti@2.0.7(react@19.2.0):
+  react-canvas-confetti@2.0.7(react@19.2.1):
     dependencies:
       '@types/canvas-confetti': 1.9.0
       canvas-confetti: 1.9.3
-      react: 19.2.0
+      react: 19.2.1
 
-  react-dom@19.2.0(react@19.2.0):
+  react-dom@19.2.1(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
       scheduler: 0.27.0
 
   react-is@16.13.1: {}
@@ -5870,7 +5870,7 @@ snapshots:
 
   react-refresh@0.16.0: {}
 
-  react@19.2.0: {}
+  react@19.2.1: {}
 
   readable-stream@2.3.8:
     dependencies:
@@ -6310,9 +6310,9 @@ snapshots:
 
   tabbable@6.2.0: {}
 
-  tailwind-scrollbar@4.0.2(react@19.2.0)(tailwindcss@4.1.17):
+  tailwind-scrollbar@4.0.2(react@19.2.1)(tailwindcss@4.1.17):
     dependencies:
-      prism-react-renderer: 2.4.1(react@19.2.0)
+      prism-react-renderer: 2.4.1(react@19.2.1)
       tailwindcss: 4.1.17
     transitivePeerDependencies:
       - react
@@ -6490,9 +6490,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-sync-external-store@1.6.0(react@19.2.0):
+  use-sync-external-store@1.6.0(react@19.2.1):
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
 
   util-deprecate@1.0.2: {}
 

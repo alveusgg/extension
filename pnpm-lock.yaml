@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@alveusgg/data':
-        specifier: 0.69.0
-        version: 0.69.0(tailwindcss@4.1.17)(zod@4.1.13)
+        specifier: 0.69.1-0-pre.610674a0072c44c904512733dd14ba0893ce9533
+        version: 0.69.1-0-pre.610674a0072c44c904512733dd14ba0893ce9533(tailwindcss@4.1.17)(zod@4.1.13)
       '@headlessui/react':
         specifier: ^2.2.9
         version: 2.2.9(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -164,8 +164,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alveusgg/data@0.69.0':
-    resolution: {integrity: sha512-tfPIyH+6sir0jhtKKXKq8mHeH9EoTGX6w7OA1LRed7XENrebEav5RrQD69uvw7Fjy3EolLzG9z0ZDhO+6Znn7g==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.69.0/58545c7650e34816f45d3f42c72d7a44d83ca879}
+  '@alveusgg/data@0.69.1-0-pre.610674a0072c44c904512733dd14ba0893ce9533':
+    resolution: {integrity: sha512-mMEK3x74z2gjnc61kQ1TVJcyRa7O+FNPMpSWD3Ufm9J3ZPNjKKubw5auYO+czKQZNTpi4UIwYad9KnrLVfMcqg==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.69.1-0-pre.610674a0072c44c904512733dd14ba0893ce9533/051069b277f93dbb3f8841417abf91f877effa6b}
     peerDependencies:
       tailwindcss: ^4.0.0
       zod: ^4.0.0
@@ -3332,7 +3332,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.69.0(tailwindcss@4.1.17)(zod@4.1.13)':
+  '@alveusgg/data@0.69.1-0-pre.610674a0072c44c904512733dd14ba0893ce9533(tailwindcss@4.1.17)(zod@4.1.13)':
     dependencies:
       tailwindcss: 4.1.17
       zod: 4.1.13

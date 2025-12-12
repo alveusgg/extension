@@ -30,8 +30,11 @@ class UnusedAssetsPlugin {
           {
             name: "UnusedAssetsPlugin",
             stage: webpack.Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_TRANSFER,
+            before: ZipWebpackPlugin.name,
           },
           () => {
+            if (compilation.compiler.isChild()) return;
+
             // Get all JS source code
             const jsSource = Object.entries(compilation.assets)
               .filter(

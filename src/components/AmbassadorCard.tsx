@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, type Ref } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  type KeyboardEventHandler,
+  type Ref,
+} from "react";
 import type { CreateTypes } from "canvas-confetti";
 import Confetti from "react-canvas-confetti";
 
@@ -28,6 +34,7 @@ const stringifyLifespan = (value: number | { min: number; max: number }) => {
 export interface AmbassadorCardProps {
   ambassador: string;
   onClose?: () => void;
+  onKeyDown?: KeyboardEventHandler;
   className?: string;
   ref?: Ref<HTMLDivElement>;
   disableCardEffects?: boolean;
@@ -131,6 +138,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           className,
         )}
         ref={callbackRef}
+        tabIndex={-1} // Overlay view needs this for the onKeyDown listener
         {...extras}
       >
         {birthday && (
@@ -141,13 +149,14 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
           />
         )}
         <img
-          className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
+          className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 focus:max-h-96 active:max-h-96"
           src={ambassador.image.src}
           alt={ambassador.image.alt}
           style={{
             objectPosition: ambassador.image.position,
           }}
           loading="lazy"
+          tabIndex={0}
         />
 
         <div className="relative flex w-full items-center justify-center bg-alveus-green px-8 py-1">
@@ -166,7 +175,10 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             {ambassador.name}
           </h2>
         </div>
-        <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
+        <div
+          className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900"
+          tabIndex={-1} // Prevent tabbing from the image from focusing this entire div
+        >
           {mod && (
             <div className="flex items-center gap-2">
               <img
@@ -242,6 +254,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                 <IconInfo
                   size={20}
                   className="rounded-full text-alveus-green-400 outline-highlight transition-[outline] hover:outline-3"
+                  tabIndex={0}
                 />
               </div>
             </Tooltip>

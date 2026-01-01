@@ -52,7 +52,7 @@ export const calculateAge = (dateOfBirth: PartialDate) => {
 
 const getMonthName = (month: number) => {
   if (month < 1 || month > 12) throw new Error("Invalid month");
-  return Info.months("long")[month - 1];
+  return Info.months("long", { locale: "en-US" })[month - 1];
 };
 
 const getOrdinal = (number: number) => {

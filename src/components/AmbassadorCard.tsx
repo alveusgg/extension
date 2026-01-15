@@ -275,9 +275,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {"wild" in ambassador.species.lifespan &&
-              ambassador.species.lifespan.wild !== undefined ? (
-                  ambassador.species.lifespan.wild !== "Not Applicable" ? (
+              {ambassador.species.lifespan.wild !== "Not Applicable"  && ambassador.species.lifespand.wild  !== "Unknown" ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
@@ -285,30 +283,31 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                   {stringifyLifespan(ambassador.species.lifespan.wild)} years
                 </>
                 ) : (
-                  "Not Applicable"
+                  ambassador.species.lifespand.wild === "Not Applicable" ? (
+                   "Not Applicable"
+                  ) : (
+                    "Unknown"
+                  )
                 )
-              ) : (
-                "Unknown"
-              )}
+              }
             </p>
             <p>
               Captivity:{" "}
-              {"captivity" in ambassador.species.lifespan &&
-              ambassador.species.lifespan.captivity !== undefined ? (
-                  ambassador.species.lifespan.captivity !== "Not Applicable"? (
+              {ambassador.species.lifespan.captivity !== "Not Applicable"  && ambassador.species.lifespand.captivity  !== "Unknown" ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
-                  {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
-                  years
+                  {stringifyLifespan(ambassador.species.lifespan.captivity)} years
                 </>
                 ) : (
-                  "Not Applicable"
+                  ambassador.species.lifespand.captivity === "Not Applicable" ? (
+                   "Not Applicable"
+                  ) : (
+                    "Unknown"
+                  )
                 )
-              ) : (
-                "Unknown"
-              )}
+              }
             </p>
           </div>
 

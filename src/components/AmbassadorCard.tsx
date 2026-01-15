@@ -277,20 +277,25 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
               Wild:{" "}
               {"wild" in ambassador.species.lifespan &&
               ambassador.species.lifespan.wild !== undefined ? (
+                  ambassador.species.lifespan.wild !== "Not Applicable" ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
                   {stringifyLifespan(ambassador.species.lifespan.wild)} years
                 </>
+                ) : (
+                  "Not Applicable"
+                )
               ) : (
-                "Not Applicable"
+                "Unknown"
               )}
             </p>
             <p>
               Captivity:{" "}
               {"captivity" in ambassador.species.lifespan &&
               ambassador.species.lifespan.captivity !== undefined ? (
+                  ambassador.species.lifespan.captivity !== "Not Applicable"? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
@@ -298,6 +303,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                   {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
                   years
                 </>
+                ) : (
+                  "Not Applicable"
+                )
               ) : (
                 "Unknown"
               )}

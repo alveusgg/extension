@@ -284,7 +284,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                   {stringifyLifespan(ambassador.species.lifespan.wild)} years
                 </>
               ) : (
-                "Unknown"
+                "Not Applicable"
               )}
             </p>
             <p>

@@ -299,7 +299,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                   years
                 </>
               ) : (
-                "Not Applicable"
+                "Unknown"
               )}
             </p>
           </div>

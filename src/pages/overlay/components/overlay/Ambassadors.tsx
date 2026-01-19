@@ -135,17 +135,14 @@ export default function Ambassadors(props: AmbassadorsProps) {
 
   const ambassadorListCallback = useCallback(
     (node: HTMLDivElement | null) => {
-      if (props.ref) {
-        if (typeof props.ref === "function") {
-          props.ref(node);
-        } else {
-          props.ref.current = node;
-        }
+      if (node && props.isActiveOverlay) {
+        // node.focus();
+        setTimeout(() => node.focus(), 10);
       }
 
       ambassadorList.current = node;
     },
-    [props.ref],
+    [props.isActiveOverlay],
   );
 
   const activeAmbassadorOnClose = () => {
@@ -193,9 +190,9 @@ export default function Ambassadors(props: AmbassadorsProps) {
     >
       <div className="relative z-10 flex flex-col items-center">
         <div
-          ref={ambassadorListCallback}
           className="list-fade -my-[var(--twitch-vertical-padding)] scrollbar-none flex w-40 flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
           onScroll={handleArrowVisibility}
+          ref={ambassadorListCallback}
           tabIndex={-1}
         >
           {ambassadors.map(([key]) => (

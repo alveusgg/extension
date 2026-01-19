@@ -1,4 +1,4 @@
-import type { Ref } from "react";
+import { useCallback } from "react";
 import { classes } from "../utils/classes";
 
 import Ring from "./Ring";
@@ -7,12 +7,17 @@ interface CardProps {
   children?: React.ReactNode;
   title?: string;
   className?: string;
-  ref?: Ref<HTMLDivElement>;
+  autoFocus?: boolean;
   tabIndex?: number | undefined;
 }
 
 export default function Card(props: CardProps) {
-  const { children, title, className, ref, tabIndex } = props;
+  const { children, title, className, autoFocus, tabIndex } = props;
+
+  const autoFocusCallback = useCallback((node: HTMLDivElement | null) => {
+    // node?.focus();
+    setTimeout(() => node?.focus(), 10);
+  }, []);
 
   return (
     <div
@@ -22,7 +27,7 @@ export default function Card(props: CardProps) {
           "relative",
         className,
       )}
-      ref={ref}
+      ref={autoFocus ? autoFocusCallback : undefined}
       tabIndex={tabIndex}
     >
       {title && (

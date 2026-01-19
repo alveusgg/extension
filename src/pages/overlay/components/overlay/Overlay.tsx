@@ -8,7 +8,6 @@ import {
   type Dispatch,
   type JSX,
   type KeyboardEventHandler,
-  type Ref,
 } from "react";
 
 import Welcome from "../../../../components/Welcome";
@@ -106,7 +105,7 @@ export interface OverlayOptionProps {
     setActiveAmbassador: Dispatch<SetStateAction<ActiveAmbassadorState>>;
   };
   className?: string;
-  ref?: Ref<HTMLDivElement>;
+  isActiveOverlay: boolean;
 }
 
 const hiddenClass =
@@ -141,7 +140,6 @@ export default function Overlay() {
   const awakingRef = useRef(false);
 
   const activeOverlayButtonRef = useRef<HTMLButtonElement>(null);
-  const activeOverlayRef = useRef<HTMLDivElement>(null);
 
   // update setting when opened menu changes
   useEffect(() => {
@@ -153,50 +151,51 @@ export default function Overlay() {
     setVisibleOption(settings.openedMenu.value);
   }, [settings.openedMenu.value]);
 
+  // TODO(flakey5) move this elsewhere
   // When a chat command is run, wake the overlay
-  useChatCommand(
-    useCallback(
-      (command: string) => {
-        if (command === "refresh") {
-          setTimeout(
-            () => {
-              refresh?.();
-            },
-            Math.floor(Math.random() * 120 * 1000),
-          );
-          return;
-        }
+  // useChatCommand(
+  //   useCallback(
+  //     (command: string) => {
+  //       if (command === "refresh") {
+  //         setTimeout(
+  //           () => {
+  //             refresh?.();
+  //           },
+  //           Math.floor(Math.random() * 120 * 1000),
+  //         );
+  //         return;
+  //       }
 
-        if (!settings.disableChatPopup.value) {
-          const ambassador = ambassadors?.[command];
-          if (ambassador)
-            setActiveAmbassador({ key: command, isCommand: true });
-          else if (command !== "welcome") return;
+  //       if (!settings.disableChatPopup.value) {
+  //         const ambassador = ambassadors?.[command];
+  //         if (ambassador)
+  //           setActiveAmbassador({ key: command, isCommand: true });
+  //         else if (command !== "welcome") return;
 
-          // Show the card
-          setVisibleOption(
-            ambassador
-              ? ambassador.species.class.key === "plantae"
-                ? "ambassadorPlants"
-                : "ambassadors"
-              : "welcome",
-          );
+  //         // Show the card
+  //         setVisibleOption(
+  //           ambassador
+  //             ? ambassador.species.class.key === "plantae"
+  //               ? "ambassadorPlants"
+  //               : "ambassadors"
+  //             : "welcome",
+  //         );
 
-          // Dismiss the overlay after a delay
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          timeoutRef.current = setTimeout(() => {
-            setVisibleOption("");
-            setActiveAmbassador({});
-          }, commandTimeout);
+  //         // Dismiss the overlay after a delay
+  //         if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  //         timeoutRef.current = setTimeout(() => {
+  //           setVisibleOption("");
+  //           setActiveAmbassador({});
+  //         }, commandTimeout);
 
-          // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
-          awakingRef.current = true;
-          wake(commandTimeout);
-        }
-      },
-      [refresh, settings.disableChatPopup.value, ambassadors, wake],
-    ),
-  );
+  //         // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
+  //         awakingRef.current = true;
+  //         wake(commandTimeout);
+  //       }
+  //     },
+  //     [refresh, settings.disableChatPopup.value, ambassadors, wake],
+  //   ),
+  // );
 
   // Ensure we clean up the timer when we unmount
   useEffect(
@@ -290,16 +289,6 @@ export default function Overlay() {
     }
   };
 
-  const activeOverlayRefCallback = useCallback(
-    (node: HTMLDivElement | null) => {
-      activeOverlayRef.current = node;
-
-      // Auto focus the overlay that's currently selected
-      node?.focus();
-    },
-    [],
-  );
-
   return (
     <div
       className={classes(
@@ -333,11 +322,7 @@ export default function Overlay() {
               "transition-[opacity,visibility,transform,translate] will-change-[opacity,transform,translate]",
               visibleOption !== option.key && hiddenClass,
             )}
-            ref={
-              visibleOption === option.key
-                ? activeOverlayRefCallback
-                : undefined
-            }
+            isActiveOverlay={visibleOption === option.key}
           />
         ))}
       </div>

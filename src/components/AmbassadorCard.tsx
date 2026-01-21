@@ -268,46 +268,43 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
 
           <div>
             <h3 className={headingClass}>Native To</h3>
-            <p>{ambassador.species.native.text}</p>
+            <p>{ambassador.species.native}</p>
           </div>
 
           <div>
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {ambassador.species.lifespan.wild !== "Not Applicable"  && ambassador.species.lifespand.wild  !== "Unknown" ? (
+              {ambassador.species.lifespan.wild !== "Not Applicable" &&
+              ambassador.species.lifespan.wild !== "Unknown" ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
                   {stringifyLifespan(ambassador.species.lifespan.wild)} years
                 </>
-                ) : (
-                  ambassador.species.lifespand.wild === "Not Applicable" ? (
-                   "Not Applicable"
-                  ) : (
-                    "Unknown"
-                  )
-                )
-              }
+              ) : ambassador.species.lifespan.wild === "Not Applicable" ? (
+                "Not Applicable"
+              ) : (
+                "Unknown"
+              )}
             </p>
             <p>
               Captivity:{" "}
-              {ambassador.species.lifespan.captivity !== "Not Applicable"  && ambassador.species.lifespand.captivity  !== "Unknown" ? (
+              {ambassador.species.lifespan.captivity !== "Not Applicable" &&
+              ambassador.species.lifespan.captivity !== "Unknown" ? (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
-                  {stringifyLifespan(ambassador.species.lifespan.captivity)} years
+                  {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
+                  years
                 </>
-                ) : (
-                  ambassador.species.lifespand.captivity === "Not Applicable" ? (
-                   "Not Applicable"
-                  ) : (
-                    "Unknown"
-                  )
-                )
-              }
+              ) : ambassador.species.lifespan.captivity === "Not Applicable" ? (
+                "Not Applicable"
+              ) : (
+                "Unknown"
+              )}
             </p>
           </div>
 

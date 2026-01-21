@@ -205,13 +205,11 @@ const winston = {
       title: getIUCNStatus("NE"),
       status: "NE",
     },
-    native: {
-      text: "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
-      source:
-        "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
-    },
+    native:
+      "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
     lifespan: {
-      source: "",
+      wild: "Unknown",
+      captivity: "Unknown",
     },
     birth: "live",
     class: {

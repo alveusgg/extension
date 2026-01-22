@@ -10,13 +10,14 @@ import Toggle from "../Toggle";
 import type { OverlayOptionProps } from "./Overlay";
 
 export default function Settings(props: OverlayOptionProps) {
-  const { className } = props;
+  const { className, isActiveOverlay } = props;
   const settings = useSettings();
 
   return (
     <Card
       className={classes("absolute top-0 left-0 mx-4 my-6", className)}
       title="Extension Settings"
+      autoFocus={isActiveOverlay}
     >
       <ul className="flex flex-col gap-4">
         {typeSafeObjectEntries(settings).map(([key, setting]) => {

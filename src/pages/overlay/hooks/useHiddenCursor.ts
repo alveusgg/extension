@@ -12,9 +12,11 @@ const useHiddenCursor = () => {
 
   // Show the cursor for x milliseconds
   const show = useCallback(
-    (time: number) => {
+    (time: number | undefined) => {
       setHidden(false);
-      startTimer(() => setHidden(true), time);
+      if (time !== undefined) {
+        startTimer(() => setHidden(true), time);
+      }
     },
     [startTimer],
   );

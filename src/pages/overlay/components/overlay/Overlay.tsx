@@ -7,6 +7,7 @@ import {
   type SetStateAction,
   type Dispatch,
   type JSX,
+  type KeyboardEventHandler,
 } from "react";
 
 import Welcome from "../../../../components/Welcome";
@@ -31,6 +32,8 @@ import AmbassadorsOverlay from "./Ambassadors";
 import SettingsOverlay from "./Settings";
 
 import Buttons, { type ButtonsOption } from "../Buttons";
+
+import * as keyBinds from "../../../../utils/keyBinds";
 
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;
@@ -102,6 +105,7 @@ export interface OverlayOptionProps {
     setActiveAmbassador: Dispatch<SetStateAction<ActiveAmbassadorState>>;
   };
   className?: string;
+  isActiveOverlay: boolean;
 }
 
 const hiddenClass =
@@ -135,6 +139,8 @@ export default function Overlay() {
   const timeoutRef = useRef<NodeJS.Timeout>(null);
   const awakingRef = useRef(false);
 
+  const activeOverlayButtonRef = useRef<HTMLButtonElement>(null);
+
   // update setting when opened menu changes
   useEffect(() => {
     settings.openedMenu.change(visibleOption);
@@ -145,50 +151,51 @@ export default function Overlay() {
     setVisibleOption(settings.openedMenu.value);
   }, [settings.openedMenu.value]);
 
+  // TODO(flakey5) move this elsewhere
   // When a chat command is run, wake the overlay
-  useChatCommand(
-    useCallback(
-      (command: string) => {
-        if (command === "refresh") {
-          setTimeout(
-            () => {
-              refresh?.();
-            },
-            Math.floor(Math.random() * 120 * 1000),
-          );
-          return;
-        }
+  // useChatCommand(
+  //   useCallback(
+  //     (command: string) => {
+  //       if (command === "refresh") {
+  //         setTimeout(
+  //           () => {
+  //             refresh?.();
+  //           },
+  //           Math.floor(Math.random() * 120 * 1000),
+  //         );
+  //         return;
+  //       }
 
-        if (!settings.disableChatPopup.value) {
-          const ambassador = ambassadors?.[command];
-          if (ambassador)
-            setActiveAmbassador({ key: command, isCommand: true });
-          else if (command !== "welcome") return;
+  //       if (!settings.disableChatPopup.value) {
+  //         const ambassador = ambassadors?.[command];
+  //         if (ambassador)
+  //           setActiveAmbassador({ key: command, isCommand: true });
+  //         else if (command !== "welcome") return;
 
-          // Show the card
-          setVisibleOption(
-            ambassador
-              ? ambassador.species.class.key === "plantae"
-                ? "ambassadorPlants"
-                : "ambassadors"
-              : "welcome",
-          );
+  //         // Show the card
+  //         setVisibleOption(
+  //           ambassador
+  //             ? ambassador.species.class.key === "plantae"
+  //               ? "ambassadorPlants"
+  //               : "ambassadors"
+  //             : "welcome",
+  //         );
 
-          // Dismiss the overlay after a delay
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          timeoutRef.current = setTimeout(() => {
-            setVisibleOption("");
-            setActiveAmbassador({});
-          }, commandTimeout);
+  //         // Dismiss the overlay after a delay
+  //         if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  //         timeoutRef.current = setTimeout(() => {
+  //           setVisibleOption("");
+  //           setActiveAmbassador({});
+  //         }, commandTimeout);
 
-          // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
-          awakingRef.current = true;
-          wake(commandTimeout);
-        }
-      },
-      [refresh, settings.disableChatPopup.value, ambassadors, wake],
-    ),
-  );
+  //         // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
+  //         awakingRef.current = true;
+  //         wake(commandTimeout);
+  //       }
+  //     },
+  //     [refresh, settings.disableChatPopup.value, ambassadors, wake],
+  //   ),
+  // );
 
   // Ensure we clean up the timer when we unmount
   useEffect(
@@ -258,6 +265,30 @@ export default function Overlay() {
     }
   }, [ambassadors, activeAmbassador.key]);
 
+  const onKeyDown: KeyboardEventHandler = (event) => {
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    if (
+      visibleOption !== "" &&
+      keyBinds.BACK.includes(event.code as keyBinds.KeyCode)
+    ) {
+      // Close current overlay
+      setVisibleOption("");
+
+      // De-select active ambassador in case this got triggered while one is
+      // selected
+      setActiveAmbassador({});
+
+      activeOverlayButtonRef.current?.focus();
+      activeOverlayButtonRef.current = null;
+
+      event.preventDefault();
+      return;
+    }
+  };
+
   return (
     <div
       className={classes(
@@ -269,10 +300,17 @@ export default function Overlay() {
           ) &&
           hiddenClass,
       )}
+      onKeyDown={onKeyDown}
     >
       <Buttons
         options={options}
-        onClick={setVisibleOption}
+        onClick={(event, option) => {
+          if (event.target instanceof HTMLButtonElement) {
+            activeOverlayButtonRef.current = event.target;
+          }
+
+          setVisibleOption(option);
+        }}
         active={visibleOption}
       />
       <div className="relative h-full w-full">
@@ -284,6 +322,7 @@ export default function Overlay() {
               "transition-[opacity,visibility,transform,translate] will-change-[opacity,transform,translate]",
               visibleOption !== option.key && hiddenClass,
             )}
+            isActiveOverlay={visibleOption === option.key}
           />
         ))}
       </div>

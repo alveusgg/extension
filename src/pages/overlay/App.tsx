@@ -19,6 +19,8 @@ export default function App() {
     sleeping,
     wake,
     sleep,
+    caffeinate,
+    uncaffeinate,
     on: addSleepListener,
     off: removeSleepListener,
   } = useSleeping();
@@ -52,8 +54,16 @@ export default function App() {
         onMouseMove={interacted}
         onWheel={interacted}
         onTouchMove={interacted}
-        onKeyDown={interacted}
+        onKeyUp={(event) => {
+          // onFocus events capture when we click on the element in addition to
+          // tabbing
+          if (event.key === "Tab") {
+            caffeinate();
+          }
+        }}
+        onKeyDown={() => interacted()}
         onMouseLeave={sleep}
+        onBlur={() => uncaffeinate(timeout)}
       >
         <Overlay />
       </div>

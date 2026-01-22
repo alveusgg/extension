@@ -19,10 +19,11 @@ const socialClass =
 
 interface WelcomeProps {
   className?: string;
+  isActiveOverlay?: boolean;
 }
 
 export default function Welcome(props: WelcomeProps) {
-  const { className } = props;
+  const { className, isActiveOverlay } = props;
 
   const channel = useChannel();
   const nonDefault = useMemo(
@@ -31,7 +32,12 @@ export default function Welcome(props: WelcomeProps) {
   );
 
   return (
-    <Card className={className} title="Welcome to Alveus">
+    <Card
+      className={className}
+      title="Welcome to Alveus"
+      autoFocus={isActiveOverlay}
+      tabIndex={-1}
+    >
       <p className="mt-2 mb-4">
         Alveus Sanctuary is a 501(c)(3) non-profit organization that functions
         as a wildlife sanctuary and as a virtual education center. These

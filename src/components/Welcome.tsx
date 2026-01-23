@@ -5,7 +5,6 @@ import IconAmazon from "./icons/IconAmazon";
 import IconInstagram from "./icons/IconInstagram";
 import IconTikTok from "./icons/IconTikTok";
 import IconTwitter from "./icons/IconTwitter";
-import IconBluesky from "./icons/IconBluesky";
 import IconFacebook from "./icons/IconFacebook";
 import IconPlay from "./icons/IconPlay";
 import IconGitHub from "./icons/IconGitHub";
@@ -88,16 +87,6 @@ export default function Welcome(props: WelcomeProps) {
             title="X (Twitter)"
           >
             <IconTwitter size={32} />
-          </a>
-        </li>
-        <li className={socialClass}>
-          <a
-            href="https://www.alveussanctuary.org/bluesky"
-            rel="noreferrer"
-            target="_blank"
-            title="Bluesky"
-          >
-            <IconBluesky size={32} />
           </a>
         </li>
         <li className={socialClass}>

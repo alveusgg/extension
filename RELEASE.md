@@ -53,7 +53,6 @@ External links:
     - Alveus Instagram
     - Alveus TikTok
     - Alveus X/Twitter
-    - Alveus Bluesky
     - Alveus Facebook
     - Extension GitHub (Open-source code for the extension, encouraging users to contribute to and improve the extension)
 

@@ -85,7 +85,7 @@ The panel is available at [localhost:8080/panel.html](https://localhost:8080/pan
 
 `!welcome`: displays the Alveus introduction section
 
-`!refresh`: updates the overlay and panel with the latest ambassador data
+`!refresh extension`: refreshes the extension with the latest ambassador data
 
 - Note: Only `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS` have permission to run this command
 

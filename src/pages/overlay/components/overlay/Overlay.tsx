@@ -148,8 +148,12 @@ export default function Overlay() {
   // When a chat command is run, wake the overlay
   useChatCommand(
     useCallback(
-      (command: string) => {
-        if (command === "refresh") {
+      (command: string, args: string[]) => {
+        if (
+          command === "refresh" &&
+          args.length === 1 &&
+          args[0] === "extension"
+        ) {
           setTimeout(
             () => {
               refresh?.();
@@ -161,29 +165,30 @@ export default function Overlay() {
 
         if (!settings.disableChatPopup.value) {
           const ambassador = ambassadors?.[command];
-          if (ambassador)
-            setActiveAmbassador({ key: command, isCommand: true });
-          else if (command !== "welcome") return;
+          if ((ambassador || command === "welcome") && args.length === 0) {
+            if (ambassador)
+              setActiveAmbassador({ key: command, isCommand: true });
 
-          // Show the card
-          setVisibleOption(
-            ambassador
-              ? ambassador.species.class.key === "plantae"
-                ? "ambassadorPlants"
-                : "ambassadors"
-              : "welcome",
-          );
+            // Show the card
+            setVisibleOption(
+              ambassador
+                ? ambassador.species.class.key === "plantae"
+                  ? "ambassadorPlants"
+                  : "ambassadors"
+                : "welcome",
+            );
 
-          // Dismiss the overlay after a delay
-          if (timeoutRef.current) clearTimeout(timeoutRef.current);
-          timeoutRef.current = setTimeout(() => {
-            setVisibleOption("");
-            setActiveAmbassador({});
-          }, commandTimeout);
+            // Dismiss the overlay after a delay
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+            timeoutRef.current = setTimeout(() => {
+              setVisibleOption("");
+              setActiveAmbassador({});
+            }, commandTimeout);
 
-          // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
-          awakingRef.current = true;
-          wake(commandTimeout);
+            // Track that we're waking up, so that we don't immediately clear the timeout, and wake the overlay
+            awakingRef.current = true;
+            wake(commandTimeout);
+          }
         }
       },
       [refresh, settings.disableChatPopup.value, ambassadors, wake],

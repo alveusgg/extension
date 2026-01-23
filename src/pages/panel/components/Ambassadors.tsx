@@ -35,8 +35,12 @@ export default function Ambassadors() {
   const [ambassadorCard, setAmbassadorCard] = useState<string>();
   useChatCommand(
     useCallback(
-      (command: string) => {
-        if (command === "refresh") {
+      (command: string, args: string[]) => {
+        if (
+          command === "refresh" &&
+          args.length === 1 &&
+          args[0] === "extension"
+        ) {
           setTimeout(
             () => {
               refresh?.();
@@ -46,7 +50,10 @@ export default function Ambassadors() {
           return;
         }
 
-        if (Object.keys(rawAmbassadors ?? {}).includes(command))
+        if (
+          Object.keys(rawAmbassadors ?? {}).includes(command) &&
+          args.length === 0
+        )
           setAmbassadorCard(command);
       },
       [refresh, rawAmbassadors],

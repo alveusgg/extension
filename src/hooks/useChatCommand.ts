@@ -21,7 +21,9 @@ const privilegedUsers = parseCsvEnv(
   process.env.REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS,
 );
 
-export default function useChatCommand(callback: (command: string) => void) {
+export default function useChatCommand(
+  callback: (command: string, args: string[]) => void,
+) {
   const channel = useChannel();
   const channelNames = useMemo(
     () =>
@@ -76,10 +78,14 @@ export default function useChatCommand(callback: (command: string) => void) {
       )
         return;
       // Ignore echoed messages (messages sent by the bot) and messages that don't start with '!'
-      if (self || !msg.trim().startsWith("!")) return;
+      if (self || !msg.startsWith("!")) return;
 
-      const commandName = msg.trim().toLowerCase().slice(1);
-      const command = commandsMap.get(commandName);
+      const [commandName, ...args] = msg
+        .slice(1)
+        .trim()
+        .replace(/\s+/g, " ")
+        .split(" ");
+      const command = commandName && commandsMap.get(commandName.toLowerCase());
       if (!command) return;
 
       // Handle any special commands + privilege edge cases
@@ -90,10 +96,10 @@ export default function useChatCommand(callback: (command: string) => void) {
         return;
 
       console.log(
-        `*Twitch extension received command: ${commandName} (${command})*`,
+        `*Twitch extension received command: ${command} (${args})*`,
         id,
       );
-      callback(command);
+      callback(command, args);
     },
     [commandsMap, callback],
   );

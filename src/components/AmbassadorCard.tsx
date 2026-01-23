@@ -275,24 +275,22 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             <h3 className={headingClass}>Species Lifespan</h3>
             <p>
               Wild:{" "}
-              {ambassador.species.lifespan.wild !== "Not Applicable" &&
-              ambassador.species.lifespan.wild !== "Unknown" ? (
+              {typeof ambassador.species.lifespan.wild === "string" ? (
+                ambassador.species.lifespan.wild
+              ) : (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
                   </span>
                   {stringifyLifespan(ambassador.species.lifespan.wild)} years
                 </>
-              ) : ambassador.species.lifespan.wild === "Not Applicable" ? (
-                "Not Applicable"
-              ) : (
-                "Unknown"
               )}
             </p>
             <p>
               Captivity:{" "}
-              {ambassador.species.lifespan.captivity !== "Not Applicable" &&
-              ambassador.species.lifespan.captivity !== "Unknown" ? (
+              {typeof ambassador.species.lifespan.captivity === "string" ? (
+                ambassador.species.lifespan.captivity
+              ) : (
                 <>
                   <span className="text-base leading-none" title="Approx.">
                     ~
@@ -300,10 +298,6 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
                   {stringifyLifespan(ambassador.species.lifespan.captivity)}{" "}
                   years
                 </>
-              ) : ambassador.species.lifespan.captivity === "Not Applicable" ? (
-                "Not Applicable"
-              ) : (
-                "Unknown"
               )}
             </p>
           </div>

@@ -59,7 +59,7 @@ type Ambassador = z.infer<typeof apiAmbassadorSchema>;
 
 // Use transform here so we parse each ambassador individually
 const apiSchema = z.object({
-  v3: z
+  v4: z
     .record(
       z.string(),
       // Use nullable here as the fallback for when we fail to parse an ambassador
@@ -98,7 +98,7 @@ const fetchAmbassadors = async (): Promise<Record<string, Ambassador>> => {
     );
 
   const data = await response.json();
-  return apiSchema.parse(data).v3;
+  return apiSchema.parse(data).v4;
 };
 
 const fallbackAmbassadors: Record<string, Ambassador> =
@@ -205,13 +205,11 @@ const winston = {
       title: getIUCNStatus("NE"),
       status: "NE",
     },
-    native: {
-      text: "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
-      source:
-        "https://clips.twitch.tv/TangibleFurryTortoiseBCWarrior-izyQ3nOgq1pYe1rc", // https://clips.twitch.tv/CleverSecretiveAntChocolateRain--zjm5eRw6zxG75Up
-    },
+    native:
+      "Twitch chat (including the Animals, Aquariums, & Zoos category), miscellaneous emote services",
     lifespan: {
-      source: "",
+      wild: "Unknown",
+      captivity: "Unknown",
     },
     birth: "live",
     class: {

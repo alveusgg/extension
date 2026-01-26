@@ -196,7 +196,7 @@ function TiltCard({
     <div
       ref={callbackRef}
       className={classes(
-        "overflow-y-clip transition-all will-change-transform",
+        "transition-all will-change-transform",
         tiltTransition,
         className,
       )}

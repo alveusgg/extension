@@ -17,6 +17,7 @@ import Ring from "./Ring";
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
 import TiltCard from "./TiltCard";
+import { createPortal } from "react-dom";
 
 const headingClass = "text-base text-alveus-green-400";
 const rowClass = "flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto";
@@ -68,11 +69,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   const confettiInit = useCallback(
     ({ confetti }: { confetti: CreateTypes }) => {
       const node = internalRef.current;
-      if (
-        !node ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      )
-        return;
+      if (!node) return;
 
       timeout.current = setTimeout(() => {
         const rect = node.getBoundingClientRect();
@@ -122,24 +119,34 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
   if (!ambassador) return null;
 
   return (
-    <>
-      {birthday && <Confetti onInit={confettiInit} />}
-      <TiltCard
-        disabled={disableCardEffects}
-        className={classes(
-          "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col justify-start rounded-lg bg-alveus-green-900 align-top text-xs shadow-xl",
-          className,
-        )}
-        ref={callbackRef}
-        {...extras}
-      >
-        {birthday && (
+    <TiltCard
+      disabled={disableCardEffects}
+      className={classes(
+        "relative max-h-full min-h-[min(28rem,100%)] w-80 max-w-full rounded-lg bg-alveus-green-900 text-xs shadow-xl",
+        className,
+      )}
+      ref={callbackRef}
+      {...extras}
+    >
+      {birthday && (
+        <>
           <img
             src={partyHat}
             alt=""
             className="absolute top-0 left-1/2 z-10 h-auto w-16 -translate-x-1/2 -translate-y-[85%]"
           />
-        )}
+          {createPortal(
+            <Confetti
+              onInit={confettiInit}
+              globalOptions={{ disableForReducedMotion: true }}
+              className="absolute inset-0 -z-10 h-full w-full"
+            />,
+            document.body,
+          )}
+        </>
+      )}
+
+      <div className="flex max-h-full flex-col justify-start overflow-y-clip rounded-lg align-top">
         <img
           className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
           src={ambassador.image.src}
@@ -346,9 +353,9 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             </p>
           </div>
         </div>
+      </div>
 
-        <Ring />
-      </TiltCard>
-    </>
+      <Ring />
+    </TiltCard>
   );
 }

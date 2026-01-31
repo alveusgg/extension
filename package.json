@@ -42,6 +42,7 @@
     "@eslint/js": "^9.39.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "@tailwindcss/postcss": "^4.1.18",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/canvas-confetti": "^1.9.0",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/luxon": "^3.7.1",
@@ -95,8 +96,31 @@
   },
   "prettier": {
     "plugins": [
+      "@trivago/prettier-plugin-sort-imports",
       "prettier-plugin-tailwindcss"
     ],
-    "tailwindStylesheet": "./src/styles/tailwind.css"
+    "tailwindStylesheet": "./src/styles/tailwind.css",
+    "importOrder": [
+      "<BUILTIN_MODULES>",
+      "<THIRD_PARTY_MODULES>",
+      "^@alveusgg/data(/.+)?$",
+      "^(\\.\\./)+utils/",
+      "^(\\.\\./)+hooks/",
+      "^(\\.\\./)+components/(?!icons/)",
+      "^(\\.\\./)+(components/)?icons/",
+      "^(\\.\\./)+styles/",
+      "^(\\.\\./)+assets/",
+      "^(\\.\\./)+",
+      "^\\./utils/",
+      "^\\./hooks/",
+      "^\\./components/(?!icons/)",
+      "^\\./(components/)?icons/",
+      "^\\./styles/",
+      "^\\./assets/",
+      "^\\./"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrderSideEffects": false
   }
 }

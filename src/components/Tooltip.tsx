@@ -1,15 +1,15 @@
 import {
+  Children,
+  type FocusEvent,
+  type HTMLAttributes,
+  type MouseEvent,
+  cloneElement,
+  isValidElement,
   useCallback,
+  useId,
+  useMemo,
   useRef,
   useState,
-  type MouseEvent,
-  useMemo,
-  useId,
-  type FocusEvent,
-  Children,
-  isValidElement,
-  cloneElement,
-  type HTMLAttributes,
 } from "react";
 
 import { classes } from "../utils/classes";

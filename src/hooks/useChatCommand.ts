@@ -4,7 +4,6 @@ import tmi, { type ChatUserstate } from "tmi.js";
 import { typeSafeObjectEntries } from "../utils/helpers";
 
 import { useAmbassadors } from "./useAmbassadors";
-
 import useChannel from "./useChannel";
 
 const parseCsvEnv = (env: string | undefined): string[] =>

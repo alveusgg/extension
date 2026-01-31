@@ -1,7 +1,9 @@
 import { type MouseEventHandler } from "react";
 
-import { useAmbassador } from "../hooks/useAmbassadors";
 import { classes } from "../utils/classes";
+
+import { useAmbassador } from "../hooks/useAmbassadors";
+
 import Ring from "./Ring";
 
 interface AmbassadorButtonProps {

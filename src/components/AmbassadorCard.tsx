@@ -1,23 +1,24 @@
-import { useCallback, useEffect, useRef, type Ref } from "react";
 import type { CreateTypes } from "canvas-confetti";
+import { type Ref, useCallback, useEffect, useRef } from "react";
 import Confetti from "react-canvas-confetti";
+import { createPortal } from "react-dom";
 
-import { calculateAge, formatDate, isBirthday } from "../utils/dateManager";
-import { useAmbassador } from "../hooks/useAmbassadors";
-import { camelToKebab } from "../utils/helpers";
 import { classes } from "../utils/classes";
+import { calculateAge, formatDate, isBirthday } from "../utils/dateManager";
+import { camelToKebab } from "../utils/helpers";
 
-import IconInfo from "./icons/IconInfo";
-import IconBack from "./icons/IconBack";
-import IconExternal from "./icons/IconExternal";
-
-import Tooltip from "./Tooltip";
-import Ring from "./Ring";
+import { useAmbassador } from "../hooks/useAmbassadors";
 
 import moderatorBadge from "../assets/mod.svg";
 import partyHat from "../assets/party.svg";
+
+import IconBack from "./icons/IconBack";
+import IconExternal from "./icons/IconExternal";
+import IconInfo from "./icons/IconInfo";
+
+import Ring from "./Ring";
 import TiltCard from "./TiltCard";
-import { createPortal } from "react-dom";
+import Tooltip from "./Tooltip";
 
 const headingClass = "text-base text-alveus-green-400";
 const rowClass = "flex flex-wrap gap-x-6 gap-y-1 [&>*]:mr-auto";

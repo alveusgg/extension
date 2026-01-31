@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-import alveus from "../../../assets/alveus.png";
+import Welcome from "../../../components/Welcome";
 
 import IconInfo from "../../../components/icons/IconInfo";
-import Welcome from "../../../components/Welcome";
+
+import alveus from "../../../assets/alveus.png";
 
 import Overlay from "./Overlay";
 

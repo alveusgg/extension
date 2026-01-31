@@ -1,11 +1,11 @@
 import {
+  type ReactNode,
   createContext,
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
-  type ReactNode,
 } from "react";
 
 import {
@@ -13,14 +13,15 @@ import {
   typeSafeObjectFromEntries,
 } from "../../../utils/helpers";
 import {
-  sortMethods,
-  sortOptions,
   type SortMethod,
   type SortOption,
+  sortMethods,
+  sortOptions,
 } from "../../../utils/sorting";
+
 import {
-  isValidOverlayKey,
   type OverlayKey,
+  isValidOverlayKey,
 } from "../components/overlay/Overlay";
 
 type Setting = { title: string; configurable: boolean } & (

@@ -3,9 +3,10 @@ import { createRoot } from "react-dom/client";
 
 import { bindTwitchAuth } from "../../hooks/useTwitchAuth";
 
-import App from "./App";
 import { SettingsProvider } from "./hooks/useSettings";
 import { SleepingProvider } from "./hooks/useSleeping";
+
+import App from "./App";
 
 import "./globals.css";
 

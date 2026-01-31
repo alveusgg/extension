@@ -1,7 +1,7 @@
 import { AmbassadorsProvider } from "../../hooks/useAmbassadors";
 
-import Nav from "./components/Nav";
 import Ambassadors from "./components/Ambassadors";
+import Nav from "./components/Nav";
 
 function App() {
   return (

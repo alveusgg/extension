@@ -1,12 +1,13 @@
 import {
+  type CSSProperties,
+  type ReactNode,
+  type Ref,
+  useCallback,
+  useEffect,
   useRef,
   useState,
-  useCallback,
-  type CSSProperties,
-  type Ref,
-  type ReactNode,
-  useEffect,
 } from "react";
+
 import { classes } from "../utils/classes";
 
 interface ConditionalTiltCardProps extends TiltCardProps {

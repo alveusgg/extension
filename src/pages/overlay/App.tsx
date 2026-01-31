@@ -1,6 +1,7 @@
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import { classes } from "../../utils/classes";
+
 import { AmbassadorsProvider } from "../../hooks/useAmbassadors";
 
 import useHiddenCursor from "./hooks/useHiddenCursor";

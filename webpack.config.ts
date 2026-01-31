@@ -1,15 +1,15 @@
 import { basename, dirname, join } from "path";
 
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import ReactRefreshTypeScript from "react-refresh-typescript";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ZipWebpackPlugin from "zip-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 import dotenv from "dotenv";
-
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ReactRefreshTypeScript from "react-refresh-typescript";
 import webpack from "webpack";
+import ZipWebpackPlugin from "zip-webpack-plugin";
+
 import "webpack-dev-server";
 
 const isDev = process.env.NODE_ENV === "development";

@@ -1,9 +1,9 @@
-import { useMemo, type JSX } from "react";
-
-import Tooltip from "../../../components/Tooltip";
-import Ring from "../../../components/Ring";
+import { type JSX, useMemo } from "react";
 
 import { classes } from "../../../utils/classes";
+
+import Ring from "../../../components/Ring";
+import Tooltip from "../../../components/Tooltip";
 
 export interface ButtonsOption {
   key: string;

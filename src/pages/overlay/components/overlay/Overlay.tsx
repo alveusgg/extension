@@ -1,36 +1,36 @@
 import {
-  useEffect,
-  useRef,
-  useCallback,
-  useState,
-  useMemo,
-  type SetStateAction,
   type Dispatch,
   type JSX,
+  type SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from "react";
 
-import Welcome from "../../../../components/Welcome";
-import IconWelcome from "../../../../components/icons/IconWelcome";
-import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
-import IconPlant from "../../../../components/icons/IconPlant";
-import IconSettings from "../../../../components/icons/IconSettings";
+import { classes } from "../../../../utils/classes";
+import { visibleUnderCursor } from "../../../../utils/dom";
 
 import {
   useAmbassadors,
   useAmbassadorsRefresh,
 } from "../../../../hooks/useAmbassadors";
-import { classes } from "../../../../utils/classes";
-import { visibleUnderCursor } from "../../../../utils/dom";
-
 import useChatCommand from "../../../../hooks/useChatCommand";
-
 import useSettings from "../../hooks/useSettings";
 import useSleeping from "../../hooks/useSleeping";
 
-import AmbassadorsOverlay from "./Ambassadors";
-import SettingsOverlay from "./Settings";
+import Welcome from "../../../../components/Welcome";
+
+import IconAmbassadors from "../../../../components/icons/IconAmbassadors";
+import IconPlant from "../../../../components/icons/IconPlant";
+import IconSettings from "../../../../components/icons/IconSettings";
+import IconWelcome from "../../../../components/icons/IconWelcome";
 
 import Buttons, { type ButtonsOption } from "../Buttons";
+
+import AmbassadorsOverlay from "./Ambassadors";
+import SettingsOverlay from "./Settings";
 
 // Show command-triggered popups for 10s
 const commandTimeout = 10_000;

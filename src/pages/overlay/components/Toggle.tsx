@@ -1,4 +1,4 @@
-import { useCallback, type ChangeEvent } from "react";
+import { type ChangeEvent, useCallback } from "react";
 
 import IconCheck from "../../../components/icons/IconCheck";
 

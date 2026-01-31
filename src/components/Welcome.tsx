@@ -1,15 +1,15 @@
 import { useMemo } from "react";
 
-import IconGlobe from "./icons/IconGlobe";
+import useChannel from "../hooks/useChannel";
+
 import IconAmazon from "./icons/IconAmazon";
+import IconFacebook from "./icons/IconFacebook";
+import IconGitHub from "./icons/IconGitHub";
+import IconGlobe from "./icons/IconGlobe";
 import IconInstagram from "./icons/IconInstagram";
+import IconPlay from "./icons/IconPlay";
 import IconTikTok from "./icons/IconTikTok";
 import IconTwitter from "./icons/IconTwitter";
-import IconFacebook from "./icons/IconFacebook";
-import IconPlay from "./icons/IconPlay";
-import IconGitHub from "./icons/IconGitHub";
-
-import useChannel from "../hooks/useChannel";
 
 import Card from "./Card";
 

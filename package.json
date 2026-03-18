@@ -76,7 +76,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.0",
     "webpack": "^5.105.4",
-    "webpack-cli": "^6.0.1",
+    "webpack-cli": "^7.0.0",
     "webpack-dev-server": "^5.2.3",
     "webpack-image-resize-loader": "^5.0.0",
     "zip-webpack-plugin": "^4.0.3"

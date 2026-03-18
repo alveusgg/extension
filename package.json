@@ -18,8 +18,8 @@
   "packageManager": "pnpm@10.32.1",
   "scripts": {
     "prepare": "husky",
-    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=\"--loader ts-node/esm\" webpack serve",
-    "build": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" webpack",
+    "dev": "cross-env NODE_ENV=development webpack serve",
+    "build": "webpack",
     "lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:prettier": "prettier --check .",
     "lint": "pnpm run \"/^lint:.*/\"",
@@ -72,7 +72,6 @@
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.2.1",
     "ts-loader": "^9.5.4",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.0",
     "webpack": "^5.105.4",

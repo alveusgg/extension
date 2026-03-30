@@ -1,3 +1,7 @@
+optimisticRepeatInstall: true
+strictPeerDependencies: true
+dedupePeers: true
+
 overrides:
   "webpack-image-resize-loader>sharp": "^0.33.4"
   "@types/zip-webpack-plugin>@types/webpack": "^5.0.0"

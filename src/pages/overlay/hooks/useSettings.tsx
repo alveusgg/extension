@@ -61,13 +61,13 @@ const settings = {
   disableOverlayHiding: {
     title: "(DEV) Prevent app hiding automatically",
     type: "boolean",
-    process: (value: any) => !!value,
+    process: (value: any) => process.env.NODE_ENV === "development" && !!value,
     configurable: process.env.NODE_ENV === "development",
   },
   forceBirthdayEffects: {
     title: "(DEV) Force birthday effects",
     type: "boolean",
-    process: (value: any) => !!value,
+    process: (value: any) => process.env.NODE_ENV === "development" && !!value,
     configurable: process.env.NODE_ENV === "development",
   },
   openedMenu: {

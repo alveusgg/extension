@@ -123,7 +123,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     <TiltCard
       disabled={disableCardEffects}
       className={classes(
-        "relative max-h-full min-h-[min(28rem,100%)] w-80 max-w-full rounded-lg bg-alveus-green-900 text-xs shadow-xl",
+        "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col rounded-lg bg-alveus-green-900 text-xs shadow-xl",
         className,
       )}
       ref={callbackRef}
@@ -147,7 +147,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
         </>
       )}
 
-      <div className="flex max-h-full flex-col justify-start overflow-y-clip rounded-lg align-top">
+      <div className="flex min-h-0 flex-auto flex-col justify-start overflow-y-clip rounded-lg align-top">
         <img
           className="max-h-32 w-full rounded-t-lg object-cover transition-[max-height] duration-700 ease-in-out hover:max-h-96 active:max-h-96"
           src={ambassador.image.src}
@@ -174,7 +174,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             {ambassador.name}
           </h2>
         </div>
-        <div className="mb-2 scrollbar-thin flex flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
+        <div className="mb-2 scrollbar-thin flex min-h-0 flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
           {mod && (
             <div className="flex items-center gap-2">
               <img

@@ -195,6 +195,7 @@ export default function Ambassadors(props: AmbassadorsProps) {
               ambassador={key}
               onClose={() => setActiveAmbassador({})}
               disableCardEffects={settings.disableCardEffects.value}
+              forceBirthdayEffects={settings.forceBirthdayEffects.value}
             />
           </div>
         </Transition>

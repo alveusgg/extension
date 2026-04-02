@@ -18,7 +18,7 @@ export default function Overlay(props: OverlayProps) {
     >
       <DialogBackdrop className="fixed inset-0 -z-10 bg-black/50" />
 
-      <DialogPanel className="flex max-h-full max-w-full flex-col">
+      <DialogPanel className="flex max-h-full min-h-0 max-w-full flex-col">
         {children}
       </DialogPanel>
     </Dialog>

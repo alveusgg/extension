@@ -258,8 +258,8 @@ export const useAmbassadors = (): Record<string, Ambassador> | null => {
     () =>
       context?.ambassadors
         ? {
-            ...context?.ambassadors,
             ...(isWinstonDate(date) ? { winston } : {}),
+            ...context?.ambassadors,
           }
         : null,
     [context?.ambassadors, date],

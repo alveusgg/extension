@@ -54,9 +54,8 @@ const settings = {
     title: "Sort cards by",
     type: "select",
     options: sortOptions,
-    process: (value: any): SortMethod => {
-      return sortMethods.includes(value) ? value : "default";
-    },
+    process: (value: any): SortMethod =>
+      sortMethods.includes(value) ? value : "default",
     configurable: true,
   },
   disableOverlayHiding: {
@@ -65,12 +64,17 @@ const settings = {
     process: (value: any) => !!value,
     configurable: process.env.NODE_ENV === "development",
   },
+  forceBirthdayEffects: {
+    title: "(DEV) Force birthday effects",
+    type: "boolean",
+    process: (value: any) => !!value,
+    configurable: process.env.NODE_ENV === "development",
+  },
   openedMenu: {
     title: "Menu that was last opened",
     type: "string",
-    process: (value: any): OverlayKey => {
-      return isValidOverlayKey(value) ? value : "ambassadors";
-    },
+    process: (value: any): OverlayKey =>
+      isValidOverlayKey(value) ? value : "ambassadors",
     configurable: false,
   },
 } as const satisfies Record<string, Setting>;

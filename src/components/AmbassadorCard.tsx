@@ -33,6 +33,7 @@ export interface AmbassadorCardProps {
   className?: string;
   ref?: Ref<HTMLDivElement>;
   disableCardEffects?: boolean;
+  forceBirthdayEffects?: boolean;
 }
 
 export default function AmbassadorCard(props: AmbassadorCardProps) {
@@ -42,6 +43,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     className,
     ref,
     disableCardEffects,
+    forceBirthdayEffects,
     ...extras
   } = props;
   const ambassador = useAmbassador(ambassadorKey);
@@ -50,7 +52,8 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
     window?.Twitch?.ext?.viewer?.role === "broadcaster" ||
     window?.Twitch?.ext?.viewer?.role === "moderator";
 
-  const birthday = ambassador?.birth && isBirthday(ambassador.birth);
+  const birthday =
+    forceBirthdayEffects || (ambassador?.birth && isBirthday(ambassador.birth));
   const age = ambassador?.birth ? calculateAge(ambassador.birth) : "Unknown";
   const birth = ambassador?.birth ? formatDate(ambassador.birth) : "Unknown";
 

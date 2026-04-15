@@ -18,19 +18,19 @@ importers:
         version: 0.71.0(tailwindcss@4.2.2)(zod@4.3.6)
       '@headlessui/react':
         specifier: ^2.2.10
-        version: 2.2.10(react-dom@19.2.4)(react@19.2.4)
+        version: 2.2.10(react-dom@19.2.5)(react@19.2.5)
       luxon:
         specifier: ^3.7.2
         version: 3.7.2
       react:
-        specifier: ^19.2.4
-        version: 19.2.4
+        specifier: ^19.2.5
+        version: 19.2.5
       react-canvas-confetti:
         specifier: ^2.0.7
-        version: 2.0.7(react@19.2.4)
+        version: 2.0.7(react@19.2.5)
       react-dom:
-        specifier: ^19.2.4
-        version: 19.2.4(react@19.2.4)
+        specifier: ^19.2.5
+        version: 19.2.5(react@19.2.5)
       tmi.js:
         specifier: ^1.8.5
         version: 1.8.5
@@ -127,7 +127,7 @@ importers:
         version: 4.0.0(webpack@5.106.1)
       tailwind-scrollbar:
         specifier: ^4.0.2
-        version: 4.0.2(react@19.2.4)(tailwindcss@4.2.2)
+        version: 4.0.2(react@19.2.5)(tailwindcss@4.2.2)
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
@@ -2766,10 +2766,10 @@ packages:
     peerDependencies:
       react: '*'
 
-  react-dom@19.2.4:
-    resolution: {integrity: sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ==}
+  react-dom@19.2.5:
+    resolution: {integrity: sha512-J5bAZz+DXMMwW/wV3xzKke59Af6CHY7G4uYLN1OvBcKEsWOs4pQExj86BBKamxl/Ik5bx9whOrvBlSDfWzgSag==}
     peerDependencies:
-      react: ^19.2.4
+      react: ^19.2.5
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -2789,8 +2789,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  react@19.2.4:
-    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
+  react@19.2.5:
+    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@2.3.8:
@@ -3579,31 +3579,31 @@ snapshots:
       '@floating-ui/core': 1.7.5
       '@floating-ui/utils': 0.2.11
 
-  '@floating-ui/react-dom@2.1.8(react-dom@19.2.4)(react@19.2.4)':
+  '@floating-ui/react-dom@2.1.8(react-dom@19.2.5)(react@19.2.5)':
     dependencies:
       '@floating-ui/dom': 1.7.6
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
 
-  '@floating-ui/react@0.26.28(react-dom@19.2.4)(react@19.2.4)':
+  '@floating-ui/react@0.26.28(react-dom@19.2.5)(react@19.2.5)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.8(react-dom@19.2.4)(react@19.2.4)
+      '@floating-ui/react-dom': 2.1.8(react-dom@19.2.5)(react@19.2.5)
       '@floating-ui/utils': 0.2.11
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
       tabbable: 6.4.0
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@headlessui/react@2.2.10(react-dom@19.2.4)(react@19.2.4)':
+  '@headlessui/react@2.2.10(react-dom@19.2.5)(react@19.2.5)':
     dependencies:
-      '@floating-ui/react': 0.26.28(react-dom@19.2.4)(react@19.2.4)
-      '@react-aria/focus': 3.22.0(react-dom@19.2.4)(react@19.2.4)
-      '@react-aria/interactions': 3.28.0(react-dom@19.2.4)(react@19.2.4)
-      '@tanstack/react-virtual': 3.13.23(react-dom@19.2.4)(react@19.2.4)
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
-      use-sync-external-store: 1.6.0(react@19.2.4)
+      '@floating-ui/react': 0.26.28(react-dom@19.2.5)(react@19.2.5)
+      '@react-aria/focus': 3.22.0(react-dom@19.2.5)(react@19.2.5)
+      '@react-aria/interactions': 3.28.0(react-dom@19.2.5)(react@19.2.5)
+      '@tanstack/react-virtual': 3.13.23(react-dom@19.2.5)(react@19.2.5)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+      use-sync-external-store: 1.6.0(react@19.2.5)
 
   '@humanfs/core@0.19.1': {}
 
@@ -3961,24 +3961,24 @@ snapshots:
       '@types/webpack': 5.28.5(webpack-cli@7.0.2)
       webpack-dev-server: 5.2.3(tslib@2.8.1)(webpack-cli@7.0.2)(webpack@5.106.1)
 
-  '@react-aria/focus@3.22.0(react-dom@19.2.4)(react@19.2.4)':
+  '@react-aria/focus@3.22.0(react-dom@19.2.5)(react@19.2.5)':
     dependencies:
       '@swc/helpers': 0.5.21
-      react: 19.2.4
-      react-aria: 3.48.0(react-dom@19.2.4)(react@19.2.4)
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-aria: 3.48.0(react-dom@19.2.5)(react@19.2.5)
+      react-dom: 19.2.5(react@19.2.5)
 
-  '@react-aria/interactions@3.28.0(react-dom@19.2.4)(react@19.2.4)':
+  '@react-aria/interactions@3.28.0(react-dom@19.2.5)(react@19.2.5)':
     dependencies:
-      '@react-types/shared': 3.34.0(react@19.2.4)
+      '@react-types/shared': 3.34.0(react@19.2.5)
       '@swc/helpers': 0.5.21
-      react: 19.2.4
-      react-aria: 3.48.0(react-dom@19.2.4)(react@19.2.4)
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-aria: 3.48.0(react-dom@19.2.5)(react@19.2.5)
+      react-dom: 19.2.5(react@19.2.5)
 
-  '@react-types/shared@3.34.0(react@19.2.4)':
+  '@react-types/shared@3.34.0(react@19.2.5)':
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
 
   '@swc/helpers@0.5.21':
     dependencies:
@@ -4053,11 +4053,11 @@ snapshots:
       postcss: 8.5.8
       tailwindcss: 4.2.2
 
-  '@tanstack/react-virtual@3.13.23(react-dom@19.2.4)(react@19.2.4)':
+  '@tanstack/react-virtual@3.13.23(react-dom@19.2.5)(react@19.2.5)':
     dependencies:
       '@tanstack/virtual-core': 3.13.23
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
 
   '@tanstack/virtual-core@3.13.23': {}
 
@@ -6158,11 +6158,11 @@ snapshots:
       lodash: 4.17.23
       renderkid: 3.0.0
 
-  prism-react-renderer@2.4.1(react@19.2.4):
+  prism-react-renderer@2.4.1(react@19.2.5):
     dependencies:
       '@types/prismjs': 1.26.5
       clsx: 2.1.1
-      react: 19.2.4
+      react: 19.2.5
 
   process-nextick-args@2.0.1: {}
 
@@ -6198,29 +6198,29 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-aria@3.48.0(react-dom@19.2.4)(react@19.2.4):
+  react-aria@3.48.0(react-dom@19.2.5)(react@19.2.5):
     dependencies:
       '@internationalized/date': 3.12.1
       '@internationalized/number': 3.6.6
       '@internationalized/string': 3.2.8
-      '@react-types/shared': 3.34.0(react@19.2.4)
+      '@react-types/shared': 3.34.0(react@19.2.5)
       '@swc/helpers': 0.5.21
       aria-hidden: 1.2.6
       clsx: 2.1.1
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
-      react-stately: 3.46.0(react@19.2.4)
-      use-sync-external-store: 1.6.0(react@19.2.4)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+      react-stately: 3.46.0(react@19.2.5)
+      use-sync-external-store: 1.6.0(react@19.2.5)
 
-  react-canvas-confetti@2.0.7(react@19.2.4):
+  react-canvas-confetti@2.0.7(react@19.2.5):
     dependencies:
       '@types/canvas-confetti': 1.9.0
       canvas-confetti: 1.9.3
-      react: 19.2.4
+      react: 19.2.5
 
-  react-dom@19.2.4(react@19.2.4):
+  react-dom@19.2.5(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
       scheduler: 0.27.0
 
   react-is@16.13.1: {}
@@ -6232,17 +6232,17 @@ snapshots:
 
   react-refresh@0.16.0: {}
 
-  react-stately@3.46.0(react@19.2.4):
+  react-stately@3.46.0(react@19.2.5):
     dependencies:
       '@internationalized/date': 3.12.1
       '@internationalized/number': 3.6.6
       '@internationalized/string': 3.2.8
-      '@react-types/shared': 3.34.0(react@19.2.4)
+      '@react-types/shared': 3.34.0(react@19.2.5)
       '@swc/helpers': 0.5.21
-      react: 19.2.4
-      use-sync-external-store: 1.6.0(react@19.2.4)
+      react: 19.2.5
+      use-sync-external-store: 1.6.0(react@19.2.5)
 
-  react@19.2.4: {}
+  react@19.2.5: {}
 
   readable-stream@2.3.8:
     dependencies:
@@ -6674,9 +6674,9 @@ snapshots:
 
   tabbable@6.4.0: {}
 
-  tailwind-scrollbar@4.0.2(react@19.2.4)(tailwindcss@4.2.2):
+  tailwind-scrollbar@4.0.2(react@19.2.5)(tailwindcss@4.2.2):
     dependencies:
-      prism-react-renderer: 2.4.1(react@19.2.4)
+      prism-react-renderer: 2.4.1(react@19.2.5)
       tailwindcss: 4.2.2
     transitivePeerDependencies:
       - react
@@ -6846,9 +6846,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-sync-external-store@1.6.0(react@19.2.4):
+  use-sync-external-store@1.6.0(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
 
   util-deprecate@1.0.2: {}
 

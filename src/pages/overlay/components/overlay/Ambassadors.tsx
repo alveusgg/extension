@@ -139,7 +139,7 @@ export default function Ambassadors(props: AmbassadorsProps) {
       <div className="relative z-10 flex flex-col items-center">
         <div
           ref={ambassadorList}
-          className="list-fade -my-[var(--twitch-vertical-padding)] scrollbar-none flex w-40 flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
+          className="list-fade -my-[var(--twitch-vertical-padding)] flex w-40 scrollbar-none flex-col items-center gap-4 overflow-scroll px-4 py-[calc(var(--twitch-vertical-padding)+var(--list-fade-padding))]"
           onScroll={handleArrowVisibility}
         >
           {ambassadors.map(([key]) => (

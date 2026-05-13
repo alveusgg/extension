@@ -68,7 +68,6 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "react-refresh-typescript": "^2.0.12",
     "style-loader": "^4.0.0",
-    "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.3.0",
     "ts-loader": "^9.5.7",
     "typescript": "^6.0.3",

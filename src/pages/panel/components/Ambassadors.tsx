@@ -68,7 +68,7 @@ export default function Ambassadors() {
   }, [ambassadorCard, rawAmbassadors]);
 
   return (
-    <main className="relative scrollbar flex max-h-full flex-wrap justify-center gap-4 overflow-x-hidden overflow-y-auto px-2 pt-16 pb-4 scrollbar-thumb-alveus-green scrollbar-track-alveus-tan md:px-4">
+    <main className="relative flex max-h-full scrollbar-thumb-alveus-green scrollbar-track-alveus-tan flex-wrap justify-center gap-4 overflow-x-hidden overflow-y-auto px-2 pt-16 pb-4 md:px-4">
       <div className="absolute inset-x-0 top-0 h-12 w-screen bg-alveus-green" />
 
       {ambassadors.map(([key]) => (

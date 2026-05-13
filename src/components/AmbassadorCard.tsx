@@ -177,7 +177,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
             {ambassador.name}
           </h2>
         </div>
-        <div className="mb-2 scrollbar-thin flex min-h-0 flex-auto flex-col gap-1 overflow-y-auto p-2 scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900">
+        <div className="mb-2 flex min-h-0 flex-auto scrollbar-thin scrollbar-thumb-alveus-green scrollbar-track-alveus-green-900 flex-col gap-1 overflow-y-auto p-2">
           {mod && (
             <div className="flex items-center gap-2">
               <img

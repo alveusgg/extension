@@ -14,7 +14,7 @@ updates:
       day: wednesday
       time: "00:00"
 
-    # Only accept updates that have been published for at least 7 days
+    # Only accept updates that have been published for at least a week
     cooldown:
       default-days: 7
 
@@ -32,7 +32,7 @@ updates:
       day: wednesday
       time: "00:00"
 
-    # Only accept updates that have been published for at least 7 days
+    # Only accept updates that have been published for at least a week
     cooldown:
       default-days: 7
 

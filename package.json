@@ -47,7 +47,7 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/luxon": "^3.7.1",
     "@types/node": "^24.12.4",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "@types/tmi.js": "^1.8.6",
     "@types/twitch-ext": "^1.24.9",

@@ -127,6 +127,7 @@ export default function AmbassadorCard(props: AmbassadorCardProps) {
       disabled={disableCardEffects}
       className={classes(
         "relative flex max-h-full min-h-[min(28rem,100%)] w-80 max-w-full flex-col rounded-lg bg-alveus-green-900 text-xs shadow-xl",
+        !disableCardEffects && "mb-10",
         className,
       )}
       ref={callbackRef}

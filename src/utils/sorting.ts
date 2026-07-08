@@ -16,9 +16,7 @@ export const sortMethods: SortMethod[] = sortOptions.map((opt) => opt.value);
 export type AmbassadorEntry<T> = [string, T];
 
 type PartialDate =
-  | `${number}`
-  | `${number}-${number}`
-  | `${number}-${number}-${number}`;
+  `${number}` | `${number}-${number}` | `${number}-${number}-${number}`;
 
 /**
  * Sorts an array of ambassador entries based on the specified sort method.

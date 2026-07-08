@@ -5,15 +5,11 @@ const timezone = process.env.REACT_APP_TIMEZONE || "UTC";
 export const getToday = () => DateTime.now().setZone(timezone).startOf("day");
 
 type PartialDate =
-  | `${number}`
-  | `${number}-${number}`
-  | `${number}-${number}-${number}`;
+  `${number}` | `${number}-${number}` | `${number}-${number}-${number}`;
 
 const splitPartialDate = (partialDate: PartialDate) =>
   partialDate.split("-").map((x) => parseInt(x)) as
-    | [number]
-    | [number, number]
-    | [number, number, number];
+    [number] | [number, number] | [number, number, number];
 
 const parsePartialDate = (partialDate: PartialDate) => {
   const [year, month, day] = splitPartialDate(partialDate);

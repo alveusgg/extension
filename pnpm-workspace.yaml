@@ -3,7 +3,7 @@ strictPeerDependencies: true
 dedupePeers: true
 
 overrides:
-  "webpack-image-resize-loader>sharp": "^0.33.4"
+  "webpack-image-resize-loader>sharp": "^0.35.0"
   "@types/zip-webpack-plugin>@types/webpack": "^5.0.0"
 
 allowBuilds:

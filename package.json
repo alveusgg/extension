@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
     "@tailwindcss/postcss": "^4.3.3",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/canvas-confetti": "^1.9.0",

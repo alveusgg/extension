@@ -14,8 +14,8 @@ importers:
   .:
     dependencies:
       '@alveusgg/data':
-        specifier: 0.77.0
-        version: 0.77.0(tailwindcss@4.3.3)(zod@4.4.3)
+        specifier: 0.78.0
+        version: 0.78.0(tailwindcss@4.3.3)(zod@4.5.4)
       '@headlessui/react':
         specifier: ^2.2.10
         version: 2.2.10(react-dom@19.2.8)(react@19.2.8)
@@ -35,8 +35,8 @@ importers:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^4.4.3
-        version: 4.4.3
+        specifier: ^4.5.4
+        version: 4.5.4
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.5
@@ -159,9 +159,9 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alveusgg/data@0.77.0':
-    resolution: {integrity: sha512-FieWA7JZ3KhzT+uRRVc5iW30Icfoupj7GEUImEulECopwLF7q2HUhZbs9BU2JzehfRJIeS24+XTrzypLpW9gig==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.77.0/b3861b7b3b618b70f798cc020dba366266fa4ad3}
-    engines: {pnpm: ^11.15.0}
+  '@alveusgg/data@0.78.0':
+    resolution: {integrity: sha512-vc7zz8rZ5C1uRBQnO2vMmMLW95z2A6ffpGCNPjeMUOaYrBDBilTI14ldza8kMtZj3JbtgPE6ozywAogVL3cLQg==, tarball: https://npm.pkg.github.com/download/@alveusgg/data/0.78.0/016799d4443dfbaaeebdf54b19474267a3dc7f68}
+    engines: {pnpm: ^11.25.0}
     peerDependencies:
       tailwindcss: ^4.0.0
       zod: ^4.0.0
@@ -3274,17 +3274,17 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@4.4.3:
-    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
+  zod@4.5.4:
+    resolution: {integrity: sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.77.0(tailwindcss@4.3.3)(zod@4.4.3)':
+  '@alveusgg/data@0.78.0(tailwindcss@4.3.3)(zod@4.5.4)':
     dependencies:
       tailwindcss: 4.3.3
-      zod: 4.4.3
+      zod: 4.5.4
 
   '@babel/code-frame@7.29.0':
     dependencies:
@@ -6676,4 +6676,4 @@ snapshots:
       webpack-sources: 3.5.1
       yazl: 2.5.1
 
-  zod@4.4.3: {}
+  zod@4.5.4: {}

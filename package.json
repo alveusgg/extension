@@ -32,11 +32,11 @@
     "@alveusgg/data": "0.79.1",
     "@headlessui/react": "^2.2.10",
     "luxon": "^3.7.2",
-    "react": "^19.3.0",
+    "react": "^19.3.1",
     "react-canvas-confetti": "^2.0.7",
-    "react-dom": "^19.3.0",
+    "react-dom": "^19.3.1",
     "tmi.js": "^1.8.5",
-    "zod": "^4.6.5"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

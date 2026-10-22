@@ -15,28 +15,28 @@ importers:
     dependencies:
       '@alveusgg/data':
         specifier: 0.79.1
-        version: 0.79.1(tailwindcss@4.3.3)(zod@4.6.5)
+        version: 0.79.1(tailwindcss@4.3.3)(zod@4.6.7)
       '@headlessui/react':
         specifier: ^2.2.10
-        version: 2.2.10(react-dom@19.3.0)(react@19.3.0)
+        version: 2.2.10(react-dom@19.3.1)(react@19.3.1)
       luxon:
         specifier: ^3.7.2
         version: 3.7.2
       react:
-        specifier: ^19.3.0
-        version: 19.3.0
+        specifier: ^19.3.1
+        version: 19.3.1
       react-canvas-confetti:
         specifier: ^2.0.7
-        version: 2.0.7(react@19.3.0)
+        version: 2.0.7(react@19.3.1)
       react-dom:
-        specifier: ^19.3.0
-        version: 19.3.0(react@19.3.0)
+        specifier: ^19.3.1
+        version: 19.3.1(react@19.3.1)
       tmi.js:
         specifier: ^1.8.5
         version: 1.8.5
       zod:
-        specifier: ^4.6.5
-        version: 4.6.5
+        specifier: ^4.6.7
+        version: 4.6.7
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.5
@@ -2690,10 +2690,10 @@ packages:
     peerDependencies:
       react: '*'
 
-  react-dom@19.3.0:
-    resolution: {integrity: sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==}
+  react-dom@19.3.1:
+    resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
     peerDependencies:
-      react: ^19.3.0
+      react: ^19.3.1
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -2713,8 +2713,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  react@19.3.0:
-    resolution: {integrity: sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==}
+  react@19.3.1:
+    resolution: {integrity: sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==}
     engines: {node: '>=0.10.0'}
 
   readdirp@4.1.2:
@@ -3272,17 +3272,17 @@ packages:
       webpack: ^4.0.0 || ^5.0.0
       webpack-sources: '*'
 
-  zod@4.6.5:
-    resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
+  zod@4.6.7:
+    resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
 
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alveusgg/data@0.79.1(tailwindcss@4.3.3)(zod@4.6.5)':
+  '@alveusgg/data@0.79.1(tailwindcss@4.3.3)(zod@4.6.7)':
     dependencies:
       tailwindcss: 4.3.3
-      zod: 4.6.5
+      zod: 4.6.7
 
   '@babel/code-frame@7.29.0':
     dependencies:
@@ -3401,31 +3401,31 @@ snapshots:
       '@floating-ui/core': 1.7.5
       '@floating-ui/utils': 0.2.11
 
-  '@floating-ui/react-dom@2.1.8(react-dom@19.3.0)(react@19.3.0)':
+  '@floating-ui/react-dom@2.1.8(react-dom@19.3.1)(react@19.3.1)':
     dependencies:
       '@floating-ui/dom': 1.7.6
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
 
-  '@floating-ui/react@0.26.28(react-dom@19.3.0)(react@19.3.0)':
+  '@floating-ui/react@0.26.28(react-dom@19.3.1)(react@19.3.1)':
     dependencies:
-      '@floating-ui/react-dom': 2.1.8(react-dom@19.3.0)(react@19.3.0)
+      '@floating-ui/react-dom': 2.1.8(react-dom@19.3.1)(react@19.3.1)
       '@floating-ui/utils': 0.2.11
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
       tabbable: 6.4.0
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@headlessui/react@2.2.10(react-dom@19.3.0)(react@19.3.0)':
+  '@headlessui/react@2.2.10(react-dom@19.3.1)(react@19.3.1)':
     dependencies:
-      '@floating-ui/react': 0.26.28(react-dom@19.3.0)(react@19.3.0)
-      '@react-aria/focus': 3.22.0(react-dom@19.3.0)(react@19.3.0)
-      '@react-aria/interactions': 3.28.0(react-dom@19.3.0)(react@19.3.0)
-      '@tanstack/react-virtual': 3.13.23(react-dom@19.3.0)(react@19.3.0)
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
-      use-sync-external-store: 1.6.0(react@19.3.0)
+      '@floating-ui/react': 0.26.28(react-dom@19.3.1)(react@19.3.1)
+      '@react-aria/focus': 3.22.0(react-dom@19.3.1)(react@19.3.1)
+      '@react-aria/interactions': 3.28.0(react-dom@19.3.1)(react@19.3.1)
+      '@tanstack/react-virtual': 3.13.23(react-dom@19.3.1)(react@19.3.1)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      use-sync-external-store: 1.6.0(react@19.3.1)
 
   '@humanfs/core@0.19.2':
     dependencies:
@@ -3825,24 +3825,24 @@ snapshots:
       '@types/webpack': 5.28.5(clean-css@5.3.3)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.25)(sharp@0.35.5)(webpack-cli@7.2.3)
       webpack-dev-server: 6.0.0(supports-color@8.1.1)(webpack-cli@7.2.3)(webpack@5.111.1)
 
-  '@react-aria/focus@3.22.0(react-dom@19.3.0)(react@19.3.0)':
+  '@react-aria/focus@3.22.0(react-dom@19.3.1)(react@19.3.1)':
     dependencies:
       '@swc/helpers': 0.5.21
-      react: 19.3.0
-      react-aria: 3.48.0(react-dom@19.3.0)(react@19.3.0)
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-aria: 3.48.0(react-dom@19.3.1)(react@19.3.1)
+      react-dom: 19.3.1(react@19.3.1)
 
-  '@react-aria/interactions@3.28.0(react-dom@19.3.0)(react@19.3.0)':
+  '@react-aria/interactions@3.28.0(react-dom@19.3.1)(react@19.3.1)':
     dependencies:
-      '@react-types/shared': 3.34.0(react@19.3.0)
+      '@react-types/shared': 3.34.0(react@19.3.1)
       '@swc/helpers': 0.5.21
-      react: 19.3.0
-      react-aria: 3.48.0(react-dom@19.3.0)(react@19.3.0)
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-aria: 3.48.0(react-dom@19.3.1)(react@19.3.1)
+      react-dom: 19.3.1(react@19.3.1)
 
-  '@react-types/shared@3.34.0(react@19.3.0)':
+  '@react-types/shared@3.34.0(react@19.3.1)':
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   '@swc/helpers@0.5.21':
     dependencies:
@@ -3917,11 +3917,11 @@ snapshots:
       postcss: 8.5.25
       tailwindcss: 4.3.3
 
-  '@tanstack/react-virtual@3.13.23(react-dom@19.3.0)(react@19.3.0)':
+  '@tanstack/react-virtual@3.13.23(react-dom@19.3.1)(react@19.3.1)':
     dependencies:
       '@tanstack/virtual-core': 3.13.23
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
 
   '@tanstack/virtual-core@3.13.23': {}
 
@@ -5928,29 +5928,29 @@ snapshots:
       iconv-lite: 0.7.3
       unpipe: 1.0.0
 
-  react-aria@3.48.0(react-dom@19.3.0)(react@19.3.0):
+  react-aria@3.48.0(react-dom@19.3.1)(react@19.3.1):
     dependencies:
       '@internationalized/date': 3.12.1
       '@internationalized/number': 3.6.6
       '@internationalized/string': 3.2.8
-      '@react-types/shared': 3.34.0(react@19.3.0)
+      '@react-types/shared': 3.34.0(react@19.3.1)
       '@swc/helpers': 0.5.21
       aria-hidden: 1.2.6
       clsx: 2.1.1
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
-      react-stately: 3.46.0(react@19.3.0)
-      use-sync-external-store: 1.6.0(react@19.3.0)
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      react-stately: 3.46.0(react@19.3.1)
+      use-sync-external-store: 1.6.0(react@19.3.1)
 
-  react-canvas-confetti@2.0.7(react@19.3.0):
+  react-canvas-confetti@2.0.7(react@19.3.1):
     dependencies:
       '@types/canvas-confetti': 1.9.0
       canvas-confetti: 1.9.3
-      react: 19.3.0
+      react: 19.3.1
 
-  react-dom@19.3.0(react@19.3.0):
+  react-dom@19.3.1(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
       scheduler: 0.28.0
 
   react-is@16.13.1: {}
@@ -5962,17 +5962,17 @@ snapshots:
 
   react-refresh@0.16.0: {}
 
-  react-stately@3.46.0(react@19.3.0):
+  react-stately@3.46.0(react@19.3.1):
     dependencies:
       '@internationalized/date': 3.12.1
       '@internationalized/number': 3.6.6
       '@internationalized/string': 3.2.8
-      '@react-types/shared': 3.34.0(react@19.3.0)
+      '@react-types/shared': 3.34.0(react@19.3.1)
       '@swc/helpers': 0.5.21
-      react: 19.3.0
-      use-sync-external-store: 1.6.0(react@19.3.0)
+      react: 19.3.1
+      use-sync-external-store: 1.6.0(react@19.3.1)
 
-  react@19.3.0: {}
+  react@19.3.1: {}
 
   readdirp@4.1.2: {}
 
@@ -6465,9 +6465,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-sync-external-store@1.6.0(react@19.3.0):
+  use-sync-external-store@1.6.0(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   util-deprecate@1.0.2: {}
 
@@ -6678,4 +6678,4 @@ snapshots:
       webpack-sources: 3.5.1
       yazl: 2.5.1
 
-  zod@4.6.5: {}
+  zod@4.6.7: {}

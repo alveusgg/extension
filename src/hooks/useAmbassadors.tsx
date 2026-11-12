@@ -53,6 +53,7 @@ const apiAmbassadorSchema = ambassadorSchema.extend({
     key: z.string(),
     title: z.string(),
   }),
+  fact: z.string().optional(),
 });
 
 type Ambassador = z.infer<typeof apiAmbassadorSchema>;

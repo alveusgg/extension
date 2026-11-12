@@ -1,6 +1,7 @@
 optimisticRepeatInstall: true
 strictPeerDependencies: true
 dedupePeers: true
+autoDedupe: true
 
 overrides:
   "webpack-image-resize-loader>sharp": "^0.35.0"

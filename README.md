@@ -18,16 +18,17 @@ https://user-images.githubusercontent.com/49528805/229295376-6490d0a5-5f01-456b-
 
 ## Local Set Up
 
-1. Install Node.js (see `engines` in `package.json` for the required versions), or use `fnm`/`nvm` to install the correct version of Node.js, and use `corepack enable` to use PNPM.
-2. Authenticate with the GitHub Package Registry: `npm login --auth-type=legacy --registry=https://npm.pkg.github.com`
+1. Install [Node.js](https://nodejs.org/en/download) matching the version set in [`.nvmrc`](.nvmrc) and [`package.json#devEngines.node.version`](package.json) (we recommend using a version manager like [`fnm`](https://github.com/Schniz/fnm) or [`nvm`](https://github.com/nvm-sh/nvm), so you can run `nvm install`/`fnm install` in the project directory to install and `nvm use`/`fnm use` to use the correct Node.js version).
+2. Install [pnpm](https://pnpm.io/installation) as this is the package manager used for this project (pnpm will self-manage its version based on [`package.json#devEngines.packageManager.version`](package.json)).
+3. Authenticate with the GitHub Package Registry: `npm login --auth-type=legacy --registry=https://npm.pkg.github.com`
    1. Use your GitHub username (lowercase) as the username when prompted
    2. Create a [GitHub personal access token (classic)](https://github.com/settings/tokens/new) with the `read:packages` scope and use it as the password when prompted
-3. Install dependencies for the project with `pnpm install --frozen-lockfile`
-4. Head up to https://dev.twitch.tv/console/extensions/create and create a new extension.
+4. Install dependencies for the project with `pnpm install --frozen-lockfile`
+5. Head up to https://dev.twitch.tv/console/extensions/create and create a new extension.
    You will need to create a new version: Select `Panel`, `Mobile` and `Video - Fullscreen` for the extension type. Leave all other settings as they are.
-5. Copy the `.env.sample` file to `.env` (which sets `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS` and `REACT_APP_DEFAULT_CHANNEL_NAMES`)
-6. Copy the `.env.development.sample` file to `.env.development`. You may add a channel and user to test chat commands here (e.g. `REACT_APP_CHAT_COMMANDS_TEST_CHANNEL=testuser` and `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS=testuser`)
-7. Start the development server with `pnpm dev`
+6. Copy the `.env.sample` file to `.env` (which sets `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS` and `REACT_APP_DEFAULT_CHANNEL_NAMES`)
+7. Copy the `.env.development.sample` file to `.env.development`. You may add a channel and user to test chat commands here (e.g. `REACT_APP_CHAT_COMMANDS_TEST_CHANNEL=testuser` and `REACT_APP_CHAT_COMMANDS_PRIVILEGED_USERS=testuser`)
+8. Start the development server with `pnpm dev`
 
 If you're using VSCode, add `"typescript.tsdk": "node_modules/typescript/lib"` to `.vscode/settings.json` to ensure you're using the correct TypeScript version.
 

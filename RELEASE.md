@@ -49,7 +49,7 @@ External links:
     All links are related to Alveus Sanctuary, and can be found in the ambassador cards as well as the overlay welcome card.
 
     - Alveus Sanctuary website (homepage + ambassador pages)
-    - Alveus Amazon Wishlist
+    - Alveus Sanctuary Wishlist
     - Alveus Instagram
     - Alveus TikTok
     - Alveus X/Twitter

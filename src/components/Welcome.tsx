@@ -2,8 +2,8 @@ import { useMemo } from "react";
 
 import useChannel from "../hooks/useChannel";
 
-import IconAmazon from "./icons/IconAmazon";
 import IconFacebook from "./icons/IconFacebook";
+import IconGift from "./icons/IconGift";
 import IconGitHub from "./icons/IconGitHub";
 import IconGlobe from "./icons/IconGlobe";
 import IconInstagram from "./icons/IconInstagram";
@@ -54,9 +54,9 @@ export default function Welcome(props: WelcomeProps) {
             href="https://www.alveussanctuary.org/wishlist"
             rel="noreferrer"
             target="_blank"
-            title="Amazon Wishlist"
+            title="Sanctuary Wishlist"
           >
-            <IconAmazon size={32} />
+            <IconGift size={32} />
           </a>
         </li>
         <li className={socialClass}>
